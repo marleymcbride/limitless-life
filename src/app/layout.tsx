@@ -1,7 +1,6 @@
 // src/app/layout.tsx
 import './globals.css';
 import { ReactNode } from 'react';
-import { ThemeProvider } from '../components/theme-provider';
 
 export const metadata = {
   title: 'Limitless Life | Transform Your Energy, Body & Mind',
@@ -18,14 +17,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className="h-full">
       <body className="h-full min-h-screen">
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem={false}
-          disableTransitionOnChange
-        >
-          {children}
-        </ThemeProvider>
+        {children}
       </body>
     </html>
   );

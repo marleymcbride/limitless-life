@@ -1,6 +1,7 @@
 "use client"
 
 import { Button } from "./ui/button"
+import { Check, X } from "lucide-react"
 
 export default function FinalCta() {
   return (
@@ -16,50 +17,103 @@ export default function FinalCta() {
             hours in the gym.
           </p>
 
-          <div className="mb-8 rounded-lg bg-zinc-800 p-6 text-left">
-            <h3 className="mb-4 text-center text-2xl font-bold">What Will Your Life Look Like 12 Weeks From Now?</h3>
+          <div className="mb-12 rounded-lg bg-zinc-900 p-8 text-left">
+            <h3 className="mb-6 text-center text-2xl font-bold border-b border-[#940909] pb-4">The Choice Is Yours</h3>
 
-            <div className="mb-4 grid gap-4 md:grid-cols-2">
-              <div className="rounded-lg bg-zinc-700 p-4">
-                <h4 className="mb-2 font-bold">Do Nothing:</h4>
-                <ul className="space-y-2">
-                  <li>• Still exhausted every morning</li>
-                  <li>• Still dependent on caffeine</li>
-                  <li>• Still carrying extra weight</li>
-                  <li>• Still struggling with stress and brain fog</li>
-                  <li>• Still using alcohol to cope</li>
+            <div className="grid gap-8 md:grid-cols-2">
+              <div className="rounded-lg bg-zinc-800 p-6 relative">
+                <div className="absolute top-0 right-0 w-10 h-10 bg-zinc-700 flex items-center justify-center transform translate-x-3 -translate-y-3 rounded-full border-2 border-zinc-800">
+                  <X className="h-6 w-6 text-red-500" />
+                </div>
+                <h4 className="mb-4 font-bold text-xl text-gray-400">Do Nothing:</h4>
+                <ul className="space-y-3">
+                  <li className="flex items-start">
+                    <X className="mr-2 mt-1 h-5 w-5 text-red-500 flex-shrink-0" />
+                    <span>Continue waking up exhausted every morning</span>
+                  </li>
+                  <li className="flex items-start">
+                    <X className="mr-2 mt-1 h-5 w-5 text-red-500 flex-shrink-0" />
+                    <span>Remain dependent on caffeine just to function</span>
+                  </li>
+                  <li className="flex items-start">
+                    <X className="mr-2 mt-1 h-5 w-5 text-red-500 flex-shrink-0" />
+                    <span>Keep watching your waistline expand year after year</span>
+                  </li>
+                  <li className="flex items-start">
+                    <X className="mr-2 mt-1 h-5 w-5 text-red-500 flex-shrink-0" />
+                    <span>Accept brain fog and diminished performance as "normal"</span>
+                  </li>
+                  <li className="flex items-start">
+                    <X className="mr-2 mt-1 h-5 w-5 text-red-500 flex-shrink-0" />
+                    <span>Miss precious moments with family due to exhaustion</span>
+                  </li>
+                  <li className="flex items-start">
+                    <X className="mr-2 mt-1 h-5 w-5 text-red-500 flex-shrink-0" />
+                    <span>Put your long-term health at serious risk</span>
+                  </li>
                 </ul>
               </div>
 
-              <div className="rounded-lg bg-green-900 p-4">
-                <h4 className="mb-2 font-bold">Join Limitless:</h4>
-                <ul className="space-y-2">
-                  <li>• Wake up energized and clear-headed</li>
-                  <li>• Look and feel 10 years younger</li>
-                  <li>• Perform at your peak all day</li>
-                  <li>• Feel confident in your body again</li>
-                  <li>• Be fully present with your family</li>
+              <div className="rounded-lg bg-[#940909]/10 p-6 border border-[#940909] relative">
+                <div className="absolute top-0 right-0 w-10 h-10 bg-[#940909] flex items-center justify-center transform translate-x-3 -translate-y-3 rounded-full border-2 border-black">
+                  <Check className="h-6 w-6 text-white" />
+                </div>
+                <h4 className="mb-4 font-bold text-xl text-white">Join Limitless:</h4>
+                <ul className="space-y-3">
+                  <li className="flex items-start">
+                    <Check className="mr-2 mt-1 h-5 w-5 text-[#940909] flex-shrink-0" />
+                    <span>Wake up naturally energized before your alarm</span>
+                  </li>
+                  <li className="flex items-start">
+                    <Check className="mr-2 mt-1 h-5 w-5 text-[#940909] flex-shrink-0" />
+                    <span>Feel, look and perform like you did 10 years ago</span>
+                  </li>
+                  <li className="flex items-start">
+                    <Check className="mr-2 mt-1 h-5 w-5 text-[#940909] flex-shrink-0" />
+                    <span>Maintain razor-sharp focus all day without crashes</span>
+                  </li>
+                  <li className="flex items-start">
+                    <Check className="mr-2 mt-1 h-5 w-5 text-[#940909] flex-shrink-0" />
+                    <span>Feel confident and proud when looking in the mirror</span>
+                  </li>
+                  <li className="flex items-start">
+                    <Check className="mr-2 mt-1 h-5 w-5 text-[#940909] flex-shrink-0" />
+                    <span>Be fully present and energetic with your family</span>
+                  </li>
+                  <li className="flex items-start">
+                    <Check className="mr-2 mt-1 h-5 w-5 text-[#940909] flex-shrink-0" />
+                    <span>Build a foundation for longevity and vibrant health</span>
+                  </li>
                 </ul>
               </div>
             </div>
           </div>
 
-          <Button 
-            size="lg"
-            className="mx-auto mt-6 w-full max-w-md bg-green-600 py-8 text-2xl font-bold hover:bg-green-700 hover:scale-105 transition-transform animate-pulse"
-            onClick={() => alert('Application form would open here')}
-          >
-            Transform Your Life Now
-          </Button>
+          <div className="relative">
+            <div className="absolute -inset-1 bg-gradient-to-r from-[#940909] to-[#c20d0d] blur-md opacity-70"></div>
+            <div className="relative bg-black rounded-lg p-8 border border-[#940909]">
+              <h3 className="text-2xl font-bold mb-4">Ready to Reclaim Your Energy, Body & Mind?</h3>
+              <p className="mb-6">Join hundreds of high-performing executives who have transformed their lives in just 12 weeks</p>
+              
+              <Button
+                size="lg"
+                className="mx-auto w-full max-w-md bg-[#940909] py-8 text-2xl font-bold hover:bg-[#7b0707] hover:scale-105 transition-all"
+                asChild
+              >
+                <a href="#application">Transform Your Life Now</a>
+              </Button>
+              
+              <div className="mt-6 flex items-center justify-center">
+                <span className="mr-2 bg-[#940909] text-white px-3 py-1 rounded-md text-sm font-bold">LIMITED</span>
+                <span className="font-bold">Only 10 spots available this month</span>
+              </div>
 
-          <p className="mt-4">
-            <span className="font-bold">Limited Availability:</span> Only 10 spots open this month
-          </p>
-
-          <p className="mt-6 text-sm">
-            100% Money-Back Guarantee: If you don't see significant improvements in 30 days, we'll refund your
-            investment in full.
-          </p>
+              <p className="mt-6 text-sm flex items-center justify-center">
+                <Check className="mr-2 h-5 w-5 text-[#940909]" />
+                <span>100% Money-Back Guarantee: If you don't see significant improvements in 30 days</span>
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
