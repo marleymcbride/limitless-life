@@ -15,9 +15,4 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       </body>
     </html>
   );
-}module.exports = {
-  plugins: {
-    tailwindcss: {},
-    autoprefixer: {},
-  },
 }
