@@ -1,4 +1,6 @@
-import { Button } from "@/components/ui/button"
+"use client"
+
+import { Button } from "./ui/button"
 
 export default function FinalCta() {
   return (
@@ -42,7 +44,11 @@ export default function FinalCta() {
             </div>
           </div>
 
-          <Button className="mx-auto w-full max-w-md bg-green-600 py-8 text-2xl font-bold hover:bg-green-700">
+          <Button 
+            size="lg"
+            className="mx-auto mt-6 w-full max-w-md bg-green-600 py-8 text-2xl font-bold hover:bg-green-700 hover:scale-105 transition-transform animate-pulse"
+            onClick={() => alert('Application form would open here')}
+          >
             Transform Your Life Now
           </Button>
 

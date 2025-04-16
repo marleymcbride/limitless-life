@@ -1,5 +1,7 @@
+"use client"
+
 import { Check } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { Button } from "./ui/button"
 
 export default function ProgramDetails() {
   return (
@@ -98,7 +100,10 @@ export default function ProgramDetails() {
             <p className="mb-6">Or 3 monthly payments of $700</p>
             <p className="mb-8 text-lg">Only 10 spots available this month</p>
 
-            <Button className="mx-auto w-full max-w-md bg-green-600 py-6 text-xl font-bold hover:bg-green-700">
+            <Button 
+              className="mx-auto w-full max-w-md bg-green-600 py-6 text-xl font-bold hover:bg-green-700"
+              onClick={() => alert('Application form would open here')}
+            >
               Claim Your Spot Now
             </Button>
 
