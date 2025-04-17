@@ -11,13 +11,13 @@ export default function EnhancedVideoPlayer() {
   // Handle client-side mounting and scroll detection
   useEffect(() => {
     setIsMounted(true)
-    
+
     const handleScroll = () => {
       if (window.scrollY > 10) {
         setHasScrolled(true)
       }
     }
-    
+
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
@@ -50,7 +50,7 @@ export default function EnhancedVideoPlayer() {
   return (
     <div className="relative w-full overflow-hidden rounded-lg bg-black shadow-[0_20px_60px_-15px_rgba(0,0,0,0.7)]">
       {/* Fixed 16:9 container */}
-      <div className="w-full" style={{ paddingBottom: "56.25%" }}> 
+      <div className="w-full" style={{ paddingBottom: "56.25%" }}>
         {isMounted && (
           <video
             ref={videoRef}
@@ -67,7 +67,7 @@ export default function EnhancedVideoPlayer() {
             Your browser does not support the video tag.
           </video>
         )}
-        
+
         {/* Placeholder when not mounted - exactly matching dimensions */}
         {!isMounted && (
           <div className="absolute inset-0 w-full h-full bg-gray-300 flex items-center justify-center">
@@ -76,10 +76,10 @@ export default function EnhancedVideoPlayer() {
         )}
       </div>
 
-      {/* Play button overlay */}
+      {/* Play button overlay - visible on desktop only */}
       {isMounted && !isPlaying && (
         <div
-          className="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 cursor-pointer items-center justify-center z-20"
+          className="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 cursor-pointer items-center justify-center z-20 hidden md:flex"
           onClick={togglePlay}
         >
           {/* Circular backdrop */}
