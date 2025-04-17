@@ -19,7 +19,7 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center">
       {/* Hero Section with VSL - New Design */}
-      <section className="py-12 md:py-16 px-4 min-h-[95vh] flex items-center justify-center bg-[radial-gradient(ellipse_at_center,#1a1a1a_0%,#0a0a0a_70%,#050505_100%)] relative w-full">
+      <section className="py-6 md:py-8 px-4 min-h-[94.75vh] flex items-center justify-center bg-[radial-gradient(ellipse_at_center,#1a1a1a_0%,#0a0a0a_70%,#050505_100%)] relative w-full">
         {/* Top gradient */}
         <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-black to-transparent opacity-50"></div>
         
@@ -32,16 +32,16 @@ export default function Home() {
           mixBlendMode: 'multiply'
         }}></div>
         
-        <div className="container mx-auto flex flex-col items-center relative z-10">
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white text-center max-w-3xl mb-4">
+        <div className="container mx-auto flex flex-col items-center relative z-10 pt-4">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white text-center max-w-3xl mb-2">
             The Proven 12-Week System For Executive Health Transformation
           </h1>
-          <p className="text-base md:text-lg text-gray-300 text-center max-w-3xl mb-10">
+          <p className="text-base md:text-lg text-gray-300 text-center max-w-3xl mb-6">
             The step-by-step program that has helped hundreds of high-performing men break free from burnout, reclaim their energy, and build unstoppable physical and mental performance without sacrificing their success
           </p>
 
           {/* Video container */}
-          <div className="w-full max-w-3xl mx-auto">
+          <div className="w-full max-w-3xl md:max-w-2xl lg:max-w-3xl mx-auto">
             <EnhancedVideoPlayer />
           </div>
         </div>

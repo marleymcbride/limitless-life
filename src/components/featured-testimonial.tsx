@@ -2,8 +2,8 @@ import Image from "next/image"
 
 export default function FeaturedTestimonial() {
   return (
-    <section className="bg-white pt-2 pb-16 w-full">
-      <div className="container mx-auto max-w-3xl px-4">
+    <section className="bg-white pt-8 pb-16 w-full">
+      <div className="container mx-auto max-w-3xl px-4 mt-6">
         <blockquote className="text-lg md:text-xl italic text-gray-800 text-center mb-6">
           "This program completely transformed my life. As a CEO working 70+ hour weeks, I was constantly exhausted and my health was suffering. After just 8 weeks in this program, my energy levels are through the roof, I've lost 22 pounds, and I'm more productive than ever."
         </blockquote>
