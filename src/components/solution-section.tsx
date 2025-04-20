@@ -1,3 +1,5 @@
+import ApplyNowButton from "./apply-now-button"
+
 export default function SolutionSection() {
     return (
       <section className="w-full bg-black py-16 text-white">
@@ -6,7 +8,7 @@ export default function SolutionSection() {
           <p className="mb-12 text-center text-xl">
             The Complete System for High-Performing Men to Reclaim Their Energy, Body, and Mind
           </p>
-  
+
           <div className="mx-auto max-w-4xl">
             <div className="mb-10">
               <h3 className="mb-4 text-2xl font-bold">What Makes This Different</h3>
@@ -19,7 +21,7 @@ export default function SolutionSection() {
                 that determine your energy, physical appearance, mental clarity, and overall performance.
               </p>
             </div>
-  
+
             <div className="grid gap-8 md:grid-cols-2">
               <div className="rounded-lg bg-zinc-800 p-6">
                 <h4 className="mb-3 text-xl font-bold">System 1: Metabolic Optimization</h4>
@@ -28,7 +30,7 @@ export default function SolutionSection() {
                   precision nutrition protocols and targeted supplementation strategies.
                 </p>
               </div>
-  
+
               <div className="rounded-lg bg-zinc-800 p-6">
                 <h4 className="mb-3 text-xl font-bold">System 2: Physiological Restoration</h4>
                 <p>
@@ -36,7 +38,7 @@ export default function SolutionSection() {
                   biometric tracking and adjustment protocols.
                 </p>
               </div>
-  
+
               <div className="rounded-lg bg-zinc-800 p-6">
                 <h4 className="mb-3 text-xl font-bold">System 3: Cognitive Enhancement</h4>
                 <p>
@@ -44,7 +46,7 @@ export default function SolutionSection() {
                   advanced mindfulness techniques and brain-training protocols.
                 </p>
               </div>
-  
+
               <div className="rounded-lg bg-zinc-800 p-6">
                 <h4 className="mb-3 text-xl font-bold">System 4: Behavioral Integration</h4>
                 <p>
@@ -53,9 +55,13 @@ export default function SolutionSection() {
                 </p>
               </div>
             </div>
+
+            {/* Apply Now Button - Visible on mobile only */}
+            <div className="block sm:hidden mt-12">
+              <ApplyNowButton />
+            </div>
           </div>
         </div>
       </section>
     )
   }
-  

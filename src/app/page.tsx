@@ -14,6 +14,7 @@ import WhatsIncluded from "../components/whats-included"
 import ComparisonTable from "../components/comparison-table"
 import FaqSection from "../components/faq-section"
 import FinalCta from "../components/final-cta"
+import NumberedList from "../components/numbered-list"
 
 export default function Home() {
   return (
@@ -33,19 +34,19 @@ export default function Home() {
         }}></div>
 
         <div className="container mx-auto flex flex-col relative z-10 h-full">
-          {/* Text content takes priority on mobile - positioned at the top */}
-          <div className="flex-grow flex flex-col justify-center mt-0 sm:mt-12 md:mt-0 md:justify-start">
-            <h1 className="text-5xl sm:text-6xl md:text-5xl lg:text-6xl font-bold text-white text-center mb-8 pt-12 sm:pt-0">
+          {/* Mobile view - headline and subheadline optimized for mobile */}
+          <div className="flex-grow flex flex-col justify-start sm:justify-center pt-10 sm:pt-0 sm:mt-12 md:mt-0">
+            <h1 className="text-5xl sm:text-5xl md:text-4xl lg:text-5xl font-bold text-white text-center mb-8 mt-0 sm:mt-0">
               The Proven 12-Week System For Executive Health Transformation
             </h1>
-            <p className="text-xl sm:text-2xl md:text-xl text-gray-300 text-center max-w-3xl mx-auto mb-12 sm:mb-16 px-2">
+            <p className="text-xl sm:text-xl md:text-lg text-gray-300 text-center max-w-3xl mx-auto mb-8 sm:mb-16 px-2">
               The step-by-step program that has helped hundreds of high-performing men break free from burnout, reclaim their energy, and build unstoppable physical and mental performance without sacrificing their success
             </p>
           </div>
 
           {/* Video container positioned in the bottom portion of the screen */}
-          <div className="w-full max-w-xl sm:max-w-2xl md:max-w-2xl lg:max-w-3xl mx-auto mt-auto mb-8 sm:mb-12 px-4 sm:px-8">
-            <div className="relative">
+          <div className="mt-auto mb-6 mx-auto w-full sm:mb-12">
+            <div className="relative w-full sm:w-auto sm:mx-auto" style={{ maxWidth: "95%", marginLeft: "auto", marginRight: "auto" }}>
               {/* Purple play button overlay for mobile */}
               <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 bg-purple-800 flex items-center justify-center md:hidden z-30">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white">
@@ -80,21 +81,21 @@ export default function Home() {
       {/* Opportunity Section */}
       <section className="w-full bg-zinc-900 py-16 text-white">
         <div className="container mx-auto px-4">
-          <h2 className="mb-8 text-center text-3xl font-bold md:text-4xl">The Old Way Doesn't Work Anymore</h2>
-          <div className="mx-auto max-w-3xl">
-            <p className="mb-6">
+          <h2 className="mb-8 text-center text-2xl sm:text-3xl font-bold">The Old Way Doesn't Work Anymore</h2>
+          <div className="mx-auto px-2 sm:px-0">
+            <p className="mb-6 text-base sm:text-lg">
               For years, I pushed through fatigue with more coffee. I ignored my expanding waistline. I told myself the
               stress, anxiety, and brain fog were just "part of success."
             </p>
-            <p className="mb-6">
+            <p className="mb-6 text-base sm:text-lg">
               I tried everything: random diets, expensive supplements, workout programs designed for 20-year-olds.
               Nothing worked because they were all missing the big picture.
             </p>
-            <p className="mb-6">
+            <p className="mb-6 text-base sm:text-lg">
               The breaking point came when my doctor told me my blood pressure and stress hormones were through the
               roof. I was heading for a heart attack at 42.
             </p>
-            <p className="mb-6 font-bold">
+            <p className="mb-6 font-bold text-base sm:text-lg">
               I couldn't keep living like this. My family deserved better. My business deserved better. I deserved
               better.
             </p>
