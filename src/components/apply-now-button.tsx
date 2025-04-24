@@ -1,15 +1,29 @@
 "use client"
 
 import { Button } from "./ui/button"
+import { cn } from "@/lib/utils"
 
-export default function ApplyNowButton() {
+interface ApplyNowButtonProps {
+  className?: string;
+  text?: string;
+  fullWidth?: boolean;
+}
+
+export default function ApplyNowButton({
+  className,
+  text = "JOIN THE LIMITLESS PROTOCOL",
+  fullWidth = false
+}: ApplyNowButtonProps) {
   return (
-    <div className="w-full flex justify-center my-8">
+    <div className={`${fullWidth ? 'w-full' : ''} flex justify-center my-6`}>
       <Button
-        className="bg-purple-700 hover:bg-purple-800 text-white font-bold py-4 px-12 rounded-lg text-xl sm:text-2xl transition-all"
+        className={cn(
+          "bg-[#940909] hover:bg-[#7d0808] text-white font-bold py-4 px-8 sm:px-12 rounded-md text-lg sm:text-xl uppercase tracking-wide transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105",
+          className
+        )}
         asChild
       >
-        <a href="#application">Apply Now</a>
+        <a href="#application">{text}</a>
       </Button>
     </div>
   )

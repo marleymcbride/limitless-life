@@ -1,5 +1,7 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./ui/accordion"
 import { Button } from "./ui/button"
+import { bgClasses } from "@/lib/utils"
+import ApplyNowButton from "./apply-now-button"
 
 export default function FaqSection() {
   const faqs = [
@@ -41,20 +43,23 @@ export default function FaqSection() {
   ]
 
   return (
-    <section className="w-full bg-zinc-900 py-16 text-white">
+    <section className={`w-full py-20 ${bgClasses.grey} text-white`}>
       <div className="container mx-auto px-4">
-        <h2 className="mb-4 text-center text-3xl font-bold md:text-4xl">Frequently Asked Questions</h2>
-        <p className="text-center text-lg mb-12 max-w-3xl mx-auto">
-          Everything you need to know about the Limitless program
-        </p>
+        <div className="text-center mb-10">
+          <span className="inline-block bg-white/20 text-white text-sm font-bold uppercase tracking-wider px-3 py-1 rounded-sm mb-4">Questions</span>
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4">Frequently Asked Questions</h2>
+          <p className="text-xl max-w-3xl mx-auto">
+            Everything you need to know about the Limitless program
+          </p>
+        </div>
 
-        <div className="mx-auto max-w-3xl mb-10">
+        <div className="mx-auto max-w-3xl mb-12">
           <Accordion type="single" collapsible className="w-full space-y-4">
             {faqs.map((faq, index) => (
-              <AccordionItem 
-                key={index} 
-                value={`item-${index}`} 
-                className="border border-zinc-800 rounded-lg overflow-hidden bg-zinc-800/50"
+              <AccordionItem
+                key={index}
+                value={`item-${index}`}
+                className="border border-zinc-800 rounded-lg overflow-hidden bg-zinc-800/50 transition-all hover:bg-zinc-800/80"
               >
                 <AccordionTrigger className="text-left text-lg font-medium px-6 py-4 hover:bg-zinc-800 hover:no-underline">
                   <span className="flex items-center">
@@ -73,14 +78,10 @@ export default function FaqSection() {
           </Accordion>
         </div>
 
-        <div className="text-center">
-          <p className="mb-6 text-xl">Still have questions? We're here to help.</p>
-          <Button 
-            className="bg-[#940909] hover:bg-[#7b0707] font-semibold px-8 py-2"
-            asChild
-          >
-            <a href="#consultation">Schedule a Free Consultation</a>
-          </Button>
+        <div className="text-center mx-auto max-w-3xl bg-zinc-800 p-8 rounded-lg shadow-lg">
+          <p className="mb-6 text-xl">Ready to transform your energy, body, and mind?</p>
+          <ApplyNowButton text="START YOUR TRANSFORMATION" />
+          <p className="mt-6 text-sm text-zinc-400">Have more questions? Email us at support@limitlesslife.com</p>
         </div>
       </div>
     </section>

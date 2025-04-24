@@ -2,29 +2,40 @@
 
 import { Check } from "lucide-react"
 import { Button } from "./ui/button"
+import { bgClasses, blackRedGradientOverlay, redAccentBottom, vignetteEffect } from "@/lib/utils"
+import MicroTestimonial from "./ui/micro-testimonial"
 
 export default function ProgramDetails() {
   return (
-    <section className="w-full bg-black py-16 text-white">
-      <div className="container mx-auto px-4">
-        <h2 className="mb-2 text-center text-3xl font-bold md:text-4xl">The Limitless 12-Week Program</h2>
-        <p className="mb-12 text-center text-xl max-w-3xl mx-auto">A Complete System for Total Transformation That Has Helped Hundreds of High-Performing Executives Reclaim Their Energy, Body, and Mind</p>
+    <section className={`w-full py-20 text-white relative overflow-hidden ${bgClasses.blackRedGradient}`}>
+      {blackRedGradientOverlay}
+      {redAccentBottom}
+      {vignetteEffect}
+
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="text-center mb-12">
+          <span className="inline-block bg-white/20 text-white text-sm font-bold uppercase tracking-wider px-3 py-1 rounded-sm mb-4">The Program</span>
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4">The Limitless 12-Week Program</h2>
+          <p className="text-xl max-w-3xl mx-auto">
+            A Complete System for Total Transformation That Has Helped Hundreds of High-Performing Executives Reclaim Their Energy, Body, and Mind
+          </p>
+        </div>
 
         <div className="mx-auto max-w-4xl">
           <div className="mb-12">
-            <h3 className="mb-6 text-2xl font-bold text-center">The 4-Phase Approach</h3>
+            <h3 className="mb-8 text-2xl font-bold text-center">The 4-Phase Approach</h3>
 
             <div className="relative">
               {/* Vertical line connecting phases */}
               <div className="absolute left-4 top-8 bottom-8 w-0.5 bg-[#940909] hidden md:block"></div>
-              
+
               <div className="mb-8 space-y-6 md:space-y-0 md:grid md:grid-cols-[80px_1fr] md:gap-4">
                 <div className="hidden md:flex md:justify-center md:mt-6">
                   <div className="w-10 h-10 rounded-full bg-[#940909] flex items-center justify-center z-10">
                     <span className="font-bold">1</span>
                   </div>
                 </div>
-                <div className="rounded-lg bg-zinc-800 p-6 border-l-4 border-[#940909] transition-transform hover:scale-[1.02]">
+                <div className="rounded-lg bg-zinc-800 p-6 border-l-4 border-[#940909] transition-all duration-300 hover:scale-[1.02] hover:shadow-lg">
                   <h4 className="mb-2 text-xl font-bold flex items-center md:block">
                     <span className="flex items-center justify-center w-8 h-8 rounded-full bg-[#940909] mr-3 md:hidden">1</span>
                     Phase 1: Assessment & Reset
@@ -41,7 +52,7 @@ export default function ProgramDetails() {
                     <span className="font-bold">2</span>
                   </div>
                 </div>
-                <div className="rounded-lg bg-zinc-800 p-6 border-l-4 border-[#940909] transition-transform hover:scale-[1.02]">
+                <div className="rounded-lg bg-zinc-800 p-6 border-l-4 border-[#940909] transition-all duration-300 hover:scale-[1.02] hover:shadow-lg">
                   <h4 className="mb-2 text-xl font-bold flex items-center md:block">
                     <span className="flex items-center justify-center w-8 h-8 rounded-full bg-[#940909] mr-3 md:hidden">2</span>
                     Phase 2: Foundation Building
@@ -58,7 +69,7 @@ export default function ProgramDetails() {
                     <span className="font-bold">3</span>
                   </div>
                 </div>
-                <div className="rounded-lg bg-zinc-800 p-6 border-l-4 border-[#940909] transition-transform hover:scale-[1.02]">
+                <div className="rounded-lg bg-zinc-800 p-6 border-l-4 border-[#940909] transition-all duration-300 hover:scale-[1.02] hover:shadow-lg">
                   <h4 className="mb-2 text-xl font-bold flex items-center md:block">
                     <span className="flex items-center justify-center w-8 h-8 rounded-full bg-[#940909] mr-3 md:hidden">3</span>
                     Phase 3: Acceleration
@@ -75,7 +86,7 @@ export default function ProgramDetails() {
                     <span className="font-bold">4</span>
                   </div>
                 </div>
-                <div className="rounded-lg bg-zinc-800 p-6 border-l-4 border-[#940909] transition-transform hover:scale-[1.02]">
+                <div className="rounded-lg bg-zinc-800 p-6 border-l-4 border-[#940909] transition-all duration-300 hover:scale-[1.02] hover:shadow-lg">
                   <h4 className="mb-2 text-xl font-bold flex items-center md:block">
                     <span className="flex items-center justify-center w-8 h-8 rounded-full bg-[#940909] mr-3 md:hidden">4</span>
                     Phase 4: Integration & Mastery
@@ -88,6 +99,16 @@ export default function ProgramDetails() {
                 </div>
               </div>
             </div>
+          </div>
+
+          {/* Micro-testimonial for social proof */}
+          <div className="mb-12">
+            <MicroTestimonial
+              quote="The structured phased approach is brilliant. I never felt overwhelmed, and by week 6 I was already seeing dramatic changes in my energy and body."
+              name="William S."
+              title="CFO, Tech Startup"
+              metric="30 lbs Lost"
+            />
           </div>
 
           <div className="mb-10">
@@ -138,7 +159,7 @@ export default function ProgramDetails() {
             </div>
           </div>
 
-          <div className="rounded-lg bg-zinc-800 p-8 text-center relative overflow-hidden">
+          <div className="rounded-lg bg-zinc-800 p-8 text-center relative overflow-hidden shadow-xl transform transition-all hover:scale-[1.01]">
             {/* Red accent corner */}
             <div className="absolute -top-10 -right-10 w-20 h-20 bg-[#940909] rotate-45"></div>
 
@@ -147,7 +168,7 @@ export default function ProgramDetails() {
             <p className="mb-8 text-lg">Only 10 spots available this month</p>
 
             <Button
-              className="mx-auto w-full max-w-md bg-[#940909] py-6 text-xl font-bold hover:bg-[#7b0707] transition-all hover:scale-105"
+              className="mx-auto w-full max-w-md bg-[#940909] py-6 text-xl font-bold hover:bg-[#7b0707] transition-all hover:scale-105 uppercase tracking-wide"
               asChild
             >
               <a href="#application">Claim Your Spot Now</a>

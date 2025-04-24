@@ -1,5 +1,7 @@
 import { Check } from "lucide-react"
 import { Button } from "./ui/button"
+import { bgClasses } from "@/lib/utils"
+import MicroTestimonial from "./ui/micro-testimonial"
 
 export default function WhatsIncluded() {
   const features = [
@@ -66,20 +68,23 @@ export default function WhatsIncluded() {
   ]
 
   return (
-    <section className="w-full bg-zinc-900 py-16 text-white">
+    <section className={`w-full py-20 ${bgClasses.grey} text-white`}>
       <div className="container mx-auto px-4">
-        <h2 className="mb-4 text-center text-3xl font-bold md:text-4xl">Everything You Need For Success</h2>
-        <p className="text-center text-lg mb-12 max-w-3xl mx-auto">
-          The Limitless Program includes everything you need to transform your energy, body, and mind in just 12 weeks
-        </p>
+        <div className="text-center mb-10">
+          <span className="inline-block bg-white/20 text-white text-sm font-bold uppercase tracking-wider px-3 py-1 rounded-sm mb-4">The Package</span>
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4">Everything You Need For Success</h2>
+          <p className="text-xl max-w-3xl mx-auto">
+            The Limitless Program includes everything you need to transform your energy, body, and mind in just 12 weeks
+          </p>
+        </div>
 
         <div className="mx-auto max-w-5xl grid gap-4 md:grid-cols-2 lg:grid-cols-3 mb-12">
           {features.map((feature, index) => (
-            <div 
+            <div
               key={index}
-              className={`flex p-4 rounded-lg border ${feature.highlight 
-                ? 'bg-[#940909]/10 border-[#940909]' 
-                : 'bg-zinc-800/50 border-zinc-700'}`}
+              className={`flex p-4 rounded-lg border transform transition-all hover:scale-[1.02] ${feature.highlight
+                ? 'bg-[#940909]/10 border-[#940909] hover:bg-[#940909]/15'
+                : 'bg-zinc-800/50 border-zinc-700 hover:bg-zinc-800'}`}
             >
               <div className={`mr-4 mt-1 h-6 w-6 rounded-full flex items-center justify-center flex-shrink-0 ${
                 feature.highlight ? 'bg-[#940909]' : 'bg-zinc-700'
@@ -96,17 +101,32 @@ export default function WhatsIncluded() {
           ))}
         </div>
 
-        <div className="text-center mx-auto max-w-2xl rounded-lg bg-zinc-800 p-6">
+        {/* Add testimonial for social proof */}
+        <div className="mb-12 max-w-4xl mx-auto">
+          <MicroTestimonial
+            quote="The lifetime access alone is worth the investment. Two years later, I still refer back to the materials when I need a reset."
+            name="Mark D."
+            title="Entrepreneur"
+            metric="Still Going Strong"
+          />
+        </div>
+
+        <div className="text-center mx-auto max-w-2xl rounded-lg bg-zinc-800 p-8 shadow-lg transform transition-all hover:shadow-xl">
           <h3 className="text-2xl font-bold mb-4">Ready to Start Your Transformation?</h3>
-          <p className="mb-8">Join over 200 executives who've reclaimed their energy, body, and mind</p>
-          
+          <p className="mb-8 text-lg">Join over 200 executives who've reclaimed their energy, body, and mind</p>
+
           <Button
             size="lg"
-            className="mx-auto w-full max-w-md bg-[#940909] py-6 text-xl font-bold hover:bg-[#7b0707] transition-all hover:scale-105"
+            className="mx-auto w-full max-w-md bg-[#940909] py-6 text-xl font-bold hover:bg-[#7b0707] transition-all hover:scale-105 uppercase tracking-wide"
             asChild
           >
             <a href="#application" id="application">Get Started Today</a>
           </Button>
+
+          <p className="mt-6 text-sm flex items-center justify-center">
+            <Check className="mr-2 h-5 w-5 text-[#940909]" />
+            <span>Limited to just 10 spots this month</span>
+          </p>
         </div>
       </div>
     </section>

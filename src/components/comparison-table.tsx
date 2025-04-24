@@ -1,4 +1,6 @@
 import { Check, X } from "lucide-react"
+import { bgClasses, masculinePattern } from "@/lib/utils"
+import ApplyNowButton from "./apply-now-button"
 
 export default function ComparisonTable() {
   const comparisonItems = [
@@ -45,10 +47,12 @@ export default function ComparisonTable() {
   ]
 
   return (
-    <section className="w-full bg-dark-red py-16 text-white">
-      <div className="container mx-auto px-4">
-        <h2 className="mb-4 text-center text-3xl font-bold md:text-4xl">Before & After: The Limitless Transformation</h2>
-        <p className="text-center text-lg mb-12 max-w-3xl mx-auto">
+    <section className={`w-full py-20 ${bgClasses.darkRed} relative`}>
+      {masculinePattern}
+
+      <div className="container mx-auto px-4 relative z-10">
+        <h2 className="mb-4 text-center text-3xl sm:text-4xl font-bold">Before & After: The Limitless Transformation</h2>
+        <p className="text-center text-xl mb-12 max-w-3xl mx-auto">
           The choice is yours - continue struggling with energy drains or transform every aspect of your life
         </p>
 
@@ -84,9 +88,13 @@ export default function ComparisonTable() {
         </div>
 
         <div className="text-center mt-10 max-w-3xl mx-auto bg-black/20 p-6 rounded-lg">
-          <p className="text-lg mb-0">
+          <p className="text-lg mb-6">
             <span className="font-bold">95% of men</span> stay stuck in the left column their entire lives. The <span className="font-bold">Limitless 1%</span> take action and transform every aspect of their existence.
           </p>
+
+          <p className="text-xl font-bold mb-8">The choice is clear. Join the 1% who've discovered the Limitless secret.</p>
+
+          <ApplyNowButton className="bg-white text-[#940909] hover:bg-gray-100" />
         </div>
       </div>
     </section>
