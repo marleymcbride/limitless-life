@@ -45,42 +45,48 @@ export default function ComparisonTable() {
   ]
 
   return (
-    <section className="w-full bg-black py-16 text-white">
+    <section className="w-full bg-dark-red py-16 text-white">
       <div className="container mx-auto px-4">
         <h2 className="mb-4 text-center text-3xl font-bold md:text-4xl">Before & After: The Limitless Transformation</h2>
         <p className="text-center text-lg mb-12 max-w-3xl mx-auto">
-          See what life looks like before and after our 12-week program
+          The choice is yours - continue struggling with energy drains or transform every aspect of your life
         </p>
 
-        <div className="mx-auto max-w-5xl overflow-x-auto">
+        <div className="mx-auto max-w-5xl overflow-x-auto rounded-lg shadow-xl">
           <table className="w-full border-collapse">
             <thead>
               <tr>
-                <th className="p-4 text-left border-b border-zinc-800 w-1/4">Criteria</th>
-                <th className="p-4 text-left border-b border-zinc-800 w-3/8 bg-zinc-800/50">
+                <th className="p-4 text-left border-b border-white/10 w-1/4 bg-black/30">Criteria</th>
+                <th className="p-4 text-left border-b border-white/10 w-3/8 bg-black/50">
                   <div className="flex items-center">
-                    <X className="h-5 w-5 text-red-500 mr-2" />
-                    <span>Before Limitless</span>
+                    <X className="h-5 w-5 text-red-300 mr-2" />
+                    <span>Before Limitless (Where You Are Now)</span>
                   </div>
                 </th>
-                <th className="p-4 text-left border-b border-zinc-800 w-3/8 bg-[#940909]/10">
+                <th className="p-4 text-left border-b border-white/10 w-3/8 bg-white/10">
                   <div className="flex items-center">
-                    <Check className="h-5 w-5 text-[#940909] mr-2" />
-                    <span>After Limitless</span>
+                    <Check className="h-5 w-5 text-white mr-2" />
+                    <span>After Limitless (Where You'll Be)</span>
                   </div>
                 </th>
               </tr>
             </thead>
             <tbody>
               {comparisonItems.map((item, index) => (
-                <tr key={index} className={index % 2 === 0 ? "bg-zinc-900/50" : ""}>
-                  <td className="p-4 border-b border-zinc-800 font-medium">{item.criteria}</td>
-                  <td className="p-4 border-b border-zinc-800 text-zinc-400 bg-zinc-800/20">{item.before}</td>
-                  <td className="p-4 border-b border-zinc-800 text-white bg-[#940909]/5 font-medium">{item.after}</td>
+                <tr key={index} className={index % 2 === 0 ? "bg-black/20" : "bg-black/10"}>
+                  <td className="p-4 border-b border-white/10 font-medium">{item.criteria}</td>
+                  <td className="p-4 border-b border-white/10 text-gray-300 bg-black/30">{item.before}</td>
+                  <td className="p-4 border-b border-white/10 text-white bg-white/5 font-medium">{item.after}</td>
                 </tr>
               ))}
             </tbody>
           </table>
+        </div>
+
+        <div className="text-center mt-10 max-w-3xl mx-auto bg-black/20 p-6 rounded-lg">
+          <p className="text-lg mb-0">
+            <span className="font-bold">95% of men</span> stay stuck in the left column their entire lives. The <span className="font-bold">Limitless 1%</span> take action and transform every aspect of their existence.
+          </p>
         </div>
       </div>
     </section>
