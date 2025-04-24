@@ -37,10 +37,10 @@ export default function Home() {
           {/* Mobile view - headline and subheadline optimized for mobile */}
           <div className="flex-grow flex flex-col justify-start sm:justify-center pt-10 sm:pt-0 sm:mt-12 md:mt-0">
             <h1 className="text-5xl sm:text-5xl md:text-4xl lg:text-5xl font-bold text-white text-center mb-8 mt-0 sm:mt-0">
-              The Proven 12-Week System For Executive Health Transformation
+              Escape Drag Energy. Experience The Limitless Protocol.
             </h1>
             <p className="text-xl sm:text-xl md:text-lg text-gray-300 text-center max-w-3xl mx-auto mb-8 sm:mb-16 px-2">
-              The step-by-step program that has helped hundreds of high-performing men break free from burnout, reclaim their energy, and build unstoppable physical and mental performance without sacrificing their success
+              The elite 12-week system that transforms high-performing men from burned-out and caffeine-dependent to natural, unstoppable energy — without sacrificing their physique, performance, or success
             </p>
           </div>
 
@@ -78,26 +78,34 @@ export default function Home() {
       {/* Problem Section */}
       <ProblemSection />
 
-      {/* Opportunity Section */}
+      {/* Opportunity Section - Three Ways to Live */}
       <section className="w-full bg-zinc-900 py-16 text-white">
         <div className="container mx-auto px-4">
-          <h2 className="mb-8 text-center text-2xl sm:text-3xl font-bold">The Old Way Doesn't Work Anymore</h2>
-          <div className="mx-auto px-2 sm:px-0">
-            <p className="mb-6 text-base sm:text-lg">
-              For years, I pushed through fatigue with more coffee. I ignored my expanding waistline. I told myself the
-              stress, anxiety, and brain fog were just "part of success."
-            </p>
-            <p className="mb-6 text-base sm:text-lg">
-              I tried everything: random diets, expensive supplements, workout programs designed for 20-year-olds.
-              Nothing worked because they were all missing the big picture.
-            </p>
-            <p className="mb-6 text-base sm:text-lg">
-              The breaking point came when my doctor told me my blood pressure and stress hormones were through the
-              roof. I was heading for a heart attack at 42.
-            </p>
-            <p className="mb-6 font-bold text-base sm:text-lg">
-              I couldn't keep living like this. My family deserved better. My business deserved better. I deserved
-              better.
+          <h2 className="mb-8 text-center text-2xl sm:text-3xl font-bold">The Three Ways To Live</h2>
+          <div className="mx-auto px-2 sm:px-0 max-w-4xl">
+            <div className="mb-10 border-l-4 border-zinc-700 pl-6">
+              <h3 className="text-xl sm:text-2xl font-bold mb-4">The Typical Lifestyle (95% of men)</h3>
+              <p className="mb-6 text-base sm:text-lg">
+                Western diet, regular drinking, barely exercising. Constantly tired, wired on caffeine, dependent on alcohol to wind down. You're accessing maybe 20% of your potential, wasting 80% in a fog of low energy and bad habits.
+              </p>
+            </div>
+
+            <div className="mb-10 border-l-4 border-zinc-500 pl-6">
+              <h3 className="text-xl sm:text-2xl font-bold mb-4">The Health-Conscious (4% of men)</h3>
+              <p className="mb-6 text-base sm:text-lg">
+                You hit the gym, monitor your food, cut back on booze. But there's no real system, you're training and working too hard, always one bad week from burnout. You're accessing 50-60% of your potential, but it's a constant struggle.
+              </p>
+            </div>
+
+            <div className="mb-10 border-l-4 border-[#940909] pl-6">
+              <h3 className="text-xl sm:text-2xl font-bold mb-4">The Limitless 1%</h3>
+              <p className="mb-6 text-base sm:text-lg">
+                Intentional systems for energy, health, and performance. You understand your body on a deeper level, making optimal health effortless. No caffeine, no alcohol needed — just pure, natural Glide Energy. You're unlocking 95-100% of your potential daily.
+              </p>
+            </div>
+
+            <p className="font-bold text-base sm:text-lg text-center mt-8">
+              I was trapped in the health-conscious group for years. Always working hard, never feeling my best. The Limitless Protocol was the 1% path I was missing.
             </p>
           </div>
         </div>
