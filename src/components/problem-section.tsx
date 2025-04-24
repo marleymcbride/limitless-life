@@ -1,7 +1,24 @@
 export default function ProblemSection() {
     return (
-      <section className="w-full bg-zinc-800 py-16 text-white">
-        <div className="container mx-auto px-4">
+      <section className="w-full py-16 text-white relative overflow-hidden">
+        {/* Black base */}
+        <div className="absolute inset-0 bg-black"></div>
+
+        {/* Red gradient overlay */}
+        <div className="absolute inset-0" style={{
+          background: 'linear-gradient(to top, rgba(80, 0, 0, 0.4) 0%, rgba(60, 0, 0, 0.3) 25%, rgba(30, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0.9) 75%, rgb(0, 0, 0) 100%)'
+        }}></div>
+
+        {/* Red accent at bottom */}
+        <div className="absolute bottom-0 left-0 w-full h-[40vh] bg-gradient-to-t from-[#940909] via-[#940909]/20 to-transparent opacity-60"></div>
+
+        {/* Vignette */}
+        <div className="absolute inset-0 pointer-events-none" style={{
+          background: 'radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0.6) 100%)',
+          mixBlendMode: 'multiply'
+        }}></div>
+
+        <div className="container mx-auto px-4 relative z-10">
           <h2 className="mb-8 text-center text-3xl font-bold md:text-4xl relative">
             You&apos;re Running on Empty
             <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-[#940909]"></span>
