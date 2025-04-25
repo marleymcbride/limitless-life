@@ -93,6 +93,7 @@ export default function PersonalStorySection() {
             name="James T."
             title="Marketing Director"
             metric="42 lbs Lost"
+            isDarkBackground={false}
           />
         </div>
       </div>

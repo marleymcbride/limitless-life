@@ -44,18 +44,14 @@ export default function PainPoints() {
   ]
 
   return (
-    <section className={`w-full py-20 px-0 ${bgClasses.blackRedGradient} relative`}>
-      {invertedGradientOverlay}
-      {strongRedAccent}
-      {vignetteEffect}
-
+    <section className={`w-full py-20 px-0 ${bgClasses.white} relative`}>
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-10">
-          <span className="inline-block bg-white/10 text-white text-sm font-bold uppercase tracking-wider px-3 py-1 rounded-sm mb-4">THE PROBLEM</span>
-          <h2 className="text-3xl sm:text-4xl font-bold text-white text-center mb-4">
+          <span className="inline-block bg-[#940909] text-white text-sm font-bold uppercase tracking-wider px-3 py-1 rounded-sm mb-4">THE PROBLEM</span>
+          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 text-center mb-4">
             Your Body Is Running A Failed Program
           </h2>
-          <p className="text-center text-xl mb-12 max-w-2xl mx-auto text-white/90">
+          <p className="text-center text-xl mb-12 max-w-2xl mx-auto text-gray-700">
             High-performing men come to us when these energy drains become unbearable. Sound familiar?
           </p>
         </div>
@@ -73,7 +69,7 @@ export default function PainPoints() {
                 </div>
                 {point.subtext && (
                   <div className="bg-[#940909]/10 p-3 border-t border-[#940909]/30">
-                    <p className="text-sm text-[#940909] italic">{point.subtext}</p>
+                    <p className="text-sm text-white italic">{point.subtext}</p>
                   </div>
                 )}
               </div>
@@ -94,7 +90,7 @@ export default function PainPoints() {
                 </div>
                 {point.subtext && (
                   <div className="bg-[#940909]/10 p-3 border-t border-[#940909]/30">
-                    <p className="text-sm text-[#940909] italic">{point.subtext}</p>
+                    <p className="text-sm text-white italic">{point.subtext}</p>
                   </div>
                 )}
               </div>

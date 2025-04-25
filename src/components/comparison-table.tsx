@@ -65,15 +65,15 @@ export default function ComparisonTable() {
           <table className="w-full border-collapse">
             <thead>
               <tr>
-                <th className="p-4 text-left border-b border-white/10 w-1/4 bg-black/30">Criteria</th>
+                <th className="p-4 text-left border-b border-white/10 w-1/4 bg-black/30 text-white">Criteria</th>
                 <th className="p-4 text-left border-b border-white/10 w-3/8 bg-black/50">
-                  <div className="flex items-center">
+                  <div className="flex items-center text-white">
                     <X className="h-5 w-5 text-red-300 mr-2" />
                     <span>Before Limitless (Where You Are Now)</span>
                   </div>
                 </th>
                 <th className="p-4 text-left border-b border-white/10 w-3/8 bg-white/10">
-                  <div className="flex items-center">
+                  <div className="flex items-center text-white">
                     <Check className="h-5 w-5 text-white mr-2" />
                     <span>After Limitless (Where You'll Be)</span>
                   </div>

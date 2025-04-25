@@ -36,20 +36,20 @@ export default function ProgramComponentsSection() {
             </p>
             <ul className="space-y-3 mt-6">
               <li className="flex items-start">
-                <Check className="mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0" />
-                <span className="text-sm">Strategic nutrition timing for steady energy</span>
+                <Check className="mr-2 mt-1 h-4 w-4 text-white flex-shrink-0" />
+                <span className="text-sm text-white">Strategic nutrition timing for steady energy</span>
               </li>
               <li className="flex items-start">
-                <Check className="mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0" />
-                <span className="text-sm">Precision hydration protocol for mental clarity</span>
+                <Check className="mr-2 mt-1 h-4 w-4 text-white flex-shrink-0" />
+                <span className="text-sm text-white">Precision hydration protocol for mental clarity</span>
               </li>
               <li className="flex items-start">
-                <Check className="mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0" />
-                <span className="text-sm">Maintains steady energy after midday meals</span>
+                <Check className="mr-2 mt-1 h-4 w-4 text-white flex-shrink-0" />
+                <span className="text-sm text-white">Maintains steady energy after midday meals</span>
               </li>
               <li className="flex items-start">
-                <Check className="mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0" />
-                <span className="text-sm">Takes under 20 minutes total to implement</span>
+                <Check className="mr-2 mt-1 h-4 w-4 text-white flex-shrink-0" />
+                <span className="text-sm text-white">Takes under 20 minutes total to implement</span>
               </li>
             </ul>
           </div>
@@ -68,20 +68,20 @@ export default function ProgramComponentsSection() {
             </p>
             <ul className="space-y-3 mt-6">
               <li className="flex items-start">
-                <Check className="mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0" />
-                <span className="text-sm">Strategic compound and isolation exercises</span>
+                <Check className="mr-2 mt-1 h-4 w-4 text-white flex-shrink-0" />
+                <span className="text-sm text-white">Strategic compound and isolation exercises</span>
               </li>
               <li className="flex items-start">
-                <Check className="mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0" />
-                <span className="text-sm">No endless cardio or daily gym sessions</span>
+                <Check className="mr-2 mt-1 h-4 w-4 text-white flex-shrink-0" />
+                <span className="text-sm text-white">No endless cardio or daily gym sessions</span>
               </li>
               <li className="flex items-start">
-                <Check className="mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0" />
-                <span className="text-sm">Preserves muscle while accelerating fat loss</span>
+                <Check className="mr-2 mt-1 h-4 w-4 text-white flex-shrink-0" />
+                <span className="text-sm text-white">Preserves muscle while accelerating fat loss</span>
               </li>
               <li className="flex items-start">
-                <Check className="mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0" />
-                <span className="text-sm">Time-efficient workouts with maximum results</span>
+                <Check className="mr-2 mt-1 h-4 w-4 text-white flex-shrink-0" />
+                <span className="text-sm text-white">Time-efficient workouts with maximum results</span>
               </li>
             </ul>
           </div>
@@ -110,20 +110,20 @@ export default function ProgramComponentsSection() {
             </p>
             <ul className="space-y-3 mt-6">
               <li className="flex items-start">
-                <Check className="mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0" />
-                <span className="text-sm">Strategic caffeine elimination protocol</span>
+                <Check className="mr-2 mt-1 h-4 w-4 text-white flex-shrink-0" />
+                <span className="text-sm text-white">Strategic caffeine elimination protocol</span>
               </li>
               <li className="flex items-start">
-                <Check className="mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0" />
-                <span className="text-sm">Natural alcohol reduction system</span>
+                <Check className="mr-2 mt-1 h-4 w-4 text-white flex-shrink-0" />
+                <span className="text-sm text-white">Natural alcohol reduction system</span>
               </li>
               <li className="flex items-start">
-                <Check className="mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0" />
-                <span className="text-sm">Mindset restructuring for natural relaxation</span>
+                <Check className="mr-2 mt-1 h-4 w-4 text-white flex-shrink-0" />
+                <span className="text-sm text-white">Mindset restructuring for natural relaxation</span>
               </li>
               <li className="flex items-start">
-                <Check className="mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0" />
-                <span className="text-sm">Brain-based stress elimination techniques</span>
+                <Check className="mr-2 mt-1 h-4 w-4 text-white flex-shrink-0" />
+                <span className="text-sm text-white">Brain-based stress elimination techniques</span>
               </li>
             </ul>
           </div>
@@ -142,20 +142,20 @@ export default function ProgramComponentsSection() {
             </p>
             <ul className="space-y-3 mt-6">
               <li className="flex items-start">
-                <Check className="mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0" />
-                <span className="text-sm">Week-by-week implementation roadmap</span>
+                <Check className="mr-2 mt-1 h-4 w-4 text-white flex-shrink-0" />
+                <span className="text-sm text-white">Week-by-week implementation roadmap</span>
               </li>
               <li className="flex items-start">
-                <Check className="mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0" />
-                <span className="text-sm">High-performance habit installation process</span>
+                <Check className="mr-2 mt-1 h-4 w-4 text-white flex-shrink-0" />
+                <span className="text-sm text-white">High-performance habit installation process</span>
               </li>
               <li className="flex items-start">
-                <Check className="mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0" />
-                <span className="text-sm">Real-world application for busy professionals</span>
+                <Check className="mr-2 mt-1 h-4 w-4 text-white flex-shrink-0" />
+                <span className="text-sm text-white">Real-world application for busy professionals</span>
               </li>
               <li className="flex items-start">
-                <Check className="mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0" />
-                <span className="text-sm">Built-in troubleshooting and personalization</span>
+                <Check className="mr-2 mt-1 h-4 w-4 text-white flex-shrink-0" />
+                <span className="text-sm text-white">Built-in troubleshooting and personalization</span>
               </li>
             </ul>
           </div>

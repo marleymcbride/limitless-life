@@ -77,6 +77,7 @@ export default function DiscoverySection() {
             name="Robert K."
             title="Tech Executive"
             metric="Systems Rebalanced"
+            isDarkBackground={false}
           />
         </div>
       </div>

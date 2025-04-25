@@ -6,6 +6,7 @@ interface MicroTestimonialProps {
   title: string;
   metric?: string;
   imageSrc?: string;
+  isDarkBackground?: boolean; // New prop to determine text color
 }
 
 export const MicroTestimonial = ({
@@ -13,9 +14,10 @@ export const MicroTestimonial = ({
   name,
   title,
   metric,
-  imageSrc
+  imageSrc,
+  isDarkBackground = true // Default to dark background (light text)
 }: MicroTestimonialProps) => (
-  <div className="bg-white/10 backdrop-blur p-5 rounded-lg border border-[#940909]/20 shadow-lg my-8 transform hover:scale-[1.02] transition-all">
+  <div className={`${isDarkBackground ? 'bg-white/10 text-white' : 'bg-gray-50 text-gray-800'} backdrop-blur p-5 rounded-lg border ${isDarkBackground ? 'border-[#940909]/20' : 'border-gray-200'} shadow-lg my-8 transform hover:scale-[1.02] transition-all`}>
     <div className="flex items-start gap-3">
       <svg className="h-8 w-8 text-[#940909] flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
         <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
@@ -39,7 +41,7 @@ export const MicroTestimonial = ({
             )}
             <div>
               <p className="font-bold text-xs">{name}</p>
-              <p className="text-xs opacity-75">{title}</p>
+              <p className={`text-xs ${isDarkBackground ? 'text-white/75' : 'text-gray-600'}`}>{title}</p>
             </div>
           </div>
 

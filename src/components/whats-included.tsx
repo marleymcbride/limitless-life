@@ -1,6 +1,6 @@
 import { Check } from "lucide-react"
 import { Button } from "./ui/button"
-import { bgClasses } from "@/lib/utils"
+import { bgClasses, invertedGradientOverlay, strongRedAccent, vignetteEffect } from "@/lib/utils"
 import MicroTestimonial from "./ui/micro-testimonial"
 
 export default function WhatsIncluded() {
@@ -68,12 +68,15 @@ export default function WhatsIncluded() {
   ]
 
   return (
-    <section className={`w-full py-20 ${bgClasses.grey} text-white`}>
+    <section className={`w-full py-20 ${bgClasses.blackRedGradient} relative text-white`}>
+      {invertedGradientOverlay}
+      {strongRedAccent}
+      {vignetteEffect}
       <div className="container mx-auto px-4">
         <div className="text-center mb-10">
-          <span className="inline-block bg-white/20 text-white text-sm font-bold uppercase tracking-wider px-3 py-1 rounded-sm mb-4">The Package</span>
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">Everything You Need For Success</h2>
-          <p className="text-xl max-w-3xl mx-auto">
+          <span className="inline-block bg-white/20 text-white text-sm font-bold uppercase tracking-wider px-3 py-1 rounded-sm mb-4">THE PACKAGE</span>
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">Everything You Need For Success</h2>
+          <p className="text-xl max-w-3xl mx-auto text-white">
             The Limitless Program includes everything you need to transform your energy, body, and mind in just 12 weeks
           </p>
         </div>
@@ -95,7 +98,7 @@ export default function WhatsIncluded() {
                 <h3 className={`font-bold mb-1 ${feature.highlight ? 'text-[#940909]' : 'text-white'}`}>
                   {feature.title}
                 </h3>
-                <p className="text-sm text-zinc-300">{feature.description}</p>
+                <p className="text-sm text-white">{feature.description}</p>
               </div>
             </div>
           ))}

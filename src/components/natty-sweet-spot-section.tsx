@@ -51,8 +51,8 @@ export default function NattySweetSpotSection() {
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-12">
           <span className="inline-block bg-white/10 text-white text-sm font-bold uppercase tracking-wider px-3 py-1 rounded-sm mb-4">THE COMPLETE TRANSFORMATION</span>
-          <h2 className="text-4xl sm:text-5xl font-black mb-6">The Natty Sweet Spot</h2>
-          <p className="text-xl max-w-3xl mx-auto">
+          <h2 className="text-4xl sm:text-5xl font-black mb-6 text-white">The Natty Sweet Spot</h2>
+          <p className="text-xl max-w-3xl mx-auto text-white">
             The ultimate state of male existence - where physique, hormones, health, and mindset align perfectly
           </p>
         </div>
@@ -76,27 +76,27 @@ export default function NattySweetSpotSection() {
             </div>
 
             <div className="mt-6 bg-black/40 backdrop-blur-sm p-6 rounded-lg border border-[#940909]/30">
-              <h3 className="text-2xl font-bold mb-4">What This Gives You:</h3>
+              <h3 className="text-2xl font-bold mb-4 text-white">What This Gives You:</h3>
               <ul className="space-y-2">
                 <li className="flex">
                   <Check className="h-6 w-6 text-[#940909] mr-3 flex-shrink-0" />
-                  <span>Elite body composition (11-14% body fat) without starvation</span>
+                  <span className="text-white">Elite body composition (11-14% body fat) without starvation</span>
                 </li>
                 <li className="flex">
                   <Check className="h-6 w-6 text-[#940909] mr-3 flex-shrink-0" />
-                  <span>Optimal testosterone and stress hormone levels</span>
+                  <span className="text-white">Optimal testosterone and stress hormone levels</span>
                 </li>
                 <li className="flex">
                   <Check className="h-6 w-6 text-[#940909] mr-3 flex-shrink-0" />
-                  <span>Mental sharpness and focus without stimulants</span>
+                  <span className="text-white">Mental sharpness and focus without stimulants</span>
                 </li>
                 <li className="flex">
                   <Check className="h-6 w-6 text-[#940909] mr-3 flex-shrink-0" />
-                  <span>Boundless natural energy from morning to night</span>
+                  <span className="text-white">Boundless natural energy from morning to night</span>
                 </li>
                 <li className="flex">
                   <Check className="h-6 w-6 text-[#940909] mr-3 flex-shrink-0" />
-                  <span>Complete independence from caffeine and alcohol</span>
+                  <span className="text-white">Complete independence from caffeine and alcohol</span>
                 </li>
               </ul>
             </div>
@@ -122,7 +122,7 @@ export default function NattySweetSpotSection() {
         </div>
 
         <div className="mt-16">
-          <h3 className="text-2xl font-bold text-center mb-10">The 7 Components of The Natty Sweet Spot</h3>
+          <h3 className="text-2xl font-bold text-center mb-10 text-white">The 7 Components of The Natty Sweet Spot</h3>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6">
             {components.map((component, index) => (
@@ -140,8 +140,8 @@ export default function NattySweetSpotSection() {
         </div>
 
         <div className="mt-16 text-center">
-          <p className="text-2xl font-bold mb-4">This is what I help high-performing men achieve.</p>
-          <p className="text-xl max-w-3xl mx-auto mb-6">
+          <p className="text-2xl font-bold mb-4 text-white">This is what I help high-performing men achieve.</p>
+          <p className="text-xl max-w-3xl mx-auto mb-6 text-white">
             Not just quitting alcohol and dropping weight - but reaching this state of complete optimization - where everything works together in perfect harmony.
           </p>
           <div className="inline-block bg-white/10 text-white font-bold backdrop-blur-sm p-5 rounded-lg border border-[#940909]/30 max-w-4xl mx-auto">

@@ -13,7 +13,6 @@ import ComparisonTable from "../components/comparison-table"
 import CoachSection from "../components/coach-section"
 import ProgramDetails from "../components/program-details"
 import WhatsIncluded from "../components/whats-included"
-import GuaranteeSection from "../components/guarantee-section"
 import FaqSection from "../components/faq-section"
 import FinalCta from "../components/final-cta"
 import FooterSection from "../components/footer-section"
@@ -103,7 +102,7 @@ export default function Home() {
       {/* 15. What's Included (black with red gradient) */}
       <WhatsIncluded />
 
-      {/* 16. FAQ Section (includes guarantee info, white background) */}
+      {/* 16. FAQ Section with Guarantee (white background) */}
       <FaqSection />
 
       {/* 17. Final Recap + CTA (black with red accents) */}
