@@ -7,9 +7,8 @@ import MicroTestimonial from "./ui/micro-testimonial"
 
 export default function ProgramDetails() {
   return (
-    <section className={`w-full py-20 text-white relative overflow-hidden ${bgClasses.blackRedGradient}`}>
-      {blackRedGradientOverlay}
-      {redAccentBottom}
+    <section className="w-full py-20 bg-zinc-900 text-white relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-br from-zinc-800/80 to-black"></div>
       {vignetteEffect}
 
       <div className="container mx-auto px-4 relative z-10">

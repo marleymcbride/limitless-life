@@ -3,10 +3,10 @@ import MicroTestimonial from "./ui/micro-testimonial"
 
 export default function RunningEmptySection() {
   return (
-    <section className="w-full py-20 text-white relative overflow-hidden bg-black">
-      {/* Custom background pattern for visual variation */}
-      <div className="absolute inset-0 bg-gradient-to-br from-black via-[#300000] to-black opacity-80"></div>
-      {strongRedAccent}
+    <section className="w-full py-20 text-white relative overflow-hidden bg-zinc-900">
+      {/* Custom background with cool undertone */}
+      <div className="absolute inset-0 bg-gradient-to-b from-zinc-800 to-zinc-950 opacity-80"></div>
+      <div className="absolute bottom-0 left-0 w-full h-[50vh] bg-gradient-to-t from-blue-900/20 via-transparent to-transparent"></div>
       {vignetteEffect}
 
       <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-[#940909]/10 rounded-bl-full blur-3xl"></div>
@@ -93,8 +93,8 @@ export default function RunningEmptySection() {
 
           <div className="mb-10 bg-gradient-to-r from-[#940909]/50 to-black/80 backdrop-blur-sm rounded-lg p-6 border-l-4 border-[#940909] hover:scale-[1.02] transition-all shadow-xl">
             <div className="flex items-center mb-4">
-              <span className="text-lg font-bold text-[#ff6b6b] mr-3">1%</span>
-              <h3 className="text-xl sm:text-2xl font-bold text-white">The Limitless Elite</h3>
+              <span className="text-lg font-bold text-white mr-3">1%</span>
+              <h3 className="text-xl sm:text-2xl font-bold text-white bg-[#940909] px-3 py-1 inline-block rounded">The Limitless Elite</h3>
             </div>
             <div className="p-4 bg-black/40 rounded-md">
               <p className="mb-2 text-base sm:text-lg text-white">

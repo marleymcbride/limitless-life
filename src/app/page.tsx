@@ -33,17 +33,30 @@ export default function Home() {
         <div className="container mx-auto flex flex-col relative z-10 h-full">
           {/* Mobile view - headline and subheadline optimized for mobile */}
           <div className="flex-grow flex flex-col justify-start sm:justify-center pt-10 sm:pt-0 sm:mt-12 md:mt-0">
+            {/* Pill Logo */}
+            <div className="flex justify-center mb-6">
+              <div className="w-auto">
+                <Image
+                  src="/images/limitless-pill-minimal.svg"
+                  alt="The Limitless Pill"
+                  width={160}
+                  height={36}
+                  priority
+                  className="h-auto"
+                />
+              </div>
+            </div>
             <h1 className="text-5xl sm:text-5xl md:text-4xl lg:text-5xl font-bold text-white text-center mb-8 mt-0 sm:mt-0">
-              The Proven 12-Week System For Executive Health Transformation
+            You don't need another black Americano or 'miracle' supplement. You need a real system that stops you feeling like shit.
             </h1>
             <p className="text-xl sm:text-xl md:text-lg text-gray-300 text-center max-w-3xl mx-auto mb-8 sm:mb-16 px-2">
-              The step-by-step program that has helped hundreds of high-performing men break free from burnout, reclaim their energy, and build unstoppable physical and mental performance without sacrificing their success
+            Learn the proven system that successful entrepreneurs are using to fix their energy, build a top 1% physique, and get their sex drive back — without following restrictive diets, taking a bunch of crazy pills or spending more than 2 days a week in the gym:
             </p>
           </div>
 
           {/* Video container positioned in the bottom portion of the screen */}
           <div className="mt-auto mb-6 mx-auto w-full sm:mb-12">
-            <div className="relative w-full sm:w-auto sm:mx-auto" style={{ maxWidth: "95%", marginLeft: "auto", marginRight: "auto" }}>
+            <div className="relative w-full sm:w-auto sm:mx-auto max-w-[95%] mx-auto">
               {/* Purple play button overlay for mobile */}
               <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 bg-[#940909] flex items-center justify-center md:hidden z-30">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white">
@@ -52,7 +65,7 @@ export default function Home() {
               </div>
               {/* Sound indicator for mobile */}
               <div className="absolute bottom-4 right-4 bg-black/70 rounded-full px-3 py-1 text-white text-sm md:hidden z-30">
-                Tap for sound
+                Click to play
               </div>
               <EnhancedVideoPlayer />
             </div>

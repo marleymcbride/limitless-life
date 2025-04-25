@@ -68,9 +68,9 @@ export default function WhatsIncluded() {
   ]
 
   return (
-    <section className={`w-full py-20 ${bgClasses.blackRedGradient} relative text-white`}>
-      {invertedGradientOverlay}
-      {strongRedAccent}
+    <section className="w-full py-20 bg-black relative text-white">
+      <div className="absolute inset-0 bg-gradient-to-tr from-black via-[#101035] to-[#000]"></div>
+      <div className="absolute bottom-0 left-0 w-full h-[40vh] bg-gradient-to-t from-[#940909]/30 via-[#940909]/10 to-transparent"></div>
       {vignetteEffect}
       <div className="container mx-auto px-4">
         <div className="text-center mb-10">

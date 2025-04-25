@@ -5,6 +5,8 @@ import MicroTestimonial from "./ui/micro-testimonial"
 export default function SolutionSection() {
   return (
     <section className="w-full py-20 text-white bg-zinc-900 relative">
+      <div className="absolute inset-0 bg-gradient-to-br from-zinc-800 via-[#541212] to-zinc-900 opacity-80"></div>
+      <div className="absolute bottom-0 left-0 w-full h-[50vh] bg-gradient-to-t from-[#400909]/40 via-[#400909]/20 to-transparent"></div>
       {masculinePattern}
 
       <div className="container mx-auto px-4 relative z-10">
@@ -39,30 +41,30 @@ export default function SolutionSection() {
           />
 
           <div className="grid gap-6 md:grid-cols-2 mt-12">
-            <div className="rounded-lg bg-black/30 border border-white/20 p-6 shadow-lg transform transition-all hover:scale-105">
+            <div className="rounded-lg bg-black/40 backdrop-blur-sm border border-white/20 p-6 shadow-lg transform transition-all hover:scale-105">
               <h4 className="mb-3 text-xl font-bold text-white">Body & Hormones System</h4>
-              <p className="text-white/90">
+              <p className="text-white/95">
                 Perfect body composition (11-14% body fat) - optimized testosterone levels - bulletproof immunity. Builds the ideal male physique without endless training. Uses minimum effective dose approach - just 2-3 workouts weekly.
               </p>
             </div>
 
-            <div className="rounded-lg bg-black/30 border border-white/20 p-6 shadow-lg transform transition-all hover:scale-105">
+            <div className="rounded-lg bg-black/40 backdrop-blur-sm border border-white/20 p-6 shadow-lg transform transition-all hover:scale-105">
               <h4 className="mb-3 text-xl font-bold text-white">Energy & Health System</h4>
-              <p className="text-white/90">
+              <p className="text-white/95">
                 Identifies broken energy pathways - rebuilds them through precision nutrition timing. No caffeine needed - boundless natural energy - total metabolic reboot. Wakes up feeling electric without stimulants. Optimizes all health markers.
               </p>
             </div>
 
-            <div className="rounded-lg bg-black/30 border border-white/20 p-6 shadow-lg transform transition-all hover:scale-105">
+            <div className="rounded-lg bg-black/40 backdrop-blur-sm border border-white/20 p-6 shadow-lg transform transition-all hover:scale-105">
               <h4 className="mb-3 text-xl font-bold text-white">Mental Health & Peace System</h4>
-              <p className="text-white/90">
+              <p className="text-white/95">
                 Stress elimination protocol - anxiety destruction framework - deep sleep programming. Creates unshakable mental fortitude - laser-sharp focus. No more racing thoughts - just powerful clarity and natural confidence. No substances needed.
               </p>
             </div>
 
-            <div className="rounded-lg bg-black/30 border border-white/20 p-6 shadow-lg transform transition-all hover:scale-105">
+            <div className="rounded-lg bg-black/40 backdrop-blur-sm border border-white/20 p-6 shadow-lg transform transition-all hover:scale-105">
               <h4 className="mb-3 text-xl font-bold text-white">Happiness Integration System</h4>
-              <p className="text-white/90">
+              <p className="text-white/95">
                 Life optimization framework - habit installation mechanics - purpose alignment system. Eliminates dependence on external validation. Creates true freedom from crutches - vices - quick fixes. Become the father - husband - leader your family deserves.
               </p>
             </div>

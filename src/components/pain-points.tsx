@@ -44,14 +44,17 @@ export default function PainPoints() {
   ]
 
   return (
-    <section className={`w-full py-20 px-0 ${bgClasses.white} relative`}>
+    <section className={`w-full py-20 px-0 bg-black relative`}>
+      {invertedGradientOverlay}
+      {strongRedAccent}
+      {vignetteEffect}
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-10">
           <span className="inline-block bg-[#940909] text-white text-sm font-bold uppercase tracking-wider px-3 py-1 rounded-sm mb-4">THE PROBLEM</span>
-          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 text-center mb-4">
+          <h2 className="text-3xl sm:text-4xl font-bold text-white text-center mb-4">
             Your Body Is Running A Failed Program
           </h2>
-          <p className="text-center text-xl mb-12 max-w-2xl mx-auto text-gray-700">
+          <p className="text-center text-xl mb-12 max-w-2xl mx-auto text-gray-300">
             High-performing men come to us when these energy drains become unbearable. Sound familiar?
           </p>
         </div>
@@ -69,7 +72,7 @@ export default function PainPoints() {
                 </div>
                 {point.subtext && (
                   <div className="bg-[#940909]/10 p-3 border-t border-[#940909]/30">
-                    <p className="text-sm text-white italic">{point.subtext}</p>
+                    <p className="text-sm text-white/80 italic">{point.subtext}</p>
                   </div>
                 )}
               </div>
@@ -90,7 +93,7 @@ export default function PainPoints() {
                 </div>
                 {point.subtext && (
                   <div className="bg-[#940909]/10 p-3 border-t border-[#940909]/30">
-                    <p className="text-sm text-white italic">{point.subtext}</p>
+                    <p className="text-sm text-white/80 italic">{point.subtext}</p>
                   </div>
                 )}
               </div>
@@ -108,7 +111,7 @@ export default function PainPoints() {
           />
         </div>
 
-        <div className="bg-black/30 rounded-lg p-6 max-w-3xl mx-auto mt-12 backdrop-blur-sm border border-[#940909]/30">
+        <div className="bg-[#940909] rounded-lg p-6 max-w-3xl mx-auto mt-12 shadow-md">
           <p className="text-white text-center text-xl font-medium">
             You're not alone. 95% of high-performing men are trapped in this cycle. But only 1% will escape it.
           </p>
