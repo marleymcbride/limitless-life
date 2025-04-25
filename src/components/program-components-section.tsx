@@ -1,28 +1,38 @@
 import { Check, Sunrise, Dumbbell, Coffee, BookOpen } from "lucide-react"
-import { bgClasses } from "@/lib/utils"
+import { bgClasses, invertedGradientOverlay, strongRedAccent, vignetteEffect } from "@/lib/utils"
 import MicroTestimonial from "./ui/micro-testimonial"
 
 export default function ProgramComponentsSection() {
   return (
-    <section className={`w-full ${bgClasses.grey} py-20 text-white`}>
-      <div className="container mx-auto px-4">
-        <h2 className="mb-6 text-center text-3xl sm:text-4xl font-bold">The Limitless Protocol Components</h2>
-        <p className="text-center text-lg mb-12 mx-auto max-w-3xl">
-          Our systems-based approach creates natural energy - lean physique - mental clarity without relying on willpower or extreme measures
-        </p>
+    <section className={`w-full py-20 ${bgClasses.blackRedGradient} relative`}>
+      {invertedGradientOverlay}
+      {strongRedAccent}
+      {vignetteEffect}
+
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="text-center mb-12">
+          <span className="inline-block bg-white/10 text-white text-sm font-bold uppercase tracking-wider px-3 py-1 rounded-sm mb-4">THE METHODOLOGY</span>
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4">The Limitless Systems</h2>
+          <p className="text-center text-xl mb-4 mx-auto max-w-3xl">
+            Systematic approach to create natural energy - elite physique - razor-sharp mind
+          </p>
+          <p className="text-center text-lg mx-auto max-w-3xl">
+            No willpower. No starvation. No bullshit 6-day gym routines.
+          </p>
+        </div>
 
         <div className="mx-auto grid gap-8 md:grid-cols-2 max-w-5xl">
-          <div className="rounded-lg bg-zinc-800 p-6 border-l-4 border-[#940909] shadow-lg transform transition hover:scale-[1.02]">
+          <div className="rounded-lg bg-black/40 backdrop-blur-sm p-6 border-l-4 border-[#940909] shadow-lg transform transition hover:scale-[1.02]">
             <div className="flex items-center mb-6">
               <div className="p-3 rounded-full bg-[#940909] flex items-center justify-center mr-4">
                 <Sunrise className="w-5 h-5 text-white" />
               </div>
               <h3 className="text-xl font-bold">
-                Morning Fuel System
+                Limitless Morning
               </h3>
             </div>
-            <p className="mb-4 text-gray-300">
-              Exact, systemized routine of specific foods and actions in set order. Delivers clear thinking and smooth energy without caffeine or supplements.
+            <p className="mb-4 text-white/90">
+              Exact, systemized routine of specific foods and actions in precise order. Pure natural energy without caffeine or supplements. Mental clarity from dawn to dusk.
             </p>
             <ul className="space-y-3 mt-6">
               <li className="flex items-start">
@@ -44,16 +54,16 @@ export default function ProgramComponentsSection() {
             </ul>
           </div>
 
-          <div className="rounded-lg bg-zinc-800 p-6 border-l-4 border-[#940909] shadow-lg transform transition hover:scale-[1.02]">
+          <div className="rounded-lg bg-black/40 backdrop-blur-sm p-6 border-l-4 border-[#940909] shadow-lg transform transition hover:scale-[1.02]">
             <div className="flex items-center mb-6">
               <div className="p-3 rounded-full bg-[#940909] flex items-center justify-center mr-4">
                 <Dumbbell className="w-5 h-5 text-white" />
               </div>
               <h3 className="text-xl font-bold">
-                Minimalist Training
+                The Limitless Training
               </h3>
             </div>
-            <p className="mb-4 text-gray-300">
+            <p className="mb-4 text-white/90">
               Train just 2-3 times per week max. Focus on aesthetics and total body health. Protects CNS from overtaxing, prevents burnout, builds the "Natty Sweet Spot" physique.
             </p>
             <ul className="space-y-3 mt-6">
@@ -79,14 +89,14 @@ export default function ProgramComponentsSection() {
           {/* Micro-testimonial for social proof */}
           <div className="md:col-span-2 my-6">
             <MicroTestimonial
-              quote="The Morning Fuel System alone was worth the entire investment. I haven't touched coffee in 4 months and I have more energy than ever."
+              quote="The Limitless Morning protocol alone was worth the entire investment. I haven't touched coffee in 4 months and have more energy than ever."
               name="Eric W."
               title="Sales Director"
               metric="120 Days Caffeine-Free"
             />
           </div>
 
-          <div className="rounded-lg bg-zinc-800 p-6 border-l-4 border-[#940909] shadow-lg transform transition hover:scale-[1.02]">
+          <div className="rounded-lg bg-black/40 backdrop-blur-sm p-6 border-l-4 border-[#940909] shadow-lg transform transition hover:scale-[1.02]">
             <div className="flex items-center mb-6">
               <div className="p-3 rounded-full bg-[#940909] flex items-center justify-center mr-4">
                 <Coffee className="w-5 h-5 text-white" />
@@ -95,7 +105,7 @@ export default function ProgramComponentsSection() {
                 Limitless Flow
               </h3>
             </div>
-            <p className="mb-4 text-gray-300">
+            <p className="mb-4 text-white/90">
               Natural high state - free from caffeine, alcohol or substances. Inner game focused, prioritizing mindset over trackers or willpower. Returns to childlike state of peace and joy.
             </p>
             <ul className="space-y-3 mt-6">
@@ -118,7 +128,7 @@ export default function ProgramComponentsSection() {
             </ul>
           </div>
 
-          <div className="rounded-lg bg-zinc-800 p-6 border-l-4 border-[#940909] shadow-lg transform transition hover:scale-[1.02]">
+          <div className="rounded-lg bg-black/40 backdrop-blur-sm p-6 border-l-4 border-[#940909] shadow-lg transform transition hover:scale-[1.02]">
             <div className="flex items-center mb-6">
               <div className="p-3 rounded-full bg-[#940909] flex items-center justify-center mr-4">
                 <BookOpen className="w-5 h-5 text-white" />
@@ -127,7 +137,7 @@ export default function ProgramComponentsSection() {
                 Integration Framework
               </h3>
             </div>
-            <p className="mb-4 text-gray-300">
+            <p className="mb-4 text-white/90">
               How all three systems work together to create effortless transformation. The complete roadmap from where you are now to total Limitless energy and physique.
             </p>
             <ul className="space-y-3 mt-6">

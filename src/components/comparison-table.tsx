@@ -1,5 +1,5 @@
 import { Check, X } from "lucide-react"
-import { bgClasses, masculinePattern } from "@/lib/utils"
+import { bgClasses, invertedGradientOverlay, strongRedAccent, vignetteEffect } from "@/lib/utils"
 import ApplyNowButton from "./apply-now-button"
 
 export default function ComparisonTable() {
@@ -47,14 +47,19 @@ export default function ComparisonTable() {
   ]
 
   return (
-    <section className={`w-full py-20 ${bgClasses.darkRed} relative`}>
-      {masculinePattern}
+    <section className={`w-full py-20 ${bgClasses.blackRedGradient} relative`}>
+      {invertedGradientOverlay}
+      {strongRedAccent}
+      {vignetteEffect}
 
       <div className="container mx-auto px-4 relative z-10">
-        <h2 className="mb-4 text-center text-3xl sm:text-4xl font-bold">Before & After: The Limitless Transformation</h2>
-        <p className="text-center text-xl mb-12 max-w-3xl mx-auto">
-          The choice is yours - continue struggling with energy drains or transform every aspect of your life
-        </p>
+        <div className="text-center mb-10">
+          <span className="inline-block bg-white/10 text-white text-sm font-bold uppercase tracking-wider px-3 py-1 rounded-sm mb-4">THE TRANSFORMATION</span>
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4">Before & After: The Limitless Shift</h2>
+          <p className="text-center text-xl mb-12 max-w-3xl mx-auto">
+            It's your choice - stay trapped in energy drains or transform every aspect of your life
+          </p>
+        </div>
 
         <div className="mx-auto max-w-5xl overflow-x-auto rounded-lg shadow-xl">
           <table className="w-full border-collapse">
@@ -77,7 +82,7 @@ export default function ComparisonTable() {
             </thead>
             <tbody>
               {comparisonItems.map((item, index) => (
-                <tr key={index} className={index % 2 === 0 ? "bg-black/20" : "bg-black/10"}>
+                <tr key={index} className={index % 2 === 0 ? "bg-black/20 hover:bg-black/30 transition-colors" : "bg-black/10 hover:bg-black/20 transition-colors"}>
                   <td className="p-4 border-b border-white/10 font-medium">{item.criteria}</td>
                   <td className="p-4 border-b border-white/10 text-gray-300 bg-black/30">{item.before}</td>
                   <td className="p-4 border-b border-white/10 text-white bg-white/5 font-medium">{item.after}</td>
@@ -87,12 +92,12 @@ export default function ComparisonTable() {
           </table>
         </div>
 
-        <div className="text-center mt-10 max-w-3xl mx-auto bg-black/20 p-6 rounded-lg">
-          <p className="text-lg mb-6">
+        <div className="text-center mt-12 max-w-3xl mx-auto bg-black/30 p-8 rounded-lg backdrop-blur-sm border border-[#940909]/30">
+          <p className="text-xl mb-6">
             <span className="font-bold">95% of men</span> stay stuck in the left column their entire lives. The <span className="font-bold">Limitless 1%</span> take action and transform every aspect of their existence.
           </p>
 
-          <p className="text-xl font-bold mb-8">The choice is clear. Join the 1% who've discovered the Limitless secret.</p>
+          <p className="text-2xl font-bold mb-8">The choice is clear. Join the 1% who've discovered the Limitless secret.</p>
 
           <ApplyNowButton className="bg-white text-[#940909] hover:bg-gray-100" />
         </div>

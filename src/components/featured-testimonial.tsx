@@ -3,12 +3,9 @@ import { bgClasses } from "@/lib/utils"
 
 export default function FeaturedTestimonial() {
   return (
-    <section className="bg-black pt-12 pb-16 w-full text-white relative">
-      {/* Black background base */}
-      <div className="absolute inset-0 bg-black"></div>
-
+    <section className={`w-full pt-12 pb-16 ${bgClasses.white} relative`}>
       <div className="container mx-auto px-4 mt-6 relative z-10">
-        <div className="max-w-4xl mx-auto bg-gradient-to-r from-zinc-900 to-black p-8 rounded-lg border border-zinc-800 shadow-xl">
+        <div className="max-w-4xl mx-auto bg-gradient-to-r from-gray-50 to-white p-8 rounded-lg border border-gray-200 shadow-xl">
           <div className="flex flex-col md:flex-row gap-6 items-center">
             <div className="w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden border-4 border-[#940909]/40 shadow-2xl flex-shrink-0">
               <Image
@@ -25,14 +22,14 @@ export default function FeaturedTestimonial() {
                 <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
               </svg>
 
-              <blockquote className="text-xl md:text-2xl text-gray-300 italic font-medium mb-6">
+              <blockquote className="text-xl md:text-2xl text-gray-700 italic font-medium mb-6">
                 "Marley is the only coach who actually understands the unique energy challenges high-performers face. His Limitless Protocol didn't just transform my productivity—it completely rewired my relationship with energy. After 8 weeks, I've lost 22 pounds, doubled my output, and haven't touched caffeine in 37 days."
               </blockquote>
 
               <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center">
                 <div>
-                  <p className="font-bold text-white text-lg">Michael Richards</p>
-                  <p className="text-gray-400">CEO, Quantum Technologies</p>
+                  <p className="font-bold text-black text-lg">Michael Richards</p>
+                  <p className="text-gray-600">CEO, Quantum Technologies</p>
                 </div>
 
                 <div className="flex mt-3 sm:mt-0">
@@ -47,18 +44,18 @@ export default function FeaturedTestimonial() {
           </div>
 
           {/* Visual metrics for enhanced credibility */}
-          <div className="grid grid-cols-3 gap-4 mt-8 border-t border-zinc-800 pt-6">
+          <div className="grid grid-cols-3 gap-4 mt-8 border-t border-gray-200 pt-6">
             <div className="text-center">
               <p className="text-3xl font-bold text-[#940909]">22lbs</p>
-              <p className="text-sm text-gray-400">Fat Lost</p>
+              <p className="text-sm text-gray-600">Fat Lost</p>
             </div>
             <div className="text-center">
               <p className="text-3xl font-bold text-[#940909]">37 days</p>
-              <p className="text-sm text-gray-400">Caffeine-Free</p>
+              <p className="text-sm text-gray-600">Caffeine-Free</p>
             </div>
             <div className="text-center">
               <p className="text-3xl font-bold text-[#940909]">2x</p>
-              <p className="text-sm text-gray-400">Productivity</p>
+              <p className="text-sm text-gray-600">Productivity</p>
             </div>
           </div>
         </div>

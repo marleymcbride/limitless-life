@@ -1,7 +1,7 @@
 "use client"
 
 import { SkipForward, Coffee, BatteryLow, Brain, Watch, Wine, Bed } from "lucide-react"
-import { bgClasses } from "@/lib/utils"
+import { bgClasses, invertedGradientOverlay, strongRedAccent, vignetteEffect } from "@/lib/utils"
 import MicroTestimonial from "./ui/micro-testimonial"
 
 export default function PainPoints() {
@@ -44,29 +44,35 @@ export default function PainPoints() {
   ]
 
   return (
-    <section className={`w-full py-20 px-0 ${bgClasses.white}`}>
-      <div className="container mx-auto px-4">
-        <h2 className="text-3xl sm:text-4xl font-bold text-black text-center mb-4">
-          Your Body Is Running A Failed Program
-        </h2>
+    <section className={`w-full py-20 px-0 ${bgClasses.blackRedGradient} relative`}>
+      {invertedGradientOverlay}
+      {strongRedAccent}
+      {vignetteEffect}
 
-        <p className="text-center text-xl mb-12 max-w-2xl mx-auto text-gray-800">
-          High-performing men come to us when these energy drains become unbearable. Sound familiar?
-        </p>
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="text-center mb-10">
+          <span className="inline-block bg-white/10 text-white text-sm font-bold uppercase tracking-wider px-3 py-1 rounded-sm mb-4">THE PROBLEM</span>
+          <h2 className="text-3xl sm:text-4xl font-bold text-white text-center mb-4">
+            Your Body Is Running A Failed Program
+          </h2>
+          <p className="text-center text-xl mb-12 max-w-2xl mx-auto text-white/90">
+            High-performing men come to us when these energy drains become unbearable. Sound familiar?
+          </p>
+        </div>
 
         {/* Mobile view - only visible on small screens */}
         <div className="block sm:hidden">
           <div className="flex flex-col space-y-8 mx-auto">
             {painPoints.map((point, index) => (
-              <div key={index} className="flex flex-col bg-gray-50 rounded-lg shadow-md overflow-hidden transform transition-all hover:scale-[1.02]">
+              <div key={index} className="flex flex-col bg-black/40 backdrop-blur-sm rounded-lg shadow-md overflow-hidden transform transition-all hover:scale-[1.02] border border-[#940909]/30">
                 <div className="flex items-start p-4">
-                  <div className="p-2 bg-[#940909]/10 rounded-full flex-shrink-0 mr-4">
+                  <div className="p-2 bg-[#940909]/30 rounded-full flex-shrink-0 mr-4">
                     {point.icon}
                   </div>
-                  <p className="text-lg text-gray-800 font-medium">{point.text}</p>
+                  <p className="text-lg text-white font-medium">{point.text}</p>
                 </div>
                 {point.subtext && (
-                  <div className="bg-[#940909]/5 p-3 border-t border-gray-200">
+                  <div className="bg-[#940909]/10 p-3 border-t border-[#940909]/30">
                     <p className="text-sm text-[#940909] italic">{point.subtext}</p>
                   </div>
                 )}
@@ -79,15 +85,15 @@ export default function PainPoints() {
         <div className="hidden sm:block">
           <div className="grid grid-cols-2 gap-6 max-w-4xl mx-auto">
             {painPoints.map((point, index) => (
-              <div key={index} className="flex flex-col bg-gray-50 rounded-lg shadow-md overflow-hidden transform transition-all hover:scale-[1.02]">
+              <div key={index} className="flex flex-col bg-black/40 backdrop-blur-sm rounded-lg shadow-md overflow-hidden transform transition-all hover:scale-[1.02] border border-[#940909]/30">
                 <div className="flex items-start p-5">
-                  <div className="p-2 bg-[#940909]/10 rounded-full flex-shrink-0 mr-4">
+                  <div className="p-2 bg-[#940909]/30 rounded-full flex-shrink-0 mr-4">
                     {point.icon}
                   </div>
-                  <p className="text-base text-gray-800 font-medium">{point.text}</p>
+                  <p className="text-base text-white font-medium">{point.text}</p>
                 </div>
                 {point.subtext && (
-                  <div className="bg-[#940909]/5 p-3 border-t border-gray-200">
+                  <div className="bg-[#940909]/10 p-3 border-t border-[#940909]/30">
                     <p className="text-sm text-[#940909] italic">{point.subtext}</p>
                   </div>
                 )}
@@ -97,7 +103,7 @@ export default function PainPoints() {
         </div>
 
         {/* Micro-testimonial between sections for continuous proof */}
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-4xl mx-auto mt-12">
           <MicroTestimonial
             quote="I'd hit snooze 6 times every morning. Now I'm up before my alarm, no caffeine needed."
             name="David H."
@@ -106,9 +112,11 @@ export default function PainPoints() {
           />
         </div>
 
-        <p className="text-gray-800 text-center mt-12 text-xl font-medium">
-          You're not alone. 95% of high-performing men are trapped in this cycle. But only 1% will escape it.
-        </p>
+        <div className="bg-black/30 rounded-lg p-6 max-w-3xl mx-auto mt-12 backdrop-blur-sm border border-[#940909]/30">
+          <p className="text-white text-center text-xl font-medium">
+            You're not alone. 95% of high-performing men are trapped in this cycle. But only 1% will escape it.
+          </p>
+        </div>
       </div>
     </section>
   )

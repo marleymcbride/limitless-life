@@ -1,4 +1,5 @@
 import Image from "next/image"
+import EnhancedVideoPlayer from "../components/enhanced-video-player"
 import FeaturedTestimonial from "../components/featured-testimonial"
 import PainPoints from "../components/pain-points"
 import PersonalStorySection from "../components/personal-story-section"
@@ -17,7 +18,7 @@ import FaqSection from "../components/faq-section"
 import FinalCta from "../components/final-cta"
 import FooterSection from "../components/footer-section"
 import StickyCTA from "../components/sticky-cta"
-import EnhancedVideoPlayer from "../components/enhanced-video-player"
+import NattySweetSpotSection from "../components/natty-sweet-spot-section"
 import { bgClasses, blackRedGradientOverlay, redAccentBottom, vignetteEffect } from "../lib/utils"
 
 export default function Home() {
@@ -60,58 +61,58 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 2. Credibility Quote (background: black) */}
+      {/* 2. Credibility Quote (white background for testimonials) */}
       <FeaturedTestimonial />
 
-      {/* 3. Pain Points (background: white) */}
+      {/* 3. Pain Points (black with red accents) */}
       <PainPoints />
 
-      {/* 4. Personal Story Section (background: dark red) */}
+      {/* 4. Personal Story Section (white background for written content) */}
       <PersonalStorySection />
 
-      {/* 5. The 80/20 Discovery (background: white) */}
+      {/* 5. The 80/20 Discovery (white background) */}
       <DiscoverySection />
 
-      {/* 6. Running on Empty + Three Ways to Live (background: black with red gradient) */}
+      {/* 6. Natty Sweet Spot Section (black with red accents) */}
+      <NattySweetSpotSection />
+
+      {/* 7. Running on Empty + Three Ways to Live (black with red gradient) */}
       <RunningEmptySection />
 
-      {/* 7. Success Stories Gallery (background: white) */}
+      {/* 8. Success Stories Gallery (white background for testimonials) */}
       <SuccessStoriesSection />
 
-      {/* 8. Deep-Dive Offer Intro/Solution Section (background: dark red) */}
+      {/* 9. Deep-Dive Offer Intro/Solution Section (black with red gradient) */}
       <SolutionSection />
 
-      {/* 9. Program Components Breakdown (background: grey) */}
+      {/* 10. Program Components Breakdown (black with red gradient) */}
       <ProgramComponentsSection />
 
-      {/* 10. Benefits & Results (background: white) */}
+      {/* 11. Benefits & Results (white background) */}
       <ResultsSection />
 
-      {/* 11. Comparison Table (background: dark red) */}
+      {/* 12. Comparison Table (black with red accents) */}
       <ComparisonTable />
 
-      {/* 12. About the Coach (background: white) */}
+      {/* 13. About the Coach (white background for written content) */}
       <CoachSection />
 
-      {/* 13. Program Details (background: black with red gradient) */}
+      {/* 14. Program Details (black with red gradient) */}
       <ProgramDetails />
 
-      {/* 14. What's Included (background: grey) */}
+      {/* 15. What's Included (black with red gradient) */}
       <WhatsIncluded />
 
-      {/* 15. Guarantee/Risk Reversal (background: white) */}
-      <GuaranteeSection />
-
-      {/* 16. FAQ Section (background: grey) */}
+      {/* 16. FAQ Section (includes guarantee info, white background) */}
       <FaqSection />
 
-      {/* 17. Final Recap + CTA (background: white) */}
+      {/* 17. Final Recap + CTA (black with red accents) */}
       <FinalCta />
 
-      {/* 18. Footer/Legal (background: black) */}
+      {/* 18. Minimal Footer (black) */}
       <FooterSection />
 
-      {/* Sticky CTA that appears on scroll */}
+      {/* Sticky CTA that appears on significant scroll */}
       <StickyCTA />
     </main>
   )

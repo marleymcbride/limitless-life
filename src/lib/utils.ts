@@ -8,13 +8,20 @@ export function cn(...inputs: ClassValue[]) {
 
 // Background class utilities for consistent styling
 export const bgClasses = {
+  // Main black with red accent gradient for marketing sections
   blackRedGradient: "bg-black relative overflow-hidden",
-  darkRed: "bg-[#940909] text-white relative",
+
+  // Hero-style gradient for "dark red" sections
+  darkRedGradient: "bg-black relative overflow-hidden",
+
+  // White background for testimonials and longer content
   white: "bg-white text-black relative",
-  grey: "bg-zinc-900 text-white relative",
+
+  // Black background for strong contrast sections
+  black: "bg-black text-white relative overflow-hidden",
 }
 
-// Visual elements for black/red gradient sections
+// Visual elements for black/red gradient sections (Hero style for hero and marketing sections)
 export const blackRedGradientOverlay = React.createElement("div", {
   className: "absolute inset-0",
   style: {
@@ -22,8 +29,22 @@ export const blackRedGradientOverlay = React.createElement("div", {
   }
 })
 
+// Inverted hero gradient (mostly black with red accents) for program sections
+export const invertedGradientOverlay = React.createElement("div", {
+  className: "absolute inset-0",
+  style: {
+    background: 'linear-gradient(to bottom, rgba(100, 0, 0, 0.3) 0%, rgba(60, 0, 0, 0.2) 20%, rgba(0, 0, 0, 0.9) 40%, rgb(0, 0, 0) 70%)'
+  }
+})
+
+// Hero red accent for bottom of gradient sections
 export const redAccentBottom = React.createElement("div", {
   className: "absolute bottom-0 left-0 w-full h-[50vh] bg-gradient-to-t from-[#940909] via-[#940909]/20 to-transparent opacity-60"
+})
+
+// Stronger red accent for black background sections
+export const strongRedAccent = React.createElement("div", {
+  className: "absolute bottom-0 left-0 w-full h-[70vh] bg-gradient-to-t from-[#940909] via-[#940909]/30 to-transparent opacity-70"
 })
 
 export const vignetteEffect = React.createElement("div", {
