@@ -1,39 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="500" height="150" viewBox="0 0 500 150" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Main Pill Outline with shadow effect -->
-  <g filter="url(#shadow)">
-    <rect x="15" y="15" width="470" height="120" rx="60" fill="#333333" />
-    <rect x="20" y="20" width="460" height="110" rx="55" fill="white" />
+<svg width="160" height="36" viewBox="0 0 160 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Main pill shape with refined border -->
+  <rect x="1" y="1" width="158" height="34" rx="17" fill="white" stroke="#EEEEEE" stroke-width="0.5"/>
+
+  <!-- Red half with better color -->
+  <mask id="mask0" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="1" y="1" width="158" height="34">
+    <rect x="1" y="1" width="158" height="34" rx="17" fill="white"/>
+  </mask>
+  <g mask="url(#mask0)">
+    <rect x="-2" y="-1" width="86" height="38" fill="#8B0000"/>
   </g>
 
-  <!-- Red Left Side of Pill -->
-  <path d="M20 75C20 44.6243 44.6243 20 75 20H250V130H75C44.6243 130 20 105.376 20 75Z" fill="#940909" />
+  <!-- Subtle bottom shadow only -->
+  <rect x="1" y="18" width="158" height="17" rx="17" fill="url(#shadow-gradient)" fill-opacity="0.04"/>
 
-  <!-- Shine effect on top -->
-  <path d="M75 25C48.4903 25 27 46.4903 27 73V77C27 50.4903 48.4903 29 75 29H425C451.51 29 473 50.4903 473 77V73C473 46.4903 451.51 25 425 25H75Z" fill="white" fill-opacity="0.3" />
+  <!-- Improved typography with balanced layout -->
+  <!-- Left side text: THE LIMITLESS -->
+  <text x="44" y="21.5" font-family="'Helvetica Neue', Arial, sans-serif" font-weight="700" font-size="10.5" letter-spacing="0.5" text-anchor="middle" fill="white">THE LIMITLESS</text>
 
-  <!-- Text "THE" on red part -->
-  <text x="125" y="85" font-family="Arial, sans-serif" font-weight="900" font-size="45" text-anchor="middle" fill="black">
-    <tspan x="125" y="85">THE</tspan>
+  <!-- Right side text: PILL -->
+  <text font-family="'Helvetica Neue', Arial, sans-serif" font-weight="700" font-size="10.5" letter-spacing="0.5" fill="black">
+    <tspan x="105" y="21.5">PILL</tspan>
   </text>
 
-  <!-- Text "LIMITLESS PILL" on white part -->
-  <text font-family="Arial, sans-serif" font-weight="900" font-size="45" fill="black">
-    <tspan x="260" y="85">LIMITLESS PILL</tspan>
-  </text>
+  <!-- Subtle glass highlight effect at top -->
+  <path d="M20 4C11.7157 4 5 10.7157 5 19C5 19.3371 5.0134 19.6708 5.0394 20C5.5373 12.5067 12.0636 6.5 20 6.5H140C147.937 6.5 154.463 12.5067 154.961 20C154.987 19.6708 155 19.3371 155 19C155 10.7157 148.284 4 140 4H20Z" fill="white" fill-opacity="0.3"/>
 
   <!-- Definitions -->
   <defs>
-    <!-- Shadow Filter -->
-    <filter id="shadow" x="0" y="0" width="500" height="150" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-      <feFlood flood-opacity="0" result="BackgroundImageFix" />
-      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
-      <feOffset dy="4" />
-      <feGaussianBlur stdDeviation="7" />
-      <feComposite in2="hardAlpha" operator="out" />
-      <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.3 0" />
-      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow" />
-      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape" />
-    </filter>
+    <!-- Shadow gradient - extremely subtle, bottom only -->
+    <linearGradient id="shadow-gradient" x1="80" y1="18" x2="80" y2="35" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="transparent"/>
+      <stop offset="1" stop-color="black"/>
+    </linearGradient>
   </defs>
 </svg>

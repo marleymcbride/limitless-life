@@ -24,7 +24,7 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center">
       {/* 1. Hero Section (black with red gradient) */}
-      <section className={`py-6 md:py-8 px-4 min-h-[94.75vh] flex flex-col relative w-full overflow-hidden ${bgClasses.blackRedGradient}`}>
+      <section className={`py-6 md:py-8 px-4 min-h-[75vh] flex flex-col relative w-full overflow-hidden ${bgClasses.blackRedGradient}`}>
         {blackRedGradientOverlay}
         {redAccentBottom}
         <div className="absolute top-0 left-0 w-full h-[25vh] bg-gradient-to-b from-black to-transparent"></div>
@@ -32,39 +32,51 @@ export default function Home() {
 
         <div className="container mx-auto flex flex-col relative z-10 h-full">
           {/* Mobile view - headline and subheadline optimized for mobile */}
-          <div className="flex-grow flex flex-col justify-start sm:justify-center pt-10 sm:pt-0 sm:mt-12 md:mt-0">
+          <div className="flex-grow flex flex-col justify-start sm:justify-center pt-5 sm:pt-0 sm:mt-6 md:mt-0">
             {/* Pill Logo */}
-            <div className="flex justify-center mb-6">
+            <div className="flex justify-center mb-1 relative">
+              {/* Base grey version */}
               <div className="w-auto">
                 <Image
-                  src="/images/limitless-pill-minimal.svg"
+                  src="/images/THE-LIMITLESS-PILL-(ALL GREY)-FINAL.png"
                   alt="The Limitless Pill"
-                  width={160}
-                  height={36}
+                  width={228}
+                  height={72}
                   priority
                   className="h-auto"
                 />
               </div>
+              {/* Overlaid colored pill with transparency */}
+              <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-auto">
+                <Image
+                  src="/images/THE-LIMITLESS-PILL-FINAL.png"
+                  alt=""
+                  width={228}
+                  height={72}
+                  priority
+                  className="h-auto opacity-100"
+                />
+              </div>
             </div>
-            <h1 className="text-5xl sm:text-5xl md:text-4xl lg:text-5xl font-bold text-white text-center mb-8 mt-0 sm:mt-0">
-            You don't need another black Americano or 'miracle' supplement. You need a real system that stops you feeling like shit.
+            <h1 className="text-4xl sm:text-4xl md:text-3xl lg:text-4xl font-bold text-white text-center mb-2 mt-0 sm:mt-0 max-w-[87%] mx-auto px-4">
+              You don't need another black Americano or 'miracle' supplement. You need a real system that stops you feeling like shit.
             </h1>
-            <p className="text-xl sm:text-xl md:text-lg text-gray-300 text-center max-w-3xl mx-auto mb-8 sm:mb-16 px-2">
+            <p className="text-xl sm:text-xl md:text-lg text-gray-300 text-center max-w-3xl mx-auto mb-3 px-2">
             Learn the proven system that successful entrepreneurs are using to fix their energy, build a top 1% physique, and get their sex drive back — without following restrictive diets, taking a bunch of crazy pills or spending more than 2 days a week in the gym:
             </p>
           </div>
 
           {/* Video container positioned in the bottom portion of the screen */}
-          <div className="mt-auto mb-6 mx-auto w-full sm:mb-12">
-            <div className="relative w-full sm:w-auto sm:mx-auto max-w-[95%] mx-auto">
+          <div className="mt-1 mb-2 mx-auto w-full max-w-2xl sm:mb-3">
+            <div className="relative w-full sm:w-auto sm:mx-auto max-w-[50%] mx-auto" style={{ maxWidth: '500px' }}>
               {/* Purple play button overlay for mobile */}
-              <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 bg-[#940909] flex items-center justify-center md:hidden z-30">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white">
+              <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-[#940909] flex items-center justify-center md:hidden z-30">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="white">
                   <polygon points="5 3 19 12 5 21 5 3"></polygon>
                 </svg>
               </div>
               {/* Sound indicator for mobile */}
-              <div className="absolute bottom-4 right-4 bg-black/70 rounded-full px-3 py-1 text-white text-sm md:hidden z-30">
+              <div className="absolute bottom-3 right-3 bg-black/70 rounded-full px-2 py-0.5 text-white text-xs md:hidden z-30">
                 Click to play
               </div>
               <EnhancedVideoPlayer />

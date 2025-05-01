@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200" height="60" viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Main pill shape -->
+  <rect x="10" y="10" width="180" height="40" rx="20" fill="white"/>
+
+  <!-- Red half -->
+  <mask id="mask0" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="10" y="10" width="90" height="40">
+    <rect x="10" y="10" width="90" height="40" rx="20" fill="white"/>
+  </mask>
+  <g mask="url(#mask0)">
+    <rect x="10" y="10" width="90" height="40" fill="#940909"/>
+  </g>
+
+  <!-- 3D bottom effect for white half -->
+  <path d="M100 50C110 50 180 50 180 50C190 50 190 40 190 30C190 30 190 28 190 30C190 40 190 52 180 52C170 52 110 52 100 52C100 52 100 50 100 50Z" fill="#DDDDDD"/>
+
+  <!-- 3D bottom effect for red half -->
+  <path d="M10 30C10 28 10 30 10 30C10 40 10 50 20 50L100 50C100 50 100 52 100 52L20 52C10 52 10 40 10 30Z" fill="#7A0707"/>
+
+  <!-- Subtle highlight at top -->
+  <path d="M30 12C21.7157 12 15 18.7157 15 27C15 27.3371 15.0134 27.6708 15.0394 28C15.5373 20.5067 22.0636 14.5 30 14.5H170C177.937 14.5 184.463 20.5067 184.961 28C184.987 27.6708 185 27.3371 185 27C185 18.7157 178.284 12 170 12H30Z" fill="white" fill-opacity="0.4"/>
+</svg>

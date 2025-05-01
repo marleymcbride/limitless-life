@@ -11,13 +11,18 @@
     <rect x="1" y="1" width="79" height="34" fill="#940909"/>
   </g>
 
-  <!-- Clean typography with proper spacing and margins -->
-  <text font-family="Helvetica, Arial, sans-serif" font-weight="700" font-size="11" fill="white">
-    <tspan x="21" y="22">THE LIMITLESS</tspan>
+  <!-- Stacked text on left side -->
+  <text font-family="Helvetica, Arial, sans-serif" font-weight="700" font-size="9" fill="white" text-anchor="middle">
+    <tspan x="40" y="16">THE</tspan>
   </text>
 
-  <text font-family="Helvetica, Arial, sans-serif" font-weight="700" font-size="11" fill="black">
-    <tspan x="113" y="22">PILL</tspan>
+  <text font-family="Helvetica, Arial, sans-serif" font-weight="700" font-size="10" fill="white" text-anchor="middle">
+    <tspan x="40" y="26">LIMITLESS</tspan>
+  </text>
+
+  <!-- Pill text on right side -->
+  <text font-family="Helvetica, Arial, sans-serif" font-weight="700" font-size="11" fill="black" text-anchor="middle">
+    <tspan x="120" y="22">PILL</tspan>
   </text>
 
   <!-- Subtle bottom shadow only -->
