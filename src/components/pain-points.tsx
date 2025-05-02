@@ -3,6 +3,7 @@
 import { SkipForward, Coffee, BatteryLow, Brain, Watch, Wine, Bed } from "lucide-react"
 import { bgClasses, invertedGradientOverlay, strongRedAccent, vignetteEffect } from "@/lib/utils"
 import MicroTestimonial from "./ui/micro-testimonial"
+import { Button } from "./ui/button"
 
 export default function PainPoints() {
   const painPoints = [
@@ -115,6 +116,15 @@ export default function PainPoints() {
           <p className="text-white text-center text-xl font-medium">
             You're not alone. 95% of high-performing men are trapped in this cycle. But only 1% will escape it.
           </p>
+        </div>
+
+        {/* Tell Me More CTA Button */}
+        <div className="flex justify-center mt-12">
+          <a href="#more-info">
+            <Button size="lg" className="bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-bold py-4 px-8 rounded-md text-lg shadow-lg transition duration-300">
+              TELL ME MORE
+            </Button>
+          </a>
         </div>
       </div>
     </section>

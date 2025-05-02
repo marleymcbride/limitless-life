@@ -1,13 +1,14 @@
 import Image from "next/image"
 import { bgClasses } from "@/lib/utils"
+import { Button } from "./ui/button"
 
 export default function FeaturedTestimonial() {
   return (
-    <section className={`w-full pt-0 pb-16 ${bgClasses.white} relative`}>
+    <section className={`w-full pt-0 pb-12 ${bgClasses.white} relative`}>
       <div className="container mx-auto px-4 mt-0 relative z-10">
-        <div className="max-w-4xl mx-auto bg-gradient-to-r from-gray-50 to-white p-8 pt-6 rounded-lg border border-gray-200 shadow-xl -mt-6">
-          <div className="flex flex-col md:flex-row gap-3 items-center">
-            <div className="w-20 h-20 md:w-24 md:h-24 rounded-full overflow-hidden border-3 border-[#940909]/40 shadow-xl flex-shrink-0">
+        <div className="max-w-4xl mx-auto bg-gradient-to-r from-gray-50 to-white p-8 pt-1 rounded-lg shadow-xl border border-gray-200 mt-10">
+          <div className="flex flex-col md:flex-row gap-2 items-center">
+            <div className="w-18 h-18 md:w-20 md:h-20 rounded-full overflow-hidden border-3 border-[#940909]/40 shadow-xl flex-shrink-0">
               <Image
                 src="/placeholder.svg?height=128&width=128"
                 alt="Michael Richards"
@@ -18,11 +19,7 @@ export default function FeaturedTestimonial() {
             </div>
 
             <div>
-              <svg className="h-6 w-6 text-[#940909] mb-1" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-              </svg>
-
-              <blockquote className="text-lg md:text-xl text-gray-700 italic font-medium mb-3">
+              <blockquote className="text-lg md:text-xl text-gray-700 italic font-medium mb-2">
                 "Marley is the only coach who actually understands the unique energy challenges high-performers face. His Limitless Protocol didn't just transform my productivity—it completely rewired my relationship with energy. After 8 weeks, I've lost 22 pounds, doubled my output, and haven't touched caffeine in 37 days."
               </blockquote>
 
@@ -44,21 +41,30 @@ export default function FeaturedTestimonial() {
           </div>
 
           {/* Visual metrics for enhanced credibility */}
-          <div className="grid grid-cols-3 gap-4 mt-8 border-t border-gray-200 pt-6">
+          <div className="grid grid-cols-3 gap-4 mt-5 border-t border-gray-200 pt-4">
             <div className="text-center">
-              <p className="text-3xl font-bold text-[#940909]">22lbs</p>
+              <p className="text-2xl md:text-3xl font-bold text-[#940909]">22lbs</p>
               <p className="text-sm text-gray-600">Fat Lost</p>
             </div>
             <div className="text-center">
-              <p className="text-3xl font-bold text-[#940909]">37 days</p>
+              <p className="text-2xl md:text-3xl font-bold text-[#940909]">37 days</p>
               <p className="text-sm text-gray-600">Caffeine-Free</p>
             </div>
             <div className="text-center">
-              <p className="text-3xl font-bold text-[#940909]">2x</p>
+              <p className="text-2xl md:text-3xl font-bold text-[#940909]">2x</p>
               <p className="text-sm text-gray-600">Productivity</p>
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Tell Me More CTA Button */}
+      <div className="flex justify-center mt-10">
+        <a href="#more-info">
+          <Button className="bg-[#940909] hover:bg-[#7e0808] text-white font-bold py-3 px-8 rounded text-base shadow-md transition duration-300">
+            TELL ME MORE
+          </Button>
+        </a>
       </div>
     </section>
   )

@@ -74,7 +74,7 @@ export default function EnhancedVideoPlayer() {
   }
 
   return (
-    <div className="relative w-full max-w-[600px] mx-auto overflow-hidden rounded-lg bg-black shadow-[0_8px_20px_-8px_rgba(0,0,0,0.4)] transform scale-80" style={{ transform: "scale(0.8)", transformOrigin: "center center" }}>
+    <div className="relative w-full max-w-[600px] mx-auto overflow-hidden rounded-lg bg-black shadow-[0_8px_20px_-8px_rgba(0,0,0,0.4)] transform scale-80" style={{ transform: "scale(0.85)", transformOrigin: "center center" }}>
       {/* Force 16:9 aspect ratio with hardcoded dimensions */}
       <div className="w-full" style={{ position: 'relative', paddingTop: '56.25%' }}>
         {isMounted ? (

@@ -18,6 +18,8 @@ import FinalCta from "../components/final-cta"
 import FooterSection from "../components/footer-section"
 import StickyCTA from "../components/sticky-cta"
 import NattySweetSpotSection from "../components/natty-sweet-spot-section"
+import TestimonialGrid from "../components/testimonial-grid"
+import { Button } from "@/components/ui/button"
 import { bgClasses, blackRedGradientOverlay, redAccentBottom, vignetteEffect } from "../lib/utils"
 
 export default function Home() {
@@ -58,16 +60,20 @@ export default function Home() {
                 />
               </div>
             </div>
-            <h1 className="text-4xl sm:text-4xl md:text-3xl lg:text-4xl font-bold text-white text-center mb-2 mt-0 sm:mt-0 max-w-[87%] mx-auto px-4">
-              You don't need another black Americano or 'miracle' supplement. You need a real system that stops you feeling like shit.
+            <h1 className="text-4xl sm:text-4xl md:text-3xl lg:text-4xl font-bold text-white text-center mb-0 mt-0 sm:mt-0 max-w-[87%] mx-auto px-4">
+              You don't need another black Americano or BS supplement. You need a real system that quite simply, stops you feeling like shit.
             </h1>
-            <p className="text-xl sm:text-xl md:text-lg text-gray-300 text-center max-w-3xl mx-auto mb-3 px-2">
-            Learn the proven system that successful entrepreneurs are using to fix their energy, build a top 1% physique, and get their sex drive back — without following restrictive diets, taking a bunch of crazy pills or spending more than 2 days a week in the gym:
+
+            {/* Spacer div to push subtitle down */}
+            <div className="h-6"></div>
+
+            <p className="text-xl sm:text-xl md:text-lg text-gray-300 text-center max-w-3xl mx-auto mb-0 px-1">
+            Learn the proven step-by-step blueprint that successful entrepreneurs are using to fix their energy, build a top 1% physique, and get their sex drive back — without eating less, taking a bunch of crazy pills or spending more than 2 days a week in the gym:
             </p>
           </div>
 
           {/* Video container positioned in the bottom portion of the screen */}
-          <div className="mt-1 mb-2 mx-auto w-full max-w-2xl sm:mb-3">
+          <div className="mt-1 mb-0 mx-auto w-full max-w-2xl">
             <div className="relative w-full sm:w-auto sm:mx-auto max-w-[50%] mx-auto" style={{ maxWidth: '500px' }}>
               {/* Purple play button overlay for mobile */}
               <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-[#940909] flex items-center justify-center md:hidden z-30">
@@ -85,7 +91,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 2. Credibility Quote (white background for testimonials) */}
+      {/* 2. Credibility Quote (white background for testimonials) - Removed margin between sections */}
       <FeaturedTestimonial />
 
       {/* 3. Pain Points (black with red accents) */}
@@ -106,6 +112,9 @@ export default function Home() {
       {/* 8. Success Stories Gallery (white background for testimonials) */}
       <SuccessStoriesSection />
 
+      {/* New Testimonial Grid */}
+      <TestimonialGrid />
+
       {/* 9. Deep-Dive Offer Intro/Solution Section (black with red gradient) */}
       <SolutionSection />
 
@@ -121,8 +130,29 @@ export default function Home() {
       {/* 13. About the Coach (white background for written content) */}
       <CoachSection />
 
+      {/* More Info anchor point for Tell Me More button */}
+      <div id="more-info" className="w-full py-12 bg-black relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-black to-zinc-900"></div>
+        {vignetteEffect}
+
+        <div className="container mx-auto px-4 relative z-10 text-center">
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-8">
+            Ready to transform your energy and reclaim your natural power?
+          </h2>
+          <div className="flex justify-center">
+            <a href="#program-details">
+              <Button size="lg" className="bg-[#940909] hover:bg-[#7e0808] text-white font-bold py-4 px-8 rounded-md text-lg shadow-lg transition duration-300">
+                JOIN THE MENTORSHIP
+              </Button>
+            </a>
+          </div>
+        </div>
+      </div>
+
       {/* 14. Program Details (black with red gradient) */}
-      <ProgramDetails />
+      <div id="program-details">
+        <ProgramDetails />
+      </div>
 
       {/* 15. What's Included (black with red gradient) */}
       <WhatsIncluded />
