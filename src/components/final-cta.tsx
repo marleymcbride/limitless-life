@@ -3,7 +3,7 @@
 import { Button } from "./ui/button"
 import { Check, X } from "lucide-react"
 import { bgClasses } from "@/lib/utils"
-import ApplyNowButton from "./apply-now-button"
+// import ApplyNowButton from "./apply-now-button"
 
 export default function FinalCta() {
   return (
@@ -45,7 +45,7 @@ export default function FinalCta() {
                   </li>
                   <li className="flex items-start">
                     <X className="mr-2 mt-1 h-5 w-5 text-red-500 flex-shrink-0" />
-                    <span className="text-gray-700">Accept brain fog and diminished performance as "normal"</span>
+                    <span className="text-gray-700">Accept brain fog and diminished performance as normal</span>
                   </li>
                   <li className="flex items-start">
                     <X className="mr-2 mt-1 h-5 w-5 text-red-500 flex-shrink-0" />
@@ -95,7 +95,7 @@ export default function FinalCta() {
 
           <div className="relative bg-[#940909] text-white p-10 rounded-lg shadow-2xl transform transition-all hover:shadow-[0_20px_50px_rgba(148,9,9,0.3)]">
             <h3 className="text-2xl font-bold mb-6">Take the First Step Toward Limitless Energy Today</h3>
-            <p className="mb-8 text-lg">Only 10 spots available this month. Don't miss your chance to transform.</p>
+            <p className="mb-8 text-lg">Only 10 spots available this month. Dont miss your chance to transform.</p>
 
             <Button
               size="lg"
@@ -107,7 +107,7 @@ export default function FinalCta() {
 
             <div className="mt-8 pt-6 border-t border-white/20 flex items-center justify-center">
               <Check className="mr-2 h-5 w-5 text-white" />
-              <span className="font-medium">100% Results Guarantee: If you don't see significant improvements in 30 days, we'll refund every penny</span>
+              <span className="font-medium">100% Results Guarantee: If you dont see significant improvements in 30 days, well refund every penny</span>
             </div>
           </div>
         </div>

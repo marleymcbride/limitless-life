@@ -61,21 +61,24 @@ export default function Home() {
               </div>
             </div>
             <h1 className="text-4xl sm:text-4xl md:text-3xl lg:text-4xl font-bold text-white text-center mb-0 mt-0 sm:mt-0 max-w-[87%] mx-auto px-4">
-              You don't need another black Americano or BS supplement. You need a real system that quite simply, stops you feeling like shit.
+              You dont need another black Americano or BS supplement. You need a real system that quite simply, stops you feeling like shit.
             </h1>
 
             {/* Spacer div to push subtitle down */}
             <div className="h-6"></div>
 
             <p className="text-xl sm:text-xl md:text-lg text-gray-300 text-center max-w-3xl mx-auto mb-0 px-1">
-            Learn the proven step-by-step blueprint that successful entrepreneurs are using to fix their energy, build a top 1% physique, and get their sex drive back — without eating less, taking a bunch of crazy pills or spending more than 2 days a week in the gym:
+              Learn the proven step-by-step blueprint that successful entrepreneurs are using to fix their energy, build a top 1% physique, and get their sex drive back — without eating less, taking a bunch of crazy pills or spending more than 2 days a week in the gym:
             </p>
           </div>
 
           {/* Video container positioned in the bottom portion of the screen */}
           <div className="mt-1 mb-0 mx-auto w-full max-w-2xl">
-            <div className="relative w-full sm:w-auto sm:mx-auto max-w-[50%] mx-auto" style={{ maxWidth: '500px' }}>
-              {/* Purple play button overlay for mobile */}
+            <div
+              className="relative w-full sm:w-auto sm:mx-auto max-w-[50%] mx-auto"
+              style={{ maxWidth: '500px' }}
+            >
+              {/* Red play button overlay for mobile */}
               <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-[#940909] flex items-center justify-center md:hidden z-30">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="white">
                   <polygon points="5 3 19 12 5 21 5 3"></polygon>
@@ -93,6 +96,13 @@ export default function Home() {
 
       {/* 2. Credibility Quote (white background for testimonials) - Removed margin between sections */}
       <FeaturedTestimonial />
+      {/* 
+        Why is that section red?
+        The hero section uses a red accent color (#940909) for the play button overlay and a black-to-red gradient background via the bgClasses.blackRedGradient utility.
+        The play button overlay is styled with bg-[#940909], which is a deep red.
+        The background gradient (bgClasses.blackRedGradient) likely includes a red color stop, giving the section a red-tinted appearance.
+        If you want to change the red, adjust the bg-[#940909] class or the bgClasses.blackRedGradient definition.
+      */}
 
       {/* 3. Pain Points (black with red accents) */}
       <PainPoints />

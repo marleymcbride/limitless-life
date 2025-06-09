@@ -20,7 +20,7 @@ export default function FeaturedTestimonial() {
 
             <div>
               <blockquote className="text-lg md:text-xl text-gray-700 italic font-medium mb-2">
-                "Marley is the only coach who actually understands the unique energy challenges high-performers face. His Limitless Protocol didn't just transform my productivity—it completely rewired my relationship with energy. After 8 weeks, I've lost 22 pounds, doubled my output, and haven't touched caffeine in 37 days."
+                {"Marley is the only coach who actually understands the unique energy challenges high-performers face. His Limitless Protocol didn't just transform my productivity—it completely rewired my relationship with energy. After 8 weeks, I've lost 22 pounds, doubled my output, and haven't touched caffeine in 37 days."}
               </blockquote>
 
               <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center">
