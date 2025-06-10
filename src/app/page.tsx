@@ -75,8 +75,7 @@ export default function Home() {
           {/* Video container positioned in the bottom portion of the screen */}
           <div className="mt-1 mb-0 mx-auto w-full max-w-2xl">
             <div
-              className="relative w-full sm:w-auto sm:mx-auto max-w-[50%] mx-auto"
-              style={{ maxWidth: '500px' }}
+              className="relative w-full sm:w-auto sm:mx-auto max-w-[50%] mx-auto max-w-500px"
             >
               {/* Red play button overlay for mobile */}
               <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-[#940909] flex items-center justify-center md:hidden z-30">

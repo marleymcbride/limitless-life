@@ -44,7 +44,11 @@
 
 @layer utilities {
   .text-balance {
+    text-wrap: normal;
     text-wrap: balance;
+  }
+  .max-w-500px {
+    max-width: 500px;
   }
 }
 
