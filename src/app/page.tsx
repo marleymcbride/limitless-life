@@ -60,15 +60,27 @@ export default function Home() {
                 />
               </div>
             </div>
-            <h1 className="text-4xl sm:text-4xl md:text-3xl lg:text-4xl font-bold text-white text-center mb-0 mt-0 sm:mt-0 max-w-[87%] mx-auto px-4">
+            {/* Mobile Headlines (visible only on mobile) */}
+            <h1 className="block sm:hidden text-4xl font-bold text-white text-center mb-0 mt-0 max-w-[87%] mx-auto px-4">
+              You don't need more coffee. You need a system that actually fixes your broken body:
+            </h1>
+
+            {/* Desktop Headlines (hidden on mobile) */}
+            <h1 className="hidden sm:block text-4xl sm:text-4xl md:text-3xl lg:text-4xl font-bold text-white text-center mb-0 mt-0 sm:mt-0 max-w-[87%] mx-auto px-4">
               You dont need another black Americano or BS supplement. You need a real system that quite simply, stops you feeling like shit.
             </h1>
 
             {/* Spacer div to push subtitle down */}
             <div className="h-6"></div>
 
-            <p className="text-xl sm:text-xl md:text-lg text-gray-300 text-center max-w-3xl mx-auto mb-0 px-1">
-              Learn the proven step-by-step blueprint that successful entrepreneurs are using to fix their energy, build a top 1% physique, and get their sex drive back — without eating less, taking a bunch of crazy pills or spending more than 2 days a week in the gym:
+            {/* Mobile Subheadline (visible only on mobile) */}
+            <p className="block sm:hidden text-xl text-gray-300 text-center max-w-3xl mx-auto mb-0 px-1">
+              The proven system for high performers to build a top 1% physique, get their sex drive back, and quite simply stop feeling like shit... without extreme diets or training more than 2 days a week
+            </p>
+
+            {/* Desktop Subheadline (hidden on mobile) */}
+            <p className="hidden sm:block text-xl sm:text-xl md:text-lg text-gray-300 text-center max-w-3xl mx-auto mb-0 px-1">
+              Learn the proven system high performers are using to build a top 1% physique, get their sex drive back and wake up feeling electric every day — without eating less, taking a bunch of crazy pills or spending more than 2 days a week in the gym:
             </p>
           </div>
 
@@ -95,7 +107,7 @@ export default function Home() {
 
       {/* 2. Credibility Quote (white background for testimonials) - Removed margin between sections */}
       <FeaturedTestimonial />
-      {/* 
+      {/*
         Why is that section red?
         The hero section uses a red accent color (#940909) for the play button overlay and a black-to-red gradient background via the bgClasses.blackRedGradient utility.
         The play button overlay is styled with bg-[#940909], which is a deep red.
