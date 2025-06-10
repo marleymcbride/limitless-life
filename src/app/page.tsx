@@ -36,7 +36,7 @@ export default function Home() {
           {/* Mobile view - headline and subheadline optimized for mobile */}
           <div className="flex-grow flex flex-col justify-start sm:justify-center pt-5 sm:pt-0 sm:mt-6 md:mt-0">
             {/* Pill Logo */}
-            <div className="flex justify-center mb-1 relative">
+            <div className="hidden sm:flex justify-center mb-1 relative">
               {/* Base grey version */}
               <div className="w-auto">
                 <Image
