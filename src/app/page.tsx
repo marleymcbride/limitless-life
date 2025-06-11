@@ -1,10 +1,10 @@
 import Image from "next/image";
 import EnhancedVideoPlayer from "../components/enhanced-video-player";
-import ImmediateProofSection from "../components/immediate-proof-section";
-import PersonalStorySection from "../components/personal-story-section-v2";
-import SolutionProofSection from "../components/solution-proof-section";
-import EnemyUspSection from "../components/enemy-usp-section";
-import FinalOfferSection from "../components/final-offer-section";
+import FeaturedTestimonial from "../components/featured-testimonial";
+import PersonalStorySection from "../components/personal-story-section";
+import SolutionSection from "../components/solution-section";
+import RunningEmptySection from "../components/running-empty-section";
+import FinalCta from "../components/final-cta";
 import FooterSection from "../components/footer-section";
 import StickyCTA from "../components/sticky-cta";
 import { Button } from "@/components/ui/button";
@@ -15,7 +15,7 @@ import {
   vignetteEffect,
 } from "../lib/utils";
 
-export default function HomeV2() {
+export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center">
       {/* 1. Hero Section (UNTOUCHED - PRESERVED EXACTLY) */}
@@ -112,19 +112,19 @@ export default function HomeV2() {
       </section>
 
       {/* 2. Immediate Proof + Pain Agitation (White background) */}
-      <ImmediateProofSection />
+      <FeaturedTestimonial />
 
       {/* 3. Personal Story + Discovery (White background) */}
       <PersonalStorySection />
 
       {/* 4. Solution + Proof Density (Black with red accents) */}
-      <SolutionProofSection />
+      <SolutionSection />
 
       {/* 5. Enemy + USP + More Proof (Black with red accents) */}
-      <EnemyUspSection />
+      <RunningEmptySection />
 
       {/* 6. Final Offer + Urgency + Guarantee (Black with red accents) */}
-      <FinalOfferSection />
+      <FinalCta />
 
       {/* Minimal Footer (Black) */}
       <FooterSection />

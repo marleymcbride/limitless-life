@@ -1,62 +1,62 @@
-"use client"
+"use client";
 
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react";
 
 export default function VideoPlayer() {
-  const videoRef = useRef<HTMLVideoElement>(null)
-  const [isPlaying, setIsPlaying] = useState(false)
-  const [isMounted, setIsMounted] = useState(false)
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
   // Handle client-side mounting
   useEffect(() => {
-    setIsMounted(true)
-  }, [])
+    setIsMounted(true);
+  }, []);
 
   // Handle autoplay once mounted
   useEffect(() => {
-    if (!isMounted || !videoRef.current) return
+    if (!isMounted || !videoRef.current) return;
 
     // Try to autoplay the video (muted)
-    const playPromise = videoRef.current.play()
-    
+    const playPromise = videoRef.current.play();
+
     if (playPromise !== undefined) {
       playPromise
         .then(() => {
           // Autoplay started successfully
-          setIsPlaying(true)
+          setIsPlaying(true);
         })
-        .catch(error => {
+        .catch((error) => {
           // Autoplay was prevented
-          console.log("Autoplay prevented:", error)
-          setIsPlaying(false)
-        })
+          console.log("Autoplay prevented:", error);
+          setIsPlaying(false);
+        });
     }
-  }, [isMounted])
+  }, [isMounted]);
 
   // Safe toggle play function
   const togglePlay = () => {
-    if (!videoRef.current) return
-    
+    if (!videoRef.current) return;
+
     if (videoRef.current.paused) {
       // When playing from pause, we need to unmute
-      videoRef.current.muted = false
-      
-      const playPromise = videoRef.current.play()
+      videoRef.current.muted = false;
+
+      const playPromise = videoRef.current.play();
       if (playPromise !== undefined) {
         playPromise
           .then(() => {
-            setIsPlaying(true)
+            setIsPlaying(true);
           })
           .catch(() => {
             // Handle play error
-            setIsPlaying(false)
-          })
+            setIsPlaying(false);
+          });
       }
     } else {
-      videoRef.current.pause()
-      setIsPlaying(false)
+      videoRef.current.pause();
+      setIsPlaying(false);
     }
-  }
+  };
 
   return (
     <div className="relative w-full overflow-hidden rounded-lg bg-black">
@@ -72,7 +72,10 @@ export default function VideoPlayer() {
         controls={false}
       >
         {/* Using a reliable video source */}
-        <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4" />
+        <source
+          src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+          type="video/mp4"
+        />
         Your browser does not support the video tag.
       </video>
 
@@ -101,12 +104,22 @@ export default function VideoPlayer() {
       {/* Sound indicator */}
       {isMounted && (
         <div className="absolute bottom-3 right-3 flex items-center rounded-full bg-black/50 px-3 py-1 text-xs text-white">
-          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="12"
+            height="12"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
             <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
           </svg>
           <span className="ml-1">Tap for sound</span>
         </div>
       )}
     </div>
-  )
+  );
 }

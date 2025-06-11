@@ -1,14 +1,20 @@
-import Image from "next/image"
+import Image from "next/image";
 
 interface TestimonialCardProps {
-  quote: string
-  name: string
-  title: string
-  results: string
-  imageSrc: string
+  quote: string;
+  name: string;
+  title: string;
+  results: string;
+  imageSrc: string;
 }
 
-export default function TestimonialCard({ quote, name, title, results, imageSrc }: TestimonialCardProps) {
+export default function TestimonialCard({
+  quote,
+  name,
+  title,
+  results,
+  imageSrc,
+}: TestimonialCardProps) {
   return (
     <div className="flex flex-col overflow-hidden rounded-lg bg-zinc-800 shadow-lg">
       <div className="p-6">
@@ -29,9 +35,11 @@ export default function TestimonialCard({ quote, name, title, results, imageSrc 
           </div>
         </div>
         <div className="mt-4 rounded-md bg-zinc-700 p-2">
-          <p className="text-sm font-medium text-zinc-300">Results: {results}</p>
+          <p className="text-sm font-medium text-zinc-300">
+            Results: {results}
+          </p>
         </div>
       </div>
     </div>
-  )
+  );
 }

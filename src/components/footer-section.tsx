@@ -1,8 +1,8 @@
-import Link from "next/link"
-import { bgClasses } from "@/lib/utils"
+import Link from "next/link";
+import { bgClasses } from "@/lib/utils";
 
 export default function FooterSection() {
-  const currentYear = new Date().getFullYear()
+  const currentYear = new Date().getFullYear();
 
   return (
     <footer className="bg-black py-4 text-white">
@@ -12,15 +12,21 @@ export default function FooterSection() {
             © {currentYear} Limitless Life
           </p>
           <div className="flex space-x-4">
-            <Link href="/privacy" className="text-xs text-gray-500 hover:text-white transition-colors">
+            <Link
+              href="/privacy"
+              className="text-xs text-gray-500 hover:text-white transition-colors"
+            >
               Privacy
             </Link>
-            <Link href="/terms" className="text-xs text-gray-500 hover:text-white transition-colors">
+            <Link
+              href="/terms"
+              className="text-xs text-gray-500 hover:text-white transition-colors"
+            >
               Terms
             </Link>
           </div>
         </div>
       </div>
     </footer>
-  )
+  );
 }

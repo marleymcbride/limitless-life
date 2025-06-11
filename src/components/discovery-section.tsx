@@ -1,6 +1,6 @@
-import { Lightbulb, Check } from "lucide-react"
-import { bgClasses } from "@/lib/utils"
-import MicroTestimonial from "./ui/micro-testimonial"
+import { Lightbulb, Check } from "lucide-react";
+import { bgClasses } from "@/lib/utils";
+import MicroTestimonial from "./ui/micro-testimonial";
 
 export default function DiscoverySection() {
   return (
@@ -10,7 +10,9 @@ export default function DiscoverySection() {
           <div className="w-20 h-20 rounded-full bg-[#940909] flex items-center justify-center mb-6 shadow-lg">
             <Lightbulb className="h-10 w-10 text-white" />
           </div>
-          <h2 className="text-3xl sm:text-4xl font-black mb-3">The 80/20 Discovery That Changed Everything</h2>
+          <h2 className="text-3xl sm:text-4xl font-black mb-3">
+            The 80/20 Discovery That Changed Everything
+          </h2>
           <div className="w-20 h-1 bg-[#940909] rounded-full"></div>
         </div>
 
@@ -20,7 +22,9 @@ export default function DiscoverySection() {
           </p>
 
           <p className="mb-6 text-xl">
-            My body's energy systems were completely broken from years of stress - poor nutrition - substance dependency. Was trying to fix symptoms - should have been fixing systems.
+            My body's energy systems were completely broken from years of stress
+            - poor nutrition - substance dependency. Was trying to fix symptoms
+            - should have been fixing systems.
           </p>
 
           <div className="bg-gray-100 p-8 rounded-lg shadow-inner my-8">
@@ -29,9 +33,13 @@ export default function DiscoverySection() {
                 80/20
               </div>
               <div>
-                <h3 className="text-xl font-bold mb-3">The Efficiency Principle</h3>
+                <h3 className="text-xl font-bold mb-3">
+                  The Efficiency Principle
+                </h3>
                 <p className="text-gray-700">
-                  Found 80% of results came from fixing 20% of issues. Not more workouts - not another diet - not another productivity hack. Needed total system reset of these key areas:
+                  Found 80% of results came from fixing 20% of issues. Not more
+                  workouts - not another diet - not another productivity hack.
+                  Needed total system reset of these key areas:
                 </p>
                 <ul className="mt-4 space-y-2">
                   <li className="flex items-center">
@@ -56,16 +64,24 @@ export default function DiscoverySection() {
           </div>
 
           <p className="mb-6 text-lg">
-            <span className="font-semibold">Your body isn't broken - just running the wrong program.</span> Coffee masking fatigue - not fixing it. Alcohol numbing stress - not releasing it. Exercise draining you - not energizing you.
+            <span className="font-semibold">
+              Your body isn't broken - just running the wrong program.
+            </span>{" "}
+            Coffee masking fatigue - not fixing it. Alcohol numbing stress - not
+            releasing it. Exercise draining you - not energizing you.
           </p>
 
           <p className="mb-8 text-lg">
-            Created The Limitless Protocol. Complete systems approach to restore natural energy state. Reset four critical systems - all working together to create effortless performance.
+            Created The Limitless Protocol. Complete systems approach to restore
+            natural energy state. Reset four critical systems - all working
+            together to create effortless performance.
           </p>
 
           <div className="bg-[#940909]/10 p-6 rounded-lg border-l-4 border-[#940909] text-center">
             <p className="text-xl font-semibold italic">
-              "Remember how it felt waking up as a kid. Pure energy. No coffee needed. This is what we restore. Not through quick fixes - through fundamental system recalibration."
+              "Remember how it felt waking up as a kid. Pure energy. No coffee
+              needed. This is what we restore. Not through quick fixes - through
+              fundamental system recalibration."
             </p>
           </div>
         </div>
@@ -82,5 +98,5 @@ export default function DiscoverySection() {
         </div>
       </div>
     </section>
-  )
+  );
 }

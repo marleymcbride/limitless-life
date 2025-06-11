@@ -1,8 +1,14 @@
-"use client"
+"use client";
 
-import { Coffee, BatteryLow, Brain, TrendingDown, AlertTriangle } from "lucide-react"
-import { Button } from "./ui/button"
-import { bgClasses, vignetteEffect } from "@/lib/utils"
+import {
+  Coffee,
+  BatteryLow,
+  Brain,
+  TrendingDown,
+  AlertTriangle,
+} from "lucide-react";
+import { Button } from "./ui/button";
+import { bgClasses, vignetteEffect } from "@/lib/utils";
 
 export default function ProblemAgitationSection() {
   return (
@@ -14,10 +20,14 @@ export default function ProblemAgitationSection() {
         {/* Hook with 4% Trap concept */}
         <div className="mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            You're Not Broken. You're Just Trapped in the <span className="text-[#940909]">4% Zone</span>.
+            You're Not Broken. You're Just Trapped in the{" "}
+            <span className="text-[#940909]">4% Zone</span>.
           </h2>
           <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
-            Most guys think they're doing well because they hit the gym and eat "clean." But here's the brutal truth: you're stuck in no man's land—too advanced for the typical 95%, but missing the systems that unlock the top 1%.
+            Most guys think they're doing well because they hit the gym and eat
+            "clean." But here's the brutal truth: you're stuck in no man's
+            land—too advanced for the typical 95%, but missing the systems that
+            unlock the top 1%.
           </p>
         </div>
 
@@ -28,9 +38,15 @@ export default function ProblemAgitationSection() {
             <div className="w-12 h-12 bg-red-600/20 rounded-full flex items-center justify-center mb-4 mx-auto">
               <TrendingDown className="w-6 h-6 text-red-400" />
             </div>
-            <h3 className="text-xl font-bold text-white mb-3">The 95% (Typical)</h3>
-            <p className="text-gray-300 text-sm mb-4">Western diet, regular drinking, barely exercising</p>
-            <div className="text-red-400 font-bold">Accessing 20% potential</div>
+            <h3 className="text-xl font-bold text-white mb-3">
+              The 95% (Typical)
+            </h3>
+            <p className="text-gray-300 text-sm mb-4">
+              Western diet, regular drinking, barely exercising
+            </p>
+            <div className="text-red-400 font-bold">
+              Accessing 20% potential
+            </div>
           </div>
 
           {/* 4% Health Conscious */}
@@ -38,10 +54,18 @@ export default function ProblemAgitationSection() {
             <div className="w-12 h-12 bg-yellow-600/20 rounded-full flex items-center justify-center mb-4 mx-auto">
               <AlertTriangle className="w-6 h-6 text-yellow-400" />
             </div>
-            <h3 className="text-xl font-bold text-white mb-3">The 4% (You Right Now)</h3>
-            <p className="text-gray-300 text-sm mb-4">Gym-going, "clean" eating, but no real systems</p>
-            <div className="text-yellow-400 font-bold">Accessing 50-60% potential</div>
-            <p className="text-xs text-yellow-300 mt-2">↑ Stuck in the trap ↑</p>
+            <h3 className="text-xl font-bold text-white mb-3">
+              The 4% (You Right Now)
+            </h3>
+            <p className="text-gray-300 text-sm mb-4">
+              Gym-going, "clean" eating, but no real systems
+            </p>
+            <div className="text-yellow-400 font-bold">
+              Accessing 50-60% potential
+            </div>
+            <p className="text-xs text-yellow-300 mt-2">
+              ↑ Stuck in the trap ↑
+            </p>
           </div>
 
           {/* 1% Limitless */}
@@ -49,16 +73,23 @@ export default function ProblemAgitationSection() {
             <div className="w-12 h-12 bg-[#940909]/30 rounded-full flex items-center justify-center mb-4 mx-auto">
               <Brain className="w-6 h-6 text-[#940909]" />
             </div>
-            <h3 className="text-xl font-bold text-white mb-3">The 1% (Limitless)</h3>
-            <p className="text-gray-300 text-sm mb-4">Intentional systems, effortless execution</p>
-            <div className="text-[#940909] font-bold">Accessing 95-100% potential</div>
+            <h3 className="text-xl font-bold text-white mb-3">
+              The 1% (Limitless)
+            </h3>
+            <p className="text-gray-300 text-sm mb-4">
+              Intentional systems, effortless execution
+            </p>
+            <div className="text-[#940909] font-bold">
+              Accessing 95-100% potential
+            </div>
           </div>
         </div>
 
         {/* Drag vs Glide Energy */}
         <div className="bg-zinc-900/30 border border-zinc-700 rounded-xl p-8 mb-12">
           <h3 className="text-3xl font-bold text-white mb-8">
-            The Real Problem: You're Living in <span className="text-red-400">Drag Energy</span>
+            The Real Problem: You're Living in{" "}
+            <span className="text-red-400">Drag Energy</span>
           </h3>
 
           <div className="grid md:grid-cols-2 gap-8">
@@ -127,7 +158,8 @@ export default function ProblemAgitationSection() {
         {/* Transition */}
         <div className="text-center">
           <p className="text-2xl text-white mb-8">
-            The gap between where you are and where you want to be isn't motivation.
+            The gap between where you are and where you want to be isn't
+            motivation.
           </p>
           <p className="text-3xl font-bold text-[#940909] mb-8">
             It's the right system.
@@ -138,5 +170,5 @@ export default function ProblemAgitationSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }

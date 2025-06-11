@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useState, useEffect } from "react";
 import { ArrowUp } from "lucide-react";
@@ -33,7 +33,9 @@ export default function StickyCTA() {
       <div className="container mx-auto flex justify-between items-center">
         <div className="hidden md:block">
           <p className="text-white font-bold">The Limitless Protocol</p>
-          <p className="text-white/70 text-sm">Transform your energy in 12 weeks</p>
+          <p className="text-white/70 text-sm">
+            Transform your energy in 12 weeks
+          </p>
         </div>
 
         <div className="flex gap-4 items-center ml-auto">
@@ -45,10 +47,7 @@ export default function StickyCTA() {
             <ArrowUp className="h-5 w-5 text-white" />
           </button>
 
-          <ApplyNowButton
-            text="JOIN NOW"
-            className="py-2 px-6 text-base"
-          />
+          <ApplyNowButton text="JOIN NOW" className="py-2 px-6 text-base" />
         </div>
       </div>
     </div>

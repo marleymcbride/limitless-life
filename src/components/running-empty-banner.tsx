@@ -7,5 +7,5 @@ export default function RunningEmptyBanner() {
         </h2>
       </div>
     </section>
-  )
+  );
 }

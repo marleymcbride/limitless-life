@@ -1,4 +1,4 @@
-import Image from "next/image"
+import Image from "next/image";
 
 export default function TransformationTimeline() {
   const timelinePoints = [
@@ -7,16 +7,16 @@ export default function TransformationTimeline() {
       changes: [
         "Energy levels begin to noticeably increase",
         "Initial improvements in sleep quality",
-        "Reduced cravings for sugar and processed foods"
-      ]
+        "Reduced cravings for sugar and processed foods",
+      ],
     },
     {
       week: "Week 4",
       changes: [
         "First 5-10 pounds of weight loss",
         "Morning brain fog eliminated",
-        "Natural energy without caffeine dependence"
-      ]
+        "Natural energy without caffeine dependence",
+      ],
     },
     {
       week: "Week 8",
@@ -24,8 +24,8 @@ export default function TransformationTimeline() {
         "15-20 pounds of fat loss for most clients",
         "Significant improvement in muscle tone",
         "Stress levels reduced by 40-60%",
-        "Mental clarity and focus throughout the day"
-      ]
+        "Mental clarity and focus throughout the day",
+      ],
     },
     {
       week: "Week 12",
@@ -33,33 +33,41 @@ export default function TransformationTimeline() {
         "Complete transformation for most clients",
         "Sustainable habits fully integrated",
         "Optimal energy and performance levels",
-        "Complete metabolic reset achieved"
-      ]
-    }
-  ]
+        "Complete metabolic reset achieved",
+      ],
+    },
+  ];
 
   return (
     <section className="w-full py-16 bg-gradient-to-b from-black to-zinc-900 text-white">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-2">Your Transformation Journey</h2>
-        <p className="text-xl text-center max-w-3xl mx-auto mb-12">Here's what to expect during your 12-week health transformation</p>
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-2">
+          Your Transformation Journey
+        </h2>
+        <p className="text-xl text-center max-w-3xl mx-auto mb-12">
+          Here's what to expect during your 12-week health transformation
+        </p>
 
         <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
           {/* Before & After Showcase */}
           <div className="rounded-lg overflow-hidden bg-zinc-800 border border-zinc-700">
             <div className="p-6">
-              <h3 className="text-2xl font-bold mb-4 text-center">Typical Results</h3>
+              <h3 className="text-2xl font-bold mb-4 text-center">
+                Typical Results
+              </h3>
               <div className="relative h-[400px] rounded-lg overflow-hidden">
                 <div className="absolute inset-0 flex">
                   <div className="w-1/2 h-full relative">
                     <div className="absolute inset-0 flex items-center justify-center bg-zinc-700">
                       <div className="absolute bottom-0 left-0 w-full bg-black/70 py-2 px-4">
-                        <p className="text-white text-center font-bold">BEFORE</p>
+                        <p className="text-white text-center font-bold">
+                          BEFORE
+                        </p>
                       </div>
-                      <Image 
-                        src="/placeholder.svg?height=400&width=240" 
-                        alt="Before transformation" 
-                        width={240} 
+                      <Image
+                        src="/placeholder.svg?height=400&width=240"
+                        alt="Before transformation"
+                        width={240}
                         height={400}
                         className="object-cover"
                       />
@@ -68,12 +76,14 @@ export default function TransformationTimeline() {
                   <div className="w-1/2 h-full relative">
                     <div className="absolute inset-0 flex items-center justify-center bg-zinc-700">
                       <div className="absolute bottom-0 left-0 w-full bg-[#940909]/70 py-2 px-4">
-                        <p className="text-white text-center font-bold">AFTER</p>
+                        <p className="text-white text-center font-bold">
+                          AFTER
+                        </p>
                       </div>
-                      <Image 
-                        src="/placeholder.svg?height=400&width=240" 
-                        alt="After transformation" 
-                        width={240} 
+                      <Image
+                        src="/placeholder.svg?height=400&width=240"
+                        alt="After transformation"
+                        width={240}
                         height={400}
                         className="object-cover"
                       />
@@ -112,9 +122,11 @@ export default function TransformationTimeline() {
                 <div key={index} className="relative pl-14 md:pl-16">
                   {/* Timeline circle */}
                   <div className="absolute left-0 top-0 w-9 h-9 rounded-full bg-[#940909] border-4 border-black flex items-center justify-center z-10">
-                    <span className="text-white font-bold text-sm">{index + 1}</span>
+                    <span className="text-white font-bold text-sm">
+                      {index + 1}
+                    </span>
                   </div>
-                  
+
                   <div className="bg-zinc-800 rounded-lg p-6 border-l-4 border-[#940909]">
                     <h4 className="text-xl font-bold mb-3">{point.week}</h4>
                     <ul className="space-y-2">
@@ -133,5 +145,5 @@ export default function TransformationTimeline() {
         </div>
       </div>
     </section>
-  )
+  );
 }

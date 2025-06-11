@@ -1,6 +1,11 @@
-import { Check, Sunrise, Dumbbell, Coffee, BookOpen } from "lucide-react"
-import { bgClasses, invertedGradientOverlay, strongRedAccent, vignetteEffect } from "@/lib/utils"
-import MicroTestimonial from "./ui/micro-testimonial"
+import { Check, Sunrise, Dumbbell, Coffee, BookOpen } from "lucide-react";
+import {
+  bgClasses,
+  invertedGradientOverlay,
+  strongRedAccent,
+  vignetteEffect,
+} from "@/lib/utils";
+import MicroTestimonial from "./ui/micro-testimonial";
 
 export default function ProgramComponentsSection() {
   return (
@@ -9,10 +14,15 @@ export default function ProgramComponentsSection() {
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-12">
-          <span className="inline-block bg-[#940909] text-white text-sm font-bold uppercase tracking-wider px-3 py-1 rounded-sm mb-4">THE METHODOLOGY</span>
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-gray-900">The Limitless Systems</h2>
+          <span className="inline-block bg-[#940909] text-white text-sm font-bold uppercase tracking-wider px-3 py-1 rounded-sm mb-4">
+            THE METHODOLOGY
+          </span>
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-gray-900">
+            The Limitless Systems
+          </h2>
           <p className="text-center text-xl mb-4 mx-auto max-w-3xl text-gray-800">
-            Systematic approach to create natural energy - elite physique - razor-sharp mind
+            Systematic approach to create natural energy - elite physique -
+            razor-sharp mind
           </p>
           <p className="text-center text-lg mx-auto max-w-3xl text-gray-700">
             No willpower. No starvation. No bullshit 6-day gym routines.
@@ -30,24 +40,34 @@ export default function ProgramComponentsSection() {
               </h3>
             </div>
             <p className="mb-4 text-gray-700">
-              Exact, systemized routine of specific foods and actions in precise order. Pure natural energy without caffeine or supplements. Mental clarity from dawn to dusk.
+              Exact, systemized routine of specific foods and actions in precise
+              order. Pure natural energy without caffeine or supplements. Mental
+              clarity from dawn to dusk.
             </p>
             <ul className="space-y-3 mt-6">
               <li className="flex items-start">
                 <Check className="mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0" />
-                <span className="text-sm text-gray-700">Strategic nutrition timing for steady energy</span>
+                <span className="text-sm text-gray-700">
+                  Strategic nutrition timing for steady energy
+                </span>
               </li>
               <li className="flex items-start">
                 <Check className="mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0" />
-                <span className="text-sm text-gray-700">Precision hydration protocol for mental clarity</span>
+                <span className="text-sm text-gray-700">
+                  Precision hydration protocol for mental clarity
+                </span>
               </li>
               <li className="flex items-start">
                 <Check className="mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0" />
-                <span className="text-sm text-gray-700">Maintains steady energy after midday meals</span>
+                <span className="text-sm text-gray-700">
+                  Maintains steady energy after midday meals
+                </span>
               </li>
               <li className="flex items-start">
                 <Check className="mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0" />
-                <span className="text-sm text-gray-700">Takes under 20 minutes total to implement</span>
+                <span className="text-sm text-gray-700">
+                  Takes under 20 minutes total to implement
+                </span>
               </li>
             </ul>
           </div>
@@ -58,28 +78,38 @@ export default function ProgramComponentsSection() {
                 <Dumbbell className="w-5 h-5 text-white" />
               </div>
               <h3 className="text-xl font-bold text-gray-900">
-                Limitless Training
+                The Limitless Training
               </h3>
             </div>
             <p className="mb-4 text-gray-700">
-              Train just 2-3 times per week max. Focus on aesthetics and total body health. Protects CNS from overtaxing, prevents burnout, builds the "Natty Sweet Spot" physique.
+              Train just 2-3 times per week max. Focus on aesthetics and total
+              body health. Protects CNS from overtaxing, prevents burnout,
+              builds the "Natty Sweet Spot" physique.
             </p>
             <ul className="space-y-3 mt-6">
               <li className="flex items-start">
                 <Check className="mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0" />
-                <span className="text-sm text-gray-700">Strategic compound and isolation exercises</span>
+                <span className="text-sm text-gray-700">
+                  Strategic compound and isolation exercises
+                </span>
               </li>
               <li className="flex items-start">
                 <Check className="mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0" />
-                <span className="text-sm text-gray-700">No endless cardio or daily gym sessions</span>
+                <span className="text-sm text-gray-700">
+                  No endless cardio or daily gym sessions
+                </span>
               </li>
               <li className="flex items-start">
                 <Check className="mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0" />
-                <span className="text-sm text-gray-700">Preserves muscle while accelerating fat loss</span>
+                <span className="text-sm text-gray-700">
+                  Preserves muscle while accelerating fat loss
+                </span>
               </li>
               <li className="flex items-start">
                 <Check className="mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0" />
-                <span className="text-sm text-gray-700">Time-efficient workouts with maximum results</span>
+                <span className="text-sm text-gray-700">
+                  Time-efficient workouts with maximum results
+                </span>
               </li>
             </ul>
           </div>
@@ -94,24 +124,34 @@ export default function ProgramComponentsSection() {
               </h3>
             </div>
             <p className="mb-4 text-gray-700">
-              Natural high state - free from caffeine, alcohol or substances. Inner game focused, prioritizing mindset over trackers or willpower. Returns to childlike state of peace and joy.
+              Natural high state - free from caffeine, alcohol or substances.
+              Inner game focused, prioritizing mindset over trackers or
+              willpower. Returns to childlike state of peace and joy.
             </p>
             <ul className="space-y-3 mt-6">
               <li className="flex items-start">
                 <Check className="mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0" />
-                <span className="text-sm text-gray-700">Strategic caffeine elimination protocol</span>
+                <span className="text-sm text-gray-700">
+                  Strategic caffeine elimination protocol
+                </span>
               </li>
               <li className="flex items-start">
                 <Check className="mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0" />
-                <span className="text-sm text-gray-700">Natural alcohol reduction system</span>
+                <span className="text-sm text-gray-700">
+                  Natural alcohol reduction system
+                </span>
               </li>
               <li className="flex items-start">
                 <Check className="mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0" />
-                <span className="text-sm text-gray-700">Mindset restructuring for natural relaxation</span>
+                <span className="text-sm text-gray-700">
+                  Mindset restructuring for natural relaxation
+                </span>
               </li>
               <li className="flex items-start">
                 <Check className="mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0" />
-                <span className="text-sm text-gray-700">Brain-based stress elimination techniques</span>
+                <span className="text-sm text-gray-700">
+                  Brain-based stress elimination techniques
+                </span>
               </li>
             </ul>
           </div>
@@ -127,5 +167,5 @@ export default function ProgramComponentsSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }

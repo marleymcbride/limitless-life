@@ -1,10 +1,15 @@
-"use client"
+"use client";
 
-import { Check } from "lucide-react"
-import { Button } from "./ui/button"
-import { bgClasses, blackRedGradientOverlay, redAccentBottom, vignetteEffect } from "@/lib/utils"
-import MicroTestimonial from "./ui/micro-testimonial"
-import Image from "next/image"
+import { Check } from "lucide-react";
+import { Button } from "./ui/button";
+import {
+  bgClasses,
+  blackRedGradientOverlay,
+  redAccentBottom,
+  vignetteEffect,
+} from "@/lib/utils";
+import MicroTestimonial from "./ui/micro-testimonial";
+import Image from "next/image";
 
 export default function ProgramDetails() {
   return (
@@ -14,9 +19,17 @@ export default function ProgramDetails() {
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">You only need to sign 1 client<br/>to make your money back</h2>
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+            You only need to sign 1 client
+            <br />
+            to make your money back
+          </h2>
           <p className="text-md max-w-3xl mx-auto mb-8 text-gray-300">
-            If I'm honest, I can't expect to predict all your problems, so this course will grow with the people who are a part of it, as I learn your problems I'll address them ongoing. Please also don't forget this course is a tax write off for your next tax bill, it's a legitimate business expense.
+            If I'm honest, I can't expect to predict all your problems, so this
+            course will grow with the people who are a part of it, as I learn
+            your problems I'll address them ongoing. Please also don't forget
+            this course is a tax write off for your next tax bill, it's a
+            legitimate business expense.
           </p>
         </div>
 
@@ -32,58 +45,92 @@ export default function ProgramDetails() {
 
               {/* Main pricing box content */}
               <div className="bg-[#0a192f] p-8 pb-4 rounded-b-lg border border-t-0 border-blue-900">
-                <h3 className="text-2xl font-bold mb-2 text-center">JOIN THE BUSINESS<br/><span className="text-gray-400">MENTORSHIP TODAY.</span></h3>
+                <h3 className="text-2xl font-bold mb-2 text-center">
+                  JOIN THE BUSINESS
+                  <br />
+                  <span className="text-gray-400">MENTORSHIP TODAY.</span>
+                </h3>
 
                 <div className="space-y-4 mt-8">
                   <div className="flex items-start">
                     <div className="rounded-full bg-gray-700 p-1 mr-3 flex-shrink-0">
-                      <Check className="h-4 w-4 text-white"/>
+                      <Check className="h-4 w-4 text-white" />
                     </div>
-                    <p className="text-sm">Lifetime access to the Business Mentorship Course including all modules + new videos produced monthly.</p>
+                    <p className="text-sm">
+                      Lifetime access to the Business Mentorship Course
+                      including all modules + new videos produced monthly.
+                    </p>
                   </div>
 
                   <div className="flex items-start">
                     <div className="rounded-full bg-gray-700 p-1 mr-3 flex-shrink-0">
-                      <Check className="h-4 w-4 text-white"/>
+                      <Check className="h-4 w-4 text-white" />
                     </div>
-                    <p className="text-sm">Access to private community where you can chat with me anytime and be interactive with other members.</p>
+                    <p className="text-sm">
+                      Access to private community where you can chat with me
+                      anytime and be interactive with other members.
+                    </p>
                   </div>
 
                   <div className="flex items-start">
                     <div className="rounded-full bg-gray-700 p-1 mr-3 flex-shrink-0">
-                      <Check className="h-4 w-4 text-white"/>
+                      <Check className="h-4 w-4 text-white" />
                     </div>
-                    <p className="text-sm">Detailed tasks per module so you can practically learn and then apply what I am teaching you in the course.</p>
+                    <p className="text-sm">
+                      Detailed tasks per module so you can practically learn and
+                      then apply what I am teaching you in the course.
+                    </p>
                   </div>
 
                   <div className="flex items-start">
                     <div className="rounded-full bg-gray-700 p-1 mr-3 flex-shrink-0">
-                      <Check className="h-4 w-4 text-white"/>
+                      <Check className="h-4 w-4 text-white" />
                     </div>
-                    <p className="text-sm">Bonus, lifetime access to Black Belt Content Mastery, Email Advantage, PT Starter Kit & Silver Play Button.</p>
+                    <p className="text-sm">
+                      Bonus, lifetime access to Black Belt Content Mastery,
+                      Email Advantage, PT Starter Kit & Silver Play Button.
+                    </p>
                   </div>
                 </div>
 
                 <div className="mt-8">
-                  <Button
-                    className="w-full py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded transition-all text-lg"
-                  >
+                  <Button className="w-full py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded transition-all text-lg">
                     JOIN NOW
                   </Button>
 
-                  <p className="text-center my-4 text-gray-400 font-medium">OR</p>
+                  <p className="text-center my-4 text-gray-400 font-medium">
+                    OR
+                  </p>
 
-                  <Button
-                    className="w-full py-4 bg-[#0d2249] hover:bg-[#0f264e] text-white font-bold border border-blue-800 rounded transition-all text-sm"
-                  >
-                    PAY IN 2 MONTHLY INSTALLMENTS OF<br />£1,049/$1,299
+                  <Button className="w-full py-4 bg-[#0d2249] hover:bg-[#0f264e] text-white font-bold border border-blue-800 rounded transition-all text-sm">
+                    PAY IN 2 MONTHLY INSTALLMENTS OF
+                    <br />
+                    £1,049/$1,299
                   </Button>
                 </div>
 
                 <div className="flex justify-center space-x-3 mt-4 mb-2">
-                  <Image src="/images/visa.svg" alt="Visa" width={40} height={20} className="h-6 w-auto"/>
-                  <Image src="/images/paypal.svg" alt="PayPal" width={40} height={20} className="h-6 w-auto"/>
-                  <Image src="/images/apple-pay.svg" alt="Apple Pay" width={40} height={20} className="h-6 w-auto"/>
+                  <Image
+                    src="/images/visa.svg"
+                    alt="Visa"
+                    width={40}
+                    height={20}
+                    className="h-6 w-auto"
+                  />
+                  <Image
+                    src="/images/paypal.svg"
+                    alt="PayPal"
+                    width={40}
+                    height={20}
+                    className="h-6 w-auto"
+                  />
+                  <Image
+                    src="/images/apple-pay.svg"
+                    alt="Apple Pay"
+                    width={40}
+                    height={20}
+                    className="h-6 w-auto"
+                  />
                 </div>
               </div>
             </div>
@@ -104,50 +151,80 @@ export default function ProgramDetails() {
                   </div>
                 </div>
 
-                <h3 className="text-2xl font-bold mb-2 text-center">10 WEEKS OF 1-1 COACHING.</h3>
+                <h3 className="text-2xl font-bold mb-2 text-center">
+                  10 WEEKS OF 1-1 COACHING.
+                </h3>
 
                 <div className="space-y-4 mt-8">
                   <div className="flex items-start">
                     <div className="rounded-full bg-gray-700 p-1 mr-3 flex-shrink-0">
-                      <Check className="h-4 w-4 text-white"/>
+                      <Check className="h-4 w-4 text-white" />
                     </div>
-                    <p className="text-sm">Have me step inside your business and work closely with you on improving every area of your current operation.</p>
+                    <p className="text-sm">
+                      Have me step inside your business and work closely with
+                      you on improving every area of your current operation.
+                    </p>
                   </div>
 
                   <div className="flex items-start">
                     <div className="rounded-full bg-gray-700 p-1 mr-3 flex-shrink-0">
-                      <Check className="h-4 w-4 text-white"/>
+                      <Check className="h-4 w-4 text-white" />
                     </div>
-                    <p className="text-sm">FREE access to the full suite of Business Mentorship Courses (worth $2499)</p>
+                    <p className="text-sm">
+                      FREE access to the full suite of Business Mentorship
+                      Courses (worth $2499)
+                    </p>
                   </div>
 
                   <div className="flex items-start">
                     <div className="rounded-full bg-gray-700 p-1 mr-3 flex-shrink-0">
-                      <Check className="h-4 w-4 text-white"/>
+                      <Check className="h-4 w-4 text-white" />
                     </div>
-                    <p className="text-sm">Join our private Discord community where you can chat with me anytime and be interactive with other members.</p>
+                    <p className="text-sm">
+                      Join our private Discord community where you can chat with
+                      me anytime and be interactive with other members.
+                    </p>
                   </div>
 
                   <div className="flex items-start">
                     <div className="rounded-full bg-gray-700 p-1 mr-3 flex-shrink-0">
-                      <Check className="h-4 w-4 text-white"/>
+                      <Check className="h-4 w-4 text-white" />
                     </div>
-                    <p className="text-sm">Instantly receive new courses and modules within the business mentorship suite for free, for life.</p>
+                    <p className="text-sm">
+                      Instantly receive new courses and modules within the
+                      business mentorship suite for free, for life.
+                    </p>
                   </div>
                 </div>
 
                 <div className="mt-8">
-                  <Button
-                    className="w-full py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded transition-all text-lg"
-                  >
+                  <Button className="w-full py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded transition-all text-lg">
                     APPLY NOW
                   </Button>
                 </div>
 
                 <div className="flex justify-center space-x-3 mt-4 mb-2">
-                  <Image src="/images/visa.svg" alt="Visa" width={40} height={20} className="h-6 w-auto"/>
-                  <Image src="/images/paypal.svg" alt="PayPal" width={40} height={20} className="h-6 w-auto"/>
-                  <Image src="/images/apple-pay.svg" alt="Apple Pay" width={40} height={20} className="h-6 w-auto"/>
+                  <Image
+                    src="/images/visa.svg"
+                    alt="Visa"
+                    width={40}
+                    height={20}
+                    className="h-6 w-auto"
+                  />
+                  <Image
+                    src="/images/paypal.svg"
+                    alt="PayPal"
+                    width={40}
+                    height={20}
+                    className="h-6 w-auto"
+                  />
+                  <Image
+                    src="/images/apple-pay.svg"
+                    alt="Apple Pay"
+                    width={40}
+                    height={20}
+                    className="h-6 w-auto"
+                  />
                 </div>
               </div>
             </div>
@@ -155,7 +232,9 @@ export default function ProgramDetails() {
 
           {/* What's Included Section - From 2nd reference image */}
           <div className="max-w-4xl mx-auto mt-20 mb-16">
-            <h3 className="text-2xl font-bold text-center mb-8">What's Included</h3>
+            <h3 className="text-2xl font-bold text-center mb-8">
+              What's Included
+            </h3>
 
             <div className="bg-zinc-800 rounded-lg p-6">
               <div className="grid md:grid-cols-2 gap-4">
@@ -226,5 +305,5 @@ export default function ProgramDetails() {
         </div>
       </div>
     </section>
-  )
+  );
 }

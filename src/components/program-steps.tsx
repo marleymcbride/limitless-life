@@ -4,12 +4,12 @@ export default function ProgramSteps() {
   const steps = [
     "Identify the tasks that get results",
     "Focus all your energy on those tasks",
-    "Ignore everything else."
+    "Ignore everything else.",
   ];
 
   const paragraphs = [
     "The secret to cutting down your workload while continuing to grow your channel is simple.",
-    "The best way to do that is to spend years of trial and error figuring out what works and what doesn't."
+    "The best way to do that is to spend years of trial and error figuring out what works and what doesn't.",
   ];
 
   return (
@@ -22,7 +22,9 @@ export default function ProgramSteps() {
           <p className="mb-6">{paragraphs[0]}</p>
           <ol className="list-decimal ml-6 space-y-2">
             {steps.map((step, index) => (
-              <li key={index} className="mb-2">{step}</li>
+              <li key={index} className="mb-2">
+                {step}
+              </li>
             ))}
           </ol>
           <p className="mt-6">{paragraphs[1]}</p>

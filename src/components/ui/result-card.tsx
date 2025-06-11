@@ -15,7 +15,7 @@ export const ResultCard = ({
   name,
   title,
   description,
-  imageSrc
+  imageSrc,
 }: ResultCardProps) => (
   <div className="bg-white rounded-lg overflow-hidden shadow-lg transform hover:scale-[1.02] transition-all">
     <div className="relative h-[200px]">

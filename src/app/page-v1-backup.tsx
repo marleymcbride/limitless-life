@@ -1,32 +1,39 @@
-import Image from "next/image"
-import EnhancedVideoPlayer from "../components/enhanced-video-player"
-import FeaturedTestimonial from "../components/featured-testimonial"
-import PainPoints from "../components/pain-points"
-import PersonalStorySection from "../components/personal-story-section"
-import DiscoverySection from "../components/discovery-section"
-import RunningEmptySection from "../components/running-empty-section"
-import SuccessStoriesSection from "../components/success-stories-section"
-import SolutionSection from "../components/solution-section"
-import ProgramComponentsSection from "../components/program-components-section"
-import ResultsSection from "../components/results-section"
-import ComparisonTable from "../components/comparison-table"
-import CoachSection from "../components/coach-section"
-import ProgramDetails from "../components/program-details"
-import WhatsIncluded from "../components/whats-included"
-import FaqSection from "../components/faq-section"
-import FinalCta from "../components/final-cta"
-import FooterSection from "../components/footer-section"
-import StickyCTA from "../components/sticky-cta"
-import NattySweetSpotSection from "../components/natty-sweet-spot-section"
-import TestimonialGrid from "../components/testimonial-grid"
-import { Button } from "@/components/ui/button"
-import { bgClasses, blackRedGradientOverlay, redAccentBottom, vignetteEffect } from "../lib/utils"
+import Image from "next/image";
+import EnhancedVideoPlayer from "../components/enhanced-video-player";
+import FeaturedTestimonial from "../components/featured-testimonial";
+import PainPoints from "../components/pain-points";
+import PersonalStorySection from "../components/personal-story-section";
+import DiscoverySection from "../components/discovery-section";
+import RunningEmptySection from "../components/running-empty-section";
+import SuccessStoriesSection from "../components/success-stories-section";
+import SolutionSection from "../components/solution-section";
+import ProgramComponentsSection from "../components/program-components-section";
+import ResultsSection from "../components/results-section";
+import ComparisonTable from "../components/comparison-table";
+import CoachSection from "../components/coach-section";
+import ProgramDetails from "../components/program-details";
+import WhatsIncluded from "../components/whats-included";
+import FaqSection from "../components/faq-section";
+import FinalCta from "../components/final-cta";
+import FooterSection from "../components/footer-section";
+import StickyCTA from "../components/sticky-cta";
+import NattySweetSpotSection from "../components/natty-sweet-spot-section";
+import TestimonialGrid from "../components/testimonial-grid";
+import { Button } from "@/components/ui/button";
+import {
+  bgClasses,
+  blackRedGradientOverlay,
+  redAccentBottom,
+  vignetteEffect,
+} from "../lib/utils";
 
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center">
       {/* 1. Hero Section (black with red gradient) */}
-      <section className={`py-6 md:py-8 px-4 min-h-[75vh] flex flex-col relative w-full overflow-hidden ${bgClasses.blackRedGradient}`}>
+      <section
+        className={`py-6 md:py-8 px-4 min-h-[75vh] flex flex-col relative w-full overflow-hidden ${bgClasses.blackRedGradient}`}
+      >
         {blackRedGradientOverlay}
         {redAccentBottom}
         <div className="absolute top-0 left-0 w-full h-[25vh] bg-gradient-to-b from-black to-transparent"></div>
@@ -62,12 +69,14 @@ export default function Home() {
             </div>
             {/* Mobile Headlines (visible only on mobile) */}
             <h1 className="block sm:hidden text-4xl font-bold text-white text-center mb-0 mt-0 max-w-[87%] mx-auto px-4">
-              You don&apos;t need more coffee. You need a system that actually fixes your broken body
+              You don&apos;t need more coffee. You need a system that actually
+              fixes your broken body
             </h1>
 
             {/* Desktop Headlines (hidden on mobile) */}
             <h1 className="hidden sm:block text-4xl sm:text-4xl md:text-3xl lg:text-4xl font-bold text-white text-center mb-0 mt-0 sm:mt-0 max-w-[87%] mx-auto px-4">
-              You don&apos;t need another black Americano or BS supplement. You need a real system that quite simply, stops you feeling like shit.
+              You don&apos;t need another black Americano or BS supplement. You
+              need a real system that quite simply, stops you feeling like shit.
             </h1>
 
             {/* Spacer div to push subtitle down */}
@@ -75,23 +84,32 @@ export default function Home() {
 
             {/* Mobile Subheadline (visible only on mobile) */}
             <p className="block sm:hidden text-xl text-gray-300 text-center max-w-3xl mx-auto mb-0 px-1">
-              The proven system for high performers to build a top 1% physique, get their sex drive back, and quite simply stop feeling like shit... without extreme diets or training more than 2 days a week
+              The proven system for high performers to build a top 1% physique,
+              get their sex drive back, and quite simply stop feeling like
+              shit... without extreme diets or training more than 2 days a week
             </p>
 
             {/* Desktop Subheadline (hidden on mobile) */}
             <p className="hidden sm:block text-xl sm:text-xl md:text-lg text-gray-300 text-center max-w-3xl mx-auto mb-0 px-1">
-              Learn the proven system high performers are using to build a top 1% physique, get their sex drive back and wake up feeling electric every day — without eating less, taking a bunch of crazy pills or spending more than 2 days a week in the gym:
+              Learn the proven system high performers are using to build a top
+              1% physique, get their sex drive back and wake up feeling electric
+              every day — without eating less, taking a bunch of crazy pills or
+              spending more than 2 days a week in the gym:
             </p>
           </div>
 
           {/* Video container positioned in the bottom portion of the screen */}
           <div className="mt-1 mb-0 mx-auto w-full max-w-2xl">
-            <div
-              className="relative w-full sm:w-auto sm:mx-auto max-w-[50%] mx-auto max-w-500px"
-            >
+            <div className="relative w-full sm:w-auto sm:mx-auto max-w-[50%] mx-auto max-w-500px">
               {/* Red play button overlay for mobile */}
               <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-[#940909] flex items-center justify-center md:hidden z-30">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="white">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="white"
+                >
                   <polygon points="5 3 19 12 5 21 5 3"></polygon>
                 </svg>
               </div>
@@ -152,7 +170,10 @@ export default function Home() {
       <CoachSection />
 
       {/* More Info anchor point for Tell Me More button */}
-      <div id="more-info" className="w-full py-12 bg-black relative overflow-hidden">
+      <div
+        id="more-info"
+        className="w-full py-12 bg-black relative overflow-hidden"
+      >
         <div className="absolute inset-0 bg-gradient-to-br from-black to-zinc-900"></div>
         {vignetteEffect}
 
@@ -162,7 +183,10 @@ export default function Home() {
           </h2>
           <div className="flex justify-center">
             <a href="#program-details">
-              <Button size="lg" className="bg-[#940909] hover:bg-[#7e0808] text-white font-bold py-4 px-8 rounded-md text-lg shadow-lg transition duration-300">
+              <Button
+                size="lg"
+                className="bg-[#940909] hover:bg-[#7e0808] text-white font-bold py-4 px-8 rounded-md text-lg shadow-lg transition duration-300"
+              >
                 JOIN THE MENTORSHIP
               </Button>
             </a>
@@ -190,5 +214,5 @@ export default function Home() {
       {/* Sticky CTA that appears on significant scroll */}
       <StickyCTA />
     </main>
-  )
+  );
 }
