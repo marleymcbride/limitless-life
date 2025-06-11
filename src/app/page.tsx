@@ -1,6 +1,7 @@
 import Image from "next/image";
 import EnhancedVideoPlayer from "../components/enhanced-video-player";
-import FeaturedTestimonial from "../components/featured-testimonial";
+import ImmediateProofPainSection from "../components/immediate-proof-pain-section";
+import DoesThisSoundLikeYou from "../components/does-this-sound-like-you";
 import PersonalStorySection from "../components/personal-story-section";
 import SolutionSection from "../components/solution-section";
 import RunningEmptySection from "../components/running-empty-section";
@@ -111,19 +112,22 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 2. Immediate Proof + Pain Agitation (White background) */}
-      <FeaturedTestimonial />
+      {/* 2. IMMEDIATE PROOF + PAIN AGITATION - Authentic MARLEY Voice (White background) */}
+      <ImmediateProofPainSection />
 
-      {/* 3. Personal Story + Discovery (White background) */}
+      {/* 3. "Does This Sound Like You?" - Problem Agitation (Black/Red - V1 Professional Style) */}
+      <DoesThisSoundLikeYou />
+
+      {/* 4. Personal Story + Discovery (White background - ELEVATED to V1 Quality) */}
       <PersonalStorySection />
 
-      {/* 4. Solution + Proof Density (Black with red accents) */}
+      {/* 5. Solution + Proof Density (Black with red accents) */}
       <SolutionSection />
 
-      {/* 5. Enemy + USP + More Proof (Black with red accents) */}
+      {/* 6. Enemy + USP + More Proof (Black with red accents) */}
       <RunningEmptySection />
 
-      {/* 6. Final Offer + Urgency + Guarantee (Black with red accents) */}
+      {/* 7. Final Offer + Urgency + Guarantee (Black with red accents) */}
       <FinalCta />
 
       {/* Minimal Footer (Black) */}
