@@ -1,17 +1,153 @@
-import Image from "next/image"
-import { bgClasses } from "@/lib/utils"
-import MicroTestimonial from "./ui/micro-testimonial"
+import Image from "next/image";
+import { bgClasses } from "@/lib/utils";
+import MicroTestimonial from "./ui/micro-testimonial";
 
 export default function PersonalStorySection() {
   return (
     <section className={`w-full ${bgClasses.white} py-20 text-black relative`}>
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-10">
-          <span className="inline-block bg-[#940909] text-white text-sm font-bold uppercase tracking-wider px-3 py-1 rounded-sm mb-4">MY JOURNEY</span>
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">From Burnout to Breakthrough</h2>
+          <span className="inline-block bg-[#940909] text-white text-sm font-bold uppercase tracking-wider px-3 py-1 rounded-sm mb-4">
+            MY DISCOVERY
+          </span>
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+            Fixing My Health Was The Most Frustrating Thing I Ever Did
+          </h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            How I went from caffeine-dependent, alcohol-reliant, and 35 pounds overweight to creating the Limitless Protocol
+            I was that guy who thought he had it figured out. Gym 5 times a
+            week, eating "clean," taking supplements. But I was living on 6
+            coffees a day and wine every night.
           </p>
+        </div>
+
+        <div className="max-w-6xl mx-auto mb-12">
+          <div className="bg-gray-50 p-8 rounded-lg border border-gray-200 shadow-sm">
+            <h3 className="text-xl font-bold mb-6 text-center text-gray-900">
+              The Brutal Wake-Up Call
+            </h3>
+            <p className="text-lg text-gray-700 mb-4 text-center max-w-4xl mx-auto">
+              35 pounds overweight, testosterone in the gutter, falling asleep
+              at my desk by 2 PM. My doctor showed me my bloodwork:{" "}
+              <span className="font-bold text-[#940909]">
+                "You're heading for a heart attack before 40 if you don't
+                change."
+              </span>
+            </p>
+            <p className="text-lg text-gray-700 text-center max-w-4xl mx-auto">
+              I'd tried everything — keto, intermittent fasting, more cardio,
+              less cardio, every supplement stack you can imagine. Nothing
+              worked.
+            </p>
+          </div>
+        </div>
+
+        <div className="max-w-6xl mx-auto mb-12">
+          <div className="bg-[#940909]/5 p-8 rounded-lg border border-[#940909]/20">
+            <h3 className="text-2xl font-bold mb-6 text-center text-gray-900">
+              Then I Discovered Something That Changed Everything...
+            </h3>
+            <div className="text-center mb-6">
+              <h4 className="text-xl font-bold text-[#940909] mb-3">
+                The Drag vs Glide Energy Discovery
+              </h4>
+              <p className="text-lg text-gray-700 max-w-4xl mx-auto">
+                I realized I was living on what I now call{" "}
+                <span className="font-bold">"Drag Energy"</span> — forcing my
+                body through each day with stimulants and depressants. What I
+                needed was <span className="font-bold">"Glide Energy"</span> —
+                natural, sustained power that flows effortlessly.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+              <div className="text-center">
+                <h5 className="text-lg font-bold text-red-600 mb-3">
+                  ❌ DRAG ENERGY (My Old Life)
+                </h5>
+                <ul className="text-left text-gray-700 space-y-2">
+                  <li>• 6 coffees daily just to function</li>
+                  <li>• Wine every night to "relax"</li>
+                  <li>• Constant energy crashes</li>
+                  <li>• Anxiety and mood swings</li>
+                  <li>• Fighting my body every day</li>
+                </ul>
+              </div>
+              <div className="text-center">
+                <h5 className="text-lg font-bold text-green-600 mb-3">
+                  ✅ GLIDE ENERGY (New Reality)
+                </h5>
+                <ul className="text-left text-gray-700 space-y-2">
+                  <li>• 365+ days caffeine-free</li>
+                  <li>• 1000+ days alcohol-free</li>
+                  <li>• Steady energy all day</li>
+                  <li>• Natural relaxation and sleep</li>
+                  <li>• Body working WITH me</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="max-w-6xl mx-auto mb-12">
+          <div className="text-center mb-8">
+            <h3 className="text-2xl font-bold mb-6 text-gray-900">
+              The Transformation Metrics
+            </h3>
+            <p className="text-lg text-gray-600 mb-8">
+              Here's the exact proof of what happened when I switched from Drag
+              to Glide Energy:
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+            <div className="bg-white p-6 rounded-lg border border-gray-200 text-center shadow-sm">
+              <p className="text-3xl font-bold text-[#940909] mb-2">35 lbs</p>
+              <p className="text-sm text-gray-600 mb-1">Fat Lost</p>
+              <p className="text-xs text-gray-500">212→177 lbs</p>
+            </div>
+            <div className="bg-white p-6 rounded-lg border border-gray-200 text-center shadow-sm">
+              <p className="text-3xl font-bold text-[#940909] mb-2">365+</p>
+              <p className="text-sm text-gray-600 mb-1">Days Caffeine-Free</p>
+              <p className="text-xs text-gray-500">Zero withdrawal</p>
+            </div>
+            <div className="bg-white p-6 rounded-lg border border-gray-200 text-center shadow-sm">
+              <p className="text-3xl font-bold text-[#940909] mb-2">1000+</p>
+              <p className="text-sm text-gray-600 mb-1">Days Alcohol-Free</p>
+              <p className="text-xs text-gray-500">Natural relaxation</p>
+            </div>
+            <div className="bg-white p-6 rounded-lg border border-gray-200 text-center shadow-sm">
+              <p className="text-3xl font-bold text-[#940909] mb-2">96%</p>
+              <p className="text-sm text-gray-600 mb-1">Better Sleep Score</p>
+              <p className="text-xs text-gray-500">Deep recovery</p>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="bg-red-50 p-6 rounded-lg border border-red-200">
+              <h4 className="text-lg font-bold text-red-800 mb-3">
+                BEFORE (Drag Energy)
+              </h4>
+              <div className="space-y-2 text-sm text-red-700">
+                <p>• Testosterone: 346 ng/dl (clinically low)</p>
+                <p>• Energy: 3/10 (constant crashes)</p>
+                <p>• Body Fat: ~22% (soft and weak)</p>
+                <p>• Sleep: 5/10 (restless, wired)</p>
+                <p>• Mood: Anxious, irritable daily</p>
+              </div>
+            </div>
+            <div className="bg-green-50 p-6 rounded-lg border border-green-200">
+              <h4 className="text-lg font-bold text-green-800 mb-3">
+                AFTER (Glide Energy)
+              </h4>
+              <div className="space-y-2 text-sm text-green-700">
+                <p>• Testosterone: 678 ng/dl (optimal range)</p>
+                <p>• Energy: 9/10 (steady all day)</p>
+                <p>• Body Fat: ~12% (lean and strong)</p>
+                <p>• Sleep: 9/10 (deep, restorative)</p>
+                <p>• Mood: Calm, focused, happy</p>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div className="flex flex-col items-center md:flex-row md:items-start md:gap-12 max-w-5xl mx-auto">
@@ -43,23 +179,34 @@ export default function PersonalStorySection() {
 
           <div className="md:w-2/3">
             <p className="mb-4 text-xl text-gray-800">
-              My life was a total trainwreck. 3-4 coffees every morning. Half bottle of wine at night just to wind down. Gained 24 pounds in 6 months. Brain fog constantly. This was my life for 7 years.
+              My life was a total trainwreck. 3-4 coffees every morning. Half
+              bottle of wine at night just to wind down. Gained 24 pounds in 6
+              months. Brain fog constantly. This was my life for 7 years.
             </p>
 
             <p className="mb-4 text-lg text-gray-700">
-              Working 70+ hours a week. Carrying extra 30 pounds - hating what I saw in mirror. Running on caffeine - willpower - desperation. Doctor told me heading for heart attack before 45 if didn't change.
+              Working 70+ hours a week. Carrying extra 30 pounds - hating what I
+              saw in mirror. Running on caffeine - willpower - desperation.
+              Doctor told me heading for heart attack before 45 if didn't
+              change.
             </p>
 
             <p className="mb-4 text-lg text-gray-700">
-              Tried every diet - workout program - productivity hack out there. Minimal results. Problem wasn't lack of effort - was approaching health as isolated pieces instead of complete system.
+              Tried every diet - workout program - productivity hack out there.
+              Minimal results. Problem wasn't lack of effort - was approaching
+              health as isolated pieces instead of complete system.
             </p>
 
             <p className="mb-4 text-lg text-gray-700">
-              Mornings were worst. Hitting snooze 5-6 times. Dragging myself out of bed feeling like death. First thought every day - need coffee now. Couldn't function without it. Felt pathetic - weak.
+              Mornings were worst. Hitting snooze 5-6 times. Dragging myself out
+              of bed feeling like death. First thought every day - need coffee
+              now. Couldn't function without it. Felt pathetic - weak.
             </p>
 
             <p className="mb-4 text-lg text-gray-700">
-              Evenings no better. So wired and anxious couldn't turn brain off. Pouring drinks just to relax. Sleeping pills when alcohol wasn't enough. Waking up feeling worse than before.
+              Evenings no better. So wired and anxious couldn't turn brain off.
+              Pouring drinks just to relax. Sleeping pills when alcohol wasn't
+              enough. Waking up feeling worse than before.
             </p>
 
             <div className="mt-6 p-4 bg-[#940909]/5 border-l-4 border-[#940909] rounded-r-lg">
@@ -98,5 +245,5 @@ export default function PersonalStorySection() {
         </div>
       </div>
     </section>
-  )
+  );
 }
