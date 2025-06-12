@@ -1,6 +1,6 @@
 import Image from "next/image";
 import EnhancedVideoPlayer from "../components/enhanced-video-player";
-import ImmediateProofPainSection from "../components/immediate-proof-pain-section";
+import ImmediateProofSection from "../components/immediate-proof-section";
 import DoesThisSoundLikeYou from "../components/does-this-sound-like-you";
 import PersonalStorySection from "../components/personal-story-section";
 import SolutionSection from "../components/solution-section";
@@ -32,8 +32,7 @@ export default function Home() {
           {/* Mobile view - headline and subheadline optimized for mobile */}
           <div className="flex-grow flex flex-col justify-start sm:justify-center pt-5 sm:pt-0 sm:mt-6 md:mt-0">
             {/* Pill Logo */}
-            <div className="hidden sm:flex justify-center mb-1 relative">
-              {/* Base grey version */}
+            {/*<div className="hidden sm:flex justify-center mb-1 relative">
               <div className="w-auto">
                 <Image
                   src="/images/THE-LIMITLESS-PILL-(ALL GREY)-FINAL.png"
@@ -44,8 +43,7 @@ export default function Home() {
                   className="h-auto"
                 />
               </div>
-              {/* Overlaid colored pill with transparency */}
-              <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-auto">
+/              <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-auto">
                 <Image
                   src="/images/THE-LIMITLESS-PILL-FINAL.png"
                   alt=""
@@ -55,12 +53,25 @@ export default function Home() {
                   className="h-auto opacity-100"
                 />
               </div>
-            </div>
+            </div>*/}
             {/* Mobile Headlines (visible only on mobile) */}
-            <h1 className="block sm:hidden text-4xl font-bold text-white text-center mb-0 mt-0 max-w-[87%] mx-auto px-4">
+            <h1 className="block sm:hidden text-6xl font-bold text-white text-center mb-4 mt-0 w-full mx-auto px-2 leading-tight">
               You don&apos;t need more coffee. You need a system that actually
-              fixes your broken body
+              fixes your broken body.
             </h1>
+
+            {/* Mobile Subheadline - RIGHT AFTER HEADLINE (visible only on mobile) */}
+            <p
+              className="block sm:hidden text-gray-300 text-center mx-auto mb-6 px-2 font-normal"
+              style={{
+                fontSize: "1.75rem !important",
+                lineHeight: "1.3 !important",
+              }}
+            >
+              The proven system for high performers to build a top 1% physique,
+              get their sex drive back, and quite simply stop feeling like
+              shit... without extreme diets or training more than 2 days a week
+            </p>
 
             {/* Desktop Headlines (hidden on mobile) */}
             <h1 className="hidden sm:block text-4xl sm:text-4xl md:text-3xl lg:text-4xl font-bold text-white text-center mb-0 mt-0 sm:mt-0 max-w-[87%] mx-auto px-4">
@@ -70,13 +81,6 @@ export default function Home() {
 
             {/* Spacer div to push subtitle down */}
             <div className="h-6"></div>
-
-            {/* Mobile Subheadline (visible only on mobile) */}
-            <p className="block sm:hidden text-xl text-gray-300 text-center max-w-3xl mx-auto mb-0 px-1">
-              The proven system for high performers to build a top 1% physique,
-              get their sex drive back, and quite simply stop feeling like
-              shit... without extreme diets or training more than 2 days a week
-            </p>
 
             {/* Desktop Subheadline (hidden on mobile) */}
             <p className="hidden sm:block text-xl sm:text-xl md:text-lg text-gray-300 text-center max-w-3xl mx-auto mb-0 px-1">
@@ -110,10 +114,20 @@ export default function Home() {
             </div>
           </div>
         </div>
+
+        {/* Mobile Subheadline - OUTSIDE CONTAINER (visible only on mobile) */}
+        <div className="block sm:hidden w-full relative z-20">
+          <p
+            className="text-red-500 text-center font-bold w-full"
+            style={{ fontSize: "4rem", lineHeight: "1.1", padding: "0 1rem" }}
+          >
+            THIS IS THE MOBILE SUBHEADLINE TEST - IT SHOULD BE HUGE AND RED
+          </p>
+        </div>
       </section>
 
-      {/* 2. IMMEDIATE PROOF + PAIN AGITATION - Authentic MARLEY Voice (White background) */}
-      <ImmediateProofPainSection />
+      {/* 2. IMMEDIATE PROOF - Clean Testimonial Only (White background) */}
+      <ImmediateProofSection />
 
       {/* 3. "Does This Sound Like You?" - Problem Agitation (Black/Red - V1 Professional Style) */}
       <DoesThisSoundLikeYou />
