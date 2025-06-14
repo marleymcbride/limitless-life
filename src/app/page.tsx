@@ -62,7 +62,7 @@ export default function Home() {
 
             {/* Mobile Subheadline - RIGHT AFTER HEADLINE (visible only on mobile) */}
             <p
-              className="block sm:hidden text-gray-300 text-center mx-auto mb-6 px-2 font-normal"
+              className="block sm:hidden text-gray-300 text-center mx-auto mb-6 px-2 font-light"
               style={{
                 fontSize: "1.75rem !important",
                 lineHeight: "1.3 !important",
@@ -73,8 +73,11 @@ export default function Home() {
               shit... without extreme diets or training more than 2 days a week
             </p>
 
+            {/* Spacer div to push headline down */}
+            <div className="h-10"></div>
+
             {/* Desktop Headlines (hidden on mobile) */}
-            <h1 className="hidden sm:block text-4xl sm:text-4xl md:text-3xl lg:text-4xl font-bold text-white text-center mb-0 mt-0 sm:mt-0 max-w-[87%] mx-auto px-4">
+            <h1 className="hidden sm:block text-4xl line-height:2 sm:text-4xl md:text-3xl  lg:text-4xl font-bold text-white text-center mb-0 mt-0 sm:mt-0 max-w-[87%] mx-auto px-4">
               You don&apos;t need another black Americano or BS supplement. You
               need a real system that quite simply, stops you feeling like shit.
             </h1>
@@ -83,11 +86,11 @@ export default function Home() {
             <div className="h-6"></div>
 
             {/* Desktop Subheadline (hidden on mobile) */}
-            <p className="hidden sm:block text-xl sm:text-xl md:text-lg text-gray-300 text-center max-w-3xl mx-auto mb-0 px-1">
-              Learn the proven system high performers are using to build a top
-              1% physique, get their sex drive back and wake up feeling electric
-              every day — without eating less, taking a bunch of crazy pills or
-              spending more than 2 days a week in the gym:
+            <p className="hidden sm:block text-xl sm:text-xl md:text-lg lg:text-2xl text-gray-300 text-center max-w-3xl mx-auto mb-0 px-1">
+              Learn the new system high performers are using to build a top 1%
+              physique, get their sex drive back and wake up feeling electric
+              every day — without starving, taking 100 pills or spending more
+              than 2 days a week in the gym:
             </p>
           </div>
 
@@ -113,16 +116,6 @@ export default function Home() {
               <EnhancedVideoPlayer />
             </div>
           </div>
-        </div>
-
-        {/* Mobile Subheadline - OUTSIDE CONTAINER (visible only on mobile) */}
-        <div className="block sm:hidden w-full relative z-20">
-          <p
-            className="text-red-500 text-center font-bold w-full"
-            style={{ fontSize: "4rem", lineHeight: "1.1", padding: "0 1rem" }}
-          >
-            THIS IS THE MOBILE SUBHEADLINE TEST - IT SHOULD BE HUGE AND RED
-          </p>
         </div>
       </section>
 

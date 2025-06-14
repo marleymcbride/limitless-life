@@ -34,11 +34,48 @@
     /* For dark sections */
     --dark-bg: 0 0% 3.9%;
     --dark-text: 0 0% 98%;
+
+    /* Anti-stack color system */
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
   }
 
   body {
     @apply bg-white text-black;
     border-color: hsl(var(--border));
+    font-family: "Inter", sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+
+  /* Input styling for dark forms */
+  input::placeholder {
+    @apply text-white opacity-100;
+  }
+
+  /* Chrome autofill text color */
+  input:-webkit-autofill,
+  input:-webkit-autofill::placeholder {
+    -webkit-text-fill-color: #fff !important;
+    box-shadow: 0 0 0px 1000px #27272a inset !important; /* match your bg */
+    @apply opacity-100;
+  }
+
+  h1 {
+    font-family: "Inter", sans-serif;
+    letter-spacing: -0.025em;
+    line-height: 1.1;
+  }
+
+  /* Remove default margins that might cause gaps */
+  body, section, div, p, h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+  }
+
+  section {
+    display: block;
   }
 }
 
@@ -49,6 +86,22 @@
   }
   .max-w-500px {
     max-width: 500px;
+  }
+}
+
+@layer components {
+  .heading-1 {
+    line-height: 1.1;
+  }
+
+  .slanted-divider {
+    clip-path: polygon(0 100%, 100% 0, 100% 100%, 0% 100%);
+  }
+
+  /* Ensure sections connect without gaps */
+  main > section {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
   }
 }
 

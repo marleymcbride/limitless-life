@@ -17,6 +17,27 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/waitlist',
+        permanent: false,
+      },
+      // Redirect all limitless-life.co* domains to waitlist
+      {
+        source: '/:path*',
+        has: [
+          {
+            type: 'host',
+            value: '(.*\\.)?limitless-life\\.co',
+          },
+        ],
+        destination: '/waitlist',
+        permanent: false,
+      },
+    ];
+  },
   async headers() {
     return [
       {
