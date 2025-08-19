@@ -30,7 +30,7 @@ export default function ImmediateProofSection() {
 
                 <div className="flex flex-wrap gap-2">
                   <Badge className="bg-green-100 text-green-800">
-                    35lbs Pure Fat Loss
+                    Complete Body Transformation
                   </Badge>
                   <Badge className="bg-green-100 text-green-800">
                     450+ Days Sober
@@ -39,7 +39,7 @@ export default function ImmediateProofSection() {
                     Career Promotion
                   </Badge>
                   <Badge className="bg-green-100 text-green-800">
-                    Testosterone Fixed
+                    Testosterone Optimized
                   </Badge>
                 </div>
               </div>
