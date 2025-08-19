@@ -18,7 +18,7 @@ import {
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center">
+    <main className="flex flex-col items-center min-h-screen">
       {/* 1. Hero Section (UNTOUCHED - PRESERVED EXACTLY) */}
       <section
         className={`py-6 md:py-8 px-4 min-h-[75vh] flex flex-col relative w-full overflow-hidden ${bgClasses.blackRedGradient}`}
@@ -28,11 +28,11 @@ export default function Home() {
         <div className="absolute top-0 left-0 w-full h-[25vh] bg-gradient-to-b from-black to-transparent"></div>
         {vignetteEffect}
 
-        <div className="container mx-auto flex flex-col relative z-10 h-full">
+        <div className="container flex relative z-10 flex-col mx-auto h-full">
           {/* Mobile view - headline and subheadline optimized for mobile */}
-          <div className="flex-grow flex flex-col justify-start sm:justify-center pt-5 sm:pt-0 sm:mt-6 md:mt-0">
+          <div className="flex flex-col flex-grow justify-start pt-5 sm:justify-center sm:pt-0 sm:mt-6 md:mt-0">
             {/* Pill Logo */}
-            {/*<div className="hidden sm:flex justify-center mb-1 relative">
+            {/*<div className="hidden relative justify-center mb-1 sm:flex">
               <div className="w-auto">
                 <Image
                   src="/images/THE-LIMITLESS-PILL-(ALL GREY)-FINAL.png"
@@ -43,7 +43,7 @@ export default function Home() {
                   className="h-auto"
                 />
               </div>
-/              <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-auto">
+/              <div className="absolute top-0 left-1/2 w-auto transform -translate-x-1/2">
                 <Image
                   src="/images/THE-LIMITLESS-PILL-FINAL.png"
                   alt=""
@@ -55,14 +55,14 @@ export default function Home() {
               </div>
             </div>*/}
             {/* Mobile Headlines (visible only on mobile) */}
-            <h1 className="block sm:hidden text-6xl font-bold text-white text-center mb-4 mt-0 w-full mx-auto px-2 leading-tight">
+            <h1 className="block px-2 mx-auto mt-0 mb-4 w-full text-6xl font-bold leading-tight text-center text-white sm:hidden">
               You don&apos;t need more coffee. You need a system that actually
               fixes your broken body.
             </h1>
 
             {/* Mobile Subheadline - RIGHT AFTER HEADLINE (visible only on mobile) */}
             <p
-              className="block sm:hidden text-gray-300 text-center mx-auto mb-6 px-2 font-light"
+              className="block px-2 mx-auto mb-6 font-light text-center text-gray-300 sm:hidden"
               style={{
                 fontSize: "1.75rem !important",
                 lineHeight: "1.3 !important",
@@ -86,7 +86,7 @@ export default function Home() {
             <div className="h-6"></div>
 
             {/* Desktop Subheadline (hidden on mobile) */}
-            <p className="hidden sm:block text-xl sm:text-xl md:text-lg lg:text-2xl text-gray-300 text-center max-w-3xl mx-auto mb-0 px-1">
+            <p className="hidden px-1 mx-auto mb-0 max-w-3xl text-xl text-center text-gray-300 sm:block sm:text-xl md:text-lg lg:text-2xl">
               Learn the new system high performers are using to build a top 1%
               physique, get their sex drive back and wake up feeling electric
               every day — without starving, taking 100 pills or spending more
@@ -95,7 +95,7 @@ export default function Home() {
           </div>
 
           {/* Video container positioned in the bottom portion of the screen */}
-          <div className="mt-1 mb-0 mx-auto w-full max-w-2xl">
+          <div className="mx-auto mt-1 mb-0 w-full max-w-2xl">
             <div className="relative w-full sm:w-auto sm:mx-auto max-w-[50%] mx-auto max-w-500px">
               {/* Red play button overlay for mobile */}
               <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-[#940909] flex items-center justify-center md:hidden z-30">

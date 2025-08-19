@@ -82,7 +82,7 @@ export default function BenefitsSection() {
               <li className="flex items-start">
                 <Check className="mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0" />
                 <span className="text-sm">
-                  Preserves muscle while accelerating fat loss
+                  Preserves muscle while optimizing body composition
                 </span>
               </li>
               <li className="flex items-start">

@@ -1,277 +1,170 @@
-// N8N Webhook Client - Bulletproof dual-endpoint integration
-// Built for enterprise-level reliability with zero tolerance for failures
+// N8N Webhook Client - Limitless Protocol Premium Waitlist Integration
+// Connects directly to the live N8N webhook for Systeme.io contact management
 
-export interface WebhookPayload {
+interface WebhookPayload {
   email: string;
   firstName: string;
-  source: string;
 }
 
-export interface WebhookResponse {
+interface WebhookResponse {
   success: boolean;
-  message: string;
+  message?: string;
+  error?: string;
   email?: string;
   timestamp?: string;
-  error?: string;
 }
-
-export interface WebhookError extends Error {
-  webhookError?: boolean;
-  errorType?: string;
-  endpoint?: string;
-}
-
-// N8N Webhook endpoints from environment variables
-const PRIMARY_ENDPOINT = process.env.NEXT_PUBLIC_N8N_PRIMARY_WEBHOOK;
-const FALLBACK_ENDPOINT = process.env.NEXT_PUBLIC_N8N_FALLBACK_WEBHOOK;
 
 /**
- * Submit to N8N webhook with dual-endpoint fallback system
- * Enterprise-grade reliability with professional error handling
+ * Submit to N8N webhook for Limitless Protocol waitlist
+ * Automatically creates contact in Systeme.io with proper tagging
  */
 export async function submitToN8nWebhook(
   email: string,
-  firstName: string = "",
-  source: string
-): Promise<WebhookResponse> {
-  // Debug environment variables
-  console.log("🔍 Environment Debug:", {
-    PRIMARY_ENDPOINT,
-    FALLBACK_ENDPOINT,
-    env_PRIMARY: process.env.NEXT_PUBLIC_N8N_PRIMARY_WEBHOOK,
-    env_FALLBACK: process.env.NEXT_PUBLIC_N8N_FALLBACK_WEBHOOK,
-  });
+  firstName: string,
+  source: string = "limitless-protocol-premium-waitlist" // Keep for compatibility, not sent to webhook
+): Promise<void> {
+  // Live N8N webhook endpoint (confirmed working)
+  const webhookUrl =
+    "https://n8n.marleymcbride.co/webhook/programme-waitlist-leads";
 
   // Validate inputs
-  if (!email || !source) {
-    throw new Error("Email and source are required");
+  if (!email?.trim()) {
+    throw new Error("Email address is required");
   }
 
-  // Validate email format
+  if (!firstName?.trim()) {
+    throw new Error("First name is required");
+  }
+
+  // Email format validation
   const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
-  if (!emailRegex.test(email)) {
+  if (!emailRegex.test(email.trim())) {
     throw new Error("Please enter a valid email address");
   }
 
-  // Validate environment variables with detailed error
-  if (!PRIMARY_ENDPOINT || !FALLBACK_ENDPOINT) {
-    const errorMsg = `N8N webhook endpoints not configured. PRIMARY: ${
-      PRIMARY_ENDPOINT || "undefined"
-    }, FALLBACK: ${FALLBACK_ENDPOINT || "undefined"}`;
-    console.error("❌ Environment Error:", errorMsg);
-    throw new Error(errorMsg);
-  }
-
+  // Prepare payload (only send fields N8N expects)
   const payload: WebhookPayload = {
-    email,
-    firstName,
-    source,
+    email: email.trim(),
+    firstName: firstName.trim(),
+    // Note: source parameter is kept for compatibility but not sent to webhook
   };
 
-  // Try primary endpoint first
   try {
-    console.log("🎯 Trying PRIMARY endpoint...");
-    const response = await submitToN8nWebhookDirect(PRIMARY_ENDPOINT, payload);
-    console.log("🎉 PRIMARY endpoint SUCCESS:", response);
-    return response;
-  } catch (primaryError) {
-    console.warn("❌ PRIMARY endpoint failed:", primaryError);
-
-    // Try fallback endpoint
-    try {
-      console.log("🎯 Trying FALLBACK endpoint...");
-      const response = await submitToN8nWebhookDirect(
-        FALLBACK_ENDPOINT,
-        payload
-      );
-      console.log("🎉 FALLBACK endpoint SUCCESS:", response);
-      return response;
-    } catch (fallbackError) {
-      console.error("❌ FALLBACK endpoint also failed:", fallbackError);
-      console.error("❌ BOTH ENDPOINTS FAILED - Summary:", {
-        primary: {
-          endpoint: PRIMARY_ENDPOINT,
-          error:
-            primaryError instanceof Error
-              ? primaryError.message
-              : String(primaryError),
-        },
-        fallback: {
-          endpoint: FALLBACK_ENDPOINT,
-          error:
-            fallbackError instanceof Error
-              ? fallbackError.message
-              : String(fallbackError),
-        },
-      });
-
-      // Create comprehensive error for user
-      const webhookError = new Error(
-        "Service temporarily unavailable. Please try again in a moment."
-      ) as WebhookError;
-      webhookError.webhookError = true;
-      webhookError.errorType = "ALL_ENDPOINTS_FAILED";
-      throw webhookError;
-    }
-  }
-}
-
-/**
- * Direct submission to a specific N8N webhook endpoint
- * Handles response parsing and error mapping
- */
-async function submitToN8nWebhookDirect(
-  endpoint: string,
-  payload: WebhookPayload
-): Promise<WebhookResponse> {
-  console.log("🔄 Submitting to N8N webhook:", endpoint, payload);
-
-  try {
-    const response = await fetch(endpoint, {
+    const response = await fetch(webhookUrl, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Accept: "application/json",
       },
       body: JSON.stringify(payload),
     });
 
-    console.log(
-      "📡 N8N response status:",
-      response.status,
-      response.statusText
-    );
-    console.log(
-      "📡 N8N response headers:",
-      Object.fromEntries(response.headers.entries())
-    );
-
-    // Handle non-200 responses
+    // Handle HTTP error responses
     if (!response.ok) {
-      let errorMessage = `HTTP ${response.status}: ${response.statusText}`;
+      let errorMessage: string;
 
-      // Try to get error details from response
-      try {
-        const errorData = await response.text();
-        console.log("❌ N8N error response body:", errorData);
-
-        // Try to parse as JSON first
-        try {
-          const errorJson = JSON.parse(errorData);
-          console.log("❌ N8N error JSON:", errorJson);
-          if (errorJson.message) {
-            errorMessage = errorJson.message;
-          } else if (errorJson.error) {
-            errorMessage = errorJson.error;
-          }
-        } catch (jsonError) {
-          console.log("❌ Error response not JSON, using text:", errorData);
-          // If not JSON, use the text response
-          if (errorData.length > 0 && errorData.length < 200) {
-            errorMessage = errorData;
-          }
-        }
-      } catch (textError) {
-        // Fallback to status text if we can't read response
-        console.log("❌ Could not read error response:", textError);
+      switch (response.status) {
+        case 400:
+          errorMessage = "Please check your email and name are correct";
+          break;
+        case 503:
+          errorMessage =
+            "Service temporarily unavailable. Please try again in a moment.";
+          break;
+        case 429:
+          errorMessage =
+            "Too many requests. Please wait a moment and try again.";
+          break;
+        case 500:
+        case 502:
+        case 504:
+          errorMessage = "Server error. Please try again in a moment.";
+          break;
+        default:
+          errorMessage =
+            "Unable to join waitlist. Please try again or contact support.";
       }
 
-      const detailedError = new Error(`${endpoint} failed: ${errorMessage}`);
-      console.log("❌ Throwing detailed error:", detailedError.message);
-      throw detailedError;
+      throw new Error(errorMessage);
     }
 
-    // Parse successful response
-    let result: WebhookResponse;
+    // Parse response if available
+    let result: WebhookResponse | null = null;
     try {
       const responseText = await response.text();
-      console.log("✅ N8N success response text:", responseText);
-      result = JSON.parse(responseText);
-      console.log("✅ N8N success response parsed:", result);
-    } catch (jsonError) {
-      console.error("❌ Failed to parse N8N response as JSON:", jsonError);
-      throw new Error("Invalid response format from webhook");
-    }
-
-    // Check webhook success field (N8N specific)
-    if (result.success === false) {
-      let userMessage = "Something went wrong. Please try again.";
-
-      // Map N8N error responses to user-friendly messages
-      if (result.error === "Invalid Email") {
-        userMessage = "Please enter a valid email address";
-      } else if (result.error === "Invalid data format") {
-        userMessage = "Please provide valid email and firstName fields";
-      } else if (result.error === "API Error") {
-        userMessage = "Failed to add contact. Please try again later.";
-      } else if (result.message) {
-        userMessage = result.message;
+      if (responseText) {
+        result = JSON.parse(responseText);
       }
-
-      // Create structured error
-      const webhookError = new Error(userMessage) as WebhookError;
-      webhookError.webhookError = true;
-      webhookError.errorType = result.error;
-      webhookError.endpoint = endpoint;
-      throw webhookError;
+    } catch (parseError) {
+      // If JSON parsing fails but HTTP status was OK, assume success
+      console.warn(
+        "Could not parse webhook response as JSON, assuming success"
+      );
+      return;
     }
 
-    // Handle case where success field is missing (assume success if no error)
-    if (result.success === undefined) {
-      result.success = true;
-      result.message = result.message || "Successfully submitted";
+    // Handle application-level errors from N8N
+    if (result && result.success === false) {
+      const errorMessage =
+        result.message || result.error || "Failed to join waitlist";
+      throw new Error(errorMessage);
     }
 
-    console.log("🎉 N8N webhook submission successful:", result);
-    return result;
+    // Success - function completes without throwing
   } catch (error) {
-    console.error("❌ N8N webhook error:", error);
-
     // Handle network errors
-    if (
-      error instanceof Error &&
-      (error.message.includes("fetch") ||
-        error.message.includes("Failed to fetch"))
-    ) {
-      const networkError = new Error(
-        "Connection failed. Please check your internet and try again."
-      ) as WebhookError;
-      networkError.webhookError = true;
-      networkError.errorType = "NETWORK_ERROR";
-      networkError.endpoint = endpoint;
-      throw networkError;
-    }
-
-    // Re-throw webhook errors as-is
-    if ((error as WebhookError).webhookError) {
+    if (error instanceof Error) {
+      if (
+        error.message.includes("fetch") ||
+        error.message.includes("network") ||
+        error.message.includes("Failed to fetch")
+      ) {
+        throw new Error(
+          "Network error. Please check your connection and try again."
+        );
+      }
+      // Re-throw form validation and API errors as-is
       throw error;
     }
 
-    // Handle unexpected errors
-    const unexpectedError = new Error(
-      error instanceof Error
-        ? error.message
-        : "An unexpected error occurred. Please try again."
-    ) as WebhookError;
-    unexpectedError.webhookError = true;
-    unexpectedError.errorType = "UNEXPECTED_ERROR";
-    unexpectedError.endpoint = endpoint;
-    throw unexpectedError;
+    // Handle unexpected error types
+    throw new Error("An unexpected error occurred. Please try again.");
   }
 }
 
 /**
- * Utility to check if an error is a webhook error
+ * Email validation utility
  */
-export function isWebhookError(error: any): error is WebhookError {
-  return error && error.webhookError === true;
+export function validateEmail(email: string): boolean {
+  const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+  return emailRegex.test(email.trim());
 }
 
 /**
- * Get user-friendly error message from webhook error
+ * Form data validation utility
  */
-export function getWebhookErrorMessage(error: WebhookError): string {
-  if (isWebhookError(error)) {
-    return error.message;
+export function validateFormData(
+  email: string,
+  firstName: string
+): string | null {
+  if (!email?.trim()) {
+    return "Email address is required";
   }
-  return "An error occurred. Please try again later.";
+
+  if (!validateEmail(email)) {
+    return "Please enter a valid email address";
+  }
+
+  if (!firstName?.trim()) {
+    return "First name is required";
+  }
+
+  if (firstName.trim().length < 2) {
+    return "Please enter your full first name";
+  }
+
+  return null;
 }
+
+// Export types for TypeScript support
+export type { WebhookPayload, WebhookResponse };
