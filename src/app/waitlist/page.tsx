@@ -9,7 +9,7 @@ export default function WaitlistPage() {
   return (
     <main className="min-h-screen text-white bg-zinc-900">
       {/* ATF Waitlist Section */}
-      <section className="flex items-center px-6 py-0 h-screen lg:px-0 xl:px-20">
+      <section className="flex items-start px-6 pt-8 pb-0 h-screen lg:px-0 lg:pt-12 xl:px-20">
         <div className="w-full">
           {/* Eyebrow */}
           <div className="mb-4 text-center">
@@ -171,7 +171,7 @@ function PremiumWaitlistForm() {
       setTimeout(() => {
         router.push("/waitlist/confirmed");
       }, 2000);
-    } catch (error) {
+    } catch {
       setSubmitResult({
         success: false,
         message: "Something went wrong. Please try again.",
