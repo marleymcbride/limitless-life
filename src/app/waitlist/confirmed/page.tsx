@@ -9,7 +9,7 @@ export default function WaitlistConfirmedPage() {
               Waitlist confirmed.
             </h1>
             <p className="text-xl lg:text-2xl text-zinc-300 font-medium">
-              You're on the waitlist.
+              You&apos;re on the waitlist.
             </p>
           </div>
 
@@ -17,16 +17,14 @@ export default function WaitlistConfirmedPage() {
           <div className="space-y-6 text-base lg:text-lg leading-relaxed text-zinc-300">
             <p>
               When the next cohort for{" "}
-              <span className="text-red-500 font-semibold">
-                The Limitless Protocol
-              </span>{" "}
+              <span className="text-red-500 font-semibold">Limitless</span>{" "}
               opens,
               <br />
-              you'll be one of the first notified.
+              you&apos;ll be one of the first notified.
             </p>
 
             <p>
-              In the meantime, I'll be sending you
+              In the meantime, I&apos;ll be sending you
               <br />
               important info and insights to your email.
             </p>
@@ -38,7 +36,7 @@ export default function WaitlistConfirmedPage() {
                 next steps, as well as a gift.
               </p>
               <p className="text-sm text-zinc-400 mt-2">
-                (check 'Updates' or Spam folder if not there)
+                (check &apos;Updates&apos; or Spam folder if not there)
               </p>
             </div>
 
@@ -52,9 +50,9 @@ export default function WaitlistConfirmedPage() {
           {/* Signature */}
           <div className="space-y-2 pt-4">
             <p className="text-lg text-white">
-              You're{" "}
+              To your{" "}
               <span className="text-red-500 font-semibold italic">
-                Limitless
+                Limitless Life
               </span>
               .
             </p>
@@ -64,7 +62,7 @@ export default function WaitlistConfirmedPage() {
           {/* Brand Footer */}
           <div className="pt-8 border-t border-zinc-800">
             <p className="text-sm tracking-wider font-medium text-zinc-500">
-              THE <span className="text-red-500">LIMITLESS PROTOCOL</span>™
+              <span className="text-red-500">LIMITLESS</span>™
             </p>
           </div>
         </div>
