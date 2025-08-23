@@ -22,9 +22,9 @@ const nextConfig = {
   },
   async redirects() {
     return [
-      // Redirect all limitless-life.co* domains to waitlist
+      // Redirect all limitless-life.co* domains to waitlist (except if already on waitlist)
       {
-        source: '/:path*',
+        source: '/((?!waitlist).*)',
         has: [
           {
             type: 'host',
