@@ -22,11 +22,6 @@ const nextConfig = {
   },
   async redirects() {
     return [
-      {
-        source: '/',
-        destination: '/waitlist',
-        permanent: false,
-      },
       // Redirect all limitless-life.co* domains to waitlist
       {
         source: '/:path*',
