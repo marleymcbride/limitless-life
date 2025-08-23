@@ -62,7 +62,8 @@ export default function WaitlistConfirmedPage() {
           {/* Brand Footer */}
           <div className="pt-8 border-t border-zinc-800">
             <p className="text-sm tracking-wider font-medium text-zinc-500">
-              <span className="text-red-500">LIMITLESS</span>™
+              <span className="text-red-500">LIMITLESS</span>{" "}
+              <span className="text-white font-bold">LIFE</span>™
             </p>
           </div>
         </div>
