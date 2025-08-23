@@ -87,7 +87,7 @@ export default function WaitlistPage() {
               <div className="p-8 w-full max-w-md rounded-lg border bg-zinc-800 lg:p-10 border-zinc-700">
                 <div className="mb-6 text-center">
                   <h2 className="mb-3 text-lg font-bold text-red-500 lg:text-xl">
-                    If You're Serious, Join the Waitlist
+                    If You&apos;re Serious, Join the Waitlist
                   </h2>
                   <p className="text-sm text-zinc-300">
                     Next cohort opens in 4-6 weeks. Limited spots available.
@@ -165,6 +165,7 @@ function PremiumWaitlistForm() {
 
       setFormData({ firstName: "", email: "" });
     } catch (error) {
+      console.error("Waitlist submission error:", error);
       setSubmitResult({
         success: false,
         message: "Something went wrong. Please try again.",
@@ -196,7 +197,7 @@ function PremiumWaitlistForm() {
             />
           </svg>
         </div>
-        <p className="font-semibold text-white">You're on the waitlist</p>
+        <p className="font-semibold text-white">You&apos;re on the waitlist</p>
       </div>
     );
   }

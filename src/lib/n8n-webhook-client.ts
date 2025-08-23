@@ -21,7 +21,7 @@ interface WebhookResponse {
 export async function submitToN8nWebhook(
   email: string,
   firstName: string,
-  source: string = "limitless-protocol-premium-waitlist" // Keep for compatibility, not sent to webhook
+  _source: string = "limitless-protocol-premium-waitlist" // Keep for compatibility, not sent to webhook
 ): Promise<void> {
   // Live N8N webhook endpoint (confirmed working)
   const webhookUrl =
@@ -95,7 +95,7 @@ export async function submitToN8nWebhook(
       if (responseText) {
         result = JSON.parse(responseText);
       }
-    } catch (parseError) {
+    } catch (_parseError) {
       // If JSON parsing fails but HTTP status was OK, assume success
       console.warn(
         "Could not parse webhook response as JSON, assuming success"
