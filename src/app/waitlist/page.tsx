@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { useRouter } from "next/navigation";
 import SimpleTestimonials from "@/components/simple-testimonials";
 import TestimonialSection from "@/components/testimonial-section";
 
@@ -120,6 +121,7 @@ export default function WaitlistPage() {
 }
 
 function PremiumWaitlistForm() {
+  const router = useRouter();
   const [formData, setFormData] = React.useState({
     firstName: "",
     email: "",
@@ -164,8 +166,12 @@ function PremiumWaitlistForm() {
       });
 
       setFormData({ firstName: "", email: "" });
+
+      // Wait 2 seconds then redirect to confirmation page
+      setTimeout(() => {
+        router.push("/waitlist/confirmed");
+      }, 2000);
     } catch (error) {
-      console.error("Waitlist submission error:", error);
       setSubmitResult({
         success: false,
         message: "Something went wrong. Please try again.",
