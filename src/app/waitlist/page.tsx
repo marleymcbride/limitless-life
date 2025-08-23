@@ -41,11 +41,11 @@ export default function WaitlistPage() {
             <div className="space-y-6 lg:col-span-3">
               <div className="space-y-3">
                 <h3 className="text-lg font-bold text-white lg:text-xl">
-                  ✓ Quit Caffeine in 14 Days Without Feeling Like Death
+                  ✓ Wake up Feeling Naturally Energized Without Stimulants.
                 </h3>
                 <p className="text-base leading-relaxed lg:text-lg text-zinc-300">
-                  Wake up naturally energized. No
-                  more 3pm crashes, no more feeling like shit without your morning
+                  Wake up beaming every morning. No
+                  more 3pm crashes. No more feeling like shit without your caffeine
                   fix. Elite energy all-day without coffee or energy drinks, the way it should be.
                 </p>
               </div>
