@@ -9,7 +9,7 @@ export default function WaitlistPage() {
   return (
     <main className="min-h-screen text-white bg-zinc-900">
       {/* ATF Waitlist Section */}
-      <section className="flex items-start px-6 pt-8 pb-0 h-screen lg:px-0 lg:pt-12 xl:px-20">
+      <section className="flex items-start px-6 pt-8 pb-16 min-h-screen lg:h-screen lg:px-0 lg:pt-12 lg:pb-0 xl:px-20">
         <div className="w-full">
           {/* Eyebrow */}
           <div className="mb-4 text-center">
@@ -26,17 +26,20 @@ export default function WaitlistPage() {
               Build Your Elite Body and Natural Energy After 30
             </h1>
             <h2 className="mb-6 text-3xl font-black leading-tight lg:text-4xl">
-              <span className="text-red-500">(without caffeine, alcohol or BS supplements)</span>
+              <span className="text-red-500">
+                (without caffeine, alcohol or BS supplements)
+              </span>
             </h2>
             <p className="mx-auto mb-12 max-w-4xl text-base leading-relaxed lg:text-lg text-zinc-300">
-              The <b>Limitless Protocol™</b> is the <b>only</b> system that builds an elite physique in just <b>2 days
-              per week</b>, boosts your <b>testosterone</b> naturally, and gets you <b>off
-              alcohol and caffeine</b> permanently.
+              The <b>Limitless Protocol™</b> is the <b>only</b> system that
+              builds an elite physique in just <b>2 days per week</b>, boosts
+              your <b>testosterone</b> naturally, and gets you{" "}
+              <b>off alcohol and caffeine</b> permanently.
             </p>
           </div>
 
           {/* Two Column Layout - 60/40 Split */}
-          <div className="grid grid-cols-1 gap-12 items-start lg:grid-cols-5 xl:gap-20">
+          <div className="grid grid-cols-1 gap-16 items-start lg:grid-cols-5 lg:gap-12 xl:gap-20">
             {/* LEFT SIDE - Benefits (60%) */}
             <div className="space-y-6 lg:col-span-3">
               <div className="space-y-3">
@@ -44,9 +47,9 @@ export default function WaitlistPage() {
                   ✓ Wake up Feeling Naturally Energized Without Stimulants.
                 </h3>
                 <p className="text-base leading-relaxed lg:text-lg text-zinc-300">
-                  Wake up beaming every morning. No
-                  more 3pm crashes. No more feeling like shit without your caffeine
-                  fix. Elite energy all-day without coffee or energy drinks, the way it should be.
+                  Wake up beaming every morning. No more 3pm crashes. No more
+                  feeling like shit without your caffeine fix. Elite energy
+                  all-day without coffee or energy drinks, the way it should be.
                 </p>
               </div>
 
@@ -67,8 +70,8 @@ export default function WaitlistPage() {
                 </h3>
                 <p className="text-base leading-relaxed lg:text-lg text-zinc-300">
                   No needles, no pills, no weird supplements. Just your body
-                  working like it should. Confidence
-                  back. Power back. The old you, only better.
+                  working like it should. Confidence back. Power back. The old
+                  you, only better.
                 </p>
               </div>
 
@@ -77,7 +80,10 @@ export default function WaitlistPage() {
                   ✓ Ditch Alcohol and Still Handle Stress
                 </h3>
                 <p className="text-base leading-relaxed lg:text-lg text-zinc-300">
-                  You don&apos;t &apos;need a drink&apos; to unwind. You don&apos;t &apos;need to quit&apos; anything. You need to become the man energised, confident and relaxed in all situations.
+                  You don&apos;t &apos;need a drink&apos; to unwind. You
+                  don&apos;t &apos;need to quit&apos; anything. You need to
+                  become the man energised, confident and relaxed in all
+                  situations.
                 </p>
               </div>
             </div>
