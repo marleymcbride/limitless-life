@@ -22,15 +22,16 @@ export default function WaitlistPage() {
 
           {/* Main Headline - Full Width */}
           <div className="mb-0 text-center">
-            <h1 className="mb-6 text-3xl font-black leading-tight lg:text-5xl">
-              Get Your Energy Back
-              <br />
-              <span className="text-red-500">Without Caffeine or Alcohol</span>
+            <h1 className="mb-2 text-3xl font-black leading-tight lg:text-5xl">
+              Build Your Elite Body and Natural Energy After 30
             </h1>
+            <h2 className="mb-6 text-3xl font-black leading-tight lg:text-4xl">
+              <span className="text-red-500">(without caffeine, alcohol or BS supplements)</span>
+            </h2>
             <p className="mx-auto mb-12 max-w-4xl text-base leading-relaxed lg:text-lg text-zinc-300">
-              The Limitless Protocol™ is the only system that gets you off
-              caffeine permanently, builds an elite physique training just 2-3x
-              per week, and boosts your testosterone naturally.
+              The <b>Limitless Protocol™</b> is the <b>only</b> system that builds an elite physique in just <b>2 days
+              per week</b>, boosts your <b>testosterone</b> naturally, and gets you <b>off
+              alcohol and caffeine</b> permanently.
             </p>
           </div>
 
@@ -43,15 +44,15 @@ export default function WaitlistPage() {
                   ✓ Quit Caffeine in 14 Days Without Feeling Like Death
                 </h3>
                 <p className="text-base leading-relaxed lg:text-lg text-zinc-300">
-                  Wake up naturally energized before your alarm goes off. No
-                  more 3pm crashes, no more being a zombie without your morning
-                  fix. Your body learns to create real energy again.
+                  Wake up naturally energized. No
+                  more 3pm crashes, no more feeling like shit without your morning
+                  fix. Elite energy all-day without coffee or energy drinks, the way it should be.
                 </p>
               </div>
 
               <div className="space-y-3">
                 <h3 className="text-lg font-bold text-white lg:text-xl">
-                  ✓ Build Elite Muscle Training Half as Much
+                  ✓ Build your Best Body Ever Training Half as Much
                 </h3>
                 <p className="text-base leading-relaxed lg:text-lg text-zinc-300">
                   2-3 sessions per week maximum. No more grinding yourself into
@@ -66,8 +67,8 @@ export default function WaitlistPage() {
                 </h3>
                 <p className="text-base leading-relaxed lg:text-lg text-zinc-300">
                   No needles, no pills, no weird supplements. Just your body
-                  working like it should. Morning wood returns, confidence
-                  skyrockets, energy flows all day long.
+                  working like it should. Confidence
+                  back. Power back. The old you, only better.
                 </p>
               </div>
 
@@ -76,9 +77,7 @@ export default function WaitlistPage() {
                   ✓ Ditch Alcohol and Still Handle Stress
                 </h3>
                 <p className="text-base leading-relaxed lg:text-lg text-zinc-300">
-                  No more needing wine to unwind. Feel confident and relaxed
-                  without any chemical crutches. Your natural state becomes
-                  calm, focused, and in control.
+                  You don&apos;t &apos;need a drink&apos; to unwind. You don&apos;t &apos;need to quit&apos; anything. You need to become the man energised, confident and relaxed in all situations.
                 </p>
               </div>
             </div>
@@ -91,14 +90,14 @@ export default function WaitlistPage() {
                     If You&apos;re Serious, Join the Waitlist
                   </h2>
                   <p className="text-sm text-zinc-300">
-                    Next cohort opens in 4-6 weeks. Limited spots available.
+                    The cohort opens in 3-4 weeks. Limited spots available.
                   </p>
                 </div>
 
                 <PremiumWaitlistForm />
 
                 <div className="mt-4 text-xs text-center text-zinc-500">
-                  Previous cohort filled in under 12 hours
+                  Cohort expected to fill, join the waitlist to not miss out.
                 </div>
               </div>
             </div>
