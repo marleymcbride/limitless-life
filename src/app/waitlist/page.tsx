@@ -7,9 +7,9 @@ import TestimonialSection from "@/components/testimonial-section";
 
 export default function WaitlistPage() {
   return (
-    <main className="min-h-screen text-white bg-zinc-900">
+    <main className="min-h-screen text-white bg-zinc-900 mb-5">
       {/* ATF Waitlist Section */}
-      <section className="flex items-start px-6 pt-8 pb-16 min-h-screen lg:h-screen lg:px-0 lg:pt-12 lg:pb-0 xl:px-20">
+      <section className="flex items-start px-6 pt-0 pb-16 mt-0 min-h-screen lg:px-0 lg:pt-8 lg:pb-16 xl:px-20 xl:pb-16">
         <div className="w-full">
           {/* Eyebrow */}
           <div className="mb-4 text-center">
@@ -25,12 +25,12 @@ export default function WaitlistPage() {
             <h1 className="mb-2 text-3xl font-black leading-tight lg:text-5xl">
               Build Your Elite Body and Natural Energy After 30
             </h1>
-            <h2 className="mb-6 text-3xl font-black leading-tight lg:text-4xl">
+            <h2 className="mb-4 text-3xl font-black leading-tight lg:text-4xl">
               <span className="text-red-500">
                 (without caffeine, alcohol or BS supplements)
               </span>
             </h2>
-            <p className="mx-auto mb-12 max-w-4xl text-base leading-relaxed lg:text-lg text-zinc-300">
+            <p className="mx-auto mb-8 max-w-4xl text-base leading-relaxed lg:text-lg text-zinc-300">
               The <b>Limitless Protocol™</b> is the <b>only</b> system that
               builds an elite physique in just <b>2 days per week</b>, boosts
               your <b>testosterone</b> naturally, and gets you{" "}
