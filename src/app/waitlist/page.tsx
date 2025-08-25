@@ -25,7 +25,7 @@ export default function WaitlistPage() {
             <h1 className="mb-2 text-3xl font-black leading-tight lg:text-5xl">
               Build Your Elite Body and Natural Energy After 30
             </h1>
-            <h2 className="mb-4 text-3xl font-black leading-tight lg:text-4xl">
+            <h2 className="mb-6 text-3xl font-black leading-tight lg:text-4xl">
               <span className="text-red-500">
                 (without caffeine, alcohol or BS supplements)
               </span>
