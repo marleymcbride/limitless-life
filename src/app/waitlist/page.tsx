@@ -22,7 +22,7 @@ export default function WaitlistPage() {
 
           {/* Main Headline - Full Width */}
           <div className="mb-0 text-center">
-            <h1 className="mb-2 text-3xl font-black leading-tight lg:text-5xl">
+            <h1 className="mt-8 mb-1 text-3xl font-black leading-tight lg:text-5xl">
               Build Your Elite Body and Natural Energy After 30
             </h1>
             <h2 className="mb-6 text-3xl font-black leading-tight lg:text-4xl">
@@ -30,7 +30,7 @@ export default function WaitlistPage() {
                 (without caffeine, alcohol or BS supplements)
               </span>
             </h2>
-            <p className="mx-auto mb-8 max-w-4xl text-base leading-relaxed lg:text-lg text-zinc-300">
+            <p className="mx-auto mt-6 mb-10 max-w-4xl text-base leading-relaxed lg:text-lg text-zinc-300">
               The <b>Limitless Protocol™</b> is the <b>only</b> system that
               builds an elite physique in just <b>2 days per week</b>, boosts
               your <b>testosterone</b> naturally, and gets you{" "}
@@ -90,13 +90,13 @@ export default function WaitlistPage() {
 
             {/* RIGHT SIDE - Waitlist Form (40%) */}
             <div className="flex justify-center items-center lg:col-span-2 lg:justify-end">
-              <div className="p-8 w-full max-w-md rounded-lg border bg-zinc-800 lg:p-10 border-zinc-700">
+              <div className="p-8 mt-0 w-full max-w-md rounded-lg border bg-zinc-800 lg:p-10 border-zinc-700">
                 <div className="mb-6 text-center">
-                  <h2 className="mb-3 text-lg font-bold text-red-500 lg:text-xl">
+                  <h2 className="mb-4 text-xl font-bold text-red-500 lg:text-2xl">
                     If You&apos;re Serious, Join the Waitlist
                   </h2>
                   <p className="text-sm text-zinc-300">
-                    The cohort opens in 3-4 weeks. Limited spots available.
+                  Enter your email to receive waitlist-only deals, enrollment dates and chance to secure a position spots fill.
                   </p>
                 </div>
 
@@ -104,6 +104,9 @@ export default function WaitlistPage() {
 
                 <div className="mt-4 text-xs text-center text-zinc-500">
                   Cohort expected to fill, join the waitlist to not miss out.
+                  </div>
+                  <div className="mt-1 text-xs text-center text-zinc-500">
+                  Limited spots available.
                 </div>
               </div>
             </div>
