@@ -96,7 +96,7 @@ export default function WaitlistPage() {
                     If You&apos;re Serious, Join the Waitlist
                   </h2>
                   <p className="text-sm text-zinc-300">
-                  Enter your email to receive waitlist-only deals, enrollment dates and chance to secure a position spots fill.
+                  Enter your email to receive waitlist-only deals, enrollment dates and chance to get first chance to secure your spot before spots fill.
                   </p>
                 </div>
 
