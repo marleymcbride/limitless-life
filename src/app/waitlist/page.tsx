@@ -77,11 +77,11 @@ export default function WaitlistPage() {
 
               <div className="space-y-3">
                 <h3 className="text-lg font-bold text-white lg:text-xl">
-                  ✓ Ditch Alcohol and Still Handle Stress
+                  ✓ Feel Incredible without Alcohol
                 </h3>
                 <p className="text-base leading-relaxed lg:text-lg text-zinc-300">
                   You don&apos;t &apos;need a drink&apos; to unwind. You
-                  don&apos;t &apos;need to quit&apos; anything. You need to
+                  don&apos;t &apos;need to &apos;quit&apos; &apos; anything. You need to
                   become the man energised, confident and relaxed in all
                   situations.
                 </p>
@@ -93,10 +93,10 @@ export default function WaitlistPage() {
               <div className="p-8 mt-0 w-full max-w-md rounded-lg border bg-zinc-800 lg:p-10 border-zinc-700">
                 <div className="mb-6 text-center">
                   <h2 className="mb-4 text-xl font-bold text-red-500 lg:text-2xl">
-                    If You&apos;re Serious, Join the Waitlist
+                    If You&apos;re Interested, Join the Waitlist
                   </h2>
                   <p className="text-sm text-zinc-300">
-                  Enter your email to receive waitlist-only deals, enrollment dates and an early invite before spots fill.
+                  Enter your email to receive an exclusive waitlist-only deal, enrollment dates and an early invite before spots fill.
                   </p>
                 </div>
 
@@ -247,7 +247,7 @@ function PremiumWaitlistForm() {
         disabled={isSubmitting}
         className="py-3 w-full font-bold text-white bg-red-600 rounded transition-colors hover:bg-red-700 lg:py-4 disabled:opacity-50"
       >
-        {isSubmitting ? "I'M SERIOUS" : "I'M SERIOUS"}
+        {isSubmitting ? "I'M INTERESTED" : "I'M INTERESTED"}
       </button>
     </form>
   );
