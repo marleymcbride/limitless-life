@@ -32,7 +32,8 @@ export default function Home() {
           {/* Mobile view - headline and subheadline optimized for mobile */}
           <div className="flex flex-col flex-grow justify-start pt-5 sm:justify-center sm:pt-0 sm:mt-6 md:mt-0">
             {/* Pill Logo */}
-            {/*<div className="hidden relative justify-center mb-1 sm:flex">
+            {/*
+            <div className="hidden relative justify-center mb-1 sm:flex">
               <div className="w-auto">
                 <Image
                   src="/images/THE-LIMITLESS-PILL-(ALL GREY)-FINAL.png"
@@ -43,7 +44,7 @@ export default function Home() {
                   className="h-auto"
                 />
               </div>
-/              <div className="absolute top-0 left-1/2 w-auto transform -translate-x-1/2">
+              <div className="absolute top-0 left-1/2 w-auto transform -translate-x-1/2">
                 <Image
                   src="/images/THE-LIMITLESS-PILL-FINAL.png"
                   alt=""
@@ -53,7 +54,8 @@ export default function Home() {
                   className="h-auto opacity-100"
                 />
               </div>
-            </div>*/}
+            </div>
+            */}
             {/* Mobile Headlines (visible only on mobile) */}
             <h1 className="block px-2 mx-auto mt-0 mb-4 w-full text-6xl font-bold leading-tight text-center text-white sm:hidden">
               You don&apos;t need more coffee. You need a system that actually
