@@ -1,5 +1,5 @@
 import Image from "next/image";
-import EnhancedVideoPlayer from "../components/enhanced-video-player";
+import VSLPlayer from "../components/vsl-player";
 import ImmediateProofSection from "../components/immediate-proof-section";
 import DoesThisSoundLikeYou from "../components/does-this-sound-like-you";
 import PersonalStorySection from "../components/personal-story-section";
@@ -96,27 +96,16 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Video container positioned in the bottom portion of the screen */}
-          <div className="mx-auto mt-1 mb-0 w-full max-w-2xl">
-            <div className="relative w-full sm:w-auto sm:mx-auto max-w-[50%] mx-auto max-w-500px">
-              {/* Red play button overlay for mobile */}
-              <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-[#940909] flex items-center justify-center md:hidden z-30">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="white"
-                >
-                  <polygon points="5 3 19 12 5 21 5 3"></polygon>
-                </svg>
-              </div>
-              {/* Sound indicator for mobile */}
-              <div className="absolute bottom-3 right-3 bg-black/70 rounded-full px-2 py-0.5 text-white text-xs md:hidden z-30">
-                Click to play
-              </div>
-              <EnhancedVideoPlayer />
-            </div>
+          {/* Video Player - Bunny.net VSL */}
+          <div className="mx-auto mt-6 mb-4 w-full max-w-4xl px-4">
+            <VSLPlayer
+              libraryId="505300"
+              videoId="ae86338e-0493-4ff0-bca9-87f9ad98dd89"
+              autoplay={true}
+              muted={true}
+              preload={true}
+              controls={true}
+            />
           </div>
         </div>
       </section>
