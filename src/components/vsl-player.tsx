@@ -48,6 +48,35 @@ export default function VSLPlayer({
     }
   }, [STORAGE_KEY]);
 
+  // AGGRESSIVE pause detection - poll every 200ms
+  useEffect(() => {
+    if (!isReady || !playerRef.current) return;
+
+    const checkInterval = setInterval(() => {
+      if (playerRef.current) {
+        playerRef.current.getPaused((isPaused: boolean) => {
+          if (
+            isPaused &&
+            progressRef.current.currentTime > 1 &&
+            !showResumeChoice
+          ) {
+            if (!showPauseOverlay) {
+              console.log("🔴 PAUSE DETECTED - SHOWING OVERLAY");
+              setShowPauseOverlay(true);
+              setIsPlaying(false);
+            }
+          } else if (!isPaused && showPauseOverlay) {
+            console.log("🟢 PLAY DETECTED - HIDING OVERLAY");
+            setShowPauseOverlay(false);
+            setIsPlaying(true);
+          }
+        });
+      }
+    }, 200);
+
+    return () => clearInterval(checkInterval);
+  }, [isReady, showPauseOverlay, showResumeChoice]);
+
   useEffect(() => {
     if (typeof window === "undefined") return;
 
@@ -334,9 +363,9 @@ export default function VSLPlayer({
         </div>
       )}
 
-      {showPauseOverlay && (
+      {showPauseOverlay && !showResumeChoice && isReady && (
         <div
-          className="absolute inset-0 flex items-center justify-center z-50 rounded-lg"
+          className="absolute inset-0 flex items-center justify-center z-[100] rounded-lg"
           style={{
             background:
               "linear-gradient(135deg, rgba(0,0,0,0.95) 0%, rgba(139,0,0,0.8) 50%, rgba(0,0,0,0.95) 100%)",
@@ -392,7 +421,7 @@ export default function VSLPlayer({
       </div>
 
       {isReady && (
-        <div className="w-full h-2 bg-gray-900 mt-2 rounded-full overflow-hidden border border-gray-800">
+        <div className="w-full h-2 bg-white/20 mt-2 rounded-full overflow-hidden border-2 border-red-600/50 shadow-lg">
           <div
             className="h-full bg-gradient-to-r from-red-600 via-red-500 to-red-600 transition-all duration-300 relative"
             style={{
