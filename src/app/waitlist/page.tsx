@@ -81,8 +81,8 @@ export default function WaitlistPage() {
                 </h3>
                 <p className="text-base leading-relaxed lg:text-lg text-zinc-300">
                   You don&apos;t &apos;need a drink&apos; to unwind. You
-                  don&apos;t &apos;need to &apos;quit&apos; &apos; anything. You need to
-                  become the man energised, confident and relaxed in all
+                  don&apos;t &apos;need to &apos;quit&apos; &apos; anything. You
+                  need to become the man energised, confident and relaxed in all
                   situations.
                 </p>
               </div>
@@ -96,7 +96,8 @@ export default function WaitlistPage() {
                     If You&apos;re Interested, Join the Waitlist
                   </h2>
                   <p className="text-sm text-zinc-300">
-                  Enter your email to receive an exclusive waitlist-only deal, enrollment dates and an early invite before spots fill.
+                    Enter your email to receive an exclusive waitlist-only deal,
+                    enrollment dates and an early invite before spots fill.
                   </p>
                 </div>
 
@@ -104,8 +105,8 @@ export default function WaitlistPage() {
 
                 <div className="mt-4 text-xs text-center text-zinc-500">
                   Cohort expected to fill, join the waitlist to not miss out.
-                  </div>
-                  <div className="mt-1 text-xs text-center text-zinc-500">
+                </div>
+                <div className="mt-1 text-xs text-center text-zinc-500">
                   Limited spots available.
                 </div>
               </div>
