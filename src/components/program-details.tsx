@@ -94,7 +94,7 @@ export default function ProgramDetails() {
                 </div>
 
                 <div className="mt-8">
-                  <Button className="w-full py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded transition-all text-lg">
+                  <Button className="w-full py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded transition-none text-lg">
                     JOIN NOW
                   </Button>
 
@@ -102,7 +102,7 @@ export default function ProgramDetails() {
                     OR
                   </p>
 
-                  <Button className="w-full py-4 bg-[#0d2249] hover:bg-[#0f264e] text-white font-bold border border-blue-800 rounded transition-all text-sm">
+                  <Button className="w-full py-4 bg-[#0d2249] hover:bg-[#0f264e] text-white font-bold border border-blue-800 rounded transition-none text-sm">
                     PAY IN 2 MONTHLY INSTALLMENTS OF
                     <br />
                     £1,049/$1,299
@@ -198,7 +198,7 @@ export default function ProgramDetails() {
                 </div>
 
                 <div className="mt-8">
-                  <Button className="w-full py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded transition-all text-lg">
+                  <Button className="w-full py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded transition-none text-lg">
                     APPLY NOW
                   </Button>
                 </div>
@@ -282,7 +282,7 @@ export default function ProgramDetails() {
           </div>
 
           {/* Investment section - similar to 2nd reference image */}
-          <div className="rounded-lg bg-zinc-800 p-8 text-center relative overflow-hidden shadow-xl transform transition-all hover:scale-[1.01] mt-10 max-w-4xl mx-auto">
+          <div className="rounded-lg bg-zinc-800 p-8 text-center relative overflow-hidden shadow-xl transform transition-none  mt-10 max-w-4xl mx-auto">
             {/* Red accent corner */}
             <div className="absolute -top-10 -right-10 w-20 h-20 bg-[#940909] rotate-45"></div>
 
@@ -291,7 +291,7 @@ export default function ProgramDetails() {
             <p className="mb-8 text-lg">Only 10 spots available this month</p>
 
             <Button
-              className="mx-auto w-full max-w-md bg-[#940909] py-6 text-xl font-bold hover:bg-[#7b0707] transition-all hover:scale-105 uppercase tracking-wide"
+              className="mx-auto w-full max-w-md bg-[#940909] py-6 text-xl font-bold hover:bg-[#7b0707] transition-none  uppercase tracking-wide"
               asChild
             >
               <a href="#application">CLAIM YOUR SPOT NOW</a>

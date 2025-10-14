@@ -331,7 +331,7 @@ export default function VSLPlayer({
             <div className="flex gap-8 justify-center items-center">
               <button
                 onClick={handleResume}
-                className="flex flex-col items-center gap-2 hover:scale-110 transition-transform group"
+                className="flex flex-col items-center gap-2  transition-transform group"
               >
                 <div className="w-20 h-20 rounded-full border-4 border-red-600 flex items-center justify-center group-hover:bg-red-600 transition-colors">
                   <svg className="w-10 h-10" fill="white" viewBox="0 0 24 24">
@@ -342,7 +342,7 @@ export default function VSLPlayer({
               </button>
               <button
                 onClick={handleRestart}
-                className="flex flex-col items-center gap-2 hover:scale-110 transition-transform group"
+                className="flex flex-col items-center gap-2  transition-transform group"
               >
                 <div className="w-20 h-20 rounded-full border-4 border-white flex items-center justify-center group-hover:bg-white group-hover:text-black transition-colors">
                   <svg
@@ -373,10 +373,10 @@ export default function VSLPlayer({
           }}
           onClick={(e) => e.stopPropagation()}
         >
-          <div className="text-center text-white px-6 max-w-2xl animate-pulse-slow">
+          <div className="text-center text-white px-6 max-w-2xl">
             <div className="mb-6">
               <svg
-                className="w-32 h-32 mx-auto text-red-600 animate-bounce-slow"
+                className="w-32 h-32 mx-auto text-red-600"
                 viewBox="0 0 24 24"
                 fill="currentColor"
               >
@@ -397,7 +397,7 @@ export default function VSLPlayer({
             </p>
             <button
               onClick={handleContinueWatching}
-              className="relative group bg-gradient-to-r from-red-700 via-red-600 to-red-700 text-white text-2xl font-bold px-16 py-6 rounded-lg transition-all transform hover:scale-110 shadow-2xl border-2 border-red-500"
+              className="relative group bg-gradient-to-r from-red-700 via-red-600 to-red-700 text-white text-2xl font-bold px-16 py-6 rounded-lg transition-none transform  shadow-2xl border-2 border-red-500"
               style={{ boxShadow: "0 0 40px rgba(220,38,38,0.6)" }}
             >
               <span className="relative z-10">Continue Watching</span>
@@ -423,7 +423,7 @@ export default function VSLPlayer({
       {isReady && (
         <div className="w-full h-2 bg-white/20 mt-2 rounded-full overflow-hidden border-2 border-red-600/50 shadow-lg">
           <div
-            className="h-full bg-gradient-to-r from-red-600 via-red-500 to-red-600 transition-all duration-300 relative"
+            className="h-full bg-gradient-to-r from-red-600 via-red-500 to-red-600 transition-none duration-0 relative"
             style={{
               width: `${progressBarWidth}%`,
               boxShadow:
@@ -454,10 +454,10 @@ export default function VSLPlayer({
             transform: translateY(-10px);
           }
         }
-        .animate-pulse-slow {
+        . {
           animation: pulse-slow 2s ease-in-out infinite;
         }
-        .animate-bounce-slow {
+        . {
           animation: bounce-slow 2s ease-in-out infinite;
         }
       `}</style>

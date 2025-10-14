@@ -26,7 +26,7 @@ export const blackRedGradientOverlay = React.createElement("div", {
   className: "absolute inset-0",
   style: {
     background:
-      "linear-gradient(to top, rgba(100, 0, 0, 0.5) 0%, rgba(60, 0, 0, 0.3) 25%, rgba(30, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0.9) 75%, rgb(0, 0, 0) 100%)",
+      "linear-gradient(to top, rgba(100, 0, 0, 0.1) 0%, rgba(60, 0, 0, 0.05) 25%, rgba(30, 0, 0, 0.02) 50%, rgba(0, 0, 0, 0.9) 75%, rgb(0, 0, 0) 100%)",
   },
 });
 
@@ -35,14 +35,14 @@ export const invertedGradientOverlay = React.createElement("div", {
   className: "absolute inset-0",
   style: {
     background:
-      "linear-gradient(to bottom, rgba(100, 0, 0, 0.3) 0%, rgba(60, 0, 0, 0.2) 20%, rgba(0, 0, 0, 0.9) 40%, rgb(0, 0, 0) 70%)",
+      "linear-gradient(to bottom, rgba(100, 0, 0, 0.05) 0%, rgba(60, 0, 0, 0.03) 20%, rgba(0, 0, 0, 0.9) 40%, rgb(0, 0, 0) 70%)",
   },
 });
 
 // Hero red accent for bottom of gradient sections
 export const redAccentBottom = React.createElement("div", {
   className:
-    "absolute bottom-0 left-0 w-full h-[50vh] bg-gradient-to-t from-[#940909] via-[#940909]/20 to-transparent opacity-60",
+    "absolute bottom-0 left-0 w-full h-[50vh] bg-gradient-to-t from-[#940909]/8 via-[#940909]/5 to-transparent opacity-60",
 });
 
 // Stronger red accent for black background sections

@@ -122,7 +122,7 @@ export default function SuccessMetricsCarousel() {
           {/* Carousel Navigation */}
           <div className="absolute top-1/2 left-4 -translate-y-1/2 z-10">
             <button
-              className="bg-black/60 hover:bg-black/80 text-white p-2 rounded-full transition-all"
+              className="bg-black/60 hover:bg-black/80 text-white p-2 rounded-full transition-none"
               onClick={prevSlide}
               aria-label="Previous client"
             >
@@ -131,7 +131,7 @@ export default function SuccessMetricsCarousel() {
           </div>
           <div className="absolute top-1/2 right-4 -translate-y-1/2 z-10">
             <button
-              className="bg-black/60 hover:bg-black/80 text-white p-2 rounded-full transition-all"
+              className="bg-black/60 hover:bg-black/80 text-white p-2 rounded-full transition-none"
               onClick={nextSlide}
               aria-label="Next client"
             >
@@ -140,7 +140,7 @@ export default function SuccessMetricsCarousel() {
           </div>
 
           {/* Carousel Content */}
-          <div className="bg-zinc-800 rounded-xl overflow-hidden border border-zinc-700 transition-all duration-500">
+          <div className="bg-zinc-800 rounded-xl overflow-hidden border border-zinc-700 transition-none duration-500">
             <div className="grid md:grid-cols-2">
               {/* Image and Info */}
               <div className="relative">
@@ -242,7 +242,7 @@ export default function SuccessMetricsCarousel() {
               <button
                 key={index}
                 onClick={() => setActiveIndex(index)}
-                className={`w-3 h-3 rounded-full transition-all ${
+                className={`w-3 h-3 rounded-full transition-none ${
                   index === activeIndex ? "bg-[#940909] w-6" : "bg-gray-400"
                 }`}
                 aria-label={`Go to client ${index + 1}`}

@@ -3,6 +3,20 @@ import VSLPlayer from "../components/vsl-player";
 import ImmediateProofSection from "../components/immediate-proof-section";
 import DoesThisSoundLikeYou from "../components/does-this-sound-like-you";
 import PersonalStorySection from "../components/personal-story-section";
+import CoreValueProposition from "../components/core-value-proposition";
+import VideoTestimonialCTA from "../components/video-testimonial-cta";
+import SystemBenefitsProof from "../components/system-benefits-proof";
+import ResultsProof from "../components/results-proof";
+import ProcessExplanation from "../components/process-explanation";
+import MoreVideoTestimonials from "../components/more-video-testimonials";
+import BigIdeaSection from "../components/big-idea-section";
+import IntroducingLimitless from "../components/introducing-limitless";
+import FourStepSystem from "../components/four-step-system";
+import MoreClientTestimonials from "../components/more-client-testimonials";
+import ExclusivityPersonalAttention from "../components/exclusivity-personal-attention";
+import FAQSection from "../components/faq-section";
+import UrgencyFinalCTA from "../components/urgency-final-cta";
+import WallClientTestimonials from "../components/wall-client-testimonials";
 import SolutionSection from "../components/solution-section";
 import RunningEmptySection from "../components/running-empty-section";
 import FinalCta from "../components/final-cta";
@@ -107,25 +121,85 @@ export default function Home() {
               controls={true}
             />
           </div>
+
+          {/* Testimonial - Simple thin text at bottom of hero */}
+          <div className="text-center mb-8 max-w-4xl mx-auto">
+            <div className="bg-gray-50 rounded-lg p-6">
+              <blockquote className="text-lg text-gray-800 italic mb-4">
+                "I was drinking a bottle of wine a night, looked like shit, and my
+                job was genuinely on the line. Now I'm in the best shape I've ever
+                been, haven't touched a drop in over a year, got promoted, and
+                feel fucking incredible. Marley, these energy systems are just
+                mindblowing."
+              </blockquote>
+              <div className="flex items-center justify-center gap-4">
+                <div className="w-12 h-12 bg-[#940909] rounded-full flex items-center justify-center">
+                  <span className="text-white font-bold">L</span>
+                </div>
+                <div className="text-left">
+                  <div className="font-bold text-gray-900">Client L - Investment Banking, London</div>
+                  <div className="text-sm text-gray-600">450+ Days Sober • Complete Transformation • Career Promotion</div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* 2. IMMEDIATE PROOF - Clean Testimonial Only (White background) */}
       <ImmediateProofSection />
 
-      {/* 3. "Does This Sound Like You?" - Problem Agitation (Black/Red - V1 Professional Style) */}
+      {/* 3. "Does This Sound Like You?" - Problem Agitation (Black background) */}
       <DoesThisSoundLikeYou />
 
-      {/* 4. Personal Story + Discovery (White background - ELEVATED to V1 Quality) */}
+      {/* 4. Personal Story + Discovery (White background) */}
       <PersonalStorySection />
 
-      {/* 5. Solution + Proof Density (Black with red accents) */}
+      {/* 5. Core Value Proposition (White background) */}
+      <CoreValueProposition />
+
+      {/* 6. Video Testimonial CTA (Black background) */}
+      <VideoTestimonialCTA />
+
+      {/* 7. System Benefits Proof (Dark background) */}
+      <SystemBenefitsProof />
+
+      {/* 8. Results Proof (White background) */}
+      <ResultsProof />
+
+      {/* 9. Process Explanation (White background) */}
+      <ProcessExplanation />
+
+      {/* 10. More Video Testimonials (Black background) */}
+      <MoreVideoTestimonials />
+
+      {/* 11. The Big Idea (White background) */}
+      <BigIdeaSection />
+
+      {/* 12. Introducing Limitless (Dark background) */}
+      <IntroducingLimitless />
+
+      {/* 13. The 4-Step System (White background) */}
+      <FourStepSystem />
+
+      {/* 14. More Client Testimonials (Dark background) */}
+      <MoreClientTestimonials />
+
+      {/* 15. Exclusivity & Personal Attention (White background) */}
+      <ExclusivityPersonalAttention />
+
+      {/* 16. FAQ Section (Dark background) */}
+      <FAQSection />
+
+      {/* 17. Urgency & Final CTA (White background) */}
+      <UrgencyFinalCTA />
+
+      {/* 18. Wall of Client Testimonials (Dark background) */}
+      <WallClientTestimonials />
+
+      {/* Original Final Sections */}
       <SolutionSection />
-
-      {/* 6. Enemy + USP + More Proof (Black with red accents) */}
       <RunningEmptySection />
-
-      {/* 7. Final Offer + Urgency + Guarantee (Black with red accents) */}
       <FinalCta />
 
       {/* Minimal Footer (Black) */}

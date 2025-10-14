@@ -6,7 +6,7 @@ import testimonials, { Testimonial } from "@/data/testimonials";
 
 const TestimonialCard = ({ testimonial }: { testimonial: Testimonial }) => {
   return (
-    <div className="bg-white rounded-xl shadow-md p-4 transition-transform duration-300 hover:scale-[1.02] flex flex-col h-full">
+    <div className="bg-white rounded-xl shadow-md p-4 transition-transform duration-0  flex flex-col h-full">
       <div className="flex items-start gap-3 mb-3">
         {testimonial.avatar ? (
           <div className="h-12 w-12 rounded-full overflow-hidden flex-shrink-0">

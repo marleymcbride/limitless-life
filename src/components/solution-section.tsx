@@ -25,7 +25,7 @@ export default function SolutionSection() {
         <div className="max-w-7xl mx-auto mb-20">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             {/* Rob M. - Tech Executive */}
-            <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:border-[#940909]/50 transition-all duration-300">
+            <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:border-[#940909]/50 transition-none duration-0">
               <div className="flex items-center mb-4">
                 <div className="w-12 h-12 bg-[#940909] rounded-full flex items-center justify-center mr-4">
                   <span className="text-white font-bold text-lg">R</span>
@@ -54,7 +54,7 @@ export default function SolutionSection() {
             </div>
 
             {/* Marcus T. - Investment Banking */}
-            <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:border-[#940909]/50 transition-all duration-300">
+            <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:border-[#940909]/50 transition-none duration-0">
               <div className="flex items-center mb-4">
                 <div className="w-12 h-12 bg-[#940909] rounded-full flex items-center justify-center mr-4">
                   <span className="text-white font-bold text-lg">M</span>
@@ -85,7 +85,7 @@ export default function SolutionSection() {
             </div>
 
             {/* James K. - Sales Director */}
-            <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:border-[#940909]/50 transition-all duration-300">
+            <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:border-[#940909]/50 transition-none duration-0">
               <div className="flex items-center mb-4">
                 <div className="w-12 h-12 bg-[#940909] rounded-full flex items-center justify-center mr-4">
                   <span className="text-white font-bold text-lg">J</span>
@@ -114,7 +114,7 @@ export default function SolutionSection() {
             </div>
 
             {/* David L. - Finance Partner */}
-            <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:border-[#940909]/50 transition-all duration-300">
+            <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:border-[#940909]/50 transition-none duration-0">
               <div className="flex items-center mb-4">
                 <div className="w-12 h-12 bg-[#940909] rounded-full flex items-center justify-center mr-4">
                   <span className="text-white font-bold text-lg">D</span>
@@ -145,7 +145,7 @@ export default function SolutionSection() {
             </div>
 
             {/* Alex P. - Private Equity */}
-            <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:border-[#940909]/50 transition-all duration-300">
+            <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:border-[#940909]/50 transition-none duration-0">
               <div className="flex items-center mb-4">
                 <div className="w-12 h-12 bg-[#940909] rounded-full flex items-center justify-center mr-4">
                   <span className="text-white font-bold text-lg">A</span>
@@ -173,7 +173,7 @@ export default function SolutionSection() {
             </div>
 
             {/* Client L. - Already established */}
-            <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:border-[#940909]/50 transition-all duration-300">
+            <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:border-[#940909]/50 transition-none duration-0">
               <div className="flex items-center mb-4">
                 <div className="w-12 h-12 bg-[#940909] rounded-full flex items-center justify-center mr-4">
                   <span className="text-white font-bold text-lg">L</span>

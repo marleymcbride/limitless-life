@@ -83,12 +83,11 @@ export default function PersonalStorySection() {
               effortlessly.
             </p>
 
-            {/* The transformation - drop in proof naturally */}
-            <div className="bg-green-50 border-l-4 border-green-500 p-6 my-8 rounded-r-lg">
-              <p className="text-lg text-green-800 font-semibold">
+            <div className="my-8">
+              <p className="text-lg text-gray-800 font-bold mb-4">
                 Here's what happened when I stopped fighting my body:
               </p>
-              <ul className="mt-4 space-y-2 text-lg text-green-700">
+              <ul className="mt-4 space-y-2 text-lg text-gray-800">
                 <li>• Lost 35 lbs of pure fat (212 → 177 lbs)</li>
                 <li>• 1000+ days alcohol-free (no willpower required)</li>
                 <li>• 365+ days caffeine-free (wake up naturally energized)</li>

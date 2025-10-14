@@ -11,7 +11,7 @@ export default function TransformationCTA() {
 
         <div className="text-center mb-12">
           <Button
-            className="bg-[#940909] hover:bg-[#7d0808] text-white px-10 py-6 text-xl font-bold rounded-md transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+            className="bg-[#940909] hover:bg-[#7d0808] text-white px-10 py-6 text-xl font-bold rounded-md transition-none duration-0 shadow-lg hover:shadow-xl transform 
             asChild
           >
             <a

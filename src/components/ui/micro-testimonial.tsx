@@ -22,7 +22,7 @@ export const MicroTestimonial = ({
       isDarkBackground ? "bg-white/10 text-white" : "bg-gray-50 text-gray-800"
     } backdrop-blur p-5 rounded-lg border ${
       isDarkBackground ? "border-[#940909]/20" : "border-gray-200"
-    } shadow-lg my-8 transform hover:scale-[1.02] transition-all`}
+    } shadow-lg my-8 transform  transition-none`}
   >
     <div className="flex items-start gap-3">
       <svg

@@ -17,7 +17,7 @@ export const ResultCard = ({
   description,
   imageSrc,
 }: ResultCardProps) => (
-  <div className="bg-white rounded-lg overflow-hidden shadow-lg transform hover:scale-[1.02] transition-all">
+  <div className="bg-white rounded-lg overflow-hidden shadow-lg transform  transition-none">
     <div className="relative h-[200px]">
       <Image
         src={imageSrc || "/placeholder.svg?height=200&width=400"}

@@ -26,7 +26,7 @@ export default function RunningEmptySection() {
         <div className="max-w-7xl mx-auto mb-20">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
             {/* Enemy 1: Big Supplement */}
-            <div className="bg-gradient-to-br from-red-900/40 to-red-800/30 backdrop-blur-sm rounded-xl p-8 border border-red-500/40 hover:border-red-400/60 transition-all duration-300">
+            <div className="bg-gradient-to-br from-red-900/40 to-red-800/30 backdrop-blur-sm rounded-xl p-8 border border-red-500/40 hover:border-red-400/60 transition-none duration-0">
               <div className="text-center mb-6">
                 <span className="text-4xl mb-4 block">💊</span>
                 <h3 className="text-2xl font-bold text-red-300 mb-4">
@@ -59,7 +59,7 @@ export default function RunningEmptySection() {
             </div>
 
             {/* Enemy 2: Fitness Industry */}
-            <div className="bg-gradient-to-br from-red-900/40 to-red-800/30 backdrop-blur-sm rounded-xl p-8 border border-red-500/40 hover:border-red-400/60 transition-all duration-300">
+            <div className="bg-gradient-to-br from-red-900/40 to-red-800/30 backdrop-blur-sm rounded-xl p-8 border border-red-500/40 hover:border-red-400/60 transition-none duration-0">
               <div className="text-center mb-6">
                 <span className="text-4xl mb-4 block">🏋️</span>
                 <h3 className="text-2xl font-bold text-red-300 mb-4">
@@ -92,7 +92,7 @@ export default function RunningEmptySection() {
             </div>
 
             {/* Enemy 3: Big Pharma */}
-            <div className="bg-gradient-to-br from-red-900/40 to-red-800/30 backdrop-blur-sm rounded-xl p-8 border border-red-500/40 hover:border-red-400/60 transition-all duration-300">
+            <div className="bg-gradient-to-br from-red-900/40 to-red-800/30 backdrop-blur-sm rounded-xl p-8 border border-red-500/40 hover:border-red-400/60 transition-none duration-0">
               <div className="text-center mb-6">
                 <span className="text-4xl mb-4 block">🏥</span>
                 <h3 className="text-2xl font-bold text-red-300 mb-4">

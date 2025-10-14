@@ -82,7 +82,7 @@ export default function VideoPlayer() {
       {/* Play button overlay (shows when video is paused) */}
       {(!isPlaying || !isMounted) && (
         <div
-          className="absolute left-1/2 top-1/2 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-[#940909] text-white transition-all hover:bg-[#7b0707]"
+          className="absolute left-1/2 top-1/2 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-[#940909] text-white transition-none hover:bg-[#7b0707]"
           onClick={togglePlay}
         >
           <svg

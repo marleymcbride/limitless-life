@@ -106,7 +106,7 @@ export default function WhatsIncluded() {
           {features.map((feature, index) => (
             <div
               key={index}
-              className={`flex p-4 rounded-lg border transform transition-all hover:scale-[1.02] ${
+              className={`flex p-4 rounded-lg border transform transition-none  ${
                 feature.highlight
                   ? "bg-[#940909]/10 border-[#940909] hover:bg-[#940909]/15"
                   : "bg-zinc-800/50 border-zinc-700 hover:bg-zinc-800"
@@ -143,7 +143,7 @@ export default function WhatsIncluded() {
           />
         </div>
 
-        <div className="text-center mx-auto max-w-2xl rounded-lg bg-zinc-800 p-8 shadow-lg transform transition-all hover:shadow-xl">
+        <div className="text-center mx-auto max-w-2xl rounded-lg bg-zinc-800 p-8 shadow-lg transform transition-none hover:shadow-xl">
           <h3 className="text-2xl font-bold mb-4">
             Ready to Start Your Transformation?
           </h3>
@@ -154,7 +154,7 @@ export default function WhatsIncluded() {
 
           <Button
             size="lg"
-            className="mx-auto w-full max-w-md bg-[#940909] py-6 text-xl font-bold hover:bg-[#7b0707] transition-all hover:scale-105 uppercase tracking-wide"
+            className="mx-auto w-full max-w-md bg-[#940909] py-6 text-xl font-bold hover:bg-[#7b0707] transition-none  uppercase tracking-wide"
             asChild
           >
             <a href="#application" id="application">
