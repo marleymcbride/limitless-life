@@ -1,6 +1,6 @@
 export default function DoesThisSoundLikeYou() {
   return (
-    <section className="bg-black py-16 px-4">
+    <section className="bg-black py-16 px-4 w-full">
       <div className="container mx-auto max-w-4xl">
         <div className="text-center">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-12">

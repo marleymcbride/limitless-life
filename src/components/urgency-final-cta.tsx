@@ -65,7 +65,7 @@ export default function UrgencyFinalCTA() {
 
           <div className="text-center">
             <button
-              className="bg-red-600 hover:bg-red-700 text-white font-bold py-6 px-12 text-xl rounded-lg transition-none duration-0"
+              className="bg-red-600 text-white font-bold py-6 px-12 text-xl rounded-lg"
               onClick={() => {
                 const element = document.getElementById("application");
                 if (element) {

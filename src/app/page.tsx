@@ -1,6 +1,5 @@
 import Image from "next/image";
 import VSLPlayer from "../components/vsl-player";
-import ImmediateProofSection from "../components/immediate-proof-section";
 import DoesThisSoundLikeYou from "../components/does-this-sound-like-you";
 import PersonalStorySection from "../components/personal-story-section";
 import CoreValueProposition from "../components/core-value-proposition";
@@ -17,12 +16,8 @@ import ExclusivityPersonalAttention from "../components/exclusivity-personal-att
 import FAQSection from "../components/faq-section";
 import UrgencyFinalCTA from "../components/urgency-final-cta";
 import WallClientTestimonials from "../components/wall-client-testimonials";
-import SolutionSection from "../components/solution-section";
-import RunningEmptySection from "../components/running-empty-section";
-import FinalCta from "../components/final-cta";
 import FooterSection from "../components/footer-section";
 import StickyCTA from "../components/sticky-cta";
-import { Button } from "@/components/ui/button";
 import {
   bgClasses,
   blackRedGradientOverlay,
@@ -146,61 +141,53 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 2. IMMEDIATE PROOF - Clean Testimonial Only (White background) */}
-      <ImmediateProofSection />
-
-      {/* 3. "Does This Sound Like You?" - Problem Agitation (Black background) */}
+      {/* 2. "Does This Sound Like You?" - Problem Agitation (Black background) */}
       <DoesThisSoundLikeYou />
 
-      {/* 4. Personal Story + Discovery (White background) */}
+      {/* 3. Personal Story + Discovery (White background) */}
       <PersonalStorySection />
 
-      {/* 5. Core Value Proposition (White background) */}
+      {/* 4. Core Value Proposition (White background) */}
       <CoreValueProposition />
 
-      {/* 6. Video Testimonial CTA (Black background) */}
+      {/* 5. Video Testimonial CTA (Black background) */}
       <VideoTestimonialCTA />
 
-      {/* 7. System Benefits Proof (Dark background) */}
+      {/* 6. System Benefits Proof (Dark background) */}
       <SystemBenefitsProof />
 
-      {/* 8. Results Proof (White background) */}
+      {/* 7. Results Proof (White background) */}
       <ResultsProof />
 
-      {/* 9. Process Explanation (White background) */}
+      {/* 8. Process Explanation (White background) */}
       <ProcessExplanation />
 
-      {/* 10. More Video Testimonials (Black background) */}
+      {/* 9. More Video Testimonials (Black background) */}
       <MoreVideoTestimonials />
 
-      {/* 11. The Big Idea (White background) */}
+      {/* 10. The Big Idea (White background) */}
       <BigIdeaSection />
 
-      {/* 12. Introducing Limitless (Dark background) */}
+      {/* 11. Introducing Limitless (Dark background) */}
       <IntroducingLimitless />
 
-      {/* 13. The 4-Step System (White background) */}
+      {/* 12. The 4-Step System (White background) */}
       <FourStepSystem />
 
-      {/* 14. More Client Testimonials (Dark background) */}
+      {/* 13. More Client Testimonials (Dark background) */}
       <MoreClientTestimonials />
 
-      {/* 15. Exclusivity & Personal Attention (White background) */}
+      {/* 14. Exclusivity & Personal Attention (White background) */}
       <ExclusivityPersonalAttention />
 
-      {/* 16. FAQ Section (Dark background) */}
+      {/* 15. FAQ Section (Dark background) */}
       <FAQSection />
 
-      {/* 17. Urgency & Final CTA (White background) */}
+      {/* 16. Urgency & Final CTA (White background) */}
       <UrgencyFinalCTA />
 
-      {/* 18. Wall of Client Testimonials (Dark background) */}
+      {/* 17. Wall of Client Testimonials (Dark background) */}
       <WallClientTestimonials />
-
-      {/* Original Final Sections */}
-      <SolutionSection />
-      <RunningEmptySection />
-      <FinalCta />
 
       {/* Minimal Footer (Black) */}
       <FooterSection />

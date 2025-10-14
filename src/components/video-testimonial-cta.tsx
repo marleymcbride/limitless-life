@@ -4,7 +4,7 @@ import VSLPlayer from "./vsl-player";
 
 export default function VideoTestimonialCTA() {
   return (
-    <section className="bg-black py-16 px-4">
+    <section className="bg-black py-16 px-4 w-full">
       <div className="container mx-auto max-w-4xl">
         <div className="text-center">
           <div className="max-w-3xl mx-auto mb-12">
@@ -26,7 +26,7 @@ export default function VideoTestimonialCTA() {
           </div>
 
           <button
-            className="bg-red-600 hover:bg-red-700 text-white font-bold py-4 px-8 text-lg rounded-lg transition-none duration-0"
+            className="bg-red-600 text-white font-bold py-4 px-8 text-lg rounded-lg"
             onClick={() => {
               const element = document.getElementById("application");
               if (element) {

@@ -91,7 +91,7 @@ export default function ExclusivityPersonalAttention() {
           </div>
 
           <button
-            className="bg-red-600 hover:bg-red-700 text-white font-bold py-4 px-8 text-lg rounded-lg transition-none duration-0"
+            className="bg-red-600 text-white font-bold py-4 px-8 text-lg rounded-lg"
             onClick={() => {
               const element = document.getElementById("application");
               if (element) {

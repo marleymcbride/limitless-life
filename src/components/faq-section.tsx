@@ -2,7 +2,7 @@
 
 export default function FAQSection() {
   return (
-    <section className="bg-gray-900 py-16 px-4">
+    <section className="bg-gray-900 py-16 px-4 w-full">
       <div className="container mx-auto max-w-4xl">
         <div className="text-center">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-8">
@@ -101,7 +101,7 @@ export default function FAQSection() {
 
           <div className="text-center mt-12">
             <button
-              className="bg-red-600 hover:bg-red-700 text-white font-bold py-4 px-8 text-lg rounded-lg transition-none duration-0"
+              className="bg-red-600 text-white font-bold py-4 px-8 text-lg rounded-lg"
               onClick={() => {
                 const element = document.getElementById("application");
                 if (element) {
