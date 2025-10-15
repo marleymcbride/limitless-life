@@ -30,7 +30,7 @@ export default function ScienceSection() {
   ];
 
   return (
-    <section className="w-full py-16 bg-black text-white relative overflow-hidden">
+    <section className="w-full py-20 bg-black text-white relative overflow-hidden">
       {/* Abstract background pattern */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-0 left-0 w-full h-full bg-[url('/placeholder.svg?height=500&width=500')] bg-repeat"></div>

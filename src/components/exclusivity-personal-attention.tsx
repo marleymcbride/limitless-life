@@ -2,7 +2,7 @@
 
 export default function ExclusivityPersonalAttention() {
   return (
-    <section className="bg-black relative py-16 px-4 w-full">
+    <section className="bg-black relative py-20 px-4 w-full">
     <div className="absolute bottom-0 left-0 w-full h-[33vh]" style={{ background: "linear-gradient(to top, rgba(148, 9, 9, 0.30) 0%, rgba(148, 9, 9, 0.16) 50%, rgba(148, 9, 9, 0) 100%)" }}></div>
       <div className="container mx-auto max-w-6xl relative z-10">
         <div className="text-center">

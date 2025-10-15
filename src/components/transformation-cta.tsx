@@ -2,7 +2,7 @@ import { Button } from "./ui/button";
 
 export default function TransformationCTA() {
   return (
-    <section className="bg-white py-16 w-full">
+    <section className="bg-white py-20 w-full">
       <div className="w-full max-w-5xl mx-auto px-4">
         <h2 className="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-8 leading-tight">
           Reclaiming My Health Was The Hardest Thing I Ever Did... Until I

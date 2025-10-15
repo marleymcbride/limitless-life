@@ -1,4 +1,4 @@
-import { type Config } from "tailwindcss";
+import { type Config, type PluginUtils } from "tailwindcss";
 
 const config: Config = {
   content: [
@@ -54,12 +54,47 @@ const config: Config = {
         serif: ['Georgia', 'serif'],
         sans: ['Inter', 'system-ui', 'sans-serif'],
       },
+      // Enhanced line-height options for better typography control
+      lineHeight: {
+        'tightest': '0.9',
+        'tighter': '1.0',
+        'tight': '1.1',
+        'snug': '1.25',
+        'normal': '1.5',
+        'relaxed': '1.75',
+        'loose': '2.0',
+        // Extra granular options for precise control
+        '1.05': '1.05',
+        '1.15': '1.15',
+        '1.25': '1.25',
+        '1.35': '1.35',
+        '1.45': '1.45',
+        '1.55': '1.55',
+        '1.65': '1.65',
+        '1.75': '1.75',
+        '1.8': '1.8',
+        '1.9': '1.9',
+        // Global H1 line-height
+        'h1': '1.4', // Global default for all H1 elements
+      },
       // All animations removed for clean, conversion-focused design
       animation: {},
       keyframes: {},
     },
   },
-  plugins: [],
+  plugins: [
+    function({ addUtilities }: { addUtilities: PluginUtils['addUtilities'] }) {
+      const newUtilities = {
+        'h1': {
+          lineHeight: '1.4 !important',
+        },
+        '.h1-override': {
+          lineHeight: '1.4 !important',
+        },
+      }
+      addUtilities(newUtilities)
+    }
+  ],
 };
 
 export default config;

@@ -3,7 +3,7 @@ import { Check, X } from "lucide-react";
 
 export default function ImmediateProofPainSection() {
   return (
-    <section className="w-full py-16 bg-white">
+    <section className="w-full py-20 bg-white">
       <div className="container mx-auto px-4">
         {/* RAW MARLEY PROOF - No Corporate BS */}
         <div className="text-center mb-16">

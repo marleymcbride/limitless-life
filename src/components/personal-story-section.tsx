@@ -2,7 +2,7 @@ import { bgClasses } from "@/lib/utils";
 
 export default function PersonalStorySection() {
   return (
-    <section className={`w-full ${bgClasses.white} py-16 text-black relative`}>
+    <section className={`w-full ${bgClasses.white} py-20 text-black relative`}>
       {/* Simple, premium white background */}
       <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-white to-gray-50"></div>
 

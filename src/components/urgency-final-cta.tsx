@@ -2,7 +2,7 @@
 
 export default function UrgencyFinalCTA() {
   return (
-    <section className="bg-white py-16 px-4">
+    <section className="bg-white py-20 px-4">
       <div className="container mx-auto max-w-4xl">
         <div className="text-center">
           <h2 className="text-4xl md:text-5xl font-bold text-black mb-8">

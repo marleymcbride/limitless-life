@@ -34,7 +34,7 @@ export default function VSLHeroSection({
     <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-b from-gray-900 via-black to-gray-900 px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
       <div className="w-full max-w-7xl mx-auto">
         <div className="text-center mb-8 sm:mb-12 lg:mb-16">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight mb-4 sm:mb-6">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-4 sm:mb-6" style={{ lineHeight: "1.4" }}>
             Stop Waking Up
             <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-600">

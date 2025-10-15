@@ -1,6 +1,6 @@
 export default function DoesThisSoundLikeYou() {
   return (
-    <section className="bg-black py-16 px-4 w-full">
+    <section className="bg-black py-20 px-4 w-full">
       <div className="container mx-auto max-w-4xl">
         <div className="text-center">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-12">
@@ -15,7 +15,7 @@ export default function DoesThisSoundLikeYou() {
                 </svg>
               </div>
               <p className="text-lg text-white">
-                <span className="font-semibold">You're successful on paper but feel like absolute shit inside.</span>
+                <span className="font-normal">You&apos;re successful on paper but feel like absolute shit inside.</span>
               </p>
             </div>
 
@@ -26,7 +26,7 @@ export default function DoesThisSoundLikeYou() {
                 </svg>
               </div>
               <p className="text-lg text-white">
-                <span className="font-semibold">You drag yourself out of bed wondering how you'll get through the day.</span>
+                <span className="font-normal">You drag yourself out of bed wondering how you&apos;ll get through the day.</span>
               </p>
             </div>
 
@@ -37,7 +37,7 @@ export default function DoesThisSoundLikeYou() {
                 </svg>
               </div>
               <p className="text-lg text-white">
-                <span className="font-semibold">You're stuck in the cycle: coffee to start, alcohol to unwind.</span>
+                <span className="font-normal">You&apos;re stuck in the cycle: coffee to start, alcohol to unwind.</span>
               </p>
             </div>
 
@@ -48,13 +48,13 @@ export default function DoesThisSoundLikeYou() {
                 </svg>
               </div>
               <p className="text-lg text-white">
-                <span className="font-semibold">No matter how hard you work at your health, the results don't match the effort.</span>
+                <span className="font-normal">No matter how hard you work at your health, the results don&apos;t match the effort.</span>
               </p>
             </div>
           </div>
 
           <p className="text-xl text-white mb-8">
-            You're not alone.
+            You&apos;re not alone.
           </p>
         </div>
       </div>

@@ -56,7 +56,7 @@ export default function TestimonialGrid() {
   const columns = distributeTestimonials();
 
   return (
-    <section className="w-full py-16 bg-gray-50 relative">
+    <section className="w-full py-20 bg-gray-50 relative">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <span className="inline-block bg-[#940909]/10 text-[#940909] text-sm font-bold uppercase tracking-wider px-3 py-1 rounded-sm mb-4">

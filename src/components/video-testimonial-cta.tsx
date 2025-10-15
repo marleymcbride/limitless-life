@@ -1,6 +1,6 @@
 "use client";
 
-import VSLPlayer from "./vsl-player";
+import SimpleVideoPlayer from "./simple-video-player";
 
 export default function VideoTestimonialCTA() {
   return (
@@ -9,13 +9,13 @@ export default function VideoTestimonialCTA() {
       <div className="container mx-auto max-w-4xl">
         <div className="text-center">
           <div className="max-w-md mx-auto mb-12">
-            <p className="text-base md:text-2xl lg:text-4xl max-w-md text-white font-bold italic">
+            <p className="text-base md:text-2xl lg:text-4xl max-w-md text-white font-normal italic">
               &ldquo;abc i haven&apos;t felt this good in years, abc i haven&apos;t felt this good in years.&rdquo;
             </p>
           </div>
 
           <div className="mb-12">
-            <VSLPlayer
+            <SimpleVideoPlayer
               libraryId="505300"
               videoId="ae86338e-0493-4ff0-bca9-87f9ad98dd89"
               className="max-w-3xl mx-auto"

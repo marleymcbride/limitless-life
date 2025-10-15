@@ -39,7 +39,7 @@ export default function TestimonialsSection() {
   ];
 
   return (
-    <section className="w-full bg-zinc-900 py-16 text-white">
+    <section className="w-full bg-zinc-900 py-20 text-white">
       <div className="container mx-auto px-4">
         <h2 className="mb-2 text-center text-3xl font-bold md:text-4xl">
           Real Results from Real Executives

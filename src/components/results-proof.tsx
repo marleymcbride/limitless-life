@@ -2,33 +2,19 @@
 
 export default function ResultsProof() {
   return (
-    <section className="bg-white py-16 px-4">
+    <section className="bg-white py-20 px-4">
       <div className="container mx-auto max-w-6xl">
         <div className="text-center">
           <h2 className="text-4xl md:text-5xl font-bold text-black mb-8">
-            See Some Of Our Client Results
+            What Your Life Could Look Like
           </h2>
 
           <div className="mb-12">
-            <div className="text-3xl md:text-4xl font-black text-gray-900 mb-4">
-              Real Results From High-Performers Like You
+            <div className="text-3xl md:text-4xl font-black font-medium text-gray-900 mb-4">
+              Real results from men who were exactly where you are right now:
             </div>
-            <div className="text-xl text-gray-600">
-              Men who were exactly where you are now - successful on paper but feeling like crap inside
-            </div>
-          </div>
 
-          <button
-            className="bg-red-600 text-white font-bold py-4 px-8 text-lg rounded-lg mb-16"
-            onClick={() => {
-              const element = document.getElementById("application");
-              if (element) {
-                element.scrollIntoView({ behavior: "smooth" });
-              }
-            }}
-          >
-            See If This Is Right For You
-          </button>
+          </div>
 
           <div className="grid md:grid-cols-2 gap-8">
             <div className="space-y-8">
@@ -125,6 +111,17 @@ export default function ResultsProof() {
               </div>
             </div>
           </div>
+          <button
+            className="bg-red-600 text-white font-bold py-4 px-8 text-lg rounded-lg mt-16"
+            onClick={() => {
+              const element = document.getElementById("application");
+              if (element) {
+                element.scrollIntoView({ behavior: "smooth" });
+              }
+            }}
+          >
+            See If This Is Right For You
+          </button>
         </div>
       </div>
     </section>

@@ -2,16 +2,19 @@
 
 export default function BigIdeaSection() {
   return (
-    <section className="bg-black py-16 px-4 w-full">
+    <section className="bg-black py-20 px-4 w-full">
       <div className="container mx-auto max-w-4xl">
         <div className="text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-8">
+        <h2 className="text-3xl md:text-4xl font-semi-bold text-white mb-16">
+            But it all made sense when I realised...
+          </h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-8 leading-[1.4]">
             Energy Is The Foundation Of Everything
           </h2>
 
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed mb-12">
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed mb-6">
             You can be successful on paper, but if you wake up feeling stressed, drag yourself through the day,
-            and need substances just to function - you're living a lie. The gap between your external success
+            and need substances just to function - you&apos;re living a lie. The gap between your external success
             and internal reality is eating you alive.
           </p>
 
@@ -27,7 +30,7 @@ export default function BigIdeaSection() {
             </p>
 
             <p className="text-lg text-gray-300 leading-relaxed">
-              This isn't a fantasy. This is what happens when you stop fighting your body and start working
+              This isn&apos;t a fantasy. This is what happens when you stop fighting your body and start working
               with its natural intelligence. Energy becomes the foundation that transforms your business,
               your relationships, and your entire life.
             </p>
@@ -36,10 +39,10 @@ export default function BigIdeaSection() {
           <div className="space-y-6 mb-12">
             <div className="text-left">
               <h3 className="text-xl font-bold text-white mb-3">
-                The Disconnect That's Destroying You
+                The Disconnect That&apos;s Destroying You
               </h3>
               <p className="text-lg text-gray-300 leading-relaxed">
-                You look successful to everyone else, but inside you feel like a fraud. You're pushing harder,
+                You look successful to everyone else, but inside you feel like a fraud. You&apos;re pushing harder,
                 using more coffee, more alcohol, more willpower - just to maintain the appearance of having it all together.
               </p>
             </div>
@@ -60,7 +63,7 @@ export default function BigIdeaSection() {
               </h3>
               <p className="text-lg text-gray-300 leading-relaxed">
                 Another year passes. Your health gets worse. Your relationships suffer. Your business plateaus
-                because you don't have the energy to take it to the next level. The gap between who you are and
+                because you don&apos;t have the energy to take it to the next level. The gap between who you are and
                 who you could be becomes permanent.
               </p>
             </div>

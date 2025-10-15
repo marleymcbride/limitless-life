@@ -39,7 +39,7 @@ export default function TransformationTimeline() {
   ];
 
   return (
-    <section className="w-full py-16 bg-gradient-to-b from-black to-zinc-900 text-white">
+    <section className="w-full py-20 bg-gradient-to-b from-black to-zinc-900 text-white">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-2">
           Your Transformation Journey

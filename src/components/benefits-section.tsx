@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function BenefitsSection() {
   return (
-    <section className="w-full bg-grey py-16 text-white">
+    <section className="w-full bg-grey py-20 text-white">
       <div className="container mx-auto px-4">
         <h2 className="mb-4 text-center text-2xl font-bold md:text-3xl">
           The Limitless Protocol Components

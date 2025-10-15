@@ -109,7 +109,7 @@ export default function SuccessMetricsCarousel() {
     activeClient.initialMetrics.stress - activeClient.finalMetrics.stress;
 
   return (
-    <section className="w-full py-16 bg-zinc-900 text-white">
+    <section className="w-full py-20 bg-zinc-900 text-white">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-2">
           Real Transformations, Real Numbers

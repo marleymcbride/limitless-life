@@ -2,7 +2,7 @@
 
 export default function MoreClientTestimonials() {
   return (
-    <section className="py-16 px-4 w-full">
+    <section className="bg-white py-20 px-4 w-full">
       <div className="container mx-auto max-w-6xl">
         <div className="text-center">
           <h2 className="text-4xl md:text-5xl font-bold text-black mb-8">
@@ -14,7 +14,7 @@ export default function MoreClientTestimonials() {
           </p>
 
           {/* Case Study 1 - Client L */}
-          <div className="bg-white rounded-lg shadow-lg p-12 mb-16 border border-gray-200">
+          <div className="bg-white text-black rounded-lg shadow-lg p-12 mb-16 border border-gray-200">
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div>
                 <div className="flex items-center mb-6">
@@ -62,7 +62,7 @@ export default function MoreClientTestimonials() {
           </div>
 
           {/* Case Study 2 - Client R */}
-          <div className="bg-black text-white rounded-lg shadow-lg p-12 mb-16">
+          <div className="bg-white text-black rounded-lg shadow-lg p-12 mb-16 border border-gray-200">
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div>
                 <div className="flex items-center mb-6">
@@ -70,40 +70,40 @@ export default function MoreClientTestimonials() {
                     <span className="text-2xl font-bold text-white">R</span>
                   </div>
                   <div>
-                    <h3 className="text-2xl font-bold text-white">Client R - Corporate Lawyer</h3>
-                    <p className="text-lg text-gray-300">Manchester, 12 weeks</p>
+                    <h3 className="text-2xl font-bold text-black">Client R - Corporate Lawyer</h3>
+                    <p className="text-lg text-gray-600">Manchester, 12 weeks</p>
                   </div>
                 </div>
 
-                <blockquote className="text-2xl text-gray-100 font-medium italic mb-8 leading-relaxed">
+                <blockquote className="text-2xl text-gray-800 font-medium italic mb-8 leading-relaxed">
                   "The coffee and alcohol addiction was destroying my career. I was falling asleep in meetings and my performance review was brutal. Now I'm closing cases I couldn't handle before, my sex drive is back, and I actually look forward to waking up. This program saved my career."
                 </blockquote>
 
                 <div className="space-y-4">
                   <div className="flex items-center">
                     <div className="w-3 h-3 bg-green-500 rounded-full mr-3"></div>
-                    <span className="text-lg text-gray-200">90+ Days Alcohol-Free</span>
+                    <span className="text-lg text-gray-700">90+ Days Alcohol-Free</span>
                   </div>
                   <div className="flex items-center">
                     <div className="w-3 h-3 bg-green-500 rounded-full mr-3"></div>
-                    <span className="text-lg text-gray-200">No More Coffee Dependency</span>
+                    <span className="text-lg text-gray-700">No More Coffee Dependency</span>
                   </div>
                   <div className="flex items-center">
                     <div className="w-3 h-3 bg-green-500 rounded-full mr-3"></div>
-                    <span className="text-lg text-gray-200">Career Performance Transformed</span>
+                    <span className="text-lg text-gray-700">Career Performance Transformed</span>
                   </div>
                 </div>
               </div>
 
-              <div className="bg-gray-800 rounded-lg p-8 text-center">
-                <div className="text-gray-300 text-lg mb-4">Client R Results</div>
+              <div className="bg-gray-100 rounded-lg p-8 text-center">
+                <div className="text-gray-500 text-lg mb-4">Client R Results</div>
                 <div className="space-y-4">
-                  <div className="text-3xl font-bold text-white">-18 lbs</div>
-                  <div className="text-gray-300">Body Fat Lost</div>
+                  <div className="text-3xl font-bold text-black">-18 lbs</div>
+                  <div className="text-gray-600">Body Fat Lost</div>
                   <div className="text-3xl font-bold text-red-600 mt-6">+150%</div>
-                  <div className="text-gray-300">Daily Energy</div>
-                  <div className="text-3xl font-bold text-white mt-6">2.5x</div>
-                  <div className="text-gray-300">Case Load Capacity</div>
+                  <div className="text-gray-600">Daily Energy</div>
+                  <div className="text-3xl font-bold text-black mt-6">2.5x</div>
+                  <div className="text-gray-600">Case Load Capacity</div>
                 </div>
               </div>
             </div>

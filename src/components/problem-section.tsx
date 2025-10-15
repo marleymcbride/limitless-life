@@ -1,6 +1,6 @@
 export default function ProblemSection() {
   return (
-    <section className="w-full py-16 text-white relative overflow-hidden">
+    <section className="w-full py-20 text-white relative overflow-hidden">
       {/* Black base */}
       <div className="absolute inset-0 bg-black"></div>
 

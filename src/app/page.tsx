@@ -5,6 +5,7 @@ import CoreValueProposition from "../components/core-value-proposition";
 import VideoTestimonialCTA from "../components/video-testimonial-cta";
 import SystemBenefitsProof from "../components/system-benefits-proof";
 import ResultsProof from "../components/results-proof";
+import ImagineThis from "../components/imaginethis";
 import ProcessExplanation from "../components/process-explanation";
 import MoreVideoTestimonials from "../components/more-video-testimonials";
 import BigIdeaSection from "../components/big-idea-section";
@@ -64,7 +65,7 @@ export default function Home() {
             </div>
             */}
             {/* Mobile Headlines (visible only on mobile) */}
-            <h1 className="block px-2 mx-auto mt-0 mb-4 w-full text-6xl font-bold leading-tight text-center text-white sm:hidden">
+            <h1 className="block px-2 mx-auto mt-0 mb-4 w-full text-6xl font-bold text-center text-white sm:hidden" style={{ lineHeight: "1.4" }}>
               You don&apos;t need more coffee. You need a system that actually
               fixes your broken body.
             </h1>
@@ -82,7 +83,7 @@ export default function Home() {
             <div className="h-10"></div>
 
             {/* Desktop Headlines (hidden on mobile) */}
-            <h1 className="hidden sm:block text-4xl line-height:2 sm:text-4xl md:text-3xl  lg:text-4xl font-bold text-white text-center mb-0 mt-0 sm:mt-0 max-w-[87%] mx-auto px-4">
+            <h1 className="hidden sm:block text-4xl sm:text-4xl md:text-3xl  lg:text-4xl font-bold text-white text-center mb-0 mt-0 sm:mt-0 max-w-[87%] mx-auto px-4" style={{ lineHeight: "1.4" }}>
               You don&apos;t need another black Americano or BS supplement. You
               need a real system that quite simply, stops you feeling like shit.
             </h1>
@@ -145,20 +146,20 @@ export default function Home() {
       {/* 5. Video Testimonial CTA (Black background) */}
       <VideoTestimonialCTA />
 
-      {/* 6. System Benefits Proof (Dark background) */}
-      <SystemBenefitsProof />
+      {/* 6. The Big Idea (White background) */}
+      <BigIdeaSection />
 
       {/* 7. Results Proof (White background) */}
       <ResultsProof />
 
-      {/* 8. Process Explanation (White background) */}
+      {/* 8. Imagine This (Black background) */}
+      <ImagineThis />
+
+      {/* 9. Process Explanation (Black background) */}
       <ProcessExplanation />
 
-      {/* 9. More Video Testimonials (Black background) */}
+      {/* 10. More Video Testimonials (Black background) */}
       <MoreVideoTestimonials />
-
-      {/* 10. The Big Idea (White background) */}
-      <BigIdeaSection />
 
       {/* 11. Introducing Limitless (Dark background) */}
       <IntroducingLimitless />
@@ -166,19 +167,22 @@ export default function Home() {
       {/* 12. The 4-Step System (White background) */}
       <FourStepSystem />
 
-      {/* 13. More Client Testimonials (Dark background) */}
+      {/* 13. System Benefits Proof - Why This System Will Work For You (Dark background) */}
+      <SystemBenefitsProof />
+
+      {/* 14. More Client Testimonials (Dark background) */}
       <MoreClientTestimonials />
 
-      {/* 14. Exclusivity & Personal Attention (White background) */}
+      {/* 15. Exclusivity & Personal Attention (White background) */}
       <ExclusivityPersonalAttention />
 
-      {/* 15. FAQ Section (Dark background) */}
+      {/* 16. FAQ Section (Dark background) */}
       <FAQSection />
 
-      {/* 16. Urgency & Final CTA (White background) */}
+      {/* 17. Urgency & Final CTA (White background) */}
       <UrgencyFinalCTA />
 
-      {/* 17. Wall of Client Testimonials (Dark background) */}
+      {/* 18. Wall of Client Testimonials (Dark background) */}
       <WallClientTestimonials />
 
       {/* Minimal Footer (Black) */}

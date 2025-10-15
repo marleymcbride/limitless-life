@@ -22,7 +22,7 @@ export default function WaitlistPage() {
 
           {/* Main Headline - Full Width */}
           <div className="mb-0 text-center">
-            <h1 className="mt-8 mb-1 text-3xl font-black leading-tight lg:text-5xl">
+            <h1 className="mt-8 mb-1 text-3xl font-black lg:text-5xl">
               Build Your Elite Body and Natural Energy After 30
             </h1>
             <h2 className="mb-6 text-3xl font-black leading-tight lg:text-4xl">
