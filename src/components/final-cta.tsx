@@ -1,6 +1,6 @@
 import ApplyNowButton from "./apply-now-button";
-import { bgClasses, masculinePattern } from "@/lib/utils";
-import { CheckCircle, X, Clock, Shield } from "lucide-react";
+import { masculinePattern } from "@/lib/utils";
+import { CheckCircle, Clock, Shield } from "lucide-react";
 
 export default function FinalCta() {
   return (
@@ -13,10 +13,10 @@ export default function FinalCta() {
         {/* DECISION TIME */}
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-white">
-            You're At A Crossroads, Scott
+            You&apos;re At A Crossroads, Scott
           </h2>
           <p className="text-xl max-w-4xl mx-auto text-white/90 mb-8">
-            You can keep doing what you're doing - managing your symptoms with
+            You can keep doing what you&apos;re doing - managing your symptoms with
             caffeine and alcohol, spending £850+ monthly to feel like shit,
             slowly dying in the 4% trap...
           </p>
@@ -66,9 +66,8 @@ export default function FinalCta() {
                 </li>
               </ul>
               <ApplyNowButton
-                variant="secondary"
-                size="medium"
                 className="w-full"
+                fullWidth={true}
               />
               <p className="text-center text-white/60 text-sm mt-2">
                 For self-guided transformation
@@ -109,9 +108,8 @@ export default function FinalCta() {
                 </li>
               </ul>
               <ApplyNowButton
-                variant="primary"
-                size="medium"
                 className="w-full"
+                fullWidth={true}
               />
               <p className="text-center text-white/60 text-sm mt-2">
                 Most popular choice
@@ -157,9 +155,8 @@ export default function FinalCta() {
                 </li>
               </ul>
               <ApplyNowButton
-                variant="primary"
-                size="medium"
                 className="w-full bg-[#940909] hover:bg-[#760707]"
+                fullWidth={true}
               />
               <p className="text-center text-white/60 text-sm mt-2">
                 Maximum results, minimum time
@@ -201,9 +198,8 @@ export default function FinalCta() {
                 </li>
               </ul>
               <ApplyNowButton
-                variant="primary"
-                size="medium"
                 className="w-full bg-gradient-to-r from-[#940909] to-[#760707]"
+                fullWidth={true}
               />
               <p className="text-center text-white/60 text-sm mt-2">
                 White-glove transformation
@@ -215,7 +211,7 @@ export default function FinalCta() {
         {/* BUYER TYPE ADDRESSING */}
         <div className="max-w-6xl mx-auto mb-16">
           <h3 className="text-2xl font-bold text-center text-white mb-12">
-            Still Not Sure? Here's How To Decide...
+            Still Not Sure? Here&apos;s How To Decide...
           </h3>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -225,7 +221,7 @@ export default function FinalCta() {
                 If You Just Want Results...
               </h4>
               <p className="text-white/90 mb-4">
-                You don't care about the theory. You just want to stop feeling
+                You don&apos;t care about the theory. You just want to stop feeling
                 like shit and start looking good. You want someone to tell you
                 exactly what to do.
               </p>
@@ -250,10 +246,10 @@ export default function FinalCta() {
             {/* The Skeptic */}
             <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
               <h4 className="text-xl font-bold text-white mb-4">
-                If You're Still Skeptical...
+                If You&apos;re Still Skeptical...
               </h4>
               <p className="text-white/90 mb-4">
-                You've been burned before. You want proof this actually works
+                You&apos;ve been burned before. You want proof this actually works
                 before you fully commit. You need the guarantee and want to test
                 the waters.
               </p>
@@ -265,10 +261,10 @@ export default function FinalCta() {
             {/* The Emotional */}
             <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
               <h4 className="text-xl font-bold text-white mb-4">
-                If You're Ready For Change...
+                If You&apos;re Ready For Change...
               </h4>
               <p className="text-white/90 mb-4">
-                You're sick of feeling this way. You're ready to invest in
+                You&apos;re sick of feeling this way. You&apos;re ready to invest in
                 yourself. You want support, community, and someone who believes
                 in you.
               </p>
@@ -298,7 +294,7 @@ export default function FinalCta() {
                 If Time Is Everything...
               </h4>
               <p className="text-white/90 mb-4">
-                You're insanely busy. You need this handled for you. You want
+                You&apos;re insanely busy. You need this handled for you. You want
                 the fastest path to results with white-glove service and zero
                 guesswork.
               </p>
@@ -314,20 +310,20 @@ export default function FinalCta() {
           <div className="bg-green-900/30 backdrop-blur-sm rounded-lg p-8 border border-green-500/30 text-center">
             <Shield className="h-16 w-16 text-green-400 mx-auto mb-6" />
             <h3 className="text-2xl font-bold text-white mb-6">
-              90-Day "Get Your Life Back" Guarantee
+              90-Day &ldquo;Get Your Life Back&rdquo; Guarantee
             </h3>
             <p className="text-lg text-white/90 mb-4">
-              Follow the Limitless Protocol for 90 days. If you don't have more
-              energy than you've had in years, if you don't look better than you
-              have in decades, if you're not completely off caffeine and
+              Follow the Limitless Protocol for 90 days. If you don&apos;t have more
+              energy than you&apos;ve had in years, if you don&apos;t look better than you
+              have in decades, if you&apos;re not completely off caffeine and
               alcohol...
             </p>
             <p className="text-xl font-bold text-white mb-4">
-              I'll refund every penny. No questions asked.
+              I&apos;ll refund every penny. No questions asked.
             </p>
             <p className="text-white/80">
               You risk nothing. Your current life of caffeine dependency and
-              alcohol reliance? That's the real risk.
+              alcohol reliance? That&apos;s the real risk.
             </p>
           </div>
         </div>
@@ -363,11 +359,11 @@ export default function FinalCta() {
           <div className="space-y-6">
             <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
               <h4 className="text-lg font-bold text-white mb-3">
-                "What if I don't have time for another program?"
+                &ldquo;What if I don&apos;t have time for another program?&rdquo;
               </h4>
               <p className="text-white/90">
-                This isn't another time-consuming program. The 2-Day Training
-                Protocol means you'll actually spend LESS time working out. The
+                This isn&apos;t another time-consuming program. The 2-Day Training
+                Protocol means you&apos;ll actually spend LESS time working out. The
                 systems are designed for busy executives - maximum results,
                 minimum time investment.
               </p>
@@ -375,36 +371,36 @@ export default function FinalCta() {
 
             <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
               <h4 className="text-lg font-bold text-white mb-3">
-                "Can I really quit caffeine without withdrawal?"
+                &ldquo;Can I really quit caffeine without withdrawal?&rdquo;
               </h4>
               <p className="text-white/90">
                 Yes. The Anti-Stack System eliminates withdrawal symptoms by
                 replacing artificial stimulation with natural energy production.
-                You'll have more energy without caffeine than you currently have
+                You&apos;ll have more energy without caffeine than you currently have
                 with it.
               </p>
             </div>
 
             <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
               <h4 className="text-lg font-bold text-white mb-3">
-                "What about client dinners and social drinking?"
+                &ldquo;What about client dinners and social drinking?&rdquo;
               </h4>
               <p className="text-white/90">
-                I'll show you exactly how to navigate social situations, client
+                I&apos;ll show you exactly how to navigate social situations, client
                 events, and business dinners without alcohol while actually
-                increasing your presence and influence. You'll be more
+                increasing your presence and influence. You&apos;ll be more
                 charismatic sober than you ever were drinking.
               </p>
             </div>
 
             <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
               <h4 className="text-lg font-bold text-white mb-3">
-                "Is this just willpower-based restriction?"
+                &ldquo;Is this just willpower-based restriction?&rdquo;
               </h4>
               <p className="text-white/90">
                 The opposite. This is about eliminating the need for willpower
                 by fixing your biochemistry. When your energy systems work
-                properly, you don't crave caffeine or alcohol because you don't
+                properly, you don&apos;t crave caffeine or alcohol because you don&apos;t
                 need them.
               </p>
             </div>
@@ -414,7 +410,7 @@ export default function FinalCta() {
         {/* FINAL DECISION SECTION */}
         <div className="max-w-5xl mx-auto text-center">
           <h2 className="text-3xl sm:text-4xl font-bold mb-8 text-white">
-            It's Decision Time, Scott
+            It&apos;s Decision Time, Scott
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
@@ -465,8 +461,6 @@ export default function FinalCta() {
 
           <div className="space-y-4">
             <ApplyNowButton
-              variant="primary"
-              size="large"
               className="text-xl px-12 py-4"
             />
             <p className="text-white/70">
@@ -479,8 +473,8 @@ export default function FinalCta() {
 
           <div className="mt-12 p-6 bg-[#940909]/20 backdrop-blur-sm rounded-lg border border-[#940909]/50">
             <p className="text-lg text-white/90 italic">
-              "The best time to start was 10 years ago. The second best time is
-              right now."
+              &ldquo;The best time to start was 10 years ago. The second best time is
+              right now.&rdquo;
             </p>
             <p className="text-white/70 mt-2">- Ancient Proverb</p>
           </div>

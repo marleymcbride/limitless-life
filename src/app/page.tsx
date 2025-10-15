@@ -1,4 +1,3 @@
-import Image from "next/image";
 import VSLPlayer from "../components/vsl-player";
 import DoesThisSoundLikeYou from "../components/does-this-sound-like-you";
 import PersonalStorySection from "../components/personal-story-section";
@@ -21,7 +20,6 @@ import StickyCTA from "../components/sticky-cta";
 import {
   bgClasses,
   blackRedGradientOverlay,
-  redAccentBottom,
   vignetteEffect,
 } from "../lib/utils";
 
@@ -73,11 +71,7 @@ export default function Home() {
 
             {/* Mobile Subheadline - RIGHT AFTER HEADLINE (visible only on mobile) */}
             <p
-              className="block px-2 mx-auto mb-6 font-light text-center text-gray-300 sm:hidden"
-              style={{
-                fontSize: "1.75rem !important",
-                lineHeight: "1.3 !important",
-              }}
+              className="block px-2 mx-auto mb-6 font-light text-center text-gray-300 sm:hidden text-[1.75rem] leading-[1.3]"
             >
               The proven system for high performers to build a top 1% physique,
               get their sex drive back, and quite simply stop feeling like
@@ -118,22 +112,20 @@ export default function Home() {
           </div>
 
           {/* Testimonial - Simple thin text at bottom of hero */}
-          <div className="text-center mb-8 max-w-4xl mx-auto">
+          <div className="text-center mt-10 mb-8 max-w-4xl mx-auto">
             <div className="bg-transparent bg-opacity-10 p-6">
-              <blockquote className="text-lg text-white italic mb-4">
-                "I was drinking a bottle of wine a night, looked like shit, and my
-                job was genuinely on the line. Now I'm in the best shape I've ever
-                been, haven't touched a drop in over a year, got promoted, and
-                feel fucking incredible. Marley, these energy systems are just
-                mindblowing."
+              <blockquote className="text-xl text-white italic mb-4">
+                &ldquo;I&apos;m in the best shape I&apos;ve ever
+                been, haven&apos;t touched booze in over a year and
+                feel incredible.&rdquo;
               </blockquote>
               <div className="flex items-center justify-center gap-4">
-                <div className="w-12 h-12 bg-[#940909] rounded-full flex items-center justify-center">
+                <div className="w-16 h-16 mt-4 bg-[#940909] rounded-full flex items-center justify-center">
                   <span className="text-white font-bold">L</span>
                 </div>
-                <div className="text-left">
-                  <div className="font-bold text-white">Client L - Investment Banking, London</div>
-                  <div className="text-sm text-gray-300">450+ Days Sober • Complete Transformation • Career Promotion</div>
+                <div className="flex flex-col justify-center">
+                  <div className="font-bold mt-4 text-white">Client L - Investment Banking</div>
+                  <div className="text-lg mt-0 text-center">⭐️⭐️⭐️⭐️⭐️</div>
                 </div>
               </div>
             </div>
