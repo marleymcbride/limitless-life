@@ -11,9 +11,9 @@ export default function MoreVideoTestimonials() {
             More Results From High-Performers Like You
           </h2>
 
-          <div className="grid md:grid-cols-2 gap-8 mb-12">
-            <div>
-              <div className="mb-4">
+          <div className="space-y-12 mb-12">
+            <div className="grid md:grid-cols-2 gap-8 items-center">
+              <div>
                 <VSLPlayer
                   libraryId="505300"
                   videoId="ae86338e-0493-4ff0-bca9-87f9ad98dd89"
@@ -24,13 +24,18 @@ export default function MoreVideoTestimonials() {
                   controls={true}
                 />
               </div>
-              <p className="text-lg text-white italic">
-                "I haven't felt this good in years."
-              </p>
+              <div className="text-left">
+                <p className="text-lg text-white italic mb-4">
+                  "I haven't felt this good in years."
+                </p>
+                <p className="text-gray-300">
+                  Client was a 47-year-old CEO who was drinking 3 bottles of wine per night just to cope with the stress. Now completely sober and more productive than ever.
+                </p>
+              </div>
             </div>
 
-            <div>
-              <div className="mb-4">
+            <div className="grid md:grid-cols-2 gap-8 items-center">
+              <div className="order-2 md:order-1">
                 <VSLPlayer
                   libraryId="505300"
                   videoId="ae86338e-0493-4ff0-bca9-87f9ad98dd89"
@@ -41,9 +46,14 @@ export default function MoreVideoTestimonials() {
                   controls={true}
                 />
               </div>
-              <p className="text-lg text-white italic">
-                "This system changed my life."
-              </p>
+              <div className="order-1 md:order-2 text-left">
+                <p className="text-lg text-white italic mb-4">
+                  "This system changed my life."
+                </p>
+                <p className="text-gray-300">
+                  Client was a 38-year-old lawyer running on coffee and Adderall. Now completely stimulant-free and performing at his peak in the courtroom.
+                </p>
+              </div>
             </div>
           </div>
 

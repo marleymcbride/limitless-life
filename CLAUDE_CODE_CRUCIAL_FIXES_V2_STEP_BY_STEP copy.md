@@ -1,12 +1,12 @@
- LIMITLESS SALES PAGE 2.0 - COMPREHENSIVE FIXES IMPLEMENTATION
+LIMITLESS SALES PAGE 3.0 - COMPREHENSIVE FIXES IMPLEMENTATION
 
- I. IMMEDIATE CORRECTIONS MANDATE
+I. IMMEDIATE CORRECTIONS MANDATE
 
 This is a follow-up directive to fix specific implementation issues that deviated from the original specifications. Your task is to correct ONLY the issues identified below while preserving all correctly implemented elements.
 
- II. CRITICAL LAYOUT FIXES
+II. CRITICAL LAYOUT FIXES
 
- BLACK SECTIONS WIDTH CORRECTION
+BLACK SECTIONS WIDTH CORRECTION
 Issue: Black sections are not spanning the full viewport width as specified in the original prompt.
 
 Fix Required:
@@ -19,9 +19,9 @@ Files to Modify:
 - Any component with `bg-black` or `bg-gray-900` classes
 - Check for wrapper containers that might be constraining width
 
- III. CONTENT REMOVAL DIRECTIVE
+III. CONTENT REMOVAL DIRECTIVE
 
- COMPLETE REMOVAL OF RED SECTIONS
+COMPLETE REMOVAL OF RED SECTIONS
 Issue: Multiple red sections that were meant to be deleted remain in the implementation.
 
 Fix Required:
@@ -35,34 +35,34 @@ Files to Modify:
 - `/src/app/page.tsx` - Remove imports and component references for these red sections
 - Delete the component files for these sections
 
- IV. SECTION-SPECIFIC CORRECTIONS
+IV. SECTION-SPECIFIC CORRECTIONS
 
- SECTION 1: HERO SECTION
+SECTION 1: HERO SECTION
 Fix Required:
 - Remove all gradients, but add a slight red tint (10% opacity) to differentiate from the pure black section below
 - Make the first testimonial transparent, not white, so it sits in the hero section background
 - Ensure testimonial at bottom matches exact specifications:
-  - Simple thin text font in quotes
-  - Avatar on left, name to right
-  - Five-star rating below name (on right)
-  - Keep super centered and not wide
+ - Simple thin text font in quotes
+ - Avatar on left, name to right
+ - Five-star rating below name (on right)
+ - Keep super centered and not wide
 
- SECTION 2: DOES THIS SOUND LIKE YOU?
+SECTION 2: DOES THIS SOUND LIKE YOU?
 Fix Required:
 - Change the checkmarks to brand red, not orange
 - Make the bottom text just say 'You're not alone.' (remove additional text)
 - Ensure dark background spans full width
 - Remove any animations or transitions
 
- SECTION 3: PERSONAL STORY & AUTHORITY BUILDING
+SECTION 3: PERSONAL STORY & AUTHORITY BUILDING
 Fix Required:
 - No changes needed (confirmed as correctly implemented)
 
- SECTION 4: CORE VALUE PROPOSITION
+SECTION 4: CORE VALUE PROPOSITION
 Fix Required:
 - No changes needed (confirmed as correctly implemented)
 
- SECTION 5: VIDEO TESTIMONIAL & CALL-TO-ACTION
+SECTION 5: VIDEO TESTIMONIAL & CALL-TO-ACTION
 Fix Required:
 - Make the quote headline size and boldness, not thin
 - Change background to match the new hero section with red tint (10% opacity)
@@ -70,7 +70,7 @@ Fix Required:
 - Verify red CTA button uses correct styling
 - Remove any animations or transitions
 
- SECTION 6: SYSTEM BENEFITS & PROOF
+SECTION 6: SYSTEM BENEFITS & PROOF
 Fix Required:
 - Change background to pure black, not blue
 - Make "It works because..." text larger (increase font size)
@@ -78,7 +78,7 @@ Fix Required:
 - Verify clean layout with NO animations
 - Remove any icons that weren't specified in the original prompt
 
- SECTION 7: RESULTS & PROOF
+SECTION 7: RESULTS & PROOF
 Fix Required:
 - Remove the '26 lbs weight loss • 89% alcohol-free • 94% caffeine-free' as it lacks context
 - Replace '2-3 training days per week • 1000+ days alcohol-free • Testosterone from 346 to 678 ng/dl' with relevant setup copy for the results
@@ -86,7 +86,7 @@ Fix Required:
 - Verify red CTA button uses correct styling
 - Remove any animations or transitions
 
- SECTION 8: PROCESS EXPLANATION
+SECTION 8: PROCESS EXPLANATION
 Fix Required:
 - Change background to black
 - Arrange the 4 phases in a row instead of stacked
@@ -95,14 +95,14 @@ Fix Required:
 - Remove any design elements beyond simple text layout
 - Verify consistent typography
 
- SECTION 9: VIDEO TESTIMONIALS COLLECTION
+SECTION 9: VIDEO TESTIMONIALS COLLECTION
 Fix Required:
 - Stack videos instead of squeezing them into the same column
 - Add context to the right of each video (as specified in original prompt)
 - Ensure white background is consistent
 - Remove any animations or transitions
 
- SECTION 10: THE BIG IDEA
+SECTION 10: THE BIG IDEA
 Fix Required:
 - Remove 'Big Idea' headline (marketing terminology not for actual copy)
 - Rewrite copy to explain what the Big Idea IS, not just mentioning random terms
@@ -111,7 +111,7 @@ Fix Required:
 - Verify consistent typography with hero section
 - Remove any design elements beyond simple text layout
 
- SECTION 11: INTRODUCING LIMITLESS
+SECTION 11: INTRODUCING LIMITLESS
 Fix Required:
 - Make 'Introducing...' a main headline
 - Reveal 'Limitless Life' concept first in this section
@@ -122,7 +122,7 @@ Fix Required:
 - Ensure white background is consistent
 - Verify consistent typography with hero section
 
- SECTION 12: WHAT'S INSIDE THE LIMITLESS PROTOCOL
+SECTION 12: WHAT'S INSIDE THE LIMITLESS PROTOCOL
 Fix Required:
 - Clarify this is 'The 4-Step System That Transforms...' section
 - Make it vertical for each Pillar instead of stacked
@@ -131,7 +131,7 @@ Fix Required:
 - Verify red CTA button uses correct styling
 - Remove any design elements beyond simple text layout
 
- SECTION 13: MORE TESTIMONIALS
+SECTION 13: MORE TESTIMONIALS
 Fix Required:
 - Create individual breakdowns like client case studies
 - Include big main screenshot or before & after, quote from them, and who they are
@@ -140,7 +140,7 @@ Fix Required:
 - Remove testimonial animations
 - Ensure consistent background colors
 
- SECTION 14: THIS ISN'T FOR EVERYONE....
+SECTION 14: THIS ISN'T FOR EVERYONE....
 Fix Required:
 - Replace current content with multi-tiered structure of the offer
 - Create 4 tier breakdown showing higher levels of access
@@ -148,21 +148,21 @@ Fix Required:
 - Ensure black background spans full width
 - Remove any animations or transitions
 
- SECTION 15: THIS IS FOR YOU IF...
+SECTION 15: THIS IS FOR YOU IF...
 Fix Required:
 - Change background to hero section black with red tint
 - Change font text to white
 - Make sub-headlines bigger
 - Remove any animations or transitions
 
- SECTION 16: FAQ
+SECTION 16: FAQ
 Fix Required:
 - Keep pure black background
 - Make questions interactive with dropdown functionality
 - Remove any animations or transitions
 - Ensure consistent typography
 
- SECTION 17: URGENCY & FINAL CALL-TO-ACTION
+SECTION 17: URGENCY & FINAL CALL-TO-ACTION
 Fix Required:
 - Remove random red and green text
 - Make styling cleaner and more consistent
@@ -171,9 +171,9 @@ Fix Required:
 - Verify red CTA button uses correct styling
 - Remove any animations or transitions
 
- V. PSYCHOLOGY AND MESSAGING UPDATES
+V. PSYCHOLOGY AND MESSAGING UPDATES
 
- INCORPORATE VSL PSYCHOLOGY
+INCORPORATE VSL PSYCHOLOGY
 Fix Required:
 - Incorporate the core pain points from VSL: successful men who feel exhausted inside, the disconnect between external success and internal wellbeing
 - Emphasize the roadblocks they face (restrictive diets, overtraining, willpower with substances, winging it)
@@ -182,7 +182,7 @@ Fix Required:
 - Address the specific pains: waking up stressed, dragging through the day, needing substances to function, feeling like a fraud
 - Incorporate the future pacing: what happens if nothing changes vs. what's possible with the system
 
- VI. IMPLEMENTATION PRIORITY
+VI. IMPLEMENTATION PRIORITY
 
 1. FIRST PRIORITY: COMPLETELY REMOVE the three red sections described in detail above
 2. SECOND PRIORITY: Fix hero section gradient and testimonial styling
@@ -191,7 +191,7 @@ Fix Required:
 5. FIFTH PRIORITY: Incorporate VSL psychology into key sections
 6. SIXTH PRIORITY: Fix typography and spacing consistency across all sections
 
- VII. EXECUTION COMMAND
+VII. EXECUTION COMMAND
 
 You will implement these fixes in the order of priority specified above. These are corrections to existing implementation, not new features.
 

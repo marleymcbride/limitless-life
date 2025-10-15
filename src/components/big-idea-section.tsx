@@ -2,62 +2,66 @@
 
 export default function BigIdeaSection() {
   return (
-    <section className="bg-white py-16 px-4">
+    <section className="bg-black py-16 px-4 w-full">
       <div className="container mx-auto max-w-4xl">
         <div className="text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-black mb-8">
-            The Big Idea: Stop Fighting Your Body
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-8">
+            Energy Is The Foundation Of Everything
           </h2>
 
-          <p className="text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed mb-12">
-            Most high-performers are fighting their bodies every single day.
-            Forcing stimulants, pushing through fatigue, using willpower to override natural signals.
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed mb-12">
+            You can be successful on paper, but if you wake up feeling stressed, drag yourself through the day,
+            and need substances just to function - you're living a lie. The gap between your external success
+            and internal reality is eating you alive.
           </p>
 
-          <div className="bg-gray-50 rounded-lg p-8 mb-12">
-            <h3 className="text-2xl font-bold text-black mb-6">
-              What if you could work WITH your body instead of against it?
+          <div className="bg-gray-900 bg-opacity-50 rounded-lg p-8 mb-12">
+            <h3 className="text-2xl font-bold text-white mb-6">
+              The Limitless Life: Waking Up With Natural Energy
             </h3>
 
-            <p className="text-lg text-gray-700 leading-relaxed mb-6">
-              Your body has incredible intelligence. It knows how to generate sustained energy,
-              how to burn fat efficiently, how to build muscle, how to heal itself.
+            <p className="text-lg text-gray-300 leading-relaxed mb-6">
+              Imagine waking up before your alarm feeling energized. Going through your day with sustained
+              focus and clarity. Being present with your family instead of mentally checked out. Feeling proud
+              of your body instead of ashamed of it.
             </p>
 
-            <p className="text-lg text-gray-700 leading-relaxed">
-              The problem isn't your body. The problem is that you've been taught to fight it
-              instead of listen to it.
+            <p className="text-lg text-gray-300 leading-relaxed">
+              This isn't a fantasy. This is what happens when you stop fighting your body and start working
+              with its natural intelligence. Energy becomes the foundation that transforms your business,
+              your relationships, and your entire life.
             </p>
           </div>
 
           <div className="space-y-6 mb-12">
             <div className="text-left">
-              <h3 className="text-xl font-bold text-black mb-3">
-                Drag Energy vs Glide Energy
+              <h3 className="text-xl font-bold text-white mb-3">
+                The Disconnect That's Destroying You
               </h3>
-              <p className="text-lg text-gray-700 leading-relaxed">
-                <strong>Drag Energy:</strong> Forcing yourself through each day with coffee,
-                stress hormones, and willpower. It's exhausting and unsustainable.
+              <p className="text-lg text-gray-300 leading-relaxed">
+                You look successful to everyone else, but inside you feel like a fraud. You're pushing harder,
+                using more coffee, more alcohol, more willpower - just to maintain the appearance of having it all together.
               </p>
             </div>
 
             <div className="text-left">
-              <h3 className="text-xl font-bold text-black mb-3">
-                The Energy Restoration Method
+              <h3 className="text-xl font-bold text-white mb-3">
+                The Roadblocks You Face Every Day
               </h3>
-              <p className="text-lg text-gray-700 leading-relaxed">
-                <strong>Glide Energy:</strong> Natural, sustained power that flows effortlessly
-                throughout your day. This is your birthright.
+              <p className="text-lg text-gray-300 leading-relaxed">
+                Restrictive diets that fail. Overtraining that leaves you exhausted. Using willpower to quit substances,
+                only to cave under pressure. Winging it because no system seems to work for someone like you.
               </p>
             </div>
 
             <div className="text-left">
-              <h3 className="text-xl font-bold text-black mb-3">
-                Simple But Not Easy
+              <h3 className="text-xl font-bold text-white mb-3">
+                What If Nothing Changes?
               </h3>
-              <p className="text-lg text-gray-700 leading-relaxed">
-                The system is simple because it works with your body's natural intelligence.
-                But it requires you to stop fighting and start listening.
+              <p className="text-lg text-gray-300 leading-relaxed">
+                Another year passes. Your health gets worse. Your relationships suffer. Your business plateaus
+                because you don't have the energy to take it to the next level. The gap between who you are and
+                who you could be becomes permanent.
               </p>
             </div>
           </div>
@@ -71,7 +75,7 @@ export default function BigIdeaSection() {
               }
             }}
           >
-            See If This Is Right For You
+            Start Living The Limitless Life
           </button>
         </div>
       </div>

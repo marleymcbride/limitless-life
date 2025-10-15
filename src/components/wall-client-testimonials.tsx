@@ -2,7 +2,7 @@
 
 export default function WallClientTestimonials() {
   return (
-    <section className="bg-gray-900 py-16 px-4 w-full">
+    <section className="bg-black py-16 px-4 w-full">
       <div className="container mx-auto max-w-6xl">
         <div className="text-center">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-8">

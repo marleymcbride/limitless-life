@@ -4,11 +4,12 @@ import VSLPlayer from "./vsl-player";
 
 export default function VideoTestimonialCTA() {
   return (
-    <section className="bg-black py-16 px-4 w-full">
+    <section className="bg-black relative py-16 px-4 w-full">
+    <div className="absolute bottom-0 left-0 w-full h-[33vh]" style={{ background: "linear-gradient(to top, rgba(148, 9, 9, 0.30) 0%, rgba(148, 9, 9, 0.16) 50%, rgba(148, 9, 9, 0) 100%)" }}></div>
       <div className="container mx-auto max-w-4xl">
         <div className="text-center">
           <div className="max-w-3xl mx-auto mb-12">
-            <p className="text-2xl text-white italic">
+            <p className="text-3xl md:text-4xl text-white font-bold italic">
               "i haven't felt this good in years."
             </p>
           </div>

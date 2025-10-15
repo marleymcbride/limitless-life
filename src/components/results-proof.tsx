@@ -11,10 +11,10 @@ export default function ResultsProof() {
 
           <div className="mb-12">
             <div className="text-3xl md:text-4xl font-black text-gray-900 mb-4">
-              26 lbs weight loss • 89% alcohol-free • 94% caffeine-free
+              Real Results From High-Performers Like You
             </div>
             <div className="text-xl text-gray-600">
-              2-3 training days per week • 1000+ days alcohol-free • Testosterone from 346 to 678 ng/dl
+              Men who were exactly where you are now - successful on paper but feeling like crap inside
             </div>
           </div>
 

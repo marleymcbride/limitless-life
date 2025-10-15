@@ -22,7 +22,7 @@ export default function UrgencyFinalCTA() {
 
             <div className="grid md:grid-cols-2 gap-8 text-left">
               <div>
-                <h4 className="text-xl font-bold text-red-600 mb-4">
+                <h4 className="text-xl font-bold text-black mb-4">
                   If You Do Nothing:
                 </h4>
                 <ul className="space-y-2 text-gray-700">
@@ -35,7 +35,7 @@ export default function UrgencyFinalCTA() {
               </div>
 
               <div>
-                <h4 className="text-xl font-bold text-green-600 mb-4">
+                <h4 className="text-xl font-bold text-black mb-4">
                   If You Join The Limitless Protocol:
                 </h4>
                 <ul className="space-y-2 text-gray-700">

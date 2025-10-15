@@ -2,102 +2,110 @@
 
 export default function MoreClientTestimonials() {
   return (
-    <section className="bg-gray-900 py-16 px-4 w-full">
+    <section className="py-16 px-4 w-full">
       <div className="container mx-auto max-w-6xl">
         <div className="text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-8">
-            More Success Stories From High-Performers
+          <h2 className="text-4xl md:text-5xl font-bold text-black mb-8">
+            Real Transformations From High-Performers
           </h2>
 
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
-            <div className="bg-gray-800 rounded-lg p-6">
-              <div className="flex items-center mb-4">
-                <div className="w-12 h-12 bg-gray-600 rounded-lg mr-4 flex items-center justify-center">
-                  <span className="text-gray-300 font-bold">JW</span>
-                </div>
-                <div>
-                  <h3 className="font-bold text-white">Client J - 45 years old</h3>
-                  <p className="text-sm text-gray-400">CEO, 16 weeks</p>
-                </div>
-              </div>
-              <p className="text-gray-300 italic">
-                "I was skeptical about another 'fitness program'. But this isn't fitness - it's a complete life overhaul. My energy is through the roof, and I closed my biggest deal ever."
-              </p>
-            </div>
+          <p className="text-xl text-gray-700 mb-16 max-w-3xl mx-auto">
+            These aren't testimonials. These are case studies of what happens when high-performers stop fighting their body and start working with it.
+          </p>
 
-            <div className="bg-gray-800 rounded-lg p-6">
-              <div className="flex items-center mb-4">
-                <div className="w-12 h-12 bg-gray-600 rounded-lg mr-4 flex items-center justify-center">
-                  <span className="text-gray-300 font-bold">RP</span>
+          {/* Case Study 1 - Client L */}
+          <div className="bg-white rounded-lg shadow-lg p-12 mb-16 border border-gray-200">
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+              <div>
+                <div className="flex items-center mb-6">
+                  <div className="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center mr-4">
+                    <span className="text-2xl font-bold text-white">L</span>
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-bold text-black">Client L - Investment Banking</h3>
+                    <p className="text-lg text-gray-600">London, 16 weeks</p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="font-bold text-white">Client R - 38 years old</h3>
-                  <p className="text-sm text-gray-400">Lawyer, 12 weeks</p>
-                </div>
-              </div>
-              <p className="text-gray-300 italic">
-                "The alcohol dependency was killing me. I haven't had a drink in 6 months and I don't even think about it. My clarity and focus have transformed my practice."
-              </p>
-            </div>
 
-            <div className="bg-gray-800 rounded-lg p-6">
-              <div className="flex items-center mb-4">
-                <div className="w-12 h-12 bg-gray-600 rounded-lg mr-4 flex items-center justify-center">
-                  <span className="text-gray-300 font-bold">TM</span>
-                </div>
-                <div>
-                  <h3 className="font-bold text-white">Client T - 51 years old</h3>
-                  <p className="text-sm text-gray-400">Surgeon, 20 weeks</p>
-                </div>
-              </div>
-              <p className="text-gray-300 italic">
-                "As a surgeon, I need sustained energy for 12-hour procedures. This system gave me exactly that. I'm performing better than surgeons half my age."
-              </p>
-            </div>
+                <blockquote className="text-2xl text-gray-800 font-medium italic mb-8 leading-relaxed">
+                  "I was drinking a bottle of wine a night, looked like shit, and my job was genuinely on the line. Now I'm in the best shape I've ever been, haven't touched a drop in over a year, got promoted, and feel fucking incredible. Marley, these energy systems are just mindblowing."
+                </blockquote>
 
-            <div className="bg-gray-800 rounded-lg p-6">
-              <div className="flex items-center mb-4">
-                <div className="w-12 h-12 bg-gray-600 rounded-lg mr-4 flex items-center justify-center">
-                  <span className="text-gray-300 font-bold">KL</span>
-                </div>
-                <div>
-                  <h3 className="font-bold text-white">Client K - 43 years old</h3>
-                  <p className="text-sm text-gray-400">Investor, 14 weeks</p>
+                <div className="space-y-4">
+                  <div className="flex items-center">
+                    <div className="w-3 h-3 bg-green-500 rounded-full mr-3"></div>
+                    <span className="text-lg text-gray-700">450+ Days Sober</span>
+                  </div>
+                  <div className="flex items-center">
+                    <div className="w-3 h-3 bg-green-500 rounded-full mr-3"></div>
+                    <span className="text-lg text-gray-700">Career Promotion</span>
+                  </div>
+                  <div className="flex items-center">
+                    <div className="w-3 h-3 bg-green-500 rounded-full mr-3"></div>
+                    <span className="text-lg text-gray-700">Complete Physical Transformation</span>
+                  </div>
                 </div>
               </div>
-              <p className="text-gray-300 italic">
-                "I thought I was too busy for this. But the efficiency is incredible. 2-3 sessions per week and my life has completely changed. Best investment I've ever made."
-              </p>
-            </div>
 
-            <div className="bg-gray-800 rounded-lg p-6">
-              <div className="flex items-center mb-4">
-                <div className="w-12 h-12 bg-gray-600 rounded-lg mr-4 flex items-center justify-center">
-                  <span className="text-gray-300 font-bold">AS</span>
-                </div>
-                <div>
-                  <h3 className="font-bold text-white">Client A - 49 years old</h3>
-                  <p className="text-sm text-gray-400">Executive, 18 weeks</p>
+              <div className="bg-gray-100 rounded-lg p-8 text-center">
+                <div className="text-gray-500 text-lg mb-4">Client L Results</div>
+                <div className="space-y-4">
+                  <div className="text-3xl font-bold text-black">-24 lbs</div>
+                  <div className="text-gray-600">Body Fat Lost</div>
+                  <div className="text-3xl font-bold text-red-600 mt-6">+200%</div>
+                  <div className="text-gray-600">Energy Increase</div>
+                  <div className="text-3xl font-bold text-black mt-6">365+</div>
+                  <div className="text-gray-600">Days Alcohol-Free</div>
                 </div>
               </div>
-              <p className="text-gray-300 italic">
-                "My marriage was failing because I had no energy for anything. Now I'm like a new person. My wife can't believe the transformation. This saved my marriage."
-              </p>
             </div>
+          </div>
 
-            <div className="bg-gray-800 rounded-lg p-6">
-              <div className="flex items-center mb-4">
-                <div className="w-12 h-12 bg-gray-600 rounded-lg mr-4 flex items-center justify-center">
-                  <span className="text-gray-300 font-bold">MD</span>
+          {/* Case Study 2 - Client R */}
+          <div className="bg-black text-white rounded-lg shadow-lg p-12 mb-16">
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+              <div>
+                <div className="flex items-center mb-6">
+                  <div className="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center mr-4">
+                    <span className="text-2xl font-bold text-white">R</span>
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-bold text-white">Client R - Corporate Lawyer</h3>
+                    <p className="text-lg text-gray-300">Manchester, 12 weeks</p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="font-bold text-white">Client M - 36 years old</h3>
-                  <p className="text-sm text-gray-400">Founder, 10 weeks</p>
+
+                <blockquote className="text-2xl text-gray-100 font-medium italic mb-8 leading-relaxed">
+                  "The coffee and alcohol addiction was destroying my career. I was falling asleep in meetings and my performance review was brutal. Now I'm closing cases I couldn't handle before, my sex drive is back, and I actually look forward to waking up. This program saved my career."
+                </blockquote>
+
+                <div className="space-y-4">
+                  <div className="flex items-center">
+                    <div className="w-3 h-3 bg-green-500 rounded-full mr-3"></div>
+                    <span className="text-lg text-gray-200">90+ Days Alcohol-Free</span>
+                  </div>
+                  <div className="flex items-center">
+                    <div className="w-3 h-3 bg-green-500 rounded-full mr-3"></div>
+                    <span className="text-lg text-gray-200">No More Coffee Dependency</span>
+                  </div>
+                  <div className="flex items-center">
+                    <div className="w-3 h-3 bg-green-500 rounded-full mr-3"></div>
+                    <span className="text-lg text-gray-200">Career Performance Transformed</span>
+                  </div>
                 </div>
               </div>
-              <p className="text-gray-300 italic">
-                "I was addicted to coffee and energy drinks. Now I wake up naturally energized. My startup is thriving because I have the clarity and energy to lead effectively."
-              </p>
+
+              <div className="bg-gray-800 rounded-lg p-8 text-center">
+                <div className="text-gray-300 text-lg mb-4">Client R Results</div>
+                <div className="space-y-4">
+                  <div className="text-3xl font-bold text-white">-18 lbs</div>
+                  <div className="text-gray-300">Body Fat Lost</div>
+                  <div className="text-3xl font-bold text-red-600 mt-6">+150%</div>
+                  <div className="text-gray-300">Daily Energy</div>
+                  <div className="text-3xl font-bold text-white mt-6">2.5x</div>
+                  <div className="text-gray-300">Case Load Capacity</div>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -110,7 +118,7 @@ export default function MoreClientTestimonials() {
               }
             }}
           >
-            Join These Success Stories
+            Start Your Case Study Today
           </button>
         </div>
       </div>

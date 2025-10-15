@@ -2,110 +2,71 @@
 
 export default function IntroducingLimitless() {
   return (
-    <section className="bg-gray-900 py-16 px-4 w-full">
+    <section className="bg-black py-16 px-4 w-full">
       <div className="container mx-auto max-w-5xl">
         <div className="text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-8">
-            Introducing The Limitless Energy Protocol
+          <h2 className="text-5xl md:text-6xl font-bold text-white mb-8">
+            Introducing
           </h2>
 
-          <p className="text-lg text-gray-300 mb-12 max-w-3xl mx-auto">
-            The complete system for restoring your natural energy, transforming your body,
-            and getting off alcohol without willpower or struggle.
+          <h3 className="text-3xl md:text-4xl font-bold text-red-600 mb-12">
+            The Limitless Life
+          </h3>
+
+          <p className="text-xl text-gray-300 mb-16 max-w-4xl mx-auto leading-relaxed">
+            What if you could wake up before your alarm feeling energized? Go through your day with sustained
+            focus and clarity? Be present with your family instead of mentally checked out? Feel proud of your body
+            instead of ashamed of it? This isn't a fantasy - this is what happens when you stop fighting your body
+            and start working with its natural intelligence.
           </p>
 
-          <div className="grid md:grid-cols-2 gap-8 mb-12">
-            <div className="text-left">
-              <h3 className="text-xl font-bold text-white mb-4">
-                What You Get Inside The Limitless Energy Protocol:
-              </h3>
-
-              <ul className="space-y-3 text-gray-300">
-                <li className="flex items-start">
-                  <span className="text-red-500 mr-2">•</span>
-                  <span>The complete 3-Phase Energy Restoration System</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-red-500 mr-2">•</span>
-                  <span>Customized nutrition protocols for your body type</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-red-500 mr-2">•</span>
-                  <span>2-3x per week training sessions (no cardio required)</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-red-500 mr-2">•</span>
-                  <span>Sleep optimization protocols</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-red-500 mr-2">•</span>
-                  <span>Stress management techniques</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-red-500 mr-2">•</span>
-                  <span>Hormone optimization strategies</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-red-500 mr-2">•</span>
-                  <span>Private community of high-performers</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-red-500 mr-2">•</span>
-                  <span>Weekly coaching calls with Marley</span>
-                </li>
-              </ul>
-            </div>
-
-            <div className="text-left">
-              <h3 className="text-xl font-bold text-white mb-4">
-                What Makes This Different:
-              </h3>
-
-              <ul className="space-y-3 text-gray-300">
-                <li className="flex items-start">
-                  <span className="text-red-500 mr-2">•</span>
-                  <span>No supplements required</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-red-500 mr-2">•</span>
-                  <span>No medications or TRT</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-red-500 mr-2">•</span>
-                  <span>Works with your busy schedule</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-red-500 mr-2">•</span>
-                  <span>Permanent results, not temporary fixes</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-red-500 mr-2">•</span>
-                  <span>Based on real client results</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-red-500 mr-2">•</span>
-                  <span>Sustainable long-term approach</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-red-500 mr-2">•</span>
-                  <span>Personalized to your lifestyle</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-red-500 mr-2">•</span>
-                  <span>Guaranteed results or your money back</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="bg-gray-800 rounded-lg p-8 mb-12">
-            <h3 className="text-2xl font-bold text-white mb-4">
-              This Is For You If You're Ready To:
+          <div className="bg-gray-900 bg-opacity-50 rounded-lg p-12 mb-16">
+            <h3 className="text-2xl font-bold text-white mb-8">
+              Why This System Works When Nothing Else Has
             </h3>
-            <p className="text-lg text-gray-300">
-              Stop fighting your body and start working with it. Wake up naturally energized.
-              Perform at your peak in business and life. Feel amazing in your body again.
-            </p>
+
+            <div className="grid md:grid-cols-2 gap-12 text-left">
+              <div>
+                <h4 className="text-xl font-bold text-white mb-4">
+                  It's The ONLY System That Addresses Your Reality
+                </h4>
+                <p className="text-gray-300 leading-relaxed mb-6">
+                  You're not a 25-year-old athlete. You're a high-performer with real responsibilities, real stress,
+                  and a body that's been fighting back for years. We don't use cookie-cutter solutions - we solve the
+                  specific problems that successful men like you face every single day.
+                </p>
+              </div>
+
+              <div>
+                <h4 className="text-xl font-bold text-white mb-4">
+                  It Works WITH Your Body, Not Against It
+                </h4>
+                <p className="text-gray-300 leading-relaxed mb-6">
+                  No more forcing yourself through punishing workouts or restrictive diets. We restore your body's
+                  natural intelligence so the results become automatic and sustainable. No willpower required.
+                </p>
+              </div>
+
+              <div>
+                <h4 className="text-xl font-bold text-white mb-4">
+                  It's Designed For Your Life, Not The Other Way Around
+                </h4>
+                <p className="text-gray-300 leading-relaxed mb-6">
+                  2-3 focused sessions per week. Works with your travel schedule. Fits into your busy lifestyle.
+                  This system adapts to you, not the other way around.
+                </p>
+              </div>
+
+              <div>
+                <h4 className="text-xl font-bold text-white mb-4">
+                  It Delivers Real Results That Last
+                </h4>
+                <p className="text-gray-300 leading-relaxed">
+                  Natural energy restoration, permanent habit change, hormone optimization, and complete life
+                  transformation. Not temporary fixes that leave you back where you started.
+                </p>
+              </div>
+            </div>
           </div>
 
           <button

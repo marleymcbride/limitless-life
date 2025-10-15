@@ -21,12 +21,11 @@ export const bgClasses = {
   black: "bg-black text-white relative overflow-hidden",
 };
 
-// Visual elements for black/red gradient sections (Hero style for hero and marketing sections)
+// Visual elements for hero section with subtle red gradient in final third
 export const blackRedGradientOverlay = React.createElement("div", {
-  className: "absolute inset-0",
+  className: "absolute bottom-0 left-0 w-full h-[33vh] z-20",
   style: {
-    background:
-      "linear-gradient(to top, rgba(100, 0, 0, 0.1) 0%, rgba(60, 0, 0, 0.05) 25%, rgba(30, 0, 0, 0.02) 50%, rgba(0, 0, 0, 0.9) 75%, rgb(0, 0, 0) 100%)",
+    background: "linear-gradient(to top, rgba(148, 9, 9, 0.30) 0%, rgba(148, 9, 9, 0.16) 50%, rgba(148, 9, 9, 0) 100%)",
   },
 });
 
@@ -39,10 +38,10 @@ export const invertedGradientOverlay = React.createElement("div", {
   },
 });
 
-// Hero red accent for bottom of gradient sections
+// Hero red accent for bottom of hero section (10% red tint)
 export const redAccentBottom = React.createElement("div", {
   className:
-    "absolute bottom-0 left-0 w-full h-[50vh] bg-gradient-to-t from-[#940909]/8 via-[#940909]/5 to-transparent opacity-60",
+    "absolute bottom-0 left-0 w-full h-[50vh] bg-gradient-to-t from-[#940909]/10 to-transparent opacity-60",
 });
 
 // Stronger red accent for black background sections
@@ -55,7 +54,7 @@ export const vignetteEffect = React.createElement("div", {
   className: "absolute inset-0 pointer-events-none",
   style: {
     background:
-      "radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0.6) 100%)",
+      "radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.1) 70%, rgba(0,0,0,0.3) 100%)",
     mixBlendMode: "multiply",
   },
 });

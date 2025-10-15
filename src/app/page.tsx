@@ -33,9 +33,9 @@ export default function Home() {
         className={`py-6 md:py-8 px-4 min-h-[75vh] flex flex-col relative w-full overflow-hidden ${bgClasses.blackRedGradient}`}
       >
         {blackRedGradientOverlay}
-        {redAccentBottom}
-        <div className="absolute top-0 left-0 w-full h-[25vh] bg-gradient-to-b from-black to-transparent"></div>
-        {vignetteEffect}
+        {/* {redAccentBottom} */}
+        {/* <div className="absolute top-0 left-0 w-full h-[25vh] bg-gradient-to-b from-black to-transparent"></div> */}
+        {vignetteEffect} 
 
         <div className="container flex relative z-10 flex-col mx-auto h-full">
           {/* Mobile view - headline and subheadline optimized for mobile */}
@@ -119,8 +119,8 @@ export default function Home() {
 
           {/* Testimonial - Simple thin text at bottom of hero */}
           <div className="text-center mb-8 max-w-4xl mx-auto">
-            <div className="bg-gray-50 rounded-lg p-6">
-              <blockquote className="text-lg text-gray-800 italic mb-4">
+            <div className="bg-transparent bg-opacity-10 p-6">
+              <blockquote className="text-lg text-white italic mb-4">
                 "I was drinking a bottle of wine a night, looked like shit, and my
                 job was genuinely on the line. Now I'm in the best shape I've ever
                 been, haven't touched a drop in over a year, got promoted, and
@@ -132,8 +132,8 @@ export default function Home() {
                   <span className="text-white font-bold">L</span>
                 </div>
                 <div className="text-left">
-                  <div className="font-bold text-gray-900">Client L - Investment Banking, London</div>
-                  <div className="text-sm text-gray-600">450+ Days Sober • Complete Transformation • Career Promotion</div>
+                  <div className="font-bold text-white">Client L - Investment Banking, London</div>
+                  <div className="text-sm text-gray-300">450+ Days Sober • Complete Transformation • Career Promotion</div>
                 </div>
               </div>
             </div>
