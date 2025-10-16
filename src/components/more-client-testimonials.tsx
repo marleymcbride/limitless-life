@@ -10,7 +10,7 @@ export default function MoreClientTestimonials() {
           </h2>
 
           <p className="text-xl text-gray-700 mb-16 max-w-3xl mx-auto">
-            These aren't testimonials. These are case studies of what happens when high-performers stop fighting their body and start working with it.
+            These aren&apos;t testimonials. These are case studies of what happens when high-performers stop fighting their body and start working with it.
           </p>
 
           {/* Case Study 1 - Client L */}
@@ -28,7 +28,7 @@ export default function MoreClientTestimonials() {
                 </div>
 
                 <blockquote className="text-2xl text-gray-800 font-medium italic mb-8 leading-relaxed">
-                  "I was drinking a bottle of wine a night, looked like shit, and my job was genuinely on the line. Now I'm in the best shape I've ever been, haven't touched a drop in over a year, got promoted, and feel fucking incredible. Marley, these energy systems are just mindblowing."
+                  &quot;I was drinking a bottle of wine a night, looked like shit, and my job was genuinely on the line. Now I&apos;m in the best shape I&apos;ve ever been, haven&apos;t touched a drop in over a year, got promoted, and feel fucking incredible. Marley, these energy systems are just mindblowing.&quot;
                 </blockquote>
 
                 <div className="space-y-4">
@@ -76,7 +76,7 @@ export default function MoreClientTestimonials() {
                 </div>
 
                 <blockquote className="text-2xl text-gray-800 font-medium italic mb-8 leading-relaxed">
-                  "The coffee and alcohol addiction was destroying my career. I was falling asleep in meetings and my performance review was brutal. Now I'm closing cases I couldn't handle before, my sex drive is back, and I actually look forward to waking up. This program saved my career."
+                  &quot;The coffee and alcohol addiction was destroying my career. I was falling asleep in meetings and my performance review was brutal. Now I&apos;m closing cases I couldn&apos;t handle before, my sex drive is back, and I actually look forward to waking up. This program saved my career.&quot;
                 </blockquote>
 
                 <div className="space-y-4">

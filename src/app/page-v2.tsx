@@ -2,12 +2,11 @@ import Image from "next/image";
 import EnhancedVideoPlayer from "../components/enhanced-video-player";
 import ImmediateProofSection from "../components/immediate-proof-section";
 import PersonalStorySection from "../components/personal-story-section";
-import SolutionProofSection from "../components/solution-proof-section";
-import EnemyUspSection from "../components/enemy-usp-section";
-import FinalOfferSection from "../components/final-offer-section";
+import SolutionSection from "../components/solution-section";
+import RunningEmptySection from "../components/running-empty-section";
+import FinalCta from "../components/final-cta";
 import FooterSection from "../components/footer-section";
 import StickyCTA from "../components/sticky-cta";
-import { Button } from "@/components/ui/button";
 import {
   bgClasses,
   blackRedGradientOverlay,
@@ -118,13 +117,13 @@ export default function HomeV2() {
       <PersonalStorySection />
 
       {/* 4. Solution + Proof Density (Black with red accents) */}
-      <SolutionProofSection />
+      <SolutionSection />
 
       {/* 5. Enemy + USP + More Proof (Black with red accents) */}
-      <EnemyUspSection />
+      <RunningEmptySection />
 
       {/* 6. Final Offer + Urgency + Guarantee (Black with red accents) */}
-      <FinalOfferSection />
+      <FinalCta />
 
       {/* Minimal Footer (Black) */}
       <FooterSection />

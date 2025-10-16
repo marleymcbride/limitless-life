@@ -10,7 +10,7 @@ export default function ResultsProof() {
           </h2>
 
           <div className="mb-12">
-            <div className="text-3xl md:text-4xl font-black font-medium text-gray-900 mb-4">
+            <div className="text-3xl md:text-4xl font-black text-gray-900 mb-4">
               Real results from men who were exactly where you are right now:
             </div>
 
@@ -29,7 +29,7 @@ export default function ResultsProof() {
                   </div>
                 </div>
                 <p className="text-gray-700 mb-4">
-                  "I've lost 31 pounds and haven't touched alcohol in 8 months. My business has never been better because I have the energy to actually focus."
+                  &quot;I&apos;ve lost 31 pounds and haven&apos;t touched alcohol in 8 months. My business has never been better because I have the energy to actually focus.&quot;
                 </p>
               </div>
 
@@ -44,7 +44,7 @@ export default function ResultsProof() {
                   </div>
                 </div>
                 <p className="text-gray-700 mb-4">
-                  "Down 28 lbs and my doctor is amazed at my bloodwork. I feel like I'm 35 again, not 52."
+                  &quot;Down 28 lbs and my doctor is amazed at my bloodwork. I feel like I&apos;m 35 again, not 52.&quot;
                 </p>
               </div>
 
@@ -59,7 +59,7 @@ export default function ResultsProof() {
                   </div>
                 </div>
                 <p className="text-gray-700 mb-4">
-                  "I was skeptical but this actually works. 22 lbs lost and my energy levels are through the roof. No more afternoon crashes."
+                  &quot;I was skeptical but this actually works. 22 lbs lost and my energy levels are through the roof. No more afternoon crashes.&quot;
                 </p>
               </div>
             </div>
@@ -76,7 +76,7 @@ export default function ResultsProof() {
                   </div>
                 </div>
                 <p className="text-gray-700 mb-4">
-                  "My wife says I'm like a different person. I've lost 24 lbs and actually want to be intimate again. This system changed my marriage."
+                  &quot;My wife says I&apos;m like a different person. I&apos;ve lost 24 lbs and actually want to be intimate again. This system changed my marriage.&quot;
                 </p>
               </div>
 
@@ -90,8 +90,8 @@ export default function ResultsProof() {
                     <p className="text-sm text-gray-600">24 weeks</p>
                   </div>
                 </div>
-                <p className="gray-700 mb-4">
-                  "I thought I was too old to change. Lost 18 lbs and my doctor took me off all medications. I feel better than I have in 20 years."
+                <p className="text-gray-700 mb-4">
+                  &quot;I thought I was too old to change. Lost 18 lbs and my doctor took me off all medications. I feel better than I have in 20 years.&quot;
                 </p>
               </div>
 
@@ -106,7 +106,7 @@ export default function ResultsProof() {
                   </div>
                 </div>
                 <p className="text-gray-700 mb-4">
-                  "I was a coffee addict. Now I wake up naturally energized. 19 lbs gone and I'm performing better at work than ever before."
+                  &quot;I was a coffee addict. Now I wake up naturally energized. 19 lbs gone and I&apos;m performing better at work than ever before.&quot;
                 </p>
               </div>
             </div>

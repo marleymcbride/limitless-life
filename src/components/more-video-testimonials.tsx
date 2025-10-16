@@ -26,7 +26,7 @@ export default function MoreVideoTestimonials() {
               </div>
               <div className="text-left">
                 <p className="text-lg text-black italic mb-4">
-                  "I haven't felt this good in years."
+                  &quot;I haven&apos;t felt this good in years.&quot;
                 </p>
                 <p className="text-gray-700">
                   Client was a 47-year-old CEO who was drinking 3 bottles of wine per night just to cope with the stress. Now completely sober and more productive than ever.
@@ -48,7 +48,7 @@ export default function MoreVideoTestimonials() {
               </div>
               <div className="order-1 md:order-2 text-left">
                 <p className="text-lg text-black italic mb-4">
-                  "This system changed my life."
+                  &quot;This system changed my life.&quot;
                 </p>
                 <p className="text-gray-700">
                   Client was a 38-year-old lawyer running on coffee and Adderall. Now completely stimulant-free and performing at his peak in the courtroom.

@@ -15,7 +15,7 @@ export default function ProcessExplanation() {
                 1) How to Wake Up Energized Without Coffee
               </h3>
               <p className="text-lg text-gray-300 leading-relaxed">
-                Most people eat foods that work against their body's natural energy patterns. I discovered you can eat substantial food in the morning and actually feel better. This isn't about intermittent fasting or starving yourself—it's about working with your body instead of fighting it. You can wake up feeling great without needing any stimulants.
+                Most people eat foods that work against their body&apos;s natural energy patterns. I discovered you can eat substantial food in the morning and actually feel better. This isn&apos;t about intermittent fasting or starving yourself—it&apos;s about working with your body instead of fighting it. You can wake up feeling great without needing any stimulants.
               </p>
             </div>
 
@@ -33,16 +33,16 @@ export default function ProcessExplanation() {
               3) How to End Your Dependence On Coffee And Alcohol
               </h3>
               <p className="text-lg text-gray-300 leading-relaxed">
-                You can break free from the caffeine-alcohol cycle. Most people don't realize their baseline energy can be a consistent 60-70% without any stimulants. Humans weren't designed to need caffeine—its mainstream use is only about 100 years old. You can become naturally calm, confident, and comfortable without these crutches.
+                You can break free from the caffeine-alcohol cycle. Most people don&apos;t realize their baseline energy can be a consistent 60-70% without any stimulants. Humans weren&apos;t designed to need caffeine—its mainstream use is only about 100 years old. You can become naturally calm, confident, and comfortable without these crutches.
               </p>
             </div>
 
             <div className="text-left">
               <h3 className="text-2xl font-bold text-white mb-4">
-              4) How to Fix What's Really Holding You Back
+              4) How to Fix What&apos;s Really Holding You Back
               </h3>
               <p className="text-lg text-gray-300 leading-relaxed">
-                You have to address the underlying health issues first—blood work, testosterone, gut health, adrenals. Skipping this step is like painting over a cracked wall. Only when your core health is resolved can other approaches work effectively. This is what makes everything else possible. You can't build a strong house on a broken foundation.
+                You have to address the underlying health issues first—blood work, testosterone, gut health, adrenals. Skipping this step is like painting over a cracked wall. Only when your core health is resolved can other approaches work effectively. This is what makes everything else possible. You can&apos;t build a strong house on a broken foundation.
               </p>
             </div>
           </div>

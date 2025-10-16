@@ -45,7 +45,7 @@ export default function IntroducingLimitless() {
                   It Works WITH Your Body, Not Against It
                 </h4>
                 <p className="text-gray-300 leading-relaxed mb-6">
-                  No more forcing yourself through punishing workouts or restrictive diets. We restore your body's
+                  No more forcing yourself through punishing workouts or restrictive diets. We restore your body&apos;s
                   natural intelligence so the results become automatic and sustainable. No willpower required.
                 </p>
               </div>
