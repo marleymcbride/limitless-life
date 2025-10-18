@@ -1,11 +1,6 @@
-import { Metadata } from "next";
-import { CTAButton } from "../../components/ui/cta-button";
+"use client";
 
-export const metadata: Metadata = {
-  title: "Welcome to The Limitless Protocol - Payment Successful",
-  description:
-    "Thank you for joining The Limitless Protocol. Your transformation begins now.",
-};
+import { CTAButton } from "../../components/ui/cta-button";
 
 export default function SuccessPage() {
   return (
