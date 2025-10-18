@@ -19,7 +19,6 @@ import WallClientTestimonials from "../components/wall-client-testimonials";
 import FooterSection from "../components/footer-section";
 import StickyCTA from "../components/sticky-cta";
 import {
-  bgClasses,
   blackRedGradientOverlay,
   vignetteEffect,
 } from "../lib/utils";
