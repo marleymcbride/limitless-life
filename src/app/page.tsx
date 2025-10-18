@@ -18,10 +18,7 @@ import UrgencyFinalCTA from "../components/urgency-final-cta";
 import WallClientTestimonials from "../components/wall-client-testimonials";
 import FooterSection from "../components/footer-section";
 import StickyCTA from "../components/sticky-cta";
-import {
-  blackRedGradientOverlay,
-  vignetteEffect,
-} from "../lib/utils";
+import { blackRedGradientOverlay, vignetteEffect } from "../lib/utils";
 
 export default function Home() {
   return (
