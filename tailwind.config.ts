@@ -1,4 +1,4 @@
-import { type Config, type PluginUtils } from "tailwindcss";
+import { type Config } from "tailwindcss";
 
 const config: Config = {
   content: [
@@ -75,7 +75,7 @@ const config: Config = {
         '1.8': '1.8',
         '1.9': '1.9',
         // Global H1 line-height
-        'h1': '1.4', // Global default for all H1 elements
+        'h1': '1.2', // Global default for all H1 elements
       },
       // All animations removed for clean, conversion-focused design
       animation: {},
@@ -83,13 +83,13 @@ const config: Config = {
     },
   },
   plugins: [
-    function({ addUtilities }: { addUtilities: PluginUtils['addUtilities'] }) {
+    function({ addUtilities }: any) {
       const newUtilities = {
         'h1': {
-          lineHeight: '1.4 !important',
+          lineHeight: '1.3 !important',
         },
         '.h1-override': {
-          lineHeight: '1.4 !important',
+          lineHeight: '1.3 !important',
         },
       }
       addUtilities(newUtilities)

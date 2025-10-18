@@ -65,38 +65,31 @@ export default function Home() {
             </div>
             */}
             {/* Mobile Headlines (visible only on mobile) */}
-            <h1 className="block px-2 mx-auto mt-0 mb-4 w-full text-6xl font-bold text-center text-white sm:hidden" style={{ lineHeight: "1.4" }}>
-              You don&apos;t need more coffee. You need a system that actually
-              fixes your broken body.
+            <h1 className="block px-2 mx-auto mt-0 mb-4 w-full text-6xl font-bold text-center text-white sm:hidden capitalize" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif', lineHeight: "1.17" }}>
+            Discover how to look and feel better than you did at 25 (without obsessing over your health)
             </h1>
 
             {/* Mobile Subheadline - RIGHT AFTER HEADLINE (visible only on mobile) */}
             <p
               className="block px-2 mx-auto mb-6 font-light text-center text-gray-300 sm:hidden text-[1.75rem] leading-[1.3]"
             >
-              The proven system for high performers to build a top 1% physique,
-              get their sex drive back, and quite simply stop feeling like
-              shit... without extreme diets or training more than 2 days a week
+              Feeling great doesn&apos;t need to mean downing 3-5 espressos, slaving at the gym, or cutting out your favorite foods. Watch below to learn the proven system that&apos;s helped countless men restore their natural energy, control their drinking and build an elite body in 2 days per week:
             </p>
 
             {/* Spacer div to push headline down */}
             <div className="h-10"></div>
 
             {/* Desktop Headlines (hidden on mobile) */}
-            <h1 className="hidden sm:block text-4xl sm:text-4xl md:text-3xl  lg:text-4xl font-bold text-white text-center mb-0 mt-0 sm:mt-0 max-w-[87%] mx-auto px-4" style={{ lineHeight: "1.4" }}>
-              You don&apos;t need another black Americano or BS supplement. You
-              need a real system that quite simply, stops you feeling like shit.
+            <h1 className="hidden sm:block text-5xl sm:text-5xl md:text-4xl  lg:text-5xl font-bold text-white text-center mb-0 mt-0 sm:mt-0 max-w-[87%] mx-auto px-4 capitalize" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif', lineHeight: "1.17" }}>
+            Discover how to look and feel better than you did at 25 (without obsessing over your health)  
             </h1>
 
             {/* Spacer div to push subtitle down */}
             <div className="h-6"></div>
 
             {/* Desktop Subheadline (hidden on mobile) */}
-            <p className="hidden px-1 mx-auto mb-0 max-w-3xl text-xl text-center text-gray-300 sm:block sm:text-xl md:text-lg lg:text-2xl">
-              Learn the new system high performers are using to build a top 1%
-              physique, get their sex drive back and wake up feeling electric
-              every day — without starving, taking 100 pills or spending more
-              than 2 days a week in the gym:
+            <p className="hidden px-1 mx-auto mb-0 text-xl text-center text-gray-300 sm:block sm:text-xl md:text-lg lg:text-xl" style={{ maxWidth: "725px" }}>
+            Feeling great doesn&apos;t need to mean downing 3-5 espressos, slaving at the gym, or cutting out your favorite foods. Watch below to learn the proven system that&apos;s helped countless men restore their natural energy, control their drinking and build an elite body in 2 days per week:
             </p>
           </div>
 

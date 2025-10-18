@@ -1,11 +1,13 @@
 "use client";
 
+import { CTAButton } from "./ui/cta-button";
+
 export default function ResultsProof() {
   return (
     <section className="bg-white py-20 px-4">
       <div className="container mx-auto max-w-6xl">
         <div className="text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-black mb-8">
+          <h2 className="text-4xl md:text-5xl font-bold text-black mb-8" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif' }}>
             What Your Life Could Look Like
           </h2>
 
@@ -24,7 +26,7 @@ export default function ResultsProof() {
                     <span className="text-gray-600 font-bold">JS</span>
                   </div>
                   <div>
-                    <h3 className="font-bold text-gray-900">Client J - 47 years old</h3>
+                    <h3 className="font-bold text-gray-900" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif' }}>Client J - 47 years old</h3>
                     <p className="text-sm text-gray-600">16 weeks</p>
                   </div>
                 </div>
@@ -39,7 +41,7 @@ export default function ResultsProof() {
                     <span className="text-gray-600 font-bold">MS</span>
                   </div>
                   <div>
-                    <h3 className="font-bold text-gray-900">Client M - 52 years old</h3>
+                    <h3 className="font-bold text-gray-900" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif' }}>Client M - 52 years old</h3>
                     <p className="text-sm text-gray-600">12 weeks</p>
                   </div>
                 </div>
@@ -54,7 +56,7 @@ export default function ResultsProof() {
                     <span className="text-gray-600 font-bold">DR</span>
                   </div>
                   <div>
-                    <h3 className="font-bold text-gray-900">Client D - 39 years old</h3>
+                    <h3 className="font-bold text-gray-900" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif' }}>Client D - 39 years old</h3>
                     <p className="text-sm text-gray-600">20 weeks</p>
                   </div>
                 </div>
@@ -71,7 +73,7 @@ export default function ResultsProof() {
                     <span className="text-gray-600 font-bold">TK</span>
                   </div>
                   <div>
-                    <h3 className="font-bold text-gray-900">Client T - 44 years old</h3>
+                    <h3 className="font-bold text-gray-900" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif' }}>Client T - 44 years old</h3>
                     <p className="text-sm text-gray-600">14 weeks</p>
                   </div>
                 </div>
@@ -86,7 +88,7 @@ export default function ResultsProof() {
                     <span className="text-gray-600 font-bold">AR</span>
                   </div>
                   <div>
-                    <h3 className="font-bold text-gray-900">Client A - 58 years old</h3>
+                    <h3 className="font-bold text-gray-900" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif' }}>Client A - 58 years old</h3>
                     <p className="text-sm text-gray-600">24 weeks</p>
                   </div>
                 </div>
@@ -101,7 +103,7 @@ export default function ResultsProof() {
                     <span className="text-gray-600 font-bold">KL</span>
                   </div>
                   <div>
-                    <h3 className="font-bold text-gray-900">Client K - 36 years old</h3>
+                    <h3 className="font-bold text-gray-900" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif' }}>Client K - 36 years old</h3>
                     <p className="text-sm text-gray-600">10 weeks</p>
                   </div>
                 </div>
@@ -111,17 +113,14 @@ export default function ResultsProof() {
               </div>
             </div>
           </div>
-          <button
-            className="bg-red-600 text-white font-bold py-4 px-8 text-lg rounded-lg mt-16"
+          <CTAButton
+            className="mt-16"
             onClick={() => {
-              const element = document.getElementById("application");
-              if (element) {
-                element.scrollIntoView({ behavior: "smooth" });
-              }
+              window.location.href = "/application";
             }}
           >
             See If This Is Right For You
-          </button>
+          </CTAButton>
         </div>
       </div>
     </section>

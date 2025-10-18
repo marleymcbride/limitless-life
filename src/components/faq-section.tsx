@@ -1,17 +1,19 @@
 "use client";
 
+import { CTAButton } from "./ui/cta-button";
+
 export default function FAQSection() {
   return (
     <section className="bg-black py-20 px-4 w-full">
       <div className="container mx-auto max-w-4xl">
         <div className="text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-8">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-8" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif' }}>
             Frequently Asked Questions
           </h2>
 
           <div className="space-y-8 text-left">
             <div className="bg-gray-800 rounded-lg p-6">
-              <h3 className="text-xl font-bold text-white mb-4">
+              <h3 className="text-xl font-bold text-white mb-4" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif' }}>
                 How much time does this actually take per week?
               </h3>
               <p className="text-gray-300 leading-relaxed">
@@ -22,7 +24,7 @@ export default function FAQSection() {
             </div>
 
             <div className="bg-gray-800 rounded-lg p-6">
-              <h3 className="text-xl font-bold text-white mb-4">
+              <h3 className="text-xl font-bold text-white mb-4" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif' }}>
                 Do I need to buy expensive supplements or equipment?
               </h3>
               <p className="text-gray-300 leading-relaxed">
@@ -33,7 +35,7 @@ export default function FAQSection() {
             </div>
 
             <div className="bg-gray-800 rounded-lg p-6">
-              <h3 className="text-xl font-bold text-white mb-4">
+              <h3 className="text-xl font-bold text-white mb-4" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif' }}>
                 What if I travel frequently for work?
               </h3>
               <p className="text-gray-300 leading-relaxed">
@@ -44,7 +46,7 @@ export default function FAQSection() {
             </div>
 
             <div className="bg-gray-800 rounded-lg p-6">
-              <h3 className="text-xl font-bold text-white mb-4">
+              <h3 className="text-xl font-bold text-white mb-4" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif' }}>
                 How is this different from other programs I've tried?
               </h3>
               <p className="text-gray-300 leading-relaxed">
@@ -55,7 +57,7 @@ export default function FAQSection() {
             </div>
 
             <div className="bg-gray-800 rounded-lg p-6">
-              <h3 className="text-xl font-bold text-white mb-4">
+              <h3 className="text-xl font-bold text-white mb-4" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif' }}>
                 What kind of results can I realistically expect?
               </h3>
               <p className="text-gray-300 leading-relaxed">
@@ -66,7 +68,7 @@ export default function FAQSection() {
             </div>
 
             <div className="bg-gray-800 rounded-lg p-6">
-              <h3 className="text-xl font-bold text-white mb-4">
+              <h3 className="text-xl font-bold text-white mb-4" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif' }}>
                 Do you offer a guarantee?
               </h3>
               <p className="text-gray-300 leading-relaxed">
@@ -77,7 +79,7 @@ export default function FAQSection() {
             </div>
 
             <div className="bg-gray-800 rounded-lg p-6">
-              <h3 className="text-xl font-bold text-white mb-4">
+              <h3 className="text-xl font-bold text-white mb-4" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif' }}>
                 How do I know if I'm a good fit for this program?
               </h3>
               <p className="text-gray-300 leading-relaxed">
@@ -88,7 +90,7 @@ export default function FAQSection() {
             </div>
 
             <div className="bg-gray-800 rounded-lg p-6">
-              <h3 className="text-xl font-bold text-white mb-4">
+              <h3 className="text-xl font-bold text-white mb-4" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif' }}>
                 What happens after I apply?
               </h3>
               <p className="text-gray-300 leading-relaxed">
@@ -100,17 +102,13 @@ export default function FAQSection() {
           </div>
 
           <div className="text-center mt-12">
-            <button
-              className="bg-red-600 text-white font-bold py-4 px-8 text-lg rounded-lg"
+            <CTAButton
               onClick={() => {
-                const element = document.getElementById("application");
-                if (element) {
-                  element.scrollIntoView({ behavior: "smooth" });
-                }
+                window.location.href = "/application";
               }}
             >
               Still Have Questions? Apply Now.
-            </button>
+            </CTAButton>
           </div>
         </div>
       </div>

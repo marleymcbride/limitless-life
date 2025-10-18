@@ -1,11 +1,13 @@
 "use client";
 
+import { CTAButton } from "./ui/cta-button";
+
 export default function WallClientTestimonials() {
   return (
     <section className="bg-black py-20 px-4 w-full">
       <div className="container mx-auto max-w-6xl">
         <div className="text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-8">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-8" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif' }}>
             Join The Ranks Of High-Performers Who've Transformed
           </h2>
 
@@ -161,7 +163,7 @@ export default function WallClientTestimonials() {
           </div>
 
           <div className="bg-gray-800 rounded-lg p-8 mb-12">
-            <h3 className="text-2xl font-bold text-white mb-6">
+            <h3 className="text-2xl font-bold text-white mb-6" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif' }}>
               These Are Real Men. Real Results.
             </h3>
             <p className="text-lg text-gray-300 leading-relaxed">
@@ -170,17 +172,13 @@ export default function WallClientTestimonials() {
             </p>
           </div>
 
-          <button
-            className="bg-red-600 text-white font-bold py-4 px-8 text-lg rounded-lg"
+          <CTAButton
             onClick={() => {
-              const element = document.getElementById("application");
-              if (element) {
-                element.scrollIntoView({ behavior: "smooth" });
-              }
+              window.location.href = "/application";
             }}
           >
             Become The Next Success Story
-          </button>
+          </CTAButton>
         </div>
       </div>
     </section>

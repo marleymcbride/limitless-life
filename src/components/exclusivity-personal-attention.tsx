@@ -1,12 +1,14 @@
 "use client";
 
+import { CTAButton } from "./ui/cta-button";
+
 export default function ExclusivityPersonalAttention() {
   return (
     <section className="bg-black relative py-20 px-4 w-full">
     <div className="absolute bottom-0 left-0 w-full h-[33vh]" style={{ background: "linear-gradient(to top, rgba(148, 9, 9, 0.30) 0%, rgba(148, 9, 9, 0.16) 50%, rgba(148, 9, 9, 0) 100%)" }}></div>
       <div className="container mx-auto max-w-6xl relative z-10">
         <div className="text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-8">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-8" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif' }}>
             This Isn't For Everyone. And That's Intentional.
           </h2>
 
@@ -21,7 +23,7 @@ export default function ExclusivityPersonalAttention() {
                 <div className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center mr-4">
                   <span className="text-xl font-bold text-white">1</span>
                 </div>
-                <h3 className="text-2xl font-bold text-white">Limitless Access</h3>
+                <h3 className="text-2xl font-bold text-white" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif' }}>Limitless Access</h3>
               </div>
               <p className="text-lg text-gray-300 mb-4">
                 Complete access to The Limitless Protocol system including all training modules, nutrition protocols, and recovery strategies.
@@ -40,7 +42,7 @@ export default function ExclusivityPersonalAttention() {
                 <div className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center mr-4">
                   <span className="text-xl font-bold text-white">2</span>
                 </div>
-                <h3 className="text-2xl font-bold text-white">Limitless Plus</h3>
+                <h3 className="text-2xl font-bold text-white" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif' }}>Limitless Plus</h3>
               </div>
               <p className="text-lg text-gray-300 mb-4">
                 Everything in Limitless Access PLUS bi-weekly group coaching calls and personalized protocol adjustments.
@@ -59,7 +61,7 @@ export default function ExclusivityPersonalAttention() {
                 <div className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center mr-4">
                   <span className="text-xl font-bold text-white">3</span>
                 </div>
-                <h3 className="text-2xl font-bold text-white">Limitless Premium</h3>
+                <h3 className="text-2xl font-bold text-white" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif' }}>Limitless Premium</h3>
               </div>
               <p className="text-lg text-gray-300 mb-4">
                 Everything in Limitless Plus PLUS weekly 1-on-1 calls and direct messaging access with me personally.
@@ -78,7 +80,7 @@ export default function ExclusivityPersonalAttention() {
                 <div className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center mr-4">
                   <span className="text-xl font-bold text-white">4</span>
                 </div>
-                <h3 className="text-2xl font-bold text-white">Limitless Elite - 10 Spots Only</h3>
+                <h3 className="text-2xl font-bold text-white" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif' }}>Limitless Elite - 10 Spots Only</h3>
               </div>
               <p className="text-lg text-gray-300 mb-4">
                 Everything in Limitless Premium PLUS in-person strategy session, full lifestyle integration, and lifetime access to all future updates.
@@ -102,17 +104,13 @@ export default function ExclusivityPersonalAttention() {
             </p>
           </div>
 
-          <button
-            className="bg-red-600 text-white font-bold py-4 px-8 text-lg rounded-lg"
+          <CTAButton
             onClick={() => {
-              const element = document.getElementById("application");
-              if (element) {
-                element.scrollIntoView({ behavior: "smooth" });
-              }
+              window.location.href = "/application";
             }}
           >
             Apply For One Of The 10 Elite Spots
-          </button>
+          </CTAButton>
         </div>
       </div>
     </section>

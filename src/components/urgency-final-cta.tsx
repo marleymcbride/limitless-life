@@ -1,11 +1,13 @@
 "use client";
 
+import { CTAButton } from "./ui/cta-button";
+
 export default function UrgencyFinalCTA() {
   return (
     <section className="bg-white py-20 px-4">
       <div className="container mx-auto max-w-4xl">
         <div className="text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-black mb-8">
+          <h2 className="text-4xl md:text-5xl font-bold text-black mb-8" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif' }}>
             The Choice Is Yours
           </h2>
 
@@ -16,13 +18,13 @@ export default function UrgencyFinalCTA() {
           </p>
 
           <div className="bg-gray-50 rounded-lg p-8 mb-12">
-            <h3 className="text-2xl font-bold text-black mb-6">
+            <h3 className="text-2xl font-bold text-black mb-6" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif' }}>
               Three Months From Today...
             </h3>
 
             <div className="grid md:grid-cols-2 gap-8 text-left">
               <div>
-                <h4 className="text-xl font-bold text-black mb-4">
+                <h4 className="text-xl font-bold text-black mb-4" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif' }}>
                   If You Do Nothing:
                 </h4>
                 <ul className="space-y-2 text-gray-700">
@@ -35,7 +37,7 @@ export default function UrgencyFinalCTA() {
               </div>
 
               <div>
-                <h4 className="text-xl font-bold text-black mb-4">
+                <h4 className="text-xl font-bold text-black mb-4" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif' }}>
                   If You Join The Limitless Protocol:
                 </h4>
                 <ul className="space-y-2 text-gray-700">
@@ -50,7 +52,7 @@ export default function UrgencyFinalCTA() {
           </div>
 
           <div className="bg-red-50 rounded-lg p-8 mb-12">
-            <h3 className="text-2xl font-bold text-black mb-6">
+            <h3 className="text-2xl font-bold text-black mb-6" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif' }}>
               Remember: I Only Accept 10 Clients Per Month
             </h3>
             <p className="text-lg text-gray-700 mb-6">
@@ -64,17 +66,14 @@ export default function UrgencyFinalCTA() {
           </div>
 
           <div className="text-center">
-            <button
-              className="bg-red-600 text-white font-bold py-6 px-12 text-xl rounded-lg"
+            <CTAButton
+              size="large"
               onClick={() => {
-                const element = document.getElementById("application");
-                if (element) {
-                  element.scrollIntoView({ behavior: "smooth" });
-                }
+                window.location.href = "/application";
               }}
             >
               Apply To Transform Your Life Today
-            </button>
+            </CTAButton>
 
             <p className="text-lg text-gray-600 mt-6">
               Your future self will thank you for the decision you make today.

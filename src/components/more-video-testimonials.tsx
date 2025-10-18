@@ -1,13 +1,14 @@
 "use client";
 
 import SimpleVideoPlayer from "./simple-video-player";
+import { CTAButton } from "./ui/cta-button";
 
 export default function MoreVideoTestimonials() {
   return (
     <section className="bg-white py-16 px-4 w-full">
       <div className="container mx-auto max-w-6xl">
         <div className="text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-black mb-8">
+          <h2 className="text-4xl md:text-5xl font-bold text-black mb-8" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif' }}>
             More Results From Men Like You
           </h2>
 
@@ -57,17 +58,13 @@ export default function MoreVideoTestimonials() {
             </div>
           </div>
 
-          <button
-            className="bg-red-600 text-white font-bold py-4 px-8 text-lg rounded-lg"
+          <CTAButton
             onClick={() => {
-              const element = document.getElementById("application");
-              if (element) {
-                element.scrollIntoView({ behavior: "smooth" });
-              }
+              window.location.href = "/application";
             }}
           >
             See If This Is Right For You
-          </button>
+          </CTAButton>
         </div>
       </div>
     </section>

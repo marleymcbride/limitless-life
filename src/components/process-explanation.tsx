@@ -1,17 +1,19 @@
 "use client";
 
+import { CTAButton } from "./ui/cta-button";
+
 export default function ProcessExplanation() {
   return (
     <section className="bg-black py-20 px-4 w-full">
       <div className="container mx-auto max-w-5xl">
         <div className="text-center">
-          <h3 className="text-3xl md:text-4xl font-semibold text-gray-100 mb-12">
+          <h3 className="text-3xl md:text-4xl font-semibold text-gray-100 mb-12" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif' }}>
           Well after 3 years... I found a NEW way to live:
           </h3>
 
           <div className="space-y-8 mb-12 max-w-3xl mx-auto">
             <div className="text-left">
-              <h3 className="text-2xl font-bold text-white mb-4">
+              <h3 className="text-2xl font-bold text-white mb-4" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif' }}>
                 1) How to Wake Up Energized Without Coffee
               </h3>
               <p className="text-lg text-gray-300 leading-relaxed">
@@ -20,7 +22,7 @@ export default function ProcessExplanation() {
             </div>
 
             <div className="text-left">
-              <h3 className="text-2xl font-bold text-white mb-4">
+              <h3 className="text-2xl font-bold text-white mb-4" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif' }}>
               2) How to Get In Your Best Shape With Just 2 Workouts A Week
               </h3>
               <p className="text-lg text-gray-300 leading-relaxed">
@@ -29,7 +31,7 @@ export default function ProcessExplanation() {
             </div>
 
             <div className="text-left">
-              <h3 className="text-2xl font-bold text-white mb-4">
+              <h3 className="text-2xl font-bold text-white mb-4" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif' }}>
               3) How to End Your Dependence On Coffee And Alcohol
               </h3>
               <p className="text-lg text-gray-300 leading-relaxed">
@@ -38,7 +40,7 @@ export default function ProcessExplanation() {
             </div>
 
             <div className="text-left">
-              <h3 className="text-2xl font-bold text-white mb-4">
+              <h3 className="text-2xl font-bold text-white mb-4" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif' }}>
               4) How to Fix What&apos;s Really Holding You Back
               </h3>
               <p className="text-lg text-gray-300 leading-relaxed">
@@ -48,17 +50,13 @@ export default function ProcessExplanation() {
           </div>
 
           <div className="text-center">
-            <button
-              className="bg-red-600 text-white font-bold py-4 px-8 text-lg rounded-lg"
+            <CTAButton
               onClick={() => {
-                const element = document.getElementById("application");
-                if (element) {
-                  element.scrollIntoView({ behavior: "smooth" });
-                }
+                window.location.href = "/application";
               }}
             >
               See If This Is Right For You
-            </button>
+            </CTAButton>
           </div>
         </div>
       </div>

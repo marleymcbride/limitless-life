@@ -1,14 +1,16 @@
 "use client";
 
+import { CTAButton } from "./ui/cta-button";
+
 export default function BigIdeaSection() {
   return (
     <section className="bg-black py-20 px-4 w-full">
       <div className="container mx-auto max-w-4xl">
         <div className="text-center">
-        <h2 className="text-3xl md:text-4xl font-semi-bold text-white mb-16">
+        <h2 className="text-3xl md:text-4xl font-semi-bold text-white mb-16" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif' }}>
             But it all made sense when I realised...
           </h2>
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-8 leading-[1.4]">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-8 leading-[1.4]" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif' }}>
             Energy Is The Foundation Of Everything
           </h2>
 
@@ -19,7 +21,7 @@ export default function BigIdeaSection() {
           </p>
 
           <div className="bg-gray-900 bg-opacity-50 rounded-lg p-8 mb-12">
-            <h3 className="text-2xl font-bold text-white mb-6">
+            <h3 className="text-2xl font-bold text-white mb-6" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif' }}>
               The Limitless Life: Waking Up With Natural Energy
             </h3>
 
@@ -38,7 +40,7 @@ export default function BigIdeaSection() {
 
           <div className="space-y-6 mb-12">
             <div className="text-left">
-              <h3 className="text-xl font-bold text-white mb-3">
+              <h3 className="text-xl font-bold text-white mb-3" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif' }}>
                 The Disconnect That&apos;s Destroying You
               </h3>
               <p className="text-lg text-gray-300 leading-relaxed">
@@ -48,7 +50,7 @@ export default function BigIdeaSection() {
             </div>
 
             <div className="text-left">
-              <h3 className="text-xl font-bold text-white mb-3">
+              <h3 className="text-xl font-bold text-white mb-3" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif' }}>
                 The Roadblocks You Face Every Day
               </h3>
               <p className="text-lg text-gray-300 leading-relaxed">
@@ -58,7 +60,7 @@ export default function BigIdeaSection() {
             </div>
 
             <div className="text-left">
-              <h3 className="text-xl font-bold text-white mb-3">
+              <h3 className="text-xl font-bold text-white mb-3" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif' }}>
                 What If Nothing Changes?
               </h3>
               <p className="text-lg text-gray-300 leading-relaxed">
@@ -69,17 +71,13 @@ export default function BigIdeaSection() {
             </div>
           </div>
 
-          <button
-            className="bg-red-600 text-white font-bold py-4 px-8 text-lg rounded-lg"
+          <CTAButton
             onClick={() => {
-              const element = document.getElementById("application");
-              if (element) {
-                element.scrollIntoView({ behavior: "smooth" });
-              }
+              window.location.href = "/application";
             }}
           >
             Start Living The Limitless Life
-          </button>
+          </CTAButton>
         </div>
       </div>
     </section>

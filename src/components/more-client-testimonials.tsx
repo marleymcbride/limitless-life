@@ -1,11 +1,13 @@
 "use client";
 
+import { CTAButton } from "./ui/cta-button";
+
 export default function MoreClientTestimonials() {
   return (
     <section className="bg-white py-20 px-4 w-full">
       <div className="container mx-auto max-w-6xl">
         <div className="text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-black mb-8">
+          <h2 className="text-4xl md:text-5xl font-bold text-black mb-8" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif' }}>
             Real Transformations From High-Performers
           </h2>
 
@@ -22,7 +24,7 @@ export default function MoreClientTestimonials() {
                     <span className="text-2xl font-bold text-white">L</span>
                   </div>
                   <div>
-                    <h3 className="text-2xl font-bold text-black">Client L - Investment Banking</h3>
+                    <h3 className="text-2xl font-bold text-black" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif' }}>Client L - Investment Banking</h3>
                     <p className="text-lg text-gray-600">London, 16 weeks</p>
                   </div>
                 </div>
@@ -70,7 +72,7 @@ export default function MoreClientTestimonials() {
                     <span className="text-2xl font-bold text-white">R</span>
                   </div>
                   <div>
-                    <h3 className="text-2xl font-bold text-black">Client R - Corporate Lawyer</h3>
+                    <h3 className="text-2xl font-bold text-black" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif' }}>Client R - Corporate Lawyer</h3>
                     <p className="text-lg text-gray-600">Manchester, 12 weeks</p>
                   </div>
                 </div>
@@ -109,17 +111,13 @@ export default function MoreClientTestimonials() {
             </div>
           </div>
 
-          <button
-            className="bg-red-600 text-white font-bold py-4 px-8 text-lg rounded-lg"
+          <CTAButton
             onClick={() => {
-              const element = document.getElementById("application");
-              if (element) {
-                element.scrollIntoView({ behavior: "smooth" });
-              }
+              window.location.href = "/application";
             }}
           >
             Start Your Case Study Today
-          </button>
+          </CTAButton>
         </div>
       </div>
     </section>

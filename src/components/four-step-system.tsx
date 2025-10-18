@@ -1,11 +1,13 @@
 "use client";
 
+import { CTAButton } from "./ui/cta-button";
+
 export default function FourStepSystem() {
   return (
     <section className="bg-white py-20 px-4">
       <div className="container mx-auto max-w-6xl">
         <div className="text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-black mb-8">
+          <h2 className="text-4xl md:text-5xl font-bold text-black mb-8" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif' }}>
             The 4-Step System That Transforms High-Performers
           </h2>
 
@@ -20,7 +22,7 @@ export default function FourStepSystem() {
                 <div className="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center mr-6">
                   <span className="text-2xl font-bold text-white">1</span>
                 </div>
-                <h3 className="text-2xl font-bold text-black">
+                <h3 className="text-2xl font-bold text-black" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif' }}>
                   Cellular Recharge
                 </h3>
               </div>
@@ -35,7 +37,7 @@ export default function FourStepSystem() {
                 <div className="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center mr-6">
                   <span className="text-2xl font-bold text-white">2</span>
                 </div>
-                <h3 className="text-2xl font-bold text-black">
+                <h3 className="text-2xl font-bold text-black" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif' }}>
                   Hormonal Optimization
                 </h3>
               </div>
@@ -50,7 +52,7 @@ export default function FourStepSystem() {
                 <div className="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center mr-6">
                   <span className="text-2xl font-bold text-white">3</span>
                 </div>
-                <h3 className="text-2xl font-bold text-black">
+                <h3 className="text-2xl font-bold text-black" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif' }}>
                   Metabolic Reset
                 </h3>
               </div>
@@ -65,7 +67,7 @@ export default function FourStepSystem() {
                 <div className="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center mr-6">
                   <span className="text-2xl font-bold text-white">4</span>
                 </div>
-                <h3 className="text-2xl font-bold text-black">
+                <h3 className="text-2xl font-bold text-black" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif' }}>
                   Lifestyle Integration
                 </h3>
               </div>
@@ -87,17 +89,13 @@ export default function FourStepSystem() {
             </p>
           </div>
 
-          <button
-            className="bg-red-600 text-white font-bold py-4 px-8 text-lg rounded-lg"
+          <CTAButton
             onClick={() => {
-              const element = document.getElementById("application");
-              if (element) {
-                element.scrollIntoView({ behavior: "smooth" });
-              }
+              window.location.href = "/application";
             }}
           >
             Start Your Transformation Today
-          </button>
+          </CTAButton>
         </div>
       </div>
     </section>

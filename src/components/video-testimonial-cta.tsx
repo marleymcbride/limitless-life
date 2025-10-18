@@ -1,6 +1,7 @@
 "use client";
 
 import SimpleVideoPlayer from "./simple-video-player";
+import { CTAButton } from "./ui/cta-button";
 
 export default function VideoTestimonialCTA() {
   return (
@@ -26,17 +27,13 @@ export default function VideoTestimonialCTA() {
             />
           </div>
 
-          <button
-            className="bg-red-600 text-white font-bold py-4 px-8 text-lg rounded-lg"
+          <CTAButton
             onClick={() => {
-              const element = document.getElementById("application");
-              if (element) {
-                element.scrollIntoView({ behavior: "smooth" });
-              }
+              window.location.href = "/application";
             }}
           >
             See If This Is Right For You
-          </button>
+          </CTAButton>
         </div>
       </div>
     </section>
