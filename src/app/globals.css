@@ -140,11 +140,12 @@
 .bg-black-red-gradient::before {
   content: "";
   position: absolute;
-  top: -38%;
-  right: -38%;
-  width: 70%;
-  height: 70%;
-  background: radial-gradient(circle at 90% 10%, rgba(148, 9, 9, 1.0) 0%, rgba(148, 9, 9, 0.96) 10%, rgba(148, 9, 9, 0.91) 20%, rgba(148, 9, 9, 0.70) 40%, rgba(148, 9, 9, 0.35) 60%, transparent 85%);
+  top: -25%;
+  right: -30%;
+  width: 900px;
+  height: 900px;
+  background: radial-gradient(circle at center, rgba(148, 9, 9, 0.7) 0%, rgba(148, 9, 9, 0.15) 28%, transparent 52%);
+  filter: blur(120px);
   pointer-events: none;
   z-index: 0;
   border-radius: 50%;
