@@ -10,7 +10,7 @@ interface SocialProofItem {
 }
 
 export default function TitledSocialProofSection({
-  title = "What Clients Achieve in 8-12 Weeks"
+  title = "What Clients Achieve in 8-12 Weeks",
 }: {
   title?: string;
 }) {
@@ -20,22 +20,25 @@ export default function TitledSocialProofSection({
       result: "Lost 32 lbs, quit alcohol completely",
       time: "10 weeks",
       image: "/placeholder.svg?height=400&width=400",
-      quote: "I went from 3 coffees before noon to waking up with natural energy. My business performance has never been better."
+      quote:
+        "I went from 3 coffees before noon to waking up with natural energy. My business performance has never been better.",
     },
     {
       name: "James K.",
       result: "26 lbs lost, back to college weight",
       time: "8 weeks",
       image: "/placeholder.svg?height=400&width=400",
-      quote: "The most surprising part wasn't the weight loss. It was the mental clarity and confidence that came with it."
+      quote:
+        "The most surprising part wasn't the weight loss. It was the mental clarity and confidence that came with it.",
     },
     {
       name: "David S.",
       result: "Alcohol-free, 18 lbs of muscle gained",
       time: "12 weeks",
       image: "/placeholder.svg?height=400&width=400",
-      quote: "As a CEO, I need to be sharp. This system delivered exactly that - better focus, better decisions, better results."
-    }
+      quote:
+        "As a CEO, I need to be sharp. This system delivered exactly that - better focus, better decisions, better results.",
+    },
   ];
 
   return (
@@ -43,10 +46,14 @@ export default function TitledSocialProofSection({
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className={`${buyerTypeUtils.neanderthal.headlineClasses} mb-6 ${colorStrategy.blackSections}`}>
+          <h2
+            className={`${buyerTypeUtils.neanderthal.headlineClasses} mb-6 ${colorStrategy.blackSections}`}
+          >
             {title}
           </h2>
-          <p className={`text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto font-serif`}>
+          <p
+            className={`text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto font-serif`}
+          >
             Real high-performers. Real results. No BS.
           </p>
         </div>
@@ -69,19 +76,27 @@ export default function TitledSocialProofSection({
               </div>
 
               <div className="text-center">
-                <h3 className={`text-xl font-black mb-2 ${colorStrategy.blackSections} font-serif`}>
+                <h3
+                  className={`text-xl font-black mb-2 ${colorStrategy.blackSections} font-serif`}
+                >
                   {item.name}
                 </h3>
 
-                <div className={`text-lg font-bold ${colorStrategy.redCTA} mb-3 font-serif`}>
+                <div
+                  className={`text-lg font-bold ${colorStrategy.redCTA} mb-3 font-serif`}
+                >
                   {item.result}
                 </div>
 
-                <div className={`text-sm font-semibold text-gray-500 mb-4 uppercase tracking-wider`}>
+                <div
+                  className={`text-sm font-semibold text-gray-500 mb-4 uppercase tracking-wider`}
+                >
                   {item.time}
                 </div>
 
-                <blockquote className={`text-lg text-gray-700 italic font-serif leading-relaxed`}>
+                <blockquote
+                  className={`text-lg text-gray-700 italic font-serif leading-relaxed`}
+                >
                   "{item.quote}"
                 </blockquote>
               </div>
@@ -90,10 +105,14 @@ export default function TitledSocialProofSection({
         </div>
 
         {/* Bottom Stats Bar - NERD Appeal */}
-        <div className={`${colorStrategy.blackSections} rounded-lg p-8 text-center`}>
+        <div
+          className={`${colorStrategy.blackSections} rounded-lg p-8 text-center`}
+        >
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div>
-              <div className={`${buyerTypeUtils.nerd.statClasses} ${colorStrategy.redCTA}`}>
+              <div
+                className={`${buyerTypeUtils.nerd.statClasses} ${colorStrategy.redCTA}`}
+              >
                 26 lbs
               </div>
               <div className={`${buyerTypeUtils.nerd.labelClasses} mt-2`}>
@@ -102,7 +121,9 @@ export default function TitledSocialProofSection({
             </div>
 
             <div>
-              <div className={`${buyerTypeUtils.nerd.statClasses} ${colorStrategy.redCTA}`}>
+              <div
+                className={`${buyerTypeUtils.nerd.statClasses} ${colorStrategy.redCTA}`}
+              >
                 89%
               </div>
               <div className={`${buyerTypeUtils.nerd.labelClasses} mt-2`}>
@@ -111,7 +132,9 @@ export default function TitledSocialProofSection({
             </div>
 
             <div>
-              <div className={`${buyerTypeUtils.nerd.statClasses} ${colorStrategy.redCTA}`}>
+              <div
+                className={`${buyerTypeUtils.nerd.statClasses} ${colorStrategy.redCTA}`}
+              >
                 94%
               </div>
               <div className={`${buyerTypeUtils.nerd.labelClasses} mt-2`}>
@@ -120,7 +143,9 @@ export default function TitledSocialProofSection({
             </div>
 
             <div>
-              <div className={`${buyerTypeUtils.nerd.statClasses} ${colorStrategy.redCTA}`}>
+              <div
+                className={`${buyerTypeUtils.nerd.statClasses} ${colorStrategy.redCTA}`}
+              >
                 2-3 days
               </div>
               <div className={`${buyerTypeUtils.nerd.labelClasses} mt-2`}>

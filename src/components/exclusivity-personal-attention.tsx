@@ -5,15 +5,25 @@ import { CTAButton } from "./ui/cta-button";
 export default function ExclusivityPersonalAttention() {
   return (
     <section className="bg-black relative py-20 px-4 w-full">
-    <div className="absolute bottom-0 left-0 w-full h-[33vh]" style={{ background: "linear-gradient(to top, rgba(148, 9, 9, 0.30) 0%, rgba(148, 9, 9, 0.16) 50%, rgba(148, 9, 9, 0) 100%)" }}></div>
+      <div
+        className="absolute bottom-0 left-0 w-full h-[33vh]"
+        style={{
+          background:
+            "linear-gradient(to top, rgba(148, 9, 9, 0.30) 0%, rgba(148, 9, 9, 0.16) 50%, rgba(148, 9, 9, 0) 100%)",
+        }}
+      ></div>
       <div className="container mx-auto max-w-6xl relative z-10">
         <div className="text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-8" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif' }}>
+          <h2
+            className="text-4xl md:text-5xl font-bold text-white mb-8"
+            style={{ fontFamily: "Neuemontreal, Arial, sans-serif" }}
+          >
             This Isn't For Everyone. And That's Intentional.
           </h2>
 
           <p className="text-xl text-gray-300 mb-16 max-w-3xl mx-auto leading-relaxed">
-            I work personally with every client. This means I can only accept a limited number of high-performers who are ready to transform.
+            I work personally with every client. This means I can only accept a
+            limited number of high-performers who are ready to transform.
           </p>
 
           <div className="space-y-8 mb-16">
@@ -23,10 +33,16 @@ export default function ExclusivityPersonalAttention() {
                 <div className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center mr-4">
                   <span className="text-xl font-bold text-white">1</span>
                 </div>
-                <h3 className="text-2xl font-bold text-white" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif' }}>Limitless Access</h3>
+                <h3
+                  className="text-2xl font-bold text-white"
+                  style={{ fontFamily: "Neuemontreal, Arial, sans-serif" }}
+                >
+                  Limitless Access
+                </h3>
               </div>
               <p className="text-lg text-gray-300 mb-4">
-                Complete access to The Limitless Protocol system including all training modules, nutrition protocols, and recovery strategies.
+                Complete access to The Limitless Protocol system including all
+                training modules, nutrition protocols, and recovery strategies.
               </p>
               <ul className="space-y-2 text-gray-300">
                 <li>• Full 4-Step System Protocol</li>
@@ -42,10 +58,16 @@ export default function ExclusivityPersonalAttention() {
                 <div className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center mr-4">
                   <span className="text-xl font-bold text-white">2</span>
                 </div>
-                <h3 className="text-2xl font-bold text-white" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif' }}>Limitless Plus</h3>
+                <h3
+                  className="text-2xl font-bold text-white"
+                  style={{ fontFamily: "Neuemontreal, Arial, sans-serif" }}
+                >
+                  Limitless Plus
+                </h3>
               </div>
               <p className="text-lg text-gray-300 mb-4">
-                Everything in Limitless Access PLUS bi-weekly group coaching calls and personalized protocol adjustments.
+                Everything in Limitless Access PLUS bi-weekly group coaching
+                calls and personalized protocol adjustments.
               </p>
               <ul className="space-y-2 text-gray-300">
                 <li>• Everything in Tier 1</li>
@@ -61,10 +83,16 @@ export default function ExclusivityPersonalAttention() {
                 <div className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center mr-4">
                   <span className="text-xl font-bold text-white">3</span>
                 </div>
-                <h3 className="text-2xl font-bold text-white" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif' }}>Limitless Premium</h3>
+                <h3
+                  className="text-2xl font-bold text-white"
+                  style={{ fontFamily: "Neuemontreal, Arial, sans-serif" }}
+                >
+                  Limitless Premium
+                </h3>
               </div>
               <p className="text-lg text-gray-300 mb-4">
-                Everything in Limitless Plus PLUS weekly 1-on-1 calls and direct messaging access with me personally.
+                Everything in Limitless Plus PLUS weekly 1-on-1 calls and direct
+                messaging access with me personally.
               </p>
               <ul className="space-y-2 text-gray-300">
                 <li>• Everything in Tier 2</li>
@@ -80,10 +108,17 @@ export default function ExclusivityPersonalAttention() {
                 <div className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center mr-4">
                   <span className="text-xl font-bold text-white">4</span>
                 </div>
-                <h3 className="text-2xl font-bold text-white" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif' }}>Limitless Elite - 10 Spots Only</h3>
+                <h3
+                  className="text-2xl font-bold text-white"
+                  style={{ fontFamily: "Neuemontreal, Arial, sans-serif" }}
+                >
+                  Limitless Elite - 10 Spots Only
+                </h3>
               </div>
               <p className="text-lg text-gray-300 mb-4">
-                Everything in Limitless Premium PLUS in-person strategy session, full lifestyle integration, and lifetime access to all future updates.
+                Everything in Limitless Premium PLUS in-person strategy session,
+                full lifestyle integration, and lifetime access to all future
+                updates.
               </p>
               <ul className="space-y-2 text-gray-300">
                 <li>• Everything in Tier 3</li>
@@ -100,7 +135,9 @@ export default function ExclusivityPersonalAttention() {
               Why I Only Accept 10 Elite Clients Per Month
             </h3>
             <p className="text-lg text-gray-300 leading-relaxed">
-              Personal attention is non-negotiable. Every client gets weekly 1-on-1 time with me, custom protocol adjustments, and priority support. This cannot be scaled.
+              Personal attention is non-negotiable. Every client gets weekly
+              1-on-1 time with me, custom protocol adjustments, and priority
+              support. This cannot be scaled.
             </p>
           </div>
 

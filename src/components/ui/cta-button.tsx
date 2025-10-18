@@ -9,17 +9,28 @@ interface CTAButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const CTAButton = React.forwardRef<HTMLButtonElement, CTAButtonProps>(
-  ({ className, children, variant = "primary", size = "default", onClick, ...props }, ref) => {
-    const baseClasses = "font-bold !text-white transition-none duration-0 focus:outline-none";
+  (
+    {
+      className,
+      children,
+      variant = "primary",
+      size = "default",
+      onClick,
+      ...props
+    },
+    ref
+  ) => {
+    const baseClasses =
+      "font-bold !text-white transition-none duration-0 focus:outline-none";
 
     const variants = {
       primary: "bg-[#940909] hover:bg-[#7b0707]",
-      secondary: "bg-[#B90021] hover:bg-[#940909]"
+      secondary: "bg-[#B90021] hover:bg-[#940909]",
     };
 
     const sizes = {
       default: "py-4 px-8 text-lg",
-      large: "py-6 px-12 text-xl"
+      large: "py-6 px-12 text-xl",
     };
 
     const roundedClass = "rounded-sm"; // Minimal rounded corners as requested

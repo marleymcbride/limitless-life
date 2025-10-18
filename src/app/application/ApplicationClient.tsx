@@ -18,11 +18,15 @@ export default function ApplicationClient() {
       <section className="py-16 px-4">
         <div className="container mx-auto max-w-4xl">
           <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold text-black mb-6" style={{ lineHeight: "1.17" }}>
+            <h1
+              className="text-4xl md:text-5xl font-bold text-black mb-6"
+              style={{ lineHeight: "1.17" }}
+            >
               The Complete Limitless Protocol Offer
             </h1>
             <p className="text-xl text-gray-700 max-w-3xl mx-auto">
-              Watch my detailed presentation of what you get with each tier, then choose the perfect fit for your transformation journey.
+              Watch my detailed presentation of what you get with each tier,
+              then choose the perfect fit for your transformation journey.
             </p>
           </div>
 
@@ -49,7 +53,8 @@ export default function ApplicationClient() {
               What You Get With The Limitless Protocol
             </h2>
             <p className="text-lg text-gray-700">
-              Every tier includes access to our proven system, with varying levels of personal support.
+              Every tier includes access to our proven system, with varying
+              levels of personal support.
             </p>
           </div>
 
@@ -65,7 +70,8 @@ export default function ApplicationClient() {
               Choose Your Transformation Level
             </h2>
             <p className="text-lg text-gray-700">
-              Select the tier that best fits your goals and timeline for transformation.
+              Select the tier that best fits your goals and timeline for
+              transformation.
             </p>
           </div>
 
@@ -80,7 +86,7 @@ export default function ApplicationClient() {
                 "Video Training Library",
                 "Nutrition & Supplement Guides",
                 "Mobile App Access",
-                "Email Support"
+                "Email Support",
               ]}
               ctaText="Choose Access"
             />
@@ -95,7 +101,7 @@ export default function ApplicationClient() {
                 "Bi-Weekly Group Coaching Calls",
                 "Monthly Protocol Reviews",
                 "Private Community Access",
-                "Priority Email Support"
+                "Priority Email Support",
               ]}
               ctaText="Choose Plus"
               popular={true}
@@ -111,7 +117,7 @@ export default function ApplicationClient() {
                 "Weekly 1-on-1 Coaching Calls",
                 "Direct Messaging Access",
                 "Priority Protocol Adjustments",
-                "Personal Accountability"
+                "Personal Accountability",
               ]}
               ctaText="Choose Premium"
             />
@@ -126,7 +132,7 @@ export default function ApplicationClient() {
                 "In-Person Strategy Session",
                 "Full Lifestyle Integration",
                 "Lifetime Access Guarantee",
-                "First Priority for All Updates"
+                "First Priority for All Updates",
               ]}
               ctaText="Choose Elite"
               elite={true}
@@ -140,7 +146,8 @@ export default function ApplicationClient() {
                 Ready to Transform Your Life?
               </h3>
               <p className="text-lg text-gray-700 mb-6">
-                Join high-performers who have already built top 1% physiques, restored their energy, and transformed their lives.
+                Join high-performers who have already built top 1% physiques,
+                restored their energy, and transformed their lives.
               </p>
               <div className="flex items-center justify-center gap-4 text-sm text-gray-600">
                 <span>✓ 90-day money-back guarantee</span>
@@ -161,7 +168,8 @@ export default function ApplicationClient() {
             Your Transformation Starts Now
           </h2>
           <p className="text-xl text-gray-300 mb-8">
-            The choice is yours: continue feeling like you are today, or take the first step toward limitless energy and performance.
+            The choice is yours: continue feeling like you are today, or take
+            the first step toward limitless energy and performance.
           </p>
           <div className="text-center">
             <button

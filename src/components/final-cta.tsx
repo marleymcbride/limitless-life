@@ -16,8 +16,8 @@ export default function FinalCta() {
             You&apos;re At A Crossroads, Scott
           </h2>
           <p className="text-xl max-w-4xl mx-auto text-white/90 mb-8">
-            You can keep doing what you&apos;re doing - managing your symptoms with
-            caffeine and alcohol, spending £850+ monthly to feel like shit,
+            You can keep doing what you&apos;re doing - managing your symptoms
+            with caffeine and alcohol, spending £850+ monthly to feel like shit,
             slowly dying in the 4% trap...
           </p>
           <p className="text-xl max-w-4xl mx-auto text-white font-bold">
@@ -65,10 +65,7 @@ export default function FinalCta() {
                   <span className="text-white/90">Community Access</span>
                 </li>
               </ul>
-              <ApplyNowButton
-                className="w-full"
-                fullWidth={true}
-              />
+              <ApplyNowButton className="w-full" fullWidth={true} />
               <p className="text-center text-white/60 text-sm mt-2">
                 For self-guided transformation
               </p>
@@ -107,10 +104,7 @@ export default function FinalCta() {
                   </span>
                 </li>
               </ul>
-              <ApplyNowButton
-                className="w-full"
-                fullWidth={true}
-              />
+              <ApplyNowButton className="w-full" fullWidth={true} />
               <p className="text-center text-white/60 text-sm mt-2">
                 Most popular choice
               </p>
@@ -221,9 +215,9 @@ export default function FinalCta() {
                 If You Just Want Results...
               </h4>
               <p className="text-white/90 mb-4">
-                You don&apos;t care about the theory. You just want to stop feeling
-                like shit and start looking good. You want someone to tell you
-                exactly what to do.
+                You don&apos;t care about the theory. You just want to stop
+                feeling like shit and start looking good. You want someone to
+                tell you exactly what to do.
               </p>
               <p className="text-white font-bold">
                 → Choose Essential or Accelerated
@@ -249,9 +243,9 @@ export default function FinalCta() {
                 If You&apos;re Still Skeptical...
               </h4>
               <p className="text-white/90 mb-4">
-                You&apos;ve been burned before. You want proof this actually works
-                before you fully commit. You need the guarantee and want to test
-                the waters.
+                You&apos;ve been burned before. You want proof this actually
+                works before you fully commit. You need the guarantee and want
+                to test the waters.
               </p>
               <p className="text-white font-bold">
                 → Start with Essential + 90-day guarantee
@@ -264,9 +258,9 @@ export default function FinalCta() {
                 If You&apos;re Ready For Change...
               </h4>
               <p className="text-white/90 mb-4">
-                You&apos;re sick of feeling this way. You&apos;re ready to invest in
-                yourself. You want support, community, and someone who believes
-                in you.
+                You&apos;re sick of feeling this way. You&apos;re ready to
+                invest in yourself. You want support, community, and someone who
+                believes in you.
               </p>
               <p className="text-white font-bold">
                 → Choose Accelerated or Premium
@@ -294,9 +288,9 @@ export default function FinalCta() {
                 If Time Is Everything...
               </h4>
               <p className="text-white/90 mb-4">
-                You&apos;re insanely busy. You need this handled for you. You want
-                the fastest path to results with white-glove service and zero
-                guesswork.
+                You&apos;re insanely busy. You need this handled for you. You
+                want the fastest path to results with white-glove service and
+                zero guesswork.
               </p>
               <p className="text-white font-bold">
                 → Choose Elite (done-for-you transformation)
@@ -313,10 +307,10 @@ export default function FinalCta() {
               90-Day &ldquo;Get Your Life Back&rdquo; Guarantee
             </h3>
             <p className="text-lg text-white/90 mb-4">
-              Follow the Limitless Protocol for 90 days. If you don&apos;t have more
-              energy than you&apos;ve had in years, if you don&apos;t look better than you
-              have in decades, if you&apos;re not completely off caffeine and
-              alcohol...
+              Follow the Limitless Protocol for 90 days. If you don&apos;t have
+              more energy than you&apos;ve had in years, if you don&apos;t look
+              better than you have in decades, if you&apos;re not completely off
+              caffeine and alcohol...
             </p>
             <p className="text-xl font-bold text-white mb-4">
               I&apos;ll refund every penny. No questions asked.
@@ -359,13 +353,14 @@ export default function FinalCta() {
           <div className="space-y-6">
             <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
               <h4 className="text-lg font-bold text-white mb-3">
-                &ldquo;What if I don&apos;t have time for another program?&rdquo;
+                &ldquo;What if I don&apos;t have time for another
+                program?&rdquo;
               </h4>
               <p className="text-white/90">
-                This isn&apos;t another time-consuming program. The 2-Day Training
-                Protocol means you&apos;ll actually spend LESS time working out. The
-                systems are designed for busy executives - maximum results,
-                minimum time investment.
+                This isn&apos;t another time-consuming program. The 2-Day
+                Training Protocol means you&apos;ll actually spend LESS time
+                working out. The systems are designed for busy executives -
+                maximum results, minimum time investment.
               </p>
             </div>
 
@@ -376,8 +371,8 @@ export default function FinalCta() {
               <p className="text-white/90">
                 Yes. The Anti-Stack System eliminates withdrawal symptoms by
                 replacing artificial stimulation with natural energy production.
-                You&apos;ll have more energy without caffeine than you currently have
-                with it.
+                You&apos;ll have more energy without caffeine than you currently
+                have with it.
               </p>
             </div>
 
@@ -386,10 +381,10 @@ export default function FinalCta() {
                 &ldquo;What about client dinners and social drinking?&rdquo;
               </h4>
               <p className="text-white/90">
-                I&apos;ll show you exactly how to navigate social situations, client
-                events, and business dinners without alcohol while actually
-                increasing your presence and influence. You&apos;ll be more
-                charismatic sober than you ever were drinking.
+                I&apos;ll show you exactly how to navigate social situations,
+                client events, and business dinners without alcohol while
+                actually increasing your presence and influence. You&apos;ll be
+                more charismatic sober than you ever were drinking.
               </p>
             </div>
 
@@ -400,8 +395,8 @@ export default function FinalCta() {
               <p className="text-white/90">
                 The opposite. This is about eliminating the need for willpower
                 by fixing your biochemistry. When your energy systems work
-                properly, you don&apos;t crave caffeine or alcohol because you don&apos;t
-                need them.
+                properly, you don&apos;t crave caffeine or alcohol because you
+                don&apos;t need them.
               </p>
             </div>
           </div>
@@ -460,9 +455,7 @@ export default function FinalCta() {
           </div>
 
           <div className="space-y-4">
-            <ApplyNowButton
-              className="text-xl px-12 py-4"
-            />
+            <ApplyNowButton className="text-xl px-12 py-4" />
             <p className="text-white/70">
               Click above to choose your transformation level
             </p>
@@ -473,8 +466,8 @@ export default function FinalCta() {
 
           <div className="mt-12 p-6 bg-[#940909]/20 backdrop-blur-sm rounded-lg border border-[#940909]/50">
             <p className="text-lg text-white/90 italic">
-              &ldquo;The best time to start was 10 years ago. The second best time is
-              right now.&rdquo;
+              &ldquo;The best time to start was 10 years ago. The second best
+              time is right now.&rdquo;
             </p>
             <p className="text-white/70 mt-2">- Ancient Proverb</p>
           </div>

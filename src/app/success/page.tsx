@@ -3,7 +3,8 @@ import { CTAButton } from "../../components/ui/cta-button";
 
 export const metadata: Metadata = {
   title: "Welcome to The Limitless Protocol - Payment Successful",
-  description: "Thank you for joining The Limitless Protocol. Your transformation begins now.",
+  description:
+    "Thank you for joining The Limitless Protocol. Your transformation begins now.",
 };
 
 export default function SuccessPage() {
@@ -30,7 +31,8 @@ export default function SuccessPage() {
             Welcome to The Limitless Protocol
           </h1>
           <p className="text-xl text-gray-700 mb-8">
-            Your payment was successful and your transformation journey begins now.
+            Your payment was successful and your transformation journey begins
+            now.
           </p>
         </div>
 
@@ -48,7 +50,8 @@ export default function SuccessPage() {
                   Check Your Email
                 </h3>
                 <p className="text-gray-700">
-                  You'll receive a welcome email with your login credentials and immediate next steps.
+                  You'll receive a welcome email with your login credentials and
+                  immediate next steps.
                 </p>
               </div>
             </div>
@@ -61,7 +64,8 @@ export default function SuccessPage() {
                   Access Your Portal
                 </h3>
                 <p className="text-gray-700">
-                  Get immediate access to the training materials and your personalized protocol setup.
+                  Get immediate access to the training materials and your
+                  personalized protocol setup.
                 </p>
               </div>
             </div>
@@ -74,7 +78,8 @@ export default function SuccessPage() {
                   Schedule Your Onboarding
                 </h3>
                 <p className="text-gray-700">
-                  Depending on your tier, you'll receive instructions to schedule your coaching calls.
+                  Depending on your tier, you'll receive instructions to
+                  schedule your coaching calls.
                 </p>
               </div>
             </div>
@@ -83,14 +88,19 @@ export default function SuccessPage() {
 
         <div className="space-y-4">
           <CTAButton
-            onClick={() => window.location.href = 'mailto:contact@limitlessprotocol.com'}
+            onClick={() =>
+              (window.location.href = "mailto:contact@limitlessprotocol.com")
+            }
             className="w-full md:w-auto"
           >
             Contact Support
           </CTAButton>
           <p className="text-gray-600">
-            For any questions or support, email us at{' '}
-            <a href="mailto:contact@limitlessprotocol.com" className="text-[#940909] font-semibold">
+            For any questions or support, email us at{" "}
+            <a
+              href="mailto:contact@limitlessprotocol.com"
+              className="text-[#940909] font-semibold"
+            >
               contact@limitlessprotocol.com
             </a>
           </p>

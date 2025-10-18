@@ -25,7 +25,8 @@ export const bgClasses = {
 export const blackRedGradientOverlay = React.createElement("div", {
   className: "absolute bottom-0 left-0 w-full h-[33vh] z-20",
   style: {
-    background: "linear-gradient(to top, rgba(148, 9, 9, 0.30) 0%, rgba(148, 9, 9, 0.16) 50%, rgba(148, 9, 9, 0) 100%)",
+    background:
+      "linear-gradient(to top, rgba(148, 9, 9, 0.30) 0%, rgba(148, 9, 9, 0.16) 50%, rgba(148, 9, 9, 0) 100%)",
   },
 });
 

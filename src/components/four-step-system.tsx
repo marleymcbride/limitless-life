@@ -7,7 +7,10 @@ export default function FourStepSystem() {
     <section className="bg-white py-20 px-4">
       <div className="container mx-auto max-w-6xl">
         <div className="text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-black mb-8" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif' }}>
+          <h2
+            className="text-4xl md:text-5xl font-bold text-black mb-8"
+            style={{ fontFamily: "Neuemontreal, Arial, sans-serif" }}
+          >
             The 4-Step System That Transforms High-Performers
           </h2>
 
@@ -22,7 +25,10 @@ export default function FourStepSystem() {
                 <div className="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center mr-6">
                   <span className="text-2xl font-bold text-white">1</span>
                 </div>
-                <h3 className="text-2xl font-bold text-black" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif' }}>
+                <h3
+                  className="text-2xl font-bold text-black"
+                  style={{ fontFamily: "Neuemontreal, Arial, sans-serif" }}
+                >
                   Cellular Recharge
                 </h3>
               </div>
@@ -37,13 +43,16 @@ export default function FourStepSystem() {
                 <div className="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center mr-6">
                   <span className="text-2xl font-bold text-white">2</span>
                 </div>
-                <h3 className="text-2xl font-bold text-black" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif' }}>
+                <h3
+                  className="text-2xl font-bold text-black"
+                  style={{ fontFamily: "Neuemontreal, Arial, sans-serif" }}
+                >
                   Hormonal Optimization
                 </h3>
               </div>
               <p className="text-lg text-gray-700 leading-relaxed">
-                Naturally boost testosterone, reduce cortisol, and balance
-                your hormones for peak performance and vitality.
+                Naturally boost testosterone, reduce cortisol, and balance your
+                hormones for peak performance and vitality.
               </p>
             </div>
 
@@ -52,7 +61,10 @@ export default function FourStepSystem() {
                 <div className="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center mr-6">
                   <span className="text-2xl font-bold text-white">3</span>
                 </div>
-                <h3 className="text-2xl font-bold text-black" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif' }}>
+                <h3
+                  className="text-2xl font-bold text-black"
+                  style={{ fontFamily: "Neuemontreal, Arial, sans-serif" }}
+                >
                   Metabolic Reset
                 </h3>
               </div>
@@ -67,13 +79,16 @@ export default function FourStepSystem() {
                 <div className="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center mr-6">
                   <span className="text-2xl font-bold text-white">4</span>
                 </div>
-                <h3 className="text-2xl font-bold text-black" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif' }}>
+                <h3
+                  className="text-2xl font-bold text-black"
+                  style={{ fontFamily: "Neuemontreal, Arial, sans-serif" }}
+                >
                   Lifestyle Integration
                 </h3>
               </div>
               <p className="text-lg text-gray-700 leading-relaxed">
-                Make the changes permanent by integrating them into your
-                busy lifestyle. No willpower required.
+                Make the changes permanent by integrating them into your busy
+                lifestyle. No willpower required.
               </p>
             </div>
           </div>

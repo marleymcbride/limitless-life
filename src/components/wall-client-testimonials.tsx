@@ -7,7 +7,10 @@ export default function WallClientTestimonials() {
     <section className="bg-black py-20 px-4 w-full">
       <div className="container mx-auto max-w-6xl">
         <div className="text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-8" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif' }}>
+          <h2
+            className="text-4xl md:text-5xl font-bold text-white mb-8"
+            style={{ fontFamily: "Neuemontreal, Arial, sans-serif" }}
+          >
             Join The Ranks Of High-Performers Who've Transformed
           </h2>
 
@@ -28,8 +31,9 @@ export default function WallClientTestimonials() {
                 </div>
               </div>
               <p className="text-gray-300 text-sm italic">
-                "My business was thriving but I was dying inside. This protocol saved my
-                health and saved my company. The energy and clarity are incredible."
+                "My business was thriving but I was dying inside. This protocol
+                saved my health and saved my company. The energy and clarity are
+                incredible."
               </p>
             </div>
 
@@ -44,8 +48,9 @@ export default function WallClientTestimonials() {
                 </div>
               </div>
               <p className="text-gray-300 text-sm italic">
-                "I was drinking to cope with stress. Now I have tools to handle stress
-                naturally. Haven't touched alcohol in 8 months and never felt better."
+                "I was drinking to cope with stress. Now I have tools to handle
+                stress naturally. Haven't touched alcohol in 8 months and never
+                felt better."
               </p>
             </div>
 
@@ -60,8 +65,9 @@ export default function WallClientTestimonials() {
                 </div>
               </div>
               <p className="text-gray-300 text-sm italic">
-                "12-hour surgeries used to destroy me. Now I have sustained energy and
-                focus throughout. My colleagues can't believe the difference."
+                "12-hour surgeries used to destroy me. Now I have sustained
+                energy and focus throughout. My colleagues can't believe the
+                difference."
               </p>
             </div>
 
@@ -76,8 +82,8 @@ export default function WallClientTestimonials() {
                 </div>
               </div>
               <p className="text-gray-300 text-sm italic">
-                "I was addicted to coffee and Adderall. Now I'm completely clean and
-                performing better than ever. This system changed my life."
+                "I was addicted to coffee and Adderall. Now I'm completely clean
+                and performing better than ever. This system changed my life."
               </p>
             </div>
 
@@ -108,8 +114,9 @@ export default function WallClientTestimonials() {
                 </div>
               </div>
               <p className="text-gray-300 text-sm italic">
-                "I thought I was too old to change. Lost 35 lbs and my doctor took me
-                off all medications. I feel better than I did in my 30s."
+                "I thought I was too old to change. Lost 35 lbs and my doctor
+                took me off all medications. I feel better than I did in my
+                30s."
               </p>
             </div>
 
@@ -124,8 +131,9 @@ export default function WallClientTestimonials() {
                 </div>
               </div>
               <p className="text-gray-300 text-sm italic">
-                "As a doctor, I was skeptical. But the science behind this is solid.
-                My health markers are better than they've been in 20 years."
+                "As a doctor, I was skeptical. But the science behind this is
+                solid. My health markers are better than they've been in 20
+                years."
               </p>
             </div>
 
@@ -140,8 +148,8 @@ export default function WallClientTestimonials() {
                 </div>
               </div>
               <p className="text-gray-300 text-sm italic">
-                "I was running on fumes and caffeine. Now I wake up energized and
-                my startup is thriving because I have the clarity to lead."
+                "I was running on fumes and caffeine. Now I wake up energized
+                and my startup is thriving because I have the clarity to lead."
               </p>
             </div>
 
@@ -163,12 +171,16 @@ export default function WallClientTestimonials() {
           </div>
 
           <div className="bg-gray-800 rounded-lg p-8 mb-12">
-            <h3 className="text-2xl font-bold text-white mb-6" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif' }}>
+            <h3
+              className="text-2xl font-bold text-white mb-6"
+              style={{ fontFamily: "Neuemontreal, Arial, sans-serif" }}
+            >
               These Are Real Men. Real Results.
             </h3>
             <p className="text-lg text-gray-300 leading-relaxed">
-              They were all exactly where you are right now. Successful on paper but
-              feeling like crap. Tired of fighting their bodies. Ready for a real solution.
+              They were all exactly where you are right now. Successful on paper
+              but feeling like crap. Tired of fighting their bodies. Ready for a
+              real solution.
             </p>
           </div>
 

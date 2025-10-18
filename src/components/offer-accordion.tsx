@@ -24,7 +24,7 @@ You'll receive:
 • Personalized nutrition protocols
 • Recovery optimization strategies
 • Lifetime access to all updates
-• Mobile app for on-the-go access`
+• Mobile app for on-the-go access`,
   },
   {
     value: "how-it-works",
@@ -37,7 +37,7 @@ The 4 Steps:
 3. **Implementation** - Simple daily actions that fit your busy schedule
 4. **Optimization** - Continuous refinement based on your progress
 
-This approach ensures sustainable results without requiring extreme diets or time-consuming workouts.`
+This approach ensures sustainable results without requiring extreme diets or time-consuming workouts.`,
   },
   {
     value: "results",
@@ -60,7 +60,7 @@ This approach ensures sustainable results without requiring extreme diets or tim
 • Improved relationships and intimacy
 • More confidence and self-esteem
 • Better stress management
-• Overall life satisfaction improvement`
+• Overall life satisfaction improvement`,
   },
   {
     value: "who-its-for",
@@ -76,7 +76,7 @@ This approach ensures sustainable results without requiring extreme diets or tim
 • Beginners just starting their fitness journey
 • People looking for quick fixes or magic pills
 • Those unwilling to make lifestyle changes
-• Individuals seeking professional medical treatment`
+• Individuals seeking professional medical treatment`,
   },
   {
     value: "support",
@@ -96,7 +96,7 @@ This approach ensures sustainable results without requiring extreme diets or tim
 • Priority support
 • Personal accountability
 
-We believe that personal support is crucial for high-achievers who are used to excellence in all areas of life.`
+We believe that personal support is crucial for high-achievers who are used to excellence in all areas of life.`,
   },
   {
     value: "guarantee",
@@ -109,8 +109,8 @@ We believe that personal support is crucial for high-achievers who are used to e
 • No questions asked, no hassle required
 • Keep any materials you've received
 
-This guarantee ensures that you can invest in your transformation with complete peace of mind. We only succeed when you succeed.`
-  }
+This guarantee ensures that you can invest in your transformation with complete peace of mind. We only succeed when you succeed.`,
+  },
 ];
 
 export default function OfferAccordion() {

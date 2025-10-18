@@ -4,7 +4,9 @@ import { useState } from "react";
 import { CTAButton } from "./ui/cta-button";
 import { loadStripe } from "@stripe/stripe-js";
 
-const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
+const stripePromise = loadStripe(
+  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!
+);
 
 interface TierCardProps {
   tier: "access" | "plus" | "premium" | "elite";
@@ -36,25 +38,25 @@ export default function TierCard({
       const stripe = await stripePromise;
 
       if (!stripe) {
-        throw new Error('Stripe failed to initialize');
+        throw new Error("Stripe failed to initialize");
       }
 
       // Create checkout session
-      const response = await fetch('/api/create-checkout-session', {
-        method: 'POST',
+      const response = await fetch("/api/create-checkout-session", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           tier: tier,
-          customerEmail: '', // Could add email field in the future
+          customerEmail: "", // Could add email field in the future
         }),
       });
 
       const { sessionId } = await response.json();
 
       if (!sessionId) {
-        throw new Error('Failed to create checkout session');
+        throw new Error("Failed to create checkout session");
       }
 
       // Redirect to Stripe checkout
@@ -66,9 +68,9 @@ export default function TierCard({
         throw error.message;
       }
     } catch (error) {
-      console.error('Checkout error:', error);
+      console.error("Checkout error:", error);
       // Could add error handling/toast here
-      alert('Something went wrong. Please try again.');
+      alert("Something went wrong. Please try again.");
     } finally {
       setIsLoading(false);
     }

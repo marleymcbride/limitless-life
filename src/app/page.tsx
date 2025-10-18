@@ -34,7 +34,7 @@ export default function Home() {
         {blackRedGradientOverlay}
         {/* {redAccentBottom} */}
         {/* <div className="absolute top-0 left-0 w-full h-[25vh] bg-gradient-to-b from-black to-transparent"></div> */}
-        {vignetteEffect} 
+        {vignetteEffect}
 
         <div className="container hero-full-width flex relative z-10 flex-col mx-auto h-full">
           {/* Mobile view - headline and subheadline optimized for mobile */}
@@ -65,15 +65,33 @@ export default function Home() {
             </div>
             */}
             {/* Mobile Headlines (visible only on mobile) */}
-            <h1 className="mobile-headline block px-2 mx-auto mt-5 mb-4 w-full font-bold text-center text-white sm:hidden capitalize" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif', fontSize: '2.4rem', lineHeight: '1.1 !important' }}>
-            How I Stopped Feeling Like Shit Every Morning And Built An Elite Body (Training Only 2 Days Per Week)
+            <h1
+              className="mobile-headline block px-2 mx-auto mt-5 mb-4 w-full font-bold text-center text-white sm:hidden capitalize"
+              style={{
+                fontFamily: "Neuemontreal, Arial, sans-serif",
+                fontSize: "2.4rem",
+                lineHeight: "1.1 !important",
+              }}
+            >
+              How I Stopped Feeling Like Shit Every Morning And Built An Elite
+              Body (Training Only 2 Days Per Week)
             </h1>
 
             {/* Mobile Subheadline - RIGHT AFTER HEADLINE (visible only on mobile) */}
             <p
-              className="mobile-subheadline block mx-auto mb-0 font-light text-center text-gray-300 sm:hidden px-0" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif', fontSize: '1.2rem', lineHeight: '1.6 !important', width: '95% !important', maxWidth: 'none !important' }}>
-
-              You don&apos;t need to down 4 coffees a day, train 6 days a week, or cut out your favorite foods to feel incredible. Here&apos;s the proven system to restore your natural energy, get off alcohol, and build an elite boy in only 2 days per week:
+              className="mobile-subheadline block mx-auto mb-0 font-light text-center text-gray-300 sm:hidden px-0"
+              style={{
+                fontFamily: "Neuemontreal, Arial, sans-serif",
+                fontSize: "1.2rem",
+                lineHeight: "1.6 !important",
+                width: "95% !important",
+                maxWidth: "none !important",
+              }}
+            >
+              You don&apos;t need to down 4 coffees a day, train 6 days a week,
+              or cut out your favorite foods to feel incredible. Here&apos;s the
+              proven system to restore your natural energy, get off alcohol, and
+              build an elite boy in only 2 days per week:
             </p>
 
             {/* Spacer div to push headline down */}
@@ -95,16 +113,29 @@ export default function Home() {
             {/*<h1 className="hidden sm:block text-5xl sm:text-5xl md:text-4xl  lg:text-5xl font-bold text-white text-center mb-0 mt-0 sm:mt-0 max-w-[87%] mx-auto px-4 capitalize" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif', lineHeight: "1.17" }}>
             How I Went From Addicted to Caffine and 20lbs Overweight to Naturally Energized, and in the Shape of My Life (Training 2 Days A Week)
             </h1>*/}
-            <h1 className="hidden sm:block text-5xl sm:text-5xl md:text-4xl  lg:text-5xl font-bold text-white text-center mb-0 mt-0 sm:mt-0 max-w-[87%] mx-auto px-4 capitalize" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif', lineHeight: "1.17" }}>
-            How I Stopped Feeling Like Shit Every Morning And Built An Elite Body (Training Only 2 Days Per Week)
+            <h1
+              className="hidden sm:block text-5xl sm:text-5xl md:text-4xl  lg:text-5xl font-bold text-white text-center mb-0 mt-0 sm:mt-0 max-w-[87%] mx-auto px-4 capitalize"
+              style={{
+                fontFamily: "Neuemontreal, Arial, sans-serif",
+                lineHeight: "1.17",
+              }}
+            >
+              How I Stopped Feeling Like Shit Every Morning And Built An Elite
+              Body (Training Only 2 Days Per Week)
             </h1>
 
             {/* Spacer div to push subtitle down */}
             <div className="h-6"></div>
 
             {/* Desktop Subheadline (hidden on mobile) */}
-            <p className="hidden px-1 mx-auto mb-8  text-xl text-center text-gray-300 sm:block sm:text-xl md:text-lg lg:text-xl" style={{ maxWidth: "725px" }}>
-            You don&apos;t need to down 4 coffees a day, train 6 days a week, or cut out your favorite foods to feel incredible. Here&apos;s the proven system to restore your natural energy, get off alcohol easily, and build an elite body in only 2 days:
+            <p
+              className="hidden px-1 mx-auto mb-8  text-xl text-center text-gray-300 sm:block sm:text-xl md:text-lg lg:text-xl"
+              style={{ maxWidth: "725px" }}
+            >
+              You don&apos;t need to down 4 coffees a day, train 6 days a week,
+              or cut out your favorite foods to feel incredible. Here&apos;s the
+              proven system to restore your natural energy, get off alcohol
+              easily, and build an elite body in only 2 days:
             </p>
           </div>
 
@@ -124,17 +155,21 @@ export default function Home() {
           <div className="text-center mt-10 mb-8 max-w-4xl mx-auto">
             <div className="bg-transparent bg-opacity-10 p-6">
               <blockquote className="text-xl text-white italic mb-4">
-                &ldquo;I&apos;m in the best shape I&apos;ve ever
-                been, haven&apos;t touched booze in over a year and
-                feel incredible.&rdquo;
+                &ldquo;I&apos;m in the best shape I&apos;ve ever been,
+                haven&apos;t touched booze in over a year and feel
+                incredible.&rdquo;
               </blockquote>
               <div className="flex items-center justify-center gap-4">
                 <div className="w-16 h-16 mt-4 bg-[#940909] rounded-full flex items-center justify-center">
                   <span className="text-white font-bold">L</span>
                 </div>
                 <div className="flex flex-col justify-center">
-                  <div className="font-bold mt-4 text-white">Client L - Investment Banking</div>
-                  <div className="text-lg mt-0 text-center">⭐️⭐️⭐️⭐️⭐️</div>
+                  <div className="font-bold mt-4 text-white">
+                    Client L - Investment Banking
+                  </div>
+                  <div className="text-lg mt-0 text-center">
+                    ⭐️⭐️⭐️⭐️⭐️
+                  </div>
                 </div>
               </div>
             </div>

@@ -10,7 +10,10 @@ export default function PersonalStorySection() {
         <div className="max-w-4xl mx-auto">
           {/* IRRESISTIBLE HEADLINE - Can't help but read */}
           <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 leading-tight" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif' }}>
+            <h2
+              className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 leading-tight"
+              style={{ fontFamily: "Neuemontreal, Arial, sans-serif" }}
+            >
               I Was Drinking Wine At 11 AM Just To Get Through Client Meetings
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
