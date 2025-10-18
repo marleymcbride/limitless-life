@@ -32,9 +32,10 @@ export default function Home() {
         {/* <div className="absolute top-0 left-0 w-full h-[25vh] bg-gradient-to-b from-black to-transparent"></div> */}
         {vignetteEffect}
 
-        <div className="container hero-full-width flex relative z-10 flex-col mx-auto h-full">
+        <div className="container hero-full-width flex relative z-30 flex-col mx-auto h-full">
           {/* Mobile view - headline and subheadline optimized for mobile */}
           <div className="flex flex-col flex-grow justify-start pt-5 sm:justify-center sm:pt-0 sm:mt-6 md:mt-0">
+
             {/* Pill Logo */}
             {/*
             <div className="hidden relative justify-center mb-1 sm:flex">
@@ -173,6 +174,7 @@ export default function Home() {
         </div>
       </section>
 
+  
       {/* 2. "Does This Sound Like You?" - Problem Agitation (Black background) */}
       <DoesThisSoundLikeYou />
 
