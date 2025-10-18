@@ -29,14 +29,14 @@ export default function Home() {
     <main className="flex flex-col items-center min-h-screen">
       {/* 1. Hero Section (UNTOUCHED - PRESERVED EXACTLY) */}
       <section
-        className={`py-6 md:py-8 px-4 min-h-[75vh] flex flex-col relative w-full overflow-hidden ${bgClasses.blackRedGradient}`}
+        className={`py-6 md:py-8 px-4 min-h-[75vh] flex flex-col relative w-full overflow-hidden bg-black-red-gradient`}
       >
         {blackRedGradientOverlay}
         {/* {redAccentBottom} */}
         {/* <div className="absolute top-0 left-0 w-full h-[25vh] bg-gradient-to-b from-black to-transparent"></div> */}
         {vignetteEffect} 
 
-        <div className="container flex relative z-10 flex-col mx-auto h-full">
+        <div className="container hero-full-width flex relative z-10 flex-col mx-auto h-full">
           {/* Mobile view - headline and subheadline optimized for mobile */}
           <div className="flex flex-col flex-grow justify-start pt-5 sm:justify-center sm:pt-0 sm:mt-6 md:mt-0">
             {/* Pill Logo */}
@@ -65,36 +65,51 @@ export default function Home() {
             </div>
             */}
             {/* Mobile Headlines (visible only on mobile) */}
-            <h1 className="block px-2 mx-auto mt-0 mb-4 w-full text-6xl font-bold text-center text-white sm:hidden capitalize" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif', lineHeight: "1.17" }}>
-            Discover how to look and feel better than you did at 25 (without obsessing over your health)
+            <h1 className="mobile-headline block px-2 mx-auto mt-5 mb-4 w-full font-bold text-center text-white sm:hidden capitalize" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif', fontSize: '2.4rem', lineHeight: '1.1 !important' }}>
+            How I Stopped Feeling Like Shit Every Morning And Built An Elite Body (Training Only 2 Days Per Week)
             </h1>
 
             {/* Mobile Subheadline - RIGHT AFTER HEADLINE (visible only on mobile) */}
             <p
-              className="block px-2 mx-auto mb-6 font-light text-center text-gray-300 sm:hidden text-[1.75rem] leading-[1.3]"
-            >
-              Feeling great doesn&apos;t need to mean downing 3-5 espressos, slaving at the gym, or cutting out your favorite foods. Watch below to learn the proven system that&apos;s helped countless men restore their natural energy, control their drinking and build an elite body in 2 days per week:
+              className="mobile-subheadline block mx-auto mb-0 font-light text-center text-gray-300 sm:hidden px-0" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif', fontSize: '1.2rem', lineHeight: '1.6 !important', width: '95% !important', maxWidth: 'none !important' }}>
+
+              You don&apos;t need to down 4 coffees a day, train 6 days a week, or cut out your favorite foods to feel incredible. Here&apos;s the proven system to restore your natural energy, get off alcohol, and build an elite boy in only 2 days per week:
             </p>
 
             {/* Spacer div to push headline down */}
             <div className="h-10"></div>
 
             {/* Desktop Headlines (hidden on mobile) */}
+            {/*<h1 className="hidden sm:block text-5xl sm:text-5xl md:text-4xl  lg:text-5xl font-bold text-white text-center mb-0 mt-0 sm:mt-0 max-w-[87%] mx-auto px-4 capitalize" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif', lineHeight: "1.17" }}>
+            How To Look And Feel Better Than You Did At 25 (While Training 2 days a Week)
+            </h1>*/}
+            {/*<h1 className="hidden sm:block text-5xl sm:text-5xl md:text-4xl  lg:text-5xl font-bold text-white text-center mb-0 mt-0 sm:mt-0 max-w-[87%] mx-auto px-4 capitalize" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif', lineHeight: "1.17" }}>
+            Wake Up With More Energy Than You Had At 25 (Training Just 2 Days a Week)
+            </h1>*/}
+            {/*<h1 className="hidden sm:block text-5xl sm:text-5xl md:text-4xl  lg:text-5xl font-bold text-white text-center mb-0 mt-0 sm:mt-0 max-w-[87%] mx-auto px-4 capitalize" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif', lineHeight: "1.17" }}>
+            Discover How To Look And Feel Better Than You Did At 25 (Without Obsessing Over Your Health)"
+            </h1>*/}
+            {/*<h1 className="hidden sm:block text-5xl sm:text-5xl md:text-4xl  lg:text-5xl font-bold text-white text-center mb-0 mt-0 sm:mt-0 max-w-[87%] mx-auto px-4 capitalize" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif', lineHeight: "1.17" }}>
+            How I Got My Energy Back, Dropped 30 Pounds, And Got Off Alcohol—Without Willpower Or Restrictive Diets
+            </h1>*/}
+            {/*<h1 className="hidden sm:block text-5xl sm:text-5xl md:text-4xl  lg:text-5xl font-bold text-white text-center mb-0 mt-0 sm:mt-0 max-w-[87%] mx-auto px-4 capitalize" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif', lineHeight: "1.17" }}>
+            How I Went From Addicted to Caffine and 20lbs Overweight to Naturally Energized, and in the Shape of My Life (Training 2 Days A Week)
+            </h1>*/}
             <h1 className="hidden sm:block text-5xl sm:text-5xl md:text-4xl  lg:text-5xl font-bold text-white text-center mb-0 mt-0 sm:mt-0 max-w-[87%] mx-auto px-4 capitalize" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif', lineHeight: "1.17" }}>
-            Discover how to look and feel better than you did at 25 (without obsessing over your health)  
+            How I Stopped Feeling Like Shit Every Morning And Built An Elite Body (Training Only 2 Days Per Week)
             </h1>
 
             {/* Spacer div to push subtitle down */}
             <div className="h-6"></div>
 
             {/* Desktop Subheadline (hidden on mobile) */}
-            <p className="hidden px-1 mx-auto mb-0 text-xl text-center text-gray-300 sm:block sm:text-xl md:text-lg lg:text-xl" style={{ maxWidth: "725px" }}>
-            Feeling great doesn&apos;t need to mean downing 3-5 espressos, slaving at the gym, or cutting out your favorite foods. Watch below to learn the proven system that&apos;s helped countless men restore their natural energy, control their drinking and build an elite body in 2 days per week:
+            <p className="hidden px-1 mx-auto mb-8  text-xl text-center text-gray-300 sm:block sm:text-xl md:text-lg lg:text-xl" style={{ maxWidth: "725px" }}>
+            You don&apos;t need to down 4 coffees a day, train 6 days a week, or cut out your favorite foods to feel incredible. Here&apos;s the proven system to restore your natural energy, get off alcohol easily, and build an elite body in only 2 days:
             </p>
           </div>
 
           {/* Video Player - Bunny.net VSL */}
-          <div className="mx-auto mt-6 mb-4 w-full max-w-4xl px-4">
+          <div className="mx-auto mt-0 mb-4 w-full max-w-4xl px-4">
             <VSLPlayer
               libraryId="505300"
               videoId="ae86338e-0493-4ff0-bca9-87f9ad98dd89"
