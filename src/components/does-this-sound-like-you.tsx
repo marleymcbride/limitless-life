@@ -27,8 +27,7 @@ export default function DoesThisSoundLikeYou() {
               </div>
               <p className="text-lg text-white">
                 <span className="font-normal">
-                  You&apos;re successful on paper but feel like absolute shit
-                  inside.
+                  You need two or three coffees just to think straight
                 </span>
               </p>
             </div>
@@ -49,8 +48,7 @@ export default function DoesThisSoundLikeYou() {
               </div>
               <p className="text-lg text-white">
                 <span className="font-normal">
-                  You drag yourself out of bed wondering how you&apos;ll get
-                  through the day.
+                  By afternoon you&apos;re reading the same thing multiple times and nothing&apos;s going in
                 </span>
               </p>
             </div>
@@ -71,8 +69,7 @@ export default function DoesThisSoundLikeYou() {
               </div>
               <p className="text-lg text-white">
                 <span className="font-normal">
-                  You&apos;re stuck in the cycle: coffee to start, alcohol to
-                  unwind.
+                  You need alcohol at night to shut your brain off
                 </span>
               </p>
             </div>
@@ -93,8 +90,28 @@ export default function DoesThisSoundLikeYou() {
               </div>
               <p className="text-lg text-white">
                 <span className="font-normal">
-                  No matter how hard you work at your health, the results
-                  don&apos;t match the effort.
+                  You train and eat right but your body won&apos;t respond
+                </span>
+              </p>
+            </div>
+
+            <div className="flex items-start">
+              <div className="w-6 h-6 bg-red-600 rounded-full flex items-center justify-center mr-4 mt-1">
+                <svg
+                  className="w-4 h-4 text-white"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </div>
+              <p className="text-lg text-white">
+                <span className="font-normal">
+                  Everyone thinks you have it together but something is fundamentally wrong
                 </span>
               </p>
             </div>

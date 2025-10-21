@@ -87,8 +87,8 @@ export default function Home() {
             >
               You don&apos;t need to down 4 coffees a day, train 6 days a week,
               or cut out your favorite foods to feel incredible. Here&apos;s the
-              proven system to restore your natural energy, get off alcohol, and
-              build an elite boy in only 2 days per week:
+              proven system to restore your natural energy, get off alcohol
+              easily, and build an elite body in only 2 days:
             </p>
 
             {/* Spacer div to push headline down */}
