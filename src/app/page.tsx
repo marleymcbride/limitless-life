@@ -178,6 +178,7 @@ export default function Home() {
       {/* 2. "Does This Sound Like You?" - Problem Agitation (Black background) */}
       <DoesThisSoundLikeYou />
 
+    
       {/* 3. Personal Story + Discovery (White background) */}
       <PersonalStorySection />
 

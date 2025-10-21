@@ -10,7 +10,7 @@ export default function DoesThisSoundLikeYou() {
             Does This Sound Like You?
           </h2>
 
-          <div className="text-left space-y-6 mb-12">
+          <div className="text-left space-y-6 mb-12" style={{ maxWidth: '768px', marginLeft: 'auto', marginRight: 'auto', paddingLeft: '60px', paddingRight: '16px' }}>
             <div className="flex items-start">
               <div className="w-6 h-6 bg-red-600 rounded-full flex items-center justify-center mr-4 mt-1">
                 <svg
@@ -25,9 +25,9 @@ export default function DoesThisSoundLikeYou() {
                   />
                 </svg>
               </div>
-              <p className="text-lg text-white">
+              <p className="text-2xl text-white">
                 <span className="font-normal">
-                  You need two or three coffees just to think straight
+                  You wake up exhausted every morning
                 </span>
               </p>
             </div>
@@ -46,9 +46,9 @@ export default function DoesThisSoundLikeYou() {
                   />
                 </svg>
               </div>
-              <p className="text-lg text-white">
+              <p className="text-2xl text-white">
                 <span className="font-normal">
-                  By afternoon you&apos;re reading the same thing multiple times and nothing&apos;s going in
+                No matter how much you train, your gut just won&apos;t budge
                 </span>
               </p>
             </div>
@@ -67,9 +67,9 @@ export default function DoesThisSoundLikeYou() {
                   />
                 </svg>
               </div>
-              <p className="text-lg text-white">
+              <p className="text-2xl text-white">
                 <span className="font-normal">
-                  You need alcohol at night to shut your brain off
+                  You can&apos;t focus at work like you used to
                 </span>
               </p>
             </div>
@@ -88,9 +88,9 @@ export default function DoesThisSoundLikeYou() {
                   />
                 </svg>
               </div>
-              <p className="text-lg text-white">
+              <p className="text-2xl text-white">
                 <span className="font-normal">
-                  You train and eat right but your body won&apos;t respond
+                  You need multiple coffees to function and 2-3 drinks to wind down
                 </span>
               </p>
             </div>
@@ -109,15 +109,15 @@ export default function DoesThisSoundLikeYou() {
                   />
                 </svg>
               </div>
-              <p className="text-lg text-white">
+              <p className="text-2xl text-white">
                 <span className="font-normal">
-                  Everyone thinks you have it together but something is fundamentally wrong
+                  You have no energy left for people who matter most
                 </span>
               </p>
             </div>
           </div>
 
-          <p className="text-xl text-white mb-8">You&apos;re not alone.</p>
+          <p className="text-2xl mt-12 text-white mb-8">You&apos;re not alone, my friend...</p>
         </div>
       </div>
     </section>
