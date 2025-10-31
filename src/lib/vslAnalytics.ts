@@ -7,7 +7,7 @@ export const getSessionId = (): string => {
   if (!sessionId) {
     sessionId = `session_${Date.now()}_${Math.random()
       .toString(36)
-      .substr(2, 9)}`;
+      .slice(2, 11)}`;
     sessionStorage.setItem("vsl_session_id", sessionId);
   }
   return sessionId;
@@ -21,7 +21,7 @@ export const getUserId = (): string | undefined => {
 
   let anonId = localStorage.getItem("vsl_anonymous_id");
   if (!anonId) {
-    anonId = `anon_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+    anonId = `anon_${Date.now()}_${Math.random().toString(36).slice(2, 11)}`;
     localStorage.setItem("vsl_anonymous_id", anonId);
   }
   return anonId;

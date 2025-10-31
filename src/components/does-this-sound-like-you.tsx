@@ -10,7 +10,16 @@ export default function DoesThisSoundLikeYou() {
             Does This Sound Like You?
           </h2>
 
-          <div className="text-left space-y-6 mb-12" style={{ maxWidth: '768px', marginLeft: 'auto', marginRight: 'auto', paddingLeft: '60px', paddingRight: '16px' }}>
+          <div
+            className="text-left space-y-6 mb-12"
+            style={{
+              maxWidth: "768px",
+              marginLeft: "auto",
+              marginRight: "auto",
+              paddingLeft: "60px",
+              paddingRight: "16px",
+            }}
+          >
             <div className="flex items-start">
               <div className="w-6 h-6 bg-red-600 rounded-full flex items-center justify-center mr-4 mt-1">
                 <svg
@@ -48,7 +57,7 @@ export default function DoesThisSoundLikeYou() {
               </div>
               <p className="text-2xl text-white">
                 <span className="font-normal">
-                No matter how much you train, your gut just won&apos;t budge
+                  No matter how much you train, your gut just won&apos;t budge
                 </span>
               </p>
             </div>
@@ -90,7 +99,8 @@ export default function DoesThisSoundLikeYou() {
               </div>
               <p className="text-2xl text-white">
                 <span className="font-normal">
-                  You need multiple coffees to function and 2-3 drinks to wind down
+                  You need multiple coffees to function and 2-3 drinks to wind
+                  down
                 </span>
               </p>
             </div>
@@ -117,7 +127,9 @@ export default function DoesThisSoundLikeYou() {
             </div>
           </div>
 
-          <p className="text-2xl mt-12 text-white mb-8">You&apos;re not alone, my friend...</p>
+          <p className="text-2xl mt-12 text-white mb-8">
+            You&apos;re not alone, my friend...
+          </p>
         </div>
       </div>
     </section>

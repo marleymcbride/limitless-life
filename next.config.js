@@ -10,10 +10,6 @@ const nextConfig = {
     ],
   },
   reactStrictMode: true,
-  // Disable SWC completely
-  experimental: {
-    forceSwcTransforms: false,
-  },
   typescript: {
     ignoreBuildErrors: true,
   },

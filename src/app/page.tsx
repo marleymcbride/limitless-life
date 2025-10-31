@@ -35,7 +35,6 @@ export default function Home() {
         <div className="container hero-full-width flex relative z-30 flex-col mx-auto h-full">
           {/* Mobile view - headline and subheadline optimized for mobile */}
           <div className="flex flex-col flex-grow justify-start pt-5 sm:justify-center sm:pt-0 sm:mt-6 md:mt-0">
-
             {/* Pill Logo */}
             {/*
             <div className="hidden relative justify-center mb-1 sm:flex">
@@ -174,11 +173,9 @@ export default function Home() {
         </div>
       </section>
 
-  
       {/* 2. "Does This Sound Like You?" - Problem Agitation (Black background) */}
       <DoesThisSoundLikeYou />
 
-    
       {/* 3. Personal Story + Discovery (White background) */}
       <PersonalStorySection />
 

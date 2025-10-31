@@ -4,5 +4,7 @@
   "scss.validate": false,
   "editor.quickSuggestions": {
     "strings": true
-  }
+  },
+  "claude-code.terminal.enabled": false,
+  "claude-code.enableTerminalIntegration": false
 }
