@@ -25,7 +25,7 @@ export default function Home() {
     <main className="flex flex-col items-center min-h-screen">
       {/* 1. Hero Section (UNTOUCHED - PRESERVED EXACTLY) */}
       <section
-        className={`py-6 md:py-8 px-4 min-h-[75vh] flex flex-col relative w-full overflow-hidden bg-black-red-gradient`}
+        className={`py-2 md:py-6 px-4 min-h-[75vh] flex flex-col relative w-full overflow-hidden bg-black-red-gradient`}
       >
         {blackRedGradientOverlay}
         {/* {redAccentBottom} */}
@@ -60,17 +60,25 @@ export default function Home() {
               </div>
             </div>
             */}
+
+            {/* Desktop Subheadline (hidden on mobile) */}
+            <p
+              className="hidden px-1 mx-auto mb-0 mt-0  text-xl text-center text-gray-300 sm:block sm:text-xl md:text-lg lg:text-xl"
+              style={{ maxWidth: "725px" }}
+            >
+              For the man who has everything in life... except the energy to enjoy it:
+            </p>
+            
             {/* Mobile Headlines (visible only on mobile) */}
             <h1
-              className="mobile-headline block px-2 mx-auto mt-5 mb-4 w-full font-bold text-center text-white sm:hidden capitalize"
+              className="mobile-headline block px-1 mx-auto mt-5 mb-4 w-full font-bold text-center text-white sm:hidden capitalize"
               style={{
                 fontFamily: "Neuemontreal, Arial, sans-serif",
                 fontSize: "2.4rem",
                 lineHeight: "1.1 !important",
               }}
             >
-              How I Stopped Feeling Like Shit Every Morning And Built An Elite
-              Body (Training Only 2 Days Per Week)
+              Lose Your Gut, Stop Waking Up Exhausted & Reverse Years Of Health Decline (In 2 Days Per Week)
             </h1>
 
             {/* Mobile Subheadline - RIGHT AFTER HEADLINE (visible only on mobile) */}
@@ -78,20 +86,19 @@ export default function Home() {
               className="mobile-subheadline block mx-auto mb-0 font-light text-center text-gray-300 sm:hidden px-0"
               style={{
                 fontFamily: "Neuemontreal, Arial, sans-serif",
-                fontSize: "1.2rem",
+                fontSize: "1.3rem",
                 lineHeight: "1.6 !important",
                 width: "95% !important",
                 maxWidth: "none !important",
               }}
             >
-              You don&apos;t need to down 4 coffees a day, train 6 days a week,
-              or cut out your favorite foods to feel incredible. Here&apos;s the
-              proven system to restore your natural energy, get off alcohol
-              easily, and build an elite body in only 2 days:
+             You don&apos;t need to down 4 coffees a day, train 6 days a week, or cut out your favorite foods to feel incredible.
+             Discover how to restore your energy, build an elite body and and get back YEARS of life
+             (training only 2 days):
             </p>
 
             {/* Spacer div to push headline down */}
-            <div className="h-10"></div>
+            <div className="h-4"></div>
 
             {/* Desktop Headlines (hidden on mobile) */}
             {/*<h1 className="hidden sm:block text-5xl sm:text-5xl md:text-4xl  lg:text-5xl font-bold text-white text-center mb-0 mt-0 sm:mt-0 max-w-[87%] mx-auto px-4 capitalize" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif', lineHeight: "1.17" }}>
@@ -109,6 +116,13 @@ export default function Home() {
             {/*<h1 className="hidden sm:block text-5xl sm:text-5xl md:text-4xl  lg:text-5xl font-bold text-white text-center mb-0 mt-0 sm:mt-0 max-w-[87%] mx-auto px-4 capitalize" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif', lineHeight: "1.17" }}>
             How I Went From Addicted to Caffine and 20lbs Overweight to Naturally Energized, and in the Shape of My Life (Training 2 Days A Week)
             </h1>*/}
+            {/*<h1 className="hidden sm:block text-5xl sm:text-5xl md:text-4xl  lg:text-5xl font-bold text-white text-center mb-0 mt-0 sm:mt-0 max-w-[87%] mx-auto px-4 capitalize" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif', lineHeight: "1.17" }}>
+            How I Stopped Feeling Like Shit Every Morning And Built An Elite
+              Body (Training Only 2 Days Per Week)
+            </h1>*/}
+            {/*<h1 className="hidden sm:block text-5xl sm:text-5xl md:text-4xl  lg:text-5xl font-bold text-white text-center mb-0 mt-0 sm:mt-0 max-w-[87%] mx-auto px-4 capitalize" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif', lineHeight: "1.17" }}>
+            Stop Waking Up Feeling Like Shit and Build [X Body desired result] (Training Only 2 Days Per Week)
+            </h1>*/}
             <h1
               className="hidden sm:block text-5xl sm:text-5xl md:text-4xl  lg:text-5xl font-bold text-white text-center mb-0 mt-0 sm:mt-0 max-w-[87%] mx-auto px-4 capitalize"
               style={{
@@ -116,22 +130,22 @@ export default function Home() {
                 lineHeight: "1.17",
               }}
             >
-              How I Stopped Feeling Like Shit Every Morning And Built An Elite
-              Body (Training Only 2 Days Per Week)
+            Lose Your Gut, Stop Waking Up Exhausted & Reverse Years of Health Decline (In Just 2 Days Per Week)
             </h1>
 
             {/* Spacer div to push subtitle down */}
-            <div className="h-6"></div>
+            <div className="h-4"></div>
 
             {/* Desktop Subheadline (hidden on mobile) */}
             <p
-              className="hidden px-1 mx-auto mb-8  text-xl text-center text-gray-300 sm:block sm:text-xl md:text-lg lg:text-xl"
+              className="hidden px-1 mx-auto mb-4  text-xl text-center text-gray-300 sm:block sm:text-xl md:text-lg lg:text-xl"
               style={{ maxWidth: "725px" }}
-            >
+              >
               You don&apos;t need to down 4 coffees a day, train 6 days a week,
               or cut out your favorite foods to feel incredible. Here&apos;s the
-              proven system to restore your natural energy, get off alcohol
-              easily, and build an elite body in only 2 days:
+              proven system to restore your energy, build an elite body
+              and get back YEARS of life
+              (training only 2 days):
             </p>
           </div>
 
