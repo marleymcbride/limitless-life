@@ -128,7 +128,7 @@ export default function DoesThisSoundLikeYou() {
           </div>
 
           <p className="text-2xl mt-12 text-white mb-8">
-            You&apos;re not alone, my friend...
+            Well you&apos;re not alone, my friend...
           </p>
         </div>
       </div>

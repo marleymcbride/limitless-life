@@ -63,7 +63,7 @@ export default function Home() {
 
             {/* Desktop Eyebrow (hidden on mobile) */}
             <p
-              className="px-1 mx-auto mb-0 mt-0  text-xl text-center text-gray-300 sm:block sm:text-xl md:text-lg lg:text-xl"
+              className="px-1 mx-auto mb-4 mt-0  text-xl text-center text-gray-300 sm:block sm:text-xl md:text-lg lg:text-xl"
               style={{ maxWidth: "725px" }}
             >
               For the man who has everything in life... except the energy to enjoy it:
@@ -126,7 +126,7 @@ export default function Home() {
               className="hidden sm:block text-5xl sm:text-5xl md:text-4xl  lg:text-5xl font-bold text-white text-center mb-0 mt-0 sm:mt-0 max-w-[87%] mx-auto px-4 capitalize"
               style={{
                 fontFamily: "Neuemontreal, Arial, sans-serif",
-                lineHeight: "1.17",
+                lineHeight: "1.2 !important",
               }}
             >
             Lose Your Gut, Stop Waking Up Exhausted & Reverse Years of Health Decline (In Just 2 Days Per Week)
@@ -163,20 +163,24 @@ export default function Home() {
           {/* Testimonial - Simple thin text at bottom of hero */}
           <div className="text-center mt-10 mb-8 max-w-4xl mx-auto">
             <div className="bg-transparent bg-opacity-10 p-6">
-              <blockquote className="text-xl text-white italic mb-4">
+              <blockquote className="text-xl text-white mb-4">
                 &ldquo;I&apos;m in the best shape I&apos;ve ever been,
                 haven&apos;t touched booze in over a year and feel
                 incredible.&rdquo;
               </blockquote>
               <div className="flex items-center justify-center gap-4">
-                <div className="w-16 h-16 mt-4 bg-[#940909] rounded-full flex items-center justify-center">
+                <div className="w-16 h-16 mt-6 bg-[#940909] rounded-full flex items-center justify-center">
                   <span className="text-white font-bold">L</span>
                 </div>
                 <div className="flex flex-col justify-center">
-                  <div className="font-bold mt-4 text-white">
-                    Client L - Investment Banking
+                  <div className="text-lg font-bold mt-4 text-white">
+                    Lewis Allen
                   </div>
-                  <div className="text-lg mt-0 text-center">
+                  <div className="text-sm mt-0 text-center">
+                  <div className="font-normal mt-0 mb-2 text-gray-200">
+                    Energy Sector
+                  </div>
+                  <div className="text-lg mt-0 text-center"></div>
                     ⭐️⭐️⭐️⭐️⭐️
                   </div>
                 </div>
