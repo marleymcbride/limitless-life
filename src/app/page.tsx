@@ -61,9 +61,9 @@ export default function Home() {
             </div>
             */}
 
-            {/* Desktop Subheadline (hidden on mobile) */}
+            {/* Desktop Eyebrow (hidden on mobile) */}
             <p
-              className="hidden px-1 mx-auto mb-0 mt-0  text-xl text-center text-gray-300 sm:block sm:text-xl md:text-lg lg:text-xl"
+              className="px-1 mx-auto mb-0 mt-0  text-xl text-center text-gray-300 sm:block sm:text-xl md:text-lg lg:text-xl"
               style={{ maxWidth: "725px" }}
             >
               For the man who has everything in life... except the energy to enjoy it:
@@ -71,11 +71,11 @@ export default function Home() {
             
             {/* Mobile Headlines (visible only on mobile) */}
             <h1
-              className="mobile-headline block px-1 mx-auto mt-5 mb-4 w-full font-bold text-center text-white sm:hidden capitalize"
+              className="mobile-headline block px-1 mx-auto mt-4 mb-6 w-full font-bold text-center text-white sm:hidden capitalize"
               style={{
                 fontFamily: "Neuemontreal, Arial, sans-serif",
                 fontSize: "2.4rem",
-                lineHeight: "1.1 !important",
+                lineHeight: "1.25 !important",
               }}
             >
               Lose Your Gut, Stop Waking Up Exhausted & Reverse Years Of Health Decline (In 2 Days Per Week)
@@ -92,13 +92,12 @@ export default function Home() {
                 maxWidth: "none !important",
               }}
             >
-             You don&apos;t need to down 4 coffees a day, train 6 days a week, or cut out your favorite foods to feel incredible.
-             Discover how to restore your energy, build an elite body and and get back YEARS of life
-             (training only 2 days):
+             You don&apos;t need to down 4 coffees, train 6 days a week, or cut out your favorite foods to feel incredible.
+             Restore your energy, build an elite body and get back YEARS of life:
             </p>
 
             {/* Spacer div to push headline down */}
-            <div className="h-4"></div>
+            <div className="hidden h-4"></div>
 
             {/* Desktop Headlines (hidden on mobile) */}
             {/*<h1 className="hidden sm:block text-5xl sm:text-5xl md:text-4xl  lg:text-5xl font-bold text-white text-center mb-0 mt-0 sm:mt-0 max-w-[87%] mx-auto px-4 capitalize" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif', lineHeight: "1.17" }}>
