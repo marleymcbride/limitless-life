@@ -4,8 +4,9 @@ import { CTAButton } from "./ui/cta-button";
 
 export default function IntroducingLimitless() {
   return (
-    <section className="bg-black py-20 px-4 w-full">
-      <div className="container mx-auto max-w-5xl">
+    <section className="bg-black py-20 px-4 w-full relative">
+      <div className="grain-overlay"></div>
+      <div className="container mx-auto max-w-5xl relative z-10">
         <div className="text-center">
           <h2
             className="text-3xl md:text-4xl font-normal text-red-600 mb-4"

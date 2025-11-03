@@ -1,7 +1,8 @@
 export default function DoesThisSoundLikeYou() {
   return (
-    <section className="bg-black py-20 px-4 w-full">
-      <div className="container mx-auto max-w-4xl">
+    <section className="bg-black py-20 px-4 w-full relative">
+      <div className="grain-overlay"></div>
+      <div className="container mx-auto max-w-4xl relative z-10">
         <div className="text-center">
           <h2
             className="text-4xl md:text-5xl font-bold text-white mb-12"

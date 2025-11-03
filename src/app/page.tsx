@@ -22,7 +22,7 @@ import { vignetteEffect, unifiedGradientWithSpotlightDesktop, unifiedGradientWit
 
 export default function Home() {
   return (
-    <main className="flex flex-col items-center min-h-screen">
+    <main className="flex flex-col min-h-screen">
       {/* 1. Hero Section (UNTOUCHED - PRESERVED EXACTLY) */}
       <section
         className={`pt-2 md:pt-6 pb-8 px-3 md:pb-16 px-8min-h-[100vh] sm:px-0 flex flex-col relative w-full overflow-hidden bg-black`}

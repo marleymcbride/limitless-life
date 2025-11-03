@@ -9,6 +9,7 @@ import {
 export default function ImagineThis() {
   return (
     <section className={`${bgClasses.blackRedGradient} py-20 px-4 w-full`}>
+      <div className="grain-overlay"></div>
       {blackRedGradientOverlay}
       {vignetteEffect}
       <div className="container mx-auto max-w-6xl relative z-10">

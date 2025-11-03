@@ -4,8 +4,9 @@ import { CTAButton } from "./ui/cta-button";
 
 export default function ProcessExplanation() {
   return (
-    <section className="bg-black py-20 px-4 w-full">
-      <div className="container mx-auto max-w-5xl">
+    <section className="bg-black py-20 px-4 w-full relative">
+      <div className="grain-overlay"></div>
+      <div className="container mx-auto max-w-5xl relative z-10">
         <div className="text-center">
           <h3
             className="text-3xl md:text-4xl font-semibold text-gray-100 mb-12"

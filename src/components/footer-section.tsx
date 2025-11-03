@@ -5,8 +5,9 @@ export default function FooterSection() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-black py-4 text-white">
-      <div className="container mx-auto px-4">
+    <footer className="bg-black py-4 text-white relative">
+      <div className="grain-overlay"></div>
+      <div className="container mx-auto px-4 relative z-10">
         <div className="flex justify-between items-center">
           <p className="text-xs text-gray-500">
             © {currentYear} Limitless Life
