@@ -19,16 +19,18 @@ import WallClientTestimonials from "../components/wall-client-testimonials";
 import FooterSection from "../components/footer-section";
 import StickyCTA from "../components/sticky-cta";
 import { vignetteEffect, unifiedGradientWithSpotlightDesktop, unifiedGradientWithSpotlightMobile } from "../lib/utils";
+import Image from "next/image";
 
 export default function Home() {
   return (
     <main className="flex flex-col  min-h-screen">
       {/* 1. Hero Section (UNTOUCHED - PRESERVED EXACTLY) */}
       <section
-        className={`dark-section-with-grain pt-2 md:pt-6 pb-8 px-3 md:pb-16 px-8min-h-[100vh] sm:px-0 flex flex-col relative w-full overflow-hidden bg-black`}
+        className={`pt-2 md:pt-6 pb-8 px-3 md:pb-16 px-8min-h-[100vh] sm:px-0 flex flex-col relative w-full overflow-hidden bg-black`}
       >
         <div className="hidden md:block">{unifiedGradientWithSpotlightDesktop}</div>
         <div className="block md:hidden">{unifiedGradientWithSpotlightMobile}</div>
+        <div className="hero-grain-overlay"></div>
         {/* {redAccentBottom} */}
         {/* <div className="absolute top-0 left-0 w-full h-[25vh] bg-gradient-to-b from-black to-transparent"></div> */}
         {vignetteEffect}
@@ -151,14 +153,17 @@ export default function Home() {
 
           {/* Video Player - Bunny.net VSL */}
           <div className="mx-auto mt-0 mb-4 w-full max-w-4xl px-4">
-            <VSLPlayer
-              libraryId="505300"
-              videoId="ae86338e-0493-4ff0-bca9-87f9ad98dd89"
-              autoplay={true}
-              muted={true}
-              preload={true}
-              controls={true}
-            />
+            <div className="relative">
+              <div className="absolute inset-0 rounded-lg shadow-[0_0_20px_rgba(255,255,255,0.018984375),0_0_40px_rgba(255,255,255,0.0094921875),0_0_65px_rgba(255,255,255,0.0050625),0_0_120px_rgba(255,255,255,0.002),0_0_20px_rgba(148,9,9,0.0825),0_0_40px_rgba(148,9,9,0.04125),0_0_65px_rgba(148,9,9,0.022),0_0_120px_rgba(148,9,9,0.008)] pointer-events-none"></div>
+              <VSLPlayer
+                libraryId="505300"
+                videoId="ae86338e-0493-4ff0-bca9-87f9ad98dd89"
+                autoplay={true}
+                muted={true}
+                preload={true}
+                controls={true}
+              />
+            </div>
           </div>
           {/* Spacer div to push headline down */}
           <div className=" h-16"></div>
@@ -172,12 +177,19 @@ export default function Home() {
                 incredible.&rdquo;
               </blockquote>
               <div className="flex items-center justify-center gap-4">
-                <div className="w-16 h-16 mt-6 bg-[#940909] rounded-full flex items-center justify-center">
-                  <span className="text-white font-bold">L</span>
+                <div className="w-16 h-16 mt-6 rounded-full overflow-hidden">
+                  <Image
+                    src="/images/lewis-allan-avatar.png"
+                    alt="Lewis Allan"
+                    width={64}
+                    height={64}
+                    className="w-full h-full object-cover"
+                    unoptimized={true}
+                  />
                 </div>
                 <div className="flex flex-col justify-center">
                   <div className="text-lg font-bold mt-4 text-white">
-                    Lewis Allen
+                    Lewis Allan
                   </div>
                   <div className="text-sm mt-0 text-center">
                   <div className="font-normal mt-0 mb-2 text-gray-200">
@@ -209,8 +221,10 @@ export default function Home() {
         <VideoTestimonialCTA />
       </div>
 
-      {/* 6. The Big Idea (White background) */}
-      <BigIdeaSection />
+      {/* 6. The Big Idea (Dark background) */}
+      <div className="dark-section-with-grain">
+        <BigIdeaSection />
+      </div>
 
       {/* 7. Results Proof (White background) */}
       <ResultsProof />
@@ -248,8 +262,10 @@ export default function Home() {
         <MoreClientTestimonials />
       </div>
 
-      {/* 15. Exclusivity & Personal Attention (White background) */}
-      <ExclusivityPersonalAttention />
+      {/* 15. Exclusivity & Personal Attention (Dark background) */}
+      <div className="dark-section-with-grain">
+        <ExclusivityPersonalAttention />
+      </div>
 
       {/* 16. FAQ Section (Dark background) */}
       <div className="dark-section-with-grain">

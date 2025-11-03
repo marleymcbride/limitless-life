@@ -1,23 +1,15 @@
 "use client";
 
-import {
-  bgClasses,
-  blackRedGradientOverlay,
-  vignetteEffect,
-} from "../lib/utils";
-
 export default function ImagineThis() {
   return (
-    <section className={`${bgClasses.blackRedGradient} py-20 px-4 w-full`}>
-      {blackRedGradientOverlay}
-      {vignetteEffect}
+    <section className="bg-black py-20 px-4 w-full">
       <div className="container mx-auto max-w-6xl relative z-10">
         <div className="text-center">
           <h2
             className="text-4xl md:text-5xl font-bold text-white mb-12"
             style={{ fontFamily: "Neuemontreal, Arial, sans-serif" }}
           >
-            Imagine...
+            Imagine this...
           </h2>
           <div className="space-y-10">
             <h3
