@@ -18,16 +18,17 @@ import UrgencyFinalCTA from "../components/urgency-final-cta";
 import WallClientTestimonials from "../components/wall-client-testimonials";
 import FooterSection from "../components/footer-section";
 import StickyCTA from "../components/sticky-cta";
-import { vignetteEffect, unifiedGradientWithSpotlight } from "../lib/utils";
+import { vignetteEffect, unifiedGradientWithSpotlightDesktop, unifiedGradientWithSpotlightMobile } from "../lib/utils";
 
 export default function Home() {
   return (
     <main className="flex flex-col items-center min-h-screen">
       {/* 1. Hero Section (UNTOUCHED - PRESERVED EXACTLY) */}
       <section
-        className={`pt-2 md:pt-6 pb-8 md:pb-16 px-4min-h-[100vh] flex flex-col relative w-full overflow-hidden bg-black`}
+        className={`pt-2 md:pt-6 pb-8 px-3 md:pb-16 px-8min-h-[100vh] sm:px-0 flex flex-col relative w-full overflow-hidden bg-black`}
       >
-        {unifiedGradientWithSpotlight}
+        <div className="hidden md:block">{unifiedGradientWithSpotlightDesktop}</div>
+        <div className="block md:hidden">{unifiedGradientWithSpotlightMobile}</div>
         <div className="grain-overlay"></div>
         {/* {redAccentBottom} */}
         {/* <div className="absolute top-0 left-0 w-full h-[25vh] bg-gradient-to-b from-black to-transparent"></div> */}
@@ -67,7 +68,7 @@ export default function Home() {
               className="px-1 mx-auto mb-4 mt-1  text-xl text-center text-gray-300 sm:block sm:text-xl md:text-lg lg:text-xl"
               style={{ maxWidth: "725px" }}
             >
-              For the man who has everything in life... except the energy to enjoy it:
+              For the man who has EVERYTHING in life, except the energy to enjoy it... here&apos;s how to:
             </p>
             
             {/* Mobile Headlines (visible only on mobile) */}
@@ -79,7 +80,7 @@ export default function Home() {
                 lineHeight: "1.25 !important",
               }}
             >
-              Lose Your Gut, Stop Waking Up Exhausted & Reverse Years Of Health Decline (In 2 Days Per Week)
+              Lose Your Gut, Stop Feeling Exhausted & Reverse Years Of Health Decline (In 2 Days Per Week)
             </h1>
 
             {/* Mobile Subheadline - RIGHT AFTER HEADLINE (visible only on mobile) */}
@@ -164,7 +165,7 @@ export default function Home() {
           <div className=" h-16"></div>
 
           {/* Testimonial - Simple thin text at bottom of hero */}
-          <div className="text-center mt-0 mb-10 max-w-4xl mx-auto">
+          <div className="text-center mt-0 mb-0 max-w-4xl mx-auto">
             <div className="bg-transparent bg-opacity-10 p-0">
               <blockquote className="text-xl text-white mb-0">
                 &ldquo;I&apos;m in the best shape I&apos;ve ever been,

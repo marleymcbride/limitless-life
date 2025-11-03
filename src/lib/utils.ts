@@ -36,8 +36,8 @@ export const heroSpotlight = React.createElement("div", {
   },
 });
 
-// Unified hero gradient with integrated spotlight (seamless blend)
-export const unifiedGradientWithSpotlight = React.createElement("div", {
+// Desktop background with top-right spotlight
+export const unifiedGradientWithSpotlightDesktop = React.createElement("div", {
   className: "absolute inset-0 z-10",
   style: {
     background: `
@@ -96,10 +96,21 @@ export const unifiedGradientWithSpotlight = React.createElement("div", {
         rgba(148, 9, 9, 0.000014) 52%,
         rgba(148, 9, 9, 0.000007) 53%,
         transparent 55%),
-      linear-gradient(to bottom, transparent 0%, transparent 30%, rgb(0, 0, 0) 30%, rgb(4, 4, 4) 65%, #080808 75%, rgba(148, 9, 9, 0.30) 100%)
+      linear-gradient(to bottom, transparent 0%, transparent 30%, rgb(0, 0, 0) 30%, rgb(4, 4, 4) 65%, #080808 70%, rgba(148, 9, 9, 0.60) 100%)
     `,
   },
 });
+
+// Mobile background without spotlight (just gradient)
+export const unifiedGradientWithSpotlightMobile = React.createElement("div", {
+  className: "absolute inset-0 z-10",
+  style: {
+    background: "linear-gradient(to bottom, transparent 0%, transparent 30%, rgb(0, 0, 0) 30%, rgb(4, 4, 4) 65%, #080808 70%, rgba(148, 9, 9, 0.40) 100%)",
+  },
+});
+
+// Legacy unified gradient (kept for backward compatibility)
+export const unifiedGradientWithSpotlight = unifiedGradientWithSpotlightDesktop;
 
 
 // Unified hero gradient: starts at 30% to work in parallel with original overlay (BACKUP)
