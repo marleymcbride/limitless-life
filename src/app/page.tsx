@@ -18,16 +18,17 @@ import UrgencyFinalCTA from "../components/urgency-final-cta";
 import WallClientTestimonials from "../components/wall-client-testimonials";
 import FooterSection from "../components/footer-section";
 import StickyCTA from "../components/sticky-cta";
-import { blackRedGradientOverlay, vignetteEffect } from "../lib/utils";
+import { vignetteEffect, unifiedGradientWithSpotlight } from "../lib/utils";
 
 export default function Home() {
   return (
     <main className="flex flex-col items-center min-h-screen">
       {/* 1. Hero Section (UNTOUCHED - PRESERVED EXACTLY) */}
       <section
-        className={`py-2 md:py-6 px-4 min-h-[75vh] flex flex-col relative w-full overflow-hidden bg-black-red-gradient`}
+        className={`pt-2 md:pt-6 pb-8 md:pb-16 px-4min-h-[100vh] flex flex-col relative w-full overflow-hidden bg-black`}
       >
-        {blackRedGradientOverlay}
+        {unifiedGradientWithSpotlight}
+        <div className="grain-overlay"></div>
         {/* {redAccentBottom} */}
         {/* <div className="absolute top-0 left-0 w-full h-[25vh] bg-gradient-to-b from-black to-transparent"></div> */}
         {vignetteEffect}
@@ -159,11 +160,13 @@ export default function Home() {
               controls={true}
             />
           </div>
+          {/* Spacer div to push headline down */}
+          <div className=" h-16"></div>
 
           {/* Testimonial - Simple thin text at bottom of hero */}
-          <div className="text-center mt-10 mb-8 max-w-4xl mx-auto">
-            <div className="bg-transparent bg-opacity-10 p-6">
-              <blockquote className="text-xl text-white mb-2">
+          <div className="text-center mt-0 mb-10 max-w-4xl mx-auto">
+            <div className="bg-transparent bg-opacity-10 p-0">
+              <blockquote className="text-xl text-white mb-0">
                 &ldquo;I&apos;m in the best shape I&apos;ve ever been,
                 haven&apos;t touched booze in over a year and feel
                 incredible.&rdquo;
