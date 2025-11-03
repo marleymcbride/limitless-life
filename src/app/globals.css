@@ -166,13 +166,19 @@
   color: white;
 }
 
-/* Custom container override */
-.container:not(.full-width-container):not(.hero-full-width),
-[class*="max-w-"]:not(.full-width-container):not(.hero-full-width) {
+/* Custom container override - only apply to actual containers and max-w elements, NOT sections */
+.container:not(.full-width-container):not(.hero-full-width):not(section),
+[class*="max-w-"]:not(.full-width-container):not(.hero-full-width):not(section) {
   max-width: var(--content-max-width) !important;
   width: 100%;
   margin-left: auto;
   margin-right: auto;
+}
+
+/* Ensure sections always span full viewport width */
+section {
+  max-width: none !important;
+  width: 100% !important;
 }
 
 /* Grain texture overlay */
