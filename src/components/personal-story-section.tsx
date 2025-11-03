@@ -8,126 +8,95 @@ export default function PersonalStorySection() {
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto">
-          {/* IRRESISTIBLE HEADLINE - Can't help but read */}
-          <div className="text-center mb-12">
-            <h2
-              className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 leading-tight"
-              style={{ fontFamily: "Neuemontreal, Arial, sans-serif" }}
-            >
-              I Was Drinking Wine At 11 AM Just To Get Through Client Meetings
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Here's the embarrassing truth about how a successful guy can look
-              like he has it all together while slowly destroying himself...
-            </p>
-          </div>
-
           {/* THE ACTUAL STORY - Natural flow, casual tone */}
           <div className="prose prose-lg max-w-none">
-            <p className="text-lg text-gray-800 leading-relaxed mb-6">
-              Let me paint you a picture of what my life looked like three years
-              ago.
-            </p>
-
-            <p className="text-lg text-gray-800 leading-relaxed mb-6">
-              I'd wake up every morning feeling like I'd been hit by a truck.
-              Before my feet even hit the floor, I was already thinking about
-              coffee. Not because I enjoyed it, but because I literally couldn't
-              function without it.
-            </p>
-
-            <p className="text-lg text-gray-800 leading-relaxed mb-6">
-              By 8 AM, I'd already had two double espressos. By 10 AM, I was
-              looking for my third. And when I had those brutal client meetings
-              that made my stomach churn? I'd sneak a glass of wine beforehand
-              just to take the edge off. At 11 in the morning.
-            </p>
-
-            <p className="text-lg text-gray-800 leading-relaxed mb-6">
-              I told myself it was just "stress management." That successful
-              people do whatever it takes to perform. But deep down, I knew I
-              was lying to myself.
-            </p>
-
-            {/* Drop in some credibility naturally */}
-            <div className="bg-gray-50 border-l-4 border-gray-400 p-6 my-8 rounded-r-lg">
-              <p className="text-lg text-gray-700 italic">
-                The wake-up call came when my doctor showed me my bloodwork.
-                Testosterone: 346 ng/dl. For reference, that's what you'd expect
-                from an 80-year-old man. I was 32.
-              </p>
+            <div className="text-center mb-12">
+              <h2
+                className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 leading-tight"
+                style={{ fontFamily: "Neuemontreal, Arial, sans-serif" }}
+              >
+                Three Years Ago I Was Blackout Drunk On A Mud-Stained Mattress
+              </h2>
             </div>
 
             <p className="text-lg text-gray-800 leading-relaxed mb-6">
-              "You're heading for a heart attack before 40 if you don't change,"
-              he said. I was carrying an extra 35 pounds, my energy was
-              non-existent after 2 PM, and I couldn't sleep without wine.
+              Right so back in 2021 I looked great from the outside. Masters degree. Working in London. Social life was good. Dating life was decent.
+              But I was falling apart and no one knew.
             </p>
 
             <p className="text-lg text-gray-800 leading-relaxed mb-6">
-              So I did what any rational person would do. I tried to fix it.
-              Keto diet, intermittent fasting, more cardio, less cardio,
-              expensive personal trainers, every supplement stack you can
-              imagine. I probably spent £15,000 in six months trying everything.
+              I&apos;d wake up every morning and before I&apos;d even opened my eyes I was already stressed. Already thinking about coffee. Not because I liked it but because I genuinely couldn&apos;t function without it.
             </p>
 
             <p className="text-lg text-gray-800 leading-relaxed mb-6">
-              Nothing worked. I'd see small improvements for a few weeks, then
-              crash back to feeling like shit. The problem wasn't effort—I was
-              putting in massive effort. The problem was I was treating symptoms
-              instead of the root cause.
+              Most mornings I&apos;d think &quot;I can&apos;t do this&quot; but I&apos;d drag myself up anyway. Look in the mirror and barely recognize myself. Bags under my eyes. Bit of a gut. Used to bounce out of bed. Now I was wondering how I&apos;d make it through.
             </p>
 
             <p className="text-lg text-gray-800 leading-relaxed mb-6">
-              Then I discovered something that changed everything. I realized I
-              was living on what I now call "Drag Energy"—forcing my body
-              through each day with stimulants and depressants. What I needed
-              was "Glide Energy"—natural, sustained power that flows
-              effortlessly.
+              Get to work and I&apos;d need coffee. Then another. Then another. By 2pm I&apos;d hit this wall where nothing was going in. Just staring at my screen reading the same email four times.
             </p>
 
-            <div className="my-8">
-              <p className="text-lg text-gray-800 font-bold mb-4">
-                Here's what happened when I stopped fighting my body:
-              </p>
-              <ul className="mt-4 space-y-2 text-lg text-gray-800">
-                <li>• Lost 35 lbs of pure fat (212 → 177 lbs)</li>
-                <li>• 1000+ days alcohol-free (no willpower required)</li>
-                <li>• 365+ days caffeine-free (wake up naturally energized)</li>
-                <li>• Testosterone: 346 → 678 ng/dl (naturally, no TRT)</li>
-                <li>• Energy flows steady from 6 AM to 10 PM</li>
-              </ul>
+            <p className="text-lg text-gray-800 leading-relaxed mb-6">
+              Come home absolutely wiped and I&apos;d pour a drink. One becomes two. Two becomes three. Telling myself I&apos;m unwinding but really I&apos;m just trying to shut my brain off because I felt like shit every single day.
+            </p>
+
+            <p className="text-lg text-gray-800 leading-relaxed mb-6">
+              And the thing is I was doing everything right. Training four or five times a week. Eating healthy. Getting seven hours sleep.
+              Went to my doctor. Got bloodwork. He said I was normal. Just stressed. Cut back on caffeine.
+              Everyone thought I had it together.
+            </p>
+
+            <div className="text-center mb-12 mt-12">
+              <h2
+                className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 leading-tight"
+                style={{ fontFamily: "Neuemontreal, Arial, sans-serif" }}
+              >
+                Then Halloween 2021 happened.
+              </h2>
             </div>
 
             <p className="text-lg text-gray-800 leading-relaxed mb-6">
-              The crazy part? I only train 2-3 times per week now. I eat more
-              food than I used to. I sleep like a baby and wake up feeling
-              electric. No supplements, no biohacks, no complicated routines.
+              Went out drinking. Got blackout drunk. Don&apos;t remember anything after 10pm.
+              Woke up the next morning in my tiny Gregorian flat and the mattress had mud stains all over it. My jeans were still on also covered in mud. No idea how I got home.
             </p>
 
             <p className="text-lg text-gray-800 leading-relaxed mb-6">
-              This isn't about willpower or motivation. It's about understanding
-              how your body actually works and working WITH it instead of
-              against it.
+              Checked my phone and I&apos;d missed my afternoon client. Just completely no-showed.
+              I sat there on that mud-stained mattress staring at my phone thinking this is it. Life couldn&apos;t get any lower.
             </p>
 
             <p className="text-lg text-gray-800 leading-relaxed mb-6">
-              The transformation was so dramatic that other guys started asking
-              what I was doing. High-performers like yourself who were stuck in
-              the same cycle I was. That's when I realized this needed to become
-              a system that any guy could follow.
+              I looked around that box room and thought I want to carry myself at a high standard but I&apos;m living like this is normal. Like everyone does this. Like you&apos;re supposed to.
+              I couldn&apos;t keep going.
             </p>
 
-            <div className="text-center mt-12 p-6 bg-gray-100 rounded-lg">
-              <p className="text-xl font-bold text-gray-900 mb-4">
-                If you're tired of feeling like shit despite doing "everything
-                right," you're exactly where I was three years ago.
-              </p>
-              <p className="text-lg text-gray-700">
-                The question is: Are you ready to stop fighting your body and
-                start working with it?
-              </p>
-            </div>
+            <p className="text-lg text-gray-800 leading-relaxed mb-6">
+              Took me about a year to properly sort it but once I did everything changed.
+              May 2022 I saw a picture of myself and felt genuinely sick. That was it. Next twelve months I devoted to fixing this properly.
+            </p>
+
+            <p className="text-lg text-gray-800 leading-relaxed mb-6">
+              July I came back from Ibiza. Big trip with the lads. Got home and felt done. Done with drinking. Done with feeling like shit.
+              Decided to take a month off.
+              One month became two. Two became three. Three became six.
+            </p>
+
+            <p className="text-lg text-gray-800 leading-relaxed mb-6">
+              And through those first six months I made more progress with my body and mental health than I had in years. It was mad how fast things changed once I stopped fighting my body.
+            </p>
+
+            <p className="text-lg text-gray-800 leading-relaxed mb-6">
+              April 2023 I was traveling the world completely unrecognizable. Different body. Different energy. Different person.
+              Today I haven&apos;t drank in over three years. Haven&apos;t touched caffeine in eighteen months.
+              I wake up naturally energized. No alarm. No coffee.
+              Best shape of my life training twice a week. Feel incredible every day.
+            </p>
+
+            <p className="text-lg text-gray-800 leading-relaxed mb-6">
+              But I didn&apos;t get here through superhuman discipline.
+              I was the guy on the mud-stained mattress. Anxiety every day. Drinking every night. Training hard but getting nowhere.
+              If I sorted this you can too.
+            </p>
           </div>
         </div>
       </div>

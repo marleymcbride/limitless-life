@@ -63,7 +63,7 @@ export default function Home() {
 
             {/* Desktop Eyebrow (hidden on mobile) */}
             <p
-              className="px-1 mx-auto mb-4 mt-0  text-xl text-center text-gray-300 sm:block sm:text-xl md:text-lg lg:text-xl"
+              className="px-1 mx-auto mb-4 mt-1  text-xl text-center text-gray-300 sm:block sm:text-xl md:text-lg lg:text-xl"
               style={{ maxWidth: "725px" }}
             >
               For the man who has everything in life... except the energy to enjoy it:
@@ -71,7 +71,7 @@ export default function Home() {
             
             {/* Mobile Headlines (visible only on mobile) */}
             <h1
-              className="mobile-headline block px-1 mx-auto mt-4 mb-6 w-full font-bold text-center text-white sm:hidden capitalize"
+              className="mobile-headline block px-1 mx-auto mt-0 mb-6 w-full font-bold text-center text-white sm:hidden capitalize"
               style={{
                 fontFamily: "Neuemontreal, Arial, sans-serif",
                 fontSize: "2.4rem",
@@ -163,7 +163,7 @@ export default function Home() {
           {/* Testimonial - Simple thin text at bottom of hero */}
           <div className="text-center mt-10 mb-8 max-w-4xl mx-auto">
             <div className="bg-transparent bg-opacity-10 p-6">
-              <blockquote className="text-xl text-white mb-4">
+              <blockquote className="text-xl text-white mb-2">
                 &ldquo;I&apos;m in the best shape I&apos;ve ever been,
                 haven&apos;t touched booze in over a year and feel
                 incredible.&rdquo;
