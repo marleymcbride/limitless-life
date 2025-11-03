@@ -22,14 +22,13 @@ import { vignetteEffect, unifiedGradientWithSpotlightDesktop, unifiedGradientWit
 
 export default function Home() {
   return (
-    <main className="flex flex-col items-center min-h-screen">
+    <main className="flex flex-col  min-h-screen">
       {/* 1. Hero Section (UNTOUCHED - PRESERVED EXACTLY) */}
       <section
-        className={`pt-2 md:pt-6 pb-8 px-3 md:pb-16 px-8min-h-[100vh] sm:px-0 flex flex-col relative w-full overflow-hidden bg-black`}
+        className={`dark-section-with-grain pt-2 md:pt-6 pb-8 px-3 md:pb-16 px-8min-h-[100vh] sm:px-0 flex flex-col relative w-full overflow-hidden bg-black`}
       >
         <div className="hidden md:block">{unifiedGradientWithSpotlightDesktop}</div>
         <div className="block md:hidden">{unifiedGradientWithSpotlightMobile}</div>
-        <div className="grain-overlay"></div>
         {/* {redAccentBottom} */}
         {/* <div className="absolute top-0 left-0 w-full h-[25vh] bg-gradient-to-b from-black to-transparent"></div> */}
         {vignetteEffect}
@@ -65,8 +64,8 @@ export default function Home() {
 
             {/* Desktop Eyebrow (hidden on mobile) */}
             <p
-              className="px-1 mx-auto mb-4 mt-1  text-xl text-center text-gray-300 sm:block sm:text-xl md:text-lg lg:text-xl"
-              style={{ maxWidth: "725px" }}
+              className="px-0 mx-auto mb-4 mt-1  text-xl text-center text-gray-300 sm:block sm:text-xl md:text-lg lg:text-xl"
+              style={{ maxWidth: "800px" }}
             >
               For the man who has EVERYTHING in life, except the energy to enjoy it... here&apos;s how to:
             </p>
@@ -195,7 +194,9 @@ export default function Home() {
       </section>
 
       {/* 2. "Does This Sound Like You?" - Problem Agitation (Black background) */}
-      <DoesThisSoundLikeYou />
+      <div className="dark-section-with-grain">
+        <DoesThisSoundLikeYou />
+      </div>
 
       {/* 3. Personal Story + Discovery (White background) */}
       <PersonalStorySection />
@@ -204,7 +205,9 @@ export default function Home() {
       <CoreValueProposition />
 
       {/* 5. Video Testimonial CTA (Black background) */}
-      <VideoTestimonialCTA />
+      <div className="dark-section-with-grain">
+        <VideoTestimonialCTA />
+      </div>
 
       {/* 6. The Big Idea (White background) */}
       <BigIdeaSection />
@@ -213,40 +216,58 @@ export default function Home() {
       <ResultsProof />
 
       {/* 8. Imagine This (Black background) */}
-      <ImagineThis />
+      <div className="dark-section-with-grain">
+        <ImagineThis />
+      </div>
 
       {/* 9. Process Explanation (Black background) */}
-      <ProcessExplanation />
+      <div className="dark-section-with-grain">
+        <ProcessExplanation />
+      </div>
 
       {/* 10. More Video Testimonials (Black background) */}
-      <MoreVideoTestimonials />
+      <div className="dark-section-with-grain">
+        <MoreVideoTestimonials />
+      </div>
 
       {/* 11. Introducing Limitless (Dark background) */}
-      <IntroducingLimitless />
+      <div className="dark-section-with-grain">
+        <IntroducingLimitless />
+      </div>
 
       {/* 12. The 4-Step System (White background) */}
       <FourStepSystem />
 
       {/* 13. System Benefits Proof - Why This System Will Work For You (Dark background) */}
-      <SystemBenefitsProof />
+      <div className="dark-section-with-grain">
+        <SystemBenefitsProof />
+      </div>
 
       {/* 14. More Client Testimonials (Dark background) */}
-      <MoreClientTestimonials />
+      <div className="dark-section-with-grain">
+        <MoreClientTestimonials />
+      </div>
 
       {/* 15. Exclusivity & Personal Attention (White background) */}
       <ExclusivityPersonalAttention />
 
       {/* 16. FAQ Section (Dark background) */}
-      <FAQSection />
+      <div className="dark-section-with-grain">
+        <FAQSection />
+      </div>
 
       {/* 17. Urgency & Final CTA (White background) */}
       <UrgencyFinalCTA />
 
       {/* 18. Wall of Client Testimonials (Dark background) */}
-      <WallClientTestimonials />
+      <div className="dark-section-with-grain">
+        <WallClientTestimonials />
+      </div>
 
       {/* Minimal Footer (Black) */}
-      <FooterSection />
+      <div className="dark-section-with-grain">
+        <FooterSection />
+      </div>
 
       {/* Sticky CTA that appears on significant scroll */}
       <StickyCTA />
