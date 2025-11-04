@@ -96,7 +96,7 @@ export const unifiedGradientWithSpotlightDesktop = React.createElement("div", {
         rgba(148, 9, 9, 0.000014) 52%,
         rgba(148, 9, 9, 0.000007) 53%,
         transparent 55%),
-      linear-gradient(to bottom, transparent 0%, transparent 30%, rgb(0, 0, 0) 30%, rgb(4, 4, 4) 65%, #080808 70%, rgba(148, 9, 9, 0.60) 100%)
+      linear-gradient(to bottom, transparent 0%, transparent 30%, rgb(0, 0, 0) 30%, rgb(10, 10, 10) 52.5%, #191919 75%, rgba(148, 9, 9, 0.60) 100%)
     `,
   },
 });
@@ -105,7 +105,7 @@ export const unifiedGradientWithSpotlightDesktop = React.createElement("div", {
 export const unifiedGradientWithSpotlightMobile = React.createElement("div", {
   className: "absolute inset-0 z-10",
   style: {
-    background: "linear-gradient(to bottom, transparent 0%, transparent 30%, rgb(0, 0, 0) 30%, rgb(4, 4, 4) 65%, #080808 70%, rgba(148, 9, 9, 0.40) 100%)",
+    background: "linear-gradient(to bottom, transparent 0%, transparent 30%, rgb(0, 0, 0) 30%, rgb(10, 10, 10) 52.5%, #191919 75%, rgba(148, 9, 9, 0.40) 100%)",
   },
 });
 

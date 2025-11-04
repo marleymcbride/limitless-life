@@ -198,6 +198,16 @@
   mix-blend-mode: var(--hero-grain-blend-mode);
 }
 
+/* Hero darkening overlay - compensates for grain lightening while preserving texture */
+.hero-darkening-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.2);
+  z-index: 26;  /* Above grain (z-index: 25) */
+  pointer-events: none;
+  mix-blend-mode:saturation;  /* Darkens without covering texture */
+}
+
 /* Dark section with grain - apply to any dark background section */
 .dark-section-with-grain {
   position: relative;

@@ -31,6 +31,7 @@ export default function Home() {
         <div className="hidden md:block">{unifiedGradientWithSpotlightDesktop}</div>
         <div className="block md:hidden">{unifiedGradientWithSpotlightMobile}</div>
         <div className="hero-grain-overlay"></div>
+        <div className="hero-darkening-overlay"></div>
         {/* {redAccentBottom} */}
         {/* <div className="absolute top-0 left-0 w-full h-[25vh] bg-gradient-to-b from-black to-transparent"></div> */}
         {vignetteEffect}
