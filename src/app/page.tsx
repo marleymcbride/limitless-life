@@ -26,7 +26,7 @@ export default function Home() {
     <main className="flex flex-col  min-h-screen">
       {/* 1. Hero Section (UNTOUCHED - PRESERVED EXACTLY) */}
       <section
-        className={`pt-2 md:pt-6 pb-8 px-3 md:pb-16 px-8min-h-[100vh] sm:px-0 flex flex-col relative w-full overflow-hidden bg-black`}
+        className={`pt-2 md:pt-6 px-3 pb-16 px-16min-h-[100vh] sm:pb-16 flex flex-col relative w-full overflow-hidden bg-black`}
       >
         <div className="hidden md:block">{unifiedGradientWithSpotlightDesktop}</div>
         <div className="block md:hidden">{unifiedGradientWithSpotlightMobile}</div>
