@@ -29,7 +29,7 @@ export default function ImmediateProofPainSection() {
                     </p>
                   </div>
                 </div>
-                <blockquote className="text-lg text-gray-800 italic mb-4">
+                <blockquote className="text-2xl md:text-lg text-gray-800 italic mb-4">
                   "Mate, I was fucked. Drinking a bottle of wine every night,
                   looked like absolute shit, my £200k job was about to
                   disappear, girlfriend left me, couldn't get it up anymore. I

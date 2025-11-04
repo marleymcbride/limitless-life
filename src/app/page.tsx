@@ -67,15 +67,23 @@ export default function Home() {
 
             {/* Desktop Eyebrow (hidden on mobile) */}
             <p
-              className="px-0 mx-auto mb-4 mt-1  text-xl text-center text-gray-300 sm:block sm:text-xl md:text-lg lg:text-xl"
+              className="hidden sm:block px-0 mx-auto mb-4 mt-1 text-xl text-center text-gray-300 md:text-lg lg:text-xl"
               style={{ maxWidth: "800px" }}
+            >
+              For the man who has EVERYTHING in life, except the energy to enjoy it... here&apos;s how to:
+            </p>
+
+            {/* Mobile Eyebrow (visible only on mobile) */}
+            <p
+              className="block sm:hidden px-0 mx-auto mb-4 mt-1 text-center text-gray-300 mobile-eyebrow"
+              style={{ maxWidth: "100%" }}
             >
               For the man who has EVERYTHING in life, except the energy to enjoy it... here&apos;s how to:
             </p>
             
             {/* Mobile Headlines (visible only on mobile) */}
             <h1
-              className="mobile-headline block px-1 mx-auto mt-0 mb-6 w-full font-bold text-center text-white sm:hidden capitalize"
+              className="mobile-headline block px-1 mx-auto mt-2 mb-6 w-full font-bold text-center text-white sm:hidden capitalize"
               style={{
                 fontFamily: "Neuemontreal, Arial, sans-serif",
                 fontSize: "2.4rem",
@@ -87,7 +95,7 @@ export default function Home() {
 
             {/* Mobile Subheadline - RIGHT AFTER HEADLINE (visible only on mobile) */}
             <p
-              className="mobile-subheadline block mx-auto mb-0 font-light text-center text-gray-300 sm:hidden px-0"
+              className="mobile-subheadline block mx-auto mb-2 font-light text-center text-gray-300 sm:hidden px-0"
               style={{
                 fontFamily: "Neuemontreal, Arial, sans-serif",
                 fontSize: "1.3rem",

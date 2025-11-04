@@ -18,8 +18,8 @@ export default function DoesThisSoundLikeYou() {
               marginRight: "auto",
             }}
           >
-            <div className="flex items-start">
-              <div className="w-6 h-6 bg-red-600 rounded-full flex items-center justify-center mr-4 mt-1 flex-shrink-0">
+            <div className="flex items-center">
+              <div className="w-6 h-6 bg-red-600 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
                 <svg
                   className="w-4 h-4 text-white"
                   fill="currentColor"
@@ -32,15 +32,13 @@ export default function DoesThisSoundLikeYou() {
                   />
                 </svg>
               </div>
-              <p className="text-2xl text-white">
-                <span className="font-normal">
+              <p className="text-white text-2xl mobile-text-large">
                   You wake up exhausted every morning
-                </span>
-              </p>
+                </p>
             </div>
 
-            <div className="flex items-start">
-              <div className="w-6 h-6 bg-red-600 rounded-full flex items-center justify-center mr-4 mt-1 flex-shrink-0">
+            <div className="flex items-center">
+              <div className="w-6 h-6 bg-red-600 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
                 <svg
                   className="w-4 h-4 text-white"
                   fill="currentColor"
@@ -53,15 +51,13 @@ export default function DoesThisSoundLikeYou() {
                   />
                 </svg>
               </div>
-              <p className="text-2xl text-white">
-                <span className="font-normal">
+              <p className="text-white text-2xl mobile-text-large">
                   No matter how much you train, your gut just won&apos;t budge
-                </span>
-              </p>
+                </p>
             </div>
 
-            <div className="flex items-start">
-              <div className="w-6 h-6 bg-red-600 rounded-full flex items-center justify-center mr-4 mt-1 flex-shrink-0">
+            <div className="flex items-center">
+              <div className="w-6 h-6 bg-red-600 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
                 <svg
                   className="w-4 h-4 text-white"
                   fill="currentColor"
@@ -74,15 +70,13 @@ export default function DoesThisSoundLikeYou() {
                   />
                 </svg>
               </div>
-              <p className="text-2xl text-white">
-                <span className="font-normal">
+              <p className="text-white text-2xl mobile-text-large">
                   You can&apos;t focus at work like you used to
-                </span>
-              </p>
+                </p>
             </div>
 
-            <div className="flex items-start">
-              <div className="w-6 h-6 bg-red-600 rounded-full flex items-center justify-center mr-4 mt-1 flex-shrink-0">
+            <div className="flex items-center">
+              <div className="w-6 h-6 bg-red-600 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
                 <svg
                   className="w-4 h-4 text-white"
                   fill="currentColor"
@@ -95,16 +89,14 @@ export default function DoesThisSoundLikeYou() {
                   />
                 </svg>
               </div>
-              <p className="text-2xl text-white">
-                <span className="font-normal">
+              <p className="text-white text-2xl mobile-text-large">
                   You need multiple coffees to function and 2-3 drinks to wind
                   down
-                </span>
-              </p>
+                </p>
             </div>
 
-            <div className="flex items-start">
-              <div className="w-6 h-6 bg-red-600 rounded-full flex items-center justify-center mr-4 mt-1 flex-shrink-0">
+            <div className="flex items-center">
+              <div className="w-6 h-6 bg-red-600 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
                 <svg
                   className="w-4 h-4 text-white"
                   fill="currentColor"
@@ -117,15 +109,13 @@ export default function DoesThisSoundLikeYou() {
                   />
                 </svg>
               </div>
-              <p className="text-2xl text-white">
-                <span className="font-normal">
+              <p className="text-white text-2xl mobile-text-large">
                   You have no energy left for people who matter most
-                </span>
-              </p>
+                </p>
             </div>
           </div>
 
-          <p className="text-2xl mt-12 text-white mb-8">
+          <p className="text-2xl mt-12 text-white mb-8 mobile-text-large">
             Well you&apos;re not alone, my friend...
           </p>
         </div>

@@ -37,7 +37,7 @@ export default function VSLHeroSection({
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-4 sm:mb-6" style={{ lineHeight: "1.4" }}>
             Stop Waking Up
             <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-600">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-600 mobile-eyebrow">
               Feeling Like Shit
             </span>
           </h1>

@@ -21,12 +21,12 @@ export default function GuaranteeSection() {
             </div>
           </div>
 
-          <p className="text-lg mb-6">
+          <p className="text-2xl md:text-lg mb-6">
             If you don't see significant energy improvements in 30 days, we
             refund every penny. No questions asked. No awkward conversations.
           </p>
 
-          <p className="text-lg mb-6">
+          <p className="text-2xl md:text-lg mb-6">
             We're so confident in the Limitless Protocol's effectiveness that
             we're willing to take on all the risk. You either experience the
             transformation, or you don't pay.

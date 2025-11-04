@@ -99,7 +99,7 @@ export default function ResultsSection() {
                 <div className="p-2 bg-[#940909]/10 rounded-full flex-shrink-0 mr-4">
                   <Zap className="w-5 h-5 text-[#940909]" />
                 </div>
-                <p className="text-base text-gray-800 font-medium">
+                <p className="text-xl md:text-base text-gray-800 font-medium">
                   {item.result}
                 </p>
               </div>

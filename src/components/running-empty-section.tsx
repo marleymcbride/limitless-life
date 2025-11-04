@@ -15,7 +15,7 @@ export default function RunningEmptySection() {
           <h2 className="text-4xl sm:text-5xl font-black mb-8 text-white">
             Why Everything Else Has Failed You (And Always Will)
           </h2>
-          <p className="text-xl max-w-4xl mx-auto text-gray-300 font-medium leading-relaxed">
+          <p className="text-3xl md:text-xl max-w-4xl mx-auto text-gray-300 font-medium leading-relaxed">
             Let me tell you exactly why the fitness industry, supplement
             companies, and "health gurus" have kept you trapped in the 4%
             category — and why they want it that way.
@@ -131,12 +131,12 @@ export default function RunningEmptySection() {
               Here's The Brutal Truth They Don't Want You To Know:
             </h3>
             <div className="text-center max-w-5xl mx-auto">
-              <p className="text-xl text-gray-200 mb-6 leading-relaxed">
+              <p className="text-3xl md:text-xl text-gray-200 mb-6 leading-relaxed">
                 They make <span className="font-bold text-white">billions</span>{" "}
                 keeping you in the 4% category. Sick enough to buy products,
                 healthy enough to keep working. It's the perfect business model.
               </p>
-              <p className="text-xl text-gray-200 leading-relaxed">
+              <p className="text-3xl md:text-xl text-gray-200 leading-relaxed">
                 <span className="font-bold text-white">
                   They don't want you to discover
                 </span>{" "}
@@ -156,7 +156,7 @@ export default function RunningEmptySection() {
             <h2 className="text-4xl sm:text-5xl font-black mb-8 text-white">
               Why Limitless Is The Only Solution That Actually Works
             </h2>
-            <p className="text-xl text-gray-300 max-w-4xl mx-auto font-medium">
+            <p className="text-3xl md:text-xl text-gray-300 max-w-4xl mx-auto font-medium">
               We're the only program that eliminates your dependencies AND
               builds an elite physique — without pills, extreme diets, or
               burning out your nervous system.

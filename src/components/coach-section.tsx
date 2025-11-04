@@ -12,7 +12,7 @@ export default function CoachSection() {
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">
             Meet Your Coach
           </h2>
-          <p className="text-lg text-gray-700 max-w-3xl mx-auto">
+          <p className="text-2xl md:text-lg text-gray-700 max-w-3xl mx-auto">
             Expert guidance from someone who's been where you are and knows
             exactly how to get you to where you want to be
           </p>

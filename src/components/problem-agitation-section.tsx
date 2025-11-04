@@ -23,7 +23,7 @@ export default function ProblemAgitationSection() {
             You're Not Broken. You're Just Trapped in the{" "}
             <span className="text-[#940909]">4% Zone</span>.
           </h2>
-          <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
+          <p className="text-3xl md:text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
             Most guys think they're doing well because they hit the gym and eat
             "clean." But here's the brutal truth: you're stuck in no man's
             land—too advanced for the typical 95%, but missing the systems that
@@ -164,7 +164,7 @@ export default function ProblemAgitationSection() {
           <p className="text-3xl font-bold text-[#940909] mb-8">
             It's the right system.
           </p>
-          <p className="text-lg text-gray-300 mb-8">
+          <p className="text-2xl md:text-lg text-gray-300 mb-8">
             I know because I was trapped in the exact same place...
           </p>
         </div>
