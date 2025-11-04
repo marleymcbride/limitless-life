@@ -48,7 +48,7 @@ export default function ResultsSection() {
   ];
 
   return (
-    <section className={`w-full py-20 ${bgClasses.white}`}>
+    <section className={`w-full py-20 px-4 ${bgClasses.white}`}>
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <span className="inline-block bg-[#940909] text-white text-sm font-bold uppercase tracking-wider px-3 py-1 rounded-sm mb-4">

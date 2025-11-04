@@ -55,7 +55,7 @@ export default function NattySweetSpotSection() {
   ];
 
   return (
-    <section className={`w-full py-20 ${bgClasses.blackRedGradient}`}>
+    <section className={`w-full py-20 px-4 ${bgClasses.blackRedGradient}`}>
       {invertedGradientOverlay}
       {strongRedAccent}
       {vignetteEffect}

@@ -20,82 +20,240 @@ export default function PersonalStorySection() {
             </div>
 
             <p className="text-lg text-gray-800 leading-relaxed mb-6">
-              Right so back in 2021 I looked great from the outside. Masters degree. Working in London. Social life was good. Dating life was decent.
-              But I was falling apart and no one knew.
+              Back in October 2021, my life looked great.
             </p>
 
             <p className="text-lg text-gray-800 leading-relaxed mb-6">
-              I&apos;d wake up every morning and before I&apos;d even opened my eyes I was already stressed. Already thinking about coffee. Not because I liked it but because I genuinely couldn&apos;t function without it.
+              I was earning decent money. Building up a client base. Had a good dating and social life.
             </p>
 
             <p className="text-lg text-gray-800 leading-relaxed mb-6">
-              Most mornings I&apos;d think &quot;I can&apos;t do this&quot; but I&apos;d drag myself up anyway. Look in the mirror and barely recognize myself. Bags under my eyes. Bit of a gut. Used to bounce out of bed. Now I was wondering how I&apos;d make it through.
+              And felt like I&apos;d got the respect of my family and friends.
             </p>
 
             <p className="text-lg text-gray-800 leading-relaxed mb-6">
-              Get to work and I&apos;d need coffee. Then another. Then another. By 2pm I&apos;d hit this wall where nothing was going in. Just staring at my screen reading the same email four times.
+              Masters degree on the wall, offers from engineering companies to work in the big city, built a good physique.
             </p>
 
             <p className="text-lg text-gray-800 leading-relaxed mb-6">
-              Come home absolutely wiped and I&apos;d pour a drink. One becomes two. Two becomes three. Telling myself I&apos;m unwinding but really I&apos;m just trying to shut my brain off because I felt like shit every single day.
+            A decade sacrificing everything.. just so people would think I had my shit together.
             </p>
 
             <p className="text-lg text-gray-800 leading-relaxed mb-6">
-              And the thing is I was doing everything right. Training four or five times a week. Eating healthy. Getting seven hours sleep.
-              Went to my doctor. Got bloodwork. He said I was normal. Just stressed. Cut back on caffeine.
-              Everyone thought I had it together.
-            </p>
-
-            <div className="text-center mb-12 mt-12">
-              <h2
-                className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 leading-tight"
-                style={{ fontFamily: "Neuemontreal, Arial, sans-serif" }}
-              >
-                Then Halloween 2021 happened.
-              </h2>
-            </div>
-
-            <p className="text-lg text-gray-800 leading-relaxed mb-6">
-              Went out drinking. Got blackout drunk. Don&apos;t remember anything after 10pm.
-              Woke up the next morning in my tiny Gregorian flat and the mattress had mud stains all over it. My jeans were still on also covered in mud. No idea how I got home.
+              But the truth is… I felt miserable.
             </p>
 
             <p className="text-lg text-gray-800 leading-relaxed mb-6">
-              Checked my phone and I&apos;d missed my afternoon client. Just completely no-showed.
-              I sat there on that mud-stained mattress staring at my phone thinking this is it. Life couldn&apos;t get any lower.
+              Every day felt like I was dragging myself through. Feeling stressed, anxious, insecure, and low energy.
             </p>
 
             <p className="text-lg text-gray-800 leading-relaxed mb-6">
-              I looked around that box room and thought I want to carry myself at a high standard but I&apos;m living like this is normal. Like everyone does this. Like you&apos;re supposed to.
+              I&apos;d need coffee after coffee to survive the day.
+            </p>
+
+            <p className="text-lg text-gray-800 leading-relaxed mb-6">
+              The first thing I did was immediately blame it on the career.
+            </p>
+
+            <p className="text-lg text-gray-800 leading-relaxed mb-6">
+              I decided the corporate life wasn&apos;t for me, and followed my passion in health and fitness
+            </p>
+
+            <p className="text-lg text-gray-800 leading-relaxed mb-6">
+              And Personal Training at a luxury health club.
+            </p>
+
+            <p className="text-lg text-gray-800 leading-relaxed mb-6">
+              For the next few months, things improved.
+            </p>
+
+            <p className="text-lg text-gray-800 leading-relaxed mb-6">
+              The new job, new environment, new people… it seemed like everything should be better.
+            </p>
+
+            <p className="text-lg text-gray-800 leading-relaxed mb-6">
+              But the problem was:
+            </p>
+
+            <p className="text-lg text-gray-800 leading-relaxed mb-6">
+              I still felt like shit.
+            </p>
+
+            <p className="text-lg text-gray-800 leading-relaxed mb-6">
+              Every morning I&apos;d wake up and have complete lack of energy.
+            </p>
+
+            <p className="text-lg text-gray-800 leading-relaxed mb-6">
+              Simple everyday tasks like getting out of bed, getting ready, taking the dog for a walk — felt like a mountain.
+            </p>
+
+            <p className="text-lg text-gray-800 leading-relaxed mb-6">
+              And look - I thought maybe I was just &apos;low energy&apos;.
+            </p>
+
+            <p className="text-lg text-gray-800 leading-relaxed mb-6">
+              But it was affecting my entire life.
+            </p>
+
+            <p className="text-lg text-gray-800 leading-relaxed mb-6">
+              How I performed at work. How I was with my girlfriend. Even how I felt about myself.
+            </p>
+
+            <p className="text-lg text-gray-800 leading-relaxed mb-6">
+              My energy was shot.
+            </p>
+
+            <p className="text-lg text-gray-800 leading-relaxed mb-6">
+              I&apos;d wake up almost every day feeling like someone had smashed me with a baseball bat.
+            </p>
+
+            <p className="text-lg text-gray-800 leading-relaxed mb-6">
+              And when I looked in the mirror I barely recognized myself.
+            </p>
+
+            <p className="text-lg text-gray-800 leading-relaxed mb-6">
+              Bags under my eyes.
+              Bit of a gut forming.
+            </p>
+
+            <p className="text-lg text-gray-800 leading-relaxed mb-6">
+              This wasn&apos;t how I pictured myself.
+            </p>
+
+            <p className="text-lg text-gray-800 leading-relaxed mb-6">
+              And over time my coffee use went from 3 drinks, to 4, to 5, to energy drinks, and then I found myself taking caffeine tablets.
+            </p>
+
+            <p className="text-lg text-gray-800 leading-relaxed mb-6">
+              But my energy never got any better.
+            </p>
+
+            <p className="text-lg text-gray-800 leading-relaxed mb-6">
+              On top of this, my head was all over the place.
+            </p>
+
+            <p className="text-lg text-gray-800 leading-relaxed mb-6">
+              Wondering if I&apos;d have next month&apos;s rent covered, the worries of tax and inflation, constant stress from work, all the usual shit.
+            </p>
+
+            <p className="text-lg text-gray-800 leading-relaxed mb-6">
+              I had severed brain fog.
+              I was falling asleep at my desk at 10am.
+              And my stress and anxiety wouldn&apos;t go.
+            </p>
+
+            <p className="text-lg text-gray-800 leading-relaxed mb-6">
+              I tried everything. Keto diet.Keto. Intermittent fasting. Training 5+ days a week. I even tried the testosterone boosters.
+            </p>
+
+            <p className="text-lg text-gray-800 leading-relaxed mb-6">
+              But nothing worked.
+            </p>
+
+            <p className="text-lg text-gray-800 leading-relaxed mb-6">
+              Day by day I was getting worn down.
+            </p>
+
+            <p className="text-lg text-gray-800 leading-relaxed mb-6">
+              So I turned to the only stress relief I knew.
+            </p>
+
+            <p className="text-lg text-gray-800 leading-relaxed mb-6">
+              Booze.
+            </p>
+
+            <p className="text-lg text-gray-800 leading-relaxed mb-6">
+              I&apos;d been drinking since 13. It all started because I wasn&apos;t confident in myself. But by my early 20s, I couldn&apos;t function without it.
+            </p>
+
+            <p className="text-lg text-gray-800 leading-relaxed mb-6">
+            And I couldn&apos;t get out of it. Every weekend I&apos;d promise myself I wouldn&apos;t drink. Every Friday I&apos;d fail.
+            </p>
+
+            <p className="text-lg text-gray-800 leading-relaxed mb-6">
+              But the worst thing about this?
+            </p>
+
+            <p className="text-lg text-gray-800 leading-relaxed mb-6">
+              No one had a clue.
+            </p>
+
+            <p className="text-lg text-gray-800 leading-relaxed mb-6">
+              I put on a fake smile.
+              Hid my drinking from everyone.
+              And told myself this was just normal.
+            </p>
+
+            <p className="text-lg text-gray-800 leading-relaxed mb-6">
+              But on Halloween everything changed.
+            </p>
+
+            <p className="text-lg text-gray-800 leading-relaxed mb-6">
+              I went on a night out for a work party, and got blackout drunk.
+            </p>
+
+            <p className="text-lg text-gray-800 leading-relaxed mb-6">
+              I don&apos;t remember exactly what happened, but I remember being obnoxiously drunk.
+            </p>
+
+            <p className="text-lg text-gray-800 leading-relaxed mb-6">
+              The morning after in I woke up mortified.
+            </p>
+
+            <p className="text-lg text-gray-800 leading-relaxed mb-6">
+              Now - a detail I forgot to mention is I was living in a tiny spare room at my friend&apos;s house on a mattress on the floor.
+            </p>
+
+            <p className="text-lg text-gray-800 leading-relaxed mb-6">
+              The mattress was covered in mud, as were my jeans I still had on.
+            </p>
+
+            <p className="text-lg text-gray-800 leading-relaxed mb-6">
+              No fucking idea how I got home!
+            </p>
+
+            <p className="text-lg text-gray-800 leading-relaxed mb-6">
+              But this was just the start…
+            </p>
+
+            <p className="text-lg text-gray-800 leading-relaxed mb-6">
+              I checked my phone, and saw 15 missed calls.
+            </p>
+
+            <p className="text-lg text-gray-800 leading-relaxed mb-6">
+              I&apos;d slept in til 2pm and missed my whole day&apos;s clients.
+            </p>
+
+            <p className="text-lg text-gray-800 leading-relaxed mb-6">
+              Looking round the box room, staring at my phone, thinking my life couldn&apos;t get any lower.
+            </p>
+
+            <p className="text-lg text-gray-800 leading-relaxed mb-6">
+              I woke up exhausted every morning, my sex drive non-existent, a gut that wouldn&apos;t budge, and I felt so stressed and anxious whilst feeling completely dependant on caffeine and alcohol.
+            </p>
+
+            <p className="text-lg text-gray-800 leading-relaxed mb-6">
               I couldn&apos;t keep going.
             </p>
 
             <p className="text-lg text-gray-800 leading-relaxed mb-6">
-              Took me about a year to properly sort it but once I did everything changed.
-              May 2022 I saw a picture of myself and felt genuinely sick. That was it. Next twelve months I devoted to fixing this properly.
+              Through the next year or so I devoted my life to fixing myself.
             </p>
 
             <p className="text-lg text-gray-800 leading-relaxed mb-6">
-              July I came back from Ibiza. Big trip with the lads. Got home and felt done. Done with drinking. Done with feeling like shit.
-              Decided to take a month off.
-              One month became two. Two became three. Three became six.
+              But the fucked thing was the problem wasn&apos;t effort.
             </p>
 
             <p className="text-lg text-gray-800 leading-relaxed mb-6">
-              And through those first six months I made more progress with my body and mental health than I had in years. It was mad how fast things changed once I stopped fighting my body.
+              See - I was already training five to six times a week, eating the &apos;gym meals&apos;, and staying disciplined.
             </p>
 
             <p className="text-lg text-gray-800 leading-relaxed mb-6">
-              April 2023 I was traveling the world completely unrecognizable. Different body. Different energy. Different person.
-              Today I haven&apos;t drank in over three years. Haven&apos;t touched caffeine in eighteen months.
-              I wake up naturally energized. No alarm. No coffee.
-              Best shape of my life training twice a week. Feel incredible every day.
+              I started to question if I had Chronic Fatigue Syndrome.
             </p>
 
             <p className="text-lg text-gray-800 leading-relaxed mb-6">
-              But I didn&apos;t get here through superhuman discipline.
-              I was the guy on the mud-stained mattress. Anxiety every day. Drinking every night. Training hard but getting nowhere.
-              If I sorted this you can too.
+              So I got a testosterone test.
             </p>
           </div>
         </div>

@@ -9,7 +9,7 @@ import MicroTestimonial from "./ui/micro-testimonial";
 
 export default function ProgramComponentsSection() {
   return (
-    <section className="w-full py-20 bg-white relative overflow-hidden">
+    <section className="w-full py-20 px-4 bg-white relative overflow-hidden">
       <div className="absolute bottom-0 left-0 w-full h-[20vh] bg-gradient-to-t from-[#940909]/5 to-transparent"></div>
 
       <div className="container mx-auto px-4 relative z-10">

@@ -16,12 +16,10 @@ export default function DoesThisSoundLikeYou() {
               maxWidth: "768px",
               marginLeft: "auto",
               marginRight: "auto",
-              paddingLeft: "60px",
-              paddingRight: "16px",
             }}
           >
             <div className="flex items-start">
-              <div className="w-6 h-6 bg-red-600 rounded-full flex items-center justify-center mr-4 mt-1">
+              <div className="w-6 h-6 bg-red-600 rounded-full flex items-center justify-center mr-4 mt-1 flex-shrink-0">
                 <svg
                   className="w-4 h-4 text-white"
                   fill="currentColor"
@@ -42,7 +40,7 @@ export default function DoesThisSoundLikeYou() {
             </div>
 
             <div className="flex items-start">
-              <div className="w-6 h-6 bg-red-600 rounded-full flex items-center justify-center mr-4 mt-1">
+              <div className="w-6 h-6 bg-red-600 rounded-full flex items-center justify-center mr-4 mt-1 flex-shrink-0">
                 <svg
                   className="w-4 h-4 text-white"
                   fill="currentColor"
@@ -63,7 +61,7 @@ export default function DoesThisSoundLikeYou() {
             </div>
 
             <div className="flex items-start">
-              <div className="w-6 h-6 bg-red-600 rounded-full flex items-center justify-center mr-4 mt-1">
+              <div className="w-6 h-6 bg-red-600 rounded-full flex items-center justify-center mr-4 mt-1 flex-shrink-0">
                 <svg
                   className="w-4 h-4 text-white"
                   fill="currentColor"
@@ -84,7 +82,7 @@ export default function DoesThisSoundLikeYou() {
             </div>
 
             <div className="flex items-start">
-              <div className="w-6 h-6 bg-red-600 rounded-full flex items-center justify-center mr-4 mt-1">
+              <div className="w-6 h-6 bg-red-600 rounded-full flex items-center justify-center mr-4 mt-1 flex-shrink-0">
                 <svg
                   className="w-4 h-4 text-white"
                   fill="currentColor"
@@ -106,7 +104,7 @@ export default function DoesThisSoundLikeYou() {
             </div>
 
             <div className="flex items-start">
-              <div className="w-6 h-6 bg-red-600 rounded-full flex items-center justify-center mr-4 mt-1">
+              <div className="w-6 h-6 bg-red-600 rounded-full flex items-center justify-center mr-4 mt-1 flex-shrink-0">
                 <svg
                   className="w-4 h-4 text-white"
                   fill="currentColor"

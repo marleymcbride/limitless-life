@@ -3,7 +3,7 @@ import { bgClasses } from "@/lib/utils";
 
 export default function CoachSection() {
   return (
-    <section className={`w-full ${bgClasses.white} py-20 text-black`}>
+    <section className={`w-full ${bgClasses.white} py-20 px-4 text-black`}>
       <div className="container mx-auto px-4">
         <div className="text-center mb-10">
           <span className="inline-block bg-[#940909] text-white text-sm font-bold uppercase tracking-wider px-3 py-1 rounded-sm mb-4">
