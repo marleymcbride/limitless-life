@@ -174,8 +174,22 @@ export default function Home() {
               />
             </div>
           </div>
-          {/* Spacer div to push headline down */}
-          <div className=" h-16"></div>
+
+          {/* Spacer div to maintain testimonial positioning */}
+          <div className="h-5"></div>
+
+          {/* CTA Button - positioned directly below VSL in dark section */}
+          <div className="text-center">
+            <a
+              href="/application"
+              className="font-bold !text-white transition-none duration-0 focus:outline-none bg-[#940909] hover:bg-[#7b0707] py-3 px-12 text-lg rounded-md inline-block"
+            >
+              JOIN NOW
+            </a>
+          </div>
+
+          {/* Spacer div to maintain testimonial positioning */}
+          <div className="h-8"></div>
 
           {/* Testimonial - Simple thin text at bottom of hero */}
           <div className="text-center mt-0 mb-0 max-w-4xl mx-auto">

@@ -82,14 +82,12 @@ export default function UrgencyFinalCTA() {
           </div>
 
           <div className="text-center">
-            <CTAButton
-              size="large"
-              onClick={() => {
-                window.location.href = "/application";
-              }}
+            <a
+              href="/application"
+              className="font-bold !text-white transition-none duration-0 focus:outline-none bg-[#940909] hover:bg-[#7b0707] py-3 px-12 text-lg rounded-md inline-block"
             >
               Apply To Transform Your Life Today
-            </CTAButton>
+            </a>
 
             <p className="text-lg text-gray-600 mt-6">
               Your future self will thank you for the decision you make today.

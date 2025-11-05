@@ -47,7 +47,12 @@ export default function StickyCTA() {
             <ArrowUp className="h-5 w-5 text-white" />
           </button>
 
-          <ApplyNowButton text="JOIN NOW" className="py-2 px-6 text-base" />
+          <a
+            href="/application"
+            className="font-bold !text-white transition-none duration-0 focus:outline-none bg-[#940909] hover:bg-[#7b0707] py-2 px-6 text-base rounded-md inline-block"
+          >
+            JOIN NOW
+          </a>
         </div>
       </div>
     </div>

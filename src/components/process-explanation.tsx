@@ -85,13 +85,12 @@ export default function ProcessExplanation() {
           </div>
 
           <div className="text-center">
-            <CTAButton
-              onClick={() => {
-                window.location.href = "/application";
-              }}
+            <a
+              href="/application"
+              className="font-bold !text-white transition-none duration-0 focus:outline-none bg-[#940909] hover:bg-[#7b0707] py-3 px-12 text-lg rounded-md inline-block"
             >
               See If This Is Right For You
-            </CTAButton>
+            </a>
           </div>
         </div>
       </div>
