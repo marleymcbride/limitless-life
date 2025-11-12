@@ -77,7 +77,7 @@ export default function VSLHeroSection({
         )}
 
         {showCTA && (
-          <div className="text-center 
+          <div className="text-center space-y-4">
             {hasCompleted ? (
               <div className="space-y-4">
                 <p className="text-lg sm:text-xl text-white font-semibold">
@@ -89,7 +89,7 @@ export default function VSLHeroSection({
                       .getElementById("pricing")
                       ?.scrollIntoView({ behavior: "smooth" });
                   }}
-                  className="inline-block px-8 sm:px-12 py-4 sm:py-5 bg-gradient-to-r from-orange-500 to-red-600 text-white text-lg sm:text-xl font-bold rounded-lg hover:from-orange-600 hover:to-red-700 transition-none duration-0 shadow-xl hover:shadow-2xl transform 
+                  className="inline-block px-8 sm:px-12 py-4 sm:py-5 bg-gradient-to-r from-orange-500 to-red-600 text-white text-lg sm:text-xl font-bold rounded-lg hover:from-orange-600 hover:to-red-700 transition-none duration-0 shadow-xl hover:shadow-2xl transform hover:scale-105"
                 >
                   Apply for Limitless Now
                 </button>

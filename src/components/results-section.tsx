@@ -90,7 +90,7 @@ export default function ResultsSection() {
           {results.map((item, index) => (
             <div
               key={index}
-              className="flex flex-col bg-gray-50 rounded-lg shadow-md overflow-hidden transform transition 
+              className="flex flex-col bg-gray-50 rounded-lg shadow-md overflow-hidden transform transition hover:scale-105"
             >
               <div className="bg-[#940909] text-white text-sm font-bold px-5 py-2">
                 {item.category}
