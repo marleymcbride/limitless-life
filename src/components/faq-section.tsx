@@ -22,12 +22,14 @@ export default function FAQSection() {
               >
                 How much time does this actually take per week?
               </h3>
-              <p className="text-gray-300 leading-relaxed">
-                The system is designed for busy high-performers. You'll need 2-3
-                training sessions per week (45 minutes each), plus some meal
-                prep and sleep optimization. Most clients spend 4-5 hours total
-                per week.
-              </p>
+              <div className="body-copy">
+                <p className="text-gray-300 leading-relaxed">
+                  The system is designed for busy high-performers. You'll need 2-3
+                  training sessions per week (45 minutes each), plus some meal
+                  prep and sleep optimization. Most clients spend 4-5 hours total
+                  per week.
+                </p>
+              </div>
             </div>
 
             <div className="bg-gray-800 rounded-lg p-6">

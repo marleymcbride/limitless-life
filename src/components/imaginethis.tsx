@@ -18,18 +18,20 @@ export default function ImagineThis() {
             >
               You Had a Simple Daily System That:
             </h3>
-            <p className="text-2xl text-left md:text-3xl text-gray-200 leading-relaxed">
-              Restores your natural energy and eliminates the afternoon crashes
-              without needing coffee
-            </p>
-            <p className="text-2xl text-left md:text-3xl text-gray-200 leading-relaxed">
-              Transforms your body by melting stubborn fat while building lean
-              muscle with only 2 days per week
-            </p>
-            <p className="text-2xl text-left md:text-3xl text-gray-200 leading-relaxed">
-              Gets you off the booze effortlessly and rebuilds your mental
-              clarity so your body and mind become unstoppable
-            </p>
+            <div className="body-copy text-left">
+              <p className="text-gray-200 leading-relaxed">
+                Restores your natural energy and eliminates the afternoon crashes
+                without needing coffee
+              </p>
+              <p className="text-gray-200 leading-relaxed">
+                Transforms your body by melting stubborn fat while building lean
+                muscle with only 2 days per week
+              </p>
+              <p className="text-gray-200 leading-relaxed">
+                Gets you off the booze effortlessly and rebuilds your mental
+                clarity so your body and mind become unstoppable
+              </p>
+            </div>
           </div>
         </div>
       </div>

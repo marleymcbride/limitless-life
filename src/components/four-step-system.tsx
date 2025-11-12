@@ -14,10 +14,12 @@ export default function FourStepSystem() {
             The 4-Step System That Transforms High-Performers
           </h2>
 
-          <p className="text-lg text-gray-700 mb-12 max-w-3xl mx-auto">
-            Simple, proven steps that work with your body's natural intelligence
-            to restore your energy and transform your life.
-          </p>
+          <div className="body-copy mb-12 max-w-3xl mx-auto">
+            <p className="text-gray-700">
+              Simple, proven steps that work with your body's natural intelligence
+              to restore your energy and transform your life.
+            </p>
+          </div>
 
           <div className="space-y-8 mb-12 max-w-4xl mx-auto">
             <div className="bg-gray-50 rounded-lg p-8">

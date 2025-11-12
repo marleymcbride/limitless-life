@@ -9,7 +9,7 @@ export default function PersonalStorySection() {
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto">
           {/* THE ACTUAL STORY - Natural flow, casual tone */}
-          <div className="prose prose-lg max-w-none mobile-text-large">
+          <div className="prose prose-lg max-w-none mobile-text-large body-copy">
             <div className="text-center mb-12">
               <h2
                 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 leading-tight"

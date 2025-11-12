@@ -89,9 +89,11 @@ export default function UrgencyFinalCTA() {
               Apply To Transform Your Life Today
             </a>
 
-            <p className="text-lg text-gray-600 mt-6">
-              Your future self will thank you for the decision you make today.
-            </p>
+            <div className="body-copy mt-6">
+              <p className="text-gray-600">
+                Your future self will thank you for the decision you make today.
+              </p>
+            </div>
           </div>
         </div>
       </div>

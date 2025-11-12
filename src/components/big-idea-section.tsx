@@ -35,19 +35,23 @@ export default function BigIdeaSection() {
               The Limitless Life: Waking Up With Natural Energy
             </h3>
 
-            <p className="text-2xl md:text-2xl md:text-lg text-gray-300 leading-relaxed mb-6">
-              Imagine waking up before your alarm feeling energized. Going
-              through your day with sustained focus and clarity. Being present
-              with your family instead of mentally checked out. Feeling proud of
-              your body instead of ashamed of it.
-            </p>
+            <div className="body-copy mb-6">
+              <p className="text-gray-300 leading-relaxed">
+                Imagine waking up before your alarm feeling energized. Going
+                through your day with sustained focus and clarity. Being present
+                with your family instead of mentally checked out. Feeling proud of
+                your body instead of ashamed of it.
+              </p>
+            </div>
 
-            <p className="text-2xl md:text-lg text-gray-300 leading-relaxed">
-              This isn&apos;t a fantasy. This is what happens when you stop
-              fighting your body and start working with its natural
-              intelligence. Energy becomes the foundation that transforms your
-              business, your relationships, and your entire life.
-            </p>
+            <div className="body-copy">
+              <p className="text-gray-300 leading-relaxed">
+                This isn&apos;t a fantasy. This is what happens when you stop
+                fighting your body and start working with its natural
+                intelligence. Energy becomes the foundation that transforms your
+                business, your relationships, and your entire life.
+              </p>
+            </div>
           </div>
 
           <div className="space-y-6 mb-12">
@@ -58,12 +62,14 @@ export default function BigIdeaSection() {
               >
                 The Disconnect That&apos;s Destroying You
               </h3>
-              <p className="text-2xl md:text-lg text-gray-300 leading-relaxed">
-                You look successful to everyone else, but inside you feel like a
-                fraud. You&apos;re pushing harder, using more coffee, more
-                alcohol, more willpower - just to maintain the appearance of
-                having it all together.
-              </p>
+              <div className="body-copy">
+                <p className="text-gray-300 leading-relaxed">
+                  You look successful to everyone else, but inside you feel like a
+                  fraud. You&apos;re pushing harder, using more coffee, more
+                  alcohol, more willpower - just to maintain the appearance of
+                  having it all together.
+                </p>
+              </div>
             </div>
 
             <div className="text-left">
@@ -73,12 +79,14 @@ export default function BigIdeaSection() {
               >
                 The Roadblocks You Face Every Day
               </h3>
-              <p className="text-2xl md:text-lg text-gray-300 leading-relaxed">
-                Restrictive diets that fail. Overtraining that leaves you
-                exhausted. Using willpower to quit substances, only to cave
-                under pressure. Winging it because no system seems to work for
-                someone like you.
-              </p>
+              <div className="body-copy">
+                <p className="text-gray-300 leading-relaxed">
+                  Restrictive diets that fail. Overtraining that leaves you
+                  exhausted. Using willpower to quit substances, only to cave
+                  under pressure. Winging it because no system seems to work for
+                  someone like you.
+                </p>
+              </div>
             </div>
 
             <div className="text-left">
@@ -88,12 +96,14 @@ export default function BigIdeaSection() {
               >
                 What If Nothing Changes?
               </h3>
-              <p className="text-2xl md:text-lg text-gray-300 leading-relaxed">
-                Another year passes. Your health gets worse. Your relationships
-                suffer. Your business plateaus because you don&apos;t have the
-                energy to take it to the next level. The gap between who you are
-                and who you could be becomes permanent.
-              </p>
+              <div className="body-copy">
+                <p className="text-gray-300 leading-relaxed">
+                  Another year passes. Your health gets worse. Your relationships
+                  suffer. Your business plateaus because you don&apos;t have the
+                  energy to take it to the next level. The gap between who you are
+                  and who you could be becomes permanent.
+                </p>
+              </div>
             </div>
           </div>
 
