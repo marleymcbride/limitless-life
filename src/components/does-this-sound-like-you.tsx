@@ -4,14 +4,14 @@ export default function DoesThisSoundLikeYou() {
       <div className="container mx-auto max-w-4xl">
         <div className="text-center">
           <h2
-            className="text-4xl md:text-5xl font-bold text-white mb-12"
+            className="text-4xl md:text-5xl font-bold text-white mb-4"
             style={{ fontFamily: "Neuemontreal, Arial, sans-serif" }}
           >
             Does This Sound Like You?
           </h2>
 
           <div
-            className="text-left space-y-6 mb-12"
+            className="text-left space-y-5 mb-12"
             style={{
               maxWidth: "768px",
               marginLeft: "auto",
