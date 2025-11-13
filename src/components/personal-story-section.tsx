@@ -20,257 +20,111 @@ export default function PersonalStorySection() {
             </div>
 
             <p className="text-gray-800 leading-relaxed mb-6">
-              Back in October 2021, my life looked great.
+              Do you ever feel like your physique and energy are declining, year after year.. no matter what you do?
             </p>
 
             <p className="text-gray-800 leading-relaxed mb-6">
-              I was earning decent money. Building up a client base. Had a good dating and social life.
+              That&apos;s exactly how I felt.
             </p>
 
             <p className="text-gray-800 leading-relaxed mb-6">
-              And felt like I had the respect of my family and friends.
+              See just a few years back my life looked great.
             </p>
 
             <p className="text-gray-800 leading-relaxed mb-6">
-              Masters degree on the wall, built a good physique, and getting offers from engineering companies to work in the big city.
+              I had the Masters degree on the wall, training hard, earning decent money.
             </p>
 
             <p className="text-gray-800 leading-relaxed mb-6">
-            A decade of sacrificing.. so people would think I &apos;had my shit together&apos;.
+              People would say I &apos;had my shit together&apos;.
             </p>
 
             <p className="text-gray-800 leading-relaxed mb-6">
-              But the truth was…
+              But the truth was...
             </p>
 
             <p className="mini-heading text-gray-800 leading-relaxed mb-6">
-              I felt like SHIT.
+              My life was a misery.
             </p>
 
             <p className="text-gray-800 leading-relaxed mb-6">
-              Every day I put on a brave face.
+              I was falling asleep at my desk at 10 am, not proud of my body, and drinking every night.
             </p>
 
             <p className="text-gray-800 leading-relaxed mb-6">
-              But in reality I was stressed, anxious, and had no energy.
+              And so I was constantly tired, stressed out, and anxious.
+            </p>
+
+            <p className="text-gray-800 font-bold leading-relaxed mb-6">
+              So what did I do?
             </p>
 
             <p className="text-gray-800 leading-relaxed mb-6">
-              Needing coffee after coffee just to survive the day.
+              Blamed it on everyone else.
             </p>
 
             <p className="text-gray-800 leading-relaxed mb-6">
-              And as you do... you blame everything else.
+              I blamed my job... quit engineering and became a Personal Trainer.
             </p>
 
-            <div className="prose prose-lg max-w-none mobile-text-large body-copy">
-            <div className="in-line-quote">
-            <p>
-              &apos;It&apos;s all because of my career&apos;
+            <p className="text-gray-800 leading-relaxed mb-6">
+              I blamed my genetics... and started buying all these supplements I saw online.
+            </p>
+
+            <p className="text-gray-800 leading-relaxed mb-6">
+              I needed energy: for my work, my relationships (and honestly just to feel like myself again..)
+            </p>
+
+            <p className="text-gray-800 font-bold leading-relaxed mb-6">
+              So I doubled down on the quick fixes.
+            </p>
+
+            <p className="text-gray-800 leading-relaxed mb-6">
+              I went from three coffees, to four, five, then energy drinks....
+            </p>
+
+            <p className="text-gray-800 leading-relaxed mb-6">
+              And before I knew it I was taking caffeine pills just to get through the day.
+            </p>
+
+            <p className="text-gray-800 leading-relaxed mb-6">
+              
+              As you can imagine, the stress and anxiety was getting bad.
+            </p>  
+
+            <p className="text-gray-800 leading-relaxed">
+              But already training 5-6 times per week, and &apos;eating well&apos; 
+            </p>
+
+            <p className="text-gray-800 leading-relaxed mb-6">
+              (I tried Keto, Intermittent Fasting, T-boosters, all that shit..)
+            </p>
+
+
+            <p className="text-gray-800 leading-relaxed mb-6">
+            It felt like nothing would work.
+            </p>
+
+            <p className="text-gray-800 mini-heading font-bold leading-relaxed mb-6">
+              But then Halloween came.
+            </p>
+
+            <p className="text-gray-800 leading-relaxed mb-6">
+            October 2021.. it was a work party and  I got BLACKOUT drunk.
+            </p>
+
+            <p className="text-gray-800 leading-relaxed mb-6">
+              I woke up next day to my wallet missing, 15 missed calls and a full day&apos;s missed clients.
+            </p>
+
+            <p className="text-gray-800 leading-relaxed mb-6">
+              And glancing over I looked at my mattress on the floor covered in mud.
+            </p>
+
+            <p className=" text-gray-800 leading-relaxed mb-0">
+              Something had to change.
             </p>
           </div>
-            <p className="text-gray-800 leading-relaxed mb-6">
-              I convinced myself my job was the cause.. and decided to make a career switch.
-            </p>
-
-            <p className="text-gray-800 leading-relaxed mb-6">
-              1 month later I&apos;d left and became a Personal Training at a luxury health club.
-            </p>
-
-            <p className="text-gray-800 leading-relaxed mb-6">
-              For the next few months, things improved.
-            </p>
-
-            <p className="text-gray-800 leading-relaxed mb-6">
-              The new job, new environment, new people… it seemed like everything should be better.
-            </p>
-
-            <p className="text-gray-800 leading-relaxed mb-6">
-              But the problem was:
-            </p>
-
-            <p className="text-gray-800 leading-relaxed mb-6">
-              I still felt like shit.
-            </p>
-
-            <p className="text-gray-800 leading-relaxed mb-6">
-              Every morning I&apos;d wake up and have complete lack of energy.
-            </p>
-
-            <p className="text-gray-800 leading-relaxed mb-6">
-              Simple everyday tasks like getting out of bed, getting ready, taking the dog for a walk — felt like a mountain.
-            </p>
-
-            <p className="text-gray-800 leading-relaxed mb-6">
-              And look - I thought maybe I was just &apos;low energy&apos;.
-            </p>
-
-            <p className="text-gray-800 leading-relaxed mb-6">
-              But it was affecting my entire life.
-            </p>
-
-            <p className="text-gray-800 leading-relaxed mb-6">
-              How I performed at work. How I was with my girlfriend. Even how I felt about myself.
-            </p>
-
-            <p className="text-gray-800 leading-relaxed mb-6">
-              My energy was shot.
-            </p>
-
-            <p className="text-gray-800 leading-relaxed mb-6">
-              I&apos;d wake up almost every day feeling like someone had smashed me with a baseball bat.
-            </p>
-
-            <p className="text-gray-800 leading-relaxed mb-6">
-              And when I looked in the mirror I barely recognized myself.
-            </p>
-
-            <p className="text-gray-800 leading-relaxed mb-6">
-              Bags under my eyes.
-              Bit of a gut forming.
-            </p>
-
-            <p className="text-gray-800 leading-relaxed mb-6">
-              This wasn&apos;t how I pictured myself.
-            </p>
-
-            <p className="text-gray-800 leading-relaxed mb-6">
-              And over time my coffee use went from 3 drinks, to 4, to 5, to energy drinks, and then I found myself taking caffeine tablets.
-            </p>
-
-            <p className="text-gray-800 leading-relaxed mb-6">
-              But my energy never got any better.
-            </p>
-
-            <p className="text-gray-800 leading-relaxed mb-6">
-              On top of this, my head was all over the place.
-            </p>
-
-            <p className="text-gray-800 leading-relaxed mb-6">
-              Wondering if I&apos;d have next month&apos;s rent covered, the worries of tax and inflation, constant stress from work, all the usual shit.
-            </p>
-
-            <p className="text-gray-800 leading-relaxed mb-6">
-              I had severed brain fog.
-              I was falling asleep at my desk at 10am.
-              And my stress and anxiety wouldn&apos;t go.
-            </p>
-
-            <p className="text-gray-800 leading-relaxed mb-6">
-              I tried everything. Keto diet.Keto. Intermittent fasting. Training 5+ days a week. I even tried the testosterone boosters.
-            </p>
-
-            <p className="text-gray-800 leading-relaxed mb-6">
-              But nothing worked.
-            </p>
-
-            <p className="text-gray-800 leading-relaxed mb-6">
-              Day by day I was getting worn down.
-            </p>
-
-            <p className="text-gray-800 leading-relaxed mb-6">
-              So I turned to the only stress relief I knew.
-            </p>
-
-            <p className="text-gray-800 leading-relaxed mb-6">
-              Booze.
-            </p>
-
-            <p className="text-gray-800 leading-relaxed mb-6">
-              I&apos;d been drinking since 13. It all started because I wasn&apos;t confident in myself. But by my early 20s, I couldn&apos;t function without it.
-            </p>
-
-            <p className="text-gray-800 leading-relaxed mb-6">
-            And I couldn&apos;t get out of it. Every weekend I&apos;d promise myself I wouldn&apos;t drink. Every Friday I&apos;d fail.
-            </p>
-
-            <p className="text-gray-800 leading-relaxed mb-6">
-              But the worst thing about this?
-            </p>
-
-            <p className="text-gray-800 leading-relaxed mb-6">
-              No one had a clue.
-            </p>
-
-            <p className="text-gray-800 leading-relaxed mb-6">
-              I put on a fake smile.
-              Hid my drinking from everyone.
-              And told myself this was just normal.
-            </p>
-
-            <p className="text-gray-800 leading-relaxed mb-6">
-              But on Halloween everything changed.
-            </p>
-
-            <p className="text-gray-800 leading-relaxed mb-6">
-              I went on a night out for a work party, and got blackout drunk.
-            </p>
-
-            <p className="text-gray-800 leading-relaxed mb-6">
-              I don&apos;t remember exactly what happened, but I remember being obnoxiously drunk.
-            </p>
-
-            <p className="text-gray-800 leading-relaxed mb-6">
-              The morning after in I woke up mortified.
-            </p>
-
-            <p className="text-gray-800 leading-relaxed mb-6">
-              Now - a detail I forgot to mention is I was living in a tiny spare room at my friend&apos;s house on a mattress on the floor.
-            </p>
-
-            <p className="text-gray-800 leading-relaxed mb-6">
-              The mattress was covered in mud, as were my jeans I still had on.
-            </p>
-
-            <p className="text-gray-800 leading-relaxed mb-6">
-              No fucking idea how I got home!
-            </p>
-
-            <p className="text-gray-800 leading-relaxed mb-6">
-              But this was just the start…
-            </p>
-
-            <p className="text-gray-800 leading-relaxed mb-6">
-              I checked my phone, and saw 15 missed calls.
-            </p>
-
-            <p className="text-gray-800 leading-relaxed mb-6">
-              I&apos;d slept in til 2pm and missed my whole day&apos;s clients.
-            </p>
-
-            <p className="text-gray-800 leading-relaxed mb-6">
-              Looking round the box room, staring at my phone, thinking my life couldn&apos;t get any lower.
-            </p>
-
-            <p className="text-gray-800 leading-relaxed mb-6">
-              I woke up exhausted every morning, my sex drive non-existent, a gut that wouldn&apos;t budge, and I felt so stressed and anxious whilst feeling completely dependant on caffeine and alcohol.
-            </p>
-
-            <p className="text-gray-800 leading-relaxed mb-6">
-              I couldn&apos;t keep going.
-            </p>
-
-            <p className="text-gray-800 leading-relaxed mb-6">
-              Through the next year or so I devoted my life to fixing myself.
-            </p>
-
-            <p className="text-gray-800 leading-relaxed mb-6">
-              But the fucked thing was the problem wasn&apos;t effort.
-            </p>
-
-            <p className="text-gray-800 leading-relaxed mb-6">
-              See - I was already training five to six times a week, eating the &apos;gym meals&apos;, and staying disciplined.
-            </p>
-
-            <p className="text-gray-800 leading-relaxed mb-6">
-              I started to question if I had Chronic Fatigue Syndrome.
-            </p>
-
-            <p className="text-gray-800 leading-relaxed mb-6">
-              So I got a testosterone test.
-            </p>
-          </div>
-        </div>
         </div>
       </div>
     </section>
