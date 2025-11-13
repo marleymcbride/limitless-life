@@ -10,11 +10,28 @@ const getStripe = () => {
   });
 };
 
+// Simple in-memory rate limiter
+const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
+const isRateLimited = (ip: string, limit: number, windowMs: number): boolean => {
+  const now = Date.now();
+  const key = ip;
+  const record = rateLimitMap.get(key);
+  if (!record || now > record.resetTime) {
+    rateLimitMap.set(key, { count: 1, resetTime: now + windowMs });
+    return false;
+  }
+  if (record.count >= limit) {
+    return true;
+  }
+  record.count++;
+  return false;
+};
+
 const tierPrices = {
-  access: 299700, // $2,997 in cents
-  plus: 499700, // $4,997 in cents
-  premium: 899700, // $8,997 in cents
-  elite: 1499700, // $14,997 in cents
+  access: parseInt(process.env.PRICE_ACCESS || "299700"),
+  plus: parseInt(process.env.PRICE_PLUS || "499700"),
+  premium: parseInt(process.env.PRICE_PREMIUM || "899700"),
+  elite: parseInt(process.env.PRICE_ELITE || "1499700"),
 };
 
 const tierNames = {
@@ -24,9 +41,35 @@ const tierNames = {
   elite: "Limitless Elite",
 };
 
+// Email validation helper
+const isValidEmail = (email: string): boolean => {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email.trim());
+};
+
 export async function POST(request: NextRequest) {
   try {
+    // Rate limiting: 5 requests per minute per IP
+    const ip = request.headers.get('x-forwarded-for') ||
+               request.headers.get('x-real-ip') ||
+               'unknown';
+
+    if (isRateLimited(ip, 5, 60000)) {
+      return NextResponse.json(
+        { error: "Too many requests. Please try again later." },
+        { status: 429 }
+      );
+    }
+
     const { tier, customerEmail } = await request.json();
+
+    // Validate email format
+    if (!isValidEmail(customerEmail)) {
+      return NextResponse.json(
+        { error: "Invalid email address format" },
+        { status: 400 }
+      );
+    }
 
     if (!tier || !tierPrices[tier as keyof typeof tierPrices]) {
       return NextResponse.json(
@@ -74,3 +117,13 @@ export async function POST(request: NextRequest) {
     );
   }
 }
+
+// Cleanup old rate limit records periodically
+setInterval(() => {
+  const now = Date.now();
+  for (const [key, record] of rateLimitMap.entries()) {
+    if (now > record.resetTime) {
+      rateLimitMap.delete(key);
+    }
+  }
+}, 300000); // Cleanup every 5 minutes

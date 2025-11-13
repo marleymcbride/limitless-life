@@ -5,7 +5,8 @@ interface N8NWebhookPayload {
   source: "limitless-sales-page";
 }
 
-const N8N_BASE_URL = "https://n8n.marleymcbride.co/webhook";
+const N8N_BASE_URL = process.env.NEXT_PUBLIC_N8N_VSL_WEBHOOK?.replace('/webhook/vsl-events', '') ||
+  "https://n8n.marleymcbride.co/webhook";
 
 export const sendToN8N = async (
   event: string,
