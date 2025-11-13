@@ -1,10 +1,10 @@
 export default function DoesThisSoundLikeYou() {
   return (
-    <section className="bg-black py-20 px-4 w-full">
+    <section className="bg-black py-14 px-4 w-full">
       <div className="container mx-auto max-w-4xl">
         <div className="text-center">
           <h2
-            className="text-4xl md:text-5xl font-bold text-white mb-4"
+            className="text-4xl md:text-5xl font-bold text-white mb-6"
             style={{ fontFamily: "Neuemontreal, Arial, sans-serif" }}
           >
             Does This Sound Like You?

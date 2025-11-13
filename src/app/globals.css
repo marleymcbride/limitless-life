@@ -272,7 +272,7 @@
     line-height: 1.4 !important;
   }
 
-  p:not(.mobile-subheadline):not(.mobile-bullet-override):not(.mobile-text-large):not(.mobile-eyebrow), li:not(.mobile-subheadline):not(.mobile-bullet-override):not(.mobile-text-large):not(.mobile-eyebrow), blockquote:not(.mobile-subheadline):not(.mobile-bullet-override):not(.mobile-text-large):not(.mobile-eyebrow) {
+  p:not(.mobile-subheadline):not(.mobile-bullet-override):not(.mobile-text-large):not(.mobile-eyebrow):not(.body-copy p) {
     font-size: 1.25rem !important;
     line-height: 1.5 !important;
   }
@@ -316,14 +316,15 @@
   }
 }
 
-/* Body copy styling - mobile and desktop */
-@media (max-width: 640px) {
+/* ========= MOBILE []] MAIN BODY TEXT ========= */
+@media (max-width: 0px) {
   .body-copy p {
-    font-size: 1.25rem;
+    font-size: 1.55rem !important;
     line-height: 1.5;
   }
 }
 
+/* ========= ??DESKTOP?? []] MAIN BODY TEXT ========= */
 @media (min-width: 768px) {
   .body-copy p {
     font-size: 1.625rem;
@@ -348,9 +349,9 @@ Mini headings - cognitive dissonance and attention capture */
   }
 }
 
-@media (min-width: 641px) {
+@media (min-width: 0px) {
   .mini-heading {
-    font-size: 1.5rem !important;
+    font-size: 1.2rem !important;
     line-height: 1.3 !important;
     font-weight: 700 !important;
     color: inherit !important;

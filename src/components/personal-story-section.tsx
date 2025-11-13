@@ -28,7 +28,7 @@ export default function PersonalStorySection() {
             </p>
 
             <p className="text-gray-800 leading-relaxed mb-6">
-              See just a few years back my life looked great.
+              See.. just a few years back my life looked great.
             </p>
 
             <p className="text-gray-800 leading-relaxed mb-6">
@@ -36,23 +36,31 @@ export default function PersonalStorySection() {
             </p>
 
             <p className="text-gray-800 leading-relaxed mb-6">
-              People would say I &apos;had my shit together&apos;.
+              People would say I &apos;had my shit together&apos;...
             </p>
 
             <p className="text-gray-800 leading-relaxed mb-6">
-              But the truth was...
+              But the truth was.
             </p>
 
             <p className="mini-heading text-gray-800 leading-relaxed mb-6">
-              My life was a misery.
+              My life was hell.
+            </p>
+
+            <p className="text-gray-800 leading-relaxed">
+             Falling asleep at my desk at 10am.
+            </p>
+
+            <p className="text-gray-800 leading-relaxed mb-0">
+            Not proud of my body.
             </p>
 
             <p className="text-gray-800 leading-relaxed mb-6">
-              I was falling asleep at my desk at 10 am, not proud of my body, and drinking every night.
+            Drinking every night.
             </p>
 
             <p className="text-gray-800 leading-relaxed mb-6">
-              And so I was constantly tired, stressed out, and anxious.
+              Plus feeling constantly stressed out, anxious, and unhappy.
             </p>
 
             <p className="text-gray-800 font-bold leading-relaxed mb-6">
@@ -60,7 +68,7 @@ export default function PersonalStorySection() {
             </p>
 
             <p className="text-gray-800 leading-relaxed mb-6">
-              Blamed it on everyone else.
+              Blamed it on everyone else of course!
             </p>
 
             <p className="text-gray-800 leading-relaxed mb-6">
@@ -72,7 +80,7 @@ export default function PersonalStorySection() {
             </p>
 
             <p className="text-gray-800 leading-relaxed mb-6">
-              I needed energy: for my work, my relationships (and honestly just to feel like myself again..)
+              But I NEEDED energy.. for my work, my relationships (and just to feel like myself again..)
             </p>
 
             <p className="text-gray-800 font-bold leading-relaxed mb-6">
@@ -89,24 +97,24 @@ export default function PersonalStorySection() {
 
             <p className="text-gray-800 leading-relaxed mb-6">
               
-              As you can imagine, the stress and anxiety was getting bad.
+              As you can imagine, the stress and anxiety was getting out of hand.
             </p>  
 
-            <p className="text-gray-800 leading-relaxed">
+            <p className="text-gray-800 leading-relaxed mb-2">
               But already training 5-6 times per week, and &apos;eating well&apos; 
             </p>
 
-            <p className="text-gray-800 leading-relaxed mb-6">
+            <p className="text-gray-800 italic leading-relaxed mb-6">
               (I tried Keto, Intermittent Fasting, T-boosters, all that shit..)
             </p>
 
 
             <p className="text-gray-800 leading-relaxed mb-6">
-            It felt like nothing would work.
+            But I still woke up feeling like shit.
             </p>
 
             <p className="text-gray-800 mini-heading font-bold leading-relaxed mb-6">
-              But then Halloween came.
+              Then Halloween came.
             </p>
 
             <p className="text-gray-800 leading-relaxed mb-6">
@@ -118,11 +126,26 @@ export default function PersonalStorySection() {
             </p>
 
             <p className="text-gray-800 leading-relaxed mb-6">
-              And glancing over I looked at my mattress on the floor covered in mud.
+              I looked across my mattress on the floor in my little box room completely covered in mud.
             </p>
 
-            <p className=" text-gray-800 leading-relaxed mb-0">
-              Something had to change.
+            <p className="text-gray-800 leading-relaxed mb-6">
+              And was met with an inflamed face and gut, sex drive non-existent, dependant on caffeine and alcohol.
+
+            </p>
+
+            {/* Image space - mattress covered in mud */}
+            <div className="my-8 flex justify-center">
+              <img
+                src="/images/Me + bedroom.webp"
+                alt="Mud-stained mattress in bedroom"
+                className="w-full max-w-lg h-auto rounded-lg shadow-lg"
+                loading="lazy"
+              />
+            </div>
+
+            <p className="text-gray-800 leading-relaxed mb-0">
+              Rock bottom.
             </p>
           </div>
         </div>
