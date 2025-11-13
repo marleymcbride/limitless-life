@@ -319,14 +319,55 @@
 /* Body copy styling - mobile and desktop */
 @media (max-width: 640px) {
   .body-copy p {
-    font-size: 1.25rem !important;
-    line-height: 1.5 !important;
+    font-size: 1.25rem;
+    line-height: 1.5;
   }
 }
 
 @media (min-width: 768px) {
   .body-copy p {
-    font-size: 1.625rem !important;
-    line-height: 1.6 !important;
+    font-size: 1.625rem;
+    line-height: 1.6;
   }
+}
+
+/* Mini headings - cognitive dissonance and attention capture */
+@media (max-width: 640px) {
+  .mini-heading {
+    font-size: 1.3rem !important;
+    line-height: 1.3 !important;
+    font-weight: 700 !important;
+    color: inherit !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .mini-heading {
+    font-size: 1.4rem !important;
+    line-height: 1.3 !important;
+    font-weight: 700 !important;
+    color: inherit !important;
+  }
+}
+
+/* Self quote styling */
+.self-quote p {
+  color: #374151; /* slightly darker than text-gray-800 */
+  font-style: italic;
+}
+
+/* Formatted quote styling - for | format with left border */
+.formatted-quote p {
+  border-left: 4px solid #374151;
+  padding-left: 16px;
+  font-style: italic;
+}
+
+/* In-line quote styling - for subtle emphasis within story flow */
+.in-line-quote p {
+  font-style: italic;
+  color: #1f2937; /* much darker, closer to black */
+  opacity: 0.9; /* subtle opacity */
+  padding-top: 0px;
+  padding-bottom: 20px;
 }

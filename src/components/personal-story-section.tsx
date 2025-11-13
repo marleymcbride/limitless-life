@@ -28,39 +28,53 @@ export default function PersonalStorySection() {
             </p>
 
             <p className="text-gray-800 leading-relaxed mb-6">
-              And felt like I&apos;d got the respect of my family and friends.
+              And felt like I had the respect of my family and friends.
             </p>
 
             <p className="text-gray-800 leading-relaxed mb-6">
-              Masters degree on the wall, offers from engineering companies to work in the big city, built a good physique.
+              Masters degree on the wall, built a good physique, and getting offers from engineering companies to work in the big city.
             </p>
 
             <p className="text-gray-800 leading-relaxed mb-6">
-            A decade sacrificing everything.. just so people would think I had my shit together.
+            A decade of sacrificing.. so people would think I &apos;had my shit together&apos;.
             </p>
 
             <p className="text-gray-800 leading-relaxed mb-6">
-              But the truth is… I felt miserable.
+              But the truth was…
+            </p>
+
+            <p className="mini-heading text-gray-800 leading-relaxed mb-6">
+              I felt like SHIT.
             </p>
 
             <p className="text-gray-800 leading-relaxed mb-6">
-              Every day felt like I was dragging myself through. Feeling stressed, anxious, insecure, and low energy.
+              Every day I put on a brave face.
             </p>
 
             <p className="text-gray-800 leading-relaxed mb-6">
-              I&apos;d need coffee after coffee to survive the day.
+              But in reality I was stressed, anxious, and had no energy.
             </p>
 
             <p className="text-gray-800 leading-relaxed mb-6">
-              The first thing I did was immediately blame it on the career.
+              Needing coffee after coffee just to survive the day.
             </p>
 
             <p className="text-gray-800 leading-relaxed mb-6">
-              I decided the corporate life wasn&apos;t for me, and followed my passion in health and fitness
+              And as you do... you blame everything else.
+            </p>
+
+            <div className="prose prose-lg max-w-none mobile-text-large body-copy">
+            <div className="in-line-quote">
+            <p>
+              &apos;It&apos;s all because of my career&apos;
+            </p>
+          </div>
+            <p className="text-gray-800 leading-relaxed mb-6">
+              I convinced myself my job was the cause.. and decided to make a career switch.
             </p>
 
             <p className="text-gray-800 leading-relaxed mb-6">
-              And Personal Training at a luxury health club.
+              1 month later I&apos;d left and became a Personal Training at a luxury health club.
             </p>
 
             <p className="text-gray-800 leading-relaxed mb-6">
@@ -256,6 +270,7 @@ export default function PersonalStorySection() {
               So I got a testosterone test.
             </p>
           </div>
+        </div>
         </div>
       </div>
     </section>
