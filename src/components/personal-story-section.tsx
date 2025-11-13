@@ -81,7 +81,19 @@ export default function PersonalStorySection() {
             </p>
 
             <p className="text-gray-800 leading-relaxed mb-6">
-              But I NEEDED energy.. for my work, my relationships (and just to feel like myself again..)
+              But it dawned on me there ONE thing missing from my life making it so difficult:
+            </p> 
+
+            <p className="text-gray-800 mini-heading leading-relaxed mb-6">
+              Energy.
+            </p>
+
+            <p className="text-gray-800 leading-relaxed mb-6">
+              Every morning waking up feeling like shit.
+            </p>
+
+            <p className="text-gray-800 leading-relaxed mb-6">
+            This caused me to suffer in my work, my relationships (and just every area of my life..)
             </p>
 
             <p className="text-gray-800 font-bold leading-relaxed mb-6">
@@ -97,25 +109,32 @@ export default function PersonalStorySection() {
             </p>
 
             <p className="text-gray-800 leading-relaxed mb-6">
-              
               As you can imagine, the stress and anxiety was getting out of hand.
             </p>  
 
-            <p className="text-gray-800 leading-relaxed mb-2">
-              But already training 5-6 times per week, and &apos;eating well&apos; 
+            <p className="text-gray-800 leading-relaxed mb-6">
+              But I was already doing what every coach online said to do..
+            </p>
+
+            <p className="text-gray-800 leading-relaxed mb-6">
+              Train 4-5 times per week, restrict your eating, &apos;be disciplined&apos; and use willpower.
+            </p>
+
+            <p className="text-gray-800 font-bold leading-relaxed mb-6">
+            But I found out the hard way <span className="underline">the typical methods online simply do not work.</span>
             </p>
 
             <p className="text-gray-800 italic leading-relaxed mb-6">
-              (I tried Keto, Intermittent Fasting, T-boosters, all that shit..)
+              (I tried Keto, Intermittent Fasting, T-boosters, all of it..)
             </p>
 
 
             <p className="text-gray-800 leading-relaxed mb-6">
-            But I still woke up feeling like shit.
+            This went on for months.
             </p>
 
             <p className="text-gray-800 mini-heading font-bold leading-relaxed mb-6">
-              Then Halloween came.
+            Then Halloween came.
             </p>
 
             <p className="text-gray-800 leading-relaxed mb-6">
@@ -127,13 +146,11 @@ export default function PersonalStorySection() {
             </p>
 
             <p className="text-gray-800 leading-relaxed mb-6">
-              I looked across my mattress on the floor in my little box room completely covered in mud.
+            And looked at myself. Puffy, inflamed face, a gut that wouldn&apos;t budge, completely reliant on caffeine and alcohol.
             </p>
 
-            <p className="text-gray-800 leading-relaxed mb-6">
-              And was met with an inflamed face and gut, sex drive non-existent, dependant on caffeine and alcohol.
-
-            </p>
+            <p className="text-gray-800 leading-relaxed mb-0">
+            Rock bottom.
 
             {/* Image space - mattress covered in mud */}
             <div className="my-8 flex justify-center">
@@ -150,8 +167,7 @@ export default function PersonalStorySection() {
               </div>
             </div>
 
-            <p className="text-gray-800 leading-relaxed mb-0">
-              Rock bottom.
+
             </p>
           </div>
         </div>
