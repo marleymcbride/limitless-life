@@ -364,6 +364,15 @@ Mini headings - cognitive dissonance and attention capture */
     font-weight: 700 !important;
     color: inherit !important;
   }
+
+  /* =====MAIN=======
+   Larget mini headings - in body/copy text */
+   .body-copy .mid-heading {
+    font-size: 3.0rem !important;
+    line-height: 1.3 !important;
+    font-weight: 700 !important;
+    color: inherit !important;
+  }
 }
 
 /* Self quote styling */

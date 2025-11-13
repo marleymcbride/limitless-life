@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function PersonalStorySection() {
   return (
-    <section className={`w-full ${bgClasses.white} py-20 text-black relative`}>
+    <section className={`w-full ${bgClasses.white} pt-20 text-black relative`}>
       {/* Simple, premium white background */}
       <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-white to-gray-50"></div>
 
@@ -80,13 +80,22 @@ export default function PersonalStorySection() {
               I blamed my genetics... and started buying all these supplements I saw online.
             </p>
 
-            <p className="text-gray-800 leading-relaxed mb-6">
-              But it dawned on me there ONE thing missing from my life making it so difficult:
+            <p className="text-gray-800 leading-relaxed mb-2">
+              But it dawned on me there was ONE thing causing all of this...
             </p> 
 
-            <p className="text-gray-800 mini-heading leading-relaxed mb-6">
-              Energy.
+            <p className="text-gray-800 text-center mid-heading leading-relaxed mt-6 mb-6">
+              I needed more energy
             </p>
+
+            <div className="text-center">
+            <a
+              href="/application"
+              className="font-bold !text-white transition-none duration-0 focus:outline-none bg-[#940909] hover:bg-[#7b0707] py-3 px-12 mb-6 text-lg rounded-md inline-block"
+            >
+              I want this too
+            </a>
+            </div>
 
             <p className="text-gray-800 leading-relaxed mb-6">
               Every morning waking up feeling like shit.

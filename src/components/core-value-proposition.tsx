@@ -4,7 +4,7 @@ import { CTAButton } from "./ui/cta-button";
 
 export default function CoreValueProposition() {
   return (
-    <section className="bg-white py-20 px-4">
+    <section className="bg-white py-4 px-4">
       <div className="container mx-auto max-w-4xl">
         <div className="text-center">
           <h2
