@@ -1,4 +1,5 @@
 import { bgClasses } from "@/lib/utils";
+import Image from "next/image";
 
 export default function PersonalStorySection() {
   return (
@@ -136,12 +137,17 @@ export default function PersonalStorySection() {
 
             {/* Image space - mattress covered in mud */}
             <div className="my-8 flex justify-center">
-              <img
-                src="/images/Me + bedroom.webp"
-                alt="Mud-stained mattress in bedroom"
-                className="w-full max-w-lg h-auto rounded-lg shadow-lg"
-                loading="lazy"
-              />
+              <div className="relative w-full max-w-lg h-auto">
+                <Image
+                  src="/images/Me + bedroom.webp"
+                  alt="Mud-stained mattress in bedroom"
+                  width={512}
+                  height={384}
+                  className="rounded-lg shadow-lg"
+                  loading="lazy"
+                  style={{ width: '100%', height: 'auto' }}
+                />
+              </div>
             </div>
 
             <p className="text-gray-800 leading-relaxed mb-0">
