@@ -49,7 +49,7 @@ export default function StickyCTA() {
 
           <a
             href="/application"
-            className="font-bold !text-white transition-none duration-0 focus:outline-none bg-[#940909] hover:bg-[#7b0707] py-2 px-6 text-base rounded-md inline-block"
+            className="font-bold !text-white transition-none duration-0 focus:outline-none bg-[#940909] hover:bg-[#7b0707] py-2 px-6 text-base rounded-md inline-block relative z-30"
           >
             JOIN NOW
           </a>

@@ -158,7 +158,7 @@ export default function ResultsProof() {
           </div>
           <a
             href="/application"
-            className="font-bold !text-white transition-none duration-0 focus:outline-none bg-[#940909] hover:bg-[#7b0707] py-3 px-12 text-lg rounded-md inline-block mt-16"
+            className="font-bold !text-white transition-none duration-0 focus:outline-none bg-[#940909] hover:bg-[#7b0707] py-3 px-12 text-lg rounded-md inline-block mt-16 relative z-30"
           >
             See If This Is Right For You
           </a>

@@ -82,9 +82,6 @@ export default function Home() {
             {/* Mobile Headlines (visible only on mobile) */}
             <h1
               className="mobile-headline block px-1 mx-auto mt-2 mb-6 w-full font-bold text-center text-white sm:hidden capitalize text-[2.4rem] leading-[1.25]"
-              style={{
-                fontFamily: "Neuemontreal, Arial, sans-serif",
-              }}
             >
               Lose Your Gut, Stop Feeling Exhausted & Reverse Years Of Health Decline (In 2 Days Per Week)
             </h1>
@@ -92,9 +89,6 @@ export default function Home() {
             {/* Mobile Subheadline - RIGHT AFTER HEADLINE (visible only on mobile) */}
             <p
               className="mobile-subheadline block mx-auto mb-2 font-light text-center text-gray-300 sm:hidden px-0 text-[1.3rem] leading-[1.6] w-[95%]"
-              style={{
-                fontFamily: "Neuemontreal, Arial, sans-serif",
-              }}
             >
              You don&apos;t need to down 4 coffees, train 6 days a week, or cut out your favorite foods to feel incredible.
              Restore your energy, build an elite body and get back YEARS of life:
@@ -128,9 +122,6 @@ export default function Home() {
             </h1>*/}
             <h1
               className="hidden sm:block text-5xl sm:text-5xl md:text-4xl  lg:text-5xl font-bold text-white text-center mb-0 mt-0 sm:mt-0 max-w-[87%] mx-auto px-4 capitalize leading-[1.2]"
-              style={{
-                fontFamily: "Neuemontreal, Arial, sans-serif",
-              }}
             >
             Lose Your Gut, Stop Waking Up Exhausted & Reverse Years of Health Decline (In Just 2 Days Per Week)
             </h1>
@@ -172,7 +163,7 @@ export default function Home() {
           <div className="text-center">
             <a
               href="/application"
-              className="font-bold !text-white transition-none duration-0 focus:outline-none bg-[#940909] hover:bg-[#7b0707] py-3 px-12 text-lg rounded-md inline-block"
+              className="font-bold !text-white transition-none duration-0 focus:outline-none bg-[#940909] hover:bg-[#7b0707] py-3 px-12 text-lg rounded-md inline-block relative z-30"
             >
               JOIN NOW
             </a>

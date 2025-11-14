@@ -56,7 +56,7 @@
   body {
     @apply bg-white text-black;
     border-color: hsl(var(--border));
-    font-family: "Inter", sans-serif;
+    font-family: "Neuemontreal", "Roboto", sans-serif;
     margin: 0;
     padding: 0;
     overflow-x: hidden;
@@ -76,9 +76,10 @@
   }
 
   h1, h2, h3 {
-    font-family: "Inter", sans-serif;
+    font-family: "Neuemontreal", "Roboto", sans-serif;
     letter-spacing: -0.025em;
     line-height: 1.4 !important;
+    color: #1c1934;
   }
 
   /* Remove default margins that might cause gaps */
@@ -119,6 +120,7 @@
 
 /* Custom styles */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
 
 :root {
   --accent-red: #940909;
@@ -324,11 +326,13 @@
   }
 }
 
-/* ========= ??DESKTOP?? []] MAIN BODY TEXT ========= */
-@media (min-width: 768px) {
+/* ========= DESKTOP []] MAIN BODY TEXT ========= */
+@media (min-width: 268px) {
   .body-copy p {
-    font-size: 1.625rem;
+    font-size: 1.4rem;
     line-height: 1.6;
+    font-weight:400;
+    font-family: "Neuemontreal", sans-serif !important;
   }
 }
 
@@ -339,30 +343,40 @@ Mini headings - cognitive dissonance and attention capture */
     font-size: 1.4rem !important;
     line-height: 1.3 !important;
     font-weight: 700 !important;
-    color: inherit !important;
+    font-family: "Neuemontreal", "Roboto", sans-serif !important;
+    color: #1c1934 !important;
   }
+
+  /* =======[IGNORE]========
+Mini headings - cognitive dissonance and attention capture */
   .body-copy .mini-heading {
     font-size: 1.4rem !important;
     line-height: 1.3 !important;
     font-weight: 700 !important;
-    color: inherit !important;
+    font-family: "Neuemontreal", "Roboto", sans-serif !important;
+    color: #1c1934 !important;
   }
 }
 
+/* =======[IGNORE]========
+Mini headings - cognitive dissonance and attention capture */
 @media (min-width: 0px) {
   .mini-heading {
     font-size: 1.2rem !important;
     line-height: 1.3 !important;
     font-weight: 700 !important;
-    color: inherit !important;
+    color: #1c1934 !important;
   }
+
+
   /* =====MAIN=======
-   Mini headings - in body/copy text */
+   MAIN MINI HEADINGS - in body/copy text */
   .body-copy .mini-heading {
-    font-size: 1.8rem !important;
+    font-size: 2.2rem !important;
     line-height: 1.3 !important;
-    font-weight: 700 !important;
-    color: inherit !important;
+    font-weight:2000 !important;
+    text-align: center;
+    color:#1c1934 !important;
   }
 
   /* =====MAIN=======
@@ -395,4 +409,17 @@ Mini headings - cognitive dissonance and attention capture */
   opacity: 0.9; /* subtle opacity */
   padding-top: 0px;
   padding-bottom: 20px;
+}
+
+/* Custom text size utilities */
+.text-4-5xl {
+  font-size: 2.0625rem; /* Halfway between text-3xl (1.875rem) and text-4xl (2.25rem) */
+  line-height: 1.2;
+}
+
+@media (max-width: 640px) {
+  .text-4-5xl {
+    font-size: 1.875rem; /* Adjusted for mobile - between text-3xl and text-4xl mobile sizes */
+    line-height: 1.2;
+  }
 }

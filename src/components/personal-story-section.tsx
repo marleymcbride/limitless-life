@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function PersonalStorySection() {
   return (
-    <section className={`w-full ${bgClasses.white} pt-20 text-black relative`}>
+    <section className={`w-full ${bgClasses.white} pt-10 text-black relative`}>
       {/* Simple, premium white background */}
       <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-white to-gray-50"></div>
 
@@ -11,17 +11,17 @@ export default function PersonalStorySection() {
         <div className="max-w-4xl mx-auto">
           {/* THE ACTUAL STORY - Natural flow, casual tone */}
           <div className="prose prose-lg max-w-none mobile-text-large body-copy">
-            <div className="text-center mb-12">
+            <div className="text-center mb-6">
               <h2
-                className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 leading-tight"
-                style={{ fontFamily: "Neuemontreal, Arial, sans-serif" }}
+                className="text-4xl md:text-5xl font-bold mb-4 text-gray-900 leading-tight"
+                style={{ fontFamily: "Neuemontreal, sans-serif" }}
               >
                 Three Years Ago I Was Blackout Drunk On A Mud-Stained Mattress
               </h2>
             </div>
 
             <p className="text-gray-800 leading-relaxed mb-6">
-              Do you ever feel like your physique and energy are declining, year after year.. no matter what you do?
+              Do you ever feel like your body and energy keeps on declining, year after year.. no matter what you do?
             </p>
 
             <p className="text-gray-800 leading-relaxed mb-6">
@@ -41,11 +41,11 @@ export default function PersonalStorySection() {
             </p>
 
             <p className="text-gray-800 leading-relaxed mb-6">
-              But the truth was.
+              
             </p>
 
             <p className="mini-heading text-gray-800 leading-relaxed mb-6">
-              My life was hell.
+            But in reality my life was hell
             </p>
 
             <p className="text-gray-800 leading-relaxed">
@@ -84,21 +84,12 @@ export default function PersonalStorySection() {
               But it dawned on me there was ONE thing causing all of this...
             </p> 
 
-            <p className="text-gray-800 text-center mid-heading leading-relaxed mt-6 mb-6">
-              I needed more energy
+            <p className="text-gray-800 text-center mini-heading leading-relaxed mt-6 mb-6">
+              I woke up every morning feeling like shit
             </p>
 
-            <div className="text-center">
-            <a
-              href="/application"
-              className="font-bold !text-white transition-none duration-0 focus:outline-none bg-[#940909] hover:bg-[#7b0707] py-3 px-12 mb-6 text-lg rounded-md inline-block"
-            >
-              I want this too
-            </a>
-            </div>
-
             <p className="text-gray-800 leading-relaxed mb-6">
-              Every morning waking up feeling like shit.
+              Before even getting out of bed I was dreading the day.
             </p>
 
             <p className="text-gray-800 leading-relaxed mb-6">
@@ -154,13 +145,7 @@ export default function PersonalStorySection() {
               I woke up next day to my wallet missing, 15 missed calls and a full day&apos;s missed clients.
             </p>
 
-            <p className="text-gray-800 leading-relaxed mb-6">
-            And looked at myself. Puffy, inflamed face, a gut that wouldn&apos;t budge, completely reliant on caffeine and alcohol.
-            </p>
-
-            <p className="text-gray-800 leading-relaxed mb-0">
-            Rock bottom.
-
+            <p>
             {/* Image space - mattress covered in mud */}
             <div className="my-8 flex justify-center">
               <div className="relative w-full max-w-lg h-auto">
@@ -175,9 +160,20 @@ export default function PersonalStorySection() {
                 />
               </div>
             </div>
-
-
             </p>
+
+            <p className="text-gray-800 leading-relaxed mb-6">
+            I looked at myself. Puffy, inflamed face, a gut that wouldn&apos;t budge, completely reliant on caffeine and alcohol.
+            </p>
+
+            <p className="text-gray-800 leading-relaxed mb-6">
+            Rock bottom.
+            </p>
+
+            <p className="text-gray-800 leading-relaxed mb-4">
+            So I scrapped everything the &apos;fitness influencers&apos; said to do and switched my entire approach.
+            </p>
+
           </div>
         </div>
       </div>
