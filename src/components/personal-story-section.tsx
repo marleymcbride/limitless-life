@@ -85,7 +85,7 @@ export default function PersonalStorySection() {
             </p> 
 
             <p className="text-gray-800 text-center mini-heading leading-relaxed mt-6 mb-6">
-              I woke up every morning feeling like shit
+              I woke up every morning with no energy
             </p>
 
             <p className="text-gray-800 leading-relaxed mb-6">
@@ -93,15 +93,15 @@ export default function PersonalStorySection() {
             </p>
 
             <p className="text-gray-800 leading-relaxed mb-6">
-            This caused me to suffer in my work, my relationships (and just every area of my life..)
+            This caused me to suffer in my work, my relationships, and just about every area of my life.
             </p>
 
             <p className="text-gray-800 font-bold leading-relaxed mb-6">
-              So I doubled down on the quick fixes.
+              So.. I doubled down on the quick fixes.
             </p>
 
             <p className="text-gray-800 leading-relaxed mb-6">
-              I went from three coffees, to four, five, then energy drinks....
+              I went from three coffees, to four, to five, then energy drinks....
             </p>
 
             <p className="text-gray-800 leading-relaxed mb-6">
@@ -113,15 +113,15 @@ export default function PersonalStorySection() {
             </p>  
 
             <p className="text-gray-800 leading-relaxed mb-6">
-              But I was already doing what every coach online said to do..
+              But without knowing where else to turn, and already doing what every coach online said to do..
             </p>
 
-            <p className="text-gray-800 leading-relaxed mb-6">
+            <p className="text-gray-800 formatted-quote leading-relaxed mb-6">
               Train 4-5 times per week, restrict your eating, &apos;be disciplined&apos; and use willpower.
             </p>
 
             <p className="text-gray-800 font-bold leading-relaxed mb-6">
-            But I found out the hard way <span className="underline">the typical methods online simply do not work.</span>
+            But I found out the hard way the typical methods <span className="underline font-bold">do not work.</span>
             </p>
 
             <p className="text-gray-800 italic leading-relaxed mb-6">
@@ -130,19 +130,23 @@ export default function PersonalStorySection() {
 
 
             <p className="text-gray-800 leading-relaxed mb-6">
-            This went on for months.
+            This went on for months, feeling stressed and anxious, unhappy and reaching for alcohol every night...
             </p>
 
             <p className="text-gray-800 mini-heading font-bold leading-relaxed mb-6">
-            Then Halloween came.
+            Then Halloween came
             </p>
 
             <p className="text-gray-800 leading-relaxed mb-6">
-            October 2021.. it was a work party and  I got BLACKOUT drunk.
+            October 2021.. it was a work party and I got BLACKOUT drunk...
             </p>
 
             <p className="text-gray-800 leading-relaxed mb-6">
-              I woke up next day to my wallet missing, 15 missed calls and a full day&apos;s missed clients.
+            I woke up next day to my wallet missing, 15 missed calls and a full day&apos;s missed clients.
+            </p>
+
+            <p className="text-gray-800 leading-relaxed mb-6">
+            Mud covering my clothes and mattress on the floor in my box room.
             </p>
 
             <p>
@@ -150,7 +154,7 @@ export default function PersonalStorySection() {
             <div className="my-8 flex justify-center">
               <div className="relative w-full max-w-lg h-auto">
                 <Image
-                  src="/images/Me + bedroom.webp"
+                  src="/images/Me + jeans + bedroom.webp"
                   alt="Mud-stained mattress in bedroom"
                   width={512}
                   height={384}
@@ -163,15 +167,15 @@ export default function PersonalStorySection() {
             </p>
 
             <p className="text-gray-800 leading-relaxed mb-6">
-            I looked at myself. Puffy, inflamed face, a gut that wouldn&apos;t budge, completely reliant on caffeine and alcohol.
+            I looked at myself. Puffy face, a gut hanging over and dependant on caffeine and alcohol.
             </p>
 
             <p className="text-gray-800 leading-relaxed mb-6">
             Rock bottom.
             </p>
 
-            <p className="text-gray-800 leading-relaxed mb-4">
-            So I scrapped everything the &apos;fitness influencers&apos; said to do and switched my entire approach.
+            <p className="text-gray-800 leading-relaxed mb-0">
+            So I scrapped everything the &apos;fitness influencers&apos; said to do and used a new approach.
             </p>
 
           </div>

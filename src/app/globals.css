@@ -334,6 +334,26 @@
     font-weight:400;
     font-family: "Neuemontreal", sans-serif !important;
   }
+
+  /* Fix for prose styling within body-copy to preserve font-weight */
+  .prose .body-copy strong,
+  .prose .body-copy b,
+  .body-copy strong,
+  .body-copy b,
+  .body-copy p strong,
+  .body-copy p b {
+    font-weight: 700 !important;
+  }
+
+  /* Ensure prose headings within body-copy have proper weight */
+  .prose .body-copy h1,
+  .prose .body-copy h2,
+  .prose .body-copy h3,
+  .body-copy h1,
+  .body-copy h2,
+  .body-copy h3 {
+    font-weight: 700 !important;
+  }
 }
 
 /* =======[IGNORE]========
@@ -376,7 +396,7 @@ Mini headings - cognitive dissonance and attention capture */
     line-height: 1.3 !important;
     font-weight:2000 !important;
     text-align: center;
-    color:#1c1934 !important;
+    color:#1b2b47 !important;
   }
 
   /* =====MAIN=======
@@ -396,10 +416,19 @@ Mini headings - cognitive dissonance and attention capture */
 }
 
 /* Formatted quote styling - for | format with left border */
+.prose.prose .formatted-quote p,
+.prose .formatted-quote p,
+.prose .formatted-quote,
 .formatted-quote p {
-  border-left: 4px solid #374151;
-  padding-left: 16px;
-  font-style: italic;
+  border-left: 4px solid #374151 !important;
+  padding-left: 16px !important;
+  font-style: italic !important;
+  margin: 0 0 1.5rem 0 !important; /* Override prose margin, add bottom spacing */
+  color: #1f2937 !important; /* Override text-gray-800 with slightly darker color */
+  background: transparent !important; /* Ensure no background color */
+  padding-top: 0 !important;
+  padding-right: 0 !important;
+  padding-bottom: 0 !important;
 }
 
 /* In-line quote styling - for subtle emphasis within story flow */
@@ -412,13 +441,13 @@ Mini headings - cognitive dissonance and attention capture */
 }
 
 /* Custom text size utilities */
-.text-4-5xl {
+.text-4\.5xl {
   font-size: 2.0625rem; /* Halfway between text-3xl (1.875rem) and text-4xl (2.25rem) */
   line-height: 1.2;
 }
 
 @media (max-width: 640px) {
-  .text-4-5xl {
+  .text-4\.5xl {
     font-size: 1.875rem; /* Adjusted for mobile - between text-3xl and text-4xl mobile sizes */
     line-height: 1.2;
   }

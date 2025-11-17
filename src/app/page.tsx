@@ -18,6 +18,7 @@ import UrgencyFinalCTA from "../components/urgency-final-cta";
 import WallClientTestimonials from "../components/wall-client-testimonials";
 import FooterSection from "../components/footer-section";
 import StickyCTA from "../components/sticky-cta";
+import DelayedCTA from "../components/delayed-cta";
 import { vignetteEffect, unifiedGradientWithSpotlightDesktop, unifiedGradientWithSpotlightMobile } from "../lib/utils";
 import Image from "next/image";
 
@@ -161,12 +162,12 @@ export default function Home() {
 
           {/* CTA Button - positioned directly below VSL in dark section */}
           <div className="text-center">
-            <a
-              href="/application"
+            <DelayedCTA
+              delay={300000} // 5 minutes
               className="font-bold !text-white transition-none duration-0 focus:outline-none bg-[#940909] hover:bg-[#7b0707] py-3 px-12 text-lg rounded-md inline-block relative z-30"
             >
               JOIN NOW
-            </a>
+            </DelayedCTA>
           </div>
 
           {/* Spacer div to maintain testimonial positioning */}
