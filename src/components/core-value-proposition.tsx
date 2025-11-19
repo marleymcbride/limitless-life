@@ -4,7 +4,7 @@ import { bgClasses } from "@/lib/utils";
 
 export default function CoreValueProposition() {
   return (
-    <section className={`w-full ${bgClasses.white} pt-10 text-black relative`}>
+    <section className={`w-full ${bgClasses.white} pt-10 pb-6 text-black relative`}>
       {/* Simple, premium white background */}
       <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-white to-gray-50"></div>
 
@@ -33,15 +33,15 @@ export default function CoreValueProposition() {
               And it became clear there are four common problems guys make over and over.. but once we fixed these the results started coming almost overnight:
             </p>
 
-            <p className="text-gray-800 leading-relaxed mb-6">
+            <p className="text-gray-800 leading-relaxed mb-4">
               <strong>1. Cutting calories, skipping meals, and restricting your food intake.</strong>
             </p>
 
-            <p className="text-gray-800 leading-relaxed mb-6">
+            <p className="text-gray-800 leading-relaxed mb-4">
               <strong>2. Training 4, 5, 6 days a week and pushing yourself harder in the gym.</strong>
             </p>
 
-            <p className="text-gray-800 leading-relaxed mb-6">
+            <p className="text-gray-800 leading-relaxed mb-4">
               <strong>3. Using discipline and willpower to control your drinking and lifestyle habits.</strong>
             </p>
 

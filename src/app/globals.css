@@ -452,3 +452,12 @@ Mini headings - cognitive dissonance and attention capture */
     line-height: 1.2;
   }
 }
+
+/* Force white color for headings on dark backgrounds - highest specificity */
+.heading-white-force {
+  color: #ffffff !important;
+}
+
+section.bg-zinc-800 h3.heading-white-force {
+  color: #ffffff !important;
+}

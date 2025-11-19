@@ -1,8 +1,8 @@
 export default function TestimonialSection() {
   return (
-    <section className="w-full text-black bg-white">
+    <section className="w-full text-white bg-zinc-800">
       <div className="container px-4 py-12 mx-auto max-w-5xl">
-        <h2 className="mb-10 text-3xl font-bold text-center">
+        <h2 className="mb-10 text-3xl font-bold text-center text-white">
           What Guys Like You Are Saying
         </h2>
 

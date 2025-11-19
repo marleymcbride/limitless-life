@@ -22,10 +22,10 @@ export default function WaitlistPage() {
 
           {/* Main Headline - Full Width */}
           <div className="mb-0 text-center">
-            <h1 className="mt-8 mb-1 text-3xl font-black lg:text-5xl">
+            <h1 className="mt-8 mb-1 text-3xl font-black lg:text-5xl heading-white-force">
               Build Your Elite Body and Natural Energy After 30
             </h1>
-            <h2 className="mb-6 text-3xl font-black leading-tight lg:text-4xl">
+            <h2 className="mb-6 text-3xl font-black leading-tight lg:text-4xl heading-white-force">
               <span className="text-red-500">
                 (without caffeine, alcohol or BS supplements)
               </span>
@@ -120,7 +120,7 @@ export default function WaitlistPage() {
       <section className="py-20 bg-zinc-800">
         <div className="container px-4 mx-auto max-w-6xl">
           <div className="mb-16 text-center">
-            <h3 className="mb-6 text-3xl font-bold">Real Transformations</h3>
+            <h3 className="mb-6 text-3xl font-bold text-white heading-white-force">Real Transformations</h3>
           </div>
           <SimpleTestimonials />
         </div>

@@ -2,7 +2,7 @@
 
 export default function ImagineThis() {
   return (
-    <section className="bg-black pt-20 pb-0 px-4 w-full">
+    <section className="bg-black pt-24 pb-2 px-4 w-full">
       <div className="container mx-auto max-w-6xl relative z-10">
         <div className="text-center">
           {/* White round rectangle box with shadow */}
@@ -37,7 +37,7 @@ export default function ImagineThis() {
                     </svg>
                   </div>
                   <p className="text-black leading-relaxed">
-                    Gives you consistent energy from morning to night
+                  Has you feeling energized and excited as soon as you wake
                   </p>
                 </div>
 
@@ -56,7 +56,7 @@ export default function ImagineThis() {
                     </svg>
                   </div>
                   <p className="text-black leading-relaxed">
-                    Builds a lean body training just twice a week
+                  Builds a lean body without living in the gym
                   </p>
                 </div>
 
