@@ -16,23 +16,7 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
-  async redirects() {
-    return [
-      // Redirect all limitless-life.co* domains to waitlist (except if already on waitlist)
-      {
-        source: '/((?!waitlist).*)',
-        has: [
-          {
-            type: 'host',
-            value: '(.*\\.)?limitless-life\\.co',
-          },
-        ],
-        destination: '/waitlist',
-        permanent: false,
-      },
-    ];
-  },
-  async headers() {
+    async headers() {
     return [
       {
         source: '/:path*',
