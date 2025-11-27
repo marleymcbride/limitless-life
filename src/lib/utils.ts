@@ -180,6 +180,15 @@ export const vignetteEffect = React.createElement("div", {
   },
 });
 
+export const blackFridayVignetteEffect = React.createElement("div", {
+  className: "absolute inset-0 pointer-events-none",
+  style: {
+    background:
+      "radial-gradient(ellipse at 85% 50%, transparent 0%, rgba(148, 9, 9, 0) 40%, transparent 100%)",
+    mixBlendMode: "normal",
+  },
+});
+
 // Masculine pattern overlay for visual interest
 export const masculinePattern = React.createElement("div", {
   className: "absolute inset-0 opacity-10",

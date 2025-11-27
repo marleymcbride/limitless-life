@@ -606,3 +606,10 @@ section.bg-zinc-800 h3.heading-white-force {
     color: #ffffff !important;
   }
 }
+
+.BFO-dark-mode-copy .BFO-mini-heading {
+font-family: "Neuemontreal", "Roboto", sans-serif;
+letter-spacing: -0.025em;
+line-height: 1.4 !important;
+color: #ffffff;
+}
