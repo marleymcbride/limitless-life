@@ -13,7 +13,7 @@ export default function BlackFridayOffer() {
       <div className="hero-grain-overlay"></div>
       {blackFridayVignetteEffect}
 
-      <div className="container mx-auto px-4 py-8 max-w-2xl">
+      <div className="container pl-9 pr-4 py-8 sm:px-6 max-w-2xl">
 
         {/* Header */}
         <div className="text-center mb-8 mt-6">
@@ -23,42 +23,42 @@ export default function BlackFridayOffer() {
         </div>
 
         {/* Main Content - Clean Google Doc Style */}
-        <div className="text-lg md:text-xl space-y-6 mb-12">
+        <div className="text-base md:text-lg space-y-6 mb-12">
 
           <p>
             Let's just get this in the open.
           </p>
 
-          <p className="text-gray-100 mb-8">
+          <p className="text-gray-100 mb-8 black-friday-body-text">
             You make good money, got the career, maybe even the family... and on the surface everything's rosy.
           </p>
 
-          <p className="text-gray-100 mb-4">
+          <p className="text-gray-100 mb-4 black-friday-body-text">
             And look, you probably thought once you got here you'd feel like yourself.
           </p>
 
 
-          <p className="text-gray-100 mb-4">
+          <p className="text-gray-100 mb-4 black-friday-body-text">
           Alive, energized, like yourself again.
           </p>
 
-          <p className="text-gray-100 mb-4">
+          <p className="text-gray-100 mb-4 black-friday-body-text">
             But for some reason… you don't.
           </p>
 
-          <p className="text-gray-100 mb-4">
+          <p className="text-gray-100 mb-4 black-friday-body-text">
             Maybe you don't have that feeling inside you thought you would after ticking off the money and success box.
           </p>
 
-          <p className="text-gray-100 mb-4">
+          <p className="text-gray-100 mb-4 black-friday-body-text">
             Maybe you wake up exhausted most days, and need coffee just to think straight.
           </p>
 
-          <p className="text-gray-100 mb-4">
+          <p className="text-gray-100 mb-4 black-friday-body-text">
             Maybe by 2pm you're completely done, reading the same email three times trying to make sense of it.
           </p>
 
-          <p className="text-gray-100 mb-4">
+          <p className="text-gray-100 mb-4 black-friday-body-text">
             And maybe when you get home you just wanna get a drink and collapse on the couch, and shut off from the world.
           </p>
 
@@ -66,31 +66,31 @@ export default function BlackFridayOffer() {
             The stress of doing what you do.
           </p>
 
-          <p className="text-gray-100 mb-8">
+          <p className="text-gray-100 mb-8 black-friday-body-text">
             You might feel like you can't talk about it... I know that's how I felt.
           </p>
 
-          <p className="text-gray-100 mb-4">
+          <p className="text-gray-100 mb-4 black-friday-body-text">
             So? You just suck it up, put on a brave face and act like everything's kosher.
           </p>
 
-          <p className="text-gray-100 mb-4">
+          <p className="text-gray-100 mb-4 black-friday-body-text">
             But when you look in the mirror.. you barely recognize yourself.
           </p>
 
-          <p className="text-gray-100 mb-4">
+          <p className="text-gray-100 mb-4 black-friday-body-text">
             A gut hanging over your belt, face puffy and tired.
           </p>
 
-          <p className="text-gray-100 mb-4">
+          <p className="text-gray-100 mb-4 black-friday-body-text">
             In your eyes alone. You don't feel close to being in your highest frequency.
           </p>
 
-          <p className="text-gray-100 mb-8">
+          <p className="text-gray-100 mb-8 black-friday-body-text">
             Yet that's what all this hustle and grind was meant to bring.. Right?!
           </p>
 
-          <p className="text-gray-100 mb-4">
+          <p className="text-gray-100 mb-4 black-friday-body-text">
             So what was it all for?
           </p>
 
@@ -98,7 +98,7 @@ export default function BlackFridayOffer() {
           Energy isn't just about health. It's a crucial part of business.
           </p>
 
-          <p className="text-gray-100 mb-8">
+          <p className="text-gray-100 mb-8 black-friday-body-text">
             The person with the most energy in the room wins.
           </p>
 
@@ -106,51 +106,51 @@ export default function BlackFridayOffer() {
             Period.
           </p>
 
-          <p className="text-gray-100 mb-8">
+          <p className="text-gray-100 mb-8 black-friday-body-text">
             Because when it comes down to it, money is just a number.
           </p>
 
-          <p className="text-gray-100 mb-8">
+          <p className="text-gray-100 mb-8 black-friday-body-text">
             Once you have enough, it ain't really doing all that much more for your life.
           </p>
 
-          <p className="text-gray-100 mb-8">
+          <p className="text-gray-100 mb-8 black-friday-body-text">
             But energy is MORE than that.
           </p>
 
-          <p className="text-gray-100 mb-8">
+          <p className="text-gray-100 mb-8 black-friday-body-text">
             It's presence. Aura. Power.
           </p>
 
-          <p className="text-gray-100 mb-8">
+          <p className="text-gray-100 mb-8 black-friday-body-text">
             What you TRULY think of when you think of a 'man'.
           </p>
 
-          <p className="text-gray-100 mb-8">
+          <p className="text-gray-100 mb-8 black-friday-body-text">
             It's what separates guys who lead from the guys who follow.
           </p>
 
-          <p className="text-gray-100 mb-8">
+          <p className="text-gray-100 mb-8 black-friday-body-text">
             ==== Up to here ====
           </p>
 
-          <p className="text-gray-100 mb-8">
+          <p className="text-gray-100 mb-8 black-friday-body-text">
             You're trying to operate at your next level with a body running at 60%.
           </p>
 
-          <p className="text-gray-100 mb-8">
+          <p className="text-gray-100 mb-8 black-friday-body-text">
             The guys beating you right now aren't smarter. They're not working harder.
           </p>
 
-          <p className="text-gray-100 mb-8">
+          <p className="text-gray-100 mb-8 black-friday-body-text">
             Their body works. Yours doesn't.
           </p>
 
-          <p className="text-gray-100 mb-4">
+          <p className="text-gray-100 mb-4 black-friday-body-text">
             Not yet.
           </p>
 
-          <p className="text-gray-100 mb-8">
+          <p className="text-gray-100 mb-8 black-friday-body-text">
             Most guys think they need more discipline. More willpower. Stricter diet. More training.
           </p>
 
@@ -162,35 +162,35 @@ export default function BlackFridayOffer() {
             You can't willpower your way out of broken biology. Can't out-train a body that's not making energy. Can't supplement past hormones in tank.
           </p>
 
-          <p className="text-gray-100 mb-8">
+          <p className="text-gray-100 mb-8 black-friday-body-text">
             And here's what makes it Worse:
           </p>
 
-          <p className="text-gray-100 mb-4">
+          <p className="text-gray-100 mb-4 black-friday-body-text">
             You've probably seen someone who just has it. Not more successful than you. Probably makes similar money. But he's got something—this spark, this presence—that just works. People listen when he talks. He seems to have what you remember having but can't find anymore.
           </p>
 
-          <p className="text-gray-100 mb-4">
+          <p className="text-gray-100 mb-4 black-friday-body-text">
             And you're thinking: what does he have that I don't?
           </p>
 
-          <p className="text-gray-100 mb-4">
+          <p className="text-gray-100 mb-4 black-friday-body-text">
             His body works. Yours doesn't. Not yet.
           </p>
 
-          <p className="text-gray-100 mb-8">
+          <p className="text-gray-100 mb-8 black-friday-body-text">
             Here's What Nobody Tells You: energy isn't just a health thing. It's a business thing.
           </p>
 
-          <p className="text-gray-100 mb-4">
+          <p className="text-gray-100 mb-4 black-friday-body-text">
             The person with the most energy wins. Not the smartest. Not the most prepared. The highest energy.
           </p>
 
-          <p className="text-gray-100 mb-8">
+          <p className="text-gray-100 mb-8 black-friday-body-text">
             You've hit a ceiling you can't see. You're trying to perform at the next level with a body running at 60%. You literally cannot get there operating this way.
           </p>
 
-          <p className="text-gray-100 mb-8">
+          <p className="text-gray-100 mb-8 black-friday-body-text">
             The guys beating you aren't smarter. Their body works and yours doesn't. That's not a small edge. That's everything.
           </p>
 
@@ -198,23 +198,23 @@ export default function BlackFridayOffer() {
             So how did I get here?
           </div>
 
-          <p className="text-gray-100 mb-8">
+          <p className="text-gray-100 mb-8 black-friday-body-text">
             I know cos I tried all of it.
           </p>
 
-          <p className="text-gray-100 mb-8">
+          <p className="text-gray-100 mb-8 black-friday-body-text">
             2021, I was on 800mg caffeine a day. Anxious constantly. Drinking most nights just to turn my brain off. Felt like shit. Got my testosterone tested - 346. About 50% of where it should've been.
           </p>
 
-          <p className="text-gray-100 mb-8">
+          <p className="text-gray-100 mb-8 black-friday-body-text">
             Tried everything. Quit coffee - felt like death. Quit drinking - cracked by Friday. Trained harder - just got injured. Bought all the supplements - nothing.
           </p>
 
-          <p className="text-gray-100 mb-8">
+          <p className="text-gray-100 mb-8 black-friday-body-text">
             Because I was throwing random shit at the wall.
           </p>
 
-          <p className="text-gray-100 mb-8">
+          <p className="text-gray-100 mb-8 black-friday-body-text">
             But I figured out what was actually broken. Few months later, testosterone went 346 to 550. Off alcohol completely - 3 years now. Off caffeine - 18 months. More energy now than I had at 15.
           </p>
 
@@ -222,7 +222,7 @@ export default function BlackFridayOffer() {
             Wasn't willpower. Was fixing the systems.
           </p>
 
-          <p className="text-gray-100 mb-8">
+          <p className="text-gray-100 mb-8 black-friday-body-text">
             Since then I've helped dozens of guys do the same thing.
           </p>
 
@@ -230,7 +230,7 @@ export default function BlackFridayOffer() {
 
           <p>94% stay caffeine-free. 89% stay alcohol-free. Average testosterone increase - 320 points. Average fat loss - 18-24 pounds over 90 days.</p>
 
-          <p className="text-gray-100 mb-8">
+          <p className="text-gray-100 mb-8 black-friday-body-text">
             This is the Limitless Protocol™.
           </p>
 
@@ -239,7 +239,7 @@ export default function BlackFridayOffer() {
             The Limitless Protocol
           </div>
 
-          <p className="text-gray-100 mb-8">
+          <p className="text-gray-100 mb-8 black-friday-body-text">
             This is a four-system blueprint that fixes what's actually broken instead of covering symptoms with more coffee and more willpower.
           </p>
 
@@ -277,7 +277,7 @@ export default function BlackFridayOffer() {
           <div className="space-y-8">
             <div className="mb-6">
               <p className="font-bold text-center mb-14">DECEMBER PREP PHASE (FOUNDING COHORT ONLY)</p>
-              <p className="text-gray-100 mb-4">Weekly calls starting December 9th. We use The Bottleneck Test™ to find your single constraint before January. All protocols set up in December. When January 1st hits, you're ready. Future cohorts won't get this.</p>
+              <p className="text-gray-100 mb-4 black-friday-body-text">Weekly calls starting December 9th. We use The Bottleneck Test™ to find your single constraint before January. All protocols set up in December. When January 1st hits, you're ready. Future cohorts won't get this.</p>
               <p className="text-gray-100">• Fix your sleep architecture</p>
               <p className="text-gray-100">• Reset your caffeine sensitivity</p>
               <p className="text-gray-100">• Establish morning energy systems</p>
@@ -286,19 +286,19 @@ export default function BlackFridayOffer() {
 
             <div className="mb-6">
               <p className="font-bold text-center mb-6">PHASE 1: FOUNDATION (WEEKS 1-4)</p>
-              <p className="text-gray-100 mb-4">Energy stabilizes, 3pm crash disappears. You stop reading the same email three times and nothing going in.</p>
+              <p className="text-gray-100 mb-4 black-friday-body-text">Energy stabilizes, 3pm crash disappears. You stop reading the same email three times and nothing going in.</p>
               <p className="text-gray-100">• Average result: 5-8 pounds down, mornings clear</p>
             </div>
 
             <div className="mb-6">
               <p className="font-bold text-center mb-6">PHASE 2: MOMENTUM (WEEKS 5-8)</p>
-              <p className="text-gray-100 mb-4">Physical changes visible (fat off, muscle building). You stop being embarrassed to take your shirt off.</p>
+              <p className="text-gray-100 mb-4 black-friday-body-text">Physical changes visible (fat off, muscle building). You stop being embarrassed to take your shirt off.</p>
               <p className="text-gray-100">• Average result: 12-15 pounds total, strength up</p>
             </div>
 
             <div className="mb-6">
               <p className="font-bold text-center mb-6">PHASE 3: TRANSFORMATION (WEEKS 9-12)</p>
-              <p className="text-gray-100 mb-4">Alcohol dependency breaks naturally. By the end it's just How you live. You've reached The Natty Sweet Spot™.</p>
+              <p className="text-gray-100 mb-4 black-friday-body-text">Alcohol dependency breaks naturally. By the end it's just How you live. You've reached The Natty Sweet Spot™.</p>
               <p className="text-gray-100">• Average result: 18-24 pounds total, testosterone up 300+ points</p>
             </div>
           </div>
@@ -335,7 +335,7 @@ export default function BlackFridayOffer() {
             Who this is for:
           </div>
 
-          <p className="text-gray-100 mb-8">
+          <p className="text-gray-100 mb-8 black-friday-body-text">
             This isn't for everyone. This is the final test.
           </p>
 
@@ -353,7 +353,7 @@ export default function BlackFridayOffer() {
           <p className="text-gray-100">• You're coachable and ready to follow a proven system</p>
           <p className="text-gray-100">• You're ready to invest in yourself at the level your career demands</p>
 
-          <p className="text-gray-100 mb-8">
+          <p className="text-gray-100 mb-8 black-friday-body-text">
             If you read that first list and felt called out - good. If you read the second list and felt seen - welcome.
           </p>
 
@@ -363,26 +363,26 @@ export default function BlackFridayOffer() {
           </div>
 
           <div className="text-center mb-14 mb-8">
-            <p className="text-gray-100 mb-4">Regular price: <span className="line-through">$3,000</span></p>
+            <p className="text-gray-100 mb-4 black-friday-body-text">Regular price: <span className="line-through">$3,000</span></p>
             <div className="text-4xl md:text-5xl font-bold mb-4">$897</div>
-            <p className="text-gray-100 mb-4">Black Friday Founding Cohort Price</p>
+            <p className="text-gray-100 mb-4 black-friday-body-text">Black Friday Founding Cohort Price</p>
           </div>
 
           <div className="text-center mb-14 mb-8">
-            <p className="text-gray-100 mb-4">Or choose payment plan:</p>
+            <p className="text-gray-100 mb-4 black-friday-body-text">Or choose payment plan:</p>
             <div className="text-2xl font-bold mb-2">$100/week for 10 weeks</div>
             <p className="text-gray-100">No interest. No credit check.</p>
           </div>
 
-          <p className="text-gray-100 mb-8">
+          <p className="text-gray-100 mb-8 black-friday-body-text">
             I'm not going to baby you. This is for men who are ready to bet on themselves.
           </p>
 
-          <p className="text-gray-100 mb-8">
+          <p className="text-gray-100 mb-8 black-friday-body-text">
             Do the work and you'll be off caffeine, off alcohol, visibly leaner and stronger, operating at a level you forgot was possible. If you're not, I'll refund you.
           </p>
 
-          <p className="text-gray-100 mb-8">
+          <p className="text-gray-100 mb-8 black-friday-body-text">
             But you have to actually do it. Skip calls, ignore coaching, don't follow protocols - nothing's guaranteed.
           </p>
 
@@ -401,7 +401,7 @@ export default function BlackFridayOffer() {
           <p className="font-bold mb-4">Don't Join:</p>
           <p className="text-gray-100">90 days from now still watching other guys have it. Still Waking up wrecked. Still needing coffee. Still drinking to cope. Still wondering why you don't feel how you thought you would.</p>
 
-          <p className="text-gray-100 mb-8">
+          <p className="text-gray-100 mb-8 black-friday-body-text">
             The gap gets bigger every day.
           </p>
 
@@ -419,11 +419,11 @@ export default function BlackFridayOffer() {
             </a>
           </div>
 
-            <p className="text-gray-100 mb-4">I will send you a custom video within 24 hours. First call December 9th.</p>
+            <p className="text-gray-100 mb-4 black-friday-body-text">I will send you a custom video within 24 hours. First call December 9th.</p>
 
-            <p className="text-gray-100 mb-4">If you have any questions email me marley@marleymcbride.co</p>
+            <p className="text-gray-100 mb-4 black-friday-body-text">If you have any questions email me marley@marleymcbride.co</p>
 
-            <p className="text-gray-100 mb-8">Offer expires December 2nd, 2024 at 11:59pm EST</p>
+            <p className="text-gray-100 mb-8 black-friday-body-text">Offer expires December 2nd, 2024 at 11:59pm EST</p>
           </div>
 
         </div>

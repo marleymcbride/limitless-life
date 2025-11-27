@@ -9,6 +9,12 @@
     scroll-behavior: smooth;
   }
 
+  /* Black Friday body text class */
+  .black-friday-body-text {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
   :root {
     --background: 0 0% 100%;
     --foreground: 0 0% 3.9%;
