@@ -32,10 +32,12 @@ export default function SystemBenefitsProof() {
               >
                 1. It fixes your body&apos;s natural energy production
               </h3>
-              <p className="text-gray-300 leading-relaxed">
-                Instead of forcing stimulants, we restore your body&apos;s
-                ability to generate its own sustained energy throughout the day.
-              </p>
+              <div className="body-copy">
+                <p className="text-gray-300 leading-relaxed">
+                  Instead of forcing stimulants, we restore your body&apos;s
+                  ability to generate its own sustained energy throughout the day.
+                </p>
+              </div>
             </div>
 
             <div className="text-left">
@@ -45,10 +47,12 @@ export default function SystemBenefitsProof() {
               >
                 2. It&apos;s designed to maximise the time you do have
               </h3>
-              <p className="text-gray-300 leading-relaxed">
-                The system delivers incredible results with just 2-3 focused
-                sessions per week, perfect for busy professionals.
-              </p>
+              <div className="body-copy">
+                <p className="text-gray-300 leading-relaxed">
+                  The system delivers incredible results with just 2-3 focused
+                  sessions per week, perfect for busy professionals.
+                </p>
+              </div>
             </div>
 
             <div className="text-left">
@@ -59,21 +63,22 @@ export default function SystemBenefitsProof() {
                 3. You aren&apos;t expected to use &apos;willpower&apos;,
                 because we fix your body at the root
               </h3>
-              <p className="text-gray-300 leading-relaxed">
-                By addressing the fundamental signaling issues, the results
-                become automatic and permanent without constant struggle.
-              </p>
+              <div className="body-copy">
+                <p className="text-gray-300 leading-relaxed">
+                  By addressing the fundamental signaling issues, the results
+                  become automatic and permanent without constant struggle.
+                </p>
+              </div>
             </div>
           </div>
 
           <div className="text-center">
-            <CTAButton
-              onClick={() => {
-                window.location.href = "/application";
-              }}
+            <a
+              href="/application"
+              className="font-bold !text-white transition-none duration-0 focus:outline-none bg-[#940909] hover:bg-[#7b0707] py-3 px-12 text-lg rounded-md inline-block"
             >
               See If This Is Right For You
-            </CTAButton>
+            </a>
           </div>
         </div>
       </div>

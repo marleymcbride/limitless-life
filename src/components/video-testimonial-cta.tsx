@@ -1,7 +1,6 @@
 "use client";
 
 import SimpleVideoPlayer from "./simple-video-player";
-import { CTAButton } from "./ui/cta-button";
 
 export default function VideoTestimonialCTA() {
   return (
@@ -27,15 +26,16 @@ export default function VideoTestimonialCTA() {
               controls={true}
             />
           </div>
-
-          <CTAButton
-            onClick={() => {
-              window.location.href = "/application";
-            }}
-          >
-            See If This Is Right For You
-          </CTAButton>
         </div>
+
+        <div className="text-center">
+            <a
+              href="/application"
+              className="font-bold !text-white transition-none duration-0 focus:outline-none bg-[#940909] hover:bg-[#7b0707] py-4 px-12 mb-6 text-lg rounded-md inline-block relative z-30"
+            >
+              I want to Become Limitless
+            </a>
+            </div>
       </div>
     </section>
   );

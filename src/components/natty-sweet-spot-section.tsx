@@ -55,7 +55,7 @@ export default function NattySweetSpotSection() {
   ];
 
   return (
-    <section className={`w-full py-20 ${bgClasses.blackRedGradient}`}>
+    <section className={`w-full py-20 px-4 ${bgClasses.blackRedGradient}`}>
       {invertedGradientOverlay}
       {strongRedAccent}
       {vignetteEffect}
@@ -68,7 +68,7 @@ export default function NattySweetSpotSection() {
           <h2 className="text-4xl sm:text-5xl font-black mb-6 text-white">
             The Natty Sweet Spot
           </h2>
-          <p className="text-xl max-w-3xl mx-auto text-white">
+          <p className="text-3xl md:text-xl max-w-3xl mx-auto text-white">
             The ultimate state of male existence - where physique, hormones,
             health, and mindset align perfectly
           </p>
@@ -191,7 +191,7 @@ export default function NattySweetSpotSection() {
           <p className="text-2xl font-bold mb-4 text-white">
             This is what I help high-performing men achieve.
           </p>
-          <p className="text-xl max-w-3xl mx-auto mb-6 text-white">
+          <p className="text-3xl md:text-xl max-w-3xl mx-auto mb-6 text-white">
             Not just quitting alcohol and dropping weight - but reaching this
             state of complete optimization - where everything works together in
             perfect harmony.

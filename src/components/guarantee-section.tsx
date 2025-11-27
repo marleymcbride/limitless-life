@@ -4,7 +4,7 @@ import ApplyNowButton from "./apply-now-button";
 
 export default function GuaranteeSection() {
   return (
-    <section className={`w-full py-20 ${bgClasses.white}`}>
+    <section className={`w-full py-20 px-4 ${bgClasses.white}`}>
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto bg-gray-50 p-8 sm:p-12 rounded-lg border border-gray-200 shadow-xl">
           <div className="flex flex-col md:flex-row items-center mb-8">
@@ -21,12 +21,12 @@ export default function GuaranteeSection() {
             </div>
           </div>
 
-          <p className="text-lg mb-6">
+          <p className="text-2xl md:text-lg mb-6">
             If you don't see significant energy improvements in 30 days, we
             refund every penny. No questions asked. No awkward conversations.
           </p>
 
-          <p className="text-lg mb-6">
+          <p className="text-2xl md:text-lg mb-6">
             We're so confident in the Limitless Protocol's effectiveness that
             we're willing to take on all the risk. You either experience the
             transformation, or you don't pay.

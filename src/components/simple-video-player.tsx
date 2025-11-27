@@ -24,6 +24,11 @@ export default function SimpleVideoPlayer({
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const [isReady, setIsReady] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [timestamp, setTimestamp] = useState<string | null>(null);
+
+  useEffect(() => {
+    setTimestamp(Date.now().toString());
+  }, []);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -76,7 +81,7 @@ export default function SimpleVideoPlayer({
   const thumbnailUrl = `https://vz-8f43891f-169.b-cdn.net/${videoId}/thumbnail.jpg`;
 
   // Simple iframe URL without extra controls
-  const iframeUrl = `https://iframe.mediadelivery.net/embed/${libraryId}/${videoId}?autoplay=${autoplay}&muted=${muted}&preload=${preload}&controls=${controls}&responsive=true&loop=false&t=${Date.now()}`;
+  const iframeUrl = timestamp ? `https://iframe.mediadelivery.net/embed/${libraryId}/${videoId}?autoplay=${autoplay}&muted=${muted}&preload=${preload}&controls=${controls}&responsive=true&loop=false&t=${timestamp}` : `https://iframe.mediadelivery.net/embed/${libraryId}/${videoId}?autoplay=${autoplay}&muted=${muted}&preload=${preload}&controls=${controls}&responsive=true&loop=false`;
 
   return (
     <div className={`simple-video-player relative ${className}`}>

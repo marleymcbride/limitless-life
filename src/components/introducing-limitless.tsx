@@ -1,7 +1,5 @@
 "use client";
 
-import { CTAButton } from "./ui/cta-button";
-
 export default function IntroducingLimitless() {
   return (
     <section className="bg-black py-20 px-4 w-full">
@@ -14,19 +12,12 @@ export default function IntroducingLimitless() {
             Welcome to
           </h2>
           <h2
-            className="text-5xl md:text-6xl font-bold text-white mb-0"
+            className="text-5xl md:text-6xl font-bold text-white mb-6"
             style={{ fontFamily: "Neuemontreal, Arial, sans-serif" }}
           >
             Your Limitless Life
           </h2>
-
-          <h3
-            className="text-3xl md:text-4xl font-bold mb-0"
-            style={{ fontFamily: "Neuemontreal, Arial, sans-serif" }}
-          >
-            The
-          </h3>
-
+          
           <p className="text-xl text-gray-300 mb-16 max-w-4xl mx-auto leading-relaxed">
             What if you could wake up before your alarm feeling energized? Go
             through your day with sustained focus and clarity? Be present with
@@ -106,13 +97,12 @@ export default function IntroducingLimitless() {
             </div>
           </div>
 
-          <CTAButton
-            onClick={() => {
-              window.location.href = "/application";
-            }}
+          <a
+            href="/application"
+            className="font-bold !text-white transition-none duration-0 focus:outline-none bg-[#940909] hover:bg-[#7b0707] py-3 px-12 text-lg rounded-md inline-block relative z-30"
           >
             Apply To The Limitless Protocol
-          </CTAButton>
+          </a>
         </div>
       </div>
     </section>

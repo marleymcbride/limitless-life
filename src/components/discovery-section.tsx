@@ -4,7 +4,7 @@ import MicroTestimonial from "./ui/micro-testimonial";
 
 export default function DiscoverySection() {
   return (
-    <section className={`w-full ${bgClasses.white} py-20`}>
+    <section className={`w-full ${bgClasses.white} py-20 px-4`}>
       <div className="container mx-auto px-4">
         <div className="flex flex-col items-center text-center mb-12">
           <div className="w-20 h-20 rounded-full bg-[#940909] flex items-center justify-center mb-6 shadow-lg">

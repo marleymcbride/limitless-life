@@ -39,12 +39,24 @@
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
+
+    /* Hero section grain controls */
+    --hero-grain-color: #141414;
+    --hero-grain-opacity: 0.10;
+    --hero-grain-blend-mode: hard-light;
+    --hero-grain-z-index: 25;
+
+    /* Other dark sections grain controls */
+    --section-grain-color: #141414;
+    --section-grain-opacity: 0.25;
+    --section-grain-blend-mode: hard-light;
+    --section-grain-z-index: 25;
   }
 
   body {
     @apply bg-white text-black;
     border-color: hsl(var(--border));
-    font-family: "Inter", sans-serif;
+    font-family: "Neuemontreal", "Roboto", sans-serif;
     margin: 0;
     padding: 0;
     overflow-x: hidden;
@@ -64,9 +76,10 @@
   }
 
   h1, h2, h3 {
-    font-family: "Inter", sans-serif;
+    font-family: "Neuemontreal", "Roboto", sans-serif;
     letter-spacing: -0.025em;
     line-height: 1.4 !important;
+    color: #1c1934;
   }
 
   /* Remove default margins that might cause gaps */
@@ -107,6 +120,7 @@
 
 /* Custom styles */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
 
 :root {
   --accent-red: #940909;
@@ -175,6 +189,56 @@
   margin-right: auto;
 }
 
+/* Hero section grain overlay */
+.hero-grain-overlay {
+  position: absolute;
+  inset: 0;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" seed="1"/><feColorMatrix type="saturate" values="0"/></filter><rect width="100" height="100" fill="var(--hero-grain-color)" filter="url(%23noise)" opacity="1.0"/></svg>');
+  opacity: var(--hero-grain-opacity);
+  z-index: var(--hero-grain-z-index);
+  pointer-events: none;
+  mix-blend-mode: var(--hero-grain-blend-mode);
+}
+
+/* Hero darkening overlay - compensates for grain lightening while preserving texture */
+.hero-darkening-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.2);
+  z-index: 26;  /* Above grain (z-index: 25) */
+  pointer-events: none;
+  mix-blend-mode:saturation;  /* Darkens without covering texture */
+}
+
+/* Dark section with grain - apply to any dark background section */
+.dark-section-with-grain {
+  position: relative;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+}
+
+.dark-section-with-grain::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" seed="1"/><feColorMatrix type="saturate" values="0"/></filter><rect width="100" height="100" fill="var(--section-grain-color)" filter="url(%23noise)" opacity="1.0"/></svg>');
+  opacity: var(--section-grain-opacity);
+  z-index: var(--section-grain-z-index);
+  pointer-events: none;
+  mix-blend-mode: var(--section-grain-blend-mode);
+}
+
+/* Wrapper to ensure full width content */
+.full-width-content {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 12px;
@@ -196,23 +260,23 @@
 /* Mobile text size optimization */
 @media (max-width: 640px) {
   h1:not(.mobile-headline) {
+    font-size: 3rem !important;
+    line-height: 1.4 !important;
+  }
+
+  h2:not(.mobile-headline) {
     font-size: 2.5rem !important;
     line-height: 1.4 !important;
   }
 
-  h2 {
-    font-size: 2rem !important;
+  h3:not(.mobile-headline) {
+    font-size: 1.75rem !important;
     line-height: 1.4 !important;
   }
 
-  h3 {
-    font-size: 1.5rem !important;
-    line-height: 1.4 !important;
-  }
-
-  p:not(.mobile-subheadline), li:not(.mobile-subheadline), blockquote:not(.mobile-subheadline) {
-    font-size: 1.125rem !important;
-    line-height: 1.6 !important;
+  p:not(.mobile-subheadline):not(.mobile-bullet-override):not(.mobile-text-large):not(.mobile-eyebrow):not(.body-copy p) {
+    font-size: 1.25rem !important;
+    line-height: 1.5 !important;
   }
 
   .mobile-text-xl {
@@ -223,5 +287,322 @@
   .mobile-text-2xl {
     font-size: 1.5rem !important;
     line-height: 1.4 !important;
+  }
+
+  .mobile-bullet-text {
+    font-size: 2rem !important;
+    line-height: 1.3 !important;
+  }
+
+  .mobile-bullet-override {
+    font-size: 2rem !important;
+    line-height: 1.3 !important;
+  }
+
+  /* MOBILE BULLETS TEXT */
+  .mobile-text-large {
+    font-size: 1.4rem !important;
+    line-height: 1.3 !important;
+  }
+
+/* MOBILE []] TEXT */
+  .mobile-text-medium {
+    font-size: 1.25rem !important;
+    line-height: 1.5 !important;
+  }
+
+  /* MOBILE HERO EYEBROW */
+  p.mobile-eyebrow {
+    font-size: 1.15rem !important;
+    line-height: 1.4 !important;
+  }
+}
+
+/* ========= MOBILE []] MAIN BODY TEXT ========= */
+@media (max-width: 0px) {
+  .body-copy p {
+    font-size: 1.55rem !important;
+    line-height: 1.5;
+  }
+}
+
+/* ========= DESKTOP []] MAIN BODY TEXT ========= */
+@media (min-width: 268px) {
+  .body-copy p {
+    font-size: 1.4rem;
+    line-height: 1.6;
+    font-weight:400;
+    font-family: "Neuemontreal", sans-serif !important;
+  }
+
+  /* Fix for prose styling within body-copy to preserve font-weight */
+  .prose .body-copy strong,
+  .prose .body-copy b,
+  .body-copy strong,
+  .body-copy b,
+  .body-copy p strong,
+  .body-copy p b {
+    font-weight: 700 !important;
+  }
+
+  /* Ensure prose headings within body-copy have proper weight */
+  .prose .body-copy h1,
+  .prose .body-copy h2,
+  .prose .body-copy h3,
+  .body-copy h1,
+  .body-copy h2,
+  .body-copy h3 {
+    font-weight: 700 !important;
+  }
+}
+
+/* =======[IGNORE]========
+Mini headings - cognitive dissonance and attention capture */
+@media (max-width: 640px) {
+  .mini-heading {
+    font-size: 1.4rem !important;
+    line-height: 1.3 !important;
+    font-weight: 700 !important;
+    font-family: "Neuemontreal", "Roboto", sans-serif !important;
+    color: #1c1934 !important;
+  }
+
+  /* =======[IGNORE]========
+Mini headings - cognitive dissonance and attention capture */
+  .body-copy .mini-heading {
+    font-size: 1.4rem !important;
+    line-height: 1.3 !important;
+    font-weight: 700 !important;
+    font-family: "Neuemontreal", "Roboto", sans-serif !important;
+    color: #1c1934 !important;
+  }
+}
+
+/* =======[IGNORE]========
+Mini headings - cognitive dissonance and attention capture */
+@media (min-width: 0px) {
+  .mini-heading {
+    font-size: 1.2rem !important;
+    line-height: 1.3 !important;
+    font-weight: 700 !important;
+    color: #1c1934 !important;
+  }
+
+
+  /* =====MAIN=======
+   MAIN MINI HEADINGS - in body/copy text */
+  .body-copy .mini-heading {
+    font-size: 2.2rem !important;
+    line-height: 1.3 !important;
+    font-weight:2000 !important;
+    text-align: center;
+    color:#1b2b47 !important;
+  }
+
+  /* =====MAIN=======
+   Larget mini headings - in body/copy text */
+   .body-copy .mid-heading {
+    font-size: 3.0rem !important;
+    line-height: 1.3 !important;
+    font-weight: 700 !important;
+    color: inherit !important;
+  }
+}
+
+/* Self quote styling */
+.self-quote p {
+  color: #374151; /* slightly darker than text-gray-800 */
+  font-style: italic;
+}
+
+/* Formatted quote styling - for LIGHT MODE| format with left border */
+.prose.prose .formatted-quote p,
+.prose .formatted-quote p,
+.prose .formatted-quote,
+.formatted-quote p {
+  border-left: 4px solid #374151 !important;
+  padding-left: 16px !important;
+  font-style: italic !important;
+  margin: 0 0 1.5rem 0 !important; /* Override prose margin, add bottom spacing */
+  color: #1f2937 !important; /* Override text-gray-800 with slightly darker color */
+  background: transparent !important; /* Ensure no background color */
+  padding-top: 0 !important;
+  padding-right: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* In-line quote styling - for subtle emphasis within story flow */
+.in-line-quote p {
+  font-style: italic;
+  color: #1f2937; /* much darker, closer to black */
+  opacity: 0.9; /* subtle opacity */
+  padding-top: 0px;
+  padding-bottom: 20px;
+}
+
+/* Custom text size utilities */
+.text-4\.5xl {
+  font-size: 2.0625rem; /* Halfway between text-3xl (1.875rem) and text-4xl (2.25rem) */
+  line-height: 1.2;
+}
+
+@media (max-width: 640px) {
+  .text-4\.5xl {
+    font-size: 1.875rem; /* Adjusted for mobile - between text-3xl and text-4xl mobile sizes */
+    line-height: 1.2;
+  }
+}
+
+/* Force white color for headings on dark backgrounds - highest specificity */
+.heading-white-force {
+  color: #ffffff !important;
+}
+
+section.bg-zinc-800 h3.heading-white-force {
+  color: #ffffff !important;
+}
+
+/* ========== LIGHT MODE COPY (WHITE BACKGROUNDS) ========== */
+/* This section consolidates existing white background patterns */
+
+/* Desktop light mode body text */
+@media (min-width: 268px) {
+  .light-mode-copy .body-copy p {
+    font-size: 1.4rem;
+    line-height: 1.6;
+    font-weight: 400;
+    font-family: "Neuemontreal", sans-serif !important;
+    color: #374151; /* text-gray-700 */
+  }
+
+  .light-mode-copy .mini-heading {
+    font-size: 2.2rem !important;
+    line-height: 1.3 !important;
+    font-weight: 700 !important;
+    text-align: center;
+    color: #1c1934 !important;
+  }
+
+  .light-mode-copy .mid-heading {
+    font-size: 3.0rem !important;
+    line-height: 1.3 !important;
+    font-weight: 700 !important;
+    color: #1c1934 !important;
+  }
+
+  .light-mode-copy .formatted-quote p {
+    border-left: 4px solid #374151 !important;
+    padding-left: 16px !important;
+    font-style: italic !important;
+    margin: 0 0 1.5rem 0 !important;
+    color: #1f2937 !important;
+    background: transparent !important;
+    padding-top: 0 !important;
+    padding-right: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  .light-mode-copy .in-line-quote p {
+    font-style: italic;
+    color: #1f2937;
+    opacity: 0.9;
+    padding-top: 0px;
+    padding-bottom: 20px;
+  }
+}
+
+/* Mobile light mode overrides */
+@media (max-width: 640px) {
+  .light-mode-copy .body-copy p {
+    font-size: 1.55rem !important;
+    line-height: 1.5;
+  }
+
+  .light-mode-copy .mini-heading {
+    font-size: 1.4rem !important;
+    line-height: 1.3 !important;
+    font-weight: 700 !important;
+    font-family: "Neuemontreal", "Roboto", sans-serif !important;
+    color: #1c1934 !important;
+  }
+}
+
+/* ========== DARK MODE COPY (BLACK BACKGROUNDS) ========== */
+
+/* Desktop dark mode body text */
+@media (min-width: 268px) {
+  .dark-mode-copy .body-copy p {
+    font-size: 1.4rem;
+    line-height: 1.6;
+    font-weight: 400;
+    font-family: "Neuemontreal", sans-serif !important;
+    color: #e5e5e5; /* Light gray for dark backgrounds */
+  }
+
+  .dark-mode-copy .mini-heading {
+    font-size: 2.2rem !important;
+    line-height: 1.3 !important;
+    font-weight: 700 !important;
+    text-align: center;
+    color: #ffffff !important;
+  }
+
+  .dark-mode-copy .mid-heading {
+    font-size: 3.0rem !important;
+    line-height: 1.3 !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+  }
+
+  .dark-mode-copy .formatted-quote p {
+    border-left: 4px solid #940909 !important;
+    padding-left: 16px !important;
+    font-style: italic !important;
+    margin: 0 0 1.5rem 0 !important;
+    color: #e5e5e5 !important;
+    background: transparent !important;
+    padding-top: 0 !important;
+    padding-right: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  .dark-mode-copy .in-line-quote p {
+    font-style: italic;
+    color: #d4d4d4;
+    opacity: 0.9;
+    padding-top: 0px;
+    padding-bottom: 20px;
+  }
+}
+
+/* Formatted quote styling - for LIGHT MODE| format with left border */
+.prose.prose .dark-mode-formatted-quote p,
+.prose .dark-mode-formatted-quote p,
+.prose .dark-mode-formatted-quote,
+.dark-mode-formatted-quote p {
+  border-left: 4px solid #ffffff !important;
+  padding-left: 16px !important;
+  font-style: italic !important;
+  margin: 0 0 1.5rem 0 !important; /* Override prose margin, add bottom spacing */
+  color: #c5d1e4 !important; /* Override text-gray-800 with slightly darker color */
+  background: transparent !important; /* Ensure no background color */
+  padding-top: 0 !important;
+  padding-right: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* Mobile dark mode overrides */
+@media (max-width: 640px) {
+  .dark-mode-copy .body-copy p {
+    font-size: 1.55rem !important;
+    line-height: 1.5;
+  }
+
+  .dark-mode-copy .mini-heading {
+    font-size: 1.4rem !important;
+    line-height: 1.3 !important;
+    font-weight: 700 !important;
+    font-family: "Neuemontreal", "Roboto", sans-serif !important;
+    color: #ffffff !important;
   }
 }

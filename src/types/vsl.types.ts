@@ -1,3 +1,11 @@
+export type VideoQuality = 'auto' | '1080p' | '720p' | '480p';
+
+export interface VideoQualityOption {
+  label: string;
+  value: VideoQuality;
+  description: string;
+}
+
 export interface VSLPlayerProps {
   libraryId: string;
   videoId: string;
@@ -7,10 +15,13 @@ export interface VSLPlayerProps {
   onPause?: (currentTime: number) => void;
   onProgress?: (progress: VSLProgress) => void;
   onComplete?: () => void;
+  onQualityChange?: (quality: VideoQuality) => void;
   autoplay?: boolean;
   muted?: boolean;
   controls?: boolean;
   preload?: boolean;
+  showQualitySelector?: boolean;
+  availableQualities?: VideoQuality[];
 }
 
 export interface VSLProgress {

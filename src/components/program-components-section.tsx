@@ -9,7 +9,7 @@ import MicroTestimonial from "./ui/micro-testimonial";
 
 export default function ProgramComponentsSection() {
   return (
-    <section className="w-full py-20 bg-white relative overflow-hidden">
+    <section className="w-full py-20 px-4 bg-white relative overflow-hidden">
       <div className="absolute bottom-0 left-0 w-full h-[20vh] bg-gradient-to-t from-[#940909]/5 to-transparent"></div>
 
       <div className="container mx-auto px-4 relative z-10">
@@ -30,7 +30,7 @@ export default function ProgramComponentsSection() {
         </div>
 
         <div className="mx-auto grid gap-8 md:grid-cols-3 max-w-6xl">
-          <div className="rounded-lg bg-gray-50 p-6 border-l-4 border-[#940909] shadow-md transform transition 
+          <div className="rounded-lg bg-gray-50 p-6 border-l-4 border-[#940909] shadow-md transform transition hover:scale-105">
             <div className="flex items-center mb-6">
               <div className="p-3 rounded-full bg-[#940909] flex items-center justify-center mr-4">
                 <Sunrise className="w-5 h-5 text-white" />
@@ -72,7 +72,7 @@ export default function ProgramComponentsSection() {
             </ul>
           </div>
 
-          <div className="rounded-lg bg-gray-50 p-6 border-l-4 border-[#940909] shadow-md transform transition 
+          <div className="rounded-lg bg-gray-50 p-6 border-l-4 border-[#940909] shadow-md transform transition hover:scale-105">
             <div className="flex items-center mb-6">
               <div className="p-3 rounded-full bg-[#940909] flex items-center justify-center mr-4">
                 <Dumbbell className="w-5 h-5 text-white" />
@@ -114,7 +114,7 @@ export default function ProgramComponentsSection() {
             </ul>
           </div>
 
-          <div className="rounded-lg bg-gray-50 p-6 border-l-4 border-[#940909] shadow-md transform transition 
+          <div className="rounded-lg bg-gray-50 p-6 border-l-4 border-[#940909] shadow-md transform transition hover:scale-105">
             <div className="flex items-center mb-6">
               <div className="p-3 rounded-full bg-[#940909] flex items-center justify-center mr-4">
                 <Coffee className="w-5 h-5 text-white" />

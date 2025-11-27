@@ -3,7 +3,7 @@ import { Check, X } from "lucide-react";
 
 export default function ImmediateProofPainSection() {
   return (
-    <section className="w-full py-20 bg-white">
+    <section className="w-full py-20 px-4 bg-white">
       <div className="container mx-auto px-4">
         {/* RAW MARLEY PROOF - No Corporate BS */}
         <div className="text-center mb-16">
@@ -29,7 +29,7 @@ export default function ImmediateProofPainSection() {
                     </p>
                   </div>
                 </div>
-                <blockquote className="text-lg text-gray-800 italic mb-4">
+                <blockquote className="text-2xl md:text-lg text-gray-800 italic mb-4">
                   "Mate, I was fucked. Drinking a bottle of wine every night,
                   looked like absolute shit, my £200k job was about to
                   disappear, girlfriend left me, couldn't get it up anymore. I

@@ -4,7 +4,7 @@ import MicroTestimonial from "./ui/micro-testimonial";
 
 export default function SolutionSection() {
   return (
-    <section className="w-full py-20 text-white bg-zinc-900 relative overflow-hidden">
+    <section className="w-full py-20 px-4 text-white bg-zinc-900 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-zinc-800 via-[#541212] to-zinc-900 opacity-90"></div>
       <div className="absolute bottom-0 left-0 w-full h-[50vh] bg-gradient-to-t from-[#400909]/50 via-[#400909]/30 to-transparent"></div>
       {masculinePattern}

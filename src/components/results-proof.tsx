@@ -15,7 +15,7 @@ export default function ResultsProof() {
           </h2>
 
           <div className="mb-12">
-            <div className="text-3xl md:text-4xl font-black text-gray-900 mb-4">
+            <div className="text-3xl md:text-4xl font-black text-gray-900 mb-4" style={{ fontFamily: "Neuemontreal, Arial, sans-serif" }}>
               Real results from men who were exactly where you are right now:
             </div>
           </div>
@@ -156,14 +156,12 @@ export default function ResultsProof() {
               </div>
             </div>
           </div>
-          <CTAButton
-            className="mt-16"
-            onClick={() => {
-              window.location.href = "/application";
-            }}
+          <a
+            href="/application"
+            className="font-bold !text-white transition-none duration-0 focus:outline-none bg-[#940909] hover:bg-[#7b0707] py-3 px-12 text-lg rounded-md inline-block mt-12 relative z-30"
           >
             See If This Is Right For You
-          </CTAButton>
+          </a>
         </div>
       </div>
     </section>

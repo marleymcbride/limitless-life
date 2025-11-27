@@ -44,39 +44,22 @@ export default function LimitlessEmailSignup() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    console.log("📧 LIMITLESS WAITLIST - Form submission started:", { email });
-
     // Validate email
     if (!validateEmail(email)) {
-      console.log("❌ LIMITLESS WAITLIST - Email validation failed:", email);
       return;
     }
-
-    console.log("✅ LIMITLESS WAITLIST - Email validation passed");
     setIsSubmitting(true);
     setSubmitResult(null);
 
     try {
-      console.log("🔄 LIMITLESS WAITLIST - Importing N8N webhook client...");
       // Submit to N8N webhook with dual-endpoint fallback
       const { submitToN8nWebhook } = await import("../lib/n8n-webhook-client");
-      console.log(
-        "✅ LIMITLESS WAITLIST - N8N webhook client imported successfully"
-      );
-
-      console.log("🚀 LIMITLESS WAITLIST - Calling submitToN8nWebhook with:", {
-        email,
-        firstName: "",
-        source: "limitless-waitlist",
-      });
 
       await submitToN8nWebhook(
         email,
         "", // firstName - empty for this form
         "limitless-waitlist" // source tracking
       );
-
-      console.log("🎉 LIMITLESS WAITLIST - N8N webhook submission successful!");
 
       // Success - show success message
       setSubmitResult({
@@ -88,29 +71,17 @@ export default function LimitlessEmailSignup() {
       // Reset form
       setEmail("");
     } catch (error) {
-      console.error(
-        "❌ LIMITLESS WAITLIST - N8N webhook submission failed:",
-        error
-      );
-
       // Handle N8N webhook errors with professional messages
       const errorMessage =
         error instanceof Error
           ? error.message
           : "An error occurred. Please try again later.";
-      console.log(
-        "📧 LIMITLESS WAITLIST - Showing error message to user:",
-        errorMessage
-      );
 
       setSubmitResult({
         success: false,
         message: errorMessage,
       });
     } finally {
-      console.log(
-        "🏁 LIMITLESS WAITLIST - Form submission completed, resetting loading state"
-      );
       setIsSubmitting(false);
     }
   };

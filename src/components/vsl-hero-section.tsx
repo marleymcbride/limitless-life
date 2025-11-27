@@ -37,7 +37,7 @@ export default function VSLHeroSection({
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-4 sm:mb-6" style={{ lineHeight: "1.4" }}>
             Stop Waking Up
             <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-600">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-600 mobile-eyebrow">
               Feeling Like Shit
             </span>
           </h1>
@@ -77,7 +77,7 @@ export default function VSLHeroSection({
         )}
 
         {showCTA && (
-          <div className="text-center 
+          <div className="text-center space-y-4">
             {hasCompleted ? (
               <div className="space-y-4">
                 <p className="text-lg sm:text-xl text-white font-semibold">
@@ -89,7 +89,7 @@ export default function VSLHeroSection({
                       .getElementById("pricing")
                       ?.scrollIntoView({ behavior: "smooth" });
                   }}
-                  className="inline-block px-8 sm:px-12 py-4 sm:py-5 bg-gradient-to-r from-orange-500 to-red-600 text-white text-lg sm:text-xl font-bold rounded-lg hover:from-orange-600 hover:to-red-700 transition-none duration-0 shadow-xl hover:shadow-2xl transform 
+                  className="inline-block px-8 sm:px-12 py-4 sm:py-5 bg-gradient-to-r from-orange-500 to-red-600 text-white text-lg sm:text-xl font-bold rounded-lg hover:from-orange-600 hover:to-red-700 transition-none duration-0 shadow-xl hover:shadow-2xl transform hover:scale-105"
                 >
                   Apply for Limitless Now
                 </button>

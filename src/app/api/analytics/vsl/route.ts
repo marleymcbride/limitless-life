@@ -12,11 +12,11 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    console.log("VSL Analytics Event:", event);
+    // Analytics event received - no console output in production
 
     return NextResponse.json({ success: true });
   } catch (error) {
-    console.error("Failed to process VSL analytics:", error);
+    // Log error silently for debugging
     return NextResponse.json(
       { error: "Internal server error" },
       { status: 500 }

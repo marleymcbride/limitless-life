@@ -48,7 +48,7 @@ export default function ResultsSection() {
   ];
 
   return (
-    <section className={`w-full py-20 ${bgClasses.white}`}>
+    <section className={`w-full py-20 px-4 ${bgClasses.white}`}>
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <span className="inline-block bg-[#940909] text-white text-sm font-bold uppercase tracking-wider px-3 py-1 rounded-sm mb-4">
@@ -90,7 +90,7 @@ export default function ResultsSection() {
           {results.map((item, index) => (
             <div
               key={index}
-              className="flex flex-col bg-gray-50 rounded-lg shadow-md overflow-hidden transform transition 
+              className="flex flex-col bg-gray-50 rounded-lg shadow-md overflow-hidden transform transition hover:scale-105"
             >
               <div className="bg-[#940909] text-white text-sm font-bold px-5 py-2">
                 {item.category}
@@ -99,7 +99,7 @@ export default function ResultsSection() {
                 <div className="p-2 bg-[#940909]/10 rounded-full flex-shrink-0 mr-4">
                   <Zap className="w-5 h-5 text-[#940909]" />
                 </div>
-                <p className="text-base text-gray-800 font-medium">
+                <p className="text-xl md:text-base text-gray-800 font-medium">
                   {item.result}
                 </p>
               </div>

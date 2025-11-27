@@ -23,8 +23,8 @@ export async function submitToN8nWebhook(
   firstName: string,
   _source: string = "limitless-protocol-premium-waitlist" // Keep for compatibility, not sent to webhook
 ): Promise<void> {
-  // Live N8N webhook endpoint (confirmed working)
-  const webhookUrl =
+  // Live N8N webhook endpoint from environment
+  const webhookUrl = process.env.NEXT_PUBLIC_N8N_WAITLIST_WEBHOOK ||
     "https://n8n.marleymcbride.co/webhook/programme-waitlist-leads";
 
   // Validate inputs

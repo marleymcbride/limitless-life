@@ -22,15 +22,21 @@ Create a `.env.local` file in the project root:
 # Bunny.net VSL Configuration
 NEXT_PUBLIC_BUNNY_LIBRARY_ID=505300
 NEXT_PUBLIC_BUNNY_VIDEO_ID=ae86338e-0493-4ff0-bca9-87f9ad98dd89
-BUNNY_API_KEY=91914074-3894-40da-9a5294702e9e-fe45-4064
+BUNNY_API_KEY=your-bunny-api-key-here
 NEXT_PUBLIC_BUNNY_CDN_HOSTNAME=vz-8f43891f-169.b-cdn.net
 
 # N8N Webhook for VSL Analytics
-NEXT_PUBLIC_N8N_VSL_WEBHOOK=https://n8n.marleymcbride.co/webhook/vsl-events
+NEXT_PUBLIC_N8N_VSL_WEBHOOK=https://your-n8n-instance.com/webhook/vsl-events
+NEXT_PUBLIC_N8N_WAITLIST_WEBHOOK=https://your-n8n-instance.com/webhook/programme-waitlist-leads
 
 # Analytics
 NEXT_PUBLIC_ENABLE_VSL_ANALYTICS=true
 ```
+
+# Security Notes:
+# - Never commit your actual API keys to version control
+# - Add .env.local to your .gitignore file
+# - Rotate your API keys periodically
 
 ### Step 2: Integrate VSLHeroSection into Your Sales Page
 

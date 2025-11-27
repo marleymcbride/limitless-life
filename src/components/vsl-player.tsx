@@ -30,6 +30,11 @@ export default function VSLPlayer({
   const [savedPosition, setSavedPosition] = useState(0);
   const [currentProgress, setCurrentProgress] = useState(0);
   const [hasStartedPlaying, setHasStartedPlaying] = useState(false);
+  const [timestamp, setTimestamp] = useState<string | null>(null);
+
+  useEffect(() => {
+    setTimestamp(Date.now().toString());
+  }, []);
   const progressRef = useRef({ currentTime: 0, duration: 0 });
 
   const { trackPlay, trackPause, trackProgress, trackComplete } =
@@ -248,7 +253,7 @@ export default function VSLPlayer({
 
   const progressBarWidth = calculateProgressBarWidth(currentProgress);
 
-  const iframeUrl = `https://iframe.mediadelivery.net/embed/${libraryId}/${videoId}?autoplay=${autoplay}&muted=${muted}&preload=${preload}&controls=false&responsive=true&loop=false&t=${Date.now()}`;
+  const iframeUrl = timestamp ? `https://iframe.mediadelivery.net/embed/${libraryId}/${videoId}?autoplay=${autoplay}&muted=${muted}&preload=${preload}&controls=false&responsive=true&loop=false&t=${timestamp}` : `https://iframe.mediadelivery.net/embed/${libraryId}/${videoId}?autoplay=${autoplay}&muted=${muted}&preload=${preload}&controls=false&responsive=true&loop=false`;
 
   const thumbnailUrl = `https://vz-8f43891f-169.b-cdn.net/${videoId}/thumbnail.jpg`;
 

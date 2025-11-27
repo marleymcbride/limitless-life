@@ -3,7 +3,7 @@ import { bgClasses } from "@/lib/utils";
 
 export default function CoachSection() {
   return (
-    <section className={`w-full ${bgClasses.white} py-20 text-black`}>
+    <section className={`w-full ${bgClasses.white} py-20 px-4 text-black`}>
       <div className="container mx-auto px-4">
         <div className="text-center mb-10">
           <span className="inline-block bg-[#940909] text-white text-sm font-bold uppercase tracking-wider px-3 py-1 rounded-sm mb-4">
@@ -12,7 +12,7 @@ export default function CoachSection() {
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">
             Meet Your Coach
           </h2>
-          <p className="text-lg text-gray-700 max-w-3xl mx-auto">
+          <p className="text-2xl md:text-lg text-gray-700 max-w-3xl mx-auto">
             Expert guidance from someone who's been where you are and knows
             exactly how to get you to where you want to be
           </p>
