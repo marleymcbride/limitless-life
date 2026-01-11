@@ -1,0 +1,9 @@
+/* Override blue text color for black friday page */
+  .bf-page .heading-1,
+  .bf-page .heading-2,
+  .bf-page .heading-3,
+  .bf-page .heading-4,
+  .bf-page .heading-5,
+  .bf-page .heading-6 {
+    color: #ffffff !important;
+  }

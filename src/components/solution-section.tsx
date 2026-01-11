@@ -9,13 +9,13 @@ export default function SolutionSection() {
       <div className="absolute bottom-0 left-0 w-full h-[50vh] bg-gradient-to-t from-[#400909]/50 via-[#400909]/30 to-transparent"></div>
       {masculinePattern}
 
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto px-4 relative z-10 hero-full-width">
         {/* ED LAWRENCE STYLE PROOF TRANSITION */}
         <div className="text-center mb-20">
           <h2 className="text-4xl sm:text-5xl font-black mb-8 text-white">
             And The Best Part? You Don't Have To Take My Word For It...
           </h2>
-          <p className="text-xl max-w-4xl mx-auto text-gray-300 font-medium">
+          <p className="text-xl max-w-5xl mx-auto text-gray-300 font-medium">
             When other burned-out executives start using these exact systems,
             this is what happens:
           </p>
@@ -233,7 +233,7 @@ export default function SolutionSection() {
           <h2 className="text-4xl sm:text-5xl font-black mb-4 text-white">
             The Limitless Protocol
           </h2>
-          <p className="text-xl max-w-4xl mx-auto text-gray-300 font-medium">
+          <p className="text-xl max-w-5xl mx-auto text-gray-300 font-medium">
             Not Another Workout Plan or Diet — A Complete Reset of Your Energy
             Systems
           </p>
@@ -245,7 +245,7 @@ export default function SolutionSection() {
             <h3 className="text-3xl font-bold text-white mb-6 text-center">
               Your Ultimate Male Form: The Natty Sweet Spot
             </h3>
-            <p className="text-lg text-gray-300 mb-8 text-center max-w-4xl mx-auto">
+            <p className="text-lg text-gray-300 mb-8 text-center max-w-5xl mx-auto">
               This isn't another workout plan or diet. The Limitless Protocol is
               a complete reset of your entire being. It transforms your{" "}
               <span className="font-bold text-white">Body</span>, optimizes your{" "}
@@ -430,7 +430,7 @@ export default function SolutionSection() {
 
         {/* CTA SECTION */}
         <div className="text-center">
-          <div className="max-w-4xl mx-auto mb-8">
+          <div className="max-w-5xl mx-auto mb-8">
             <h3 className="text-3xl font-bold text-white mb-4">
               Ready to Join the Elite 1% Who Actually Feel Incredible?
             </h3>

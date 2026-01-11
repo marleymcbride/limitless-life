@@ -4,73 +4,85 @@ import { bgClasses } from "@/lib/utils";
 
 export default function CoreValueProposition() {
   return (
-    <section className={`w-full ${bgClasses.white} pt-10 pb-6 text-black relative`}>
+    <section className={`w-full ${bgClasses.white} pt-12 pb-6 text-black relative`}>
       {/* Simple, premium white background */}
       <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-white to-gray-50"></div>
 
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-4xl mx-auto">
+      <div className="container mx-auto px-4 relative z-10 hero-full-width">
+        <div className="max-w-5xl mx-auto" style={{ maxWidth: "1200px" }}>
           {/* THE ACTUAL CONTENT - Natural flow, casual tone */}
-          <div className="prose prose-lg max-w-none mobile-text-large body-copy prose-md !prose-p:text-center">
+          <div className="prose prose-lg max-w-none mobile-text-large body-copy" style={{ fontSize: "1.3rem" }}>
             <div className="text-center mb-6">
               <h2
-                className="text-4-5xl md:text-5xl font-bold mb-0 text-gray-900 !max-w-sm mx-1"
-                style={{ fontFamily: "Neuemontreal, sans-serif", lineHeight: "1.0", maxWidth:"100px"}}
+                className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-0 text-gray-900"
+                style={{ fontFamily: "Neuemontreal, sans-serif", lineHeight: "1.1"}}
               >
-                After Working With Countless Men I Realised There&apos;s a Simpler Way to Get Healthy, Skyrocket Energy and Stay Lean Year-round
+               After Seeing The Same Mistakes Over and Over I Realized There's a Simpler Way
               </h2>
             </div>
 
-            <p className="text-gray-800 leading-relaxed mt-10 mb-6">
-              If coaching myself and my clients for over a decade has taught me anything, it&apos;s that most guys don&apos;t struggle with willpower, they have a broken system.
+            <p className="text-gray-800 leading-relaxed mb-6">
+              If coaching myself and clients for over a decade has taught me anything:
+            </p>
+
+            <p className="text-gray-800 font-bold leading-relaxed mb-6">
+             When it comes to your energy the typical methods <span className="font-bold">do not work.</span>
             </p>
 
             <p className="text-gray-800 leading-relaxed mb-6">
-              So instead of training harder or eating less, we fix what&apos;s fucked up inside.
+             Because for 99% of guys the problem isn&apos;t willpower.
             </p>
 
             <p className="text-gray-800 leading-relaxed mb-6">
-              And it became clear there are four common problems guys make over and over.. but once we fixed these the results started coming almost overnight:
+             It&apos;s their system.
             </p>
 
-            <p className="text-gray-800 leading-relaxed mb-4">
-              <strong>1. Cutting calories, skipping meals, and restricting your food intake.</strong>
+            <p className="text-gray-800 mini-heading leading-relaxed mt-8 mb-8">
+            And it became clear there are 4 common misbeliefs everyone gets wrong...
             </p>
 
-            <p className="text-gray-800 leading-relaxed mb-4">
-              <strong>2. Training 4, 5, 6 days a week and pushing yourself harder in the gym.</strong>
-            </p>
-
-            <p className="text-gray-800 leading-relaxed mb-4">
-              <strong>3. Using discipline and willpower to control your drinking and lifestyle habits.</strong>
+            <p className="text-gray-800 leading-relaxed mt-8 mb-8">
+            The fitness industry has sold you that to get in shape you must:
             </p>
 
             <p className="text-gray-800 leading-relaxed mb-6">
-              <strong>4. Taking the right supplements, tracking everything, and optimizing every aspect of your health.</strong>
+            <strong>1. Cut calories, skip meals, and restrict your food intake</strong>
             </p>
 
             <p className="text-gray-800 leading-relaxed mb-6">
-              And if you&apos;re not where you want to be right now, it&apos;s probably because you&apos;re wasting years doing these outdated, inefficient methods.
+            <strong>2. Train 4-6 days a week and push yourself harder in the gym</strong>
             </p>
 
             <p className="text-gray-800 leading-relaxed mb-6">
-              They told us to do more training, or use these complex diets... but what I found is: <span className="underline font-bold">the secret is actually to do LESS.</span>
+            <strong>3. Use discipline to control your drinking and lifestyle habits</strong>
             </p>
 
             <p className="text-gray-800 leading-relaxed mb-6">
-              And all you need is an easy, repeatable system you can do on autopilot for the next 5-10 years.
+            <strong>4. Take a load of supplements and track every part of your life</strong>
+            </p>
+
+            <p className="text-gray-800 leading-relaxed mt-8 mb-6">           
+             But here&apos;s the truth...
+            </p>
+
+            <p className="text-gray-800 leading-relaxed mt-8 mb-6">           
+             You can get incredible results without doing ANY of that shit!
+            </p>
+
+            <p className="text-gray-800 leading-relaxed mt-8 mb-8">
+              But if it&apos;s that easy... why isn&apos;t everyone jacked with high energy?
             </p>
 
             <p className="text-gray-800 leading-relaxed mb-6">
-              Because once you fix what&apos;s broken inside, your body finally starts working like it was meant to.
+              Well, it&apos;s because most people treat the symptoms instead of the real problems.
             </p>
 
             <p className="text-gray-800 leading-relaxed mb-6">
-              It&apos;s like turning back on a tap.. where your energy comes back, cravings to food and alcohol disappear, and your body finally looks like it should.
+              They keep jumping round all these outdated methods like Keto and training every day.. so they never build a simple, easy system they can repeat for the next 5, 10, 20 years.
             </p>
 
             <p className="text-gray-800 leading-relaxed mb-6">
-              Not because you&apos;re trying harder or found that one &apos;magic&apos; supplement, because you address the root causes inside holding you back.
+              And without a system that can fix these root issues of your health, you&apos;ll keep on spinning your wheels.
             </p>
 
             {/* CTA Button - matching personal story style */}

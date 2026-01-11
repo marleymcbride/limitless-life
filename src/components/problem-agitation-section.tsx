@@ -16,7 +16,7 @@ export default function ProblemAgitationSection() {
       <div className="absolute inset-0 bg-gradient-to-br from-black via-zinc-900 to-black"></div>
       {vignetteEffect}
 
-      <div className="container mx-auto relative z-10 max-w-4xl text-center">
+      <div className="container mx-auto relative z-10 max-w-5xl text-center">
         {/* Hook with 4% Trap concept */}
         <div className="mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">

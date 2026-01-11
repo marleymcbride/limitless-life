@@ -51,7 +51,7 @@ export default function SimplifiedThreeStepsSection() {
             How It Works: 3 Simple Steps
           </h2>
           <p
-            className={`text-xl md:text-2xl text-white/80 max-w-4xl mx-auto font-serif`}
+            className={`text-xl md:text-2xl text-white/80 max-w-5xl mx-auto font-serif`}
           >
             No complexity. No confusion. Just a proven system that delivers
             results for busy high-performers.
@@ -140,7 +140,7 @@ export default function SimplifiedThreeStepsSection() {
         </div>
 
         {/* Bottom Benefits - All Buyer Types */}
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <div
             className={`${colorStrategy.whiteAccent} rounded-lg p-8 border border-gray-200`}
           >

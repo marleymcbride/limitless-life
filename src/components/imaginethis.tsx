@@ -2,11 +2,11 @@
 
 export default function ImagineThis() {
   return (
-    <section className="bg-black pt-24 pb-2 px-4 w-full">
+    <section className="bg-black py-20 px-4 w-full">
       <div className="container mx-auto max-w-6xl relative z-10">
         <div className="text-center">
           {/* White round rectangle box with shadow */}
-          <div className="rounded-2xl bg-white p-14 md:pt-12 lg:px-24 inline-block shadow-2xl mx-4 max-w-4xl">
+          <div className="rounded-2xl bg-white p-14 md:pt-12 lg:px-24 inline-block shadow-2xl mx-4 max-w-5xl">
             <h2
               className="text-2xl md:text-5xl font-bold text-black mb-6"
               style={{ fontFamily: "Neuemontreal, Arial, sans-serif" }}
@@ -15,7 +15,7 @@ export default function ImagineThis() {
             </h2>
             <div className="space-y-4">
               <p
-                className="text-xl md:text-lg font-semibold text-black mb-2"
+                className="text-xl md:text-xl font-semibold text-gray-800 mb-4"
                 style={{ fontFamily: "Neuemontreal, Arial, sans-serif" }}
               >
                 You Had a Simple Daily System That:
@@ -36,7 +36,7 @@ export default function ImagineThis() {
                       />
                     </svg>
                   </div>
-                  <p className="text-black leading-relaxed">
+                  <p className="text-gray-700 leading-relaxed">
                   Has you feeling energized and excited as soon as you wake
                   </p>
                 </div>
@@ -55,7 +55,7 @@ export default function ImagineThis() {
                       />
                     </svg>
                   </div>
-                  <p className="text-black leading-relaxed">
+                  <p className="text-gray-700 leading-relaxed">
                   Builds a lean body without living in the gym
                   </p>
                 </div>
@@ -74,7 +74,7 @@ export default function ImagineThis() {
                       />
                     </svg>
                   </div>
-                  <p className="text-black leading-relaxed">
+                  <p className="text-gray-700 leading-relaxed">
                     Leaves you with energy for your family and life outside work
                   </p>
                 </div>

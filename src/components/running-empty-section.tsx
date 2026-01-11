@@ -9,13 +9,13 @@ export default function RunningEmptySection() {
       <div className="absolute bottom-0 left-0 w-full h-[50vh] bg-gradient-to-t from-[#400909]/50 via-[#400909]/30 to-transparent"></div>
       {masculinePattern}
 
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto px-4 relative z-10 hero-full-width">
         {/* THROWING ROCKS AT THE ENEMY - POLARIZING */}
         <div className="text-center mb-20">
           <h2 className="text-4xl sm:text-5xl font-black mb-8 text-white">
             Why Everything Else Has Failed You (And Always Will)
           </h2>
-          <p className="text-3xl md:text-xl max-w-4xl mx-auto text-gray-300 font-medium leading-relaxed">
+          <p className="text-3xl md:text-xl max-w-5xl mx-auto text-gray-300 font-medium leading-relaxed">
             Let me tell you exactly why the fitness industry, supplement
             companies, and "health gurus" have kept you trapped in the 4%
             category — and why they want it that way.
@@ -156,7 +156,7 @@ export default function RunningEmptySection() {
             <h2 className="text-4xl sm:text-5xl font-black mb-8 text-white">
               Why Limitless Is The Only Solution That Actually Works
             </h2>
-            <p className="text-3xl md:text-xl text-gray-300 max-w-4xl mx-auto font-medium">
+            <p className="text-3xl md:text-xl text-gray-300 max-w-5xl mx-auto font-medium">
               We're the only program that eliminates your dependencies AND
               builds an elite physique — without pills, extreme diets, or
               burning out your nervous system.
@@ -418,7 +418,7 @@ export default function RunningEmptySection() {
         </div>
 
         {/* Micro Testimonial */}
-        <div className="mt-16 max-w-4xl mx-auto">
+        <div className="mt-16 max-w-5xl mx-auto">
           <MicroTestimonial
             quote="Finally, someone who calls out the BS and actually delivers results. This program saved my life and career."
             name="David K."

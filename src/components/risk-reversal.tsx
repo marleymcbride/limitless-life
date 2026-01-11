@@ -41,7 +41,7 @@ export default function RiskReversalSection() {
             100% Money-Back Guarantee
           </h2>
           <p
-            className={`text-xl md:text-2xl text-white/80 max-w-4xl mx-auto font-serif`}
+            className={`text-xl md:text-2xl text-white/80 max-w-5xl mx-auto font-serif`}
           >
             I guarantee your transformation. If this system doesn't deliver
             everything I promise, you don't pay a dime.
@@ -50,7 +50,7 @@ export default function RiskReversalSection() {
 
         {/* Main Guarantee Statement */}
         <div
-          className={`max-w-4xl mx-auto ${colorStrategy.whiteAccent} rounded-lg p-8 border-2 border-yellow-400 mb-12`}
+          className={`max-w-5xl mx-auto ${colorStrategy.whiteAccent} rounded-lg p-8 border-2 border-yellow-400 mb-12`}
         >
           <div className="text-center">
             <div className="inline-block bg-yellow-400 text-black px-4 py-2 rounded-lg mb-4">
@@ -117,7 +117,7 @@ export default function RiskReversalSection() {
         </div>
 
         {/* Bottom Risk Reversal - Jobs Worth Appeal */}
-        <div className={`max-w-4xl mx-auto text-center`}>
+        <div className={`max-w-5xl mx-auto text-center`}>
           <div
             className={`${colorStrategy.whiteAccent} rounded-lg p-8 border-2 border-gray-300`}
           >

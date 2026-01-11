@@ -1,7 +1,7 @@
 export default function DoesThisSoundLikeYou() {
   return (
     <section className="bg-black py-14 px-4 w-full">
-      <div className="container mx-auto max-w-4xl">
+      <div className="container mx-auto max-w-5xl">
         <div className="text-center">
           <h2
             className="text-4xl md:text-5xl font-bold text-white mb-6"
@@ -52,7 +52,7 @@ export default function DoesThisSoundLikeYou() {
                 </svg>
               </div>
               <p className="text-white text-2xl mobile-text-large">
-                  No matter how much you train, your gut just won&apos;t budge
+                  You can&apos;t focus at work like you used to
                 </p>
             </div>
 
@@ -71,7 +71,7 @@ export default function DoesThisSoundLikeYou() {
                 </svg>
               </div>
               <p className="text-white text-2xl mobile-text-large">
-                  You can&apos;t focus at work like you used to
+              No matter how much you train your gut just won&apos;t budge
                 </p>
             </div>
 
@@ -110,7 +110,7 @@ export default function DoesThisSoundLikeYou() {
                 </svg>
               </div>
               <p className="text-white text-2xl mobile-text-large">
-                  You have no energy left for people who matter most
+                  You have no energy left for the people who matter most
                 </p>
             </div>
           </div>

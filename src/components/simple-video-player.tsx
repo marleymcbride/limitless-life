@@ -10,6 +10,7 @@ interface SimpleVideoPlayerProps {
   muted?: boolean;
   preload?: boolean;
   controls?: boolean;
+  aspectRatio?: "16:9" | "9:16"; // Add aspect ratio option
 }
 
 export default function SimpleVideoPlayer({
@@ -20,6 +21,7 @@ export default function SimpleVideoPlayer({
   muted = false,
   preload = true,
   controls = true,
+  aspectRatio = "16:9",
 }: SimpleVideoPlayerProps) {
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const [isReady, setIsReady] = useState(false);
@@ -83,6 +85,9 @@ export default function SimpleVideoPlayer({
   // Simple iframe URL without extra controls
   const iframeUrl = timestamp ? `https://iframe.mediadelivery.net/embed/${libraryId}/${videoId}?autoplay=${autoplay}&muted=${muted}&preload=${preload}&controls=${controls}&responsive=true&loop=false&t=${timestamp}` : `https://iframe.mediadelivery.net/embed/${libraryId}/${videoId}?autoplay=${autoplay}&muted=${muted}&preload=${preload}&controls=${controls}&responsive=true&loop=false`;
 
+  // Calculate aspect ratio padding
+  const aspectRatioPadding = aspectRatio === "9:16" ? "177.78%" : "56.25%"; // 9:16 = 16/9*100, 16:9 = 9/16*100
+
   return (
     <div className={`simple-video-player relative ${className}`}>
       {isLoading && (
@@ -101,7 +106,7 @@ export default function SimpleVideoPlayer({
         </div>
       )}
 
-      <div className="relative w-full" style={{ paddingTop: "56.25%" }}>
+      <div className="relative w-full" style={{ paddingTop: aspectRatioPadding }}>
         <iframe
           ref={iframeRef}
           src={iframeUrl}

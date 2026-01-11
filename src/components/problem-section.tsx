@@ -26,7 +26,7 @@ export default function ProblemSection() {
         }}
       ></div>
 
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto px-4 relative z-10 hero-full-width">
         <h2 className="mb-8 text-center text-3xl font-bold md:text-4xl relative">
           You&apos;re Running on Empty
           <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-[#940909]"></span>

@@ -72,7 +72,7 @@ export default function SuccessStoriesSection() {
           ))}
         </div>
 
-        <div className="mx-auto max-w-4xl mt-12 bg-gray-100 p-8 rounded-lg">
+        <div className="mx-auto max-w-5xl mt-12 bg-gray-100 p-8 rounded-lg">
           <div className="text-center mb-6">
             <h3 className="text-2xl font-bold">
               Not Just Physical Transformation

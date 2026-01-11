@@ -65,7 +65,7 @@ export default function TransformationBreakdownSection() {
             What You'll Actually Achieve
           </h2>
           <p
-            className={`text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto font-serif`}
+            className={`text-xl md:text-2xl text-gray-600 max-w-5xl mx-auto font-serif`}
           >
             This isn't about losing a few pounds. This is about completely
             upgrading your performance as a man, leader, and high-achiever.
@@ -161,7 +161,7 @@ export default function TransformationBreakdownSection() {
 
         {/* Bottom Summary - All Buyer Types */}
         <div
-          className={`max-w-4xl mx-auto ${colorStrategy.blackSections} rounded-lg p-8 text-center`}
+          className={`max-w-5xl mx-auto ${colorStrategy.blackSections} rounded-lg p-8 text-center`}
         >
           <h3
             className={`text-2xl font-black ${colorStrategy.redCTA} mb-4 font-serif`}

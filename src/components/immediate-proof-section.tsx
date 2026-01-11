@@ -7,7 +7,7 @@ export default function ImmediateProofSection() {
         {/* Clean testimonial section - JUST the proof */}
         <div className="text-center mb-8">
           {/* Client L Transformation - REAL STORY */}
-          <div className="max-w-4xl mx-auto bg-gray-50 rounded-lg p-4 shadow-lg">
+          <div className="max-w-5xl mx-auto bg-gray-50 rounded-lg p-4 shadow-lg">
             <h2 className=" w-3 px-8 text-lg text-gray-800 italic mb-4 max-w-2xl mx-1 max-w-100px">
               "I was drinking a bottle of wine a night, looked like shit, and my
               job was genuinely on the line. Now I'm in the best shape I've ever

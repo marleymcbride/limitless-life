@@ -137,6 +137,110 @@ export const unifiedGradientWithSpotlightMobile = React.createElement("div", {
   },
 });
 
+
+// BLACK FRIDAY OFFER PAGE
+
+export const BLACKFRIDAYunifiedGradientWithSpotlightDesktop = React.createElement("div", {
+  className: "absolute inset-0 z-10",
+  style: {
+    background: `
+      radial-gradient(circle at 99% 4%,
+        rgba(148, 9, 9, 0.63) 0%,
+        rgba(148, 9, 9, 0.567) 2%,
+        rgba(148, 9, 9, 0.504) 3%,
+        rgba(148, 9, 9, 0.45675) 4%,
+        rgba(148, 9, 9, 0.42525) 5%,
+        rgba(148, 9, 9, 0.39375) 6%,
+        rgba(148, 9, 9, 0.36225) 7%,
+        rgba(148, 9, 9, 0.33075) 8%,
+        rgba(148, 9, 9, 0.315) 9%,
+        rgba(148, 9, 9, 0.29925) 10%,
+        rgba(148, 9, 9, 0.2835) 11%,
+        rgba(148, 9, 9, 0.26775) 12%,
+        rgba(148, 9, 9, 0.252) 13%,
+        rgba(148, 9, 9, 0.23625) 14%,
+        rgba(148, 9, 9, 0.2205) 15%,
+        rgba(148, 9, 9, 0.20475) 16%,
+        rgba(148, 9, 9, 0.189) 17%,
+        rgba(148, 9, 9, 0.17325) 18%,
+        rgba(148, 9, 9, 0.1575) 19%,
+        rgba(148, 9, 9, 0.149625) 20%,
+        rgba(148, 9, 9, 0.14175) 21%,
+        rgba(148, 9, 9, 0.133875) 22%,
+        rgba(148, 9, 9, 0.126) 23%,
+        rgba(148, 9, 9, 0.118125) 24%,
+        rgba(148, 9, 9, 0.11025) 25%,
+        rgba(148, 9, 9, 0.102375) 26%,
+        rgba(148, 9, 9, 0.0945) 27%,
+        rgba(148, 9, 9, 0.086625) 28%,
+        rgba(148, 9, 9, 0.07875) 29%,
+        rgba(148, 9, 9, 0.070875) 30%,
+        rgba(148, 9, 9, 0.063) 31%,
+        rgba(148, 9, 9, 0.055125) 32%,
+        rgba(148, 9, 9, 0.04725) 33%,
+        rgba(148, 9, 9, 0.039375) 34%,
+        rgba(148, 9, 9, 0.0315) 35%,
+        rgba(148, 9, 9, 0.02835) 36%,
+        rgba(148, 9, 9, 0.0252) 37%,
+        rgba(148, 9, 9, 0.02205) 38%,
+        rgba(148, 9, 9, 0.0189) 39%,
+        rgba(148, 9, 9, 0.01575) 40%,
+        rgba(148, 9, 9, 0.0126) 41%,
+        rgba(148, 9, 9, 0.00945) 42%,
+        rgba(148, 9, 9, 0.0063) 43%,
+        rgba(148, 9, 9, 0.00315) 44%,
+        rgba(148, 9, 9, 0.001575) 45%,
+        rgba(148, 9, 9, 0.00126) 46%,
+        rgba(148, 9, 9, 0.000945) 47%,
+        rgba(148, 9, 9, 0.00063) 48%,
+        rgba(148, 9, 9, 0.000315) 49%,
+        rgba(148, 9, 9, 0.0001575) 50%,
+        rgba(148, 9, 9, 0.00007875) 51%,
+        rgba(148, 9, 9, 0.0000315) 52%,
+        rgba(148, 9, 9, 0.00001575) 53%,
+        transparent 100%),
+        linear-gradient(to bottom, transparent 0%, transparent 30%, rgb(0, 0, 0) 30%, rgb(28, 28, 28) 72%, rgba(148, 9, 9, 0.5) 99%, rgba(148, 9, 9, 0.864) 100%)
+      
+    `,
+  },
+});
+
+// Mobile background with concentrated top-right spotlight
+export const BLACKFRIDAYunifiedGradientWithSpotlightMobile = React.createElement("div", {
+  className: "absolute inset-0 z-10",
+  style: {
+    background: `
+      radial-gradient(circle at 99% 2%,
+        rgba(148, 9, 9, 0.756) 0%,
+        rgba(148, 9, 9, 0.66) 2%,
+        rgba(148, 9, 9, 0.564) 4%,
+        rgba(148, 9, 9, 0.468) 6%,
+        rgba(148, 9, 9, 0.384) 8%,
+        rgba(148, 9, 9, 0.336) 10%,
+        rgba(148, 9, 9, 0.288) 12%,
+        rgba(148, 9, 9, 0.24) 14%,
+        rgba(148, 9, 9, 0.192) 16%,
+        rgba(148, 9, 9, 0.156) 18%,
+        rgba(148, 9, 9, 0.12) 20%,
+        rgba(148, 9, 9, 0.096) 22%,
+        rgba(148, 9, 9, 0.072) 24%,
+        rgba(148, 9, 9, 0.054) 26%,
+        rgba(148, 9, 9, 0.036) 28%,
+        rgba(148, 9, 9, 0.024) 30%,
+        rgba(148, 9, 9, 0.018) 32%,
+        rgba(148, 9, 9, 0.012) 34%,
+        rgba(148, 9, 9, 0.0096) 36%,
+        rgba(148, 9, 9, 0.0072) 38%,
+        rgba(148, 9, 9, 0.0048) 40%,
+        rgba(148, 9, 9, 0.0024) 42%,
+        rgba(148, 9, 9, 0.0012) 44%,
+        rgba(148, 9, 9, 0.0006) 46%,
+        transparent 50%),
+      linear-gradient(to bottom, transparent 0%, transparent 30%, rgb(0, 0, 0) 30%, rgb(28, 28, 28) 88%, rgba(148, 9, 9, 0.864) 91%)
+    `,
+  },
+});
+
 // Legacy unified gradient (kept for backward compatibility)
 export const unifiedGradientWithSpotlight = unifiedGradientWithSpotlightDesktop;
 
@@ -177,6 +281,15 @@ export const vignetteEffect = React.createElement("div", {
     background:
       "radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.1) 70%, rgba(0,0,0,0.3) 100%)",
     mixBlendMode: "multiply",
+  },
+});
+
+export const blackFridayVignetteEffect = React.createElement("div", {
+  className: "absolute inset-0 pointer-events-none",
+  style: {
+    background:
+      "radial-gradient(ellipse at 85% 50%, transparent 0%, rgba(148, 9, 9, 0) 40%, transparent 100%)",
+    mixBlendMode: "normal",
   },
 });
 
@@ -228,3 +341,37 @@ export const PowerDivider = () => {
     ]
   );
 };
+
+// Missing exports that are causing compilation errors
+export const colorStrategy = {
+  getPrimaryColor: () => '#940909',
+  getSecondaryColor: () => '#000000',
+  getAccentColor: () => '#ffffff',
+  // Additional properties expected by components
+  redCTA: '#940909',
+  whiteSections: '#ffffff',
+  blackSections: '#000000',
+  whiteAccent: '#ffffff',
+  neanderthal: '#333333',
+  nerd: '#666666',
+};
+
+export const buyerTypeUtils = {
+  isHighTicket: (price: number) => price >= 1000,
+  isMidTicket: (price: number) => price >= 500 && price < 1000,
+  isLowTicket: (price: number) => price < 500,
+  // Additional properties expected by components
+  redCTA: '#940909',
+  whiteSections: '#ffffff',
+  blackSections: '#000000',
+  whiteAccent: '#ffffff',
+  neanderthal: '#333333',
+  nerd: '#666666',
+};
+
+export const blackRedGradientOverlay = React.createElement("div", {
+  className: "absolute inset-0 z-10",
+  style: {
+    background: "linear-gradient(135deg, rgba(148, 9, 9, 0.8) 0%, rgba(0, 0, 0, 0.9) 100%)",
+  },
+});

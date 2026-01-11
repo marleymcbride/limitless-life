@@ -18,7 +18,7 @@ export default function FeaturedTestimonial() {
           </p>
         </div>
 
-        <div className="max-w-4xl mx-auto bg-gradient-to-r from-gray-50 to-white p-8 pt-6 rounded-lg shadow-xl border border-gray-200">
+        <div className="max-w-5xl mx-auto bg-gradient-to-r from-gray-50 to-white p-8 pt-6 rounded-lg shadow-xl border border-gray-200">
           <div className="flex flex-col md:flex-row gap-6 items-center">
             <div className="w-20 h-20 md:w-24 md:h-24 rounded-full overflow-hidden border-3 border-[#940909]/40 shadow-xl flex-shrink-0">
               <Image

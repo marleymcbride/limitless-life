@@ -1,19 +1,20 @@
 import { bgClasses } from "@/lib/utils";
 import Image from "next/image";
+import IntroSection from "./intro-section";
 
 export default function PersonalStorySection() {
   return (
-    <section className={`w-full ${bgClasses.white} pt-10 text-black relative`}>
+    <section className={`w-full ${bgClasses.white} pt-12 pb-12 text-black relative`}>
       {/* Simple, premium white background */}
       <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-white to-gray-50"></div>
 
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-4xl mx-auto">
+      <div className="container mx-auto px-4 relative z-10 hero-full-width">
+        <div className="max-w-5xl mx-auto" style={{ maxWidth: "1200px" }}>
           {/* THE ACTUAL STORY - Natural flow, casual tone */}
-          <div className="prose prose-lg max-w-none mobile-text-large body-copy">
+          <div className="prose prose-lg max-w-none mobile-text-large body-copy" style={{ fontSize: "1.3rem" }}>
             <div className="text-center mb-6">
               <h2
-                className="text-4xl md:text-5xl font-bold mb-4 text-gray-900 leading-tight"
+                className="text-4xl md:text-5xl font-bold mb-10 text-gray-900 leading-tight"
                 style={{ fontFamily: "Neuemontreal, sans-serif" }}
               >
                 Three Years Ago I Was Blackout Drunk On A Mud-Stained Mattress
@@ -21,19 +22,19 @@ export default function PersonalStorySection() {
             </div>
 
             <p className="text-gray-800 leading-relaxed mb-6">
-              Do you ever feel like your body and energy keeps on declining, year after year.. no matter what you do?
+            Do you ever wake up feeling like complete shit?
             </p>
 
             <p className="text-gray-800 leading-relaxed mb-6">
-              That&apos;s exactly how I felt.
+            I know the feeling.
             </p>
 
             <p className="text-gray-800 leading-relaxed mb-6">
-              See.. just a few years back my life looked great.
+            From the outside everything looked great:
             </p>
 
             <p className="text-gray-800 leading-relaxed mb-6">
-              I had the Masters degree on the wall, training hard, earning decent money.
+              I had the Masters degree on the wall, hitting the gym, earning decent money.
             </p>
 
             <p className="text-gray-800 leading-relaxed mb-6">
@@ -41,11 +42,15 @@ export default function PersonalStorySection() {
             </p>
 
             <p className="text-gray-800 leading-relaxed mb-6">
-              
+              But the truth?
+            </p>
+
+            <p className="text-gray-800 leading-relaxed mb-6">
+
             </p>
 
             <p className="mini-heading text-gray-800 leading-relaxed mb-6">
-            But in reality my life was hell
+            My life was hell.
             </p>
 
             <p className="text-gray-800 leading-relaxed">
@@ -53,19 +58,15 @@ export default function PersonalStorySection() {
             </p>
 
             <p className="text-gray-800 leading-relaxed mb-0">
-            Not proud of my body.
+            Drinking a lot.
             </p>
 
             <p className="text-gray-800 leading-relaxed mb-6">
-            Drinking every night.
-            </p>
-
-            <p className="text-gray-800 leading-relaxed mb-6">
-              Plus feeling constantly stressed out, anxious, and unhappy.
+            And a gut hanging over my trousers.
             </p>
 
             <p className="text-gray-800 font-bold leading-relaxed mb-6">
-              So what did I do?
+              What did I do?
             </p>
 
             <p className="text-gray-800 leading-relaxed mb-6">
@@ -77,27 +78,36 @@ export default function PersonalStorySection() {
             </p>
 
             <p className="text-gray-800 leading-relaxed mb-6">
-              I blamed my genetics... and started buying all these supplements I saw online.
+              I blamed my genetics... and started buying all these &apos;testosterone booster&apos; supplements I saw online.
             </p>
 
-            <p className="text-gray-800 leading-relaxed mb-2">
-              But it dawned on me there was ONE thing causing all of this...
-            </p> 
+
+            <p className="text-gray-800 leading-relaxed mb-6">
+             But no matter what I did...
+            </p>
 
             <p className="text-gray-800 text-center mini-heading leading-relaxed mt-6 mb-6">
-              I woke up every morning with no energy
+              Every day I felt like ass.
             </p>
 
             <p className="text-gray-800 leading-relaxed mb-6">
               Before even getting out of bed I was dreading the day.
             </p>
 
-            <p className="text-gray-800 leading-relaxed mb-6">
-            This caused me to suffer in my work, my relationships, and just about every area of my life.
+            <p className="text-gray-800 leading-relaxed">
+            I was dragging myself through work.
             </p>
 
-            <p className="text-gray-800 font-bold leading-relaxed mb-6">
-              So.. I doubled down on the quick fixes.
+            <p className="text-gray-800 leading-relaxed mb-0">
+            Ashamed of my own body.
+            </p>
+
+            <p className="text-gray-800 leading-relaxed mb-6">
+            Then coming home and collapsing on the couch.
+            </p>
+
+            <p className="text-gray-800 underline font-bold leading-relaxed mb-6">
+              So I doubled down on the quick fixes.
             </p>
 
             <p className="text-gray-800 leading-relaxed mb-6">
@@ -109,28 +119,27 @@ export default function PersonalStorySection() {
             </p>
 
             <p className="text-gray-800 leading-relaxed mb-6">
-              As you can imagine, the stress and anxiety was getting out of hand.
-            </p>  
+              The stress and anxiety was becoming unbearable.
+            </p>
 
             <p className="text-gray-800 leading-relaxed mb-6">
-              But without knowing where else to turn, and already doing what every coach online said to do..
+              But I was already doing what every &apos;guru&apos; online said to do:
             </p>
 
             <p className="text-gray-800 formatted-quote leading-relaxed mb-6">
-              Train 4-5 times per week, restrict your eating, &apos;be disciplined&apos; and use willpower.
+            &apos;Train 4-6 times per week, restrict your eating, be disciplined and use willpower&apos;
             </p>
-
-            <p className="text-gray-800 font-bold leading-relaxed mb-6">
-            But I found out the hard way the typical methods <span className="underline font-bold">do not work.</span>
-            </p>
-
-            <p className="text-gray-800 italic leading-relaxed mb-6">
-              (I tried Keto, Intermittent Fasting, T-boosters, all of it..)
-            </p>
-
 
             <p className="text-gray-800 leading-relaxed mb-6">
-            This went on for months, feeling stressed and anxious, unhappy and reaching for alcohol every night...
+            I tried Keto, Intermittent Fasting, about 50 different supplements..
+            </p>
+
+            <p className="text-gray-800 leading-relaxed mb-6">
+            <strong>And all this did was leave me with was a hole in my wallet and looking skinny-fat..</strong>
+            </p>
+
+            <p className="text-gray-800 leading-relaxed mb-6">
+            Wit the stress of trying to land clients, and my anxiety getting out of hand, I started reaching for alcohol almost every night...
             </p>
 
             <p className="text-gray-800 mini-heading font-bold leading-relaxed mb-6">
@@ -138,7 +147,7 @@ export default function PersonalStorySection() {
             </p>
 
             <p className="text-gray-800 leading-relaxed mb-6">
-            October 2021.. it was a work party and I got BLACKOUT drunk...
+            October 2021.. it was a Halloween work party and I got BLACKOUT drunk.
             </p>
 
             <p className="text-gray-800 leading-relaxed mb-6">
@@ -146,37 +155,43 @@ export default function PersonalStorySection() {
             </p>
 
             <p className="text-gray-800 leading-relaxed mb-6">
-            Mud covering my clothes and mattress on the floor in my box room.
+            My clothes and mattress on the floor covered in mud.
             </p>
 
-            <p>
             {/* Image space - mattress covered in mud */}
             <div className="my-8 flex justify-center">
-              <div className="relative w-full max-w-lg h-auto">
+              <figure className="relative w-full max-w-lg h-auto">
                 <Image
                   src="/images/Me + jeans + bedroom.webp"
                   alt="Mud-stained mattress in bedroom"
                   width={512}
                   height={384}
-                  className="rounded-lg shadow-lg"
+                  className="rounded-lg shadow-lg w-full h-auto"
                   loading="lazy"
-                  style={{ width: '100%', height: 'auto' }}
                 />
-              </div>
+                <figcaption className="mt-3 text-center text-gray-600 italic text-md">
+                  Puffy face, a gut hanging over and letting alcohol ruin my life.
+                </figcaption>
+              </figure>
             </div>
+
+            <p className="text-gray-800 font-bold font-black leading-relaxed mb-6"
+            style={{ fontFamily: "Neuemontreal, !bold, sans-serif", lineHeight: "1.0"}}
+            >
+            <span className="font-bold">Rock. Bottom.</span>
             </p>
 
             <p className="text-gray-800 leading-relaxed mb-6">
-            I looked at myself. Puffy face, a gut hanging over and dependant on caffeine and alcohol.
-            </p>
-
-            <p className="text-gray-800 leading-relaxed mb-6">
-            Rock bottom.
+            I HAD to do something.
             </p>
 
             <p className="text-gray-800 leading-relaxed mb-0">
-            So I scrapped everything the &apos;fitness influencers&apos; said to do and used a new approach.
+            So I scrapped everything the &apos;fitness influencers&apos; said and took a different approach..
             </p>
+
+            <p className="text-gray-800 leading-relaxed mb-6">
+
+               </p>
 
           </div>
         </div>

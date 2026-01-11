@@ -134,7 +134,7 @@ export default function WhatsIncluded() {
         </div>
 
         {/* Add testimonial for social proof */}
-        <div className="mb-12 max-w-4xl mx-auto">
+        <div className="mb-12 max-w-5xl mx-auto">
           <MicroTestimonial
             quote="The lifetime access alone is worth the investment. Two years later, I still refer back to the materials when I need a reset."
             name="Mark D."

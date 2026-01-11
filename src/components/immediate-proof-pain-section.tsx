@@ -13,7 +13,7 @@ export default function ImmediateProofPainSection() {
           </h2>
 
           {/* Client L Transformation - REAL STORY */}
-          <div className="max-w-4xl mx-auto bg-gray-50 rounded-lg p-8 mb-8">
+          <div className="max-w-5xl mx-auto bg-gray-50 rounded-lg p-8 mb-8">
             <div className="flex flex-col md:flex-row items-center gap-8">
               <div className="flex-1">
                 <div className="flex items-center mb-4">
@@ -63,7 +63,7 @@ export default function ImmediateProofPainSection() {
         </div>
 
         {/* BRUTAL REALITY CHECK - Direct to Scott */}
-        <div className="max-w-4xl mx-auto mb-16">
+        <div className="max-w-5xl mx-auto mb-16">
           <h2 className="text-3xl font-bold text-center text-gray-900 mb-8">
             Does This Sound Like Your Pathetic Daily Routine?
           </h2>

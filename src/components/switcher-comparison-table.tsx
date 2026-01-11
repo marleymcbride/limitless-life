@@ -66,7 +66,7 @@ export default function SwitcherComparisonTableSection() {
             Why High-Earners Switch to This Program
           </h2>
           <p
-            className={`text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto font-serif`}
+            className={`text-xl md:text-2xl text-gray-600 max-w-5xl mx-auto font-serif`}
           >
             You've tried the traditional approaches. Here's why they fail busy
             professionals, and how this system is designed differently.

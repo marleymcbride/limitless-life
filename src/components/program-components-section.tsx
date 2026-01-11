@@ -157,7 +157,7 @@ export default function ProgramComponentsSection() {
           </div>
         </div>
 
-        <div className="max-w-4xl mx-auto mt-12 bg-gray-100 p-4 rounded-lg shadow-sm">
+        <div className="max-w-5xl mx-auto mt-12 bg-gray-100 p-4 rounded-lg shadow-sm">
           <MicroTestimonial
             quote="The Limitless Morning protocol alone was worth the entire investment. I haven't touched coffee in 4 months and have more energy than ever."
             name="Eric W."

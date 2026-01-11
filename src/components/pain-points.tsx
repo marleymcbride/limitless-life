@@ -69,7 +69,7 @@ export default function PainPoints() {
       {invertedGradientOverlay}
       {strongRedAccent}
       {vignetteEffect}
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto px-4 relative z-10 hero-full-width">
         <div className="text-center mb-10">
           <span className="inline-block bg-[#940909] text-white text-sm font-bold uppercase tracking-wider px-3 py-1 rounded-sm mb-4">
             THE BRUTAL TRUTH
@@ -195,7 +195,7 @@ export default function PainPoints() {
 
         {/* Desktop view - hidden on small screens */}
         <div className="hidden sm:block">
-          <div className="grid grid-cols-2 gap-6 max-w-4xl mx-auto">
+          <div className="grid grid-cols-2 gap-6 max-w-5xl mx-auto">
             {painPoints.map((point, index) => (
               <div
                 key={index}
@@ -222,7 +222,7 @@ export default function PainPoints() {
         </div>
 
         {/* Micro-testimonial between sections for continuous proof */}
-        <div className="max-w-4xl mx-auto mt-12">
+        <div className="max-w-5xl mx-auto mt-12">
           <MicroTestimonial
             quote="I'd hit snooze 6 times every morning. Now I'm up before my alarm, no caffeine needed."
             name="David H."

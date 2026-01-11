@@ -231,7 +231,7 @@ export default function ProgramDetails() {
           </div>
 
           {/* What's Included Section - From 2nd reference image */}
-          <div className="max-w-4xl mx-auto mt-20 mb-16">
+          <div className="max-w-5xl mx-auto mt-20 mb-16">
             <h3 className="text-2xl font-bold text-center mb-8">
               What's Included
             </h3>
@@ -282,7 +282,7 @@ export default function ProgramDetails() {
           </div>
 
           {/* Investment section - similar to 2nd reference image */}
-          <div className="rounded-lg bg-zinc-800 p-8 text-center relative overflow-hidden shadow-xl transform transition-none  mt-10 max-w-4xl mx-auto">
+          <div className="rounded-lg bg-zinc-800 p-8 text-center relative overflow-hidden shadow-xl transform transition-none  mt-10 max-w-5xl mx-auto">
             {/* Red accent corner */}
             <div className="absolute -top-10 -right-10 w-20 h-20 bg-[#940909] rotate-45"></div>
 

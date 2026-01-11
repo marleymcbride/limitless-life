@@ -7,23 +7,25 @@ export default function ProcessExplanation() {
     <section className="bg-black py-20 px-4 w-full">
       <div className="container mx-auto max-w-5xl">
         <div className="text-center">
-          <h3
-            className="text-3xl md:text-4xl font-semibold text-gray-100 mb-12"
-            style={{ fontFamily: "Neuemontreal, Arial, sans-serif" }}
-          >
-            Well after 3 years... I found a NEW way to live:
-          </h3>
-
-          <div className="space-y-8 mb-12 max-w-3xl mx-auto">
-            <div className="text-left">
-              <h3
-                className="text-2xl font-bold text-white mb-4"
-                style={{ fontFamily: "Neuemontreal, Arial, sans-serif" }}
+          <div className="prose prose-lg max-w-none mobile-text-large body-copy dark-mode-copy">
+            <div className="text-center mb-12">
+              <h2
+                className="text-3xl md:text-4xl font-semibold mb-4 text-white leading-tight"
+                style={{ fontFamily: "Neuemontreal, sans-serif" }}
               >
-                1) How to Wake Up Energized Without Coffee
-              </h3>
-              <div className="body-copy">
-                <p className="text-gray-300 leading-relaxed">
+                Well After 3 Years... I Found A NEW Way To Live:
+              </h2>
+            </div>
+
+            <div className="space-y-8 mb-12">
+              <div className="text-left">
+                <h3
+                  className="text-2xl font-bold text-white mb-4"
+                  style={{ fontFamily: "Neuemontreal, sans-serif" }}
+                >
+                  1) How to Wake Up Energized Without Coffee
+                </h3>
+                <p className="text-gray-200 leading-relaxed mb-6">
                   Most people eat foods that work against their body&apos;s
                   natural energy patterns. I discovered you can eat substantial
                   food in the morning and actually feel better. This isn&apos;t
@@ -32,17 +34,15 @@ export default function ProcessExplanation() {
                   feeling great without needing any stimulants.
                 </p>
               </div>
-            </div>
 
-            <div className="text-left">
-              <h3
-                className="text-2xl font-bold text-white mb-4"
-                style={{ fontFamily: "Neuemontreal, Arial, sans-serif" }}
-              >
-                2) How to Get In Your Best Shape With Just 2 Workouts A Week
-              </h3>
-              <div className="body-copy">
-                <p className="text-gray-300 leading-relaxed">
+              <div className="text-left">
+                <h3
+                  className="text-2xl font-bold text-white mb-4"
+                  style={{ fontFamily: "Neuemontreal, sans-serif" }}
+                >
+                  2) How to Get In Your Best Shape With Just 2 Workouts A Week
+                </h3>
+                <p className="text-gray-200 leading-relaxed mb-6">
                   Training 2 days a week can be more effective than 5-6 days. Your
                   body works as a whole system, not isolated parts. Less training
                   eliminates the body aches and that dread of going to the gym.
@@ -51,17 +51,15 @@ export default function ProcessExplanation() {
                   actually delivers better results.
                 </p>
               </div>
-            </div>
 
-            <div className="text-left">
-              <h3
-                className="text-2xl font-bold text-white mb-4"
-                style={{ fontFamily: "Neuemontreal, Arial, sans-serif" }}
-              >
-                3) How to End Your Dependence On Coffee And Alcohol
-              </h3>
-              <div className="body-copy">
-                <p className="text-gray-300 leading-relaxed">
+              <div className="text-left">
+                <h3
+                  className="text-2xl font-bold text-white mb-4"
+                  style={{ fontFamily: "Neuemontreal, sans-serif" }}
+                >
+                  3) How to End Your Dependence On Coffee And Alcohol
+                </h3>
+                <p className="text-gray-200 leading-relaxed mb-6">
                   You can break free from the caffeine-alcohol cycle. Most people
                   don&apos;t realize their baseline energy can be a consistent
                   60-70% without any stimulants. Humans weren&apos;t designed to
@@ -70,17 +68,15 @@ export default function ProcessExplanation() {
                   without these crutches.
                 </p>
               </div>
-            </div>
 
-            <div className="text-left">
-              <h3
-                className="text-2xl font-bold text-white mb-4"
-                style={{ fontFamily: "Neuemontreal, Arial, sans-serif" }}
-              >
-                4) How to Fix What&apos;s Really Holding You Back
-              </h3>
-              <div className="body-copy">
-                <p className="text-gray-300 leading-relaxed">
+              <div className="text-left">
+                <h3
+                  className="text-2xl font-bold text-white mb-4"
+                  style={{ fontFamily: "Neuemontreal, sans-serif" }}
+                >
+                  4) How to Fix What&apos;s Really Holding You Back
+                </h3>
+                <p className="text-gray-200 leading-relaxed mb-6">
                   You have to address the underlying health issues first—blood
                   work, testosterone, gut health, adrenals. Skipping this step is
                   like painting over a cracked wall. Only when your core health is
@@ -92,10 +88,10 @@ export default function ProcessExplanation() {
             </div>
           </div>
 
-          <div className="text-center">
+          <div className="text-center mt-12">
             <a
               href="/application"
-              className="font-bold !text-white transition-none duration-0 focus:outline-none bg-[#940909] hover:bg-[#7b0707] py-3 px-12 text-lg rounded-md inline-block"
+              className="font-bold !text-white transition-none duration-0 focus:outline-none bg-[#940909] hover:bg-[#7b0707] py-3 px-12 text-lg rounded-md inline-block relative z-30"
             >
               See If This Is Right For You
             </a>

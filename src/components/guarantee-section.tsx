@@ -6,7 +6,7 @@ export default function GuaranteeSection() {
   return (
     <section className={`w-full py-20 px-4 ${bgClasses.white}`}>
       <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto bg-gray-50 p-8 sm:p-12 rounded-lg border border-gray-200 shadow-xl">
+        <div className="max-w-5xl mx-auto bg-gray-50 p-8 sm:p-12 rounded-lg border border-gray-200 shadow-xl">
           <div className="flex flex-col md:flex-row items-center mb-8">
             <div className="bg-[#940909] p-5 rounded-full mb-6 md:mb-0 md:mr-8">
               <Shield className="w-12 h-12 text-white" />

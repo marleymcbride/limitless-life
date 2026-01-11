@@ -1,6 +1,9 @@
+"use client";
+
 import VSLPlayer from "../components/vsl-player";
 import DoesThisSoundLikeYou from "../components/does-this-sound-like-you";
 import PersonalStorySection from "../components/personal-story-section";
+import IntroSection from "../components/intro-section";
 import CoreValueProposition from "../components/core-value-proposition";
 import VideoTestimonialCTA from "../components/video-testimonial-cta";
 import SystemBenefitsProof from "../components/system-benefits-proof";
@@ -21,12 +24,53 @@ import StickyCTA from "../components/sticky-cta";
 import DelayedCTA from "../components/delayed-cta";
 import { vignetteEffect, unifiedGradientWithSpotlightDesktop, unifiedGradientWithSpotlightMobile } from "../lib/utils";
 import Image from "next/image";
+import { useState } from "react";
 
 export default function Home() {
+  const [hasStartedVideo, setHasStartedVideo] = useState(false);
+  const [videoProgress, setVideoProgress] = useState(0);
+  const [videoCurrentTime, setVideoCurrentTime] = useState(0); // Track actual time in seconds
+  const [videoHasEnded, setVideoHasEnded] = useState(false);
+  const [passedJoinNowTime, setPassedJoinNowTime] = useState(false); // Track if passed 11:36
+  const [showPauseOverlay, setShowPauseOverlay] = useState(false); // Track if pause overlay is active
+
+  // Smooth scroll function with "soft close" easing
+  const smoothScrollToElement = (elementId: string) => {
+    const element = document.getElementById(elementId);
+    if (!element) return;
+
+    const start = window.pageYOffset;
+    const target = element.getBoundingClientRect().top + start - 20; // 20px offset
+    const distance = target - start;
+    const duration = 2500; // 2.5 seconds for smooth, luxurious scroll
+    let startTime: number | null = null;
+
+    // Ease-in-out cubic function for "soft close" effect
+    const easeInOutCubic = (t: number): number => {
+      return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+    };
+
+    const animateScroll = (currentTime: number) => {
+      if (!startTime) startTime = currentTime;
+      const timeElapsed = currentTime - startTime;
+      const progress = Math.min(timeElapsed / duration, 1);
+
+      const easedProgress = easeInOutCubic(progress);
+      window.scrollTo(0, start + distance * easedProgress);
+
+      if (progress < 1) {
+        requestAnimationFrame(animateScroll);
+      }
+    };
+
+    requestAnimationFrame(animateScroll);
+  };
+
   return (
     <main className="flex flex-col  min-h-screen">
       {/* 1. Hero Section (UNTOUCHED - PRESERVED EXACTLY) */}
       <section
+        id="hero-section"
         className={`pt-2 md:pt-6 px-3 pb-16 px-16min-h-[100vh] sm:pb-16 flex flex-col relative w-full overflow-hidden bg-black`}
       >
         <div className="hidden md:block">{unifiedGradientWithSpotlightDesktop}</div>
@@ -143,31 +187,167 @@ export default function Home() {
           </div>
 
           {/* Video Player - Bunny.net VSL */}
-          <div className="mx-auto mt-0 mb-4 w-full max-w-4xl px-4">
-            <div className="relative">
-              <div className="absolute inset-0 rounded-lg shadow-[0_0_20px_rgba(255,255,255,0.018984375),0_0_40px_rgba(255,255,255,0.0094921875),0_0_65px_rgba(255,255,255,0.0050625),0_0_120px_rgba(255,255,255,0.002),0_0_20px_rgba(148,9,9,0.0825),0_0_40px_rgba(148,9,9,0.04125),0_0_65px_rgba(148,9,9,0.022),0_0_120px_rgba(148,9,9,0.008)] pointer-events-none"></div>
+          <div className="mx-auto mt-0 mb-0 w-full max-w-4xl px-4 vsl-container" id="vsl-outer-container">
+            <div className="relative vsl-border-wrapper">
+              <div
+                className={`absolute inset-0 rounded-lg shadow-[0_0_20px_rgba(255,255,255,0.018984375),0_0_40px_rgba(255,255,255,0.0094921875),0_0_65px_rgba(255,255,255,0.0050625),0_0_120px_rgba(255,255,255,0.002),0_0_20px_rgba(148,9,9,0.0825),0_0_40px_rgba(148,9,9,0.04125),0_0_65px_rgba(148,9,9,0.022),0_0_120px_rgba(148,9,9,0.008)] pointer-events-none vsl-border-glow transition-opacity duration-300 ${showPauseOverlay ? 'opacity-0' : 'opacity-100'}`}
+              ></div>
               <VSLPlayer
                 libraryId="505300"
-                videoId="ae86338e-0493-4ff0-bca9-87f9ad98dd89"
+                videoId="a6751ee5-c1d3-4006-9776-7d1a9ced040c"
                 autoplay={true}
                 muted={true}
                 preload={true}
                 controls={true}
+                pauseOverlayContainer="hero-section"
+                onUserStartedPlaying={() => setHasStartedVideo(true)}
+                onPauseOverlayChange={(isActive) => setShowPauseOverlay(isActive)}
+                onProgress={(progress) => {
+                  // progress is the percentage (0-100)
+                  setVideoProgress(progress.percentage || 0);
+                  const currentTime = progress.currentTime || 0;
+                  setVideoCurrentTime(currentTime); // Track actual time in seconds
+
+                  // Check if passed 11:36 (696 seconds)
+                  if (currentTime >= 696 && !passedJoinNowTime) {
+                    console.log("🎯 Passed 11:36 mark! Switching to JOIN NOW");
+                    setPassedJoinNowTime(true);
+                  }
+                }}
+                onComplete={() => setVideoHasEnded(true)}
+                passedJoinNowTime={passedJoinNowTime}
               />
             </div>
           </div>
+
+          {/* Mobile portrait hint to turn for fullscreen */}
+          {hasStartedVideo && (
+            <div className="block sm:hidden text-center font-bold mt-3 px-4">
+              <div
+                className={`inline-block px-0 py-6 rounded-lg ${showPauseOverlay ? 'opacity-0' : 'opacity-100'}`}
+                style={{
+                  background: "radial-gradient(ellipse at center, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.08) 50%, transparent 70%)",
+                }}
+              >
+                <p className="text-xs text-gray-000 whitespace-nowrap">
+                  Turn to the side for fullscreen 📲
+                </p>
+              </div>
+            </div>
+          )}
 
           {/* Spacer div to maintain testimonial positioning */}
           <div className="h-5"></div>
 
           {/* CTA Button - positioned directly below VSL in dark section */}
-          <div className="text-center">
-            <DelayedCTA
-              delay={300000} // 5 minutes
-              className="font-bold !text-white transition-none duration-0 focus:outline-none bg-[#940909] hover:bg-[#7b0707] py-3 px-12 text-lg rounded-md inline-block relative z-30"
-            >
-              JOIN NOW
-            </DelayedCTA>
+          <div className="text-center relative my-5">
+            <style>{`
+              @media (max-width: 640px) and (orientation: portrait) {
+                .cta-btn-mob {
+                  width: 181px !important;
+                  padding-top: 8px !important;
+                  padding-bottom: 8px !important;
+                  padding-left: 24px !important;
+                  padding-right: 24px !important;
+                  font-size: 16px !important;
+                }
+                .vsl-border-glow {
+                  -webkit-mask-image: linear-gradient(to bottom,
+                    rgba(0,0,0,1) 0%,
+                    rgba(0,0,0,1) 55%,
+                    rgba(0,0,0,0.7) 60%,
+                    rgba(0,0,0,0.3) 65%,
+                    rgba(0,0,0,0) 70%
+                  );
+                  mask-image: linear-gradient(to bottom,
+                    rgba(0,0,0,1) 0%,
+                    rgba(0,0,0,1) 55%,
+                    rgba(0,0,0,0.7) 60%,
+                    rgba(0,0,0,0.3) 65%,
+                    rgba(0,0,0,0) 70%
+                  );
+                }
+              }
+              @media (max-width: 640px) and (orientation: landscape) {
+                .cta-btn-mob {
+                  width: 220px !important;
+                  padding-top: 12.2px !important;
+                  padding-bottom: 12.2px !important;
+                  padding-left: 40px !important;
+                  padding-right: 40px !important;
+                  font-size: 18px !important;
+                }
+              }
+              @media (max-height: 640px) and (orientation: landscape) {
+                .cta-btn-mob {
+                  width: 220px !important;
+                  padding-top: 12.2px !important;
+                  padding-bottom: 12.2px !important;
+                  padding-left: 40px !important;
+                  padding-right: 40px !important;
+                  font-size: 18px !important;
+                }
+                #hero-section {
+                  padding-left: 0 !important;
+                  padding-right: 0 !important;
+                }
+                #hero-section > .container {
+                  max-width: 100% !important;
+                  padding-left: 0 !important;
+                  padding-right: 0 !important;
+                }
+                #vsl-outer-container {
+                  max-width: 100% !important;
+                  padding-left: 0 !important;
+                  padding-right: 0 !important;
+                }
+                .vsl-border-glow {
+                  -webkit-mask-image: linear-gradient(to bottom,
+                    rgba(0,0,0,1) 0%,
+                    rgba(0,0,0,1) 65%,
+                    rgba(0,0,0,0.8) 70%,
+                    rgba(0,0,0,0.5) 75%,
+                    rgba(0,0,0,0.2) 80%,
+                    rgba(0,0,0,0) 85%
+                  );
+                  mask-image: linear-gradient(to bottom,
+                    rgba(0,0,0,1) 0%,
+                    rgba(0,0,0,1) 65%,
+                    rgba(0,0,0,0.8) 70%,
+                    rgba(0,0,0,0.5) 75%,
+                    rgba(0,0,0,0.2) 80%,
+                    rgba(0,0,0,0) 85%
+                  );
+                }
+              }
+            `}</style>
+            {passedJoinNowTime ? (
+              <DelayedCTA
+                delay={180000} // 3 minutes
+                videoProgress={videoProgress}
+                videoCurrentTime={videoCurrentTime}
+                videoHasEnded={videoHasEnded}
+                className="font-bold !text-white transition-none duration-0 focus:outline-none bg-[#940909] hover:bg-[#7b0707] py-2 px-8 sm:py-5 sm:px-12 text-base sm:text-lg rounded-md inline-block relative z-[200] w-[280px] cta-btn-mob"
+                href="/application"
+              >
+                JOIN NOW
+              </DelayedCTA>
+            ) : (
+              <DelayedCTA
+                delay={180000} // 3 minutes
+                videoProgress={videoProgress}
+                videoCurrentTime={videoCurrentTime}
+                videoHasEnded={videoHasEnded}
+                className="font-bold !text-white transition-none duration-0 focus:outline-none bg-[#940909] hover:bg-[#7b0707] py-2 sm:py-5 px-6 sm:px-12 text-base sm:text-lg rounded-md inline-block relative z-[200] w-[280px] sm:w-[280px] cta-btn-mob cursor-pointer"
+                href="#apply-for-elite-spots"
+                onClick={(e: { preventDefault: () => void }) => {
+                  e.preventDefault();
+                  smoothScrollToElement("apply-for-elite-spots");
+                }}
+              >
+                TELL ME MORE
+              </DelayedCTA>
+            )}
           </div>
 
           {/* Spacer div to maintain testimonial positioning */}
@@ -215,9 +395,12 @@ export default function Home() {
         <DoesThisSoundLikeYou />
       </div>
 
-      {/* 3. Personal Story + Discovery (White background) */}
+      {/* 3. Personal Story Section with embedded Intro (White background) */}
       <PersonalStorySection />
 
+      {/* INTRO SECTION INSERTED HERE */}
+      <IntroSection />
+      
       {/* 4. Core Value Proposition (White background) */}
       <CoreValueProposition />
 
@@ -226,61 +409,56 @@ export default function Home() {
         <VideoTestimonialCTA />
       </div>
 
-      {/* 6. The Big Idea (Dark background) */}
+      {/* 6. Imagine This (Black background) */}
       <div className="dark-section-with-grain">
-        <BigIdeaSection />
+        <ImagineThis />
       </div>
 
       {/* 7. Results Proof (White background) */}
       <ResultsProof />
 
-      {/* 8. Imagine This (Black background) */}
-      <div className="dark-section-with-grain">
-        <ImagineThis />
-      </div>
-
-      {/* 9. Process Explanation (Black background) */}
+      {/* 8. Process Explanation (Black background) */}
       <div className="dark-section-with-grain">
         <ProcessExplanation />
       </div>
 
-      {/* 10. More Video Testimonials (Black background) */}
+      {/* 9. More Video Testimonials (Black background) */}
       <div className="dark-section-with-grain">
         <MoreVideoTestimonials />
       </div>
 
-      {/* 11. Introducing Limitless (Dark background) */}
+      {/* 10. Introducing Limitless (Dark background) */}
       <div className="dark-section-with-grain">
         <IntroducingLimitless />
       </div>
 
-      {/* 12. The 4-Step System (White background) */}
+      {/* 11. The 4-Step System (White background) */}
       <FourStepSystem />
 
-      {/* 13. System Benefits Proof - Why This System Will Work For You (Dark background) */}
+      {/* 12. System Benefits Proof - Why This System Will Work For You (Dark background) */}
       <div className="dark-section-with-grain">
         <SystemBenefitsProof />
       </div>
 
-      {/* 14. More Client Testimonials (Dark background) */}
+      {/* 13. More Client Testimonials (Dark background) */}
       <div className="dark-section-with-grain">
         <MoreClientTestimonials />
       </div>
 
-      {/* 15. Exclusivity & Personal Attention (Dark background) */}
+      {/* 14. Exclusivity & Personal Attention (Dark background) */}
       <div className="dark-section-with-grain">
         <ExclusivityPersonalAttention />
       </div>
 
-      {/* 16. FAQ Section (Dark background) */}
+      {/* 15. FAQ Section (Dark background) */}
       <div className="dark-section-with-grain">
         <FAQSection />
       </div>
 
-      {/* 17. Urgency & Final CTA (White background) */}
+      {/* 16. Urgency & Final CTA (White background) */}
       <UrgencyFinalCTA />
 
-      {/* 18. Wall of Client Testimonials (Dark background) */}
+      {/* 17. Wall of Client Testimonials (Dark background) */}
       <div className="dark-section-with-grain">
         <WallClientTestimonials />
       </div>

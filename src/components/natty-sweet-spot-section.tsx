@@ -60,7 +60,7 @@ export default function NattySweetSpotSection() {
       {strongRedAccent}
       {vignetteEffect}
 
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto px-4 relative z-10 hero-full-width">
         <div className="text-center mb-12">
           <span className="inline-block bg-white/10 text-white text-sm font-bold uppercase tracking-wider px-3 py-1 rounded-sm mb-4">
             THE COMPLETE TRANSFORMATION
@@ -196,7 +196,7 @@ export default function NattySweetSpotSection() {
             state of complete optimization - where everything works together in
             perfect harmony.
           </p>
-          <div className="inline-block bg-white/10 text-white font-bold backdrop-blur-sm p-5 rounded-lg border border-[#940909]/30 max-w-4xl mx-auto">
+          <div className="inline-block bg-white/10 text-white font-bold backdrop-blur-sm p-5 rounded-lg border border-[#940909]/30 max-w-5xl mx-auto">
             <p className="text-xl">
               "I help high-performing men quit alcohol permanently, eliminate
               fake energy crutches, and drop the 20-40 lbs of stress weight … so

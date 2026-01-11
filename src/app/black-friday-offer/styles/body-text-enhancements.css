@@ -1,0 +1,93 @@
+/* BLACK FRIDAY BODY TEXT FONT SIZE FIXES */
+
+/* Override Tailwind text-base with larger sizes for main content */
+
+/* Base text sizes - current issues */
+.text-base {
+  font-size: 0.875rem !important;
+  line-height: 1.5rem !important;
+}
+
+/* Main content areas - make them more readable */
+.text-lg {
+  font-size: 1.25rem !important;
+  line-height: 1.6rem !important;
+}
+
+.text-xl {
+  font-size: 1.5rem !important;
+  line-height: 1.75rem !important;
+}
+
+/* Main section headers - make them stand out */
+.text-2xl {
+  font-size: 2.25rem !important;
+  line-height: 1.6rem !important;
+}
+
+/* Step headers - for better prominence */
+.text-xl {
+  font-size: 1.5rem !important;
+  line-height: 1.6rem !important;
+}
+
+/* Hero section - much larger like reference */
+.hero-heading {
+  font-size: 3.75rem !important;
+  line-height: 1.1;
+}
+
+/* Sub-heading for main sections */
+.subheading-lg {
+  font-size: 1.5rem !important;
+  font-weight: 700 !important;
+  line-height: 1.2rem !important;
+}
+
+/* For better readability on mobile */
+@media (max-width: 640px) {
+  .text-lg {
+    font-size: 1.375rem !important;
+    line-height: 1.4rem !important;
+  }
+
+  .text-xl {
+    font-size: 1.5rem !important;
+    line-height: 1.6rem !important;
+  }
+}
+
+/* Marketing headings */
+.heading-4xl {
+  font-size: 2.25rem !important;
+  line-height: 1.5rem !important;
+}
+
+/* Step headers */
+.step-heading {
+  font-size: 1.375rem !important;
+  line-height: 1.2rem !important;
+}
+
+/* For dark backgrounds - ensure text readability */
+.text-white {
+  color: #e5e5e5;
+}
+
+/* Enhanced base text size for main content */
+.content-enhanced {
+  font-size: 1.5rem !important;
+  line-height: 1.6rem !important;
+}
+
+/* Marketing section headings */
+.heading-4xl {
+  font-size: 2.25rem !important;
+  line-height: 1.5rem !important;
+}
+
+/* Step headers */
+.step-heading {
+  font-size: 1.375rem !important;
+  line-height: 1.2rem !important;
+}

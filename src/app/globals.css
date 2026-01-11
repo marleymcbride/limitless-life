@@ -1,5 +1,8 @@
 /* postcss-preset-env stage 1 */
 /* src/app/globals.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -7,6 +10,12 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+  }
+
+  /* Black Friday body text class */
+  .black-friday-body-text {
+    font-size: 18px;
+    line-height: 1.6;
   }
 
   :root {
@@ -19,6 +28,9 @@
     --primary: 0 0% 9%;
     --primary-foreground: 0 0% 98%;
     --secondary: 0 0% 96.1%;
+
+    /* Card opacity slider - change this value (0.0 to 1.0) to adjust all card backgrounds */
+    --card-opacity: 0.95;
     --secondary-foreground: 0 0% 9%;
     --muted: 0 0% 96.1%;
     --muted-foreground: 0 0% 45.1%;
@@ -53,13 +65,24 @@
     --section-grain-z-index: 25;
   }
 
+  /* Dark card background class - OUTSIDE of :root */
+  .dark-card-bg {
+    background-color: rgba(16, 22, 36, var(--card-opacity)) !important;
+    border-color: #101624 !important;
+  }
+
+  html {
+    background-color: black;
+  }
+
   body {
-    @apply bg-white text-black;
+    @apply bg-black text-white;
     border-color: hsl(var(--border));
     font-family: "Neuemontreal", "Roboto", sans-serif;
     margin: 0;
     padding: 0;
     overflow-x: hidden;
+    background-color: black;
   }
 
   /* Input styling for dark forms */
@@ -100,6 +123,14 @@
   .max-w-500px {
     max-width: 500px;
   }
+
+  /* Wider content sections - 5% more width on desktop */
+  @media (min-width: 768px) {
+    .wider-content {
+      max-width: none !important;
+      width: 105% !important;
+    }
+  }
 }
 
 @layer components {
@@ -119,9 +150,6 @@
 }
 
 /* Custom styles */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
-
 :root {
   --accent-red: #940909;
   --accent-red-hover: #7b0707;
@@ -188,6 +216,45 @@
   margin-left: auto;
   margin-right: auto;
 }
+
+/* Landscape mode: remove max-width constraint to fill screen */
+@media (orientation: landscape) and (max-height: 900px) {
+  /* Override the 800px constraint for mobile landscape only */
+  .container:not(.full-width-container):not(.hero-full-width) {
+    max-width: none !important;
+    width: 100% !important;
+    /* Bring content in from edges - around 12-13% on each side */
+    padding-left: 12% !important;
+    padding-right: 12% !important;
+  }
+
+  /* Max-width elements get the 12% padding */
+  [class*="max-w-"]:not(.full-width-container):not(.hero-full-width):not(.vsl-wrapper) {
+    max-width: none !important;
+    width: 100% !important;
+    padding-left: 12% !important;
+    padding-right: 12% !important;
+  }
+
+  /* BUT: Keep VSL/video player FULL WIDTH for cinematic feel */
+  /* Match specificity to override the padding rule */
+  [class*="max-w-"][class*="px-4"]:not(.full-width-container):not(.hero-full-width),
+  .max-w-4xl:not(.full-width-container):not(.hero-full-width) {
+    max-width: 100% !important;
+    width: 100% !important;
+    padding-left: 4% !important;
+    padding-right: 2% !important;
+  }
+
+  /* VSL player container itself */
+  .vsl-player-container {
+    max-width: 100% !important;
+    width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}
+
 
 /* Hero section grain overlay */
 .hero-grain-overlay {
@@ -269,6 +336,10 @@
     line-height: 1.4 !important;
   }
 
+  .vsl-resume-heading {
+    font-size: 22px !important;
+  }
+
   h3:not(.mobile-headline) {
     font-size: 1.75rem !important;
     line-height: 1.4 !important;
@@ -321,7 +392,7 @@
 /* ========= MOBILE []] MAIN BODY TEXT ========= */
 @media (max-width: 0px) {
   .body-copy p {
-    font-size: 1.55rem !important;
+    font-size: 1.45rem !important;
     line-height: 1.5;
   }
 }
@@ -329,10 +400,24 @@
 /* ========= DESKTOP []] MAIN BODY TEXT ========= */
 @media (min-width: 268px) {
   .body-copy p {
-    font-size: 1.4rem;
+    font-size: 1.3rem !important;
     line-height: 1.6;
     font-weight:400;
     font-family: "Neuemontreal", sans-serif !important;
+  }
+
+  /* Override prose-lg font sizes */
+  .prose.prose-lg .body-copy p,
+  .prose .body-copy p,
+  .prose-lg p,
+  .prose-lg .prose p,
+  .prose .prose-lg p {
+    font-size: 1.3rem !important;
+  }
+
+  /* Override all prose paragraph sizes */
+  .prose p {
+    font-size: 1.3rem !important;
   }
 
   /* Fix for prose styling within body-copy to preserve font-weight */
@@ -367,6 +452,35 @@ Mini headings - cognitive dissonance and attention capture */
     color: #1c1934 !important;
   }
 
+  /* MOBILE INTRO HEADLINE */
+  .mid-headline {
+    font-size: 3rem !important;
+    line-height: 1.2 !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+  }
+
+  .mid-headline {
+    font-size: 3rem !important;
+    line-height: 1.2 !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+  }
+
+  .body-copy .mid-headline {
+    font-size: 3rem !important;
+    line-height: 1.2 !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+  }
+
+  .prose .body-copy .mid-headline {
+    font-size: 3rem !important;
+    line-height: 1.2 !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+  }
+
   /* =======[IGNORE]========
 Mini headings - cognitive dissonance and attention capture */
   .body-copy .mini-heading {
@@ -386,6 +500,35 @@ Mini headings - cognitive dissonance and attention capture */
     line-height: 1.3 !important;
     font-weight: 700 !important;
     color: #1c1934 !important;
+  }
+
+  /* DESKTOP INTRO HEADLINE */
+  .mid-headline {
+    font-size: 3rem !important;
+    line-height: 1.2 !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+  }
+
+  .mid-headline {
+    font-size: 3rem !important;
+    line-height: 1.2 !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+  }
+
+  .body-copy .mid-headline {
+    font-size: 3rem !important;
+    line-height: 1.2 !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+  }
+
+  .prose .body-copy .mid-headline {
+    font-size: 3rem !important;
+    line-height: 1.2 !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
   }
 
 
@@ -415,7 +558,7 @@ Mini headings - cognitive dissonance and attention capture */
   font-style: italic;
 }
 
-/* Formatted quote styling - for | format with left border */
+/* Formatted quote styling - for LIGHT MODE| format with left border */
 .prose.prose .formatted-quote p,
 .prose .formatted-quote p,
 .prose .formatted-quote,
@@ -460,4 +603,179 @@ Mini headings - cognitive dissonance and attention capture */
 
 section.bg-zinc-800 h3.heading-white-force {
   color: #ffffff !important;
+}
+
+/* ========== LIGHT MODE COPY (WHITE BACKGROUNDS) ========== */
+/* This section consolidates existing white background patterns */
+
+/* Desktop light mode body text */
+@media (min-width: 268px) {
+  .light-mode-copy .body-copy p {
+    font-size: 1.3rem !important;
+    line-height: 1.6;
+    font-weight: 400;
+    font-family: "Neuemontreal", sans-serif !important;
+    color: #374151; /* text-gray-700 */
+  }
+
+  .light-mode-copy .mini-heading {
+    font-size: 2.2rem !important;
+    line-height: 1.3 !important;
+    font-weight: 700 !important;
+    text-align: center;
+    color: #1c1934 !important;
+  }
+
+  .light-mode-copy .mid-heading {
+    font-size: 3.0rem !important;
+    line-height: 1.3 !important;
+    font-weight: 700 !important;
+    color: #1c1934 !important;
+  }
+
+  .light-mode-copy .formatted-quote p {
+    border-left: 4px solid #374151 !important;
+    padding-left: 16px !important;
+    font-style: italic !important;
+    margin: 0 0 1.5rem 0 !important;
+    color: #1f2937 !important;
+    background: transparent !important;
+    padding-top: 0 !important;
+    padding-right: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  .light-mode-copy .in-line-quote p {
+    font-style: italic;
+    color: #1f2937;
+    opacity: 0.9;
+    padding-top: 0px;
+    padding-bottom: 20px;
+  }
+}
+
+/* Mobile light mode overrides */
+@media (max-width: 640px) {
+  .light-mode-copy .body-copy p {
+    font-size: 1.55rem !important;
+    line-height: 1.5;
+  }
+
+  .light-mode-copy .mini-heading {
+    font-size: 1.4rem !important;
+    line-height: 1.3 !important;
+    font-weight: 700 !important;
+    font-family: "Neuemontreal", "Roboto", sans-serif !important;
+    color: #1c1934 !important;
+  }
+}
+
+/* ========== DARK MODE COPY (BLACK BACKGROUNDS) ========== */
+
+/* Desktop dark mode body text */
+@media (min-width: 268px) {
+  .dark-mode-copy .body-copy p {
+    font-size: 1.4rem;
+    line-height: 1.6;
+    font-weight: 400;
+    font-family: "Neuemontreal", sans-serif !important;
+    color: #e5e5e5; /* Light gray for dark backgrounds */
+  }
+
+  .dark-mode-copy .mini-heading {
+    font-size: 2.2rem !important;
+    line-height: 1.3 !important;
+    font-weight: 700 !important;
+    text-align: center;
+    color: #ffffff !important;
+  }
+
+  .dark-mode-copy .mid-heading {
+    font-size: 3.0rem !important;
+    line-height: 1.3 !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+  }
+
+  .dark-mode-copy .formatted-quote p {
+    border-left: 4px solid #940909 !important;
+    padding-left: 16px !important;
+    font-style: italic !important;
+    margin: 0 0 1.5rem 0 !important;
+    color: #e5e5e5 !important;
+    background: transparent !important;
+    padding-top: 0 !important;
+    padding-right: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  .dark-mode-copy .in-line-quote p {
+    font-style: italic;
+    color: #d4d4d4;
+    opacity: 0.9;
+    padding-top: 0px;
+    padding-bottom: 20px;
+  }
+}
+
+/* Formatted quote styling - for LIGHT MODE| format with left border */
+.prose.prose .dark-mode-formatted-quote p,
+.prose .dark-mode-formatted-quote p,
+.prose .dark-mode-formatted-quote,
+.dark-mode-formatted-quote p {
+  border-left: 4px solid #ffffff !important;
+  padding-left: 16px !important;
+  font-style: italic !important;
+  margin: 0 0 1.5rem 0 !important; /* Override prose margin, add bottom spacing */
+  color: #c5d1e4 !important; /* Override text-gray-800 with slightly darker color */
+  background: transparent !important; /* Ensure no background color */
+  padding-top: 0 !important;
+  padding-right: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* Mobile dark mode overrides */
+@media (max-width: 640px) {
+  .dark-mode-copy .body-copy p {
+    font-size: 1.45rem !important;
+    line-height: 1.5;
+  }
+
+  .dark-mode-copy .mini-heading {
+    font-size: 1.4rem !important;
+    line-height: 1.3 !important;
+    font-weight: 700 !important;
+    font-family: "Neuemontreal", "Roboto", sans-serif !important;
+    color: #ffffff !important;
+  }
+}
+
+.BFO-dark-mode-copy .BFO-mini-heading {
+font-family: "Neuemontreal", "Roboto", sans-serif;
+letter-spacing: -0.025em;
+line-height: 1.4 !important;
+color: #ffffff;
+}
+
+/* Desktop VSL resume heading - 2x original size, 30% smaller */
+@media (min-width: 768px) {
+  .vsl-resume-heading {
+    font-size: 2.45rem !important;
+    line-height: 1.1 !important;
+  }
+
+  .vsl-resume-container {
+    transform: translateY(32%) !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .vsl-resume-heading {
+    font-size: 2.94rem !important;
+    line-height: 1.1 !important;
+  }
+
+  .vsl-resume-container {
+    transform: translateY(32%) !important;
+  }
 }

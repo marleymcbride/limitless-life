@@ -86,7 +86,7 @@ export default function ResultsSection() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
           {results.map((item, index) => (
             <div
               key={index}
@@ -108,7 +108,7 @@ export default function ResultsSection() {
         </div>
 
         {/* Micro-testimonial for social proof */}
-        <div className="mt-16 max-w-4xl mx-auto">
+        <div className="mt-16 max-w-5xl mx-auto">
           <MicroTestimonial
             quote="I'm performing at levels I never thought possible at 42. My team has noticed, my family has noticed, everyone's noticed."
             name="Thomas B."

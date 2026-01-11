@@ -15,12 +15,12 @@ export default function FinalCta() {
           <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-white">
             You&apos;re At A Crossroads, Scott
           </h2>
-          <p className="text-xl max-w-4xl mx-auto text-white/90 mb-8">
+          <p className="text-xl max-w-5xl mx-auto text-white/90 mb-8">
             You can keep doing what you&apos;re doing - managing your symptoms
             with caffeine and alcohol, spending £850+ monthly to feel like shit,
             slowly dying in the 4% trap...
           </p>
-          <p className="text-xl max-w-4xl mx-auto text-white font-bold">
+          <p className="text-xl max-w-5xl mx-auto text-white font-bold">
             Or you can join the Limitless 1% and become truly independent.
           </p>
         </div>
@@ -300,7 +300,7 @@ export default function FinalCta() {
         </div>
 
         {/* MASSIVE GUARANTEE */}
-        <div className="max-w-4xl mx-auto mb-16">
+        <div className="max-w-5xl mx-auto mb-16">
           <div className="bg-green-900/30 backdrop-blur-sm rounded-lg p-8 border border-green-500/30 text-center">
             <Shield className="h-16 w-16 text-green-400 mx-auto mb-6" />
             <h3 className="text-2xl font-bold text-white mb-6">
@@ -323,7 +323,7 @@ export default function FinalCta() {
         </div>
 
         {/* URGENCY AND SCARCITY */}
-        <div className="max-w-4xl mx-auto mb-16">
+        <div className="max-w-5xl mx-auto mb-16">
           <div className="bg-red-900/30 backdrop-blur-sm rounded-lg p-8 border border-red-500/30 text-center">
             <Clock className="h-16 w-16 text-red-400 mx-auto mb-6" />
             <h3 className="text-2xl font-bold text-white mb-6">
@@ -345,7 +345,7 @@ export default function FinalCta() {
         </div>
 
         {/* FAQ FOR OBJECTION HANDLING */}
-        <div className="max-w-4xl mx-auto mb-16">
+        <div className="max-w-5xl mx-auto mb-16">
           <h3 className="text-2xl font-bold text-center text-white mb-12">
             Final Questions Before You Transform Your Life
           </h3>

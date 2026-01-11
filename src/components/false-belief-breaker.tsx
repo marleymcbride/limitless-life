@@ -54,7 +54,7 @@ export default function FalseBeliefBreakerSection() {
             You've Been Told These Lies
           </h2>
           <p
-            className={`text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto font-serif`}
+            className={`text-xl md:text-2xl text-gray-600 max-w-5xl mx-auto font-serif`}
           >
             The fitness industry sells busy men solutions that don't work.
             Here's the truth about what actually delivers results.
