@@ -5,7 +5,7 @@ import { CTAButton } from "./ui/cta-button";
 export default function ProcessExplanation() {
   return (
     <section className="bg-black py-20 px-4 w-full">
-      <div className="container mx-auto max-w-5xl">
+      <div className="container mx-auto max-w-4xl">
         <div className="text-center">
           <div className="prose prose-lg max-w-none mobile-text-large body-copy dark-mode-copy">
             <div className="text-center mb-12">
