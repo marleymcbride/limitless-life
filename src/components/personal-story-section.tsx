@@ -139,7 +139,7 @@ export default function PersonalStorySection() {
             </p>
 
             <p className="text-gray-800 leading-relaxed mb-6">
-            Wit the stress of trying to land clients, and my anxiety getting out of hand, I started reaching for alcohol almost every night...
+            With the stress of trying to land clients, and my anxiety getting out of hand, I started reaching for alcohol almost every night...
             </p>
 
             <p className="text-gray-800 mini-heading font-bold leading-relaxed mb-6">
@@ -170,7 +170,7 @@ export default function PersonalStorySection() {
                   loading="lazy"
                 />
                 <figcaption className="mt-3 text-center text-gray-600 italic text-md">
-                  Puffy face, a gut hanging over and letting alcohol ruin my life.
+                  Puffy face, out of shape and letting alcohol ruin my life
                 </figcaption>
               </figure>
             </div>
@@ -179,10 +179,6 @@ export default function PersonalStorySection() {
             style={{ fontFamily: "Neuemontreal, !bold, sans-serif", lineHeight: "1.0"}}
             >
             <span className="font-bold">Rock. Bottom.</span>
-            </p>
-
-            <p className="text-gray-800 leading-relaxed mb-6">
-            I HAD to do something.
             </p>
 
             <p className="text-gray-800 leading-relaxed mb-0">

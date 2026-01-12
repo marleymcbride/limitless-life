@@ -11,12 +11,12 @@ export default function ResultsProof() {
             className="text-4xl md:text-5xl font-bold text-black mb-8"
             style={{ fontFamily: "Neuemontreal, Arial, sans-serif" }}
           >
-            What Your Life Could Look Like
+            Results created
           </h2>
 
           <div className="mb-12">
-            <div className="text-3xl md:text-4xl font-black text-gray-900 mb-4" style={{ fontFamily: "Neuemontreal, Arial, sans-serif" }}>
-              Real results from men who were exactly where you are right now:
+            <div className="text-xl md:text-3xl lg:text-md font-thin text-gray-900 mb-4" style={{ fontFamily: "Neuemontreal, Arial, sans-serif" }}>
+              Real results (from men using this proven energy system):
             </div>
           </div>
 

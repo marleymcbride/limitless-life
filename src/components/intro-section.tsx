@@ -58,7 +58,7 @@ export default function IntroSection() {
             </p>
 
             <p className="text-gray-300 leading-relaxed mb-6">
-              But fast-forward today I&apos;m over 3 years sober, built my dream body and and feel pretty fucking good most days.
+              But fast-forward today I&apos;m over 3 years sober, built my dream body and feel pretty fucking good most days.
             </p>
 
             <p className="text-gray-300 leading-relaxed mb-6">
@@ -70,7 +70,7 @@ export default function IntroSection() {
             </p>
 
             <p className="text-gray-300 italic leading-relaxed mb-6">
-            &apos;'No one gets those results training twice a week!'
+            &apos;&apos;No one gets those results training twice a week!&apos;&apos;
             </p>
 
             <p className="text-gray-300 leading-relaxed mb-6">

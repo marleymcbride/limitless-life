@@ -17,7 +17,7 @@ export default function CoreValueProposition() {
                 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-0 text-gray-900"
                 style={{ fontFamily: "Neuemontreal, sans-serif", lineHeight: "1.1"}}
               >
-               After Seeing The Same Mistakes Over and Over I Realized There's a Simpler Way
+               After Seeing The Same Mistakes Over and Over I Realized There&apos;s a Simpler Way
               </h2>
             </div>
 
@@ -82,7 +82,7 @@ export default function CoreValueProposition() {
             </p>
 
             <p className="text-gray-800 leading-relaxed mb-6">
-              And without a system that can fix these root issues of your health, you&apos;ll keep on spinning your wheels.
+              And without a system that fixes the root problems in your body, you&apos;ll keep on spinning your wheels.
             </p>
 
             {/* CTA Button - matching personal story style */}

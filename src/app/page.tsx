@@ -9,6 +9,7 @@ import VideoTestimonialCTA from "../components/video-testimonial-cta";
 import SystemBenefitsProof from "../components/system-benefits-proof";
 import ResultsProof from "../components/results-proof";
 import ImagineThis from "../components/imaginethis";
+import WhyThisSystemWorks from "../components/why-this-system-works";
 import ProcessExplanation from "../components/process-explanation";
 import MoreVideoTestimonials from "../components/more-video-testimonials";
 import BigIdeaSection from "../components/big-idea-section";
@@ -25,6 +26,7 @@ import DelayedCTA from "../components/delayed-cta";
 import { vignetteEffect, unifiedGradientWithSpotlightDesktop, unifiedGradientWithSpotlightMobile } from "../lib/utils";
 import Image from "next/image";
 import { useState } from "react";
+import RootCauses from "../components/the-4-root-causes";
 
 export default function Home() {
   const [hasStartedVideo, setHasStartedVideo] = useState(false);
@@ -409,13 +411,25 @@ export default function Home() {
         <VideoTestimonialCTA />
       </div>
 
+      {/* INTRO SECTION 2 INSERTED HERE */}
+      <RootCauses />
+
+      {/* INTRO SECTION 2 INSERTED HERE */}
+      <BigIdeaSection />
+
+
+      {/* 7. Results Proof (White background) */}
+      <ResultsProof />
+
+
       {/* 6. Imagine This (Black background) */}
       <div className="dark-section-with-grain">
         <ImagineThis />
       </div>
 
-      {/* 7. Results Proof (White background) */}
-      <ResultsProof />
+      {/* Why This System Works (Black background) */}
+      <WhyThisSystemWorks />
+
 
       {/* 8. Process Explanation (Black background) */}
       <div className="dark-section-with-grain">
@@ -435,10 +449,6 @@ export default function Home() {
       {/* 11. The 4-Step System (White background) */}
       <FourStepSystem />
 
-      {/* 12. System Benefits Proof - Why This System Will Work For You (Dark background) */}
-      <div className="dark-section-with-grain">
-        <SystemBenefitsProof />
-      </div>
 
       {/* 13. More Client Testimonials (Dark background) */}
       <div className="dark-section-with-grain">
