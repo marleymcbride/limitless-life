@@ -2,8 +2,7 @@
 
 export default function WhyThisSystemWorks() {
   return (
-    <section className="w-full py-20 px-6 relative" style={{ background: "linear-gradient(to bottom, #2d2d2d 0%, #000000 100%)" }}>
-      <div className="container mx-auto max-w-5xl hero-full-width">
+    <section className="dark-card-bg-small w-full py-20 px-6 relative">      <div className="container mx-auto max-w-5xl hero-full-width">
         <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
           <div className="text-center">
             <h2
@@ -16,7 +15,7 @@ export default function WhyThisSystemWorks() {
               className="text-2xl md:text-3xl font-bold text-white mb-8"
               style={{ fontFamily: "Neuemontreal, sans-serif" }}
             >
-              (even if you&apos;re busy and nothing&apos;s worked before)
+              (even if nothing&apos;s worked before)
             </h2>
 
             <p className="text-3xl text-gray-300 mb-12 mt-12">
@@ -57,6 +56,44 @@ export default function WhyThisSystemWorks() {
                 </h3>
                 <p className="text-gray-300 leading-relaxed">
                   By addressing the fundamental signaling issues, the results become automatic and permanent without constant struggle.
+                </p>
+              </div>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-8 mb-12 text-left">
+              <div>
+                <h3
+                  className="text-xl font-bold text-white mb-4"
+                  style={{ fontFamily: "Neuemontreal, sans-serif" }}
+                >
+                  4. You don&apos;t need to overhaul your entire life
+                </h3>
+                <p className="text-gray-300 leading-relaxed">
+                  This works alongside your career, family, and social commitments - no need to become a gym rat or count every calorie.
+                </p>
+              </div>
+
+              <div>
+                <h3
+                  className="text-xl font-bold text-white mb-4"
+                  style={{ fontFamily: "Neuemontreal, sans-serif" }}
+                >
+                  5. It&apos;s built for people who&apos;ve &apos;tried everything&apos;
+                </h3>
+                <p className="text-gray-300 leading-relaxed">
+                  If you&apos;ve failed with diets, supplements, or exercise programs before - that&apos;s actually a sign this will work for you.
+                </p>
+              </div>
+
+              <div>
+                <h3
+                  className="text-xl font-bold text-white mb-4"
+                  style={{ fontFamily: "Neuemontreal, sans-serif" }}
+                >
+                  6. You&apos;ll feel the difference in 7 days, not months
+                </h3>
+                <p className="text-gray-300 leading-relaxed">
+                  Unlike traditional approaches that take months to show results, you&apos;ll notice improved energy and focus within the first week.
                 </p>
               </div>
             </div>

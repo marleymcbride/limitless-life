@@ -6,27 +6,31 @@ import PersonalStorySection from "../components/personal-story-section";
 import IntroSection from "../components/intro-section";
 import CoreValueProposition from "../components/core-value-proposition";
 import VideoTestimonialCTA from "../components/video-testimonial-cta";
-import SystemBenefitsProof from "../components/system-benefits-proof";
 import ResultsProof from "../components/results-proof";
-import ImagineThis from "../components/imaginethis";
-import WhyThisSystemWorks from "../components/why-this-system-works";
-import ProcessExplanation from "../components/process-explanation";
+import ImagineThisDark from "../components/imaginethisdark";
 import MoreVideoTestimonials from "../components/more-video-testimonials";
 import BigIdeaSection from "../components/big-idea-section";
 import IntroducingLimitless from "../components/introducing-limitless";
-import FourStepSystem from "../components/four-step-system";
+import IntroducingLimitless2 from "../components/introducing-limitless2";
 import MoreClientTestimonials from "../components/more-client-testimonials";
-import ExclusivityPersonalAttention from "../components/exclusivity-personal-attention";
-import FAQSection from "../components/faq-section";
-import UrgencyFinalCTA from "../components/urgency-final-cta";
-import WallClientTestimonials from "../components/wall-client-testimonials";
-import FooterSection from "../components/footer-section";
-import StickyCTA from "../components/sticky-cta";
-import DelayedCTA from "../components/delayed-cta";
 import { vignetteEffect, unifiedGradientWithSpotlightDesktop, unifiedGradientWithSpotlightMobile } from "../lib/utils";
 import Image from "next/image";
 import { useState } from "react";
 import RootCauses from "../components/the-4-root-causes";
+import DelayedCTA from "../components/delayed-cta";
+
+// import SystemBenefitsProof from "../components/system-benefits-proof";
+// import ImagineThis from "../components/imaginethis";
+// import WhyThisSystemWorks from "../components/[old] why-this-system-works";
+// import ProcessExplanation from "../components/process-explanation";
+// import FourStepSystem from "../components/four-step-system";
+// import ExclusivityPersonalAttention from "../components/exclusivity-personal-attention";
+// import FAQSection from "../components/faq-section";
+// import UrgencyFinalCTA from "../components/urgency-final-cta";
+// import WallClientTestimonials from "../components/wall-client-testimonials";
+// import FooterSection from "../components/footer-section";
+// import StickyCTA from "../components/sticky-cta";
+
 
 export default function Home() {
   const [hasStartedVideo, setHasStartedVideo] = useState(false);
@@ -194,9 +198,10 @@ export default function Home() {
               <div
                 className={`absolute inset-0 rounded-lg shadow-[0_0_20px_rgba(255,255,255,0.018984375),0_0_40px_rgba(255,255,255,0.0094921875),0_0_65px_rgba(255,255,255,0.0050625),0_0_120px_rgba(255,255,255,0.002),0_0_20px_rgba(148,9,9,0.0825),0_0_40px_rgba(148,9,9,0.04125),0_0_65px_rgba(148,9,9,0.022),0_0_120px_rgba(148,9,9,0.008)] pointer-events-none vsl-border-glow transition-opacity duration-300 ${showPauseOverlay ? 'opacity-0' : 'opacity-100'}`}
               ></div>
+              {/* TODO: videoId="a6751ee5-c1d3-4006-9776-7d1a9ced040c" */}
               <VSLPlayer
+                videoId="" // a6751ee5-c1d3-4006-9776-7d1a9ced040c
                 libraryId="505300"
-                videoId="a6751ee5-c1d3-4006-9776-7d1a9ced040c"
                 autoplay={true}
                 muted={true}
                 preload={true}
@@ -414,72 +419,79 @@ export default function Home() {
       {/* INTRO SECTION 2 INSERTED HERE */}
       <RootCauses />
 
-      {/* INTRO SECTION 2 INSERTED HERE */}
-      <BigIdeaSection />
-
-
       {/* 7. Results Proof (White background) */}
       <ResultsProof />
 
+      {/* INTRO SECTION 2 INSERTED HERE */}
+      <BigIdeaSection />
 
-      {/* 6. Imagine This (Black background) */}
-      <div className="dark-section-with-grain">
-        <ImagineThis />
-      </div>
-
-      {/* Why This System Works (Black background) */}
-      <WhyThisSystemWorks />
-
-
-      {/* 8. Process Explanation (Black background) */}
-      <div className="dark-section-with-grain">
-        <ProcessExplanation />
-      </div>
 
       {/* 9. More Video Testimonials (Black background) */}
       <div className="dark-section-with-grain">
         <MoreVideoTestimonials />
       </div>
 
+      {/* 6. Imagine This (White background with dark box) */}
+      <ImagineThisDark />
+
+
+
       {/* 10. Introducing Limitless (Dark background) */}
       <div className="dark-section-with-grain">
         <IntroducingLimitless />
       </div>
 
-      {/* 11. The 4-Step System (White background) */}
-      <FourStepSystem />
-
-
-      {/* 13. More Client Testimonials (Dark background) */}
+      {/* 13. More Client Testimonials (Dark background)  */}
       <div className="dark-section-with-grain">
         <MoreClientTestimonials />
       </div>
 
-      {/* 14. Exclusivity & Personal Attention (Dark background) */}
+      {/* 10. Introducing Limitless (Dark background) */}
+      <div className="dark-section-with-grain">
+        <IntroducingLimitless2 />
+      </div>
+
+
+
+
+
+      {/* 8. Process Explanation (Black background) 
+      <div className="dark-section-with-grain">
+        <ProcessExplanation />
+      </div>
+
+
+      {/* 11. The 4-Step System (White background) 
+      <FourStepSystem />
+
+
+
+
+      {/* 14. Exclusivity & Personal Attention (Dark background) 
       <div className="dark-section-with-grain">
         <ExclusivityPersonalAttention />
       </div>
 
-      {/* 15. FAQ Section (Dark background) */}
+      {/* 15. FAQ Section (Dark background) 
       <div className="dark-section-with-grain">
         <FAQSection />
       </div>
 
-      {/* 16. Urgency & Final CTA (White background) */}
+      {/* 16. Urgency & Final CTA (White background) 
       <UrgencyFinalCTA />
 
-      {/* 17. Wall of Client Testimonials (Dark background) */}
+      {/* 17. Wall of Client Testimonials (Dark background) 
       <div className="dark-section-with-grain">
         <WallClientTestimonials />
       </div>
 
-      {/* Minimal Footer (Black) */}
+      {/* Minimal Footer (Black) *
       <div className="dark-section-with-grain">
         <FooterSection />
-      </div>
+      </div> */}
 
       {/* Sticky CTA that appears on significant scroll */}
-      <StickyCTA />
+      {/* <StickyCTA /> */}
     </main>
   );
 }

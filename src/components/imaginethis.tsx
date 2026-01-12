@@ -2,7 +2,7 @@
 
 export default function ImagineThis() {
   return (
-    <section className="bg-black pt-20 pb-20 px-4 w-full">
+    <section className="bg-black pt-20 pb-20 px-4 w-full imaginethis-dark">
       <div className="container mx-auto max-w-6xl relative z-10 hero-full-width">
         <div className="text-center">
           {/* White round rectangle box with shadow */}

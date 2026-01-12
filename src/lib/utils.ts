@@ -144,7 +144,7 @@ export const bigIdeaGradientDesktop = React.createElement("div", {
   className: "absolute inset-0 z-10",
   style: {
     background: `
-      linear-gradient(to bottom, rgb(0, 0, 0) 0%, rgb(8, 8, 8, 0.99) 20%, rgb(12, 11, 11, 0.97) 35%, rgb(18, 16, 15, 0.92) 50%, rgb(30, 22, 20, 0.6) 65%, rgba(60, 30, 28, 0.4) 75%, rgba(90, 35, 32, 0.35) 85%, rgba(115, 40, 38, 0.32) 95%, rgba(130, 45, 45, 0.3) 100%)
+      linear-gradient(to bottom, rgb(0, 0, 0) 0%, rgb(8, 8, 8, 0.99) 20%, rgb(12, 11, 11, 0.97) 30%, rgb(18, 16, 15, 0.90) 40%, rgb(28, 20, 18, 0.65) 50%, rgba(50, 25, 22, 0.42) 60%, rgba(75, 32, 28, 0.35) 70%, rgba(100, 38, 32, 0.32) 80%, rgba(125, 20, 20, 0.30) 88%, rgba(140, 12, 12, 0.32) 95%, rgba(148, 9, 9, 0.35) 100%)
     `,
   },
 });
@@ -154,7 +154,7 @@ export const bigIdeaGradientMobile = React.createElement("div", {
   className: "absolute inset-0 z-10",
   style: {
     background: `
-      linear-gradient(to bottom, rgb(0, 0, 0) 0%, rgb(8, 8, 8, 0.99) 20%, rgb(12, 11, 11, 0.97) 35%, rgb(18, 16, 15, 0.92) 50%, rgb(30, 22, 20, 0.6) 65%, rgba(60, 30, 28, 0.4) 75%, rgba(90, 35, 32, 0.35) 85%, rgba(115, 40, 38, 0.32) 95%, rgba(130, 45, 45, 0.3) 100%)
+      linear-gradient(to bottom, rgb(0, 0, 0) 0%, rgb(8, 8, 8, 0.99) 20%, rgb(12, 11, 11, 0.97) 30%, rgb(18, 16, 15, 0.90) 40%, rgb(28, 20, 18, 0.65) 50%, rgba(50, 25, 22, 0.42) 60%, rgba(75, 32, 28, 0.35) 70%, rgba(100, 38, 32, 0.32) 80%, rgba(125, 20, 20, 0.30) 88%, rgba(140, 12, 12, 0.32) 95%, rgba(148, 9, 9, 0.35) 100%)
     `,
   },
 });

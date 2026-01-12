@@ -8,7 +8,7 @@ export interface VideoQualityOption {
 
 export interface VSLPlayerProps {
   libraryId: string;
-  videoId: string;
+  videoId?: string;
   className?: string;
   onReady?: () => void;
   onPlay?: () => void;

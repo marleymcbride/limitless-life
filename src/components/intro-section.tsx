@@ -7,7 +7,26 @@ export default function IntroSection() {
       {/* Black background */}
       <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-black to-gray-900"></div>
 
-      <div className="container mx-auto px-4 relative z-10 hero-full-width">
+      {/* Grain overlay - using hero opacity (0.10) to prevent lightening */}
+      <div className="absolute inset-0 w-full h-full pointer-events-none"
+        style={{
+          backgroundImage: "url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"100\" height=\"100\"><filter id=\"noise\"><feTurbulence type=\"fractalNoise\" baseFrequency=\"0.9\" numOctaves=\"4\" seed=\"1\"/><feColorMatrix type=\"saturate\" values=\"0\"/></filter><rect width=\"100\" height=\"100\" fill=\"%23141414\" filter=\"url(%23noise)\" opacity=\"1.0\"/></svg>')",
+          opacity: 0.10,
+          zIndex: 25,
+          mixBlendMode: 'hard-light'
+        }}
+      ></div>
+
+      {/* Darkening overlay - compensates for grain lightening while preserving texture */}
+      <div className="absolute inset-0 w-full h-full pointer-events-none"
+        style={{
+          background: 'rgba(0, 0, 0, 0.2)',
+          zIndex: 26,
+          mixBlendMode: 'saturation'
+        }}
+      ></div>
+
+      <div className="container mx-auto px-4 relative z-30 hero-full-width">
         <div className="max-w-5xl mx-auto" style={{ maxWidth: "1200px" }}>
           <div className="prose prose-lg max-w-none mobile-text-large body-copy" style={{ fontSize: "1.3rem" }}>
 

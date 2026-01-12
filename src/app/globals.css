@@ -71,6 +71,205 @@
     border-color: #101624 !important;
   }
 
+  /* Darker version for smaller containers - pure black to signature red WITHOUT orb */
+  .dark-card-bg-small {
+    position: relative !important;
+    background:
+      linear-gradient(135deg,
+        rgba(0, 0, 0, 1) 0%,
+        rgba(0, 0, 0, 1) 35%,
+        rgba(14, 1, 1, 0.985) 50%,
+        rgba(23, 2, 2, 0.96) 62%,
+        rgba(33, 3, 3, 0.94) 72%,
+        rgba(40, 4, 4, 0.925) 80%,
+        rgba(42, 4, 4, 0.91) 85%,
+        rgba(44, 5, 5, 0.88) 90%,
+        rgba(46, 6, 6, 0.86) 95%,
+        rgba(48, 7, 7, 0.84) 100%) !important;
+    border-color: #0a0d14 !important;
+  }
+
+  .dark-card-bg-small::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" seed="1"/><feColorMatrix type="saturate" values="0"/></filter><rect width="100" height="100" fill="var(--hero-grain-color)" filter="url(%23noise)" opacity="1.0"/></svg>');
+    opacity: var(--hero-grain-opacity);
+    z-index: var(--hero-grain-z-index);
+    pointer-events: none;
+    mix-blend-mode: var(--hero-grain-blend-mode);
+  }
+
+  /* Darkening overlay - compensates for grain lightening while preserving texture */
+  .dark-card-bg-small::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.2);
+    z-index: 26;
+    pointer-events: none;
+    mix-blend-mode: saturation;
+  }
+
+  /* Darker version for smaller containers - pure black to signature red WITH red orb */
+  .dark-card-bg-small-orb {
+    position: relative !important;
+    background:
+      linear-gradient(135deg,
+        rgba(0, 0, 0, 1) 0%,
+        rgba(0, 0, 0, 1) 35%,
+        rgba(14, 1, 1, 0.985) 50%,
+        rgba(23, 2, 2, 0.96) 62%,
+        rgba(33, 3, 3, 0.94) 72%,
+        rgba(40, 4, 4, 0.925) 80%,
+        rgba(42, 4, 4, 0.91) 85%,
+        rgba(44, 5, 5, 0.88) 90%,
+        rgba(46, 6, 6, 0.86) 95%,
+        rgba(48, 7, 7, 0.84) 100%),
+      radial-gradient(circle at 72% 80%,
+        rgba(148, 9, 9, 1) 0%,
+        rgba(148, 9, 9, 0.85) 50%,
+        rgba(148, 9, 9, 0.50) 100%,
+        transparent 750%),
+      linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.3) 100%) !important;
+    background-blend-mode: normal, normal, overlay !important;
+    border-color: #0a0d14 !important;
+  }
+
+  .dark-card-bg-small-orb::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" seed="1"/><feColorMatrix type="saturate" values="0"/></filter><rect width="100" height="100" fill="var(--hero-grain-color)" filter="url(%23noise)" opacity="1.0"/></svg>');
+    opacity: var(--hero-grain-opacity);
+    z-index: var(--hero-grain-z-index);
+    pointer-events: none;
+    mix-blend-mode: var(--hero-grain-blend-mode);
+  }
+
+  /* Darkening overlay - compensates for grain lightening while preserving texture */
+  .dark-card-bg-small-orb::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.2);
+    z-index: 26;
+    pointer-events: none;
+    mix-blend-mode: saturation;
+  }
+
+  /* Introducing Limitless section background - more black in top half, delayed red fade */
+  .introducing-limitless-bg {
+    position: relative !important;
+    background:
+      linear-gradient(135deg,
+        rgba(0, 0, 0, 1) 0%,
+        rgba(0, 0, 0, 1) 45%,
+        rgba(8, 0.5, 0.5, 0.99) 55%,
+        rgba(14, 1, 1, 0.97) 65%,
+        rgba(23, 2, 2, 0.94) 75%,
+        rgba(33, 3, 3, 0.91) 82%,
+        rgba(40, 4, 4, 0.88) 88%,
+        rgba(42, 4, 4, 0.86) 92%,
+        rgba(46, 6, 6, 0.84) 96%,
+        rgba(48, 7, 7, 0.82) 100%) !important;
+    border-color: #0a0d14 !important;
+  }
+
+  .introducing-limitless-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" seed="1"/><feColorMatrix type="saturate" values="0"/></filter><rect width="100" height="100" fill="var(--hero-grain-color)" filter="url(%23noise)" opacity="1.0"/></svg>');
+    opacity: var(--hero-grain-opacity);
+    z-index: var(--hero-grain-z-index);
+    pointer-events: none;
+    mix-blend-mode: var(--hero-grain-blend-mode);
+  }
+
+  /* Darkening overlay - compensates for grain lightening while preserving texture */
+  .introducing-limitless-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.2);
+    z-index: 26;
+    pointer-events: none;
+    mix-blend-mode: saturation;
+  }
+
+  /* Results Proof section background - smooth gradient from black to light grey */
+  .results-proof-gradient {
+    background: linear-gradient(to bottom, #000000, #090808, #121111, #141414, #1a1818, #202020, #2d2828, #373434, #413e3e, #5a5757, #737070, #9c9999, #c5c3c3) !important;
+  }
+
+  /* Imagine This section background - black to subtle red (50% reduced red) */
+  .imaginethis-dark {
+    position: relative !important;
+    background:
+      linear-gradient(135deg,
+        rgba(0, 0, 0, 1) 0%,
+        rgba(0, 0, 0, 1) 35%,
+        rgba(7, 0.5, 0.5, 0.4925) 50%,
+        rgba(11.5, 1, 1, 0.48) 62%,
+        rgba(16.5, 1.5, 1.5, 0.47) 72%,
+        rgba(20, 2, 2, 0.4625) 80%,
+        rgba(21, 2, 2, 0.455) 85%,
+        rgba(22, 2.5, 2.5, 0.44) 90%,
+        rgba(23, 3, 3, 0.43) 95%,
+        rgba(24, 3.5, 3.5, 0.42) 100%) !important;
+    border-color: #0a0d14 !important;
+  }
+
+  .imaginethis-dark::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" seed="1"/><feColorMatrix type="saturate" values="0"/></filter><rect width="100" height="100" fill="var(--hero-grain-color)" filter="url(%23noise)" opacity="1.0"/></svg>');
+    opacity: var(--hero-grain-opacity);
+    z-index: var(--hero-grain-z-index);
+    pointer-events: none;
+    mix-blend-mode: var(--hero-grain-blend-mode);
+  }
+
+  /* Darkening overlay - compensates for grain lightening while preserving texture */
+  .imaginethis-dark::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.2);
+    z-index: 26;
+    pointer-events: none;
+    mix-blend-mode: saturation;
+  }
+
+  /* Imagine This Dark outer background - grey gradient with grain */
+  .imaginethis-outer-bg {
+    position: relative !important;
+    background: linear-gradient(to bottom,#1D1B1B, #909090, #BDBDBD, #E1E1E1) !important;
+  }
+
+  /* White overlay at 30% opacity */
+  .imaginethis-outer-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.3);
+    z-index: 24;
+    pointer-events: none;
+  }
+
+  .imaginethis-outer-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" seed="1"/><feColorMatrix type="saturate" values="0"/></filter><rect width="100" height="100" fill="var(--hero-grain-color)" filter="url(%23noise)" opacity="1.0"/></svg>');
+    opacity: 0.25;
+    z-index: 25;
+    pointer-events: none;
+    mix-blend-mode: var(--hero-grain-blend-mode);
+  }
+
   html {
     background-color: black;
   }

@@ -7,7 +7,7 @@ import { useVSLTracking } from "@/hooks/useVSLTracking";
 
 export default function VSLPlayer({
   libraryId,
-  videoId,
+  videoId = "",
   className = "",
   onReady,
   onPlay,

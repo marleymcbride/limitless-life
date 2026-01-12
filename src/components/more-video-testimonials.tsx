@@ -1,7 +1,6 @@
 "use client";
 
 import SimpleVideoPlayer from "./simple-video-player";
-import { CTAButton } from "./ui/cta-button";
 
 export default function MoreVideoTestimonials() {
   return (
@@ -32,7 +31,7 @@ export default function MoreVideoTestimonials() {
                 <p className="text-lg text-black italic mb-4">
                   &quot;I haven&apos;t felt this good in years.&quot;
                 </p>
-                <p className="text-gray-700">
+                <p className="text-black-300">
                   Client was a 47-year-old CEO who was drinking 3 bottles of
                   wine per night just to cope with the stress. Now completely
                   sober and more productive than ever.
@@ -53,10 +52,10 @@ export default function MoreVideoTestimonials() {
                 />
               </div>
               <div className="order-1 md:order-2 text-left">
-                <p className="text-lg text-black italic mb-4">
+                <p className="text-lg text-white italic mb-4">
                   &quot;This system changed my life.&quot;
                 </p>
-                <p className="text-gray-700">
+                <p className="text-black-300">
                   Client was a 38-year-old lawyer running on coffee and
                   Adderall. Now completely stimulant-free and performing at his
                   peak in the courtroom.
@@ -69,7 +68,7 @@ export default function MoreVideoTestimonials() {
             href="/application"
             className="font-bold !text-white transition-none duration-0 focus:outline-none bg-[#940909] hover:bg-[#7b0707] py-3 px-12 text-lg rounded-md inline-block"
           >
-            See If This Is Right For You
+            Apply Now
           </a>
         </div>
       </div>

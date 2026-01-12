@@ -1,6 +1,5 @@
 import { bgClasses } from "@/lib/utils";
 import Image from "next/image";
-import IntroSection from "./intro-section";
 
 export default function PersonalStorySection() {
   return (
@@ -175,7 +174,7 @@ export default function PersonalStorySection() {
               </figure>
             </div>
 
-            <p className="text-gray-800 font-bold font-black leading-relaxed mb-6"
+            <p className="text-gray-800 font-bold leading-relaxed mb-6"
             style={{ fontFamily: "Neuemontreal, !bold, sans-serif", lineHeight: "1.0"}}
             >
             <span className="font-bold">Rock. Bottom.</span>

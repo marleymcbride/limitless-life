@@ -9,19 +9,19 @@ export default function IntroducingLimitless() {
             className="text-3xl md:text-4xl font-medium text-red-600 mb-4"
             style={{ fontFamily: "Neuemontreal, Arial, sans-serif" }}
           >
-            Introducing for the first time:
+            ...
           </h2>
           <h2
             className="text-6xl md:text-7xl font-bold text-white mb-6"
             style={{ fontFamily: "Neuemontreal, Arial, sans-serif" }}
           >
-            The Limitless Protocol
+            Box options 2
           </h2>
 
           <p className="text-xl text-white-300 mb-13 max-w-5xl text-left leading-relaxed"
           style={{ fontFamily: "Neuemontreal, Arial, sans-serif" }}
           >
-          After 12 years and 14,352 hours, I created a system that wakes you up energized, builds a lean body in 2 days per week, and has you feeling completely relaxed without needing alcohol.
+          After X Y Z, I created a system that wakes you up energized, builds a lean body in 2 days per week, and has you feeling completely relaxed without needing alcohol.
           </p>
 
           <p className="text-xl text-white-300 mb-13 max-w-5xl mt-6 mb-12 text-left leading-relaxed"
@@ -31,77 +31,77 @@ export default function IntroducingLimitless() {
           </p>
 
           <div className="grid md:grid-cols-3 gap-4 mb-12 text-left">
-                <div className="w-full bg-white/10 rounded-lg p-6 py-28 border border-white/20">
+                <div className="w-full bg-white/10 rounded-lg p-6 border border-white/20">
                   <h3
                     className="text-2xl font-bold text-white mb-4"
                     style={{ fontFamily: "Neuemontreal, sans-serif" }}
                   >
-                    1. It fixes your body&apos;s natural energy production
+                    1. It Works Because It Does The Opposite
                   </h3>
                   <p className="text-gray-300 text-base leading-relaxed">
-                    Instead of forcing stimulants, we restore your body&apos;s ability to generate its own sustained energy throughout the day.
+                    Every program adds more—more gym time, more meal prep, more supplements. This removes what&apos;s destroying you. That&apos;s why it works when everything else fails.
                   </p>
                 </div>
 
-                <div className="w-full bg-white/10 rounded-lg p-6 py-28 border border-white/20">
+                <div className="w-full bg-white/10 rounded-lg p-6 border border-white/20">
                   <h3
                     className="text-2xl font-bold text-white mb-4"
                     style={{ fontFamily: "Neuemontreal, sans-serif" }}
                   >
-                    2. You don&apos;t need to overhaul your entire life
+                    2. It Works Because Willpower Is A Scam
                   </h3>
                   <p className="text-gray-300 text-base leading-relaxed">
-                    This works alongside your career, family, and social commitments - no need to become a gym rat or count every calorie.
+                    Other programs blame you when you fail. &quot;Just have more discipline.&quot; This fixes the biology so willpower becomes irrelevant.
                   </p>
                 </div>
 
-                <div className="w-full bg-white/10 rounded-lg p-6 py-28 border border-white/20">
+                <div className="w-full bg-white/10 rounded-lg p-6 border border-white/20">
                   <h3
                     className="text-2xl font-bold text-white mb-4"
                     style={{ fontFamily: "Neuemontreal, sans-serif" }}
                   >
-                    3. It&apos;s designed to maximise the time you do have
+                    3. It Works Because Training Less Actually Builds More
                   </h3>
                   <p className="text-gray-300 text-base leading-relaxed">
-                    The system delivers incredible results with just 2-3 focused sessions per week, perfect for busy professionals.
+                    Sounds backward but it&apos;s true. Your body builds muscle during recovery, not during training. Two days gives it time to actually grow.
                   </p>
                 </div>
               </div>
 
               <div className="grid md:grid-cols-3 gap-4 mb-12 text-left">
-                <div className="w-full bg-white/10 rounded-lg p-6 py-28 border border-white/20">
+                <div className="w-full bg-white/10 rounded-lg p-6 border border-white/20">
                   <h3
                     className="text-2xl font-bold text-white mb-4"
                     style={{ fontFamily: "Neuemontreal, sans-serif" }}
                   >
-                    4. It&apos;s built for people who&apos;ve &apos;tried everything&apos;
+                    4. It Works Because It&apos;s Built For Your Actual Life
                   </h3>
                   <p className="text-gray-300 text-base leading-relaxed">
-                    If you&apos;ve failed with diets, supplements, or exercise programs before - that&apos;s actually a sign this will work for you.
+                    Generic advice is for 25-year-olds with unlimited time. This works around demanding careers, constant travel, and family commitments.
                   </p>
                 </div>
 
-                <div className="w-full bg-white/10 rounded-lg p-6 py-28 border border-white/20">
+                <div className="w-full bg-white/10 rounded-lg p-6 border border-white/20">
                   <h3
                     className="text-2xl font-bold text-white mb-4"
                     style={{ fontFamily: "Neuemontreal, sans-serif" }}
                   >
-                    5. It Works Because It&apos;s Designed for High-Performers
+                    5. It Works Because It Fixes Why You&apos;re Actually Tired
                   </h3>
                   <p className="text-gray-300 text-base leading-relaxed">
-                    Built around 70-hour work weeks and constant travel. Your training enhances work performance instead of draining it.
+                    You&apos;re not tired because you need coffee. You need coffee because your energy production is broken. Fix that and coffee becomes optional.
                   </p>
                 </div>
 
-                <div className="w-full bg-white/10 rounded-lg p-6 py-28 border border-white/20">
+                <div className="w-full bg-white/10 rounded-lg p-6 border border-white/20">
                   <h3
                     className="text-2xl font-bold text-white mb-4"
                     style={{ fontFamily: "Neuemontreal, sans-serif" }}
                   >
-                    6. It Works Because It&apos;s Natural, Not Chemical
+                    6. It Works Because Hormones Restore Naturally
                   </h3>
                   <p className="text-gray-300 text-base leading-relaxed">
-                    No TRT. No supplements. No biohacks. Your body already knows how to work - it just needs the right conditions.
+                    Your testosterone comes back—300+ point increases on average—when you remove what&apos;s suppressing it. No TRT. No needles. No clinics.
                   </p>
                 </div>
               </div>

@@ -9,6 +9,7 @@ interface DelayedCTAProps {
   videoHasEnded?: boolean; // whether video has been completed
   href?: string;
   className?: string;
+  onClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void;
   children: React.ReactNode;
 }
 
@@ -19,6 +20,7 @@ export default function DelayedCTA({
   videoHasEnded = false,
   href = "/application",
   className = "",
+  onClick,
   children
 }: DelayedCTAProps) {
   const [showCTA, setShowCTA] = useState(false);
@@ -81,7 +83,7 @@ export default function DelayedCTA({
   }
 
   return (
-    <a href={href} className={className}>
+    <a href={href} className={className} onClick={onClick}>
       {children}
     </a>
   );

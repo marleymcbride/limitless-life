@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 
 interface SimpleVideoPlayerProps {
   libraryId: string;
-  videoId: string;
+  videoId?: string;
   className?: string;
   autoplay?: boolean;
   muted?: boolean;
@@ -15,7 +15,7 @@ interface SimpleVideoPlayerProps {
 
 export default function SimpleVideoPlayer({
   libraryId,
-  videoId,
+  videoId = "",
   className = "",
   autoplay = false,
   muted = false,
