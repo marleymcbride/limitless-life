@@ -10,12 +10,13 @@ export default function VideoTestimonialCTA() {
       <div className="container mx-auto max-w-5xl">
         <div className="text-center">
           <div className="max-w-md mx-auto mb-0">
-            <p className="text-base md:text-2xl lg:text-3xl max-w-md text-black font-medium">
+            <p className="text-base md:text-2xl lg:text-3xl max-w-md text-black font-normal">
               &ldquo;It&apos;s working mate, lots of people in work talking about it&quot;
             </p>
           </div>
 
-          <div className="relative rounded-lg overflow-hidden shadow-md w-[438px] mx-auto mt-6 mb-4">
+          {/* Desktop version - fixed width */}
+          <div className="relative rounded-lg overflow-hidden shadow-md mx-auto mt-6 mb-4 hidden md:block" style={{ width: "438px" }}>
             <Image
               src="/images/Testimonials/Geoff - 3 month transformation v2.jpeg"
               alt="Client results"
@@ -24,17 +25,30 @@ export default function VideoTestimonialCTA() {
               className="w-full h-auto"
             />
           </div>
+
+          {/* Mobile version - responsive */}
+          <div className="relative rounded-lg overflow-hidden shadow-md w-full max-w-[90%] mx-auto mt-6 mb-4 block md:hidden">
+            <Image
+              src="/images/Testimonials/Geoff - 3 month transformation v2.jpeg"
+              alt="Client results"
+              width={438}
+              height={293}
+              className="w-full h-auto"
+            />
+          </div>
+
           <p className="text-sm text-gray-600 mb-12">
             Geoff, 3 months - Energy Sector
           </p>
 
           <div className="max-w-md mx-auto mb-0">
-            <p className="text-base md:text-2xl lg:text-3xl max-w-md text-black font-medium">
+            <p className="text-base md:text-2xl lg:text-3xl max-w-md text-black font-normal">
             &ldquo;I feel stronger, bigger and more confident thanks to Marley&apos;s mentorship, coaching and friendship.&ldquo;
             </p>
           </div>
 
-          <div className="relative rounded-lg overflow-hidden shadow-md w-[438px] mx-auto mt-6 mb-4">
+          {/* Desktop version - fixed width */}
+          <div className="relative rounded-lg overflow-hidden shadow-md mx-auto mt-6 mb-4 hidden md:block" style={{ width: "438px" }}>
             <Image
               src="/images/Testimonials/Laurence - 10 week cut.png"
               alt="Client results"
@@ -43,6 +57,18 @@ export default function VideoTestimonialCTA() {
               className="w-full h-auto"
             />
           </div>
+
+          {/* Mobile version - responsive */}
+          <div className="relative rounded-lg overflow-hidden shadow-md w-full max-w-[90%] mx-auto mt-6 mb-4 block md:hidden">
+            <Image
+              src="/images/Testimonials/Laurence - 10 week cut.png"
+              alt="Client results"
+              width={438}
+              height={293}
+              className="w-full h-auto"
+            />
+          </div>
+
           <p className="text-sm text-gray-600 mb-12">
             Laurence, 10 weeks - age 53
           </p>

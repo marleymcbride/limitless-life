@@ -447,6 +447,14 @@ export default function Home() {
       </div>
 
 
+      {/* 10. Introducing Limitless (Dark background) */}
+      <div className="dark-section-with-grain">
+        <IntroducingLimitless2 />
+      </div>
+
+
+
+
 
       {/* 8. Process Explanation (Black background) 
       <div className="dark-section-with-grain">

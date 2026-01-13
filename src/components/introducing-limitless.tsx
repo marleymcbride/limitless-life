@@ -5,18 +5,36 @@ export default function IntroducingLimitless() {
     <section className="introducing-limitless-bg py-20 px-4 w-full relative overflow-hidden">
       <div className="container mx-auto max-w-4xl relative z-30">
         <div className="text-center">
-          <h2
-            className="text-3xl md:text-4xl font-medium text-red-600 mb-4"
-            style={{ fontFamily: "Neuemontreal, Arial, sans-serif" }}
+          <div className="inline-block rounded-lg px-5 py-10 mb-4 relative" style={{
+            background: "linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%)",
+            boxShadow: "20px -10px 40px 5px rgba(45, 52, 65, 0.7)",
+            border: "1px solid rgba(0, 0, 0, 0.1)"
+          }}>
+            {/* Black overlay - adjust opacity to control darkness */}
+            <div style={{
+              position: "absolute",
+              inset: 0,
+              background: "rgba(0, 0, 0, 0)",
+              borderRadius: "0.5rem",
+              pointerEvents: "none"
+            }}></div>
+            <h2
+              className="text-base sm:text-sm md:text-xl mt-6 font-semibold relative z-10 uppercase tracking-wide"
+              style={{ fontFamily: "Inter, system-ui, sans-serif", color: "#940909" }}
+            >
+              <span className="md:hidden">Introducing for the first time:</span>
+              <span className="hidden md:inline">Introducing for the first time:</span>
+            </h2>
+
+            <h2
+            className="text-3xl md:text-6xl font-bold text-black mt-2 mb-2"
+            style={{ fontFamily: "Inter, system-ui, sans-serif" }}
           >
-            Introducing for the first time:
+              <span className="md:hidden uppercase">The Limitless Protocol</span>
+              <span className="hidden md:inline">The Limitless Protocol<sup style={{ fontSize: "0.4em", verticalAlign: "super" }}>™</sup></span>
           </h2>
-          <h2
-            className="text-6xl md:text-7xl font-bold text-white mb-6"
-            style={{ fontFamily: "Neuemontreal, Arial, sans-serif" }}
-          >
-            The Limitless Protocol
-          </h2>
+          </div>
+
 
           <p className="text-xl text-white-300 mb-13 max-w-5xl text-left leading-relaxed"
           style={{ fontFamily: "Neuemontreal, Arial, sans-serif" }}

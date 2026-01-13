@@ -7,9 +7,11 @@ export default function ImagineThis() {
         <div className="text-center">
           {/* White round rectangle box with shadow - Mobile optimized */}
           <div
-            className="rounded-2xl light-card-bg-small-orb p-8 md:p-14 md:pt-3 md:px-16 lg:px-20 mx-auto md:mx-4 max-w-6xl w-full"
+            className="rounded-2xl light-card-bg-small-orb p-8 md:p-14 md:pt-3 md:px-16 lg:px-20 mx-auto md:mx-4"
             style={{
-              boxShadow: "20px -10px 40px 5px rgba(45, 52, 65, 0.7)"
+              boxShadow: "20px -10px 40px 5px rgba(45, 52, 65, 0.7)",
+              width: "85%",
+              maxWidth: "72rem"
             }}
           >
             <div className="prose prose-lg max-w-none mobile-text-large body-copy" style={{ fontSize: "1.04rem" }}>
