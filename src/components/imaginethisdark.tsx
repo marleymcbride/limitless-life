@@ -3,13 +3,13 @@
 export default function ImagineThisDark() {
   return (
     <section className="imaginethis-outer-bg py-24 px-4 w-full relative overflow-hidden">
-      <div className="container mx-auto max-w-6xl relative z-30 hero-full-width">
+      <div className="container mx-auto max-w-6xl relative z-30">
         <div className="text-center">
-          {/* Black round rectangle box with shadow */}
-          <div className="rounded-2xl dark-card-bg-small-orb p-14 md:pt-12 md:px-16 lg:px-20 shadow-2xl mx-4 max-w-6xl w-full hero-full-width">
+          {/* Black round rectangle box with shadow - Mobile optimized */}
+          <div className="rounded-2xl dark-card-bg-small-orb p-8 md:p-14 md:pt-12 md:px-16 lg:px-20 shadow-2xl mx-auto md:mx-4 max-w-6xl w-full">
             <div className="prose prose-lg max-w-none mobile-text-large body-copy" style={{ fontSize: "1.04rem" }}>
               <h2
-                className="text-4xl md:text-6xl font-bold pt-8 mb-8 text-white leading-tight mt-2"
+                className="text-4xl md:text-6xl font-bold pt-4 md:pt-8 mb-6 md:mb-8 text-white leading-tight mt-2"
                 style={{ fontFamily: "Neuemontreal, sans-serif" }}
               >
                 Imagine this
@@ -17,16 +17,16 @@ export default function ImagineThisDark() {
 
 
 
-              <div className="text-left space-y-2 mt-14 mb-10">
-                <div className="flex items-center gap-4">
+              <div className="text-left space-y-3 md:space-y-2 mt-8 md:mt-14 mb-8 md:mb-10 px-2 md:px-0">
+                <div className="flex items-center gap-3 md:gap-4">
 
 
-                  <p className="text-white leading-relaxed text-sm mb-4" style={{ fontSize: "0.8rem" }}>
+                  <p className="text-white leading-relaxed text-sm mb-3 md:mb-4" style={{ fontSize: "0.8rem" }}>
                   You Had a Simple System That:
                   </p>
                 </div>
 
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-3 md:gap-4">
                   <div className="w-4 h-4 bg-white rounded-full flex items-center justify-center flex-shrink-0" style={{ width: "0.8rem", height: "0.8rem" }}>
                       <svg
                         className="w-3 h-3 text-black"
@@ -47,7 +47,7 @@ export default function ImagineThisDark() {
                   </p>
                 </div>
 
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-3 md:gap-4">
                   <div className="w-4 h-4 bg-white rounded-full flex items-center justify-center flex-shrink-0" style={{ width: "0.8rem", height: "0.8rem" }}>
                     <svg
                       className="w-3 h-3 text-black"
@@ -67,7 +67,7 @@ export default function ImagineThisDark() {
                   </p>
                 </div>
 
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-3 md:gap-4">
                   <div className="w-4 h-4 bg-white rounded-full flex items-center justify-center flex-shrink-0" style={{ width: "0.8rem", height: "0.8rem" }}>
                     <svg
                       className="w-3 h-3 text-black"

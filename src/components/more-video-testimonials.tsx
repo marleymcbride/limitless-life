@@ -11,7 +11,7 @@ export default function MoreVideoTestimonials() {
             className="text-4xl md:text-5xl font-bold text-black mb-8"
             style={{ fontFamily: "Neuemontreal, Arial, sans-serif" }}
           >
-            More Results From Men Like You
+            What people are saying about the program
           </h2>
 
           <div className="space-y-12 mb-12">

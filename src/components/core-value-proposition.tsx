@@ -4,7 +4,7 @@ import { bgClasses } from "@/lib/utils";
 
 export default function CoreValueProposition() {
   return (
-    <section className={`w-full ${bgClasses.white} pt-12 pb-6 text-black relative`}>
+    <section className={`w-full ${bgClasses.white} pt-12 pb-6 text-black relative`} data-section="core-value-proposition">
       {/* Simple, premium white background */}
       <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-white to-gray-50"></div>
 
@@ -45,19 +45,19 @@ export default function CoreValueProposition() {
             The fitness industry has sold you that to get in shape you must:
             </p>
 
-            <p className="text-gray-800 leading-relaxed mb-6">
+            <p className="text-gray-800 leading-relaxed mb-6" data-numbered-list="true">
             <strong>1. Cut calories, skip meals, and restrict your food intake</strong>
             </p>
 
-            <p className="text-gray-800 leading-relaxed mb-6">
+            <p className="text-gray-800 leading-relaxed mb-6" data-numbered-list="true">
             <strong>2. Train 4-6 days a week and push yourself harder in the gym</strong>
             </p>
 
-            <p className="text-gray-800 leading-relaxed mb-6">
+            <p className="text-gray-800 leading-relaxed mb-6" data-numbered-list="true">
             <strong>3. Use discipline to control your drinking and lifestyle habits</strong>
             </p>
 
-            <p className="text-gray-800 leading-relaxed mb-6">
+            <p className="text-gray-800 leading-relaxed mb-6" data-numbered-list="true">
             <strong>4. Take a load of supplements and track every part of your life</strong>
             </p>
 

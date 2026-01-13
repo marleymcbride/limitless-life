@@ -125,21 +125,23 @@ export default function Home() {
 
             {/* Mobile Eyebrow (visible only on mobile) */}
             <p
-              className="block sm:hidden px-0 mx-auto mb-4 mt-1 text-center text-gray-300 mobile-eyebrow w-full"
+              className="block sm:hidden px-0 mx-auto text-center text-gray-300 mobile-eyebrow w-full"
+              style={{ marginTop: "3.6px", marginBottom: "14.4px" }}
             >
               For the man who has EVERYTHING in life, except the energy to enjoy it... here&apos;s how to:
             </p>
             
             {/* Mobile Headlines (visible only on mobile) */}
             <h1
-              className="mobile-headline block px-1 mx-auto mt-2 mb-6 w-full font-bold text-center text-white sm:hidden capitalize text-[2.4rem] leading-[1.25]"
+              className="mobile-headline block px-1 mx-auto mt-2 mb-6 w-full font-bold text-center text-white sm:hidden capitalize text-[2.06rem]"
+              style={{ lineHeight: "1.125" }}
             >
               Lose Your Gut, Stop Feeling Exhausted & Reverse Years Of Health Decline (In 2 Days Per Week)
             </h1>
 
             {/* Mobile Subheadline - RIGHT AFTER HEADLINE (visible only on mobile) */}
             <p
-              className="mobile-subheadline block mx-auto mb-2 font-light text-center text-gray-300 sm:hidden px-0 text-[1.3rem] leading-[1.6] w-[95%]"
+              className="mobile-subheadline block mx-auto mb-2 font-light text-center text-gray-300 sm:hidden px-0 text-[1.33rem] leading-[1.28] w-[95%]"
             >
              You don&apos;t need to down 4 coffees, train 6 days a week, or cut out your favorite foods to feel incredible.
              Restore your energy, build an elite body and get back YEARS of life:
@@ -236,7 +238,7 @@ export default function Home() {
                   background: "radial-gradient(ellipse at center, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.08) 50%, transparent 70%)",
                 }}
               >
-                <p className="text-xs text-gray-000 whitespace-nowrap">
+                <p className="text-sm text-gray-000 whitespace-nowrap">
                   Turn to the side for fullscreen 📲
                 </p>
               </div>
@@ -256,7 +258,7 @@ export default function Home() {
                   padding-bottom: 8px !important;
                   padding-left: 24px !important;
                   padding-right: 24px !important;
-                  font-size: 16px !important;
+                  font-size: 18px !important;
                 }
                 .vsl-border-glow {
                   -webkit-mask-image: linear-gradient(to bottom,
@@ -282,7 +284,7 @@ export default function Home() {
                   padding-bottom: 12.2px !important;
                   padding-left: 40px !important;
                   padding-right: 40px !important;
-                  font-size: 18px !important;
+                  font-size: 20px !important;
                 }
               }
               @media (max-height: 640px) and (orientation: landscape) {
@@ -292,7 +294,7 @@ export default function Home() {
                   padding-bottom: 12.2px !important;
                   padding-left: 40px !important;
                   padding-right: 40px !important;
-                  font-size: 18px !important;
+                  font-size: 20px !important;
                 }
                 #hero-section {
                   padding-left: 0 !important;
@@ -363,7 +365,7 @@ export default function Home() {
           {/* Testimonial - Simple thin text at bottom of hero */}
           <div className="text-center mt-0 mb-0 max-w-4xl mx-auto">
             <div className="bg-transparent bg-opacity-10 p-0">
-              <blockquote className="text-xl text-white mb-0">
+              <blockquote className="text-xl text-white mb-0" data-testimonial="original-size">
                 &ldquo;I&apos;m in the best shape I&apos;ve ever been,
                 haven&apos;t touched booze in over a year and feel
                 incredible.&rdquo;
@@ -445,6 +447,13 @@ export default function Home() {
       <div className="dark-section-with-grain">
         <MoreClientTestimonials />
       </div>
+
+      {/* 10. Introducing Limitless (Dark background) */}
+      <div className="dark-section-with-grain">
+        <IntroducingLimitless2 />
+      </div>
+
+
 
 
 

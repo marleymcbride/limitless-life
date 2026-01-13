@@ -10,7 +10,7 @@ export default function PersonalStorySection() {
       <div className="container mx-auto px-4 relative z-10 hero-full-width">
         <div className="max-w-5xl mx-auto" style={{ maxWidth: "1200px" }}>
           {/* THE ACTUAL STORY - Natural flow, casual tone */}
-          <div className="prose prose-lg max-w-none mobile-text-large body-copy" style={{ fontSize: "1.3rem" }}>
+          <div className="prose prose-lg max-w-none mobile-text-large body-copy" style={{ fontSize: "1.3rem" }} data-mobile-style="true">
             <div className="text-center mb-6">
               <h2
                 className="text-4xl md:text-5xl font-bold mb-10 text-gray-900 leading-tight"
@@ -168,7 +168,7 @@ export default function PersonalStorySection() {
                   className="rounded-lg shadow-lg w-full h-auto"
                   loading="lazy"
                 />
-                <figcaption className="mt-3 text-center text-gray-600 italic text-md">
+                <figcaption className="mt-3 text-center text-gray-600 italic text-md" data-caption="original">
                   Puffy face, out of shape and letting alcohol ruin my life
                 </figcaption>
               </figure>
