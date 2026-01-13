@@ -1,6 +1,7 @@
 "use client";
 
 import SimpleVideoPlayer from "./simple-video-player";
+import Image from "next/image";
 
 export default function VideoTestimonialCTA() {
   return (
@@ -9,16 +10,47 @@ export default function VideoTestimonialCTA() {
       <div className="container mx-auto max-w-5xl">
         <div className="text-center">
           <div className="max-w-md mx-auto mb-0">
-            <p className="text-base md:text-2xl lg:text-4xl max-w-md text-black font-medium">
-              &ldquo;Well this is a fasted weight as of this morning... Started from 186-187. Crazy. So down about 17 now.
+            <p className="text-base md:text-2xl lg:text-3xl max-w-md text-black font-medium">
+              &ldquo;It&apos;s working mate, lots of people in work talking about it&quot;
             </p>
           </div>
 
+          <div className="relative rounded-lg overflow-hidden shadow-md w-[438px] mx-auto mt-6 mb-4">
+            <Image
+              src="/images/Testimonials/Geoff - 3 month transformation v2.jpeg"
+              alt="Client results"
+              width={438}
+              height={293}
+              className="w-full h-auto"
+            />
+          </div>
+          <p className="text-sm text-gray-600 mb-12">
+            Geoff, 3 months - Energy Sector
+          </p>
+
+          <div className="max-w-md mx-auto mb-0">
+            <p className="text-base md:text-2xl lg:text-3xl max-w-md text-black font-medium">
+            &ldquo;I feel stronger, bigger and more confident thanks to Marley&apos;s mentorship, coaching and friendship.&ldquo;
+            </p>
+          </div>
+
+          <div className="relative rounded-lg overflow-hidden shadow-md w-[438px] mx-auto mt-6 mb-4">
+            <Image
+              src="/images/Testimonials/Laurence - 10 week cut.png"
+              alt="Client results"
+              width={438}
+              height={293}
+              className="w-full h-auto"
+            />
+          </div>
+          <p className="text-sm text-gray-600 mb-12">
+            Laurence, 10 weeks - age 53
+          </p>
+
           {/* Desktop Video (Landscape) - Visible on desktop */}
-          <div className="hidden md:block mb-12">
-            {/* TODO: videoId="368df0e9-76ca-44e2-a76f-c31009b53ce7" */}
+          {/* <div className="hidden md:block mb-12">
             <SimpleVideoPlayer
-              videoId="" // 368df0e9-76ca-44e2-a76f-c31009b53ce7
+              videoId="368df0e9-76ca-44e2-a76f-c31009b53ce7"
               libraryId="576963"
               className="max-w-3xl mt-10 mx-auto"
               autoplay={false}
@@ -26,13 +58,12 @@ export default function VideoTestimonialCTA() {
               preload={true}
               controls={true}
             />
-          </div>
+          </div> */}
 
           {/* Mobile Video (Portrait) - Visible on mobile */}
-          <div className="block md:hidden mb-12">
-            {/* TODO: videoId="1161903f-2e87-4801-aed1-9b4c6a385cec" */}
+          {/* <div className="block md:hidden mb-12">
             <SimpleVideoPlayer
-              videoId="" // 1161903f-2e87-4801-aed1-9b4c6a385cec
+              videoId="1161903f-2e87-4801-aed1-9b4c6a385cec"
               libraryId="576963"
               className="max-w-[80%] mx-auto"
               autoplay={false}
@@ -41,17 +72,17 @@ export default function VideoTestimonialCTA() {
               controls={true}
               aspectRatio="9:16"
             />
-          </div>
-        </div>
+          </div> */}
 
-        <div className="text-center">
-            <a
-              href="/application"
-              className="font-bold !text-white transition-none duration-0 focus:outline-none bg-[#940909] hover:bg-[#7b0707] py-4 px-12 mb-6 text-lg rounded-md inline-block relative z-30"
-            >
-              Apply Now
-            </a>
-            </div>
+
+
+          <a
+            href="/application"
+            className="font-bold !text-white transition-none duration-0 focus:outline-none bg-[#940909] hover:bg-[#7b0707] py-4 px-12 mb-6 text-lg rounded-md inline-block relative z-30"
+          >
+            Apply Now
+          </a>
+        </div>
       </div>
     </section>
   );

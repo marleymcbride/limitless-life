@@ -8,20 +8,22 @@ export default function ResultsProof() {
       <div className="container mx-auto max-w-7xl">
         <div className="text-center">
           <h2
-            className="text-4xl md:text-5xl font-bold text-white mb-8"
+            className="text-4xl md:text-5xl font-bold text-white mb-4 -mt-6"
             style={{ fontFamily: "Neuemontreal, Arial, sans-serif" }}
           >
             Results created
           </h2>
 
-          <div className="mb-12">
-            <div className="text-xl md:text-3xl lg:text-md font-thin text-white-300 mb-4" style={{ fontFamily: "Neuemontreal, Arial, sans-serif" }}>
-              Real results (from men using this proven energy system):
+          <div className="mb-10">
+            <div className="text-2xl md:text-2xl lg:text-md font-thin text-white-300 mb-4" style={{ fontFamily: "Neuemontreal, Arial, sans-serif" }}>
+              Real results (from guys using this new system):
             </div>
           </div>
 
-          {/* Desktop: Two columns side by side - ORIGINAL, UNCHANGED */}
-          <div className="hidden md:flex gap-5 justify-center items-start">
+          {/* Desktop: Two columns side by side */}
+          <div
+            className="flex gap-5 justify-center items-start desktop-results-only"
+          >
             <div className="space-y-3">
               <div className="relative rounded-lg overflow-hidden shadow-md w-[337px]">
                 <Image
@@ -87,8 +89,10 @@ export default function ResultsProof() {
             </div>
           </div>
 
-          {/* Mobile: Single stacked column - NEW, OPTIMIZED FOR MOBILE */}
-          <div className="flex flex-col gap-6 justify-center items-center md:hidden px-4">
+          {/* Mobile: Single stacked column */}
+          <div
+            className="flex flex-col gap-6 justify-center items-center px-4 mobile-results-only"
+          >
             <div className="relative rounded-lg overflow-hidden shadow-md w-full max-w-[337px]">
               <Image
                 src="/images/Testimonials/Gav social proof - 10lbs in 8 weeks.png"

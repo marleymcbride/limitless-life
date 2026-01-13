@@ -32,19 +32,11 @@ export default function The4RootCauses() {
             </p>
 
             <p className="text-gray-800 leading-relaxed mb-6">
-              
+              You train 4-6 days per week.. but your body can only recover when it&apos;s at rest.
             </p>
 
             <p className="text-gray-800 leading-relaxed mb-6">
-              You drink alcohol to unwind.. but alcohol ruins your sleep and wrecks your hormones.
-            </p>
-
-            <p className="text-gray-800 leading-relaxed mb-6">
-              
-            </p>
-
-            <p className="text-gray-800 leading-relaxed mb-6">
-              You train 4-6 days per week.. but when you&apos;re already stressed, training more just makes it worse.
+              You drink alcohol to unwind.. but alcohol wrecks your hormones and destroys your sleep.
             </p>
 
             <p className="text-gray-800 leading-relaxed mb-6">

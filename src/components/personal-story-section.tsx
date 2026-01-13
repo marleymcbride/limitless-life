@@ -134,7 +134,7 @@ export default function PersonalStorySection() {
             </p>
 
             <p className="text-gray-800 leading-relaxed mb-6">
-            <strong>And all this did was leave me with was a hole in my wallet and looking skinny-fat..</strong>
+            <strong>And all this did was leave me with was a hole in my wallet and looking skinny-fat.</strong>
             </p>
 
             <p className="text-gray-800 leading-relaxed mb-6">

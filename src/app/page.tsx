@@ -7,7 +7,8 @@ import IntroSection from "../components/intro-section";
 import CoreValueProposition from "../components/core-value-proposition";
 import VideoTestimonialCTA from "../components/video-testimonial-cta";
 import ResultsProof from "../components/results-proof";
-import ImagineThisDark from "../components/imaginethisdark";
+// import ImagineThisDark from "../components/imaginethisdark";
+import ImagineThis from "../components/imaginethis";
 import MoreVideoTestimonials from "../components/more-video-testimonials";
 import BigIdeaSection from "../components/big-idea-section";
 import IntroducingLimitless from "../components/introducing-limitless";
@@ -16,11 +17,10 @@ import MoreClientTestimonials from "../components/more-client-testimonials";
 import { vignetteEffect, unifiedGradientWithSpotlightDesktop, unifiedGradientWithSpotlightMobile } from "../lib/utils";
 import Image from "next/image";
 import { useState } from "react";
-import RootCauses from "../components/the-4-root-causes";
+import RootCauses from "../components/so-whats-actually-wrong";
 import DelayedCTA from "../components/delayed-cta";
 
 // import SystemBenefitsProof from "../components/system-benefits-proof";
-// import ImagineThis from "../components/imaginethis";
 // import WhyThisSystemWorks from "../components/[old] why-this-system-works";
 // import ProcessExplanation from "../components/process-explanation";
 // import FourStepSystem from "../components/four-step-system";
@@ -428,32 +428,23 @@ export default function Home() {
       <BigIdeaSection />
 
 
-      {/* 9. More Video Testimonials (Black background) */}
-      <div className="dark-section-with-grain">
-        <MoreVideoTestimonials />
-      </div>
-
-      {/* 6. Imagine This (White background with dark box) */}
-      <ImagineThisDark />
-
-
-
-      {/* 10. Introducing Limitless (Dark background) */}
-      <div className="dark-section-with-grain">
-        <IntroducingLimitless />
-      </div>
-
       {/* 13. More Client Testimonials (Dark background)  */}
       <div className="dark-section-with-grain">
         <MoreClientTestimonials />
       </div>
 
+      {/* 6. Imagine This (Light background with white box) */}
+      <ImagineThis />
+
+
+
       {/* 10. Introducing Limitless (Dark background) */}
-      <div className="dark-section-with-grain">
-        <IntroducingLimitless2 />
+      <IntroducingLimitless />
+
+            {/* 9. More Video Testimonials (Black background) */}
+            <div className="dark-section-with-grain">
+        <MoreVideoTestimonials />
       </div>
-
-
 
 
 

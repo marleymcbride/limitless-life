@@ -141,10 +141,17 @@
     position: absolute;
     inset: 0;
     background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" seed="1"/><feColorMatrix type="saturate" values="0"/></filter><rect width="100" height="100" fill="var(--hero-grain-color)" filter="url(%23noise)" opacity="1.0"/></svg>');
-    opacity: var(--hero-grain-opacity);
-    z-index: var(--hero-grain-z-index);
+    background-repeat: repeat;
+    opacity: 0.03;
     pointer-events: none;
-    mix-blend-mode: var(--hero-grain-blend-mode);
+    mix-blend-mode: saturation;
+  }
+
+  /* Lighter version for smaller containers - white with subtle gradient */
+  .light-card-bg-small-orb {
+    position: relative !important;
+    background: linear-gradient(to bottom, #ffffff 0%, #f8f8f8 100%) !important;
+    border: 1px solid #e5e5e5 !important;
   }
 
   /* Darkening overlay - compensates for grain lightening while preserving texture */
@@ -163,16 +170,20 @@
     position: relative !important;
     background:
       linear-gradient(135deg,
-        rgba(0, 0, 0, 1) 0%,
-        rgba(0, 0, 0, 1) 45%,
-        rgba(8, 0.5, 0.5, 0.99) 55%,
-        rgba(14, 1, 1, 0.97) 65%,
-        rgba(23, 2, 2, 0.94) 75%,
-        rgba(33, 3, 3, 0.91) 82%,
-        rgba(40, 4, 4, 0.88) 88%,
-        rgba(42, 4, 4, 0.86) 92%,
-        rgba(46, 6, 6, 0.84) 96%,
-        rgba(48, 7, 7, 0.82) 100%) !important;
+        rgba(31, 31, 31, 1) 0%,
+        rgba(31, 31, 31, 1) 40%,
+        rgba(31, 30, 30, 0.995) 45%,
+        rgba(31, 28, 28, 0.99) 50%,
+        rgba(30, 26, 26, 0.985) 55%,
+        rgba(30, 23, 23, 0.98) 60%,
+        rgba(30, 20, 20, 0.975) 65%,
+        rgba(32, 17, 17, 0.97) 70%,
+        rgba(35, 15, 15, 0.965) 75%,
+        rgba(38, 13, 13, 0.96) 80%,
+        rgba(42, 11, 11, 0.955) 85%,
+        rgba(46, 9, 9, 0.95) 90%,
+        rgba(50, 8, 8, 0.945) 95%,
+        rgba(55, 7, 7, 0.94) 100%) !important;
     border-color: #0a0d14 !important;
   }
 
@@ -181,7 +192,7 @@
     position: absolute;
     inset: 0;
     background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" seed="1"/><feColorMatrix type="saturate" values="0"/></filter><rect width="100" height="100" fill="var(--hero-grain-color)" filter="url(%23noise)" opacity="1.0"/></svg>');
-    opacity: var(--hero-grain-opacity);
+    opacity: 0.1;
     z-index: var(--hero-grain-z-index);
     pointer-events: none;
     mix-blend-mode: var(--hero-grain-blend-mode);
@@ -246,7 +257,13 @@
   /* Imagine This Dark outer background - grey gradient with grain */
   .imaginethis-outer-bg {
     position: relative !important;
-    background: linear-gradient(to bottom,#1D1B1B, #909090, #BDBDBD, #E1E1E1) !important;
+    background: linear-gradient(to bottom, #BDBDBD, #E1E1E1) !important;
+  }
+
+  /* Imagine This Light outer background - grey gradient with grain */
+  .imaginethis-light-outer-bg {
+    position: relative !important;
+    background: linear-gradient(to bottom, #BDBDBD, #E1E1E1) !important;
   }
 
   /* White overlay at 30% opacity */
@@ -416,6 +433,36 @@
   margin-right: auto;
 }
 
+/* Exclude ResultsProof section from max-width constraint */
+.results-proof-gradient .container,
+.results-proof-gradient [class*="max-w-"] {
+  max-width: none !important;
+}
+
+/* Show desktop version on large screens, hide on mobile */
+@media (min-width: 1024px) {
+  .desktop-results-only {
+    display: flex !important;
+  }
+  .mobile-results-only {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+  }
+}
+
+/* Show mobile version on small screens, hide on desktop */
+@media (max-width: 1023px) {
+  .desktop-results-only {
+    display: none !important;
+  }
+  .mobile-results-only {
+    display: flex !important;
+  }
+}
+
 /* Landscape mode: remove max-width constraint to fill screen */
 @media (orientation: landscape) and (max-height: 900px) {
   /* Override the 800px constraint for mobile landscape only */
@@ -503,6 +550,11 @@
   right: 50%;
   margin-left: -50vw;
   margin-right: -50vw;
+}
+
+/* Imagine This box shadow - positioned right and slightly up */
+.imaginethis-box-shadow {
+  box-shadow: 12px -6px 24px rgba(0, 0, 0, 0.8) !important;
 }
 
 /* Custom scrollbar */
@@ -601,27 +653,24 @@
   /* Target body and main directly */
   body main,
   main > section:not(#hero-section) {
-    padding-left: 6px !important;
-    padding-right: 6px !important;
+    padding-left: 2px !important;
+    padding-right: 0px !important;
   }
 
   /* REDUCE BODY TEXT LINE GAPS BY 30% */
-  /* Maximum specificity override */
-  body p,
-  main p,
-  section p,
-  .prose p,
-  .body-copy p {
-    margin-bottom: 1rem !important; /* 16px = mb-4 */
+  /* Maximum specificity override - targeting only body copy sections */
+  .body-copy p,
+  .prose p {
+    margin-bottom: 1.2rem !important; /* 16px = mb-4 */
     margin-top: 0 !important;
   }
 }
 
 /* ========= MOBILE []] MAIN BODY TEXT ========= */
-@media (max-width: 0px) {
+@media (max-width: 640px) {
   .body-copy p {
     font-size: 1.45rem !important;
-    line-height: 1.5;
+    line-height: 1.5 !important;
   }
 }
 

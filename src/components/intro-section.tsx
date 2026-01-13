@@ -55,7 +55,7 @@ export default function IntroSection() {
             </div>
 
             <p className="text-gray-300 leading-relaxed mb-6">
-              The first thing you should know about me is...
+              The first thing you should know about me is:
             </p>
 
             <p className="text-gray-300 leading-relaxed mb-1">
@@ -77,7 +77,16 @@ export default function IntroSection() {
             </p>
 
             <p className="text-gray-300 leading-relaxed mb-6">
-              But fast-forward today I&apos;m over 3 years sober, built my dream body and feel pretty fucking good most days.
+             But after helping guys for over 5 years in spheres such as banking, sales and entrepreneurship (and starting businesses myself)..
+            </p>
+
+
+            <p className="text-gray-300 leading-relaxed mb-6">
+            I began to truly understand the problems of keeping your health in check whilst juggling a hectic work and family life.
+            </p>
+
+            <p className="text-gray-300 leading-relaxed mb-6">
+              Fast-forward today I&apos;m over 3 years sober, built my dream body and feel pretty fucking good most days.
             </p>
 
             <p className="text-gray-300 leading-relaxed mb-6">

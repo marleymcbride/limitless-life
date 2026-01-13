@@ -26,11 +26,11 @@ export default function CoreValueProposition() {
             </p>
 
             <p className="text-gray-800 font-bold leading-relaxed mb-6">
-             When it comes to your energy the typical methods <span className="font-bold">do not work.</span>
+             When it comes to your energy the conventional methods <span className="font-bold">do not work.</span>
             </p>
 
             <p className="text-gray-800 leading-relaxed mb-6">
-             Because for 99% of guys the problem isn&apos;t willpower.
+             Because for 99% of guys the problem isn&apos;t willpower, or their education.
             </p>
 
             <p className="text-gray-800 leading-relaxed mb-6">
@@ -66,7 +66,7 @@ export default function CoreValueProposition() {
             </p>
 
             <p className="text-gray-800 leading-relaxed mt-8 mb-6">           
-             You can get incredible results without doing ANY of that shit!
+             You can get incredible results without doing ANY of that shit.
             </p>
 
             <p className="text-gray-800 leading-relaxed mt-8 mb-8">
@@ -78,11 +78,11 @@ export default function CoreValueProposition() {
             </p>
 
             <p className="text-gray-800 leading-relaxed mb-6">
-              They keep jumping round all these outdated methods like Keto and training every day.. so they never build a simple, easy system they can repeat for the next 5, 10, 20 years.
+              They keep jumping round all these outdated methods like Keto, fasting, training every day.. so they never build a simple, easy system they can repeat for the next 10-20 years.
             </p>
 
             <p className="text-gray-800 leading-relaxed mb-6">
-              And without a system that fixes the root problems in your body, you&apos;ll keep on spinning your wheels.
+              And without a predicatable system that fixes the root problems in your body, you&apos;ll keep on spinning your wheels.
             </p>
 
             {/* CTA Button - matching personal story style */}
