@@ -77,16 +77,21 @@ export default function IntroSection() {
             </p>
 
             <p className="text-gray-300 leading-relaxed mb-6">
-             But after helping guys for over 5 years in spheres such as banking, sales and entrepreneurship (and starting businesses myself)..
+             But after helping men for over 5 years in spheres such as banking, sales and entrepreneurship (and starting businesses myself)..
             </p>
 
 
             <p className="text-gray-300 leading-relaxed mb-6">
-            I began to truly understand the problems of keeping your health in check whilst juggling a hectic work and family life.
+            I began to truly understand the pains and problems of keeping your health in check whilst juggling a hectic work and family life.
             </p>
 
             <p className="text-gray-300 leading-relaxed mb-6">
-              Fast-forward today I&apos;m over 3 years sober, built my dream body and feel pretty fucking good most days.
+              Starting drinking at just 13 years old I was addicted to alcohol for 10 years.
+            </p>
+
+
+            <p className="text-gray-300 leading-relaxed mb-6">
+              But fast-forward today I&apos;m over 3 years sober, built my dream body and feel pretty fucking good most days.
             </p>
 
             <p className="text-gray-300 leading-relaxed mb-6">
@@ -94,7 +99,7 @@ export default function IntroSection() {
             </p>
 
             <p className="text-gray-300 leading-relaxed mb-6">
-              Now if you&apos;re thinking:
+              Now you&apos;re probably thinking:
             </p>
 
             <p className="text-gray-300 italic leading-relaxed mb-6">

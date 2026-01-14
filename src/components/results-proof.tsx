@@ -4,25 +4,25 @@ import Image from "next/image";
 
 export default function ResultsProof() {
   return (
-    <section className="results-proof-gradient py-20 px-0">
+    <section id="results-proof" className="results-proof-gradient py-20 px-0">
       <div className="container mx-auto max-w-7xl">
         <div className="text-center">
           <h2
-            className="text-4xl md:text-5xl font-bold text-white mb-4 -mt-6"
+            className="text-4xl md:text-5xl  font-bold text-white mb-2 -mt-6"
             style={{ fontFamily: "Neuemontreal, Arial, sans-serif" }}
           >
             Results created
           </h2>
 
           <div className="mb-10">
-            <div className="text-2xl md:text-2xl lg:text-md font-thin text-white-300 mb-4" style={{ fontFamily: "Neuemontreal, Arial, sans-serif" }}>
-              Real results (from guys using this new system):
+            <div className="text-xl  md:text-xl text-center lg:text-md font-thin text-white-300 mb-4" style={{ fontFamily: "Neuemontreal, Arial, sans-serif" }}>
+              (from guys using this new system)
             </div>
           </div>
 
           {/* Desktop: Two columns side by side */}
           <div
-            className="flex gap-5 justify-center items-start desktop-results-only"
+            className="flex gap-5 justify-center items-start desktop-results-only "
           >
             <div className="space-y-3">
               <div className="relative rounded-lg overflow-hidden shadow-md w-[337px]">
@@ -69,7 +69,7 @@ export default function ResultsProof() {
 
               <div className="relative rounded-lg overflow-hidden shadow-md w-[337px]">
                 <Image
-                  src="/images/Testimonials/Aaron social proof - great energy.png"
+                  src="/images/Testimonials/Aaron testimonial - great energy.png"
                   alt="Client results"
                   width={337}
                   height={225}
@@ -91,7 +91,7 @@ export default function ResultsProof() {
 
           {/* Mobile: Single stacked column */}
           <div
-            className="flex flex-col gap-6 justify-center items-center px-4 mobile-results-only"
+            className="flex flex-col gap-6 justify-center items-center px-4 mobile-results-only "
           >
             <div className="relative rounded-lg overflow-hidden shadow-md w-full max-w-[337px]">
               <Image
@@ -155,7 +155,7 @@ export default function ResultsProof() {
           </div>
           <a
             href="/application"
-            className="font-bold !text-white transition-none duration-0 focus:outline-none bg-[#940909] hover:bg-[#7b0707] py-3 px-12 text-lg rounded-md inline-block mt-12 relative z-30"
+            className="font-bold !text-white transition-none duration-0 focus:outline-none bg-[#940909] hover:bg-[#7b0707] py-3 px-12 text-lg rounded-md inline-block mt-12 relative z-30 "
           >
             Apply Now
           </a>

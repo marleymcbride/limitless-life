@@ -17,7 +17,7 @@ import MoreClientTestimonials from "../components/more-client-testimonials";
 import { vignetteEffect, unifiedGradientWithSpotlightDesktop, unifiedGradientWithSpotlightMobile } from "../lib/utils";
 import Image from "next/image";
 import { useState } from "react";
-import RootCauses from "../components/so-whats-actually-wrong";
+import RootCauses from "../components/why-traditional-methods-dont-work";
 import DelayedCTA from "../components/delayed-cta";
 
 // import SystemBenefitsProof from "../components/system-benefits-proof";

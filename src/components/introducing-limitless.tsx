@@ -27,7 +27,7 @@ export default function IntroducingLimitless() {
             </h2>
 
             <h2
-            className="text-3xl md:text-6xl font-bold text-black mt-2 mb-2"
+            className="text-3xl md:text-6xl font-bold text-black mx-10 my-6"
             style={{ fontFamily: "Inter, system-ui, sans-serif" }}
           >
               <span className="md:hidden uppercase">The Limitless Protocol</span>
@@ -36,7 +36,7 @@ export default function IntroducingLimitless() {
           </div>
 
 
-          <p className="text-xl text-white-300 mb-13 max-w-5xl text-left leading-relaxed"
+          <p className="text-xl text-white-300 mt-8 mb-13 max-w-5xl text-left leading-relaxed"
           style={{ fontFamily: "Neuemontreal, Arial, sans-serif" }}
           >
           After 12 years and 14,352 hours, I created a system that wakes you up energized, builds a lean body in 2 days per week, and has you feeling completely relaxed without needing alcohol.

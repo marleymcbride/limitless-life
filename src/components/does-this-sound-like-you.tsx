@@ -4,7 +4,7 @@ export default function DoesThisSoundLikeYou() {
       <div className="container mx-auto max-w-5xl">
         <div className="text-center">
           <h2
-            className="text-4xl md:text-5xl font-bold text-white mb-6"
+            className="text-3xl h2-alternate md:text-5xl font-bold text-white mb-6"
             style={{ fontFamily: "Neuemontreal, Arial, sans-serif" }}
           >
             Does This Sound Like You?
@@ -16,12 +16,13 @@ export default function DoesThisSoundLikeYou() {
               maxWidth: "768px",
               marginLeft: "auto",
               marginRight: "auto",
+              paddingLeft: "0.3rem",
             }}
           >
             <div className="flex items-center">
-              <div className="w-6 h-6 bg-red-600 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+              <div className="w-5 h-5 bg-red-600 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
                 <svg
-                  className="w-4 h-4 text-white"
+                  className="w-3 h-3 text-white"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                 >
@@ -32,15 +33,15 @@ export default function DoesThisSoundLikeYou() {
                   />
                 </svg>
               </div>
-              <p className="text-white text-2xl mobile-text-large">
+              <p className="text-white text-lg mobile-text-large">
                   You wake up exhausted every morning
                 </p>
             </div>
 
             <div className="flex items-center">
-              <div className="w-6 h-6 bg-red-600 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+              <div className="w-5 h-5 bg-red-600 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
                 <svg
-                  className="w-4 h-4 text-white"
+                  className="w-3 h-3 text-white"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                 >
@@ -51,15 +52,15 @@ export default function DoesThisSoundLikeYou() {
                   />
                 </svg>
               </div>
-              <p className="text-white text-2xl mobile-text-large">
+              <p className="text-white text-lg mobile-text-large">
                   You can&apos;t focus at work like you used to
                 </p>
             </div>
 
             <div className="flex items-center">
-              <div className="w-6 h-6 bg-red-600 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+              <div className="w-5 h-5 bg-red-600 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
                 <svg
-                  className="w-4 h-4 text-white"
+                  className="w-3 h-3 text-white"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                 >
@@ -70,15 +71,15 @@ export default function DoesThisSoundLikeYou() {
                   />
                 </svg>
               </div>
-              <p className="text-white text-2xl mobile-text-large">
+              <p className="text-white text-lg mobile-text-large">
               No matter how much you train your gut just won&apos;t budge
                 </p>
             </div>
 
             <div className="flex items-center">
-              <div className="w-6 h-6 bg-red-600 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+              <div className="w-5 h-5 bg-red-600 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
                 <svg
-                  className="w-4 h-4 text-white"
+                  className="w-3 h-3 text-white"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                 >
@@ -89,16 +90,16 @@ export default function DoesThisSoundLikeYou() {
                   />
                 </svg>
               </div>
-              <p className="text-white text-2xl mobile-text-large">
+              <p className="text-white text-lg mobile-text-large">
                   You need multiple coffees to function and 2-3 drinks to wind
                   down
                 </p>
             </div>
 
             <div className="flex items-center">
-              <div className="w-6 h-6 bg-red-600 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+              <div className="w-5 h-5 bg-red-600 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
                 <svg
-                  className="w-4 h-4 text-white"
+                  className="w-3 h-3 text-white"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                 >
@@ -109,13 +110,13 @@ export default function DoesThisSoundLikeYou() {
                   />
                 </svg>
               </div>
-              <p className="text-white text-2xl mobile-text-large">
+              <p className="text-white text-lg mobile-text-large">
                   You have no energy left for the people who matter most
                 </p>
             </div>
           </div>
 
-          <p className="text-2xl mt-12 text-white mb-8 mobile-text-large">
+          <p className="text-lg mt-12 text-white mb-8 mobile-text-large">
             Well you&apos;re not alone, my friend...
           </p>
         </div>

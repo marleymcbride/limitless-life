@@ -13,7 +13,7 @@ export default function PersonalStorySection() {
           <div className="prose prose-lg max-w-none mobile-text-large body-copy" style={{ fontSize: "1.3rem" }} data-mobile-style="true">
             <div className="text-center mb-6">
               <h2
-                className="text-4xl md:text-5xl font-bold mb-10 text-gray-900 leading-tight"
+                className="text-4xl md:text-4xl h2-alternate font-bold mb-10 text-gray-900 leading-tight"
                 style={{ fontFamily: "Neuemontreal, sans-serif" }}
               >
                 Three Years Ago I Was Blackout Drunk On A Mud-Stained Mattress
