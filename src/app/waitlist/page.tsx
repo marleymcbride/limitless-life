@@ -2,14 +2,14 @@
 
 import React from "react";
 import { useRouter } from "next/navigation";
-import SimpleTestimonials from "@/components/simple-testimonials";
-import TestimonialSection from "@/components/testimonial-section";
+import TestimonialSection from "@/components/waitlist-testimonial-section";
+import The3TestimonialsBox from "@/components/the-3-testimonials-box";
 
 export default function WaitlistPage() {
   return (
-    <main className="min-h-screen text-white bg-zinc-900 mb-5">
+    <main className="flex flex-col min-h-screen text-white bg-black mb-5">
       {/* ATF Waitlist Section */}
-      <section className="flex items-start px-6 pt-0 pb-16 mt-0 min-h-screen lg:px-0 lg:pt-8 lg:pb-16 xl:px-20 xl:pb-16">
+      <section className="flex items-start px-6 pt-0 pb-16 mt-0 min-h-screen lg:px-0 lg:pt-8 lg:pb-16 xl:px-20 xl:pb-16 relative w-full overflow-hidden">
         <div className="w-full">
           {/* Eyebrow */}
           <div className="mb-4 text-center">
@@ -22,19 +22,19 @@ export default function WaitlistPage() {
 
           {/* Main Headline - Full Width */}
           <div className="mb-0 text-center">
-            <h1 className="mt-8 mb-1 text-3xl font-black lg:text-5xl heading-white-force">
+            <h1 className="mt-8 mb-1 text-3xl font-bold lg:text-5xl capitalize leading-[1.2] text-white" style={{ fontFamily: "Neuemontreal, Arial, sans-serif" }}>
               Build Your Elite Body and Natural Energy After 30
             </h1>
-            <h2 className="mb-6 text-3xl font-black leading-tight lg:text-4xl heading-white-force">
+            <h2 className="mb-6 text-3xl font-normal leading-tight lg:text-4xl text-white" style={{ fontFamily: "Neuemontreal, Arial, sans-serif" }}>
               <span className="text-red-500">
                 (without caffeine, alcohol or BS supplements)
               </span>
             </h2>
-            <p className="mx-auto mt-6 mb-10 max-w-4xl text-base leading-relaxed lg:text-lg text-zinc-300">
-              The <b>Limitless Protocol™</b> is the <b>only</b> system that
-              builds an elite physique in just <b>2 days per week</b>, boosts
-              your <b>testosterone</b> naturally, and gets you{" "}
-              <b>off alcohol and caffeine</b> permanently.
+            <p className="mx-auto mt-6 mb-10 max-w-4xl text-base leading-relaxed lg:text-xl text-gray-300" style={{ fontFamily: "Neuemontreal, Arial, sans-serif" }}>
+              The <span className="font-semibold text-white">Limitless Protocol™</span> is the <span className="font-semibold text-white">only</span> system that
+              builds an elite physique in just <span className="font-semibold text-white">2 days per week</span>, boosts
+              your <span className="font-semibold text-white">testosterone</span> naturally, and gets you{" "}
+              <span className="font-semibold text-white">off alcohol and caffeine</span> permanently.
             </p>
           </div>
 
@@ -43,10 +43,10 @@ export default function WaitlistPage() {
             {/* LEFT SIDE - Benefits (60%) */}
             <div className="space-y-6 lg:col-span-3">
               <div className="space-y-3">
-                <h3 className="text-lg font-bold text-white lg:text-xl">
+                <h3 className="text-lg font-semibold lg:text-xl text-white" style={{ fontFamily: "Neuemontreal, Arial, sans-serif" }}>
                   ✓ Wake up Feeling Naturally Energized Without Stimulants.
                 </h3>
-                <p className="text-base leading-relaxed lg:text-lg text-zinc-300">
+                <p className="text-base leading-relaxed lg:text-lg text-gray-300" style={{ fontFamily: "Neuemontreal, Arial, sans-serif" }}>
                   Wake up beaming every morning. No more 3pm crashes. No more
                   feeling like shit without your caffeine fix. Elite energy
                   all-day without coffee or energy drinks, the way it should be.
@@ -54,10 +54,10 @@ export default function WaitlistPage() {
               </div>
 
               <div className="space-y-3">
-                <h3 className="text-lg font-bold text-white lg:text-xl">
+                <h3 className="text-lg font-semibold lg:text-xl text-white" style={{ fontFamily: "Neuemontreal, Arial, sans-serif" }}>
                   ✓ Build your Best Body Ever Training Half as Much
                 </h3>
-                <p className="text-base leading-relaxed lg:text-lg text-zinc-300">
+                <p className="text-base leading-relaxed lg:text-lg text-gray-300" style={{ fontFamily: "Neuemontreal, Arial, sans-serif" }}>
                   2-3 sessions per week maximum. No more grinding yourself into
                   the ground 6 days a week. Actually recover and grow muscle
                   like your body is designed to. Less work, better results.
@@ -65,10 +65,10 @@ export default function WaitlistPage() {
               </div>
 
               <div className="space-y-3">
-                <h3 className="text-lg font-bold text-white lg:text-xl">
+                <h3 className="text-lg font-semibold lg:text-xl text-white" style={{ fontFamily: "Neuemontreal, Arial, sans-serif" }}>
                   ✓ Boost Testosterone 200-400 Points Naturally
                 </h3>
-                <p className="text-base leading-relaxed lg:text-lg text-zinc-300">
+                <p className="text-base leading-relaxed lg:text-lg text-gray-300" style={{ fontFamily: "Neuemontreal, Arial, sans-serif" }}>
                   No needles, no pills, no weird supplements. Just your body
                   working like it should. Confidence back. Power back. The old
                   you, only better.
@@ -76,10 +76,10 @@ export default function WaitlistPage() {
               </div>
 
               <div className="space-y-3">
-                <h3 className="text-lg font-bold text-white lg:text-xl">
+                <h3 className="text-lg font-semibold lg:text-xl text-white" style={{ fontFamily: "Neuemontreal, Arial, sans-serif" }}>
                   ✓ Feel Incredible without Alcohol
                 </h3>
-                <p className="text-base leading-relaxed lg:text-lg text-zinc-300">
+                <p className="text-base leading-relaxed lg:text-lg text-gray-300" style={{ fontFamily: "Neuemontreal, Arial, sans-serif" }}>
                   You don&apos;t &apos;need a drink&apos; to unwind. You
                   don&apos;t &apos;need to &apos;quit&apos; &apos; anything. You
                   need to become the man energised, confident and relaxed in all
@@ -90,12 +90,12 @@ export default function WaitlistPage() {
 
             {/* RIGHT SIDE - Waitlist Form (40%) */}
             <div className="flex justify-center items-center lg:col-span-2 lg:justify-end">
-              <div className="p-8 mt-0 w-full max-w-md rounded-lg border bg-zinc-800 lg:p-10 border-zinc-700">
+              <div className="p-8 mt-0 w-full max-w-md rounded-lg border lg:p-10 bg-gradient-to-br from-gray-900 via-black to-gray-900 border-gray-700 shadow-2xl">
                 <div className="mb-6 text-center">
-                  <h2 className="mb-4 text-xl font-bold text-red-500 lg:text-2xl">
+                  <h2 className="mb-4 text-xl font-bold text-white lg:text-2xl" style={{ fontFamily: "Neuemontreal, Arial, sans-serif" }}>
                     If You&apos;re Interested, Join the Waitlist
                   </h2>
-                  <p className="text-sm text-zinc-300">
+                  <p className="text-sm text-gray-300">
                     Enter your email to receive an exclusive waitlist-only deal,
                     enrollment dates and an early invite before spots fill.
                   </p>
@@ -103,10 +103,10 @@ export default function WaitlistPage() {
 
                 <PremiumWaitlistForm />
 
-                <div className="mt-4 text-xs text-center text-zinc-500">
+                <div className="mt-4 text-xs text-center text-gray-400">
                   Cohort expected to fill, join the waitlist to not miss out.
                 </div>
-                <div className="mt-1 text-xs text-center text-zinc-500">
+                <div className="mt-1 text-xs text-center text-gray-400">
                   Limited spots available.
                 </div>
               </div>
@@ -115,16 +115,39 @@ export default function WaitlistPage() {
         </div>
       </section>
 
-      {/* Below Fold - Testimonials */}
+      <The3TestimonialsBox />
+
       <TestimonialSection />
-      <section className="py-20 bg-zinc-800">
+      
+      {/* Bottom Form Section */}
+      <section className="py-20 bg-black">
         <div className="container px-4 mx-auto max-w-6xl">
-          <div className="mb-16 text-center">
-            <h3 className="mb-6 text-3xl font-bold text-white heading-white-force">Real Transformations</h3>
+          <div className="max-w-xs mx-auto">
+            <div className="p-8 rounded-lg border lg:p-10 bg-zinc-900 border-zinc-700 shadow-2xl">
+              <div className="mb-6 text-center">
+                <h2 className="mb-4 text-xl font-bold text-white lg:text-2xl" style={{ fontFamily: "Neuemontreal, Arial, sans-serif" }}>
+                  If You&apos;re Interested, Join the Waitlist
+                </h2>
+                <p className="text-sm text-gray-300">
+                  Enter your email to receive an exclusive waitlist-only deal,
+                  enrollment dates and an early invite before spots fill.
+                </p>
+              </div>
+
+              <PremiumWaitlistForm />
+
+              <div className="mt-4 text-xs text-center text-gray-400">
+                Cohort expected to fill, join the waitlist to not miss out.
+              </div>
+              <div className="mt-1 text-xs text-center text-gray-400">
+                Limited spots available.
+              </div>
+            </div>
           </div>
-          <SimpleTestimonials />
         </div>
       </section>
+
+
     </main>
   );
 }
@@ -196,7 +219,7 @@ function PremiumWaitlistForm() {
 
   if (submitResult?.success) {
     return (
-      <div className="p-6 text-center rounded bg-zinc-900">
+      <div className="p-6 text-center rounded bg-gradient-to-br from-gray-900 via-black to-gray-900 border border-gray-700">
         <div className="flex justify-center items-center mx-auto mb-4 w-12 h-12 bg-red-600 rounded-full">
           <svg
             className="w-6 h-6 text-white"
@@ -212,7 +235,7 @@ function PremiumWaitlistForm() {
             />
           </svg>
         </div>
-        <p className="font-semibold text-white">You&apos;re on the waitlist</p>
+        <p className="font-semibold text-white" style={{ fontFamily: "Neuemontreal, Arial, sans-serif" }}>You&apos;re on the waitlist</p>
       </div>
     );
   }
@@ -230,7 +253,7 @@ function PremiumWaitlistForm() {
         value={formData.firstName}
         onChange={(e) => handleInputChange("firstName", e.target.value)}
         placeholder="First name..."
-        className="p-3 w-full text-white rounded border lg:p-4 bg-zinc-700 border-zinc-600 placeholder-zinc-400 focus:border-red-500 focus:outline-none"
+        className="p-3 w-full text-white rounded border lg:p-4 bg-gray-800 border-gray-600 placeholder-gray-400 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
         required
       />
 
@@ -239,14 +262,15 @@ function PremiumWaitlistForm() {
         value={formData.email}
         onChange={(e) => handleInputChange("email", e.target.value)}
         placeholder="Email..."
-        className="p-3 w-full text-white rounded border lg:p-4 bg-zinc-700 border-zinc-600 placeholder-zinc-400 focus:border-red-500 focus:outline-none"
+        className="p-3 w-full text-white rounded border lg:p-4 bg-gray-800 border-gray-600 placeholder-gray-400 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
         required
       />
 
       <button
         type="submit"
         disabled={isSubmitting}
-        className="py-3 w-full font-bold text-white bg-red-600 rounded transition-colors hover:bg-red-700 lg:py-4 disabled:opacity-50"
+        className="py-3 w-full font-bold text-white bg-red-700 rounded transition-colors hover:bg-red-700 lg:py-4 disabled:opacity-50 shadow-lg"
+        style={{ fontFamily: "Neuemontreal, Arial, sans-serif" }}
       >
         {isSubmitting ? "I'M INTERESTED" : "I'M INTERESTED"}
       </button>
