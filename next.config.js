@@ -16,6 +16,15 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/waitlist',
+        permanent: false,
+      },
+    ];
+  },
     async headers() {
     return [
       {
@@ -27,20 +36,11 @@ const nextConfig = {
           { key: 'Access-Control-Allow-Headers', value: 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version' },
           { key: 'X-Content-Type-Options', value: 'nosniff' },
           { key: 'X-Frame-Options', value: 'SAMEORIGIN' },
-          { key: 'X-XSS-Protection', value: '1; mode=block' },
+
         ],
-      },
-    ];
-  },
-  async redirects() {
-    return [
-      {
-        source: '/',
-        destination: '/waitlist',
-        permanent: false,
       },
     ];
   },
 };
 
-module.exports = nextConfig;
+module.exports = nextConfig; 
