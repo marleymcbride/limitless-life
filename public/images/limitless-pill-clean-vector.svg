@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="228" height="72" viewBox="0 0 228 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Clean pill shape with rounded ends -->
+  <rect x="8" y="8" width="212" height="56" rx="28" fill="white"/>
+
+  <!-- Pink half -->
+  <mask id="mask0" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="114" y="8" width="106" height="56">
+    <rect x="114" y="8" width="106" height="56" rx="28" fill="white"/>
+  </mask>
+  <g mask="url(#mask0)">
+    <rect x="114" y="8" width="106" height="56" fill="#FFC7C7"/>
+  </g>
+
+  <!-- Subtle top highlight -->
+  <path d="M36 12C23.5 12 14 21.5 14 34C14 34.672 14.0281 35.3371 14.0842 35.9937C15.0703 25.4034 23.7621 17 34.5 17H194C204.738 17 213.43 25.4034 214.416 35.9937C214.472 35.3371 214.5 34.672 214.5 34C214.5 21.5 205 12 192.5 12H36Z" fill="white" fill-opacity="0.3"/>
+
+  <!-- Subtle shadow -->
+  <ellipse cx="114" cy="68" rx="106" ry="4" fill="black" fill-opacity="0.1"/>
+
+  <!-- Text -->
+  <text x="114" y="42" font-family="Arial, Helvetica, sans-serif" font-weight="600" font-size="16" text-anchor="middle" fill="#333333">
+    <tspan x="114" y="42">THE LIMITLESS PILL</tspan>
+  </text>
+</svg>
