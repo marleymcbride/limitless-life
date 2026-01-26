@@ -1,0 +1,1206 @@
+/* postcss-preset-env stage 1 */
+/* src/app/globals.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Black Friday body text class */
+  .black-friday-body-text {
+    font-size: 18px;
+    line-height: 1.6;
+  }
+
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 96.1%;
+
+    /* Card opacity slider - change this value (0.0 to 1.0) to adjust all card backgrounds */
+    --card-opacity: 0.95;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+    --radius: 0.5rem;
+
+    /* For dark sections */
+    --dark-bg: 0 0% 3.9%;
+    --dark-text: 0 0% 98%;
+
+    /* Anti-stack color system */
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+
+    /* Hero section grain controls */
+    --hero-grain-color: #141414;
+    --hero-grain-opacity: 0.10;
+    --hero-grain-blend-mode: hard-light;
+    --hero-grain-z-index: 25;
+
+    /* Other dark sections grain controls */
+    --section-grain-color: #141414;
+    --section-grain-opacity: 0.25;
+    --section-grain-blend-mode: hard-light;
+    --section-grain-z-index: 25;
+  }
+
+  /* Dark card background class - OUTSIDE of :root */
+  .dark-card-bg {
+    background-color: rgba(16, 22, 36, var(--card-opacity)) !important;
+    border-color: #101624 !important;
+  }
+
+  /* Darker version for smaller containers - pure black to signature red WITHOUT orb */
+  .dark-card-bg-small {
+    position: relative !important;
+    background:
+      linear-gradient(135deg,
+        rgba(0, 0, 0, 1) 0%,
+        rgba(0, 0, 0, 1) 35%,
+        rgba(14, 1, 1, 0.985) 50%,
+        rgba(23, 2, 2, 0.96) 62%,
+        rgba(33, 3, 3, 0.94) 72%,
+        rgba(40, 4, 4, 0.925) 80%,
+        rgba(42, 4, 4, 0.91) 85%,
+        rgba(44, 5, 5, 0.88) 90%,
+        rgba(46, 6, 6, 0.86) 95%,
+        rgba(48, 7, 7, 0.84) 100%) !important;
+    border-color: #0a0d14 !important;
+  }
+
+  .dark-card-bg-small::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" seed="1"/><feColorMatrix type="saturate" values="0"/></filter><rect width="100" height="100" fill="var(--hero-grain-color)" filter="url(%23noise)" opacity="1.0"/></svg>');
+    opacity: var(--hero-grain-opacity);
+    z-index: var(--hero-grain-z-index);
+    pointer-events: none;
+    mix-blend-mode: var(--hero-grain-blend-mode);
+  }
+
+  /* Darkening overlay - compensates for grain lightening while preserving texture */
+  .dark-card-bg-small::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.2);
+    z-index: 26;
+    pointer-events: none;
+    mix-blend-mode: saturation;
+  }
+
+  /* Darker version for smaller containers - pure black to signature red WITH red orb */
+  .dark-card-bg-small-orb {
+    position: relative !important;
+    background:
+      linear-gradient(135deg,
+        rgba(0, 0, 0, 1) 0%,
+        rgba(0, 0, 0, 1) 35%,
+        rgba(14, 1, 1, 0.985) 50%,
+        rgba(23, 2, 2, 0.96) 62%,
+        rgba(33, 3, 3, 0.94) 72%,
+        rgba(40, 4, 4, 0.925) 80%,
+        rgba(42, 4, 4, 0.91) 85%,
+        rgba(44, 5, 5, 0.88) 90%,
+        rgba(46, 6, 6, 0.86) 95%,
+        rgba(48, 7, 7, 0.84) 100%),
+      radial-gradient(circle at 72% 80%,
+        rgba(148, 9, 9, 1) 0%,
+        rgba(148, 9, 9, 0.85) 50%,
+        rgba(148, 9, 9, 0.50) 100%,
+        transparent 750%),
+      linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.3) 100%) !important;
+    background-blend-mode: normal, normal, overlay !important;
+    border-color: #0a0d14 !important;
+  }
+
+  .dark-card-bg-small-orb::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" seed="1"/><feColorMatrix type="saturate" values="0"/></filter><rect width="100" height="100" fill="var(--hero-grain-color)" filter="url(%23noise)" opacity="1.0"/></svg>');
+    background-repeat: repeat;
+    opacity: 0.03;
+    pointer-events: none;
+    mix-blend-mode: saturation;
+  }
+
+  /* Lighter version for smaller containers - white with subtle gradient */
+  .light-card-bg-small-orb {
+    position: relative !important;
+    background: linear-gradient(to bottom, #ffffff 0%, #f8f8f8 100%) !important;
+    border: 1px solid #e5e5e5 !important;
+  }
+
+  /* Darkening overlay - compensates for grain lightening while preserving texture */
+  .dark-card-bg-small-orb::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.2);
+    z-index: 26;
+    pointer-events: none;
+    mix-blend-mode: saturation;
+  }
+
+  /* Introducing Limitless section background - more black in top half, delayed red fade */
+  .introducing-limitless-bg {
+    position: relative !important;
+    background:
+      linear-gradient(135deg,
+        rgba(56, 56, 56, 1) 0%,
+        rgba(31, 31, 31, 1) 40%,
+        rgba(31, 30, 30, 0.995) 45%,
+        rgba(31, 28, 28, 0.99) 50%,
+        rgba(30, 26, 26, 0.985) 55%,
+        rgba(30, 23, 23, 0.98) 60%,
+        rgba(30, 20, 20, 0.975) 65%,
+        rgba(32, 17, 17, 0.97) 70%,
+        rgba(35, 15, 15, 0.965) 75%,
+        rgba(38, 13, 13, 0.96) 80%,
+        rgba(42, 11, 11, 0.955) 85%,
+        rgba(46, 9, 9, 0.95) 90%,
+        rgba(50, 8, 8, 0.945) 95%,
+        rgba(55, 7, 7, 0.94) 100%) !important;
+    border-color: #0a0d14 !important;
+  }
+
+  .introducing-limitless-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" seed="1"/><feColorMatrix type="saturate" values="0"/></filter><rect width="100" height="100" fill="var(--hero-grain-color)" filter="url(%23noise)" opacity="1.0"/></svg>');
+    opacity: 0.1;
+    z-index: var(--hero-grain-z-index);
+    pointer-events: none;
+    mix-blend-mode: var(--hero-grain-blend-mode);
+  }
+
+  /* Darkening overlay - compensates for grain lightening while preserving texture */
+  .introducing-limitless-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.2);
+    z-index: 26;
+    pointer-events: none;
+    mix-blend-mode: saturation;
+  }
+
+  /* Results Proof section background - smooth gradient from black to light grey */
+  .results-proof-gradient {
+    background: linear-gradient(to bottom, #000000, #090808, #121111, #141414, #1a1818, #202020, #2d2828, #373434, #413e3e, #5a5757, #737070, #9c9999, #c5c3c3) !important;
+  }
+
+  /* Testimonial section gradient - same as results-proof but starts from middle (no black top) */
+  .testimonial-dark-gradient {
+    background: linear-gradient(to bottom, #5a5757, #737070, #9c9999, #c5c3c3) !important;
+  }
+
+  /* Imagine This section background - black to subtle red (50% reduced red) */
+  .imaginethis-dark {
+    position: relative !important;
+    background:
+      linear-gradient(135deg,
+        rgba(0, 0, 0, 1) 0%,
+        rgba(0, 0, 0, 1) 35%,
+        rgba(7, 0.5, 0.5, 0.4925) 50%,
+        rgba(11.5, 1, 1, 0.48) 62%,
+        rgba(16.5, 1.5, 1.5, 0.47) 72%,
+        rgba(20, 2, 2, 0.4625) 80%,
+        rgba(21, 2, 2, 0.455) 85%,
+        rgba(22, 2.5, 2.5, 0.44) 90%,
+        rgba(23, 3, 3, 0.43) 95%,
+        rgba(24, 3.5, 3.5, 0.42) 100%) !important;
+    border-color: #0a0d14 !important;
+  }
+
+  .imaginethis-dark::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" seed="1"/><feColorMatrix type="saturate" values="0"/></filter><rect width="100" height="100" fill="var(--hero-grain-color)" filter="url(%23noise)" opacity="1.0"/></svg>');
+    opacity: var(--hero-grain-opacity);
+    z-index: var(--hero-grain-z-index);
+    pointer-events: none;
+    mix-blend-mode: var(--hero-grain-blend-mode);
+  }
+
+  /* Darkening overlay - compensates for grain lightening while preserving texture */
+  .imaginethis-dark::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.2);
+    z-index: 26;
+    pointer-events: none;
+    mix-blend-mode: saturation;
+  }
+
+  /* Imagine This Dark outer background - grey gradient with grain */
+  .imaginethis-outer-bg {
+    position: relative !important;
+    background:
+      radial-gradient(circle at 85% 90%, rgba(148, 9, 9, 0.15) 0%, transparent 50%),
+      linear-gradient(to bottom, #BDBDBD, #E1E1E1) !important;
+  }
+
+  /* Imagine This Light outer background - grey gradient with grain */
+  .imaginethis-light-outer-bg {
+    position: relative !important;
+    background: linear-gradient(to bottom, #BDBDBD, #E1E1E1) !important;
+  }
+
+  /* White overlay at 30% opacity */
+  .imaginethis-outer-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.3);
+    z-index: 24;
+    pointer-events: none;
+  }
+
+  .imaginethis-outer-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" seed="1"/><feColorMatrix type="saturate" values="0"/></filter><rect width="100" height="100" fill="var(--hero-grain-color)" filter="url(%23noise)" opacity="1.0"/></svg>');
+    opacity: 0.25;
+    z-index: 25;
+    pointer-events: none;
+    mix-blend-mode: var(--hero-grain-blend-mode);
+  }
+
+  html {
+    background-color: black;
+  }
+
+  body {
+    @apply bg-black text-white;
+    border-color: hsl(var(--border));
+    font-family: "Neuemontreal", "Roboto", sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    background-color: black;
+  }
+
+  /* Input styling for dark forms */
+  input::placeholder {
+    @apply text-white opacity-100;
+  }
+
+  /* Chrome autofill text color */
+  input:-webkit-autofill,
+  input:-webkit-autofill::placeholder {
+    -webkit-text-fill-color: #fff !important;
+    box-shadow: 0 0 0px 1000px #27272a inset !important; /* match your bg */
+    @apply opacity-100;
+  }
+
+  h1, h2, h3 {
+    font-family: "Neuemontreal", "Roboto", sans-serif;
+    letter-spacing: -0.025em;
+    line-height: 1.4 !important;
+    color: #1c1934;
+  }
+
+  /* Remove default margins that might cause gaps */
+  body, section, div, p, h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+  }
+
+  section {
+    display: block;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: normal;
+    text-wrap: balance;
+  }
+  .max-w-500px {
+    max-width: 500px;
+  }
+
+  /* Wider content sections - 5% more width on desktop */
+  @media (min-width: 768px) {
+    .wider-content {
+      max-width: none !important;
+      width: 105% !important;
+    }
+  }
+}
+
+@layer components {
+  .heading-1 {
+    line-height: 1.1;
+  }
+
+  .slanted-divider {
+    clip-path: polygon(0 100%, 100% 0, 100% 100%, 0% 100%);
+  }
+
+  /* Ensure sections connect without gaps */
+  main > section {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+}
+
+/* Custom styles */
+:root {
+  --accent-red: #940909;
+  --accent-red-hover: #7b0707;
+  --accent-red-light: rgba(148, 9, 9, 0.1);
+
+  /* Custom container width - consistent with screenshot */
+  --content-max-width: 800px;
+}
+
+/* Background color classes for the alternating pattern */
+.bg-black-red-gradient {
+  background-color: black;
+  background-image: linear-gradient(to top, rgba(80, 0, 0, 0.2) 0%, rgba(60, 0, 0, 0.15) 25%, rgba(30, 0, 0, 0.1) 50%, rgba(0, 0, 0, 0.4) 75%, rgb(0, 0, 0) 100%);
+  color: white;
+  position: relative;
+}
+
+.bg-black-red-gradient::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 25vh;
+  background: linear-gradient(to top, rgba(148, 9, 9, 0.08), transparent);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bg-black-red-gradient::before {
+  content: "";
+  position: absolute;
+  top: -42%;
+  right: -36%;
+  width: 1050px;
+  height: 1050px;
+  background: radial-gradient(circle at center, rgba(148, 9, 9, 0.76) 0%, rgba(148, 9, 9, 0.27) 32%, transparent 65%);
+  filter: blur(50px);
+  pointer-events: none;
+  z-index: 0;
+  border-radius: 50%;
+}
+
+.bg-dark-red {
+  background-color: var(--accent-red);
+  color: white;
+}
+
+.bg-white {
+  background-color: white;
+  color: black;
+}
+
+.bg-grey {
+  background-color: rgb(24 24 27); /* zinc-900 */
+  color: white;
+}
+
+/* Custom container override */
+.container:not(.full-width-container):not(.hero-full-width),
+[class*="max-w-"]:not(.full-width-container):not(.hero-full-width) {
+  max-width: var(--content-max-width) !important;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Exclude ResultsProof section from max-width constraint */
+.results-proof-gradient .container,
+.results-proof-gradient [class*="max-w-"] {
+  max-width: none !important;
+}
+
+/* Show desktop version on large screens, hide on mobile */
+@media (min-width: 1024px) {
+  .desktop-results-only {
+    display: flex !important;
+  }
+  .mobile-results-only {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+  }
+}
+
+/* Show mobile version on small screens, hide on desktop */
+@media (max-width: 1023px) {
+  .desktop-results-only {
+    display: none !important;
+  }
+  .mobile-results-only {
+    display: flex !important;
+  }
+}
+
+/* Landscape mode: remove max-width constraint to fill screen */
+@media (orientation: landscape) and (max-height: 900px) {
+  /* Override the 800px constraint for mobile landscape only */
+  .container:not(.full-width-container):not(.hero-full-width) {
+    max-width: none !important;
+    width: 100% !important;
+    /* Bring content in from edges - around 12-13% on each side */
+    padding-left: 12% !important;
+    padding-right: 12% !important;
+  }
+
+  /* Max-width elements get the 12% padding */
+  [class*="max-w-"]:not(.full-width-container):not(.hero-full-width):not(.vsl-wrapper) {
+    max-width: none !important;
+    width: 100% !important;
+    padding-left: 12% !important;
+    padding-right: 12% !important;
+  }
+
+  /* BUT: Keep VSL/video player FULL WIDTH for cinematic feel */
+  /* Match specificity to override the padding rule */
+  [class*="max-w-"][class*="px-4"]:not(.full-width-container):not(.hero-full-width),
+  .max-w-4xl:not(.full-width-container):not(.hero-full-width) {
+    max-width: 100% !important;
+    width: 100% !important;
+    padding-left: 4% !important;
+    padding-right: 2% !important;
+  }
+
+  /* VSL player container itself */
+  .vsl-player-container {
+    max-width: 100% !important;
+    width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}
+
+
+/* Hero section grain overlay */
+.hero-grain-overlay {
+  position: absolute;
+  inset: 0;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" seed="1"/><feColorMatrix type="saturate" values="0"/></filter><rect width="100" height="100" fill="var(--hero-grain-color)" filter="url(%23noise)" opacity="1.0"/></svg>');
+  opacity: var(--hero-grain-opacity);
+  z-index: var(--hero-grain-z-index);
+  pointer-events: none;
+  mix-blend-mode: var(--hero-grain-blend-mode);
+}
+
+/* Hero darkening overlay - compensates for grain lightening while preserving texture */
+.hero-darkening-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.2);
+  z-index: 26;  /* Above grain (z-index: 25) */
+  pointer-events: none;
+  mix-blend-mode:saturation;  /* Darkens without covering texture */
+}
+
+/* Dark section with grain - apply to any dark background section */
+.dark-section-with-grain {
+  position: relative;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+}
+
+/* Signature red radial gradient overlay - bottom right corner */
+.dark-section-with-grain::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 85% 90%, rgba(148, 9, 9, 0.12) 0%, transparent 50%);
+  z-index: 24;
+  pointer-events: none;
+}
+
+.dark-section-with-grain::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" seed="1"/><feColorMatrix type="saturate" values="0"/></filter><rect width="100" height="100" fill="var(--section-grain-color)" filter="url(%23noise)" opacity="1.0"/></svg>');
+  opacity: var(--section-grain-opacity);
+  z-index: var(--section-grain-z-index);
+  pointer-events: none;
+  mix-blend-mode: var(--section-grain-blend-mode);
+}
+
+/* Wrapper to ensure full width content */
+.full-width-content {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+
+/* Imagine This box shadow - positioned right and slightly up */
+.imaginethis-box-shadow {
+  box-shadow: 12px -6px 24px rgba(0, 0, 0, 0.8) !important;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #121212;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Mobile text size optimization */
+@media (max-width: 640px) {
+  h1:not(.mobile-headline) {
+    font-size: 3rem !important;
+    line-height: 1.4 !important;
+  }
+
+  h2:not(.mobile-headline) {
+    font-size: 2.5rem !important;
+    line-height: 1.4 !important;
+  }
+
+  .vsl-resume-heading {
+    font-size: 26px !important;
+  }
+
+  h3:not(.mobile-headline) {
+    font-size: 1.75rem !important;
+    line-height: 1.4 !important;
+  }
+
+  p:not(.mobile-subheadline):not(.mobile-bullet-override):not(.mobile-text-large):not(.mobile-eyebrow):not(.body-copy p) {
+    font-size: 1.5rem !important;
+    line-height: 1.5 !important;
+  }
+
+  .mobile-text-xl {
+    font-size: 1.5rem !important;
+    line-height: 1.5 !important;
+  }
+
+  .mobile-text-2xl {
+    font-size: 1.75rem !important;
+    line-height: 1.4 !important;
+  }
+
+  .mobile-bullet-text {
+    font-size: 2.5rem !important;
+    line-height: 1.3 !important;
+  }
+
+  .mobile-bullet-override {
+    font-size: 2.5rem !important;
+    line-height: 1.3 !important;
+  }
+
+  /* MOBILE BULLETS TEXT */
+  .mobile-text-large {
+    font-size: 1.65rem !important;
+    line-height: 1.3 !important;
+  }
+
+/* MOBILE []] TEXT */
+  .mobile-text-medium {
+    font-size: 1.5rem !important;
+    line-height: 1.5 !important;
+  }
+
+  /* MOBILE HERO EYEBROW */
+  p.mobile-eyebrow {
+    font-size: 1.09rem !important;
+    line-height: 1.4 !important;
+  }
+
+  /* MOBILE HERO HEADLINE LINE-HEIGHT */
+  h1.mobile-headline {
+    line-height: 1.125 !important;
+  }
+
+  /* MOBILE HERO SUBHEADLINE LINE-HEIGHT */
+  p.mobile-subheadline {
+    line-height: 1.28 !important;
+  }
+
+  /* MOBILE H2 ALTERNATE */
+  .h2-alternate {
+    font-size: 1rem !important;
+    line-height: 1.8 !important;
+    font-weight: 300 !important;
+  }
+
+  /* REDUCE MOBILE PAGE MARGINS - EXCLUDE HERO SECTION */
+  /* Target body and main directly */
+  body main,
+  main > section:not(#hero-section):not(#results-proof) {
+    padding-left: 2px !important;
+    padding-right: 0px !important;
+  }
+
+  /* REDUCE BODY TEXT LINE GAPS BY 30% */
+  /* Maximum specificity override - targeting only body copy sections */
+  .body-copy p,
+  .prose p {
+    margin-bottom: 1.2rem !important; /* 16px = mb-4 */
+    margin-top: 0 !important;
+  }
+}
+
+/* H2 ALTERNATE DESKTOP */
+h2.h2-alternate,
+.prose h2.h2-alternate,
+.body-copy h2.h2-alternate,
+.prose .body-copy h2.h2-alternate {
+  font-size: 3rem !important;
+  line-height: 1.2 !important;
+  font-weight: 500 !important;
+}
+
+/* MINI HEADING DESKTOP */
+.mini-heading,
+.prose .mini-heading,
+.body-copy .mini-heading,
+.prose .body-copy .mini-heading {
+  font-size: 1.4rem !important;
+  line-height: 1.3 !important;
+  font-weight: 700 !important;
+  font-family: "Neuemontreal", "Roboto", sans-serif !important;
+  color: #1c1934 !important;
+}
+
+/* ========= MOBILE []] MAIN BODY TEXT ========= */
+@media (max-width: 640px) {
+  .body-copy p {
+    font-size: 1.45rem !important;
+    line-height: 1.5 !important;
+  }
+
+  /* H2 ALTERNATE MOB */
+  h2.h2-alternate,
+  .prose h2.h2-alternate,
+  .body-copy h2.h2-alternate,
+  .prose .body-copy h2.h2-alternate {
+    font-size: 2rem !important;
+    line-height: 1.4 !important;
+    font-weight: 500 !important;
+  }
+
+  /* MINI HEADING MOB */
+  .mini-heading,
+  .prose .mini-heading,
+  .body-copy .mini-heading,
+  .prose .body-copy .mini-heading {
+    font-size: 1.4rem !important;
+    line-height: 1.3 !important;
+    font-weight: 700 !important;
+    font-family: "Neuemontreal", "Roboto", sans-serif !important;
+    color: #1c1934 !important;
+  }
+}
+
+/* ========= DESKTOP []] MAIN BODY TEXT ========= */
+@media (min-width: 268px) {
+  .body-copy p {
+    font-size: 1.3rem !important;
+    line-height: 1.6;
+    font-weight:400;
+    font-family: "Neuemontreal", sans-serif !important;
+  }
+
+  /* Override prose-lg font sizes */
+  .prose.prose-lg .body-copy p,
+  .prose .body-copy p,
+  .prose-lg p,
+  .prose-lg .prose p,
+  .prose .prose-lg p {
+    font-size: 1.3rem !important;
+  }
+
+  /* Override all prose paragraph sizes */
+  .prose p {
+    font-size: 1.3rem !important;
+  }
+
+  /* Fix for prose styling within body-copy to preserve font-weight */
+  .prose .body-copy strong,
+  .prose .body-copy b,
+  .body-copy strong,
+  .body-copy b,
+  .body-copy p strong,
+  .body-copy p b {
+    font-weight: 700 !important;
+  }
+
+  /* Ensure prose headings within body-copy have proper weight */
+  .prose .body-copy h1,
+  .prose .body-copy h2,
+  .prose .body-copy h3,
+  .body-copy h1,
+  .body-copy h2,
+  .body-copy h3 {
+    font-weight: 700 !important;
+  }
+}
+
+/* =======[IGNORE]========
+Mini headings - cognitive dissonance and attention capture */
+@media (max-width: 640px) {
+  .mini-heading {
+    font-size: 1.4rem !important;
+    line-height: 1.3 !important;
+    font-weight: 700 !important;
+    font-family: "Neuemontreal", "Roboto", sans-serif !important;
+    color: #1c1934 !important;
+  }
+
+  /* MOBILE INTRO HEADLINE */
+  .mid-headline {
+    font-size: 3rem !important;
+    line-height: 1.2 !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+  }
+
+  .mid-headline {
+    font-size: 3rem !important;
+    line-height: 1.2 !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+  }
+
+  .body-copy .mid-headline {
+    font-size: 3rem !important;
+    line-height: 1.2 !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+  }
+
+  .prose .body-copy .mid-headline {
+    font-size: 3rem !important;
+    line-height: 1.2 !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+  }
+
+  /* =======[IGNORE]========
+Mini headings - cognitive dissonance and attention capture */
+  .body-copy .mini-heading {
+    font-size: 1.4rem !important;
+    line-height: 1.3 !important;
+    font-weight: 700 !important;
+    font-family: "Neuemontreal", "Roboto", sans-serif !important;
+    color: #1c1934 !important;
+  }
+}
+
+/* =======[IGNORE]========
+Mini headings - cognitive dissonance and attention capture */
+@media (min-width: 0px) {
+  .mini-heading {
+    font-size: 1.2rem !important;
+    line-height: 1.3 !important;
+    font-weight: 700 !important;
+    color: #1c1934 !important;
+  }
+
+  /* DESKTOP INTRO HEADLINE */
+  .mid-headline {
+    font-size: 3rem !important;
+    line-height: 1.2 !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+  }
+
+  .mid-headline {
+    font-size: 3rem !important;
+    line-height: 1.2 !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+  }
+
+  .body-copy .mid-headline {
+    font-size: 3rem !important;
+    line-height: 1.2 !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+  }
+
+  .prose .body-copy .mid-headline {
+    font-size: 3rem !important;
+    line-height: 1.2 !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+  }
+
+
+  /* =====MAIN=======
+   MAIN MINI HEADINGS - in body/copy text */
+  .body-copy .mini-heading {
+    font-size: 2.2rem !important;
+    line-height: 1.3 !important;
+    font-weight:2000 !important;
+    text-align: center;
+    color:#1b2b47 !important;
+  }
+
+  /* =====MAIN=======
+   Larget mini headings - in body/copy text */
+   .body-copy .mid-heading {
+    font-size: 3.0rem !important;
+    line-height: 1.3 !important;
+    font-weight: 700 !important;
+    color: inherit !important;
+  }
+}
+
+/* Self quote styling */
+.self-quote p {
+  color: #374151; /* slightly darker than text-gray-800 */
+  font-style: italic;
+}
+
+/* Formatted quote styling - for LIGHT MODE| format with left border */
+.prose.prose .formatted-quote p,
+.prose .formatted-quote p,
+.prose .formatted-quote,
+.formatted-quote p {
+  border-left: 4px solid #374151 !important;
+  padding-left: 16px !important;
+  font-style: italic !important;
+  margin: 0 0 1.5rem 0 !important; /* Override prose margin, add bottom spacing */
+  color: #1f2937 !important; /* Override text-gray-800 with slightly darker color */
+  background: transparent !important; /* Ensure no background color */
+  padding-top: 0 !important;
+  padding-right: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* In-line quote styling - for subtle emphasis within story flow */
+.in-line-quote p {
+  font-style: italic;
+  color: #1f2937; /* much darker, closer to black */
+  opacity: 0.9; /* subtle opacity */
+  padding-top: 0px;
+  padding-bottom: 20px;
+}
+
+/* Custom text size utilities */
+.text-4\.5xl {
+  font-size: 2.0625rem; /* Halfway between text-3xl (1.875rem) and text-4xl (2.25rem) */
+  line-height: 1.2;
+}
+
+@media (max-width: 640px) {
+  .text-4\.5xl {
+    font-size: 1.875rem; /* Adjusted for mobile - between text-3xl and text-4xl mobile sizes */
+    line-height: 1.2;
+  }
+}
+
+/* Force white color for headings on dark backgrounds - highest specificity */
+.heading-white-force {
+  color: #ffffff !important;
+}
+
+section.bg-zinc-800 h3.heading-white-force {
+  color: #ffffff !important;
+}
+
+/* ========== LIGHT MODE COPY (WHITE BACKGROUNDS) ========== */
+/* This section consolidates existing white background patterns */
+
+/* Desktop light mode body text */
+@media (min-width: 268px) {
+  .light-mode-copy .body-copy p {
+    font-size: 1.3rem !important;
+    line-height: 1.6;
+    font-weight: 400;
+    font-family: "Neuemontreal", sans-serif !important;
+    color: #374151; /* text-gray-700 */
+  }
+
+  .light-mode-copy .mini-heading {
+    font-size: 2.2rem !important;
+    line-height: 1.3 !important;
+    font-weight: 700 !important;
+    text-align: center;
+    color: #1c1934 !important;
+  }
+
+  .light-mode-copy .mid-heading {
+    font-size: 3.0rem !important;
+    line-height: 1.3 !important;
+    font-weight: 700 !important;
+    color: #1c1934 !important;
+  }
+
+  .light-mode-copy .formatted-quote p {
+    border-left: 4px solid #374151 !important;
+    padding-left: 16px !important;
+    font-style: italic !important;
+    margin: 0 0 1.5rem 0 !important;
+    color: #1f2937 !important;
+    background: transparent !important;
+    padding-top: 0 !important;
+    padding-right: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  .light-mode-copy .in-line-quote p {
+    font-style: italic;
+    color: #1f2937;
+    opacity: 0.9;
+    padding-top: 0px;
+    padding-bottom: 20px;
+  }
+}
+
+/* Mobile light mode overrides */
+@media (max-width: 640px) {
+  .light-mode-copy .body-copy p {
+    font-size: 1.8rem !important;
+    line-height: 1.5;
+  }
+
+  .light-mode-copy .mini-heading {
+    font-size: 1.4rem !important;
+    line-height: 1.3 !important;
+    font-weight: 700 !important;
+    font-family: "Neuemontreal", "Roboto", sans-serif !important;
+    color: #1c1934 !important;
+  }
+}
+
+/* ========== DARK MODE COPY (BLACK BACKGROUNDS) ========== */
+
+/* Desktop dark mode body text */
+@media (min-width: 268px) {
+  .dark-mode-copy .body-copy p {
+    font-size: 1.4rem;
+    line-height: 1.6;
+    font-weight: 400;
+    font-family: "Neuemontreal", sans-serif !important;
+    color: #e5e5e5; /* Light gray for dark backgrounds */
+  }
+
+  .dark-mode-copy .mini-heading {
+    font-size: 2.2rem !important;
+    line-height: 1.3 !important;
+    font-weight: 700 !important;
+    text-align: center;
+    color: #ffffff !important;
+  }
+
+  .dark-mode-copy .mid-heading {
+    font-size: 3.0rem !important;
+    line-height: 1.3 !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+  }
+
+  .dark-mode-copy .formatted-quote p {
+    border-left: 4px solid #940909 !important;
+    padding-left: 16px !important;
+    font-style: italic !important;
+    margin: 0 0 1.5rem 0 !important;
+    color: #e5e5e5 !important;
+    background: transparent !important;
+    padding-top: 0 !important;
+    padding-right: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  .dark-mode-copy .in-line-quote p {
+    font-style: italic;
+    color: #d4d4d4;
+    opacity: 0.9;
+    padding-top: 0px;
+    padding-bottom: 20px;
+  }
+}
+
+/* Formatted quote styling - for LIGHT MODE| format with left border */
+.prose.prose .dark-mode-formatted-quote p,
+.prose .dark-mode-formatted-quote p,
+.prose .dark-mode-formatted-quote,
+.dark-mode-formatted-quote p {
+  border-left: 4px solid #ffffff !important;
+  padding-left: 16px !important;
+  font-style: italic !important;
+  margin: 0 0 1.5rem 0 !important; /* Override prose margin, add bottom spacing */
+  color: #c5d1e4 !important; /* Override text-gray-800 with slightly darker color */
+  background: transparent !important; /* Ensure no background color */
+  padding-top: 0 !important;
+  padding-right: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* Mobile dark mode overrides */
+@media (max-width: 640px) {
+  .dark-mode-copy .body-copy p {
+    font-size: 1.7rem !important;
+    line-height: 1.5;
+  }
+
+  .dark-mode-copy .mini-heading {
+    font-size: 1.4rem !important;
+    line-height: 1.3 !important;
+    font-weight: 700 !important;
+    font-family: "Neuemontreal", "Roboto", sans-serif !important;
+    color: #ffffff !important;
+  }
+}
+
+.BFO-dark-mode-copy .BFO-mini-heading {
+font-family: "Neuemontreal", "Roboto", sans-serif;
+letter-spacing: -0.025em;
+line-height: 1.4 !important;
+color: #ffffff;
+}
+
+/* Desktop VSL resume heading - 2x original size, 30% smaller */
+@media (min-width: 768px) {
+  .vsl-resume-heading {
+    font-size: 2.45rem !important;
+    line-height: 1.1 !important;
+  }
+
+  .vsl-resume-container {
+    transform: translateY(32%) !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .vsl-resume-heading {
+    font-size: 2.94rem !important;
+    line-height: 1.1 !important;
+  }
+
+  .vsl-resume-container {
+    transform: translateY(32%) !important;
+  }
+}
+
+/* ========== MOBILE INLINE STYLE OVERRIDES ========== */
+/* Override inline fontSize styles on body-copy elements for mobile */
+@media (max-width: 640px) {
+  /* Override body-copy divs with inline fontSize style */
+  .body-copy[style*="font-size"] {
+    font-size: 1.7rem !important;
+  }
+
+  /* Override very small inline font sizes on p elements */
+  p[style*="font-size: 0.8rem"] {
+    font-size: 1.5rem !important;
+  }
+
+  p[style*="font-size: 0.9rem"] {
+    font-size: 1.5rem !important;
+  }
+
+  p[style*="font-size: 1rem"] {
+    font-size: 1.5rem !important;
+  }
+
+  /* Override body-copy with specific small font sizes */
+  .body-copy[style*="1.04rem"] {
+    font-size: 1.7rem !important;
+  }
+}
+
+/* ========== REVERT 'DOES THIS SOUND LIKE YOU' SECTION ========== */
+/* Keep this section at original mobile sizes */
+@media (max-width: 640px) {
+  section[data-section="does-this-sound-like-you"] .mobile-text-large {
+    font-size: 1.4rem !important;
+    line-height: 1.3 !important;
+  }
+
+  section[data-section="does-this-sound-like-you"] p.text-2xl {
+    font-size: 1.4rem !important;
+    line-height: 1.3 !important;
+  }
+
+  /* Revert Personal Story caption to original size */
+  figcaption[data-caption="original"] {
+    font-size: 1rem !important;
+    line-height: 1.5 !important;
+  }
+
+  /* Revert hero testimonial to original size */
+  blockquote[data-testimonial="original-size"] {
+    font-size: 1rem !important;
+    line-height: 1.5 !important;
+  }
+
+  /* Revert Core Value Proposition headlines to original size */
+  section[data-section="core-value-proposition"] h2 {
+    font-size: 2.2rem !important;
+    line-height: 1.21 !important;
+  }
+
+  section[data-section="core-value-proposition"] .mini-heading {
+    font-size: 1.8rem !important;
+    line-height: 1.3 !important;
+  }
+
+  /* Revert Core Value numbered list to 50% of increase */
+  section[data-section="core-value-proposition"] p[data-numbered-list="true"] {
+    font-size: 1.3rem !important;
+    line-height: 1.5 !important;
+  }
+}
+
+/* Accordion chevron rotation - point right when closed, down when open */
+svg.accordion-chevron {
+  transition: transform 200ms;
+  transform: translateY(6px) rotate(-90deg);
+}
+
+[data-state="open"] svg.accordion-chevron {
+  transform: translateY(7px) rotate(0deg) !important;
+}
