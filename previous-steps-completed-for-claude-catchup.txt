@@ -1,0 +1,3345 @@
+## **Claude catching up **
+
+After reviewing the code, I can see that the implementation of the Limitless Sales Page project is well-organized and follows the comprehensive plan we set out to achieve. Here's a summary of the current state of the project:
+
+All Components Have Been Created:
+
+We've successfully created all 18 sections as planned, with each having the correct background color according to our alternating pattern.
+The components use consistent styling with the dark red primary color (#940909) and follow the design principles outlined in the implementation plan.
+
+
+Main Page Organization:
+
+The page.tsx file already has all components organized in the proper order.
+All components have appropriate comments indicating their position and background color.
+
+
+Visual Framework:
+
+The utility functions in utils.ts have been fixed and properly implement React.createElement instead of JSX.
+We have consistent background classes, visual elements, and patterns like masculinePattern and vignetteEffect.
+
+
+Social Proof Elements:
+
+MicroTestimonial components have been integrated throughout the page to provide continuous trust-building.
+ResultCard components showcase transformation stories.
+
+
+Call-to-Actions:
+
+ApplyNowButton components are strategically placed throughout the page.
+A StickyCTA appears on scroll to keep a conversion option always visible.
+
+
+Responsive Design:
+
+Mobile-specific layouts and designs have been implemented.
+Special attention has been given to the video container and hero section on mobile.
+
+
+
+The project appears to be in great shape. The sales page now has a consistent structure, appealing design elements, and compelling content following the principles of successful high-ticket sales pages for coaching programs. The alternating background pattern (white, dark red, black with red gradient, grey) creates a visual rhythm while maintaining readability and focus on the content.
+If you'd like to make any specific improvements or refinements to particular sections, I can help with that. Otherwise, the implementation plan appears to have been successfully completed.
+
+## **User's next instructions:**
+
+== Background Color Schema Changes ==
+
+White Backgrounds Only For:
+All testimonial sections (including Featured Testimonial/Credibility Quote)
+Longer written content (My Story, About Coach sections)
+Success Stories
+
+Black with Red Accents For:
+Marketing/program sections
+Comparison tables
+System breakdowns
+The "Your Body Is Running A Failed Program" section
+
+Gradient Styling:
+"Dark red" sections should use the hero section fade effect
+"Black" sections should use an inverted hero gradient (mostly black with red accents)
+
+== Content and Structure Changes ==
+
+System Components:
+Rename to "The Limitless Systems"
+Update component names:
+"Limitless Morning" (not "Morning Fuel System")
+"The Limitless Training" (not "Minimalist Training")
+Keep "Limitless Flow"
+
+Add "The Natty Sweet Spot" Section:
+Create a new section highlighting the 7 components of "The Ultimate Male Form":
+Body, Hormones, Health, Peace, Energy, Mental health, Happiness
+Design this with strong visuals showing the complete transformation
+
+Remove/Modify:
+Remove dedicated Guarantee section - move guarantee info to FAQ
+Make footer minimal and purely functional
+End with extensive testimonials followed by final CTA
+
+UI Improvements:
+Dark grey scroll bar
+Move floating CTA to appear only after significant scrolling
+Streamline final section design
+
+Copywriting Improvements:
+Strip out any AI-sounding phrases
+Use more direct, raw language
+Implement broken-English style with dashes and short phrases
+Focus on masculine strength-oriented language
+
+Further changes/notes
+
+with the idea of 'The Natty Sweet Spot', I also want to blend these ideas of this into the copy. Not necessarily the words 'Natty Sweet Spot' everywhere, but the ideas. Here is an article I wrote on it for you to use as reference: https://marleymcbride.co/the-natty-sweet-spot/
+(If you can't access it, I've added the text to the file: /Users/marleymcbride/Documents/Cursor Projects/limitless-sales-page/chat-for-claude-catchup.txt for you to read through)
+
+I particularly want the 7 ideas sprinkled in the sales copy, i.e:
+   - Body
+   - Hormones
+   - Health
+   - Peace
+   - Energy
+   - Mental health
+   - Happiness
+
+And also, my actual 'offer' needs to be displayed a bit more across the sales page.
+It is currently (but feel free to thin about how it could improve):
+"I help high-performing men quit alcohol permanently, eliminate fake energy crutches, and drop the 20-40 lbs of stress weight … so you finally wake up sharp and dialled in every morning, see your elite body in the mirror, and feel naturally high on life — without ever needing another hit of caffeine or drop of alcohol again.”
+
+Whilst you have done already, make sure these ideas are echoed throughout the copy.
+
+Everything else looks good so far.
+You can implement these one by one - and then we can go back and refine the page on further inspection.
+
+Start with the most critical sections first (background colors, system components, and content restructuring) and then work through the rest systematically.
+
+## **Claude MCP starts coding**
+
+I'll work on implementing these changes systematically, starting with the most critical ones. Let's begin by checking the Natty Sweet Spot article to better understand that concept, then we'll implement the background color schema changes, followed by the system components renaming.codemcpRequest{
+  `path`: `/Users/marleymcbride/Documents/Cursor Projects/limitless-sales-page/chat-for-claude-catchup.txt`,
+  `chat_id`: `19-feat-initialize-limitless-sales-page-project`,
+  `pattern`: `Natty Sweet Spot`,
+  `subtool`: `Grep`
+}ResponseNo files found
+
+Current commit hash: c527545Let me try a more general search to find the Natty Sweet Spot content:codemcpRequest{
+  `path`: `/Users/marleymcbride/Documents/Cursor Projects/limitless-sales-page`,
+  `chat_id`: `19-feat-initialize-limitless-sales-page-project`,
+  `pattern`: `natty-sweet-spot.txt`,
+  `subtool`: `Glob`
+}ResponseNo files found
+
+Current commit hash: c527545Let me look for any text files that might contain the Natty Sweet Spot information:codemcpRequest{
+  `path`: `/Users/marleymcbride/Documents/Cursor Projects/limitless-sales-page`,
+  `chat_id`: `19-feat-initialize-limitless-sales-page-project`,
+  `pattern`: `*.txt`,
+  `subtool`: `Glob`
+}Response/Users/marleymcbride/Documents/Cursor Projects/limitless-sales-page/the-natty-sweet-spot-for-claude-catchup.txt
+/Users/marleymcbride/Documents/Cursor Projects/limitless-sales-page/chat-for-claude-catchup.txt
+
+Current commit hash: c527545Perfect! I found the file with the Natty Sweet Spot information. Let's read its content:codemcpRequest{
+  `path`: `/Users/marleymcbride/Documents/Cursor Projects/limitless-sales-page/the-natty-sweet-spot-for-claude-catchup.txt`,
+  `chat_id`: `19-feat-initialize-limitless-sales-page-project`,
+  `subtool`: `ReadFile`
+}Response     1	Welcome to The Full Guide to The Natty Sweet Spot.
+     2	This is not going to be your typical muscle and body fat article.
+     3	Side note: This one took some time to put together, but I wanted to make it a banger as a token of appreciation for my absence.
+     4	So this is going to be everything I wish I knew 5-10 years ago about the mind, body and soul — when I first got into lifting and self-improvement.
+     5	We'll be covering everything from the body, to your health, to your inner purpose for being here.
+     6	Let's get into it:
+     7	So flashback to July 2023.
+     8	I was living in Thailand.
+     9	Sun. Freedom. Beaches.
+    10	
+    11	Asian dishes for the price of a diet coke.
+    12	Asian bishes everywhere I looked.
+    13	But I wasn't indulging.
+    14	I was focused on getting as shredded as possible.
+    15	This cut had been going on for several months, and I was at the backend trying to get lean for a photoshoot.
+    16	Most days I struggled to focus, or keep my eyes open at all.
+    17	I was in my 9th year of training at this point, and looked pretty good:
+    18	
+    19	But secretly I felt fucking awful.
+    20	No energy
+    21	No sex drive
+    22	No passion for my work
+    23	Training wasn't enjoyable, I didn't even want to speak to people.
+    24	Training wasn't even enjoyable (that's when I knew it was bad)...
+    25	But that's what extreme diets do to you.
+    26	No energy for anything, anyone, I didn't even wanna speak to people.
+    27	It just felt like I was doing it all for nothing.
+    28	Guy in his 20s in Thailand, jacked, traveling, partying,
+    29	Living the dream right?!
+    30	But the reality was I felt horrendous.
+    31	It was like being a priest with a massive shlong.
+    32	Wasted.
+    33	But this had always been a goal of mine:
+    34	Finally get down to the holy grail of bodybuilding - 'single digit body fat':
+    35	Stroll down the beach, getting clocked from the ladies, and scaring the locals.
+    36	But they lied.
+    37	They told us getting diced (super lean), would make us feel incredible:
+    38	Insane energy
+    39	Nutty veins
+    40	Look constantly jacked
+    41	Streamlined jaw
+    42	Attracting countless worldies
+    43	Looking and feeling your greatest form possible
+    44	But it was the opposite.
+    45	No one told me how shit it would feel to be here.
+    46	And the worst part is you form an identity of being the 'shredded guy', and it starts fucking with your head.
+    47	I had around 2 weeks to go before the photoshoot.
+    48	Still had around 4Ibs to drop to get to single digits.
+    49	If I could just grind it out, I'd look great and have all these photos for my business.
+    50	But I said FUCK this..
+    51	and abandoned the photoshoot.
+    52	Ruining myself and my hormones, all for some validation from people online?
+    53	And I didn't even believe in getting ultra shredded.. I just thought it was what 'you're supposed to do'.
+    54	I don't have those photoshoot photos, in arguably the 'best condition' of my life.
+    55	Energy, hormones, happiness and health are my staples I don't sacrifice for anything.
+    56	I could've landed some new clients who only bought cos they wanted to look like that too.
+    57	But I don't stand for that.
+    58	All these guys you see looking peeled on Instagram are miserable inside.
+    59	And I learned my lesson the hard way:
+    60	Being shredded isn't what it looks like.
+    61	now let's dive into The Natty Sweet Spot and how to actually get lean and looking good the right way:
+    62	The expectations:
+    63	People staring.
+    64	Guys in disbelief.
+    65	(Their girl also in disbelief)
+    66	JACKED, SHREDDED PHENOM IS HERE
+    67	
+    68	And I won't sugar-coat.
+    69	The feeling is nice.
+    70	But it doesn't reflect what you feel on the inside.
+    71	I want you to ask yourself if months (if not years of feeling trash every day):
+    72	
+    73	Is worth that 1 moment of validation?
+    74	For me, I quickly found out the answer was a resounding fuck no.
+    75	So is it that simple? Just don't get super shredded??
+    76	Well, yes.. and no.
+    77	But here's the thing..
+    78	You can feel awful at a variety of ranges.
+    79	I'm sure you've felt shitty for weeks, months, even years - all while not being close to shredded.
+    80	If we're being real, you walk round 30-40lbs heavier than your '6 pack shredded' weight (and that isn't counting the peaks during the holidays).
+    81	This is the other side of The Natty Sweet Spot.
+    82	But for me, this didn't mean '30 lbs overweight'.
+    83	I was decently jacked, lean, and from the outside I looked healthy:
+    84	
+    85	Marley, circa mid-2022
+    86	Body fat wise, not far off where I wanted to be.
+    87	But I had no confidence, anxiety through the roof.
+    88	Feeling shitty every day — just like when I was shredded.
+    89	It made no sense to me.
+    90	So I got to researching.
+    91	Hormones, nutrition, muscle mass, sunlight, sleep.
+    92	This was my arc of going from:
+    93	Bodybuilder Bro -> Health-focussed, Energy- maxxed, Jacked Sober Commander General.
+    94	I'd been suffering low T symptoms most of my life.
+    95	Anxiety was always a big problem, having low confidence, feeling inferior and not wanting to speak up.
+    96	So this wasn't new to me.
+    97	But I knew something hadn't been right for a long time.
+    98	So I got myself checked.
+    99	But here's the more interesting part:
+   100	1 year prior I'd gone through this exact same situation - only looking and feeling worse.
+   101	Here's me in late 2021:
+   102	
+   103	Eating shit, drinking every night, not sleeping.
+   104	And here, the symptoms make sense.
+   105	But get this..
+   106	I have my testosterone results from both times...
+   107	And the results might shock you..
+   108	
+   109	Top: 2021, fat — Bottom: 2022, lean
+   110	The Results (converted to US units):
+   111	
+   112	October 2021
+   113	B12: 21.5 pg/ml (Low)
+   114	Vitamin D: 23.2 ng/dl (Extremely low)
+   115	Testosterone: 429 ng/dl (Low normal)
+   116	October 2022
+   117	B12: 39 pg/ml (High)
+   118	Vitamin D: 71.6 ngl/dl (High)
+   119	Testosterone: 346 ng/dl (Clinically low)
+   120	A year of trying to raise my testosterone.. and it dropped almost 20%.
+   121	In some ways, it was nice.
+   122	All the symptoms confirmed - it was like knowing you were right about your missus cheating all along..
+   123	But I knew something wasn't right.
+   124	I spend the next several months researching for hours every night, on hormones, health, nutrition, diet, everything they don't tell us about..
+   125	And that's how I accidentally formed 'The Natty Sweet Spot':
+   126	
+   127	When you reach this point, everything just feels... in line.
+   128	You look great, feel great, and operate on a completely different level.
+   129	But here's what most guys forget:
+   130	
+   131	'Attraction', 'presence', 'aura'.. these aren't just 'visual' or aesthetic;
+   132	You show them from the inside – from your frequency of operation.
+   133	(I know it sounds woo-woo but hear me out)..
+   134	Your aura is 'felt'.
+   135	It's the energy you give. The vibe people get.
+   136	When someone's vibrating on a high frequency, you get 'good vibes'... and visa versa on a low frequency, you won't.
+   137	You could be the most jacked, Chad alive - but if your vibe and energy are off, you're as good as a stick.
+   138	When you sacrifice The Natty Sweet Spot for aesthetics, your frequency drops.
+   139	But a humble homosapien like yourself must feel good to operate well, attract energy, positivity, opportunities and happiness.
+   140	"The energy you put out is the energy you receive"
+   141	(Einstein, probably)
+   142	So how do you reach The Natty Sweet Spot?
+   143	As the diagram shows, there are 7 core ideas:
+   144	• Body
+   145	• Hormones
+   146	• Health
+   147	• Peace
+   148	• Energy
+   149	• Mental health
+   150	• Happiness
+   151	Each can be defined by a range.
+   152	Any focus one singular asset too far, and you will deviate from the sweet spot.
+   153	The body works holistically, and synchronously.
+   154	To operate at your highest frequency, you must have an equal split across these.
+   155	
+   156	(This doesn't mean you can't focus 1 in the short-term, and you should do this on the come up)
+   157	But to reach your ultimate form, you will always come back to the centre circle:
+   158	
+   159	Once you align to this, you will no longer feel the need for external supplementation.
+   160	The need to outsource any one of these is because of neglect.
+   161	Video games, bad food, drugs and alcohol, they are all bandaid solutions for veering from The Natty Sweet Spot.
+   162	But reach this and you reach your true natural flow.
+   163	So let's break down exactly what these 'ideas' are, and where the happy medium is for each one:
+   164	Body / physique
+   165	
+   166	Let's start with the big one.
+   167	
+   168	Your body works in ways more complicated that you, I or the wizardest minds could ever explain.
+   169	
+   170	But the core of what we care about is still the aesthetic.
+   171	
+   172	So for this area, we are focusing mostly on body composition.
+   173	
+   174	In a nutshell, body composition is how jacked you look (muscle) and how shredded you look (leanness).
+   175	
+   176	The best place to sit is somewhere where you can see abs, look great, slick, chiseled face, healthy glowing skin, and high muscle mass.
+   177	
+   178	But only to a point you don't sacrifice everything else wanting to end it daily just to maintain super shredded territory.
+   179	
+   180	I've trialed many physiques over the years, and this is my ballpark conclusion:
+   181	
+   182	Bodyfat: between 11% to 15%
+   183	Anything under 11% is too low. Anything above 14% — you start looking anaesthetically maxxed.
+   184	
+   185	Muscle mass: it depends..
+   186	
+   187	I wrote this post last month, showing some good ballpark weights for men at 10%:
+   188	
+   189	But these are at the bottom end of being shredded (9-10%).
+   190	Hopefully you know by now, the 'men should be 200lbs' thing is a load of shit, all in cope from fat powerlifters bros who never take their top off.
+   191	A good basis to use is 2.4-2.5lbs LBM (Lean body mass) per inch of height.
+   192	Here's adjusted ranges for height/weight ratio at The Natty Sweet Spot:
+   193	5'7" → 155 lbs (2.38 lb/in)
+   194	5'8" → 160 lbs (2.41 lb/in)
+   195	5'9" → 165 lbs (2.43 lb/in)
+   196	5'10" → 170 lbs (2.46 lb/in)
+   197	5'11" → 175 lbs (2.49 lb/in)
+   198	6'0" → 180 lbs (2.50 lb/in)
+   199	6'1" → 185 lbs (2.52 lb/in)
+   200	6'2" → 190 lbs (2.55 lb/in)
+   201	6'3" → 195 lbs (2.56 lb/in)
+   202	(Note: these are based on average 12% BF, and may swing ±5lbs).
+   203	So these are the goal body-weights, but how do you know if you're in The Natty Sweet Spot?
+   204	The main driver is muscle mass.
+   205	If you started from minimal muscle mass, I like people to go for a +30% LBM increase.
+   206	Take myself as example, I started 119lbs at ~11% BF. I now sit at 161lbs at ~12% BF. This is a roughly 34% LBM increase.
+   207	Here's what this looks like visually:
+   208	
+   209	Left: 2014 untrained — Right: 2023, training 9 years
+   210	Of course not everyone starts as a fucking pencil like I was, but there you can still add a lot of muscle mass.
+   211	Here's what that looks like for different genetics:
+   212	
+   213	No, it's not the '+60lbs in 2 years!' kind of shit. But with good genetics, you can increase your LBM by 20%, 30%, and in some rare cases even over 40%.
+   214	So the body sweet spot will be in that 11-14% range, at roughly 2.4lbs of LBM / inch of height, and ideally 20-40% increase in LBM from your starting point.
+   215	Hormones
+   216	
+   217	Your hormones are your quality of life.
+   218	Everything from how you feel, how your body works, your mind state, your energy, your muscle building ability, even your hair.
+   219	As a natural athlete, I like to sit somewhere around the 600-800 ngl/dl mark. In normal-terms, this is what you could just above-average.
+   220	The average 100 years ago was almost 1000. It's now under 500.
+   221	It's mind-blowing.
+   222	This is why we must focus on our hormone profile heavily, as it influences just about every other part of you.
+   223	But hormones aren't just the total testosterone number.
+   224	I won't go into everything today, but there are many things we need to monitor and focus on to have optimal hormones.
+   225	Here are some hormone levels I typically like to see:
+   226	Free Testosterone: ~2.5%
+   227	Cortisol (stress): ~10–15 µg/dL (low) between 6-9am
+   228	Serum Vitamin D: ~40-60ng/mL (high)
+   229	Oestrogen (E2): ~20-30 pg/mL (average)
+   230	Health
+   231	
+   232	You've probably heard the saying 'health is wealth'.
+   233	But the more you think about it, the more weight it holds.
+   234	We do everything in life at the expectation of getting to our later years healthy, safe and stress-free.
+   235	So why do we do everything BUT the things that bring us this?
+   236	Health to me is the core of life.
+   237	Without it, nothing is worth having.
+   238	The body, mind, soul, can't function without health.
+   239	So here's some questions I want you to ponder:
+   240	When there's 'more work' to do — are you getting out for a walk in the sun?
+   241	Are you monitoring the foods you're putting in your body?
+   242	Getting 7-9 hours sleep every night?
+   243	Prioritising minerals that look after your bone health, joints, skin, and cells?
+   244	Are you avoiding alcohol?
+   245	When was the last time you did high intensity (HIIT) cardio?
+   246	Do you know how your RHR, HRV, VO₂max affect your heart?
+   247	It may feel like I'm hammering this point, but I want you to truly consider if you're prioritising your health right now.
+   248	We're living in a world of depressed billionaires, jacked bodybuilders on their deathbed, and workaholics having strokes, cancers and all sorts of nasty stuff.
+   249	The common denominator between them?
+   250	Not prioritising health.
+   251	This is one thing I always have to pull myself back in line with, even as a health professional.
+   252	Peace
+   253	
+   254	Peace. Peace is bliss. Peace is calm.
+   255	Peace is the feeling you get when there is nothing left to add, and you're completely and content with everything the way it is.
+   256	But most of us will never experience true peace.
+   257	Why?
+   258	Because to be at peace, is to be at complete contentment.
+   259	No growth. No mission. No desire.
+   260	We are goal-striving humans, and peace is the anti-dote of accomplishment.
+   261	But you can be okay with it.
+   262	Because peace doesn't need to come from every area of your life.
+   263	You can be at peace in one area, and in intense drive in another.
+   264	— Finishing a day's work to come back to your partner or family is a form of peace.
+   265	
+   266	— Building your elite body and looking back in the mirror is a form of peace.
+   267	
+   268	— Being a good person and giving as much as you can for others is a form of peace.
+   269	It comes in all kinds of forms.
+   270	But just because you may not reach true peace, it doesn't mean you shouldn't strive for it.
+   271	Meditation, breathing techniques, time at rest are all forms of peace, both short-term and long-term.
+   272	The Stoics
+   273	The Stoics were ancient philosophers who believed in finding peace in all situations.
+   274	They didn’t chase pleasure. They didn’t complain when things went wrong.
+   275	They aimed to live with virtue, discipline, and reason.
+   276	It's almost impossible to become 100% 'Stoic' in 2025.
+   277	but harnessing as much of this energy as possible has been incredibly useful for me in the past few years.
+   278	Just remember this:
+   279	"Nothing's worth fucking over your peace for in the long term".
+   280	— Marley McBride, 2025
+   281	Energy
+   282	
+   283	Energy.
+   284	This is one of those words that's thrown around a lot.
+   285	But energy is the life source of all what is well and good.
+   286	And at the end of it, restoring energy is the 80% of my mission here.
+   287	Why?
+   288	Because we as humans ARE energy.
+   289	Not just physical energy (like riding a bike), but the energies we connect with.
+   290	We devour it. We transmute it. We exchange it with people, tasks and missions.
+   291	It's the energy inside, deep in your bones, cells, even down to your soul.
+   292	Westerners are living like vampires: soulless.
+   293	I can't count the number of people I observe in London braindead on the tube, looking like they've lost all life-force.
+   294	Without feeling fueled with vigor, drive and passion, I see no point in existence.
+   295	So how do you get more 'energy'?
+   296	Well, back in the 50s and 60s, we were coming out of a brutal stretch.
+   297	World wars, recessions, famine;
+   298	The people were craving energy — physically, mentally, spiritually.
+   299	It didn't matter how, they just needed something — and FAST.
+   300	But that's where it turned.
+   301	Introducing the mass adoption of:
+   302	Caffeine.
+   303	Caffeine wasn't adopted til the 50s and 60s.
+   304	Meaning we're only the second generation in existence to use caffeine.
+   305	But now, we've become completely reliant.
+   306	I found this crazy when I realized how recent it was.
+   307	And it's never been easier to earn your way with the western comforts of the modern world.
+   308	BUT — we have less energy than ever.
+   309	The things we were 'told' give us energy like coffee, burgers, all these supplements — they are actually working against your real energy.
+   310	This is what I found, when a year ago I was ultra 'dialled in' with all these stacks and supplements, and smashing 10 cups of caffeine per day.
+   311	But I was rundown, anxious and falling asleep at 10am.I hit a burnout. Bad.
+   312	Long story short, I quit caffeine, gave up all the supplements, and dialed in my nutrition and everything else in this guide.
+   313	This is the essence of what I call 'Limitless Flow' (I have a full in-depth guide coming on this soon, look out for it).
+   314	And a few days ago past over 365 days caffeine-free.
+   315	I would've called you crazy 12 months ago, but I've never felt so much real energy and drive every hour of the day.
+   316	(I'll go into caffeine in a full guide soon — but I've realized just how much it destroys our energy — whilst leaving us hooked, reliant and believing it's good for us.)
+   317	To bring this back, our energy comes from everything we do. Every decision. Whether we scroll in a morning or go outside. What we drink and eat. The influences from the outside we let in.
+   318	Energy is sacred, and the more you can source from within (and limit as much externally as possible), the sooner you'll feel your energy come back.
+   319	Mental health
+   320	
+   321	Now, mental health is always.. assumed.
+   322	And everyone always tells you the things to DO:
+   323	- 'speak to people'
+   324	- 'listen to uplifting music'
+   325	- 'eat better foods'
+   326	But good mental health comes from doing less — the what NOT to do.
+   327	Your mental health comes from removing things from your sensory cabinet.
+   328	Poor mental health comes from overload; lack of clarity to think, focus and make decisions.
+   329	Because think about people in the darkest times —
+   330	Marcus Aurelius, not just survived but thrived in war, plague, betrayal.
+   331	Viktor Frankl, locked in concentration camps for 3 years. Starved, beaten, no family.
+   332	Even good old Abe Lincoln, freeing the enslaved Southerners and steering the civil wars.
+   333	They had more 'stress' on their plate than we will ever experience, yet they stayed mental dynamite.
+   334	So how did they do it?
+   335	They limited everything that brought uncertainty, disruption or entropy to the mind.
+   336	The mind is stronger, and the fortitude possible is greater than we could ever imagine.
+   337	(if you haven't, read Frankl's 'A Man's Search For Meaning')
+   338	I won't go into everything today, but here's what I've seen as the bigger mental health destroyers:
+   339	Alcohol
+   340	The news
+   341	Social media
+   342	Drugs and pot
+   343	Constant over-stimulation
+   344	Never-ending work (Oliver Burkeman's '4000 hours' is an incredible read on this)
+   345	Messy environments
+   346	Isolation and lack of connection
+   347	The goal should be to slow down. Talk to friends in nature. Eat your meals in silence. Go to a cabin with someone and shut off for a few days.
+   348	And stop looking to comfort yourself in alcohol.
+   349	But as the song goes:
+   350	'The drugs don't work, they just make you worse.'
+   351	Happiness
+   352	
+   353	The way to happiness is lack of anxiety.
+   354	And anxiety is the opposite of confidence.
+   355	So the way to happiness, is to have confidence, assuredness, and lack-of-scarcity in all areas of life.
+   356	(at least that's the goal)..
+   357	The difference between peace and happiness is happiness is ongoing, peace is at a a place of rest; the finish line.
+   358	Happiness is joy, no matter the journey.
+   359	Happiness is what we all need more in our lives. You can be dissatisfied, but happy.
+   360	Because everyone — whether you're born into poverty, royalty or you're Musk's son — has a journey of growth, decisions and tribulations in life.
+   361	Some moments will be incredible; some brutal.
+   362	But if you can accept this journey is happening regardless, you can literally decide to be happy.
+   363	I'm still working on this, and it's my biggest lagging area of The Natty Sweet Spot.
+   364	Because we always say 'once I get X', 'once I achieve Y', THEN I'll be happy.
+   365	But the goal posts never stop moving.
+   366	After making several leaps in my life so far, I've still yet to become any more happy.
+   367	So it makes sense to be happy now, rather than at some magical end point;
+   368	because if you can't be happy with nothing, you won't be happy with something.
+   369	So here are some closing thoughts on becoming happier, despite having a way to go in your path:
+   370	Choose long-term gratification.
+   371	
+   372	The feeling of happiness is looking back at the recent-to-mid term past, and being satisfied with your efforts.
+   373	
+   374	When you choose short-term pleasures (like drinking, video games, and too much chilling), you never look back in self-pride.
+   375	
+   376	Always choose the hard thing now, or the happiness is what you will surrender.
+   377	Find happiness in the small shit.
+   378	
+   379	Ultimate happiness may never come. I'm ambitious AF. You probably are too. And we won't achieve everything.
+   380	
+   381	But that's fine. We can find happiness in the little things in life. A great book for this is 'The Power of Now'.
+   382	
+   383	These are the golden days. Here. Now. Today.
+   384	The work IS the goal.
+   385	
+   386	Having purpose, mission, direction - you are doing what you love (whether it's working yet or not).
+   387	
+   388	And THAT is a reason in itself to be happy and kind to yourself.
+   389	Give yourself some leeway.
+   390	
+   391	With the pursuit of happiness, we want to be perfect. Whether it's getting that physique. Getting the girl. Building the business / career.
+   392	
+   393	But you don't need to be 100% perfect. We aren't robots. We are humans. And humans are far from perfect.
+   394	
+   395	Have the pizza once a month. Stay out late. Take the Monday off work.
+   396	
+   397	Happiness is striking the subtle balance of self-autonomy and self-care.
+   398	Ultimately, do what makes you happy.
+   399	
+   400	Don't let any person, society or narrative dictate the direction and choices of your life.
+   401	
+   402	You have 1 life. 1 chance. Never stop doing what makes you happy.
+   403	That's everything I have for you today.
+   404	
+   405	I hope this has given you a new direction to lead towards.
+   406	The Natty Sweet Spot is about a true holistic sweet spot of being — a complete body, health, mind and soul state.
+   407	This is everything I've built over the past decade, yet it feels like I'm only just getting started.
+   408	And it's why I've created Limitless.
+   409	If you're interested in seeing how I can help you reach your ultimate male form, and live at your peak state every day (i.e. your Natty Sweet Spot)
+   410	I'm selecting a few early adopters for this brand new system to:
+   411	cure your chronic tiredness
+   412	gain 28 hours of energy a week
+   413	quit alcohol and caffeine for good
+   414	And this doesn't require starving yourself on chicken salads. Using willpower. Or even spending longer than 2 days a week in the gym.
+
+Current commit hash: c527545Now that I understand the Natty Sweet Spot concept and have a good grasp of the 7 core components, let's start implementing the changes to the sales page.
+I'll begin with the background color schema changes, then update the system components, create the Natty Sweet Spot section, and perform the other modifications requested. Let's take it step by step.
+First, let's update the utils.ts file to add/modify the background classes and gradients according to the new schema:codemcpRequest{
+  `path`: `/Users/marleymcbride/Documents/Cursor Projects/limitless-sales-page/src/lib/utils.ts`,
+  `chat_id`: `19-feat-initialize-limitless-sales-page-project`,
+  `subtool`: `EditFile`,
+  `new_string`: `import { clsx, type ClassValue } from \"clsx\"
+import { twMerge } from \"tailwind-merge\"
+import React from \"react\"
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs))
+}
+
+// Background class utilities for consistent styling
+export const bgClasses = {
+  // Main black with red accent gradient for marketing sections
+  blackRedGradient: \"bg-black relative overflow-hidden\",
+  
+  // Hero-style gradient for \"dark red\" sections
+  darkRedGradient: \"bg-black relative overflow-hidden\",
+  
+  // White background for testimonials and longer content
+  white: \"bg-white text-black relative\",
+  
+  // Black background for strong contrast sections
+  black: \"bg-black text-white relative overflow-hidden\",
+}`,
+  `old_string`: `import { clsx, type ClassValue } from \"clsx\"
+import { twMerge } from \"tailwind-merge\"
+import React from \"react\"
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs))
+}
+
+// Background class utilities for consistent styling
+export const bgClasses = {
+  blackRedGradient: \"bg-black relative overflow-hidden\",
+  darkRed: \"bg-[#940909] text-white relative\",
+  white: \"bg-white text-black relative\",
+  grey: \"bg-zinc-900 text-white relative\",
+}`,
+  `description`: `Update background classes based on new schema`
+}ResponseSuccessfully edited /Users/marleymcbride/Documents/Cursor Projects/limitless-sales-page/src/lib/utils.ts
+
+Here's a snippet of the edited file:
+   1 | import { clsx, type ClassValue } from "clsx"
+   2 | import { twMerge } from "tailwind-merge"
+   3 | import React from "react"
+   4 | 
+   5 | export function cn(...inputs: ClassValue[]) {
+   6 |   return twMerge(clsx(inputs))
+   7 | }
+   8 | 
+   9 | // Background class utilities for consistent styling
+  10 | export const bgClasses = {
+  11 |   // Main black with red accent gradient for marketing sections
+  12 |   blackRedGradient: "bg-black relative overflow-hidden",
+  13 |   
+  14 |   // Hero-style gradient for "dark red" sections
+  15 |   darkRedGradient: "bg-black relative overflow-hidden",
+  16 |   
+  17 |   // White background for testimonials and longer content
+  18 |   white: "bg-white text-black relative",
+  19 |   
+  20 |   // Black background for strong contrast sections
+  21 |   black: "bg-black text-white relative overflow-hidden",
+  22 | }
+  23 | 
+  24 | // Visual elements for black/red gradient sections
+  25 | export const blackRedGradientOverlay = React.createElement("div", {
+  26 |   className: "absolute inset-0",
+  27 |   style: {
+
+Changes committed successfully (previous commit was 1a3798d)
+
+Current commit hash: 6d53ae7Now let's update the gradients in the utils.ts file to create new inverted and hero-inspired ones:codemcpRequest{
+  `path`: `/Users/marleymcbride/Documents/Cursor Projects/limitless-sales-page/src/lib/utils.ts`,
+  `chat_id`: `19-feat-initialize-limitless-sales-page-project`,
+  `subtool`: `EditFile`,
+  `new_string`: `// Visual elements for black/red gradient sections (Hero style for hero and marketing sections)
+export const blackRedGradientOverlay = React.createElement(\"div\", {
+  className: \"absolute inset-0\",
+  style: {
+    background: 'linear-gradient(to top, rgba(100, 0, 0, 0.5) 0%, rgba(60, 0, 0, 0.3) 25%, rgba(30, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0.9) 75%, rgb(0, 0, 0) 100%)'
+  }
+})
+
+// Inverted hero gradient (mostly black with red accents) for program sections
+export const invertedGradientOverlay = React.createElement(\"div\", {
+  className: \"absolute inset-0\",
+  style: {
+    background: 'linear-gradient(to bottom, rgba(100, 0, 0, 0.3) 0%, rgba(60, 0, 0, 0.2) 20%, rgba(0, 0, 0, 0.9) 40%, rgb(0, 0, 0) 70%)'
+  }
+})
+
+// Hero red accent for bottom of gradient sections
+export const redAccentBottom = React.createElement(\"div\", {
+  className: \"absolute bottom-0 left-0 w-full h-[50vh] bg-gradient-to-t from-[#940909] via-[#940909]/20 to-transparent opacity-60\"
+})
+
+// Stronger red accent for black background sections
+export const strongRedAccent = React.createElement(\"div\", {
+  className: \"absolute bottom-0 left-0 w-full h-[70vh] bg-gradient-to-t from-[#940909] via-[#940909]/30 to-transparent opacity-70\"
+})
+
+export const vignetteEffect = React.createElement(\"div\", {
+  className: \"absolute inset-0 pointer-events-none\",
+  style: {
+    background: 'radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0.6) 100%)',
+    mixBlendMode: 'multiply'
+  }
+})`,
+  `old_string`: `// Visual elements for black/red gradient sections
+export const blackRedGradientOverlay = React.createElement(\"div\", {
+  className: \"absolute inset-0\",
+  style: {
+    background: 'linear-gradient(to top, rgba(100, 0, 0, 0.5) 0%, rgba(60, 0, 0, 0.3) 25%, rgba(30, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0.9) 75%, rgb(0, 0, 0) 100%)'
+  }
+})
+
+export const redAccentBottom = React.createElement(\"div\", {
+  className: \"absolute bottom-0 left-0 w-full h-[50vh] bg-gradient-to-t from-[#940909] via-[#940909]/20 to-transparent opacity-60\"
+})
+
+export const vignetteEffect = React.createElement(\"div\", {
+  className: \"absolute inset-0 pointer-events-none\",
+  style: {
+    background: 'radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0.6) 100%)',
+    mixBlendMode: 'multiply'
+  }
+})`,
+  `description`: `Update gradient overlays with inverted and stronger options`
+}ResponseSuccessfully edited /Users/marleymcbride/Documents/Cursor Projects/limitless-sales-page/src/lib/utils.ts
+
+Here's a snippet of the edited file:
+  21 |   black: "bg-black text-white relative overflow-hidden",
+  22 | }
+  23 | 
+  24 | // Visual elements for black/red gradient sections (Hero style for hero and marketing sections)
+  25 | export const blackRedGradientOverlay = React.createElement("div", {
+  26 |   className: "absolute inset-0",
+  27 |   style: {
+  28 |     background: 'linear-gradient(to top, rgba(100, 0, 0, 0.5) 0%, rgba(60, 0, 0, 0.3) 25%, rgba(30, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0.9) 75%, rgb(0, 0, 0) 100%)'
+  29 |   }
+  30 | })
+  31 | 
+  32 | // Inverted hero gradient (mostly black with red accents) for program sections
+  33 | export const invertedGradientOverlay = React.createElement("div", {
+  34 |   className: "absolute inset-0",
+  35 |   style: {
+  36 |     background: 'linear-gradient(to bottom, rgba(100, 0, 0, 0.3) 0%, rgba(60, 0, 0, 0.2) 20%, rgba(0, 0, 0, 0.9) 40%, rgb(0, 0, 0) 70%)'
+  37 |   }
+  38 | })
+  39 | 
+  40 | // Hero red accent for bottom of gradient sections
+  41 | export const redAccentBottom = React.createElement("div", {
+  42 |   className: "absolute bottom-0 left-0 w-full h-[50vh] bg-gradient-to-t from-[#940909] via-[#940909]/20 to-transparent opacity-60"
+  43 | })
+  44 | 
+  45 | // Stronger red accent for black background sections
+  46 | export const strongRedAccent = React.createElement("div", {
+  47 |   className: "absolute bottom-0 left-0 w-full h-[70vh] bg-gradient-to-t from-[#940909] via-[#940909]/30 to-transparent opacity-70"
+  48 | })
+  49 | 
+  50 | export const vignetteEffect = React.createElement("div", {
+  51 |   className: "absolute inset-0 pointer-events-none",
+  52 |   style: {
+  53 |     background: 'radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0.6) 100%)',
+  54 |     mixBlendMode: 'multiply'
+  55 |   }
+  56 | })
+  57 | 
+  58 | // Masculine pattern overlay for visual interest
+  59 | export const masculinePattern = React.createElement("div", {
+  60 |   className: "absolute inset-0 opacity-10",
+  61 |   style: {
+
+Changes amended successfully (previous commit was 6d53ae7)
+
+Current commit hash: 1e159a0Now, let's create a new section for "The Natty Sweet Spot" as requested, highlighting the 7 components of the ultimate male form:codemcpRequest{
+  `path`: `/Users/marleymcbride/Documents/Cursor Projects/limitless-sales-page/src/components/natty-sweet-spot-section.tsx`,
+  `chat_id`: `19-feat-initialize-limitless-sales-page-project`,
+  `content`: `import Image from \"next/image\"
+import { bgClasses, invertedGradientOverlay, strongRedAccent, vignetteEffect } from \"@/lib/utils\"
+import { Check } from \"lucide-react\"
+
+export default function NattySweetSpotSection() {
+  // The 7 components of the Ultimate Male Form
+  const components = [
+    {
+      name: \"Body\",
+      description: \"Lean, strong physique at 11-14% body fat. The sweet spot where you look jacked but still feel amazing.\",
+      icon: \"/placeholder.svg?height=60&width=60\"
+    },
+    {
+      name: \"Hormones\",
+      description: \"Optimized testosterone and stress hormones. No energy crashes or mood swings. Pure masculine power.\",
+      icon: \"/placeholder.svg?height=60&width=60\"
+    },
+    {
+      name: \"Health\",
+      description: \"Bulletproof immune system, strong heart, deep sleep, perfect digestion. Robust in every aspect.\",
+      icon: \"/placeholder.svg?height=60&width=60\"
+    },
+    {
+      name: \"Peace\",
+      description: \"Mental clarity and calmness in chaos. No need for alcohol or substances to unwind. Complete control.\",
+      icon: \"/placeholder.svg?height=60&width=60\"
+    },
+    {
+      name: \"Energy\",
+      description: \"All-day natural energy without caffeine. Waking up fired up before your alarm. Never crashing.\",
+      icon: \"/placeholder.svg?height=60&width=60\"
+    },
+    {
+      name: \"Mental Health\",
+      description: \"Rock-solid confidence. No anxiety. Clear thinking and decisive action in all situations.\",
+      icon: \"/placeholder.svg?height=60&width=60\"
+    },
+    {
+      name: \"Happiness\",
+      description: \"Deep satisfaction in daily life. Finding joy in the journey, not just the destination.\",
+      icon: \"/placeholder.svg?height=60&width=60\"
+    }
+  ]
+
+  return (
+    <section className={`w-full py-20 ${bgClasses.blackRedGradient}`}>
+      {invertedGradientOverlay}
+      {strongRedAccent}
+      {vignetteEffect}
+
+      <div className=\"container mx-auto px-4 relative z-10\">
+        <div className=\"text-center mb-12\">
+          <span className=\"inline-block bg-white/10 text-white text-sm font-bold uppercase tracking-wider px-3 py-1 rounded-sm mb-4\">THE COMPLETE TRANSFORMATION</span>
+          <h2 className=\"text-4xl sm:text-5xl font-black mb-6\">The Natty Sweet Spot</h2>
+          <p className=\"text-xl max-w-3xl mx-auto\">
+            The ultimate state of male existence - where physique, hormones, health, and mindset align perfectly
+          </p>
+        </div>
+
+        <div className=\"flex flex-col md:flex-row items-center md:items-start mb-16 max-w-6xl mx-auto\">
+          <div className=\"md:w-1/2 mb-8 md:mb-0 md:pr-8\">
+            <div className=\"bg-black/40 backdrop-blur-sm p-6 rounded-lg border border-[#940909]/30\">
+              <h3 className=\"text-2xl font-bold mb-4 text-white\">What Is The Natty Sweet Spot?</h3>
+              <p className=\"text-white/90 mb-4\">
+                It's not just about looking jacked - it's the perfect intersection of physical power, mental clarity, and life force energy.
+              </p>
+              <p className=\"text-white/90 mb-4\">
+                Most men chase single-digit body fat percentages - destroying their hormones - sacrificing everything for abs you can't even enjoy.
+              </p>
+              <p className=\"text-white/90 mb-4\">
+                Others just let go completely - getting soft - losing their edge - becoming shells of what they could be.
+              </p>
+              <p className=\"text-white/90 font-bold\">
+                The Natty Sweet Spot is different. It's balanced. It's powerful. It's sustainable. And it feels fucking amazing.
+              </p>
+            </div>
+            
+            <div className=\"mt-6 bg-black/40 backdrop-blur-sm p-6 rounded-lg border border-[#940909]/30\">
+              <h3 className=\"text-2xl font-bold mb-4\">What This Gives You:</h3>
+              <ul className=\"space-y-2\">
+                <li className=\"flex\">
+                  <Check className=\"h-6 w-6 text-[#940909] mr-3 flex-shrink-0\" />
+                  <span>Elite body composition (11-14% body fat) without starvation</span>
+                </li>
+                <li className=\"flex\">
+                  <Check className=\"h-6 w-6 text-[#940909] mr-3 flex-shrink-0\" />
+                  <span>Optimal testosterone and stress hormone levels</span>
+                </li>
+                <li className=\"flex\">
+                  <Check className=\"h-6 w-6 text-[#940909] mr-3 flex-shrink-0\" />
+                  <span>Mental sharpness and focus without stimulants</span>
+                </li>
+                <li className=\"flex\">
+                  <Check className=\"h-6 w-6 text-[#940909] mr-3 flex-shrink-0\" />
+                  <span>Boundless natural energy from morning to night</span>
+                </li>
+                <li className=\"flex\">
+                  <Check className=\"h-6 w-6 text-[#940909] mr-3 flex-shrink-0\" />
+                  <span>Complete independence from caffeine and alcohol</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          
+          <div className=\"md:w-1/2\">
+            <div className=\"relative rounded-lg overflow-hidden shadow-2xl\">
+              <Image 
+                src=\"/placeholder.svg?height=600&width=500\" 
+                alt=\"The Natty Sweet Spot Transformation\"
+                width={500}
+                height={600}
+                className=\"object-cover w-full\"
+              />
+              <div className=\"absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent\">
+                <div className=\"absolute bottom-0 left-0 w-full p-6\">
+                  <p className=\"text-white font-bold mb-2\">The Ultimate Male Transformation</p>
+                  <p className=\"text-sm text-white/80\">Balanced. Sustainable. Powerful.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className=\"mt-16\">
+          <h3 className=\"text-2xl font-bold text-center mb-10\">The 7 Components of The Natty Sweet Spot</h3>
+          
+          <div className=\"grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6\">
+            {components.map((component, index) => (
+              <div key={index} className=\"bg-black/40 backdrop-blur-sm p-6 rounded-lg border border-[#940909]/30 transform transition hover:scale-[1.02]\">
+                <div className=\"flex items-center mb-4\">
+                  <div className=\"w-10 h-10 mr-3 rounded-full bg-[#940909]/30 flex items-center justify-center flex-shrink-0\">
+                    <span className=\"font-bold text-white\">{index + 1}</span>
+                  </div>
+                  <h4 className=\"text-xl font-bold text-white\">{component.name}</h4>
+                </div>
+                <p className=\"text-white/90\">{component.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className=\"mt-16 text-center\">
+          <p className=\"text-2xl font-bold mb-4\">This is what I help high-performing men achieve.</p>
+          <p className=\"text-xl max-w-3xl mx-auto mb-6\">
+            Not just quitting alcohol and dropping weight - but reaching this state of complete optimization - where everything works together in perfect harmony.
+          </p>
+          <div className=\"inline-block bg-white/10 text-white font-bold backdrop-blur-sm p-5 rounded-lg border border-[#940909]/30 max-w-4xl mx-auto\">
+            <p className=\"text-xl\">
+              \"I help high-performing men quit alcohol permanently, eliminate fake energy crutches, and drop the 20-40 lbs of stress weight … so you finally wake up sharp and dialled in every morning, see your elite body in the mirror, and feel naturally high on life — without ever needing another hit of caffeine or drop of alcohol again.\"
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+`,
+  `description`: `Create Natty Sweet Spot section with 7 components of ultimate male form`
+}ResponseError executing tool codemcp: 1 validation error for codemcpArguments
+subtool
+  Field required [type=missing, input_value={'path': '/Users/marleymc... of ultimate male form'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missingLet me fix the error and try again with the correct parameters:codemcpRequest{
+  `path`: `/Users/marleymcbride/Documents/Cursor Projects/limitless-sales-page/src/components/natty-sweet-spot-section.tsx`,
+  `chat_id`: `19-feat-initialize-limitless-sales-page-project`,
+  `content`: `import Image from \"next/image\"
+import { bgClasses, invertedGradientOverlay, strongRedAccent, vignetteEffect } from \"@/lib/utils\"
+import { Check } from \"lucide-react\"
+
+export default function NattySweetSpotSection() {
+  // The 7 components of the Ultimate Male Form
+  const components = [
+    {
+      name: \"Body\",
+      description: \"Lean, strong physique at 11-14% body fat. The sweet spot where you look jacked but still feel amazing.\",
+      icon: \"/placeholder.svg?height=60&width=60\"
+    },
+    {
+      name: \"Hormones\",
+      description: \"Optimized testosterone and stress hormones. No energy crashes or mood swings. Pure masculine power.\",
+      icon: \"/placeholder.svg?height=60&width=60\"
+    },
+    {
+      name: \"Health\",
+      description: \"Bulletproof immune system, strong heart, deep sleep, perfect digestion. Robust in every aspect.\",
+      icon: \"/placeholder.svg?height=60&width=60\"
+    },
+    {
+      name: \"Peace\",
+      description: \"Mental clarity and calmness in chaos. No need for alcohol or substances to unwind. Complete control.\",
+      icon: \"/placeholder.svg?height=60&width=60\"
+    },
+    {
+      name: \"Energy\",
+      description: \"All-day natural energy without caffeine. Waking up fired up before your alarm. Never crashing.\",
+      icon: \"/placeholder.svg?height=60&width=60\"
+    },
+    {
+      name: \"Mental Health\",
+      description: \"Rock-solid confidence. No anxiety. Clear thinking and decisive action in all situations.\",
+      icon: \"/placeholder.svg?height=60&width=60\"
+    },
+    {
+      name: \"Happiness\",
+      description: \"Deep satisfaction in daily life. Finding joy in the journey, not just the destination.\",
+      icon: \"/placeholder.svg?height=60&width=60\"
+    }
+  ]
+
+  return (
+    <section className={`w-full py-20 ${bgClasses.blackRedGradient}`}>
+      {invertedGradientOverlay}
+      {strongRedAccent}
+      {vignetteEffect}
+
+      <div className=\"container mx-auto px-4 relative z-10\">
+        <div className=\"text-center mb-12\">
+          <span className=\"inline-block bg-white/10 text-white text-sm font-bold uppercase tracking-wider px-3 py-1 rounded-sm mb-4\">THE COMPLETE TRANSFORMATION</span>
+          <h2 className=\"text-4xl sm:text-5xl font-black mb-6\">The Natty Sweet Spot</h2>
+          <p className=\"text-xl max-w-3xl mx-auto\">
+            The ultimate state of male existence - where physique, hormones, health, and mindset align perfectly
+          </p>
+        </div>
+
+        <div className=\"flex flex-col md:flex-row items-center md:items-start mb-16 max-w-6xl mx-auto\">
+          <div className=\"md:w-1/2 mb-8 md:mb-0 md:pr-8\">
+            <div className=\"bg-black/40 backdrop-blur-sm p-6 rounded-lg border border-[#940909]/30\">
+              <h3 className=\"text-2xl font-bold mb-4 text-white\">What Is The Natty Sweet Spot?</h3>
+              <p className=\"text-white/90 mb-4\">
+                It's not just about looking jacked - it's the perfect intersection of physical power, mental clarity, and life force energy.
+              </p>
+              <p className=\"text-white/90 mb-4\">
+                Most men chase single-digit body fat percentages - destroying their hormones - sacrificing everything for abs you can't even enjoy.
+              </p>
+              <p className=\"text-white/90 mb-4\">
+                Others just let go completely - getting soft - losing their edge - becoming shells of what they could be.
+              </p>
+              <p className=\"text-white/90 font-bold\">
+                The Natty Sweet Spot is different. It's balanced. It's powerful. It's sustainable. And it feels fucking amazing.
+              </p>
+            </div>
+            
+            <div className=\"mt-6 bg-black/40 backdrop-blur-sm p-6 rounded-lg border border-[#940909]/30\">
+              <h3 className=\"text-2xl font-bold mb-4\">What This Gives You:</h3>
+              <ul className=\"space-y-2\">
+                <li className=\"flex\">
+                  <Check className=\"h-6 w-6 text-[#940909] mr-3 flex-shrink-0\" />
+                  <span>Elite body composition (11-14% body fat) without starvation</span>
+                </li>
+                <li className=\"flex\">
+                  <Check className=\"h-6 w-6 text-[#940909] mr-3 flex-shrink-0\" />
+                  <span>Optimal testosterone and stress hormone levels</span>
+                </li>
+                <li className=\"flex\">
+                  <Check className=\"h-6 w-6 text-[#940909] mr-3 flex-shrink-0\" />
+                  <span>Mental sharpness and focus without stimulants</span>
+                </li>
+                <li className=\"flex\">
+                  <Check className=\"h-6 w-6 text-[#940909] mr-3 flex-shrink-0\" />
+                  <span>Boundless natural energy from morning to night</span>
+                </li>
+                <li className=\"flex\">
+                  <Check className=\"h-6 w-6 text-[#940909] mr-3 flex-shrink-0\" />
+                  <span>Complete independence from caffeine and alcohol</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          
+          <div className=\"md:w-1/2\">
+            <div className=\"relative rounded-lg overflow-hidden shadow-2xl\">
+              <Image 
+                src=\"/placeholder.svg?height=600&width=500\" 
+                alt=\"The Natty Sweet Spot Transformation\"
+                width={500}
+                height={600}
+                className=\"object-cover w-full\"
+              />
+              <div className=\"absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent\">
+                <div className=\"absolute bottom-0 left-0 w-full p-6\">
+                  <p className=\"text-white font-bold mb-2\">The Ultimate Male Transformation</p>
+                  <p className=\"text-sm text-white/80\">Balanced. Sustainable. Powerful.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className=\"mt-16\">
+          <h3 className=\"text-2xl font-bold text-center mb-10\">The 7 Components of The Natty Sweet Spot</h3>
+          
+          <div className=\"grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6\">
+            {components.map((component, index) => (
+              <div key={index} className=\"bg-black/40 backdrop-blur-sm p-6 rounded-lg border border-[#940909]/30 transform transition hover:scale-[1.02]\">
+                <div className=\"flex items-center mb-4\">
+                  <div className=\"w-10 h-10 mr-3 rounded-full bg-[#940909]/30 flex items-center justify-center flex-shrink-0\">
+                    <span className=\"font-bold text-white\">{index + 1}</span>
+                  </div>
+                  <h4 className=\"text-xl font-bold text-white\">{component.name}</h4>
+                </div>
+                <p className=\"text-white/90\">{component.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className=\"mt-16 text-center\">
+          <p className=\"text-2xl font-bold mb-4\">This is what I help high-performing men achieve.</p>
+          <p className=\"text-xl max-w-3xl mx-auto mb-6\">
+            Not just quitting alcohol and dropping weight - but reaching this state of complete optimization - where everything works together in perfect harmony.
+          </p>
+          <div className=\"inline-block bg-white/10 text-white font-bold backdrop-blur-sm p-5 rounded-lg border border-[#940909]/30 max-w-4xl mx-auto\">
+            <p className=\"text-xl\">
+              \"I help high-performing men quit alcohol permanently, eliminate fake energy crutches, and drop the 20-40 lbs of stress weight … so you finally wake up sharp and dialled in every morning, see your elite body in the mirror, and feel naturally high`,
+  `subtool`: `WriteFile`
+}RetryClaude hit the max length for a message and has paused its response. You can write Continue to keep the chat going.MContinueEditcodemcpRequest{
+  `chat_id`: `19-feat-initialize-limitless-sales-page-project`,
+  `subtool`: `UserPrompt`,
+  `user_prompt`: `Continue`
+}ResponseUser prompt receivedLet's continue with creating the Natty Sweet Spot section. I'll complete the file:codemcpRequest{
+  `path`: `/Users/marleymcbride/Documents/Cursor Projects/limitless-sales-page/src/components/natty-sweet-spot-section.tsx`,
+  `chat_id`: `19-feat-initialize-limitless-sales-page-project`,
+  `content`: `import Image from \"next/image\"
+import { bgClasses, invertedGradientOverlay, strongRedAccent, vignetteEffect } from \"@/lib/utils\"
+import { Check } from \"lucide-react\"
+
+export default function NattySweetSpotSection() {
+  // The 7 components of the Ultimate Male Form
+  const components = [
+    {
+      name: \"Body\",
+      description: \"Lean, strong physique at 11-14% body fat. The sweet spot where you look jacked but still feel amazing.\",
+      icon: \"/placeholder.svg?height=60&width=60\"
+    },
+    {
+      name: \"Hormones\",
+      description: \"Optimized testosterone and stress hormones. No energy crashes or mood swings. Pure masculine power.\",
+      icon: \"/placeholder.svg?height=60&width=60\"
+    },
+    {
+      name: \"Health\",
+      description: \"Bulletproof immune system, strong heart, deep sleep, perfect digestion. Robust in every aspect.\",
+      icon: \"/placeholder.svg?height=60&width=60\"
+    },
+    {
+      name: \"Peace\",
+      description: \"Mental clarity and calmness in chaos. No need for alcohol or substances to unwind. Complete control.\",
+      icon: \"/placeholder.svg?height=60&width=60\"
+    },
+    {
+      name: \"Energy\",
+      description: \"All-day natural energy without caffeine. Waking up fired up before your alarm. Never crashing.\",
+      icon: \"/placeholder.svg?height=60&width=60\"
+    },
+    {
+      name: \"Mental Health\",
+      description: \"Rock-solid confidence. No anxiety. Clear thinking and decisive action in all situations.\",
+      icon: \"/placeholder.svg?height=60&width=60\"
+    },
+    {
+      name: \"Happiness\",
+      description: \"Deep satisfaction in daily life. Finding joy in the journey, not just the destination.\",
+      icon: \"/placeholder.svg?height=60&width=60\"
+    }
+  ]
+
+  return (
+    <section className={`w-full py-20 ${bgClasses.blackRedGradient}`}>
+      {invertedGradientOverlay}
+      {strongRedAccent}
+      {vignetteEffect}
+
+      <div className=\"container mx-auto px-4 relative z-10\">
+        <div className=\"text-center mb-12\">
+          <span className=\"inline-block bg-white/10 text-white text-sm font-bold uppercase tracking-wider px-3 py-1 rounded-sm mb-4\">THE COMPLETE TRANSFORMATION</span>
+          <h2 className=\"text-4xl sm:text-5xl font-black mb-6\">The Natty Sweet Spot</h2>
+          <p className=\"text-xl max-w-3xl mx-auto\">
+            The ultimate state of male existence - where physique, hormones, health, and mindset align perfectly
+          </p>
+        </div>
+
+        <div className=\"flex flex-col md:flex-row items-center md:items-start mb-16 max-w-6xl mx-auto\">
+          <div className=\"md:w-1/2 mb-8 md:mb-0 md:pr-8\">
+            <div className=\"bg-black/40 backdrop-blur-sm p-6 rounded-lg border border-[#940909]/30\">
+              <h3 className=\"text-2xl font-bold mb-4 text-white\">What Is The Natty Sweet Spot?</h3>
+              <p className=\"text-white/90 mb-4\">
+                It's not just about looking jacked - it's the perfect intersection of physical power, mental clarity, and life force energy.
+              </p>
+              <p className=\"text-white/90 mb-4\">
+                Most men chase single-digit body fat percentages - destroying their hormones - sacrificing everything for abs you can't even enjoy.
+              </p>
+              <p className=\"text-white/90 mb-4\">
+                Others just let go completely - getting soft - losing their edge - becoming shells of what they could be.
+              </p>
+              <p className=\"text-white/90 font-bold\">
+                The Natty Sweet Spot is different. It's balanced. It's powerful. It's sustainable. And it feels fucking amazing.
+              </p>
+            </div>
+            
+            <div className=\"mt-6 bg-black/40 backdrop-blur-sm p-6 rounded-lg border border-[#940909]/30\">
+              <h3 className=\"text-2xl font-bold mb-4\">What This Gives You:</h3>
+              <ul className=\"space-y-2\">
+                <li className=\"flex\">
+                  <Check className=\"h-6 w-6 text-[#940909] mr-3 flex-shrink-0\" />
+                  <span>Elite body composition (11-14% body fat) without starvation</span>
+                </li>
+                <li className=\"flex\">
+                  <Check className=\"h-6 w-6 text-[#940909] mr-3 flex-shrink-0\" />
+                  <span>Optimal testosterone and stress hormone levels</span>
+                </li>
+                <li className=\"flex\">
+                  <Check className=\"h-6 w-6 text-[#940909] mr-3 flex-shrink-0\" />
+                  <span>Mental sharpness and focus without stimulants</span>
+                </li>
+                <li className=\"flex\">
+                  <Check className=\"h-6 w-6 text-[#940909] mr-3 flex-shrink-0\" />
+                  <span>Boundless natural energy from morning to night</span>
+                </li>
+                <li className=\"flex\">
+                  <Check className=\"h-6 w-6 text-[#940909] mr-3 flex-shrink-0\" />
+                  <span>Complete independence from caffeine and alcohol</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          
+          <div className=\"md:w-1/2\">
+            <div className=\"relative rounded-lg overflow-hidden shadow-2xl\">
+              <Image 
+                src=\"/placeholder.svg?height=600&width=500\" 
+                alt=\"The Natty Sweet Spot Transformation\"
+                width={500}
+                height={600}
+                className=\"object-cover w-full\"
+              />
+              <div className=\"absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent\">
+                <div className=\"absolute bottom-0 left-0 w-full p-6\">
+                  <p className=\"text-white font-bold mb-2\">The Ultimate Male Transformation</p>
+                  <p className=\"text-sm text-white/80\">Balanced. Sustainable. Powerful.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className=\"mt-16\">
+          <h3 className=\"text-2xl font-bold text-center mb-10\">The 7 Components of The Natty Sweet Spot</h3>
+          
+          <div className=\"grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6\">
+            {components.map((component, index) => (
+              <div key={index} className=\"bg-black/40 backdrop-blur-sm p-6 rounded-lg border border-[#940909]/30 transform transition hover:scale-[1.02]\">
+                <div className=\"flex items-center mb-4\">
+                  <div className=\"w-10 h-10 mr-3 rounded-full bg-[#940909]/30 flex items-center justify-center flex-shrink-0\">
+                    <span className=\"font-bold text-white\">{index + 1}</span>
+                  </div>
+                  <h4 className=\"text-xl font-bold text-white\">{component.name}</h4>
+                </div>
+                <p className=\"text-white/90\">{component.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className=\"mt-16 text-center\">
+          <p className=\"text-2xl font-bold mb-4\">This is what I help high-performing men achieve.</p>
+          <p className=\"text-xl max-w-3xl mx-auto mb-6\">
+            Not just quitting alcohol and dropping weight - but reaching this state of complete optimization - where everything works together in perfect harmony.
+          </p>
+          <div className=\"inline-block bg-white/10 text-white font-bold backdrop-blur-sm p-5 rounded-lg border border-[#940909]/30 max-w-4xl mx-auto\">
+            <p className=\"text-xl\">
+              \"I help high-performing men quit alcohol permanently, eliminate fake energy crutches, and drop the 20-40 lbs of stress weight … so you finally wake up sharp and dialled in every morning, see your elite body in the mirror, and feel naturally high on life — without ever needing another hit of caffeine or drop of alcohol again.\"
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+`,
+  `subtool`: `WriteFile`,
+  `description`: `Create Natty Sweet Spot section with 7 components of ultimate male form`
+}ResponseSuccessfully wrote to /Users/marleymcbride/Documents/Cursor Projects/limitless-sales-page/src/components/natty-sweet-spot-section.tsx
+Changes committed to git: Create Natty Sweet Spot section with 7 components of ultimate male form
+
+Current commit hash: b251464Now, let's update the program components section to rename them as requested:codemcpRequest{
+  `path`: `/Users/marleymcbride/Documents/Cursor Projects/limitless-sales-page/src/components/program-components-section.tsx`,
+  `chat_id`: `19-feat-initialize-limitless-sales-page-project`,
+  `subtool`: `ReadFile`
+}Response     1	import { Check, Sunrise, Dumbbell, Coffee, BookOpen } from "lucide-react"
+     2	import { bgClasses } from "@/lib/utils"
+     3	import MicroTestimonial from "./ui/micro-testimonial"
+     4	
+     5	export default function ProgramComponentsSection() {
+     6	  return (
+     7	    <section className={`w-full ${bgClasses.grey} py-20 text-white`}>
+     8	      <div className="container mx-auto px-4">
+     9	        <h2 className="mb-6 text-center text-3xl sm:text-4xl font-bold">The Limitless Protocol Components</h2>
+    10	        <p className="text-center text-lg mb-12 mx-auto max-w-3xl">
+    11	          Our systems-based approach creates natural energy - lean physique - mental clarity without relying on willpower or extreme measures
+    12	        </p>
+    13	
+    14	        <div className="mx-auto grid gap-8 md:grid-cols-2 max-w-5xl">
+    15	          <div className="rounded-lg bg-zinc-800 p-6 border-l-4 border-[#940909] shadow-lg transform transition hover:scale-[1.02]">
+    16	            <div className="flex items-center mb-6">
+    17	              <div className="p-3 rounded-full bg-[#940909] flex items-center justify-center mr-4">
+    18	                <Sunrise className="w-5 h-5 text-white" />
+    19	              </div>
+    20	              <h3 className="text-xl font-bold">
+    21	                Morning Fuel System
+    22	              </h3>
+    23	            </div>
+    24	            <p className="mb-4 text-gray-300">
+    25	              Exact, systemized routine of specific foods and actions in set order. Delivers clear thinking and smooth energy without caffeine or supplements.
+    26	            </p>
+    27	            <ul className="space-y-3 mt-6">
+    28	              <li className="flex items-start">
+    29	                <Check className="mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0" />
+    30	                <span className="text-sm">Strategic nutrition timing for steady energy</span>
+    31	              </li>
+    32	              <li className="flex items-start">
+    33	                <Check className="mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0" />
+    34	                <span className="text-sm">Precision hydration protocol for mental clarity</span>
+    35	              </li>
+    36	              <li className="flex items-start">
+    37	                <Check className="mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0" />
+    38	                <span className="text-sm">Maintains steady energy after midday meals</span>
+    39	              </li>
+    40	              <li className="flex items-start">
+    41	                <Check className="mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0" />
+    42	                <span className="text-sm">Takes under 20 minutes total to implement</span>
+    43	              </li>
+    44	            </ul>
+    45	          </div>
+    46	
+    47	          <div className="rounded-lg bg-zinc-800 p-6 border-l-4 border-[#940909] shadow-lg transform transition hover:scale-[1.02]">
+    48	            <div className="flex items-center mb-6">
+    49	              <div className="p-3 rounded-full bg-[#940909] flex items-center justify-center mr-4">
+    50	                <Dumbbell className="w-5 h-5 text-white" />
+    51	              </div>
+    52	              <h3 className="text-xl font-bold">
+    53	                Minimalist Training
+    54	              </h3>
+    55	            </div>
+    56	            <p className="mb-4 text-gray-300">
+    57	              Train just 2-3 times per week max. Focus on aesthetics and total body health. Protects CNS from overtaxing, prevents burnout, builds the "Natty Sweet Spot" physique.
+    58	            </p>
+    59	            <ul className="space-y-3 mt-6">
+    60	              <li className="flex items-start">
+    61	                <Check className="mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0" />
+    62	                <span className="text-sm">Strategic compound and isolation exercises</span>
+    63	              </li>
+    64	              <li className="flex items-start">
+    65	                <Check className="mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0" />
+    66	                <span className="text-sm">No endless cardio or daily gym sessions</span>
+    67	              </li>
+    68	              <li className="flex items-start">
+    69	                <Check className="mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0" />
+    70	                <span className="text-sm">Preserves muscle while accelerating fat loss</span>
+    71	              </li>
+    72	              <li className="flex items-start">
+    73	                <Check className="mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0" />
+    74	                <span className="text-sm">Time-efficient workouts with maximum results</span>
+    75	              </li>
+    76	            </ul>
+    77	          </div>
+    78	
+    79	          {/* Micro-testimonial for social proof */}
+    80	          <div className="md:col-span-2 my-6">
+    81	            <MicroTestimonial
+    82	              quote="The Morning Fuel System alone was worth the entire investment. I haven't touched coffee in 4 months and I have more energy than ever."
+    83	              name="Eric W."
+    84	              title="Sales Director"
+    85	              metric="120 Days Caffeine-Free"
+    86	            />
+    87	          </div>
+    88	
+    89	          <div className="rounded-lg bg-zinc-800 p-6 border-l-4 border-[#940909] shadow-lg transform transition hover:scale-[1.02]">
+    90	            <div className="flex items-center mb-6">
+    91	              <div className="p-3 rounded-full bg-[#940909] flex items-center justify-center mr-4">
+    92	                <Coffee className="w-5 h-5 text-white" />
+    93	              </div>
+    94	              <h3 className="text-xl font-bold">
+    95	                Limitless Flow
+    96	              </h3>
+    97	            </div>
+    98	            <p className="mb-4 text-gray-300">
+    99	              Natural high state - free from caffeine, alcohol or substances. Inner game focused, prioritizing mindset over trackers or willpower. Returns to childlike state of peace and joy.
+   100	            </p>
+   101	            <ul className="space-y-3 mt-6">
+   102	              <li className="flex items-start">
+   103	                <Check className="mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0" />
+   104	                <span className="text-sm">Strategic caffeine elimination protocol</span>
+   105	              </li>
+   106	              <li className="flex items-start">
+   107	                <Check className="mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0" />
+   108	                <span className="text-sm">Natural alcohol reduction system</span>
+   109	              </li>
+   110	              <li className="flex items-start">
+   111	                <Check className="mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0" />
+   112	                <span className="text-sm">Mindset restructuring for natural relaxation</span>
+   113	              </li>
+   114	              <li className="flex items-start">
+   115	                <Check className="mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0" />
+   116	                <span className="text-sm">Brain-based stress elimination techniques</span>
+   117	              </li>
+   118	            </ul>
+   119	          </div>
+   120	
+   121	          <div className="rounded-lg bg-zinc-800 p-6 border-l-4 border-[#940909] shadow-lg transform transition hover:scale-[1.02]">
+   122	            <div className="flex items-center mb-6">
+   123	              <div className="p-3 rounded-full bg-[#940909] flex items-center justify-center mr-4">
+   124	                <BookOpen className="w-5 h-5 text-white" />
+   125	              </div>
+   126	              <h3 className="text-xl font-bold">
+   127	                Integration Framework
+   128	              </h3>
+   129	            </div>
+   130	            <p className="mb-4 text-gray-300">
+   131	              How all three systems work together to create effortless transformation. The complete roadmap from where you are now to total Limitless energy and physique.
+   132	            </p>
+   133	            <ul className="space-y-3 mt-6">
+   134	              <li className="flex items-start">
+   135	                <Check className="mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0" />
+   136	                <span className="text-sm">Week-by-week implementation roadmap</span>
+   137	              </li>
+   138	              <li className="flex items-start">
+   139	                <Check className="mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0" />
+   140	                <span className="text-sm">High-performance habit installation process</span>
+   141	              </li>
+   142	              <li className="flex items-start">
+   143	                <Check className="mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0" />
+   144	                <span className="text-sm">Real-world application for busy professionals</span>
+   145	              </li>
+   146	              <li className="flex items-start">
+   147	                <Check className="mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0" />
+   148	                <span className="text-sm">Built-in troubleshooting and personalization</span>
+   149	              </li>
+   150	            </ul>
+   151	          </div>
+   152	        </div>
+   153	      </div>
+   154	    </section>
+   155	  )
+   156	}
+
+Current commit hash: b251464Now, let's update the program components section with the new naming and styling:codemcpRequest{
+  `path`: `/Users/marleymcbride/Documents/Cursor Projects/limitless-sales-page/src/components/program-components-section.tsx`,
+  `chat_id`: `19-feat-initialize-limitless-sales-page-project`,
+  `subtool`: `EditFile`,
+  `new_string`: `import { Check, Sunrise, Dumbbell, Coffee, BookOpen } from \"lucide-react\"
+import { bgClasses, invertedGradientOverlay, strongRedAccent, vignetteEffect } from \"@/lib/utils\"
+import MicroTestimonial from \"./ui/micro-testimonial\"
+
+export default function ProgramComponentsSection() {
+  return (
+    <section className={`w-full py-20 ${bgClasses.blackRedGradient} relative`}>
+      {invertedGradientOverlay}
+      {strongRedAccent}
+      {vignetteEffect}
+      
+      <div className=\"container mx-auto px-4 relative z-10\">
+        <div className=\"text-center mb-12\">
+          <span className=\"inline-block bg-white/10 text-white text-sm font-bold uppercase tracking-wider px-3 py-1 rounded-sm mb-4\">THE METHODOLOGY</span>
+          <h2 className=\"text-3xl sm:text-4xl font-bold mb-4\">The Limitless Systems</h2>
+          <p className=\"text-center text-xl mb-4 mx-auto max-w-3xl\">
+            Systematic approach to create natural energy - elite physique - razor-sharp mind
+          </p>
+          <p className=\"text-center text-lg mx-auto max-w-3xl\">
+            No willpower. No starvation. No bullshit 6-day gym routines.
+          </p>
+        </div>
+
+        <div className=\"mx-auto grid gap-8 md:grid-cols-2 max-w-5xl\">
+          <div className=\"rounded-lg bg-black/40 backdrop-blur-sm p-6 border-l-4 border-[#940909] shadow-lg transform transition hover:scale-[1.02]\">
+            <div className=\"flex items-center mb-6\">
+              <div className=\"p-3 rounded-full bg-[#940909] flex items-center justify-center mr-4\">
+                <Sunrise className=\"w-5 h-5 text-white\" />
+              </div>
+              <h3 className=\"text-xl font-bold\">
+                Limitless Morning
+              </h3>
+            </div>
+            <p className=\"mb-4 text-white/90\">
+              Exact, systemized routine of specific foods and actions in precise order. Pure natural energy without caffeine or supplements. Mental clarity from dawn to dusk.
+            </p>
+            <ul className=\"space-y-3 mt-6\">
+              <li className=\"flex items-start\">
+                <Check className=\"mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0\" />
+                <span className=\"text-sm\">Strategic nutrition timing for steady energy</span>
+              </li>
+              <li className=\"flex items-start\">
+                <Check className=\"mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0\" />
+                <span className=\"text-sm\">Precision hydration protocol for mental clarity</span>
+              </li>
+              <li className=\"flex items-start\">
+                <Check className=\"mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0\" />
+                <span className=\"text-sm\">Maintains steady energy after midday meals</span>
+              </li>
+              <li className=\"flex items-start\">
+                <Check className=\"mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0\" />
+                <span className=\"text-sm\">Takes under 20 minutes total to implement</span>
+              </li>
+            </ul>
+          </div>
+
+          <div className=\"rounded-lg bg-black/40 backdrop-blur-sm p-6 border-l-4 border-[#940909] shadow-lg transform transition hover:scale-[1.02]\">
+            <div className=\"flex items-center mb-6\">
+              <div className=\"p-3 rounded-full bg-[#940909] flex items-center justify-center mr-4\">
+                <Dumbbell className=\"w-5 h-5 text-white\" />
+              </div>
+              <h3 className=\"text-xl font-bold\">
+                The Limitless Training
+              </h3>
+            </div>
+            <p className=\"mb-4 text-white/90\">
+              Train just 2-3 times per week max. Focus on aesthetics and total body health. Protects CNS from overtaxing, prevents burnout, builds the \"Natty Sweet Spot\" physique.
+            </p>
+            <ul className=\"space-y-3 mt-6\">
+              <li className=\"flex items-start\">
+                <Check className=\"mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0\" />
+                <span className=\"text-sm\">Strategic compound and isolation exercises</span>
+              </li>
+              <li className=\"flex items-start\">
+                <Check className=\"mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0\" />
+                <span className=\"text-sm\">No endless cardio or daily gym sessions</span>
+              </li>
+              <li className=\"flex items-start\">
+                <Check className=\"mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0\" />
+                <span className=\"text-sm\">Preserves muscle while accelerating fat loss</span>
+              </li>
+              <li className=\"flex items-start\">
+                <Check className=\"mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0\" />
+                <span className=\"text-sm\">Time-efficient workouts with maximum results</span>
+              </li>
+            </ul>
+          </div>
+
+          {/* Micro-testimonial for social proof */}
+          <div className=\"md:col-span-2 my-6\">
+            <MicroTestimonial
+              quote=\"The Limitless Morning protocol alone was worth the entire investment. I haven't touched coffee in 4 months and have more energy than ever.\"
+              name=\"Eric W.\"
+              title=\"Sales Director\"
+              metric=\"120 Days Caffeine-Free\"
+            />
+          </div>
+
+          <div className=\"rounded-lg bg-black/40 backdrop-blur-sm p-6 border-l-4 border-[#940909] shadow-lg transform transition hover:scale-[1.02]\">
+            <div className=\"flex items-center mb-6\">
+              <div className=\"p-3 rounded-full bg-[#940909] flex items-center justify-center mr-4\">
+                <Coffee className=\"w-5 h-5 text-white\" />
+              </div>
+              <h3 className=\"text-xl font-bold\">
+                Limitless Flow
+              </h3>
+            </div>
+            <p className=\"mb-4 text-white/90\">
+              Natural high state - free from caffeine, alcohol or substances. Inner game focused, prioritizing mindset over trackers or willpower. Returns to childlike state of peace and joy.
+            </p>
+            <ul className=\"space-y-3 mt-6\">
+              <li className=\"flex items-start\">
+                <Check className=\"mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0\" />
+                <span className=\"text-sm\">Strategic caffeine elimination protocol</span>
+              </li>
+              <li className=\"flex items-start\">
+                <Check className=\"mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0\" />
+                <span className=\"text-sm\">Natural alcohol reduction system</span>
+              </li>
+              <li className=\"flex items-start\">
+                <Check className=\"mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0\" />
+                <span className=\"text-sm\">Mindset restructuring for natural relaxation</span>
+              </li>
+              <li className=\"flex items-start\">
+                <Check className=\"mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0\" />
+                <span className=\"text-sm\">Brain-based stress elimination techniques</span>
+              </li>
+            </ul>
+          </div>
+
+          <div className=\"rounded-lg bg-black/40 backdrop-blur-sm p-6 border-l-4 border-[#940909] shadow-lg transform transition hover:scale-[1.02]\">
+            <div className=\"flex items-center mb-6\">
+              <div className=\"p-3 rounded-full bg-[#940909] flex items-center justify-center mr-4\">
+                <BookOpen className=\"w-5 h-5 text-white\" />
+              </div>
+              <h3 className=\"text-xl font-bold\">
+                Integration Framework
+              </h3>
+            </div>
+            <p className=\"mb-4 text-white/90\">
+              How all three systems work together to create effortless transformation. The complete roadmap from where you are now to total Limitless energy and physique.
+            </p>
+            <ul className=\"space-y-3 mt-6\">
+              <li className=\"flex items-start\">
+                <Check className=\"mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0\" />
+                <span className=\"text-sm\">Week-by-week implementation roadmap</span>
+              </li>
+              <li className=\"flex items-start\">
+                <Check className=\"mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0\" />
+                <span className=\"text-sm\">High-performance habit installation process</span>
+              </li>
+              <li className=\"flex items-start\">
+                <Check className=\"mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0\" />
+                <span className=\"text-sm\">Real-world application for busy professionals</span>
+              </li>
+              <li className=\"flex items-start\">
+                <Check className=\"mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0\" />
+                <span className=\"text-sm\">Built-in troubleshooting and personalization</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}`,
+  `old_string`: `import { Check, Sunrise, Dumbbell, Coffee, BookOpen } from \"lucide-react\"
+import { bgClasses } from \"@/lib/utils\"
+import MicroTestimonial from \"./ui/micro-testimonial\"
+
+export default function ProgramComponentsSection() {
+  return (
+    <section className={`w-full ${bgClasses.grey} py-20 text-white`}>
+      <div className=\"container mx-auto px-4\">
+        <h2 className=\"mb-6 text-center text-3xl sm:text-4xl font-bold\">The Limitless Protocol Components</h2>
+        <p className=\"text-center text-lg mb-12 mx-auto max-w-3xl\">
+          Our systems-based approach creates natural energy - lean physique - mental clarity without relying on willpower or extreme measures
+        </p>
+
+        <div className=\"mx-auto grid gap-8 md:grid-cols-2 max-w-5xl\">
+          <div className=\"rounded-lg bg-zinc-800 p-6 border-l-4 border-[#940909] shadow-lg transform transition hover:scale-[1.02]\">
+            <div className=\"flex items-center mb-6\">
+              <div className=\"p-3 rounded-full bg-[#940909] flex items-center justify-center mr-4\">
+                <Sunrise className=\"w-5 h-5 text-white\" />
+              </div>
+              <h3 className=\"text-xl font-bold\">
+                Morning Fuel System
+              </h3>
+            </div>
+            <p className=\"mb-4 text-gray-300\">
+              Exact, systemized routine of specific foods and actions in set order. Delivers clear thinking and smooth energy without caffeine or supplements.
+            </p>
+            <ul className=\"space-y-3 mt-6\">
+              <li className=\"flex items-start\">
+                <Check className=\"mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0\" />
+                <span className=\"text-sm\">Strategic nutrition timing for steady energy</span>
+              </li>
+              <li className=\"flex items-start\">
+                <Check className=\"mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0\" />
+                <span className=\"text-sm\">Precision hydration protocol for mental clarity</span>
+              </li>
+              <li className=\"flex items-start\">
+                <Check className=\"mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0\" />
+                <span className=\"text-sm\">Maintains steady energy after midday meals</span>
+              </li>
+              <li className=\"flex items-start\">
+                <Check className=\"mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0\" />
+                <span className=\"text-sm\">Takes under 20 minutes total to implement</span>
+              </li>
+            </ul>
+          </div>
+
+          <div className=\"rounded-lg bg-zinc-800 p-6 border-l-4 border-[#940909] shadow-lg transform transition hover:scale-[1.02]\">
+            <div className=\"flex items-center mb-6\">
+              <div className=\"p-3 rounded-full bg-[#940909] flex items-center justify-center mr-4\">
+                <Dumbbell className=\"w-5 h-5 text-white\" />
+              </div>
+              <h3 className=\"text-xl font-bold\">
+                Minimalist Training
+              </h3>
+            </div>
+            <p className=\"mb-4 text-gray-300\">
+              Train just 2-3 times per week max. Focus on aesthetics and total body health. Protects CNS from overtaxing, prevents burnout, builds the \"Natty Sweet Spot\" physique.
+            </p>
+            <ul className=\"space-y-3 mt-6\">
+              <li className=\"flex items-start\">
+                <Check className=\"mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0\" />
+                <span className=\"text-sm\">Strategic compound and isolation exercises</span>
+              </li>
+              <li className=\"flex items-start\">
+                <Check className=\"mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0\" />
+                <span className=\"text-sm\">No endless cardio or daily gym sessions</span>
+              </li>
+              <li className=\"flex items-start\">
+                <Check className=\"mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0\" />
+                <span className=\"text-sm\">Preserves muscle while accelerating fat loss</span>
+              </li>
+              <li className=\"flex items-start\">
+                <Check className=\"mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0\" />
+                <span className=\"text-sm\">Time-efficient workouts with maximum results</span>
+              </li>
+            </ul>
+          </div>
+
+          {/* Micro-testimonial for social proof */}
+          <div className=\"md:col-span-2 my-6\">
+            <MicroTestimonial
+              quote=\"The Morning Fuel System alone was worth the entire investment. I haven't touched coffee in 4 months and I have more energy than ever.\"
+              name=\"Eric W.\"
+              title=\"Sales Director\"
+              metric=\"120 Days Caffeine-Free\"
+            />
+          </div>
+
+          <div className=\"rounded-lg bg-zinc-800 p-6 border-l-4 border-[#940909] shadow-lg transform transition hover:scale-[1.02]\">
+            <div className=\"flex items-center mb-6\">
+              <div className=\"p-3 rounded-full bg-[#940909] flex items-center justify-center mr-4\">
+                <Coffee className=\"w-5 h-5 text-white\" />
+              </div>
+              <h3 className=\"text-xl font-bold\">
+                Limitless Flow
+              </h3>
+            </div>
+            <p className=\"mb-4 text-gray-300\">
+              Natural high state - free from caffeine, alcohol or substances. Inner game focused, prioritizing mindset over trackers or willpower. Returns to childlike state of peace and joy.
+            </p>
+            <ul className=\"space-y-3 mt-6\">
+              <li className=\"flex items-start\">
+                <Check className=\"mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0\" />
+                <span className=\"text-sm\">Strategic caffeine elimination protocol</span>
+              </li>
+              <li className=\"flex items-start\">
+                <Check className=\"mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0\" />
+                <span className=\"text-sm\">Natural alcohol reduction system</span>
+              </li>
+              <li className=\"flex items-start\">
+                <Check className=\"mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0\" />
+                <span className=\"text-sm\">Mindset restructuring for natural relaxation</span>
+              </li>
+              <li className=\"flex items-start\">
+                <Check className=\"mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0\" />
+                <span className=\"text-sm\">Brain-based stress elimination techniques</span>
+              </li>
+            </ul>
+          </div>
+
+          <div className=\"rounded-lg bg-zinc-800 p-6 border-l-4 border-[#940909] shadow-lg transform transition hover:scale-[1.02]\">
+            <div className=\"flex items-center mb-6\">
+              <div className=\"p-3 rounded-full bg-[#940909] flex items-center justify-center mr-4\">
+                <BookOpen className=\"w-5 h-5 text-white\" />
+              </div>
+              <h3 className=\"text-xl font-bold\">
+                Integration Framework
+              </h3>
+            </div>
+            <p className=\"mb-4 text-gray-300\">
+              How all three systems work together to create effortless transformation. The complete roadmap from where you are now to total Limitless energy and physique.
+            </p>
+            <ul className=\"space-y-3 mt-6\">
+              <li className=\"flex items-start\">
+                <Check className=\"mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0\" />
+                <span className=\"text-sm\">Week-by-week implementation roadmap</span>
+              </li>
+              <li className=\"flex items-start\">
+                <Check className=\"mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0\" />
+                <span className=\"text-sm\">High-performance habit installation process</span>
+              </li>
+              <li className=\"flex items-start\">
+                <Check className=\"mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0\" />
+                <span className=\"text-sm\">Real-world application for busy professionals</span>
+              </li>
+              <li className=\"flex items-start\">
+                <Check className=\"mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0\" />
+                <span className=\"text-sm\">Built-in troubleshooting and personalization</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}`,
+  `description`: `Update program components section with new naming and styling`
+}ResponseSuccessfully edited /Users/marleymcbride/Documents/Cursor Projects/limitless-sales-page/src/components/program-components-section.tsx
+
+Here's a snippet of the edited file:
+   1 | import { Check, Sunrise, Dumbbell, Coffee, BookOpen } from "lucide-react"
+   2 | import { bgClasses, invertedGradientOverlay, strongRedAccent, vignetteEffect } from "@/lib/utils"
+   3 | import MicroTestimonial from "./ui/micro-testimonial"
+   4 | 
+   5 | export default function ProgramComponentsSection() {
+   6 |   return (
+   7 |     <section className={`w-full py-20 ${bgClasses.blackRedGradient} relative`}>
+   8 |       {invertedGradientOverlay}
+   9 |       {strongRedAccent}
+  10 |       {vignetteEffect}
+  11 |       
+  12 |       <div className="container mx-auto px-4 relative z-10">
+  13 |         <div className="text-center mb-12">
+  14 |           <span className="inline-block bg-white/10 text-white text-sm font-bold uppercase tracking-wider px-3 py-1 rounded-sm mb-4">THE METHODOLOGY</span>
+  15 |           <h2 className="text-3xl sm:text-4xl font-bold mb-4">The Limitless Systems</h2>
+  16 |           <p className="text-center text-xl mb-4 mx-auto max-w-3xl">
+  17 |             Systematic approach to create natural energy - elite physique - razor-sharp mind
+  18 |           </p>
+  19 |           <p className="text-center text-lg mx-auto max-w-3xl">
+  20 |             No willpower. No starvation. No bullshit 6-day gym routines.
+  21 |           </p>
+  22 |         </div>
+  23 | 
+  24 |         <div className="mx-auto grid gap-8 md:grid-cols-2 max-w-5xl">
+  25 |           <div className="rounded-lg bg-black/40 backdrop-blur-sm p-6 border-l-4 border-[#940909] shadow-lg transform transition hover:scale-[1.02]">
+  26 |             <div className="flex items-center mb-6">
+  27 |               <div className="p-3 rounded-full bg-[#940909] flex items-center justify-center mr-4">
+  28 |                 <Sunrise className="w-5 h-5 text-white" />
+  29 |               </div>
+  30 |               <h3 className="text-xl font-bold">
+  31 |                 Limitless Morning
+  32 |               </h3>
+  33 |             </div>
+  34 |             <p className="mb-4 text-white/90">
+  35 |               Exact, systemized routine of specific foods and actions in precise order. Pure natural energy without caffeine or supplements. Mental clarity from dawn to dusk.
+  36 |             </p>
+  37 |             <ul className="space-y-3 mt-6">
+  38 |               <li className="flex items-start">
+  39 |                 <Check className="mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0" />
+  40 |                 <span className="text-sm">Strategic nutrition timing for steady energy</span>
+  41 |               </li>
+  42 |               <li className="flex items-start">
+  43 |                 <Check className="mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0" />
+  44 |                 <span className="text-sm">Precision hydration protocol for mental clarity</span>
+  45 |               </li>
+  46 |               <li className="flex items-start">
+  47 |                 <Check className="mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0" />
+  48 |                 <span className="text-sm">Maintains steady energy after midday meals</span>
+  49 |               </li>
+  50 |               <li className="flex items-start">
+  51 |                 <Check className="mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0" />
+  52 |                 <span className="text-sm">Takes under 20 minutes total to implement</span>
+  53 |               </li>
+  54 |             </ul>
+  55 |           </div>
+  56 | 
+  57 |           <div className="rounded-lg bg-black/40 backdrop-blur-sm p-6 border-l-4 border-[#940909] shadow-lg transform transition hover:scale-[1.02]">
+  58 |             <div className="flex items-center mb-6">
+  59 |               <div className="p-3 rounded-full bg-[#940909] flex items-center justify-center mr-4">
+  60 |                 <Dumbbell className="w-5 h-5 text-white" />
+  61 |               </div>
+  62 |               <h3 className="text-xl font-bold">
+  63 |                 The Limitless Training
+  64 |               </h3>
+  65 |             </div>
+  66 |             <p className="mb-4 text-white/90">
+  67 |               Train just 2-3 times per week max. Focus on aesthetics and total body health. Protects CNS from overtaxing, prevents burnout, builds the "Natty Sweet Spot" physique.
+  68 |             </p>
+  69 |             <ul className="space-y-3 mt-6">
+  70 |               <li className="flex items-start">
+  71 |                 <Check className="mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0" />
+  72 |                 <span className="text-sm">Strategic compound and isolation exercises</span>
+  73 |               </li>
+  74 |               <li className="flex items-start">
+  75 |                 <Check className="mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0" />
+  76 |                 <span className="text-sm">No endless cardio or daily gym sessions</span>
+  77 |               </li>
+  78 |               <li className="flex items-start">
+  79 |                 <Check className="mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0" />
+  80 |                 <span className="text-sm">Preserves muscle while accelerating fat loss</span>
+  81 |               </li>
+  82 |               <li className="flex items-start">
+  83 |                 <Check className="mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0" />
+  84 |                 <span className="text-sm">Time-efficient workouts with maximum results</span>
+  85 |               </li>
+  86 |             </ul>
+  87 |           </div>
+  88 | 
+  89 |           {/* Micro-testimonial for social proof */}
+  90 |           <div className="md:col-span-2 my-6">
+  91 |             <MicroTestimonial
+  92 |               quote="The Limitless Morning protocol alone was worth the entire investment. I haven't touched coffee in 4 months and have more energy than ever."
+  93 |               name="Eric W."
+  94 |               title="Sales Director"
+  95 |               metric="120 Days Caffeine-Free"
+  96 |             />
+  97 |           </div>
+  98 | 
+  99 |           <div className="rounded-lg bg-black/40 backdrop-blur-sm p-6 border-l-4 border-[#940909] shadow-lg transform transition hover:scale-[1.02]">
+ 100 |             <div className="flex items-center mb-6">
+ 101 |               <div className="p-3 rounded-full bg-[#940909] flex items-center justify-center mr-4">
+ 102 |                 <Coffee className="w-5 h-5 text-white" />
+ 103 |               </div>
+ 104 |               <h3 className="text-xl font-bold">
+ 105 |                 Limitless Flow
+ 106 |               </h3>
+ 107 |             </div>
+ 108 |             <p className="mb-4 text-white/90">
+ 109 |               Natural high state - free from caffeine, alcohol or substances. Inner game focused, prioritizing mindset over trackers or willpower. Returns to childlike state of peace and joy.
+ 110 |             </p>
+ 111 |             <ul className="space-y-3 mt-6">
+ 112 |               <li className="flex items-start">
+ 113 |                 <Check className="mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0" />
+ 114 |                 <span className="text-sm">Strategic caffeine elimination protocol</span>
+ 115 |               </li>
+ 116 |               <li className="flex items-start">
+ 117 |                 <Check className="mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0" />
+ 118 |                 <span className="text-sm">Natural alcohol reduction system</span>
+ 119 |               </li>
+ 120 |               <li className="flex items-start">
+ 121 |                 <Check className="mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0" />
+ 122 |                 <span className="text-sm">Mindset restructuring for natural relaxation</span>
+ 123 |               </li>
+ 124 |               <li className="flex items-start">
+ 125 |                 <Check className="mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0" />
+ 126 |                 <span className="text-sm">Brain-based stress elimination techniques</span>
+ 127 |               </li>
+ 128 |             </ul>
+ 129 |           </div>
+ 130 | 
+ 131 |           <div className="rounded-lg bg-black/40 backdrop-blur-sm p-6 border-l-4 border-[#940909] shadow-lg transform transition hover:scale-[1.02]">
+ 132 |             <div className="flex items-center mb-6">
+ 133 |               <div className="p-3 rounded-full bg-[#940909] flex items-center justify-center mr-4">
+ 134 |                 <BookOpen className="w-5 h-5 text-white" />
+ 135 |               </div>
+ 136 |               <h3 className="text-xl font-bold">
+ 137 |                 Integration Framework
+ 138 |               </h3>
+ 139 |             </div>
+ 140 |             <p className="mb-4 text-white/90">
+ 141 |               How all three systems work together to create effortless transformation. The complete roadmap from where you are now to total Limitless energy and physique.
+ 142 |             </p>
+ 143 |             <ul className="space-y-3 mt-6">
+ 144 |               <li className="flex items-start">
+ 145 |                 <Check className="mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0" />
+ 146 |                 <span className="text-sm">Week-by-week implementation roadmap</span>
+ 147 |               </li>
+ 148 |               <li className="flex items-start">
+ 149 |                 <Check className="mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0" />
+ 150 |                 <span className="text-sm">High-performance habit installation process</span>
+ 151 |               </li>
+ 152 |               <li className="flex items-start">
+ 153 |                 <Check className="mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0" />
+ 154 |                 <span className="text-sm">Real-world application for busy professionals</span>
+ 155 |               </li>
+ 156 |               <li className="flex items-start">
+ 157 |                 <Check className="mr-2 mt-1 h-4 w-4 text-[#940909] flex-shrink-0" />
+ 158 |                 <span className="text-sm">Built-in troubleshooting and personalization</span>
+ 159 |               </li>
+ 160 |             </ul>
+ 161 |           </div>
+ 162 |         </div>
+ 163 |       </div>
+ 164 |     </section>
+ 165 |   )
+ 166 | }
+ 167 | 
+
+Changes amended successfully (previous commit was b251464)
+
+Current commit hash: 11528cdNow, let's modify the "Your Body Is Running A Failed Program" section to use the black with red accents background:codemcpRequest{
+  `path`: `/Users/marleymcbride/Documents/Cursor Projects/limitless-sales-page/src/components/pain-points.tsx`,
+  `chat_id`: `19-feat-initialize-limit`
+}RetryClaude hit the max length for a message and has paused its response. You can write Continue to keep the chat going.MContinueEditI'll continue working on the updates. Let's modify the "Your Body Is Running a Failed Program" pain points section to use the black with red accents background:codemcpRequest{
+  `chat_id`: `19-feat-initialize-limitless-sales-page-project`,
+  `subtool`: `UserPrompt`,
+  `user_prompt`: `Continue`
+}ResponseUser prompt receivedLet's modify the Pain Points section to use black with red accents according to the new background schema:codemcpRequest{
+  `path`: `/Users/marleymcbride/Documents/Cursor Projects/limitless-sales-page/src/components/pain-points.tsx`,
+  `chat_id`: `19-feat-initialize-limitless-sales-page-project`,
+  `subtool`: `ReadFile`
+}Response     1	"use client"
+     2	
+     3	import { SkipForward, Coffee, BatteryLow, Brain, Watch, Wine, Bed } from "lucide-react"
+     4	import { bgClasses } from "@/lib/utils"
+     5	import MicroTestimonial from "./ui/micro-testimonial"
+     6	
+     7	export default function PainPoints() {
+     8	  const painPoints = [
+     9	    {
+    10	      icon: <SkipForward className="w-6 h-6 text-[#940909]" />,
+    11	      text: "Hitting snooze 5 times - dreading another day needing caffeine just to function - starting mornings already defeated",
+    12	      subtext: "You're supposed to be a high-performer. Why does waking up feel like torture?"
+    13	    },
+    14	    {
+    15	      icon: <Coffee className="w-6 h-6 text-[#940909]" />,
+    16	      text: "Drinking 3-4 coffees every morning - still feeling foggy by 10am - needing more caffeine by 2pm - trapped in a cycle that's destroying your health",
+    17	      subtext: "That afternoon crash isn't normal. It's your body screaming for help."
+    18	    },
+    19	    {
+    20	      icon: <BatteryLow className="w-6 h-6 text-[#940909]" />,
+    21	      text: "Energy crashes hitting like clockwork - feeling utterly depleted when family needs you most - no reserves left",
+    22	      subtext: "Your kids and partner deserve your best self, not your leftover energy."
+    23	    },
+    24	    {
+    25	      icon: <Brain className="w-6 h-6 text-[#940909]" />,
+    26	      text: "Making costly decisions at work - brain fog preventing clear thinking - missing opportunities you should catch",
+    27	      subtext: "How many opportunities and promotions have slipped through your fingers?"
+    28	    },
+    29	    {
+    30	      icon: <Watch className="w-6 h-6 text-[#940909]" />,
+    31	      text: "Tasks taking twice as long - focus scattered - constantly distracted - productivity in freefall - career stalling",
+    32	      subtext: "Your reputation is being built right now. What message are you sending?"
+    33	    },
+    34	    {
+    35	      icon: <Wine className="w-6 h-6 text-[#940909]" />,
+    36	      text: "Needing alcohol just to wind down - can't relax naturally - drinking more frequently - sleep quality destroyed",
+    37	      subtext: "That 'harmless' nightly drink is sabotaging your next day before it starts."
+    38	    },
+    39	    {
+    40	      icon: <Bed className="w-6 h-6 text-[#940909]" />,
+    41	      text: "Waking up feeling worse than when you went to bed - despite 7-8 hours sleep - body not recovering - aging rapidly",
+    42	      subtext: "This isn't normal tiredness. Your recovery systems are completely broken."
+    43	    }
+    44	  ]
+    45	
+    46	  return (
+    47	    <section className={`w-full py-20 px-0 ${bgClasses.white}`}>
+    48	      <div className="container mx-auto px-4">
+    49	        <h2 className="text-3xl sm:text-4xl font-bold text-black text-center mb-4">
+    50	          Your Body Is Running A Failed Program
+    51	        </h2>
+    52	
+    53	        <p className="text-center text-xl mb-12 max-w-2xl mx-auto text-gray-800">
+    54	          High-performing men come to us when these energy drains become unbearable. Sound familiar?
+    55	        </p>
+    56	
+    57	        {/* Mobile view - only visible on small screens */}
+    58	        <div className="block sm:hidden">
+    59	          <div className="flex flex-col space-y-8 mx-auto">
+    60	            {painPoints.map((point, index) => (
+    61	              <div key={index} className="flex flex-col bg-gray-50 rounded-lg shadow-md overflow-hidden transform transition-all hover:scale-[1.02]">
+    62	                <div className="flex items-start p-4">
+    63	                  <div className="p-2 bg-[#940909]/10 rounded-full flex-shrink-0 mr-4">
+    64	                    {point.icon}
+    65	                  </div>
+    66	                  <p className="text-lg text-gray-800 font-medium">{point.text}</p>
+    67	                </div>
+    68	                {point.subtext && (
+    69	                  <div className="bg-[#940909]/5 p-3 border-t border-gray-200">
+    70	                    <p className="text-sm text-[#940909] italic">{point.subtext}</p>
+    71	                  </div>
+    72	                )}
+    73	              </div>
+    74	            ))}
+    75	          </div>
+    76	        </div>
+    77	
+    78	        {/* Desktop view - hidden on small screens */}
+    79	        <div className="hidden sm:block">
+    80	          <div className="grid grid-cols-2 gap-6 max-w-4xl mx-auto">
+    81	            {painPoints.map((point, index) => (
+    82	              <div key={index} className="flex flex-col bg-gray-50 rounded-lg shadow-md overflow-hidden transform transition-all hover:scale-[1.02]">
+    83	                <div className="flex items-start p-5">
+    84	                  <div className="p-2 bg-[#940909]/10 rounded-full flex-shrink-0 mr-4">
+    85	                    {point.icon}
+    86	                  </div>
+    87	                  <p className="text-base text-gray-800 font-medium">{point.text}</p>
+    88	                </div>
+    89	                {point.subtext && (
+    90	                  <div className="bg-[#940909]/5 p-3 border-t border-gray-200">
+    91	                    <p className="text-sm text-[#940909] italic">{point.subtext}</p>
+    92	                  </div>
+    93	                )}
+    94	              </div>
+    95	            ))}
+    96	          </div>
+    97	        </div>
+    98	
+    99	        {/* Micro-testimonial between sections for continuous proof */}
+   100	        <div className="max-w-4xl mx-auto">
+   101	          <MicroTestimonial
+   102	            quote="I'd hit snooze 6 times every morning. Now I'm up before my alarm, no caffeine needed."
+   103	            name="David H."
+   104	            title="Investment Director"
+   105	            metric="+70% Morning Energy"
+   106	          />
+   107	        </div>
+   108	
+   109	        <p className="text-gray-800 text-center mt-12 text-xl font-medium">
+   110	          You're not alone. 95% of high-performing men are trapped in this cycle. But only 1% will escape it.
+   111	        </p>
+   112	      </div>
+   113	    </section>
+   114	  )
+   115	}
+
+Current commit hash: 11528cdNow let's update the Pain Points section to use the black with red accents as requested:codemcpRequest{
+  `path`: `/Users/marleymcbride/Documents/Cursor Projects/limitless-sales-page/src/components/pain-points.tsx`,
+  `chat_id`: `19-feat-initialize-limitless-sales-page-project`,
+  `subtool`: `EditFile`,
+  `new_string`: `\"use client\"
+
+import { SkipForward, Coffee, BatteryLow, Brain, Watch, Wine, Bed } from \"lucide-react\"
+import { bgClasses, invertedGradientOverlay, strongRedAccent, vignetteEffect } from \"@/lib/utils\"
+import MicroTestimonial from \"./ui/micro-testimonial\"
+
+export default function PainPoints() {
+  const painPoints = [
+    {
+      icon: <SkipForward className=\"w-6 h-6 text-[#940909]\" />,
+      text: \"Hitting snooze 5 times - dreading another day needing caffeine just to function - starting mornings already defeated\",
+      subtext: \"You're supposed to be a high-performer. Why does waking up feel like torture?\"
+    },
+    {
+      icon: <Coffee className=\"w-6 h-6 text-[#940909]\" />,
+      text: \"Drinking 3-4 coffees every morning - still feeling foggy by 10am - needing more caffeine by 2pm - trapped in a cycle that's destroying your health\",
+      subtext: \"That afternoon crash isn't normal. It's your body screaming for help.\"
+    },
+    {
+      icon: <BatteryLow className=\"w-6 h-6 text-[#940909]\" />,
+      text: \"Energy crashes hitting like clockwork - feeling utterly depleted when family needs you most - no reserves left\",
+      subtext: \"Your kids and partner deserve your best self, not your leftover energy.\"
+    },
+    {
+      icon: <Brain className=\"w-6 h-6 text-[#940909]\" />,
+      text: \"Making costly decisions at work - brain fog preventing clear thinking - missing opportunities you should catch\",
+      subtext: \"How many opportunities and promotions have slipped through your fingers?\"
+    },
+    {
+      icon: <Watch className=\"w-6 h-6 text-[#940909]\" />,
+      text: \"Tasks taking twice as long - focus scattered - constantly distracted - productivity in freefall - career stalling\",
+      subtext: \"Your reputation is being built right now. What message are you sending?\"
+    },
+    {
+      icon: <Wine className=\"w-6 h-6 text-[#940909]\" />,
+      text: \"Needing alcohol just to wind down - can't relax naturally - drinking more frequently - sleep quality destroyed\",
+      subtext: \"That 'harmless' nightly drink is sabotaging your next day before it starts.\"
+    },
+    {
+      icon: <Bed className=\"w-6 h-6 text-[#940909]\" />,
+      text: \"Waking up feeling worse than when you went to bed - despite 7-8 hours sleep - body not recovering - aging rapidly\",
+      subtext: \"This isn't normal tiredness. Your recovery systems are completely broken.\"
+    }
+  ]
+
+  return (
+    <section className={`w-full py-20 px-0 ${bgClasses.blackRedGradient} relative`}>
+      {invertedGradientOverlay}
+      {strongRedAccent}
+      {vignetteEffect}
+      
+      <div className=\"container mx-auto px-4 relative z-10\">
+        <div className=\"text-center mb-10\">
+          <span className=\"inline-block bg-white/10 text-white text-sm font-bold uppercase tracking-wider px-3 py-1 rounded-sm mb-4\">THE PROBLEM</span>
+          <h2 className=\"text-3xl sm:text-4xl font-bold text-white text-center mb-4\">
+            Your Body Is Running A Failed Program
+          </h2>
+          <p className=\"text-center text-xl mb-12 max-w-2xl mx-auto text-white/90\">
+            High-performing men come to us when these energy drains become unbearable. Sound familiar?
+          </p>
+        </div>
+
+        {/* Mobile view - only visible on small screens */}
+        <div className=\"block sm:hidden\">
+          <div className=\"flex flex-col space-y-8 mx-auto\">
+            {painPoints.map((point, index) => (
+              <div key={index} className=\"flex flex-col bg-black/40 backdrop-blur-sm rounded-lg shadow-md overflow-hidden transform transition-all hover:scale-[1.02] border border-[#940909]/30\">
+                <div className=\"flex items-start p-4\">
+                  <div className=\"p-2 bg-[#940909]/30 rounded-full flex-shrink-0 mr-4\">
+                    {point.icon}
+                  </div>
+                  <p className=\"text-lg text-white font-medium\">{point.text}</p>
+                </div>
+                {point.subtext && (
+                  <div className=\"bg-[#940909]/10 p-3 border-t border-[#940909]/30\">
+                    <p className=\"text-sm text-[#940909] italic\">{point.subtext}</p>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Desktop view - hidden on small screens */}
+        <div className=\"hidden sm:block\">
+          <div className=\"grid grid-cols-2 gap-6 max-w-4xl mx-auto\">
+            {painPoints.map((point, index) => (
+              <div key={index} className=\"flex flex-col bg-black/40 backdrop-blur-sm rounded-lg shadow-md overflow-hidden transform transition-all hover:scale-[1.02] border border-[#940909]/30\">
+                <div className=\"flex items-start p-5\">
+                  <div className=\"p-2 bg-[#940909]/30 rounded-full flex-shrink-0 mr-4\">
+                    {point.icon}
+                  </div>
+                  <p className=\"text-base text-white font-medium\">{point.text}</p>
+                </div>
+                {point.subtext && (
+                  <div className=\"bg-[#940909]/10 p-3 border-t border-[#940909]/30\">
+                    <p className=\"text-sm text-[#940909] italic\">{point.subtext}</p>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Micro-testimonial between sections for continuous proof */}
+        <div className=\"max-w-4xl mx-auto mt-12\">
+          <MicroTestimonial
+            quote=\"I'd hit snooze 6 times every morning. Now I'm up before my alarm, no caffeine needed.\"
+            name=\"David H.\"
+            title=\"Investment Director\"
+            metric=\"+70% Morning Energy\"
+          />
+        </div>
+
+        <div className=\"bg-black/30 rounded-lg p-6 max-w-3xl mx-auto mt-12 backdrop-blur-sm border border-[#940909]/30\">
+          <p className=\"text-white text-center text-xl font-medium\">
+            You're not alone. 95% of high-performing men are trapped in this cycle. But only 1% will escape it.
+          </p>
+        </div>
+      </div>
+    </section>
+  )
+}`,
+  `old_string`: `\"use client\"
+
+import { SkipForward, Coffee, BatteryLow, Brain, Watch, Wine, Bed } from \"lucide-react\"
+import { bgClasses } from \"@/lib/utils\"
+import MicroTestimonial from \"./ui/micro-testimonial\"
+
+export default function PainPoints() {
+  const painPoints = [
+    {
+      icon: <SkipForward className=\"w-6 h-6 text-[#940909]\" />,
+      text: \"Hitting snooze 5 times - dreading another day needing caffeine just to function - starting mornings already defeated\",
+      subtext: \"You're supposed to be a high-performer. Why does waking up feel like torture?\"
+    },
+    {
+      icon: <Coffee className=\"w-6 h-6 text-[#940909]\" />,
+      text: \"Drinking 3-4 coffees every morning - still feeling foggy by 10am - needing more caffeine by 2pm - trapped in a cycle that's destroying your health\",
+      subtext: \"That afternoon crash isn't normal. It's your body screaming for help.\"
+    },
+    {
+      icon: <BatteryLow className=\"w-6 h-6 text-[#940909]\" />,
+      text: \"Energy crashes hitting like clockwork - feeling utterly depleted when family needs you most - no reserves left\",
+      subtext: \"Your kids and partner deserve your best self, not your leftover energy.\"
+    },
+    {
+      icon: <Brain className=\"w-6 h-6 text-[#940909]\" />,
+      text: \"Making costly decisions at work - brain fog preventing clear thinking - missing opportunities you should catch\",
+      subtext: \"How many opportunities and promotions have slipped through your fingers?\"
+    },
+    {
+      icon: <Watch className=\"w-6 h-6 text-[#940909]\" />,
+      text: \"Tasks taking twice as long - focus scattered - constantly distracted - productivity in freefall - career stalling\",
+      subtext: \"Your reputation is being built right now. What message are you sending?\"
+    },
+    {
+      icon: <Wine className=\"w-6 h-6 text-[#940909]\" />,
+      text: \"Needing alcohol just to wind down - can't relax naturally - drinking more frequently - sleep quality destroyed\",
+      subtext: \"That 'harmless' nightly drink is sabotaging your next day before it starts.\"
+    },
+    {
+      icon: <Bed className=\"w-6 h-6 text-[#940909]\" />,
+      text: \"Waking up feeling worse than when you went to bed - despite 7-8 hours sleep - body not recovering - aging rapidly\",
+      subtext: \"This isn't normal tiredness. Your recovery systems are completely broken.\"
+    }
+  ]
+
+  return (
+    <section className={`w-full py-20 px-0 ${bgClasses.white}`}>
+      <div className=\"container mx-auto px-4\">
+        <h2 className=\"text-3xl sm:text-4xl font-bold text-black text-center mb-4\">
+          Your Body Is Running A Failed Program
+        </h2>
+
+        <p className=\"text-center text-xl mb-12 max-w-2xl mx-auto text-gray-800\">
+          High-performing men come to us when these energy drains become unbearable. Sound familiar?
+        </p>
+
+        {/* Mobile view - only visible on small screens */}
+        <div className=\"block sm:hidden\">
+          <div className=\"flex flex-col space-y-8 mx-auto\">
+            {painPoints.map((point, index) => (
+              <div key={index} className=\"flex flex-col bg-gray-50 rounded-lg shadow-md overflow-hidden transform transition-all hover:scale-[1.02]\">
+                <div className=\"flex items-start p-4\">
+                  <div className=\"p-2 bg-[#940909]/10 rounded-full flex-shrink-0 mr-4\">
+                    {point.icon}
+                  </div>
+                  <p className=\"text-lg text-gray-800 font-medium\">{point.text}</p>
+                </div>
+                {point.subtext && (
+                  <div className=\"bg-[#940909]/5 p-3 border-t border-gray-200\">
+                    <p className=\"text-sm text-[#940909] italic\">{point.subtext}</p>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Desktop view - hidden on small screens */}
+        <div className=\"hidden sm:block\">
+          <div className=\"grid grid-cols-2 gap-6 max-w-4xl mx-auto\">
+            {painPoints.map((point, index) => (
+              <div key={index} className=\"flex flex-col bg-gray-50 rounded-lg shadow-md overflow-hidden transform transition-all hover:scale-[1.02]\">
+                <div className=\"flex items-start p-5\">
+                  <div className=\"p-2 bg-[#940909]/10 rounded-full flex-shrink-0 mr-4\">
+                    {point.icon}
+                  </div>
+                  <p className=\"text-base text-gray-800 font-medium\">{point.text}</p>
+                </div>
+                {point.subtext && (
+                  <div className=\"bg-[#940909]/5 p-3 border-t border-gray-200\">
+                    <p className=\"text-sm text-[#940909] italic\">{point.subtext}</p>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Micro-testimonial between sections for continuous proof */}
+        <div className=\"max-w-4xl mx-auto\">
+          <MicroTestimonial
+            quote=\"I'd hit snooze 6 times every morning. Now I'm up before my alarm, no caffeine needed.\"
+            name=\"David H.\"
+            title=\"Investment Director\"
+            metric=\"+70% Morning Energy\"
+          />
+        </div>
+
+        <p className=\"text-gray-800 text-center mt-12 text-xl font-medium\">
+          You're not alone. 95% of high-performing men are trapped in this cycle. But only 1% will escape it.
+        </p>
+      </div>
+    </section>
+  )
+}`,
+  `description`: `Update pain points section with black gradient background`
+}ResponseSuccessfully edited /Users/marleymcbride/Documents/Cursor Projects/limitless-sales-page/src/components/pain-points.tsx
+
+Here's a snippet of the edited file:
+   1 | "use client"
+   2 | 
+   3 | import { SkipForward, Coffee, BatteryLow, Brain, Watch, Wine, Bed } from "lucide-react"
+   4 | import { bgClasses, invertedGradientOverlay, strongRedAccent, vignetteEffect } from "@/lib/utils"
+   5 | import MicroTestimonial from "./ui/micro-testimonial"
+   6 | 
+   7 | export default function PainPoints() {
+   8 |   const painPoints = [
+   9 |     {
+  10 |       icon: <SkipForward className="w-6 h-6 text-[#940909]" />,
+  11 |       text: "Hitting snooze 5 times - dreading another day needing caffeine just to function - starting mornings already defeated",
+  12 |       subtext: "You're supposed to be a high-performer. Why does waking up feel like torture?"
+  13 |     },
+  14 |     {
+  15 |       icon: <Coffee className="w-6 h-6 text-[#940909]" />,
+  16 |       text: "Drinking 3-4 coffees every morning - still feeling foggy by 10am - needing more caffeine by 2pm - trapped in a cycle that's destroying your health",
+  17 |       subtext: "That afternoon crash isn't normal. It's your body screaming for help."
+  18 |     },
+  19 |     {
+  20 |       icon: <BatteryLow className="w-6 h-6 text-[#940909]" />,
+  21 |       text: "Energy crashes hitting like clockwork - feeling utterly depleted when family needs you most - no reserves left",
+  22 |       subtext: "Your kids and partner deserve your best self, not your leftover energy."
+  23 |     },
+  24 |     {
+  25 |       icon: <Brain className="w-6 h-6 text-[#940909]" />,
+  26 |       text: "Making costly decisions at work - brain fog preventing clear thinking - missing opportunities you should catch",
+  27 |       subtext: "How many opportunities and promotions have slipped through your fingers?"
+  28 |     },
+  29 |     {
+  30 |       icon: <Watch className="w-6 h-6 text-[#940909]" />,
+  31 |       text: "Tasks taking twice as long - focus scattered - constantly distracted - productivity in freefall - career stalling",
+  32 |       subtext: "Your reputation is being built right now. What message are you sending?"
+  33 |     },
+  34 |     {
+  35 |       icon: <Wine className="w-6 h-6 text-[#940909]" />,
+  36 |       text: "Needing alcohol just to wind down - can't relax naturally - drinking more frequently - sleep quality destroyed",
+  37 |       subtext: "That 'harmless' nightly drink is sabotaging your next day before it starts."
+  38 |     },
+  39 |     {
+  40 |       icon: <Bed className="w-6 h-6 text-[#940909]" />,
+  41 |       text: "Waking up feeling worse than when you went to bed - despite 7-8 hours sleep - body not recovering - aging rapidly",
+  42 |       subtext: "This isn't normal tiredness. Your recovery systems are completely broken."
+  43 |     }
+  44 |   ]
+  45 | 
+  46 |   return (
+  47 |     <section className={`w-full py-20 px-0 ${bgClasses.blackRedGradient} relative`}>
+  48 |       {invertedGradientOverlay}
+  49 |       {strongRedAccent}
+  50 |       {vignetteEffect}
+  51 |       
+  52 |       <div className="container mx-auto px-4 relative z-10">
+  53 |         <div className="text-center mb-10">
+  54 |           <span className="inline-block bg-white/10 text-white text-sm font-bold uppercase tracking-wider px-3 py-1 rounded-sm mb-4">THE PROBLEM</span>
+  55 |           <h2 className="text-3xl sm:text-4xl font-bold text-white text-center mb-4">
+  56 |             Your Body Is Running A Failed Program
+  57 |           </h2>
+  58 |           <p className="text-center text-xl mb-12 max-w-2xl mx-auto text-white/90">
+  59 |             High-performing men come to us when these energy drains become unbearable. Sound familiar?
+  60 |           </p>
+  61 |         </div>
+  62 | 
+  63 |         {/* Mobile view - only visible on small screens */}
+  64 |         <div className="block sm:hidden">
+  65 |           <div className="flex flex-col space-y-8 mx-auto">
+  66 |             {painPoints.map((point, index) => (
+  67 |               <div key={index} className="flex flex-col bg-black/40 backdrop-blur-sm rounded-lg shadow-md overflow-hidden transform transition-all hover:scale-[1.02] border border-[#940909]/30">
+  68 |                 <div className="flex items-start p-4">
+  69 |                   <div className="p-2 bg-[#940909]/30 rounded-full flex-shrink-0 mr-4">
+  70 |                     {point.icon}
+  71 |                   </div>
+  72 |                   <p className="text-lg text-white font-medium">{point.text}</p>
+  73 |                 </div>
+  74 |                 {point.subtext && (
+  75 |                   <div className="bg-[#940909]/10 p-3 border-t border-[#940909]/30">
+  76 |                     <p className="text-sm text-[#940909] italic">{point.subtext}</p>
+  77 |                   </div>
+  78 |                 )}
+  79 |               </div>
+  80 |             ))}
+  81 |           </div>
+  82 |         </div>
+  83 | 
+  84 |         {/* Desktop view - hidden on small screens */}
+  85 |         <div className="hidden sm:block">
+  86 |           <div className="grid grid-cols-2 gap-6 max-w-4xl mx-auto">
+  87 |             {painPoints.map((point, index) => (
+  88 |               <div key={index} className="flex flex-col bg-black/40 backdrop-blur-sm rounded-lg shadow-md overflow-hidden transform transition-all hover:scale-[1.02] border border-[#940909]/30">
+  89 |                 <div className="flex items-start p-5">
+  90 |                   <div className="p-2 bg-[#940909]/30 rounded-full flex-shrink-0 mr-4">
+  91 |                     {point.icon}
+  92 |                   </div>
+  93 |                   <p className="text-base text-white font-medium">{point.text}</p>
+  94 |                 </div>
+  95 |                 {point.subtext && (
+  96 |                   <div className="bg-[#940909]/10 p-3 border-t border-[#940909]/30">
+  97 |                     <p className="text-sm text-[#940909] italic">{point.subtext}</p>
+  98 |                   </div>
+  99 |                 )}
+ 100 |               </div>
+ 101 |             ))}
+ 102 |           </div>
+ 103 |         </div>
+ 104 | 
+ 105 |         {/* Micro-testimonial between sections for continuous proof */}
+ 106 |         <div className="max-w-4xl mx-auto mt-12">
+ 107 |           <MicroTestimonial
+ 108 |             quote="I'd hit snooze 6 times every morning. Now I'm up before my alarm, no caffeine needed."
+ 109 |             name="David H."
+ 110 |             title="Investment Director"
+ 111 |             metric="+70% Morning Energy"
+ 112 |           />
+ 113 |         </div>
+ 114 | 
+ 115 |         <div className="bg-black/30 rounded-lg p-6 max-w-3xl mx-auto mt-12 backdrop-blur-sm border border-[#940909]/30">
+ 116 |           <p className="text-white text-center text-xl font-medium">
+ 117 |             You're not alone. 95% of high-performing men are trapped in this cycle. But only 1% will escape it.
+ 118 |           </p>
+ 119 |         </div>
+ 120 |       </div>
+ 121 |     </section>
+ 122 |   )
+ 123 | }
+ 124 | 
+
+Changes amended successfully (previous commit was 11528cd)
+
+Current commit hash: 8de7595Now, let's make the Featured Testimonial section use white background as requested:codemcpRequest{
+  `path`: `/Users/marleymcbride/Documents/Cursor Projects/limitless-sales-page/src/components/featured-testimonial.tsx`,
+  `chat_id`: `19-feat-initialize-limitless-sales-page-project`,
+  `subtool`: `EditFile`,
+  `new_string`: `import Image from \"next/image\"
+import { bgClasses } from \"@/lib/utils\"
+
+export default function FeaturedTestimonial() {
+  return (
+    <section className={`w-full pt-12 pb-16 ${bgClasses.white} relative`}>
+      <div className=\"container mx-auto px-4 mt-6 relative z-10\">
+        <div className=\"max-w-4xl mx-auto bg-gradient-to-r from-gray-50 to-white p-8 rounded-lg border border-gray-200 shadow-xl\">
+          <div className=\"flex flex-col md:flex-row gap-6 items-center\">
+            <div className=\"w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden border-4 border-[#940909]/40 shadow-2xl flex-shrink-0\">
+              <Image
+                src=\"/placeholder.svg?height=128&width=128\"
+                alt=\"Michael Richards\"
+                width={128}
+                height={128}
+                className=\"object-cover\"
+              />
+            </div>
+            
+            <div>
+              <svg className=\"h-8 w-8 text-[#940909] mb-3\" viewBox=\"0 0 24 24\" fill=\"currentColor\">
+                <path d=\"M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z\" />
+              </svg>
+              
+              <blockquote className=\"text-xl md:text-2xl text-gray-700 italic font-medium mb-6\">
+                \"Marley is the only coach who actually understands the unique energy challenges high-performers face. His Limitless Protocol didn't just transform my productivity—it completely rewired my relationship with energy. After 8 weeks, I've lost 22 pounds, doubled my output, and haven't touched caffeine in 37 days.\"
+              </blockquote>
+              
+              <div className=\"flex flex-col sm:flex-row justify-between items-start sm:items-center\">
+                <div>
+                  <p className=\"font-bold text-black text-lg\">Michael Richards</p>
+                  <p className=\"text-gray-600\">CEO, Quantum Technologies</p>
+                </div>
+                
+                <div className=\"flex mt-3 sm:mt-0\">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} xmlns=\"http://www.w3.org/2000/svg\" className=\"h-6 w-6 text-[#940909] fill-current\" viewBox=\"0 0 20 20\">
+                      <path d=\"M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z\" />
+                    </svg>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          {/* Visual metrics for enhanced credibility */}
+          <div className=\"grid grid-cols-3 gap-4 mt-8 border-t border-gray-200 pt-6\">
+            <div className=\"text-center\">
+              <p className=\"text-3xl font-bold text-[#940909]\">22lbs</p>
+              <p className=\"text-sm text-gray-600\">Fat Lost</p>
+            </div>
+            <div className=\"text-center\">
+              <p className=\"text-3xl font-bold text-[#940909]\">37 days</p>
+              <p className=\"text-sm text-gray-600\">Caffeine-Free</p>
+            </div>
+            <div className=\"text-center\">
+              <p className=\"text-3xl font-bold text-[#940909]\">2x</p>
+              <p className=\"text-sm text-gray-600\">Productivity</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}`,
+  `old_string`: `import Image from \"next/image\"
+import { bgClasses } from \"@/lib/utils\"
+
+export default function FeaturedTestimonial() {
+  return (
+    <section className=\"bg-black pt-12 pb-16 w-full text-white relative\">
+      {/* Black background base */}
+      <div className=\"absolute inset-0 bg-black\"></div>
+      
+      <div className=\"container mx-auto px-4 mt-6 relative z-10\">
+        <div className=\"max-w-4xl mx-auto bg-gradient-to-r from-zinc-900 to-black p-8 rounded-lg border border-zinc-800 shadow-xl\">
+          <div className=\"flex flex-col md:flex-row gap-6 items-center\">
+            <div className=\"w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden border-4 border-[#940909]/40 shadow-2xl flex-shrink-0\">
+              <Image
+                src=\"/placeholder.svg?height=128&width=128\"
+                alt=\"Michael Richards\"
+                width={128}
+                height={128}
+                className=\"object-cover\"
+              />
+            </div>
+            
+            <div>
+              <svg className=\"h-8 w-8 text-[#940909] mb-3\" viewBox=\"0 0 24 24\" fill=\"currentColor\">
+                <path d=\"M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z\" />
+              </svg>
+              
+              <blockquote className=\"text-xl md:text-2xl text-gray-300 italic font-medium mb-6\">
+                \"Marley is the only coach who actually understands the unique energy challenges high-performers face. His Limitless Protocol didn't just transform my productivity—it completely rewired my relationship with energy. After 8 weeks, I've lost 22 pounds, doubled my output, and haven't touched caffeine in 37 days.\"
+              </blockquote>
+              
+              <div className=\"flex flex-col sm:flex-row justify-between items-start sm:items-center\">
+                <div>
+                  <p className=\"font-bold text-white text-lg\">Michael Richards</p>
+                  <p className=\"text-gray-400\">CEO, Quantum Technologies</p>
+                </div>
+                
+                <div className=\"flex mt-3 sm:mt-0\">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} xmlns=\"http://www.w3.org/2000/svg\" className=\"h-6 w-6 text-[#940909] fill-current\" viewBox=\"0 0 20 20\">
+                      <path d=\"M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z\" />
+                    </svg>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          {/* Visual metrics for enhanced credibility */}
+          <div className=\"grid grid-cols-3 gap-4 mt-8 border-t border-zinc-800 pt-6\">
+            <div className=\"text-center\">
+              <p className=\"text-3xl font-bold text-[#940909]\">22lbs</p>
+              <p className=\"text-sm text-gray-400\">Fat Lost</p>
+            </div>
+            <div className=\"text-center\">
+              <p className=\"text-3xl font-bold text-[#940909]\">37 days</p>
+              <p className=\"text-sm text-gray-400\">Caffeine-Free</p>
+            </div>
+            <div className=\"text-center\">
+              <p className=\"text-3xl font-bold text-[#940909]\">2x</p>
+              <p className=\"text-sm text-gray-400\">Productivity</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}`,
+  `description`: `Update Featured Testimonial to use white background`
+}ResponseError executing tool codemcp: String to replace not found in file.Let me try reading the current version of the featured testimonial file first:codemcpRequest{
+  `path`: `/Users/marleymcbride/Documents/Cursor Projects/limitless-sales-page/src/components/featured-testimonial.tsx`,
+  `chat_id`: `19-feat-initialize-limitless-sales-page-project`,
+  `subtool`: `ReadFile`
+}Response     1	import Image from "next/image"
+     2	import { bgClasses } from "@/lib/utils"
+     3	
+     4	export default function FeaturedTestimonial() {
+     5	  return (
+     6	    <section className="bg-black pt-12 pb-16 w-full text-white relative">
+     7	      {/* Black background base */}
+     8	      <div className="absolute inset-0 bg-black"></div>
+     9	
+    10	      <div className="container mx-auto px-4 mt-6 relative z-10">
+    11	        <div className="max-w-4xl mx-auto bg-gradient-to-r from-zinc-900 to-black p-8 rounded-lg border border-zinc-800 shadow-xl">
+    12	          <div className="flex flex-col md:flex-row gap-6 items-center">
+    13	            <div className="w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden border-4 border-[#940909]/40 shadow-2xl flex-shrink-0">
+    14	              <Image
+    15	                src="/placeholder.svg?height=128&width=128"
+    16	                alt="Michael Richards"
+    17	                width={128}
+    18	                height={128}
+    19	                className="object-cover"
+    20	              />
+    21	            </div>
+    22	
+    23	            <div>
+    24	              <svg className="h-8 w-8 text-[#940909] mb-3" viewBox="0 0 24 24" fill="currentColor">
+    25	                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+    26	              </svg>
+    27	
+    28	              <blockquote className="text-xl md:text-2xl text-gray-300 italic font-medium mb-6">
+    29	                "Marley is the only coach who actually understands the unique energy challenges high-performers face. His Limitless Protocol didn't just transform my productivity—it completely rewired my relationship with energy. After 8 weeks, I've lost 22 pounds, doubled my output, and haven't touched caffeine in 37 days."
+    30	              </blockquote>
+    31	
+    32	              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center">
+    33	                <div>
+    34	                  <p className="font-bold text-white text-lg">Michael Richards</p>
+    35	                  <p className="text-gray-400">CEO, Quantum Technologies</p>
+    36	                </div>
+    37	
+    38	                <div className="flex mt-3 sm:mt-0">
+    39	                  {[...Array(5)].map((_, i) => (
+    40	                    <svg key={i} xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-[#940909] fill-current" viewBox="0 0 20 20">
+    41	                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+    42	                    </svg>
+    43	                  ))}
+    44	                </div>
+    45	              </div>
+    46	            </div>
+    47	          </div>
+    48	
+    49	          {/* Visual metrics for enhanced credibility */}
+    50	          <div className="grid grid-cols-3 gap-4 mt-8 border-t border-zinc-800 pt-6">
+    51	            <div className="text-center">
+    52	              <p className="text-3xl font-bold text-[#940909]">22lbs</p>
+    53	              <p className="text-sm text-gray-400">Fat Lost</p>
+    54	            </div>
+    55	            <div className="text-center">
+    56	              <p className="text-3xl font-bold text-[#940909]">37 days</p>
+    57	              <p className="text-sm text-gray-400">Caffeine-Free</p>
+    58	            </div>
+    59	            <div className="text-center">
+    60	              <p className="text-3xl font-bold text-[#940909]">2x</p>
+    61	              <p className="text-sm text-gray-400">Productivity</p>
+    62	            </div>
+    63	          </div>
+    64	        </div>
+    65	      </div>
+    66	    </section>
+    67	  )
+    68	}
+
+Current commit hash: 8de7595Now I'll update the Featured Testimonial with white background:codemcpRequest{
+  `path`: `/Users/marleymcbride/Documents/Cursor Projects/limitless-sales-page/src/components/featured-testimonial.tsx`,
+  `chat_id`: `19-feat-initialize-limitless-sales-page-project`,
+  `subtool`: `EditFile`,
+  `old_string`: `import Image from \"next/image\"
+import { bgClasses } from \"@/lib/utils\"
+
+export default function FeaturedTestimonial() {
+  return (
+    <section className=\"bg-black pt-12 pb-16 w-full text-white relative\">
+      {/* Black background base */}
+      <div className=\"absolute inset-0 bg-black\"></div>
+
+      <div className=\"container mx-auto px-4 mt-6 relative z-10\">
+        <div className=\"max-w-4xl mx-auto bg-gradient-to-r from-zinc-900 to-black p-8 rounded-lg border border-zinc-800 shadow-xl\">
+          <div className=\"flex flex-col md:flex-row gap-6 items-center\">
+            <div className=\"w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden border-4 border-[#940909]/40 shadow-2xl flex-shrink-0\">
+              <Image
+                src=\"/placeholder.svg?height=128&width=128\"
+                alt=\"Michael Richards\"
+                width={128}
+                height={128}
+                className=\"object-cover\"
+              />
+            </div>
+
+            <div>
+              <svg className=\"h-8 w-8 text-[#940909] mb-3\" viewBox=\"0 0 24 24\" fill=\"currentColor\">
+                <path d=\"M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z\" />
+              </svg>
+
+              <blockquote className=\"text-xl md:text-2xl text-gray-300 italic font-medium mb-6\">
+                \"Marley is the only coach who actually understands the unique energy challenges high-performers face. His Limitless Protocol didn't just transform my productivity—it completely rewired my relationship with energy. After 8 weeks, I've lost 22 pounds, doubled my output, and haven't touched caffeine in 37 days.\"
+              </blockquote>
+
+              <div className=\"flex flex-col sm:flex-row justify-between items-start sm:items-center\">
+                <div>
+                  <p className=\"font-bold text-white text-lg\">Michael Richards</p>
+                  <p className=\"text-gray-400\">CEO, Quantum Technologies</p>
+                </div>
+
+                <div className=\"flex mt-3 sm:mt-0\">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} xmlns=\"http://www.w3.org/2000/svg\" className=\"h-6 w-6 text-[#940909] fill-current\" viewBox=\"0 0 20 20\">
+                      <path d=\"M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z\" />
+                    </svg>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Visual metrics for enhanced credibility */}
+          <div className=\"grid grid-cols-3 gap-4 mt-8 border-t border-zinc-800 pt-6\">
+            <div className=\"text-center\">
+              <p className=\"text-3xl font-bold text-[#940909]\">22l`
+}RetryClaude hit the max length for a message and has paused its response. You can write Continue to keep the chat going.MContinueEditI'll continue implementing the changes:codemcpRequest{
+  `chat_id`: `19-feat-initialize-limitless-sales-page-project`,
+  `subtool`: `UserPrompt`,
+  `user_prompt`: `Continue`
+}ResponseUser prompt receivedLet's continue by updating the Featured Testimonial section with a white background. I'll write the complete file:codemcpRequest{
+  `path`: `/Users/marleymcbride/Documents/Cursor Projects/limitless-sales-page/src/components/featured-testimonial.tsx`,
+  `chat_id`: `19-feat-initialize-limitless-sales-page-project`,
+  `content`: `import Image from \"next/image\"
+import { bgClasses } from \"@/lib/utils\"
+
+export default function FeaturedTestimonial() {
+  return (
+    <section className={`w-full pt-12 pb-16 ${bgClasses.white} relative`}>
+      <div className=\"container mx-auto px-4 mt-6 relative z-10\">
+        <div className=\"max-w-4xl mx-auto bg-gradient-to-r from-gray-50 to-white p-8 rounded-lg border border-gray-200 shadow-xl\">
+          <div className=\"flex flex-col md:flex-row gap-6 items-center\">
+            <div className=\"w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden border-4 border-[#940909]/40 shadow-2xl flex-shrink-0\">
+              <Image
+                src=\"/placeholder.svg?height=128&width=128\"
+                alt=\"Michael Richards\"
+                width={128}
+                height={128}
+                className=\"object-cover\"
+              />
+            </div>
+            
+            <div>
+              <svg className=\"h-8 w-8 text-[#940909] mb-3\" viewBox=\"0 0 24 24\" fill=\"currentColor\">
+                <path d=\"M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z\" />
+              </svg>
+              
+              <blockquote className=\"text-xl md:text-2xl text-gray-700 italic font-medium mb-6\">
+                \"Marley is the only coach who actually understands the unique energy challenges high-performers face. His Limitless Protocol didn't just transform my productivity—it completely rewired my relationship with energy. After 8 weeks, I've lost 22 pounds, doubled my output, and haven't touched caffeine in 37 days.\"
+              </blockquote>
+              
+              <div className=\"flex flex-col sm:flex-row justify-between items-start sm:items-center\">
+                <div>
+                  <p className=\"font-bold text-black text-lg\">Michael Richards</p>
+                  <p className=\"text-gray-600\">CEO, Quantum Technologies</p>
+                </div>
+                
+                <div className=\"flex mt-3 sm:mt-0\">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} xmlns=\"http://www.w3.org/2000/svg\" className=\"h-6 w-6 text-[#940909] fill-current\" viewBox=\"0 0 20 20\">
+                      <path d=\"M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z\" />
+                    </svg>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          {/* Visual metrics for enhanced credibility */}
+          <div className=\"grid grid-cols-3 gap-4 mt-8 border-t border-gray-200 pt-6\">
+            <div className=\"text-center\">
+              <p className=\"text-3xl font-bold text-[#940909]\">22lbs</p>
+              <p className=\"text-sm text-gray-600\">Fat Lost</p>
+            </div>
+            <div className=\"text-center\">
+              <p className=\"text-3xl font-bold text-[#940909]\">37 days</p>
+              <p className=\"text-sm text-gray-600\">Caffeine-Free</p>
+            </div>
+            <div className=\"text-center\">
+              <p className=\"text-3xl font-bold text-[#940909]\">2x</p>
+              <p className=\"text-sm text-gray-600\">Productivity</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}`,
+  `subtool`: `WriteFile`,
+  `description`: `Update Featured Testimonial to use white background`
+}ResponseSuccessfully wrote to /Users/marleymcbride/Documents/Cursor Projects/limitless-sales-page/src/components/featured-testimonial.tsx
+Changes committed to git: Update Featured Testimonial to use white background
+
+Current commit hash: dc04154Now, let's create a more minimal footer as requested:codemcpRequest{
+  `path`: `/Users/marleymcbride/Documents/Cursor Projects/limitless-sales-page/src/components/footer-section.tsx`,
+  `chat_id`: `19-feat-initialize-limitless-sales-page-project`,
+  `subtool`: `ReadFile`
+}Response     1	import Link from "next/link"
+     2	import { bgClasses, invertedGradientOverlay } from "@/lib/utils"
+     3	
+     4	export default function FooterSection() {
+     5	  const currentYear = new Date().getFullYear()
+     6	
+     7	  return (
+     8	    <footer className={`${bgClasses.blackRedGradient} py-6 relative`}>
+     9	      {invertedGradientOverlay}
+    10	      <div className="container mx-auto px-4 relative z-10">
+    11	        <div className="flex flex-col md:flex-row justify-between items-center">
+    12	          <div className="mb-3 md:mb-0">
+    13	            <p className="text-xs text-gray-500">
+    14	              © {currentYear} Limitless Life
+    15	            </p>
+    16	          </div>
+    17	
+    18	          <div className="flex space-x-4">
+    19	            <Link href="/privacy" className="text-xs text-gray-500 hover:text-white transition-colors">
+    20	              Privacy
+    21	            </Link>
+    22	            <Link href="/terms" className="text-xs text-gray-500 hover:text-white transition-colors">
+    23	              Terms
+    24	            </Link>
+    25	          </div>
+    26	        </div>
+    27	      </div>
+    28	    </footer>
+    29	  )
+    30	}
+
+Current commit hash: dc04154The footer already looks pretty minimal and functional. Let's make it even more minimal as requested, and ensure it uses the black background:codemcpRequest{
+  `path`: `/Users/marleymcbride/Documents/Cursor Projects/limitless-sales-page/src/components/footer-section.tsx`,
+  `chat_id`: `19-feat-initialize-limitless-sales-page-project`,
+  `subtool`: `EditFile`,
+  `new_string`: `import Link from \"next/link\"
+import { bgClasses } from \"@/lib/utils\"
+
+export default function FooterSection() {
+  const currentYear = new Date().getFullYear()
+
+  return (
+    <footer className=\"bg-black py-4 text-white\">
+      <div className=\"container mx-auto px-4\">
+        <div className=\"flex justify-between items-center\">
+          <p className=\"text-xs text-gray-500\">
+            © {currentYear} Limitless Life
+          </p>
+          <div className=\"flex space-x-4\">
+            <Link href=\"/privacy\" className=\"text-xs text-gray-500 hover:text-white transition-colors\">
+              Privacy
+            </Link>
+            <Link href=\"/terms\" className=\"text-xs text-gray-500 hover:text-white transition-colors\">
+              Terms
+            </Link>
+          </div>
+        </div>
+      </div>
+    </footer>
+  )
+}`,
+  `old_string`: `import Link from \"next/link\"
+import { bgClasses, invertedGradientOverlay } from \"@/lib/utils\"
+
+export default function FooterSection() {
+  const currentYear = new Date().getFullYear()
+
+  return (
+    <footer className={`${bgClasses.blackRedGradient} py-6 relative`}>
+      {invertedGradientOverlay}
+      <div className=\"container mx-auto px-4 relative z-10\">
+        <div className=\"flex flex-col md:flex-row justify-between items-center\">
+          <div className=\"mb-3 md:mb-0\">
+            <p className=\"text-xs text-gray-500\">
+              © {currentYear} Limitless Life
+            </p>
+          </div>
+
+          <div className=\"flex space-x-4\">
+            <Link href=\"/privacy\" className=\"text-xs text-gray-500 hover:text-white transition-colors\">
+              Privacy
+            </Link>
+            <Link href=\"/terms\" className=\"text-xs text-gray-500 hover:text-white transition-colors\">
+              Terms
+            </Link>
+          </div>
+        </div>
+      </div>
+    </footer>
+  )
+}`,
+  `description`: `Update footer to be more minimal`
+}ResponseSuccessfully edited /Users/marleymcbride/Documents/Cursor Projects/limitless-sales-page/src/components/footer-section.tsx
+
+Here's a snippet of the edited file:
+   1 | import Link from "next/link"
+   2 | import { bgClasses } from "@/lib/utils"
+   3 | 
+   4 | export default function FooterSection() {
+   5 |   const currentYear = new Date().getFullYear()
+   6 | 
+   7 |   return (
+   8 |     <footer className="bg-black py-4 text-white">
+   9 |       <div className="container mx-auto px-4">
+  10 |         <div className="flex justify-between items-center">
+  11 |           <p className="text-xs text-gray-500">
+  12 |             © {currentYear} Limitless Life
+  13 |           </p>
+  14 |           <div className="flex space-x-4">
+  15 |             <Link href="/privacy" className="text-xs text-gray-500 hover:text-white transition-colors">
+  16 |               Privacy
+  17 |             </Link>
+  18 |             <Link href="/terms" className="text-xs text-gray-500 hover:text-white transition-colors">
+  19 |               Terms
+  20 |             </Link>
+  21 |           </div>
+  22 |         </div>
+  23 |       </div>
+  24 |     </footer>
+  25 |   )
+  26 | }
+  27 | 
+
+Changes amended successfully (previous commit was dc04154)
+
+Current commit hash: 85684e9Now, let's update the main page.tsx to include the new Natty Sweet Spot section and modify the StickyCTA to appear only after significant scrolling:codemcpRequest{
+  `path`: `/Users/marleymcbride/Documents/Cursor Projects/limitless-sales-page/src/components/sticky-cta.tsx`,
+  `chat_id`: `19-feat-initialize-limitless-sales-page-project`,
+  `subtool`: `ReadFile`
+}Response     1	"use client"
+     2	
+     3	import { useState, useEffect } from "react";
+     4	import { ArrowUp } from "lucide-react";
+     5	import ApplyNowButton from "./apply-now-button";
+     6	
+     7	export default function StickyCTA() {
+     8	  const [isVisible, setIsVisible] = useState(false);
+     9	
+    10	  useEffect(() => {
+    11	    const handleScroll = () => {
+    12	      // Show after scrolling down at least 30% of the page height
+    13	      const pageHeight = document.documentElement.scrollHeight;
+    14	      const viewportHeight = window.innerHeight;
+    15	      const scrollThreshold = (pageHeight - viewportHeight) * 0.3;
+    16	
+    17	      // Only show after significant scrolling (at least 2000px or 30% of page, whichever is greater)
+    18	      setIsVisible(window.scrollY > Math.max(2000, scrollThreshold));
+    19	    };
+    20	
+    21	    window.addEventListener("scroll", handleScroll);
+    22	    return () => window.removeEventListener("scroll", handleScroll);
+    23	  }, []);
+    24	
+    25	  const scrollToTop = () => {
+    26	    window.scrollTo({ top: 0, behavior: "smooth" });
+    27	  };
+    28	
+    29	  if (!isVisible) return null;
+    30	
+    31	  return (
+    32	    <div className="fixed bottom-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-sm border-t border-[#940909]/60 py-3 px-4 shadow-lg transform transition-all duration-300 animate-fade-in">
+    33	      <div className="container mx-auto flex justify-between items-center">
+    34	        <div className="hidden md:block">
+    35	          <p className="text-white font-bold">The Limitless Protocol</p>
+    36	          <p className="text-white/70 text-sm">Transform your energy in 12 weeks</p>
+    37	        </div>
+    38	
+    39	        <div className="flex gap-4 items-center ml-auto">
+    40	          <button
+    41	            onClick={scrollToTop}
+    42	            className="p-2 bg-[#940909]/20 rounded-full hover:bg-[#940909]/40 transition-colors"
+    43	            aria-label="Scroll to top"
+    44	          >
+    45	            <ArrowUp className="h-5 w-5 text-white" />
+    46	          </button>
+    47	
+    48	          <ApplyNowButton
+    49	            text="JOIN NOW"
+    50	            className="py-2 px-6 text-base"
+    51	          />
+    52	        </div>
+    53	      </div>
+    54	    </div>
+    55	  );
+    56	}
+
+Current commit hash: 85684e9Let's update the StickyCTA to appear only after more significant scrolling:codemcpRequest{
+  `path`: `/Users/marleymcbride/Documents/Cursor Projects/limitless-sales-page/src/components/sticky-cta.tsx`,
+  `chat_id`: `19-feat-initialize-limitless-sales-page-project`,
+  `subtool`: `EditFile`,
+  `new_string`: `\"use client\"
+
+import { useState, useEffect } from \"react\";
+import { ArrowUp } from \"lucide-react\";
+import ApplyNowButton from \"./apply-now-button\";
+
+export default function StickyCTA() {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Show after scrolling down at least 50% of the page height
+      const pageHeight = document.documentElement.scrollHeight;
+      const viewportHeight = window.innerHeight;
+      const scrollThreshold = (pageHeight - viewportHeight) * 0.5;
+
+      // Only show after significant scrolling (at least 3000px or 50% of page, whichever is greater)
+      setIsVisible(window.scrollY > Math.max(3000, scrollThreshold));
+    };
+
+    window.addEventListener(\"scroll\", handleScroll);
+    return () => window.removeEventListener(\"scroll\", handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: \"smooth\" });
+  };
+
+  if (!isVisible) return null;
+
+  return (
+    <div className=\"fixed bottom-0 left-0 right-0 z-50 bg-zinc-900/90 backdrop-blur-sm border-t border-[#940909]/60 py-3 px-4 shadow-lg transform transition-all duration-300 animate-fade-in\">
+      <div className=\"container mx-auto flex justify-between items-center\">
+        <div className=\"hidden md:block\">
+          <p className=\"text-white font-bold\">The Limitless Protocol</p>
+          <p className=\"text-white/70 text-sm\">Transform your energy in 12 weeks</p>
+        </div>
+
+        <div className=\"flex gap-4 items-center ml-auto\">
+          <button
+            onClick={scrollToTop}
+            className=\"p-2 bg-[#940909]/20 rounded-full hover:bg-[#940909]/40 transition-colors\"
+            aria-label=\"Scroll to top\"
+          >
+            <ArrowUp className=\"h-5 w-5 text-white\" />
+          </button>
+
+          <ApplyNowButton
+            text=\"JOIN NOW\"
+            className=\"py-2 px-6 text-base\"
+          />
+        </div>
+      </div>
+    </div>
+  );
+}`,
+  `old_string`: `\"use client\"
+
+import { useState, useEffect } from \"react\";
+import { ArrowUp } from \"lucide-react\";
+import ApplyNowButton from \"./apply-now-button\";
+
+export default function StickyCTA() {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Show after scrolling down at least 30% of the page height
+      const pageHeight = document.documentElement.scrollHeight;
+      const viewportHeight = window.innerHeight;
+      const scrollThreshold = (pageHeight - viewportHeight) * 0.3;
+
+      // Only show after significant scrolling (at least 2000px or 30% of page, whichever is greater)
+      setIsVisible(window.scrollY > Math.max(2000, scrollThreshold));
+    };
+
+    window.addEventListener(\"scroll\", handleScroll);
+    return () => window.removeEventListener(\"scroll\", handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: \"smooth\" });
+  };
+
+  if (!isVisible) return null;
+
+  return (
+    <div className=\"fixed bottom-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-sm border-t border-[#940909]/60 py-3 px-4 shadow-lg transform transition-all duration-300 animate-fade-in\">
+      <div className=\"container mx-auto flex justify-between items-center\">
+        <div className=\"hidden md:block\">
+          <p className=\"text-white font-bold\">The Limitless Protocol</p>
+          <p className=\"text-white/70 text-sm\">Transform your energy in 12 weeks</p>
+        </div>
+
+        <div className=\"flex gap-4 items-center ml-auto\">
+          <button
+            onClick={scrollToTop}
+            className=\"p-2 bg-[#940909]/20 rounded-full hover:bg-[#940909]/40 transition-colors\"
+            aria-label=\"Scroll to top\"
+          >
+            <ArrowUp className=\"h-5 w-5 text-white\" />
+          </button>
+
+          <ApplyNowButton
+            text=\"JOIN NOW\"
+            className=\"py-2 px-6 text-base\"
+          />
+        </div>
+      </div>
+    </div>
+  );
+}`,
+  `description`: `Update StickyCTA to appear only after more significant scrolling`
+}ResponseSuccessfully edited /Users/marleymcbride/Documents/Cursor Projects/limitless-sales-page/src/components/sticky-cta.tsx
+
+Here's a snippet of the edited file:
+   1 | "use client"
+   2 | 
+   3 | import { useState, useEffect } from "react";
+   4 | import { ArrowUp } from "lucide-react";
+   5 | import ApplyNowButton from "./apply-now-button";
+   6 | 
+   7 | export default function StickyCTA() {
+   8 |   const [isVisible, setIsVisible] = useState(false);
+   9 | 
+  10 |   useEffect(() => {
+  11 |     const handleScroll = () => {
+  12 |       // Show after scrolling down at least 50% of the page height
+  13 |       const pageHeight = document.documentElement.scrollHeight;
+  14 |       const viewportHeight = window.innerHeight;
+  15 |       const scrollThreshold = (pageHeight - viewportHeight) * 0.5;
+  16 | 
+  17 |       // Only show after significant scrolling (at least 3000px or 50% of page, whichever is greater)
+  18 |       setIsVisible(window.scrollY > Math.max(3000, scrollThreshold));
+  19 |     };
+  20 | 
+  21 |     window.addEventListener("scroll", handleScroll);
+  22 |     return () => window.removeEventListener("scroll", handleScroll);
+  23 |   }, []);
+  24 | 
+  25 |   const scrollToTop = () => {
+  26 |     window.scrollTo({ top: 0, behavior: "smooth" });
+  27 |   };
+  28 | 
+  29 |   if (!isVisible) return null;
+  30 | 
+  31 |   return (
+  32 |     <div className="fixed bottom-0 left-0 right-0 z-50 bg-zinc-900/90 backdrop-blur-sm border-t border-[#940909]/60 py-3 px-4 shadow-lg transform transition-all duration-300 animate-fade-in">
+  33 |       <div className="container mx-auto flex justify-between items-center">
+  34 |         <div className="hidden md:block">
+  35 |           <p className="text-white font-bold">The Limitless Protocol</p>
+  36 |           <p className="text-white/70 text-sm">Transform your energy in 12 weeks</p>
+  37 |         </div>
+  38 | 
+  39 |         <div className="flex gap-4 items-center ml-auto">
+  40 |           <button
+  41 |             onClick={scrollToTop}
+  42 |             className="p-2 bg-[#940909]/20 rounded-full hover:bg-[#940909]/40 transition-colors"
+  43 |             aria-label="Scroll to top"
+  44 |           >
+  45 |             <ArrowUp className="h-5 w-5 text-white" />
+  46 |           </button>
+  47 | 
+  48 |           <ApplyNowButton
+  49 |             text="JOIN NOW"
+  50 |             className="py-2 px-6 text-base"
+  51 |           />
+  52 |         </div>
+  53 |       </div>
+  54 |     </div>
+  55 |   );
+  56 | }
+  57 | 
+
+Changes amended successfully (previous commit was 85684e9)
+
+Current commit hash: a1d7579Now, let's update the main page.tsx to include our new Natty Sweet Spot section and make any other necessary adjustments:codemcpRequest{
+  `path`: `/Users/marleymcbride/Documents/Cursor Projects/limitless-sales-page/src/app/page.tsx`,
+  `chat_id`: `19-feat-initialize-limitless-sales-page-project`,
+  `subtool`: `EditFile`,
+  `new_string`: `import Image from \"next/image\"
+import EnhancedVideoPlayer from \"../components/enhanced-video-player\"
+import FeaturedTestimonial from \"../components/featured-testimonial\"
+import PainPoints from \"../components/pain-points\"
+import PersonalStorySection from \"../components/personal-story-section\"
+import DiscoverySection from \"../components/discovery-section\"
+import RunningEmptySection from \"../components/running-empty-section\"
+import SuccessStoriesSection from \"../components/success-stories-section\"
+import SolutionSection from \"../components/solution-section\"
+import ProgramComponentsSection from \"../components/program-components-section\"
+import ResultsSection from \"../components/results-section\"
+import ComparisonTable from \"../components/comparison-table\"
+import CoachSection from \"../components/coach-section\"
+import ProgramDetails from \"../components/program-details\"
+import WhatsIncluded from \"../components/whats-included\"
+import FaqSection from \"../components/faq-section\"
+import FinalCta from \"../components/final-cta\"
+import FooterSection from \"../components/footer-section\"
+import StickyCTA from \"../components/sticky-cta\"
+import NattySweetSpotSection from \"../components/natty-sweet-spot-section\"
+import { bgClasses, blackRedGradientOverlay, redAccentBottom, vignetteEffect } from \"../lib/utils\"
+
+export default function Home() {
+  return (
+    <main className=\"flex min-h-screen flex-col items-center\">
+      {/* 1. Hero Section (black with red gradient) */}
+      <section className={`py-6 md:py-8 px-4 min-h-[94.75vh] flex flex-col relative w-full overflow-hidden ${bgClasses.blackRedGradient}`}>
+        {blackRedGradientOverlay}
+        {redAccentBottom}
+        <div className=\"absolute top-0 left-0 w-full h-[25vh] bg-gradient-to-b from-black to-transparent\"></div>
+        {vignetteEffect}
+
+        <div className=\"container mx-auto flex flex-col relative z-10 h-full\">
+          {/* Mobile view - headline and subheadline optimized for mobile */}
+          <div className=\"flex-grow flex flex-col justify-start sm:justify-center pt-10 sm:pt-0 sm:mt-12 md:mt-0\">
+            <h1 className=\"text-5xl sm:text-5xl md:text-4xl lg:text-5xl font-bold text-white text-center mb-8 mt-0 sm:mt-0\">
+              The Proven 12-Week System For Executive Health Transformation
+            </h1>
+            <p className=\"text-xl sm:text-xl md:text-lg text-gray-300 text-center max-w-3xl mx-auto mb-8 sm:mb-16 px-2\">
+              The step-by-step program that has helped hundreds of high-performing men break free from burnout, reclaim their energy, and build unstoppable physical and mental performance without sacrificing their success
+            </p>
+          </div>
+
+          {/* Video container positioned in the bottom portion of the screen */}
+          <div className=\"mt-auto mb-6 mx-auto w-full sm:mb-12\">
+            <div className=\"relative w-full sm:w-auto sm:mx-auto\" style={{ maxWidth: \"95%\", marginLeft: \"auto\", marginRight: \"auto\" }}>
+              {/* Purple play button overlay for mobile */}
+              <div className=\"absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 bg-[#940909] flex items-center justify-center md:hidden z-30\">
+                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"white\">
+                  <polygon points=\"5 3 19 12 5 21 5 3\"></polygon>
+                </svg>
+              </div>
+              {/* Sound indicator for mobile */}
+              <div className=\"absolute bottom-4 right-4 bg-black/70 rounded-full px-3 py-1 text-white text-sm md:hidden z-30\">
+                Tap for sound
+              </div>
+              <EnhancedVideoPlayer />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 2. Credibility Quote (background: white) */}
+      <FeaturedTestimonial />
+
+      {/* 3. Your Body Is Running A Failed Program (background: black with red) */}
+      <PainPoints />
+
+      {/* 4. Personal Story Section (background: white) */}
+      <PersonalStorySection />
+
+      {/* 5. The 80/20 Discovery (background: white) */}
+      <DiscoverySection />
+
+      {/* 6. Running on Empty + Three Ways to Live (background: black with red gradient) */}
+      <RunningEmptySection />
+
+      {/* 7. The Natty Sweet Spot (background: black with red) */}
+      <NattySweetSpotSection />
+
+      {/* 8. Success Stories Gallery (background: white) */}
+      <SuccessStoriesSection />
+
+      {/* 9. Solution Section (background: black with red) */}
+      <SolutionSection />
+
+      {/* 10. Program Components/Systems (background: black with red) */}
+      <ProgramComponentsSection />
+
+      {/* 11. Benefits & Results (background: white) */}
+      <ResultsSection />
+
+      {/* 12. Comparison Table (background: black with red) */}
+      <ComparisonTable />
+
+      {/* 13. About the Coach (background: white) */}
+      <CoachSection />
+
+      {/* 14. Program Details (background: black with red) */}
+      <ProgramDetails />
+
+      {/* 15. What's Included (background: black with red) */}
+      <WhatsIncluded />
+
+      {/* 16. FAQ Section (includes guarantee - background: white) */}
+      <FaqSection />
+
+      {/* 17. Final Recap + CTA (background: black with red) */}
+      <FinalCta />
+
+      {/* 18. Footer (background: black) */}
+      <FooterSection />
+
+      {/* Sticky CTA that appears after significant scrolling */}
+      <StickyCTA />
+    </main>
+  )
+}`,
+  `old_string`: `import Image from \"next/image\"
+import FeaturedTestimonial from \"../components/featured-testimonial\"
+import PainPoints from \"../components/pain-points\"
+import PersonalStorySection from \"../components/personal-story-section\"
+import DiscoverySection from \"../components/discovery-section\"
+import RunningEmptySection from \"../components/running-empty-section\"
+import SuccessStoriesSection from \"../components/success-stories-section\"
+import SolutionSection from \"../components/solution-section\"
+import ProgramComponentsSection from \"../components/program-components-section\"
+import ResultsSection from \"../components/results-section\"
+import ComparisonTable from \"../components/comparison-table\"
+import CoachSection from \"../components/coach-section\"
+import ProgramDetails from \"../components/program-details\"
+import WhatsIncluded from \"../components/whats-included\"
+import GuaranteeSection from \"../components/guarantee-section\"
+import FaqSection from \"../components/faq-section\"
+import FinalCta from \"../components/final-cta\"
+import FooterSection from \"../components/footer-section\"
+import StickyCTA from \"../components/sticky-cta\"
+import EnhancedVideoPlayer from \"../components/enhanced-video-player\"
+import { bgClasses, blackRedGradientOverlay, redAccentBottom, vignetteEffect } from \"../lib/utils\"
+
+export default function Home() {
+  return (
+    <main className=\"flex min-h-screen flex-col items-center\">
+      {/* 1. Hero Section (black with red gradient) */}
+      <section className={`py-6 md:py-8 px-4 min-h-[94.75vh] flex flex-col relative w-full overflow-hidden ${bgClasses.blackRedGradient}`}>
+        {blackRedGradientOverlay}
+        {redAccentBottom}
+        <div className=\"absolute top-0 left-0 w-full h-[25vh] bg-gradient-to-b from-black to-transparent\"></div>
+        {vignetteEffect}
+
+        <div className=\"container mx-auto flex flex-col relative z-10 h-full\">
+          {/* Mobile view - headline and subheadline optimized for mobile */}
+          <div className=\"flex-grow flex flex-col justify-start sm:justify-center pt-10 sm:pt-0 sm:mt-12 md:mt-0\">
+            <h1 className=\"text-5xl sm:text-5xl md:text-4xl lg:text-5xl font-bold text-white text-center mb-8 mt-0 sm:mt-0\">
+              The Proven 12-Week System For Executive Health Transformation
+            </h1>
+            <p className=\"text-xl sm:text-xl md:text-lg text-gray-300 text-center max-w-3xl mx-auto mb-8 sm:mb-16 px-2\">
+              The step-by-step program that has helped hundreds of high-performing men break free from burnout, reclaim their energy, and build unstoppable physical and mental performance without sacrificing their success
+            </p>
+          </div>
+
+          {/* Video container positioned in the bottom portion of the screen */}
+          <div className=\"mt-auto mb-6 mx-auto w-full sm:mb-12\">
+            <div className=\"relative w-full sm:w-auto sm:mx-auto\" style={{ maxWidth: \"95%\", marginLeft: \"auto\", marginRight: \"auto\" }}>
+              {/* Purple play button overlay for mobile */}
+              <div className=\"absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 bg-[#940909] flex items-center justify-center md:hidden z-30\">
+                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"white\">
+                  <polygon points=\"5 3 19 12 5 21 5 3\"></polygon>
+                </svg>
+              </div>
+              {/* Sound indicator for mobile */}
+              <div className=\"absolute bottom-4 right-4 bg-black/70 rounded-full px-3 py-1 text-white text-sm md:hidden z-30\">
+                Tap for sound
+              </div>
+              <EnhancedVideoPlayer />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 2. Credibility Quote (background: black) */}
+      <FeaturedTestimonial />
+
+      {/* 3. Pain Points (background: white) */}
+      <PainPoints />
+
+      {/* 4. Personal Story Section (background: dark red) */}
+      <PersonalStorySection />
+
+      {/* 5. The 80/20 Discovery (background: white) */}
+      <DiscoverySection />
+
+      {/* 6. Running on Empty + Three Ways to Live (background: black with red gradient) */}
+      <RunningEmptySection />
+
+      {/* 7. Success Stories Gallery (background: white) */}
+      <SuccessStoriesSection />
+
+      {/* 8. Deep-Dive Offer Intro/Solution Section (background: dark red) */}
+      <SolutionSection />
+
+      {/* 9. Program Components Breakdown (background: grey) */}
+      <ProgramComponentsSection />
+
+      {/* 10. Benefits & Results (background: white) */}
+      <ResultsSection />
+
+      {/* 11. Comparison Table (background: dark red) */}
+      <ComparisonTable />
+
+      {/* 12. About the Coach (background: white) */}
+      <CoachSection />
+
+      {/* 13. Program Details (background: black with red gradient) */}
+      <ProgramDetails />
+
+      {/* 14. What's Included (background: grey) */}
+      <WhatsIncluded />
+
+      {/* 15. Guarantee/Risk Reversal (background: white) */}
+      <GuaranteeSection />
+
+      {/* 16. FAQ Section (background: grey) */}
+      <FaqSection />
+
+      {/* 17. Final Recap + CTA (background: white) */}
+      <FinalCta />
+
+      {/* 18. Footer/Legal (background: black) */}
+      <FooterSection />
+
+      {/* Sticky CTA that appears on scroll */}
+      <StickyCTA />
+    </main>
+  )
+}`,
+  `description`: `Update main page to include Natty Sweet Spot section and modify section ordering`
+}ResponseError executing tool codemcp: String to replace not found in file.Let me try again with the correct file content:
