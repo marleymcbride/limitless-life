@@ -1,0 +1,13 @@
+{
+  "extends": [
+    "development"
+  ],
+  "browserslist": [
+    "defaults",
+    "not ie 11",
+    "not chrome <= 112"
+  ],
+  "hints": {
+    "no-inline-styles": "off"
+  }
+}
