@@ -5,16 +5,14 @@ const testimonials = [
   { image: "/images/Testimonials/Matty feels so good.jpeg" },
   { image: "/images/Testimonials/Lewis hits 168 feels great.png" },
   { image: "/images/Testimonials/Aaron - nearly 20kg down.jpg" },
-  { image: "/images/Testimonials/Laurence - 10 week cut.png" },
   { image: "/images/Testimonials/Rob down 17lbs and clothes dont fit copy.PNG" },
   { image: "/images/Testimonials/Ryan social proof - 190s to 160s.png" },
   { image: "/images/Testimonials/Luis social proof.png" },
   { image: "/images/Testimonials/Geoff - best shape ever been in.jpg" },
   { image: "/images/Testimonials/Laurence social proof.png" },
   { image: "/images/Testimonials/Geoff 2 month progress abs jacked.png" },
-  { image: "/images/Testimonials/Client L social proof.png" },
   { image: "/images/Testimonials/Gav social proof - 10lbs in 8 weeks.png" },
-  { image: "/images/Testimonials/Gavs weight trend - 10lbs in 8 weeks.png" },
+  { image: "/images/Testimonials/Gav's weight trend - 10lbs in 8 weeks.png" },
   { image: "/images/Testimonials/Matty - early win 3kg down.png" },
   { image: "/images/Testimonials/Rob feels great - Week 3.png" },
   { image: "/images/Testimonials/Gav social proof - i need to for my kids.png" },
@@ -22,23 +20,55 @@ const testimonials = [
   { image: "/images/Testimonials/Aaron testimonial - great energy.png" },
   { image: "/images/Testimonials/Geoff feeling great.jpeg" },
   { image: "/images/Testimonials/Matty down 19kg.jpeg" },
-  { image: "/images/Testimonials/Geoff - 3 month transformation v2.jpeg" },
+  { image: "/images/Testimonials/Geoff - 3 month transformation.jpeg" },
   { image: "/images/Testimonials/Luis down 6kg.jpg" }
 ];
 
+const beforeAfterImages = [
+  { image: "/images/Testimonials/Before vs afters/Rob-before vs after.jpg" },
+  { image: "/images/Testimonials/Luis social proof.png" },
+  { image: "/images/Testimonials/Before vs afters/Marley 2014 vs 2025.png" },
+  { image: "/images/Testimonials/Geoff feeling great.jpeg" },
+  { image: "/images/Testimonials/Me/Delts transformation.jpg" },
+  { image: "/images/Testimonials/Aaron testimonial - great energy.png" },
+  { image: "/images/Testimonials/Me/Face transformation.png" },
+  { image: "/images/Testimonials/Matty down 19kg.jpeg" },
+  { image: "/images/Testimonials/Before vs afters/Matty - before vs after.jpeg" },
+  { image: "/images/Testimonials/Laurence social proof.png" },
+  { image: "/images/Testimonials/Before vs afters/Geoff - before vs after.jpeg" },
+  { image: "/images/Testimonials/Luis social proof copy.png" },
+  { image: "/images/Testimonials/Me/Physique transformation v4.jpg" },
+  { image: "/images/Testimonials/Geoff - best shape ever been in.jpg" },
+  { image: "/images/Testimonials/Before vs afters/Laurence before vs after.png" },
+  { image: "/images/Testimonials/Gav social proof - 10lbs in 8 weeks.png" },
+  { image: "/images/Testimonials/Me/Sober - 3 years.png" },
+  { image: "/images/Testimonials/Rob feels great - Week 3.png" }
+];
+
 export default function TestimonialPlaceholder({ number, darkBg }: { number: number, darkBg?: boolean }) {
-  // Get 2 testimonials per section
-  const startIndex = (number - 1) * 2;
-  const testimonialPair = testimonials.slice(startIndex, startIndex + 2);
+  // For sections 2-7, use regular testimonials only
+  // For sections 8+, mix in before/after images
+  let testimonialPair;
+
+  if (number <= 7) {
+    // Early sections: regular testimonials only
+    const startIndex = (number - 1) * 2;
+    testimonialPair = testimonials.slice(startIndex, startIndex + 2);
+  } else {
+    // Later sections: mix of testimonials and before/after images
+    const pairIndex = number - 8; // 0-based index for the mixed array
+    testimonialPair = beforeAfterImages.slice(pairIndex * 2, pairIndex * 2 + 2);
+  }
+
   const sectionClass = darkBg ? "testimonial-dark-gradient py-16 px-4 w-full" : "py-16 px-4 w-full bg-gradient-to-br mx-auto from-gray-50 via-white to-gray-50";
 
   return (
     <section className={sectionClass}>
       {testimonialPair.map((testimonial, index) => (
-        <div key={startIndex + index} className={`w-full mx-auto ${index === 0 ? "mb-10" : ""}`} style={{ maxWidth: "25%" }}>
+        <div key={`${number}-${index}`} className={`w-full mx-auto ${index === 0 ? "mb-10" : ""}`} style={{ maxWidth: "25%" }}>
           <Image
             src={testimonial.image}
-            alt={`Testimonial ${startIndex + index + 1}`}
+            alt={`Testimonial ${number}-${index + 1}`}
             width={1200}
             height={675}
             className="w-full h-auto object-contain"

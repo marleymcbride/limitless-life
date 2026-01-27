@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 export default function IntroducingLimitless() {
   return (
     <section className="introducing-limitless-bg py-20 px-4 w-full relative overflow-hidden">
@@ -23,6 +25,23 @@ export default function IntroducingLimitless() {
           >
           After X Y Z, I created a system that wakes you up energized, builds a lean body in 2 days per week, and has you feeling completely relaxed without needing alcohol.
           </p>
+
+          {/* ELITE PHOTOSHOOT PHOTO */}
+          <div className="my-10 flex justify-center">
+            <figure className="relative w-full max-w-2xl">
+              <Image
+                src="/images/marley-elite-photoshoot.jpg"
+                alt="Marley McBride - Elite Photoshoot"
+                width={800}
+                height={600}
+                className="rounded-lg shadow-2xl w-full h-auto"
+                loading="lazy"
+              />
+              <figcaption className="mt-4 text-center text-gray-300 italic text-lg">
+                This is me training 2 days per week, 3+ years sober, and more energy than I had at 25
+              </figcaption>
+            </figure>
+          </div>
 
           <p className="text-xl text-white-300 mb-13 max-w-5xl mt-6 mb-12 text-left leading-relaxed"
           style={{ fontFamily: "Neuemontreal, Arial, sans-serif" }}

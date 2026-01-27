@@ -1,4 +1,3 @@
-import { bgClasses } from "@/lib/utils";
 import Image from "next/image";
 
 export default function IntroSection() {
@@ -27,10 +26,10 @@ export default function IntroSection() {
       ></div>
 
       <div className="container mx-auto px-4 relative z-30 hero-full-width">
-        <div className="max-w-5xl mx-auto" style={{ maxWidth: "1200px" }}>
+        <div className="w-full max-w-7xl mx-auto">
           <div className="prose prose-lg max-w-none mobile-text-large body-copy" style={{ fontSize: "1.3rem" }}>
 
-            {/* Image */}
+            {/* Image - Original IMG_4432.png */}
             <div className="my-8 flex justify-center items-center">
               <div className="relative w-1/2 max-w-md h-auto mx-auto">
                 <Image
@@ -87,9 +86,69 @@ export default function IntroSection() {
               Fast-forward today I&apos;m over 3 years sober, built my dream body and feel pretty fucking good most days.
             </p>
 
+          </div>
+        </div>
+      </div>
+
+            {/* Elite Photoshoot Photo - Desktop (hidden on mobile) */}
+            <div className="my-8 hidden md:block lg:block justify-center items-center">
+              <div className="grid grid-cols-2 gap-0 w-[60%] mx-auto">
+                <div className="relative w-full h-auto">
+                  <Image
+                    src="/images/Testimonials/Photoshoot pics/DSC08783_5-edited.png"
+                    alt="Marley McBride - Elite Photoshoot"
+                    width={600}
+                    height={800}
+                    className="rounded-l-lg shadow-lg w-full h-auto"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="relative w-full h-auto">
+                  <Image
+                    src="/images/Testimonials/Me/Sober - 3yrz singular.png"
+                    alt="Sober 3 Years"
+                    width={600}
+                    height={800}
+                    className="rounded-r-lg shadow-lg w-full h-auto"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Elite Photoshoot Photo - Mobile (hidden on desktop) */}
+            <div className="my-8 flex md:hidden justify-center items-center">
+              <div className="grid grid-cols-1 gap-6 w-[80%]">
+                <div className="relative w-full h-auto">
+                  <Image
+                    src="/images/Testimonials/Photoshoot pics/DSC08783_5-edited.png"
+                    alt="Marley McBride - Elite Photoshoot"
+                    width={600}
+                    height={800}
+                    className="rounded-l-lg shadow-lg w-full h-auto"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="relative w-full h-auto">
+                  <Image
+                    src="/images/Testimonials/Me/Sober - 3 yrz singular.png"
+                    alt="Sober 3 Years"
+                    width={600}
+                    height={800}
+                    className="rounded-r-lg shadow-lg w-full h-auto"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div className="container mx-auto px-4 relative z-30 hero-full-width">
+        <div className="w-full max-w-7xl mx-auto">
+          <div className="prose prose-lg max-w-none mobile-text-large body-copy" style={{ fontSize: "1.3rem" }}>
+
             <p className="text-gray-300 leading-relaxed mb-6">
               Plus I only train twice a week, and spend most of my time out in nature, with friends, or relaxing.
-            </p>            
+            </p>
 
             <p className="text-gray-300 leading-relaxed mb-6">
               Now you&apos;re probably thinking:

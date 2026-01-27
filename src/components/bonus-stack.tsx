@@ -1,7 +1,7 @@
 export default function BonusStack() {
   const bonuses = [
     {
-      title: "Bonus 1: Wake Up With More Energy Than You Had At 25 (Value: £1,200+)",
+      title: "BONUS 1: Wake Up With More Energy Than You Had At 25 (Value: £1,200+)",
       description: "The exact morning system that has high-performers waking up fired up before they even leave the house. No caffeine. No supplements. Just smooth energy that lasts all day.",
       transition: "You'll get:",
       bullets: [
@@ -11,7 +11,7 @@ export default function BonusStack() {
       ]
     },
     {
-      title: "Bonus 2: Get Off Alcohol Without Willpower (Value: £3,000+)",
+      title: "BONUS 2: Get Off Alcohol Without Willpower (Value: £3,000+)",
       description: "The exact system I used to quit drinking for 3+ years. No counting days. No AA meetings. No white-knuckling it.",
       transition: "You'll learn to:",
       bullets: [
@@ -21,7 +21,7 @@ export default function BonusStack() {
       ]
     },
     {
-      title: "Bonus 3: Train 2-3 Days Per Week And Build More Muscle Than The 6-Day Guys (Value: £1,500+)",
+      title: "BONUS 3: Train 2-3 Days Per Week And Build More Muscle Than The 6-Day Guys (Value: £1,500+)",
       description: "Most guys train 4-6 days and spin their wheels. You'll get more done in 2 days because your body actually recovers and grows.",
       transition: "You'll build:",
       bullets: [
@@ -31,7 +31,7 @@ export default function BonusStack() {
       ]
     },
     {
-      title: "Bonus 4: Eat MORE Food And Burn More Fat (Value: £2,000+)",
+      title: "BONUS 4: Eat MORE Food And Burn More Fat (Value: £2,000+)",
       description: "The simple diet process that lets you eat more when you need it while your body burns fat instead of storing it.",
       transition: "You'll learn to:",
       bullets: [
@@ -91,7 +91,7 @@ export default function BonusStack() {
                 {bonuses.map((bonus, index) => (
                   <div
                     key={index}
-                    className="bg-white rounded-lg p-8 md:p-10 shadow-lg"
+                    className="bg-white rounded-2xl p-8 md:p-10 shadow-lg"
                   >
                     <div className="py-10 px-[8%]">
                       <h3

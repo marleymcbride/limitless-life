@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 export default function IntroducingLimitless() {
   return (
     <section className="introducing-limitless-bg py-20 px-4 w-full relative overflow-hidden">
