@@ -9,6 +9,7 @@ import VideoTestimonialCTA from "../components/video-testimonial-cta";
 import ResultsProof from "../components/results-proof";
 // import ImagineThisDark from "../components/imaginethisdark";
 import ImagineThis from "../components/imaginethis";
+import ClientTransformationGallery from "../components/client-transformation-gallery";
 import MoreVideoTestimonials from "../components/more-video-testimonials";
 import BigIdeaSection from "../components/big-idea-section";
 import IntroducingLimitless from "../components/introducing-limitless";
@@ -28,7 +29,7 @@ import The3TestimonialsBoxV2 from "../components/the-3-testimonials-box-v2";
 import TestimonialSectionDark from "../components/testimonial-section-dark";
 import { vignetteEffect, unifiedGradientWithSpotlightDesktop, unifiedGradientWithSpotlightMobile } from "../lib/utils";
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import RootCauses from "../components/why-traditional-methods-dont-work";
 import DelayedCTA from "../components/delayed-cta";
 
@@ -447,6 +448,9 @@ export default function Home() {
 
       {/* 6. Imagine This (Light background with white box) */}
       <ImagineThis />
+
+      {/* 6.5. Client Transformation Gallery (Before/After photos) */}
+      <ClientTransformationGallery />
 
 
       {/* 10. Introducing Limitless (Dark background) */}
