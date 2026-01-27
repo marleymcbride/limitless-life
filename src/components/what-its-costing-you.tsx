@@ -13,61 +13,76 @@ export default function WhatItsCostingYou() {
                 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-0 text-white"
                 style={{ fontFamily: "Neuemontreal, sans-serif", lineHeight: "1.1" }}
               >
-                How Much is NOT Fixing This Costing You?
+                What This Is Actually Costing You
               </h2>
             </div>
 
             <p className="text-gray-200 leading-relaxed mb-6">
-              I'm not going to sell you on <span className="italic">"make more money through health"</span> because that's not what this is about.
+              Let me be straight with you.
             </p>
 
-            <p className="text-gray-200 leading-relaxed mb-8">
-              But here's what I will say:
+            <p className="text-gray-200 leading-relaxed mb-6">
+              You&apos;ve probably got the success side sorted.
             </p>
 
-            <div className="bg-white/10 backdrop-blur-sm p-8 rounded-lg my-10 border border-white/20">
-              <p className="text-gray-200 leading-relaxed mb-4">
-                If you're making £100k+ and operating at 60% capacity because of brain fog, energy crashes, and caffeine dependency...
-              </p>
-              <p className="text-white font-bold text-xl mb-4">
-                You're leaving £40k+ worth of performance on the table every year.
-              </p>
-            </div>
-
-            <p className="text-gray-200 leading-relaxed mb-4">
-              How many deals have you fumbled because you couldn't focus in the afternoon?
+            <p className="text-gray-200 leading-relaxed mb-6">
+              You&apos;re making good money, you&apos;ve got the career, the house.
             </p>
 
-            <p className="text-gray-200 leading-relaxed mb-4">
-              How many meetings have you phoned in because you were exhausted?
+            <p className="text-gray-200 leading-relaxed mb-6">
+              But if you actually look at your health?
             </p>
 
-            <p className="text-gray-200 leading-relaxed mb-4">
-              How many opportunities have you missed because you didn't have the energy to follow through?
+            <p className="text-gray-200 leading-relaxed mb-6">
+              It's in a pretty bad state.
             </p>
 
-            <p className="text-white font-bold leading-relaxed mb-4">
-              How many times has your wife initiated and you've been too tired?
+            <p className="text-gray-200 leading-relaxed mb-6">
+              Maybe your doctor&apos;s already warned you about your blood pressure or your blood sugar or something else.
             </p>
 
-            <p className="text-gray-200 leading-relaxed mb-4">
-              How many moments with your kids have you missed because you were collapsed on the couch?
+            <p className="text-gray-200 leading-relaxed mb-6">
+              And you told yourself you'd fix it.
             </p>
 
-            <p className="text-white font-bold text-xl mt-10 mb-4">
-              This isn't about making more money.
+            <p className="text-gray-200 leading-relaxed mb-6">
+              But you haven't.
             </p>
 
-            <p className="text-gray-200 leading-relaxed mb-4">
-              It's about not losing what you already have.
+            <p className="text-gray-200 leading-relaxed mb-6">
+              And the reality is you could be looking at heart disease, diabetes or even worse in the next few years.
             </p>
 
-            <p className="text-gray-200 leading-relaxed">
-              Your performance. Your marriage. Your health. Your time with your kids.
+            <p className="text-white font-bold text-xl mb-6">
+              Average medical costs in the US is over $75,000 per year in 2026.
             </p>
 
-            <p className="text-white font-bold text-xl mt-6">
-              Every day this continues, you're losing more.
+            <p className="text-gray-200 leading-relaxed mb-6">
+              What&apos; could this mean for your job? Underperforming at work could be as serious as losing your career.
+            </p>
+
+            <p className="text-gray-200 leading-relaxed mb-6">
+            Or your family?
+            </p>
+
+            <p className="text-gray-200 leading-relaxed mb-6">
+              How does your wife feel about your drinking?
+            </p>
+
+            <p className="text-gray-200 leading-relaxed mb-6">
+              Or your kids, growing up with a dad who&apos;s never actually there.
+            </p>
+
+            <p className="text-gray-200 leading-relaxed mb-6">
+              You don&apos;t get these years back.
+            </p>
+
+            <p className="text-gray-200 leading-relaxed mb-6">
+              Every day you don&apos;t act is another day closer to this reality.
+            </p>
+
+            <p className="text-gray-200 leading-relaxed mb-6">
+              Really ask yourself, what is the cost of NOT fixing this costing you?
             </p>
 
           </div>
