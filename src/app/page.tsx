@@ -215,7 +215,7 @@ export default function Home() {
               ></div>
               {/* TODO: videoId="a6751ee5-c1d3-4006-9776-7d1a9ced040c" */}
               <VSLPlayer
-                videoId="" // a6751ee5-c1d3-4006-9776-7d1a9ced040c
+                videoId="a6751ee5-c1d3-4006-9776-7d1a9ced040c"
                 libraryId="505300"
                 autoplay={true}
                 muted={true}
