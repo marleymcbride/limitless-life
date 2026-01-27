@@ -34,7 +34,7 @@ export default function WhatItsCostingYou() {
             </p>
 
             <p className="text-gray-200 leading-relaxed mb-6">
-              It's in a pretty bad state.
+              It&apos;s in a pretty bad state.
             </p>
 
             <p className="text-gray-200 leading-relaxed mb-6">
@@ -42,11 +42,11 @@ export default function WhatItsCostingYou() {
             </p>
 
             <p className="text-gray-200 leading-relaxed mb-6">
-              And you told yourself you'd fix it.
+              And you told yourself you&apos;d fix it.
             </p>
 
             <p className="text-gray-200 leading-relaxed mb-6">
-              But you haven't.
+              But you haven&apos;t.
             </p>
 
             <p className="text-gray-200 leading-relaxed mb-6">

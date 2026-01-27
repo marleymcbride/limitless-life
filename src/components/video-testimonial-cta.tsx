@@ -16,8 +16,8 @@ export default function VideoTestimonialCTA() {
 
           {/* Desktop Video (Landscape) - Visible on desktop */}
           <div className="hidden md:block mb-12">
-            {/* videoId="368df0e9-76ca-44e2-a76f-c31009b53ce7" */}
             <SimpleVideoPlayer
+              videoId="368df0e9-76ca-44e2-a76f-c31009b53ce7"
               libraryId="576963"
               className="max-w-3xl mx-auto"
               autoplay={false}
@@ -29,8 +29,8 @@ export default function VideoTestimonialCTA() {
 
           {/* Mobile Video (Portrait) - Visible on mobile */}
           <div className="block md:hidden mb-12">
-            {/* videoId="1161903f-2e87-4801-aed1-9b4c6a385cec" */}
             <SimpleVideoPlayer
+              videoId="1161903f-2e87-4801-aed1-9b4c6a385cec"
               libraryId="576963"
               className="max-w-[80%] mx-auto"
               autoplay={false}
