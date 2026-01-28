@@ -135,7 +135,7 @@ export default function ResultsProof() {
 
             <div className="relative rounded-lg overflow-hidden shadow-md w-full max-w-[337px]">
               <Image
-                src="/images/Testimonials/Aaron social proof - great energy.png"
+                src="/images/Testimonials/Aaron testimonial - great energy.png"
                 alt="Client results"
                 width={337}
                 height={225}
