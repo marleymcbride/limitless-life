@@ -1,5 +1,3 @@
-import { bgClasses } from "@/lib/utils";
-
 export default function WhatItsCostingYou() {
   return (
     <section className="w-full results-proof-gradient pt-16 pb-12 relative">
@@ -58,14 +56,11 @@ export default function WhatItsCostingYou() {
             </p>
 
             <p className="text-gray-200 leading-relaxed mb-6">
-              What&apos; could this mean for your job? Underperforming at work could be as serious as losing your career.
+              What could this mean for your job? Underperforming at work could be as serious as losing your career.
             </p>
 
             <p className="text-gray-200 leading-relaxed mb-6">
             Or your family?
-            </p>
-
-            <p className="text-gray-200 leading-relaxed mb-6">
               How does your wife feel about your drinking?
             </p>
 
@@ -74,7 +69,7 @@ export default function WhatItsCostingYou() {
             </p>
 
             <p className="text-gray-200 leading-relaxed mb-6">
-              You don&apos;t get these years back.
+              <strong>You don&apos;t get these years back.</strong>
             </p>
 
             <p className="text-gray-200 leading-relaxed mb-6">

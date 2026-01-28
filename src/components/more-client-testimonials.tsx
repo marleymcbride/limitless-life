@@ -1,6 +1,5 @@
 "use client";
 
-import SimpleVideoPlayer from "./simple-video-player";
 import Image from "next/image";
 
 export default function VideoTestimonialCTA() {
@@ -18,7 +17,7 @@ export default function VideoTestimonialCTA() {
           {/* Desktop version - fixed width */}
           <div className="relative rounded-lg overflow-hidden shadow-md mx-auto mt-6 mb-4 hidden md:block" style={{ width: "438px" }}>
             <Image
-              src="/images/Testimonials/Geoff - 3 month transformation v2.jpeg"
+              src="/images/Testimonials/Geoff - 3 month transformation.jpeg"
               alt="Client results"
               width={438}
               height={293}
@@ -29,7 +28,7 @@ export default function VideoTestimonialCTA() {
           {/* Mobile version - responsive */}
           <div className="relative rounded-lg overflow-hidden shadow-md w-full max-w-[90%] mx-auto mt-6 mb-4 block md:hidden">
             <Image
-              src="/images/Testimonials/Geoff - 3 month transformation v2.jpeg"
+              src="/images/Testimonials/Geoff - 3 month transformation.jpeg"
               alt="Client results"
               width={438}
               height={293}
@@ -50,7 +49,7 @@ export default function VideoTestimonialCTA() {
           {/* Desktop version - fixed width */}
           <div className="relative rounded-lg overflow-hidden shadow-md mx-auto mt-6 mb-4 hidden md:block" style={{ width: "438px" }}>
             <Image
-              src="/images/Testimonials/Laurence - 10 week cut.png"
+              src="/images/Testimonials/Before vs afters/Laurence before vs after.png"
               alt="Client results"
               width={438}
               height={293}
@@ -61,7 +60,7 @@ export default function VideoTestimonialCTA() {
           {/* Mobile version - responsive */}
           <div className="relative rounded-lg overflow-hidden shadow-md w-full max-w-[90%] mx-auto mt-6 mb-4 block md:hidden">
             <Image
-              src="/images/Testimonials/Laurence - 10 week cut.png"
+              src="/images/Testimonials/Before vs afters/Laurence before vs after.png"
               alt="Client results"
               width={438}
               height={293}
@@ -110,6 +109,13 @@ export default function VideoTestimonialCTA() {
           </a>
         </div>
       </div>
+      <style jsx>{`
+        @media (max-width: 768px) {
+          .testimonials-grid p.text-sm {
+            font-size: 0.75rem !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }
