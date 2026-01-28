@@ -1197,3 +1197,66 @@ svg.accordion-chevron {
 [data-state="open"] svg.accordion-chevron {
   transform: translateY(7px) rotate(0deg) !important;
 }
+
+/* ========================================
+   MOBILE BOX WIDTHS - All box/card elements
+   ======================================== */
+@media (max-width: 768px) {
+  /* Global horizontal padding for ALL sections */
+  section,
+  .container {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  /* GLOBAL BOX STYLING - applies to ALL boxes except introducing-limitless, imaginethis, and protocol-step */
+  section div[class*="card"]:not(.protocol-step-card),
+  .introducing-limitless-transparent-card {
+    width: calc(100% + 1rem) !important;
+    margin-left: -0.5rem !important;
+    margin-right: -0.5rem !important;
+    border-radius: 2.25rem !important;
+    padding-top: 5rem !important;
+    padding-bottom: 5rem !important;
+  }
+
+  /* protocol-step-card - separate styling with component-defined padding */
+  .protocol-step-card {
+    width: calc(100% + 1rem) !important;
+    margin-left: -0.5rem !important;
+    margin-right: -0.5rem !important;
+    border-radius: 2.25rem !important;
+  }
+
+  /* imaginethis boxes - separate styling with component-defined padding */
+  .imaginethis-box {
+    width: calc(100% + 1rem) !important;
+    margin-left: -0.5rem !important;
+    margin-right: -0.5rem !important;
+    border-radius: 2.25rem !important;
+  }
+
+  /* Desktop introducing-limitless box - separate styling with component-defined padding */
+  .introducing-limitless-box {
+    width: calc(100% + 1rem) !important;
+    margin-left: -0.5rem !important;
+    margin-right: -0.5rem !important;
+    border-radius: 2.25rem !important;
+  }
+
+  /* Mobile introducing-limitless heading box - separate styling with component-defined padding */
+  .introducing-limitless-box-mobile {
+    width: calc(100% + 1rem) !important;
+    margin-left: -0.5rem !important;
+    margin-right: -0.5rem !important;
+    border-radius: 0.6rem !important;
+  }
+
+  /* Bonus boxes - wider with borders */
+  .bonus-stack-card {
+    width: calc(100% + 2rem) !important;
+    margin-left: -1rem !important;
+    margin-right: -1rem !important;
+    border: 3px solid rgba(50, 50, 50, 0.9) !important;
+  }
+}
