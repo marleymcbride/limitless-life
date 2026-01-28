@@ -7,16 +7,29 @@ export default function ImagineThis() {
         <div className="text-center">
           {/* White round rectangle box with shadow - Mobile optimized */}
           <div
-            className="rounded-2xl light-card-bg-small-orb p-8 md:p-14 md:pt-3 md:px-16 lg:px-20 mx-auto"
+            className="rounded-2xl light-card-bg-small-orb p-8 md:p-14 md:pt-3 md:px-16 lg:px-20 mx-auto mobile-box-width"
             style={{
               boxShadow: "20px -10px 40px 5px rgba(45, 52, 65, 0.7)",
               width: "85%",
               maxWidth: "72rem"
             }}
           >
-            <div className="prose prose-lg max-w-none mobile-text-large body-copy" style={{ fontSize: "1.04rem" }}>
+            <style jsx>{`
+              @media (max-width: 768px) {
+                .imaginethis-subheading {
+                  font-size: 1.45rem !important;
+                }
+                .imaginethis-bullet {
+                  font-size: 1.4rem !important;
+                }
+                .imaginethis-heading {
+                  font-size: 3.5rem !important;
+                }
+              }
+            `}</style>
+            <div className="prose prose-lg max-w-none mobile-text-large body-copy imaginethis-mobile-text" style={{ fontSize: "1.04rem" }}>
               <h2
-                className="text-4xl md:text-6xl font-bold pt-4 md:pt-8 mb-6 md:mb-8 text-gray-900 leading-tight mt-2"
+                className="imaginethis-heading text-6xl md:text-6xl font-bold pt-4 pb-5 md:pt-8 mb-6 md:mb-8 text-gray-900 leading-tight mt-2"
                 style={{ fontFamily: "Neuemontreal, sans-serif" }}
               >
                 Imagine this
@@ -28,8 +41,8 @@ export default function ImagineThis() {
                 <div className="flex items-center gap-3 md:gap-4">
 
 
-                  <p className="text-gray-800 leading-relaxed text-sm mb-3 md:mb-4" style={{ fontSize: "0.8rem" }}>
-                  You Had a Simple System That:
+                  <p className="imaginethis-subheading text-gray-800 leading-relaxed text-md md:text-sm lg:text-sm mb-3 md:mb-4" style={{ fontSize: "0.8rem" }}>
+                  <strong>You Had a Simple System That:</strong>
                   </p>
                 </div>
 
@@ -49,7 +62,7 @@ export default function ImagineThis() {
                       </svg>
                   </div>
 
-                  <p className="text-gray-800 leading-relaxed text-sm" style={{ fontSize: "0.8rem" }}>
+                  <p className="imaginethis-bullet text-gray-800 leading-relaxed text-sm" style={{ fontSize: "0.8rem" }}>
                   Has you feeling energized as soon as you wake
                   </p>
                 </div>
@@ -69,7 +82,7 @@ export default function ImagineThis() {
                       />
                     </svg>
                   </div>
-                  <p className="text-gray-800 leading-relaxed text-sm" style={{ fontSize: "0.8rem" }}>
+                  <p className="imaginethis-bullet text-gray-800 leading-relaxed text-sm" style={{ fontSize: "0.8rem" }}>
                   Loses your gut and get abs in only 2 days of training
                   </p>
                 </div>
@@ -89,7 +102,7 @@ export default function ImagineThis() {
                       />
                     </svg>
                   </div>
-                  <p className="text-gray-800 leading-relaxed text-sm" style={{ fontSize: "0.8rem" }}>
+                  <p className="imaginethis-bullet text-gray-800 leading-relaxed text-sm" style={{ fontSize: "0.8rem" }}>
                     Leaves you with energy for your family and life after work
                   </p>
                 </div>
@@ -109,7 +122,7 @@ export default function ImagineThis() {
                       />
                     </svg>
                   </div>
-                  <p className="text-gray-800 leading-relaxed text-sm" style={{ fontSize: "0.8rem" }}>
+                  <p className="imaginethis-bullet text-gray-800 leading-relaxed text-sm" style={{ fontSize: "0.8rem" }}>
                     Gets you off booze for good without needing willpower or AA
                   </p>
                 </div>

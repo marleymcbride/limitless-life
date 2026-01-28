@@ -47,12 +47,12 @@ export default function EverythingIncluded() {
         </div>
 
         {/* Grid layout - 3 columns on desktop, 1 on mobile */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mb-24">
+        <div className="flex flex-col items-stretch gap-10 mb-24 md:grid md:grid-cols-2 lg:grid-cols-3">
 
           {items.map((item, index) => (
             <div
               key={index}
-              className="bg-white rounded-lg p-6 md:p-8 shadow-lg relative min-h-[380px] flex flex-col"
+              className="bg-white rounded-lg p-6 md:p-8 shadow-lg relative min-h-[380px] flex flex-col mobile-box-width whatmakes-different-card"
             >
               {/* Icon */}
               <div className="text-gray-800 mb-4">
@@ -67,9 +67,9 @@ export default function EverythingIncluded() {
                 >
                   {item.title}
                 </h3>
-                <p className="text-gray-700 text-base leading-relaxed whitespace-pre-line">
+                <div className="text-gray-700 text-base leading-relaxed whitespace-pre-line whatmakes-description">
                   {item.description}
-                </p>
+                </div>
               </div>
             </div>
           ))}
@@ -88,6 +88,16 @@ export default function EverythingIncluded() {
           </div>
         </section>
       </div>
+      <style jsx>{`
+        @media (max-width: 768px) {
+          .whatmakes-different-card h3 {
+            font-size: 1.75rem !important;
+          }
+          .whatmakes-different-card div.whatmakes-description {
+            font-size: 1.22rem !important;
+          }
+        }
+      `}</style>
     </>
   );
 }

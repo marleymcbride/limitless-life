@@ -92,20 +92,20 @@ export default function IntroSection() {
 
             {/* Elite Photoshoot Photo - Desktop (hidden on mobile) */}
             <div className="my-8 hidden md:block lg:block justify-center items-center">
-              <div className="grid grid-cols-2 gap-0 w-[60%] mx-auto">
-                <div className="relative w-full h-auto">
+              <div className="grid grid-cols-2 gap-0 w-[60%] mx-auto max-w-7xl">
+                <div className="relative -mr-9 mx-auto w-[70%] h-auto">
                   <Image
                     src="/images/Testimonials/Photoshoot pics/DSC08783_5-edited.png"
-                    alt="Marley McBride - Elite Photoshoot"
+                    alt="Marley Photoshoot"
                     width={600}
                     height={800}
                     className="rounded-l-lg shadow-lg w-full h-auto"
                     loading="lazy"
                   />
                 </div>
-                <div className="relative w-full h-auto">
+                <div className="relative ml-16 mx-auto w-[70%] h-auto">
                   <Image
-                    src="/images/Testimonials/Me/Sober - 3yrz singular.png"
+                    src="/images/Testimonials/Me/Alcohol free 3.5 years singular.png"
                     alt="Sober 3 Years"
                     width={600}
                     height={800}
@@ -117,21 +117,21 @@ export default function IntroSection() {
             </div>
 
             {/* Elite Photoshoot Photo - Mobile (hidden on desktop) */}
-            <div className="my-8 flex md:hidden justify-center items-center">
-              <div className="grid grid-cols-1 gap-6 w-[80%]">
-                <div className="relative w-full h-auto">
+            <div className="my-8 -mr-0 flex md:hidden lg:hidden justify-center items-center">
+              <div className="grid grid-cols-1 gap-6 w-[60%] max-w-4xl mx-auto">
+                <div className="relative ml-6 mx-auto w-[90%] h-auto">
                   <Image
                     src="/images/Testimonials/Photoshoot pics/DSC08783_5-edited.png"
-                    alt="Marley McBride - Elite Photoshoot"
+                    alt="Marley Photoshoot"
                     width={600}
                     height={800}
                     className="rounded-l-lg shadow-lg w-full h-auto"
                     loading="lazy"
                   />
                 </div>
-                <div className="relative w-full h-auto">
+                <div className="relative  ml-6 mx-auto w-[90%] h-auto">
                   <Image
-                    src="/images/Testimonials/Me/Sober - 3 yrz singular.png"
+                    src="/images/Testimonials/Me/Alcohol + caffeine free for sales page.png"
                     alt="Sober 3 Years"
                     width={600}
                     height={800}

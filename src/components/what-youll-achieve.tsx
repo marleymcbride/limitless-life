@@ -75,12 +75,12 @@ export default function WhatYoullAchieve() {
         </div>
 
         {/* Grid layout - 3 columns on desktop, 1 on mobile */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mb-12">
+        <div className="flex flex-col items-stretch gap-10 mb-12 md:grid md:grid-cols-2 lg:grid-cols-3">
 
           {items.map((item, index) => (
             <div
               key={index}
-              className="bg-white rounded-lg p-6 md:p-8 shadow-lg relative min-h-[380px] flex flex-col"
+              className="bg-white rounded-lg p-6 md:p-8 shadow-lg relative min-h-[380px] flex flex-col mobile-box-width whatyoull-achieve-card"
             >
               {/* Icon */}
               <div className="text-gray-800 mb-4">
@@ -95,9 +95,9 @@ export default function WhatYoullAchieve() {
                 >
                   {item.title}
                 </h3>
-                <p className="text-gray-700 text-base leading-relaxed mt-4">
+                <div className="text-gray-700 text-base leading-relaxed mt-4 achieve-description">
                   {item.description}
-                </p>
+                </div>
               </div>
             </div>
           ))}
@@ -116,6 +116,16 @@ export default function WhatYoullAchieve() {
           </div>
         </section>
       </div>
+      <style jsx>{`
+        @media (max-width: 768px) {
+          .whatyoull-achieve-card h3 {
+            font-size: 1.75rem !important;
+          }
+          .whatyoull-achieve-card div.achieve-description {
+            font-size: 1.22rem !important;
+          }
+        }
+      `}</style>
     </>
   );
 }

@@ -45,26 +45,26 @@ export default function BonusStack() {
   return (
     <>
       <div className="dark-section-with-grain">
-        <section className="py-20 max-w-100 relative overflow-hidden">
+        <section className="py-20 max-w-full md:max-w-100 lg:max-w-100 relative overflow-hidden">
           <div className="container w-full relative z-30">
 
             <div className="text-center mb-10">
               <h2
-                className="text-3xl md:text-4xl mx-24 lg:text-5xl font-bold text-white mb-0"
+                className="text-3xl md:text-6xl md:mx-24 lg:mx-24 lg:text-6xl font-bold text-white mb-0"
                 style={{ fontFamily: "Neuemontreal, sans-serif", lineHeight: "1.1" }}
               >
                 Your Bonus Stack
               </h2>
               <h2
-                className="text-3xl md:text-4xl mx-24 lg:text-5xl font-bold text-white"
+                className="text-3xl md:text-4xl md:mx-24 lg:mx-24 lg:text-5xl font-bold text-white"
                 style={{ fontFamily: "Neuemontreal, sans-serif", lineHeight: "1.1" }}
               >
                 (Worth £8,500+):
               </h2>
             </div>
-            <div className="mb-16 mx-20">
+            <div className="mb-16 md:mx-20 lg:mx-20">
               <p className="text-2xl text-gray-300">
-                I know what you&apos;re thinking: <span className="italic">"Bonuses? Probably just some throw-in PDFs nobody reads."</span>
+                I know what you&apos;re thinking: <span className="italic">&ldquo;Bonuses? Probably just some throw-in PDFs nobody reads.&ldquo;</span>
               </p>
               <p className="text-2xl text-gray-300 mt-6">
                 Not even close.
@@ -86,35 +86,33 @@ export default function BonusStack() {
             </div>
 
             {/* Bonus cards - like How Limitless Protocol Works */}
-            <div className="max-w-4xl mx-auto px-4">
+            <div className="max-w-4xl mx-auto px-4 md:px-4 bonus-container-mobile">
               <div className="space-y-16">
                 {bonuses.map((bonus, index) => (
                   <div
                     key={index}
-                    className="bg-white rounded-2xl p-8 md:p-10 shadow-lg"
+                    className="bg-white rounded-lg p-6 md:p-8 shadow-lg relative min-h-[380px] flex flex-col mobile-box-width bonus-stack-card"
                   >
-                    <div className="py-10 px-[8%]">
-                      <h3
-                        className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 text-center"
-                        style={{ fontFamily: "Neuemontreal, sans-serif" }}
-                      >
-                        {bonus.title.split('(Value:')[0].trim()}<span className="font-normal"> (Value: {bonus.title.split('(Value:')[1]}</span>
-                      </h3>
-                      <p className="text-gray-700 text-lg md:text-xl leading-relaxed mt-6">
-                        {bonus.description}
-                      </p>
-                      <p className="text-gray-900 font-semibold text-xl md:text-2xl mt-8 mb-4">
-                        {bonus.transition}
-                      </p>
-                      <ul className="space-y-5 ml-6">
-                        {bonus.bullets.map((bullet, bulletIndex) => (
-                          <li key={bulletIndex} className="text-gray-700 text-lg md:text-xl leading-relaxed flex items-start">
-                            <span className="mr-3">•</span>
-                            <span>{bullet}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+                    <h3
+                      className="text-2xl md:text-4xl lg:text-4xl font-bold text-gray-900 mb-4 pt-0 md:pt-8 lg:pt-8 text-center"
+                      style={{ fontFamily: "Neuemontreal, sans-serif" }}
+                    >
+                      {bonus.title.split('(Value:')[0].trim()}<span className="font-normal"> (Value: {bonus.title.split('(Value:')[1]}</span>
+                    </h3>
+                    <p className="text-gray-700 md:mx-4 lg:mx-4 text-lg md:text-xl leading-relaxed mt-6 bonus-description">
+                      {bonus.description}
+                    </p>
+                    <p className="text-gray-900 md:mx-4 lg:mx-4 font-semibold text-xl md:text-2xl mt-8 mb-4">
+                      {bonus.transition}
+                    </p>
+                    <ul className="space-y-5 ml-6 md:px-4 lg:px-4 pt-0 md:pt-2 lg:pt-2 pb-0 md:pb-8 lg:pb-8 md:ml-6">
+                      {bonus.bullets.map((bullet, bulletIndex) => (
+                        <li key={bulletIndex} className="text-gray-700 text-lg md:text-xl leading-relaxed flex items-start">
+                          <span className="mr-3">•</span>
+                          <span>{bullet}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 ))}
               </div>
@@ -133,6 +131,29 @@ export default function BonusStack() {
           </div>
         </section>
       </div>
+      <style jsx>{`
+        @media (max-width: 768px) {
+          .bonus-stack-card h3 {
+            font-size: 2rem !important;
+          }
+          .bonus-stack-card .bonus-description {
+            font-size: 1.25rem !important;
+          }
+          .bonus-stack-card p {
+            font-size: 1.25rem !important;
+          }
+          .bonus-stack-card ul li {
+            font-size: 1.25rem !important;
+          }
+          .bonus-stack-card ul {
+            margin-left: 0 !important;
+          }
+          .bonus-container-mobile {
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+          }
+        }
+      `}</style>
     </>
   );
 }
