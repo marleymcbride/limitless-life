@@ -9,7 +9,7 @@ import VideoTestimonialCTA from "../components/video-testimonial-cta";
 import ResultsProof from "../components/results-proof";
 // import ImagineThisDark from "../components/imaginethisdark";
 import ImagineThis from "../components/imaginethis";
-import ClientTransformationGallery from "../components/client-transformation-gallery";
+import ClientTransformationGallery from "../components/more-results-created";
 import MoreVideoTestimonials from "../components/more-video-testimonials";
 import BigIdeaSection from "../components/big-idea-section";
 import IntroducingLimitless from "../components/introducing-limitless";

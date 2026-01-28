@@ -8,7 +8,7 @@ export default function VideoTestimonialCTA() {
       <div className="absolute bottom-0 left-0 w-full h-[33vh] bg-gradient-to-t from-[rgba(148,9,9,0.30)] via-[rgba(148,9,9,0.16)] to-transparent"></div>
       <div className="container mx-auto max-w-5xl">
         <div className="text-center">
-          <div className="max-w-md mx-auto mb-0">
+          <div className="max-w-md mx-auto mb-8 md:mb-0 lg:mb-0">
             <p className="text-base md:text-2xl lg:text-4xl max-w-md text-white font-normal">
               &ldquo;The sleep was better, how I was feeling at work, it&apos;s crazy to think how much more energy you have&rdquo;
             </p>

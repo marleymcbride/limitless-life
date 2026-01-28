@@ -2,6 +2,7 @@ import { bgClasses } from "@/lib/utils";
 
 export default function WhySmallNumber() {
   return (
+    <>
     <section className="w-full results-proof-gradient pt-16 pb-12 relative">
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-5xl mx-auto" style={{ maxWidth: "1200px" }}>
@@ -31,31 +32,31 @@ export default function WhySmallNumber() {
             </div>
 
             <div className="bg-white/10 backdrop-blur-sm py-6 px-4 rounded-lg mt-8 mb-10 border border-white/20">
-              <ul className="space-y-4 ">
+              <ul className="space-y-4 why-small-bullets">
                 <li className="flex items-start">
                   <span className="text-[#ff4444] font-bold mr-3 mt-1">•</span>
-                  <span className="text-gray-200">VIP access to me every day, not just some do it yourself &apos;plan&apos;.</span>
+                  <div className="text-gray-200">VIP access to me every day, not just some do it yourself &apos;plan&apos;.</div>
                 </li>
                 <li className="flex items-start">
                   <span className="text-[#ff4444] font-bold mr-3 mt-1">•</span>
-                  <span className="text-gray-200">Daily support via WhatsApp, not &ldquo;check-ins&ldquo; once in a while.</span>
+                  <div className="text-gray-200">Daily support via WhatsApp, not &ldquo;check-ins&ldquo; once in a while.</div>
                 </li>
                 <li className="flex items-start">
                   <span className="text-[#ff4444] font-bold mr-3 mt-1">•</span>
-                  <span className="text-gray-200">Hormone and blood test anaylsis, not just cookie-cutter generic slop.</span>
+                  <div className="text-gray-200">Hormone and blood test anaylsis, not just cookie-cutter generic slop.</div>
                 </li>
                 <li className="flex items-start">
                   <span className="text-[#ff4444] font-bold mr-3 mt-1">•</span>
-                  <span className="text-gray-200">Cutting-edge custom   health protocols, from 12 years of experience.</span>
+                  <div className="text-gray-200">Cutting-edge custom   health protocols, from 12 years of experience.</div>
                 </li>
                 <li className="flex items-start">
                   <span className="text-[#ff4444] font-bold mr-3 mt-1">•</span>
-                  <span className="text-gray-200">High-level results and performance monitoring to make sure we are always on track.</span>
+                  <div className="text-gray-200">High-level results and performance monitoring to make sure we are always on track.</div>
                 </li>
 
                  {/*<li className="flex items-start">
                   <span className="text-[#ff4444] font-bold mr-3 mt-1">•</span>
-                  <span className="text-gray-200">A tight-knit community of high-performers</span>
+                  <div className="text-gray-200">A tight-knit community of high-performers</div>
                 </li>*/}
               </ul>
             </div>
@@ -79,5 +80,13 @@ export default function WhySmallNumber() {
         </div>
       </div>
     </section>
+      <style jsx>{`
+        @media (max-width: 768px) {
+          .why-small-bullets div {
+            font-size: 1.22rem !important;
+          }
+        }
+      `}</style>
+    </>
   );
 }

@@ -4,10 +4,20 @@ import Image from "next/image";
 
 export default function ClientTransformationGallery() {
   return (
-    <section className="w-full bg-white py-16 px-10">
+    <section className="w-full bg-white pt-14 pb-14 px-10">
+
+        <div className="text-center mb-6">
+            <h2
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-8 mx-8 text-gray-900"
+              style={{ fontFamily: "Neuemontreal, sans-serif", lineHeight: "1"}}
+            >
+              More results created
+            </h2>
+        </div>
+
 
         {/* Desktop: 3 in a row */}
-        <div className="hidden md:grid md:grid-cols-3 lg:grid lg:grid-cols-3 gap-8">
+        <div className="hidden md:grid md:grid-cols-3 lg:grid lg:grid-cols-3 gap-8 max-w-7xl py-6 mx-auto">
           {/* Rob transformation */}
           <div className="relative">
             <Image
@@ -46,7 +56,7 @@ export default function ClientTransformationGallery() {
         </div>
 
         {/* Mobile: Stacked */}
-        <div className="flex flex-col gap-10 md:hidden max-w-lg w-[80%] px-10">
+        <div className="flex flex-col gap-10 md:hidden max-w-lg w-[80%] px-10 mx-auto">
 
 
           {/* Rob transformation */}
