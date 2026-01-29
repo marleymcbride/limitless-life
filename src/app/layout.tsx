@@ -30,6 +30,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <head>
         <meta name="theme-color" content="#000000" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        {/* Preload critical image directories */}
+        <link rel="dns-prefetch" href="//localhost:3000" />
+        <link rel="preconnect" href="//localhost:3000" />
       </head>
       <body className="h-full min-h-screen">{children}</body>
     </html>
