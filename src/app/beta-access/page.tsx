@@ -33,6 +33,7 @@ import Image from "next/image";
 import { useState } from "react";
 import RootCauses from "../../components/why-traditional-methods-dont-work";
 import DelayedCTA from "../../components/delayed-cta";
+import LimitedSpotsBanner from "../../components/limited-spots-banner";
 
 // import SystemBenefitsProof from "../../components/system-benefits-proof";
 // import WhyThisSystemWorks from "../../components/[old] why-this-system-works";
@@ -88,6 +89,9 @@ export default function BetaAccessPage() {
 
   return (
     <main className="flex flex-col  min-h-screen">
+      {/* Limited Spots Banner */}
+      <LimitedSpotsBanner />
+
       {/* 1. Hero Section (UNTOUCHED - PRESERVED EXACTLY) */}
       <section
         id="hero-section"
@@ -137,9 +141,9 @@ export default function BetaAccessPage() {
               For the man who has EVERYTHING in life, except the energy to enjoy it... here&apos;s how to:
             </p>
 
-            {/* Mobile Eyebrow (visible only on mobile) */}
+            {/* Mobile Eyebrow (visible only on mobile) - HIDDEN when banner is present */}
             <p
-              className="block sm:hidden px-0 mx-auto text-center text-gray-300 mobile-eyebrow w-full"
+              className="hidden sm:hidden px-0 mx-auto text-center text-gray-300 mobile-eyebrow w-full"
               style={{ marginTop: "3.6px", marginBottom: "14.4px" }}
             >
               For the man who has EVERYTHING in life, except the energy to enjoy it... here&apos;s how to:
