@@ -165,8 +165,8 @@ export default function PersonalStorySection() {
                   alt="Mud-stained mattress in bedroom"
                   width={512}
                   height={384}
+                  priority
                   className="rounded-lg shadow-lg w-full h-auto"
-                  loading="lazy"
                 />
                 <figcaption className="mt-3 text-center text-gray-600 italic text-md" data-caption="original">
                   Puffy face, out of shape and letting alcohol ruin my life
