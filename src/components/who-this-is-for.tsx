@@ -11,29 +11,29 @@ export default function WeCanHelpIf() {
         <div className="flex flex-col items-stretch md:grid md:grid-cols-2 gap-10 mb-12">
 
           {/* We Can Help If */}
-          <div className="bg-white/5 border border-green-500/30 rounded-lg p-6 md:p-8 mobile-box-width-transparent we-can-help-box">
-            <h3 className="text-2xl md:text-3xl font-bold text-white mb-4" style={{ fontFamily: "Neuemontreal, sans-serif" }}>
+          <div className="bg-white/5 py-6 md:py-8 lg:py-8 px-2 md:px-12 lg:px-12 border border-green-500/30 rounded-lg mobile-box-width-transparent we-can-help-box">
+            <h3 className="text-2xl md:text-5xl font-bold text-white mb-4 text-center md:text-left lg:text-left md:py-4 lg:py-4" style={{ fontFamily: "Neuemontreal, sans-serif" }}>
               We Can Help If:
             </h3>
 
             <ul className="space-y-4">
-              <li className="flex items-start text-gray-300 text-base">
+              <li className="flex items-start text-gray-300 text-base md:text-lg">
                 <span className="text-green-400 mr-3 mt-1">✓</span>
                 <span>You&apos;re tired of having the money but not the energy</span>
               </li>
-              <li className="flex items-start text-gray-300 text-base">
+              <li className="flex items-start text-gray-300 text-base md:text-lg">
                 <span className="text-green-400 mr-3 mt-1">✓</span>
                 <span>You&apos;re willing to train LESS and recover MORE</span>
               </li>
-              <li className="flex items-start text-gray-300 text-base">
+              <li className="flex items-start text-gray-300 text-base md:text-lg">
                 <span className="text-green-400 mr-3 mt-1">✓</span>
                 <span>You want a system that works with your busy life, not against it</span>
               </li>
-              <li className="flex items-start text-gray-300 text-base">
+              <li className="flex items-start text-gray-300 text-base md:text-lg">
                 <span className="text-green-400 mr-3 mt-1">✓</span>
                 <span>You&apos;re ready to stop suffering for results</span>
               </li>
-              <li className="flex items-start text-gray-300 text-base">
+              <li className="flex items-start text-gray-300 text-base md:text-lg">
                 <span className="text-green-400 mr-3 mt-1">✓</span>
                 <span>You want to wake up and actually feel good</span>
               </li>
@@ -41,24 +41,24 @@ export default function WeCanHelpIf() {
           </div>
 
           {/* We Can't Help If */}
-          <div className="bg-white/5 border border-red-500/30 rounded-lg p-6 md:p-8 mobile-box-width-transparent we-can-help-box">
-            <h3 className="text-2xl md:text-3xl font-bold text-white mb-4" style={{ fontFamily: "Neuemontreal, sans-serif" }}>
+          <div className="bg-white/5 py-6 md:py-8 lg:py-8 px-2 md:px-12 lg:px-12 border border-red-500/30 rounded-lg mobile-box-width-transparent we-can-help-box">
+            <h3 className="text-2xl md:text-5xl font-bold text-white mb-4 text-center md:text-left lg:text-left md:py-4 lg:py-4" style={{ fontFamily: "Neuemontreal, sans-serif" }}>
               We Can&apos;t Help If:
             </h3>
             <ul className="space-y-4">
-              <li className="flex items-start text-gray-300 text-base">
+              <li className="flex items-start text-gray-300 text-base md:text-lg">
                 <span className="text-red-400 mr-3 mt-1">✗</span>
                 <span>You give up easily and can&apos;t stick to anything for longer than 2 weeks</span>
               </li>
-              <li className="flex items-start text-gray-300 text-base">
+              <li className="flex items-start text-gray-300 text-base md:text-lg">
                 <span className="text-red-400 mr-3 mt-1">✗</span>
                 <span>You need someone to hold your hand every day</span>
               </li>
-              <li className="flex items-start text-gray-300 text-base">
+              <li className="flex items-start text-gray-300 text-base md:text-lg">
                 <span className="text-red-400 mr-3 mt-1">✗</span>
                 <span>You&apos;re not willing to change the way you&apos;ve done things for years</span>
               </li>
-              <li className="flex items-start text-gray-300 text-base">
+              <li className="flex items-start text-gray-300 text-base md:text-lg">
                 <span className="text-red-400 mr-3 mt-1">✗</span>
                 <span>You&apos;re looking for a magic pill</span>
               </li>

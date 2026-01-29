@@ -52,7 +52,7 @@ export default function HowLimitlessProtocolWorks() {
                 {systems.map((system, index) => (
                   <div
                     key={index}
-                    className="bg-white rounded-lg p-6 md:p-8 shadow-lg relative md:ml-24 min-h-[380px] flex flex-col mobile-box-width protocol-step-card"
+                    className="bg-white px-12 md:px-12 lg:px-12 rounded-lg p-6 md:p-8 shadow-lg relative md:ml-24 min-h-[380px] flex flex-col mobile-box-width protocol-step-card"
                   >
                     {/* Number circle - positioned on the red line (outside card) - desktop only */}
                     <div className="absolute -left-24 top-24 -translate-y-1/2 -translate-x-1/2 hidden md:block">

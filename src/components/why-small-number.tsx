@@ -31,7 +31,7 @@ export default function WhySmallNumber() {
             <strong>What you&apos;ll get when you&apos;re inside:</strong>
             </div>
 
-            <div className="bg-white/10 backdrop-blur-sm py-6 px-4 rounded-lg mt-8 mb-10 border border-white/20">
+            <div className="bg-white/10 backdrop-blur-sm py-10 px-6 md:px-6 lg:px-6 rounded-lg mt-8 mb-10 border border-white/20">
               <ul className="space-y-4 why-small-bullets">
                 <li className="flex items-start">
                   <span className="text-[#ff4444] font-bold mr-3 mt-1">•</span>

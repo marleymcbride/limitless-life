@@ -168,7 +168,7 @@ export default function IntroSection() {
 
 
             <p className="text-gray-300 leading-relaxed mb-6">
-            I began to truly understand what keeps men stuck with whilst juggling a hectic work and family life.
+            I began to truly understand what keeps men stuck whilst juggling a hectic work and family life.
             </p>
 
             <p className="text-gray-300 leading-relaxed mb-6">

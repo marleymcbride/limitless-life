@@ -11,7 +11,7 @@ export default function WeCanHelpIf() {
         <div className="flex flex-col items-stretch md:grid md:grid-cols-2 gap-10 mb-12">
 
           {/* We Can Help If */}
-          <div className="bg-white/5 border border-green-500/30 rounded-lg p-8 mobile-box-width-transparent we-can-help-box">
+          <div className="bg-white/5 px-12 md:px-12 lg:px-12 border border-green-500/30 rounded-lg p-8 mobile-box-width-transparent we-can-help-box">
             <h3 className="text-4xl font-bold text-white pl-6 mb-8" style={{ fontFamily: "Neuemontreal, sans-serif" }}>
               We Can Help If:
             </h3>
@@ -40,7 +40,7 @@ export default function WeCanHelpIf() {
           </div>
 
           {/* We Can't Help If */}
-          <div className="bg-white/5 border border-red-500/30 rounded-lg p-8 mobile-box-width-transparent we-can-help-box">
+          <div className="bg-white/5 px-12 md:px-12 lg:px-12 border border-red-500/30 rounded-lg p-8 mobile-box-width-transparent we-can-help-box">
             <h3 className="text-4xl font-bold text-white pl-5 mb-8" style={{ fontFamily: "Neuemontreal, sans-serif" }}>
               We Can't Help If:
             </h3>

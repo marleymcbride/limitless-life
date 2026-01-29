@@ -54,7 +54,7 @@ export default function WhatYouGetSection() {
           {items.map((item, index) => (
             <div
               key={index}
-              className="bg-gray-50 rounded-lg p-8 border border-gray-200"
+              className="bg-gray-50 px-12 md:px-12 lg:px-12 rounded-lg p-8 border border-gray-200"
             >
               <h3
                 className="text-xl font-bold text-gray-900 mb-4"
