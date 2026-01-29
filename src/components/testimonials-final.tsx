@@ -66,7 +66,7 @@ export default function TestimonialPlaceholder({ number, darkBg }: { number: num
     <>
     <section className={sectionClass}>
       {testimonialPair.map((testimonial, index) => (
-        <div key={`${number}-${index}`} className={`testimonial-wrapper w-[82%] mx-auto ${index === 0 ? "mb-10" : ""}`} style={{ maxWidth: "10%" }}>
+        <div key={`${number}-${index}`} className={`testimonial-wrapper w-[82%] mx-auto ${index === 0 ? "mb-10" : ""}`} style={{ maxWidth: "25%" }}>
           <Image
             src={testimonial.image}
             alt={`Testimonial ${number}-${index + 1}`}

@@ -70,7 +70,7 @@ export default function EverythingIncluded() {
           {items.map((item, index) => (
             <div
               key={index}
-              className="bg-white rounded-lg p-6 md:p-8 shadow-lg relative min-h-[380px] flex flex-col"
+              className="bg-white px-12 md:px-12 lg:px-12 rounded-lg p-6 md:p-8 shadow-lg relative min-h-[380px] flex flex-col"
             >
               {/* Icon */}
               <div className="text-gray-800 mb-4">

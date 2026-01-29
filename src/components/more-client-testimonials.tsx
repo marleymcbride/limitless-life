@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function VideoTestimonialCTA() {
   return (
-    <section className="bg-white relative py-16 px-4 w-full">
+    <section className="bg-white relative py-16 px-4 w-full z-10">
       <div className="absolute bottom-0 left-0 w-full h-[33vh"></div>
       <div className="container mx-auto max-w-5xl">
         <div className="text-center">
@@ -36,11 +36,11 @@ export default function VideoTestimonialCTA() {
             />
           </div>
 
-          <p className="text-sm text-gray-600 mb-12">
+          <div className="text-md md:text-xl lg:text-xl text-gray-600 mb-12">
             Geoff, 3 months - Energy Sector
-          </p>
+          </div>
 
-          <div className="max-w-md mx-auto mb-0">
+          <div className="max-w-lg -pl-4 mb-0">
             <p className="text-base md:text-2xl lg:text-3xl max-w-md text-black font-normal">
             &ldquo;I feel stronger, bigger and more confident thanks to Marley&apos;s mentorship, coaching and friendship.&ldquo;
             </p>
@@ -68,9 +68,9 @@ export default function VideoTestimonialCTA() {
             />
           </div>
 
-          <p className="text-sm text-gray-600 mb-12">
+          <div className="text-md md:text-xl lg:text-xl text-gray-600 mb-12">
             Laurence, 10 weeks - age 53
-          </p>
+          </div>
 
           {/* Desktop Video (Landscape) - Visible on desktop */}
           {/* <div className="hidden md:block mb-12">
