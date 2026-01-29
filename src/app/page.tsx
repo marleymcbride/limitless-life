@@ -457,9 +457,9 @@ export default function Home() {
       <IntroducingLimitless />
 
             {/* 9. More Video Testimonials (Black background) */}
-            <div className="dark-section-with-grain">
+            
         <MoreVideoTestimonials />
-      </div>
+
 
 
       {/* 11. What You'll Achieve (Dark with grain) */}

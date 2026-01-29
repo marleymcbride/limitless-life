@@ -50,7 +50,7 @@ export default function IntroducingLimitless() {
           </p>
 
           <div className="grid md:grid-cols-3 gap-4 mb-12 text-left">
-                <div className="w-full bg-white/10 rounded-lg p-6 border border-white/20">
+                <div className="w-full px-12 md:px-12 lg:px-12 bg-white/10 rounded-lg p-6 border border-white/20">
                   <h3
                     className="text-2xl font-bold text-white mb-4"
                     style={{ fontFamily: "Neuemontreal, sans-serif" }}
@@ -62,7 +62,7 @@ export default function IntroducingLimitless() {
                   </p>
                 </div>
 
-                <div className="w-full bg-white/10 rounded-lg p-6 border border-white/20">
+                <div className="w-full px-12 md:px-12 lg:px-12 bg-white/10 rounded-lg p-6 border border-white/20">
                   <h3
                     className="text-2xl font-bold text-white mb-4"
                     style={{ fontFamily: "Neuemontreal, sans-serif" }}
@@ -74,7 +74,7 @@ export default function IntroducingLimitless() {
                   </p>
                 </div>
 
-                <div className="w-full bg-white/10 rounded-lg p-6 border border-white/20">
+                <div className="w-full px-12 md:px-12 lg:px-12 bg-white/10 rounded-lg p-6 border border-white/20">
                   <h3
                     className="text-2xl font-bold text-white mb-4"
                     style={{ fontFamily: "Neuemontreal, sans-serif" }}
@@ -88,7 +88,7 @@ export default function IntroducingLimitless() {
               </div>
 
               <div className="grid md:grid-cols-3 gap-4 mb-12 text-left">
-                <div className="w-full bg-white/10 rounded-lg p-6 border border-white/20">
+                <div className="w-full px-12 md:px-12 lg:px-12 bg-white/10 rounded-lg p-6 border border-white/20">
                   <h3
                     className="text-2xl font-bold text-white mb-4"
                     style={{ fontFamily: "Neuemontreal, sans-serif" }}
@@ -100,7 +100,7 @@ export default function IntroducingLimitless() {
                   </p>
                 </div>
 
-                <div className="w-full bg-white/10 rounded-lg p-6 border border-white/20">
+                <div className="w-full px-12 md:px-12 lg:px-12 bg-white/10 rounded-lg p-6 border border-white/20">
                   <h3
                     className="text-2xl font-bold text-white mb-4"
                     style={{ fontFamily: "Neuemontreal, sans-serif" }}
@@ -112,7 +112,7 @@ export default function IntroducingLimitless() {
                   </p>
                 </div>
 
-                <div className="w-full bg-white/10 rounded-lg p-6 border border-white/20">
+                <div className="w-full px-12 md:px-12 lg:px-12 bg-white/10 rounded-lg p-6 border border-white/20">
                   <h3
                     className="text-2xl font-bold text-white mb-4"
                     style={{ fontFamily: "Neuemontreal, sans-serif" }}

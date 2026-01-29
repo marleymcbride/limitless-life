@@ -1,4 +1,4 @@
-"use client";
+  "use client";
 
 import { bgClasses } from "@/lib/utils";
 
@@ -37,7 +37,7 @@ export default function CoreValueProposition() {
              It&apos;s their system.
             </p>
 
-            <p className="text-gray-800 mini-heading leading-relaxed mt-8 mb-8">
+            <p className="text-gray-800 mini-heading mx-4 md:mx-auto lg:mx-auto py-4 md:py-0 lg:py-0 text-center leading-relaxed mt-8 mb-8">
             It became clear there are 4 common misbeliefs everyone gets wrong
             </p>
 

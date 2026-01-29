@@ -113,20 +113,20 @@ export default function IntroducingLimitless() {
           </div>
 
 
-          <p className="introducing-paragraph-mobile text-white-300 mt-8 mb-13 w-full px-4 md:px-16 lg:px-16 text-left leading-relaxed"
+          <p className="introducing-paragraph-mobile text-white-300 mt-8 mb-13 w-full px-4 md:px-16 lg:px-16 md:text-left lg:text-left text-center leading-relaxed"
           style={{ fontFamily: "Neuemontreal, Arial, sans-serif", fontSize: "1.375rem" }}
           >
           After 12 years and 14,352 hours, I&apos;ve found a system that wakes you up energized, loses your gut in 2 days per week, and lets you feel present and stress-free without needing alcohol.
           </p>
 
-          <p className="introducing-paragraph-mobile text-white-300 mb-13 w-full px-4 md:px-16 lg:px-16 mt-8 mb-12 text-left leading-relaxed"
+          <p className="introducing-paragraph-mobile md:text-left lg:text-left text-center text-white-300 mb-13 w-full px-4 md:px-16 lg:px-16 mt-8 mb-12 text-left leading-relaxed"
           style={{ fontFamily: "Neuemontreal, Arial, sans-serif", fontSize: "1.375rem" }}
           >
           Here&apos;s why it works:
           </p>
 
           <div className="flex flex-col items-stretch gap-4 mb-4 text-left md:grid md:grid-cols-3 md:mb-12">
-                <div className="w-full bg-white/10 rounded-lg p-6 py-28 border border-white/20 mobile-box-width-transparent introducing-limitless-transparent-card">
+                <div className="w-full px-12 md:px-12 lg:px-12 bg-white/10 rounded-lg p-6 py-28 border border-white/20 mobile-box-width-transparent introducing-limitless-transparent-card">
                   <h3
                     className="text-2xl font-bold text-white mb-4"
                     style={{ fontFamily: "Neuemontreal, sans-serif" }}
@@ -141,7 +141,7 @@ export default function IntroducingLimitless() {
                   </p>
                 </div>
 
-                <div className="w-full bg-white/10 rounded-lg p-6 py-28 border border-white/20 mobile-box-width-transparent introducing-limitless-transparent-card">
+                <div className="w-full px-12 md:px-12 lg:px-12 bg-white/10 rounded-lg p-6 py-28 border border-white/20 mobile-box-width-transparent introducing-limitless-transparent-card">
                   <h3
                     className="text-2xl font-bold text-white mb-4"
                     style={{ fontFamily: "Neuemontreal, sans-serif" }}
@@ -156,7 +156,7 @@ export default function IntroducingLimitless() {
                   </p>
                 </div>
 
-                <div className="w-full bg-white/10 rounded-lg p-6 py-28 border border-white/20 mobile-box-width-transparent introducing-limitless-transparent-card">
+                <div className="w-full px-12 md:px-12 lg:px-12 bg-white/10 rounded-lg p-6 py-28 border border-white/20 mobile-box-width-transparent introducing-limitless-transparent-card">
                   <h3
                     className="text-2xl font-bold text-white mb-4"
                     style={{ fontFamily: "Neuemontreal, sans-serif" }}
@@ -174,7 +174,7 @@ export default function IntroducingLimitless() {
               </div>
 
               <div className="flex flex-col items-stretch gap-4 mb-4 text-left md:grid md:grid-cols-3 md:mb-12">
-                <div className="w-full bg-white/10 rounded-lg p-6 py-28 border border-white/20 mobile-box-width-transparent introducing-limitless-transparent-card">
+                <div className="w-full px-12 md:px-12 lg:px-12 bg-white/10 rounded-lg p-6 py-28 border border-white/20 mobile-box-width-transparent introducing-limitless-transparent-card">
                   <h3
                     className="text-2xl font-bold text-white mb-4"
                     style={{ fontFamily: "Neuemontreal, sans-serif" }}
@@ -189,7 +189,7 @@ export default function IntroducingLimitless() {
                   </p>
                 </div>
 
-                <div className="w-full bg-white/10 rounded-lg p-6 py-28 border border-white/20 mobile-box-width-transparent introducing-limitless-transparent-card">
+                <div className="w-full px-12 md:px-12 lg:px-12 bg-white/10 rounded-lg p-6 py-28 border border-white/20 mobile-box-width-transparent introducing-limitless-transparent-card">
                   <h3
                     className="text-2xl font-bold text-white mb-4"
                     style={{ fontFamily: "Neuemontreal, sans-serif" }}
@@ -204,7 +204,7 @@ export default function IntroducingLimitless() {
                   </p>
                 </div>
 
-                <div className="w-full bg-white/10 rounded-lg p-6 py-28 border border-white/20 mobile-box-width-transparent introducing-limitless-transparent-card">
+                <div className="w-full px-12 md:px-12 lg:px-12 bg-white/10 rounded-lg p-6 py-28 border border-white/20 mobile-box-width-transparent introducing-limitless-transparent-card">
                   <h3
                     className="text-2xl font-bold text-white mb-4"
                     style={{ fontFamily: "Neuemontreal, sans-serif" }}

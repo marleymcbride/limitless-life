@@ -91,7 +91,7 @@ export default function BonusStack() {
                 {bonuses.map((bonus, index) => (
                   <div
                     key={index}
-                    className="bg-white rounded-lg p-6 md:p-8 shadow-lg relative min-h-[380px] flex flex-col mobile-box-width bonus-stack-card"
+                    className="bg-white px-12 md:px-12 lg:px-12 rounded-lg p-6 md:p-8 shadow-lg relative min-h-[380px] flex flex-col mobile-box-width bonus-stack-card"
                   >
                     <h3
                       className="text-2xl md:text-4xl lg:text-4xl font-bold text-gray-900 mb-4 pt-0 md:pt-8 lg:pt-8 text-center"
