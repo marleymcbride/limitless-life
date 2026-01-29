@@ -1,4 +1,4 @@
-import Image from "next/image";
+import SmoothImage from "@/components/ui/smooth-image";
 
 interface TestimonialCardProps {
   quote: string;
@@ -21,7 +21,7 @@ export default function TestimonialCard({
         <p className="mb-4 text-lg italic text-white">{quote}</p>
         <div className="flex items-center">
           <div className="mr-4 h-12 w-12 overflow-hidden rounded-full">
-            <Image
+            <SmoothImage
               src={imageSrc || "/placeholder.svg"}
               alt={name}
               width={48}
