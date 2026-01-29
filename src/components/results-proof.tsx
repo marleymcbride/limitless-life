@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import SmoothImage from "@/components/ui/smooth-image";
 
 export default function ResultsProof() {
   return (
@@ -26,7 +26,7 @@ export default function ResultsProof() {
           >
             <div className="space-y-10">
               <div className="relative rounded-lg overflow-hidden shadow-md w-[337px]">
-                <Image
+                <SmoothImage
                   src="/images/Testimonials/Gav social proof - 10lbs in 8 weeks.png"
                   alt="Client results"
                   width={337}
@@ -36,7 +36,7 @@ export default function ResultsProof() {
               </div>
 
               <div className="relative rounded-lg overflow-hidden shadow-md w-[337px]">
-                <Image
+                <SmoothImage
                   src="/images/Testimonials/Matty down 19kg.jpeg"
                   alt="Client results"
                   width={337}
@@ -46,7 +46,7 @@ export default function ResultsProof() {
               </div>
 
               <div className="relative rounded-lg overflow-hidden shadow-md w-[337px]">
-                <Image
+                <SmoothImage
                   src="/images/Testimonials/Luis social proof.png"
                   alt="Client results"
                   width={337}
@@ -58,7 +58,7 @@ export default function ResultsProof() {
 
             <div className="space-y-10">
               <div className="relative rounded-lg overflow-hidden shadow-md w-[337px]">
-                <Image
+                <SmoothImage
                   src="/images/Testimonials/Lewis hits 168 feels great.png"
                   alt="Client results"
                   width={337}
@@ -68,7 +68,7 @@ export default function ResultsProof() {
               </div>
 
               <div className="relative rounded-lg overflow-hidden shadow-md w-[337px]">
-                <Image
+                <SmoothImage
                   src="/images/Testimonials/Aaron testimonial - great energy.png"
                   alt="Client results"
                   width={337}
@@ -78,7 +78,7 @@ export default function ResultsProof() {
               </div>
 
               <div className="relative rounded-lg overflow-hidden shadow-md w-[337px]">
-                <Image
+                <SmoothImage
                   src="/images/Testimonials/Geoff - best shape ever been in.jpg"
                   alt="Client results"
                   width={337}
@@ -94,7 +94,7 @@ export default function ResultsProof() {
             className="flex flex-col gap-6 justify-center items-center px-4 mobile-results-only "
           >
             <div className="relative rounded-lg overflow-hidden shadow-md w-full max-w-[337px]">
-              <Image
+              <SmoothImage
                 src="/images/Testimonials/Gav social proof - 10lbs in 8 weeks.png"
                 alt="Client results"
                 width={337}
@@ -104,7 +104,7 @@ export default function ResultsProof() {
             </div>
 
             <div className="relative rounded-lg overflow-hidden shadow-md w-full max-w-[337px]">
-              <Image
+              <SmoothImage
                 src="/images/Testimonials/Matty down 19kg.jpeg"
                 alt="Client results"
                 width={337}
@@ -114,7 +114,7 @@ export default function ResultsProof() {
             </div>
 
             <div className="relative rounded-lg overflow-hidden shadow-md w-full max-w-[337px]">
-              <Image
+              <SmoothImage
                 src="/images/Testimonials/Luis social proof.png"
                 alt="Client results"
                 width={337}
@@ -124,7 +124,7 @@ export default function ResultsProof() {
             </div>
 
             <div className="relative rounded-lg overflow-hidden shadow-md w-full max-w-[337px]">
-              <Image
+              <SmoothImage
                 src="/images/Testimonials/Lewis hits 168 feels great.png"
                 alt="Client results"
                 width={337}
@@ -134,7 +134,7 @@ export default function ResultsProof() {
             </div>
 
             <div className="relative rounded-lg overflow-hidden shadow-md w-full max-w-[337px]">
-              <Image
+              <SmoothImage
                 src="/images/Testimonials/Aaron testimonial - great energy.png"
                 alt="Client results"
                 width={337}
@@ -144,7 +144,7 @@ export default function ResultsProof() {
             </div>
 
             <div className="relative rounded-lg overflow-hidden shadow-md w-full max-w-[337px]">
-              <Image
+              <SmoothImage
                 src="/images/Testimonials/Geoff - best shape ever been in.jpg"
                 alt="Client results"
                 width={337}

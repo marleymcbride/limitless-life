@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
+import SmoothImage from "@/components/ui/smooth-image";
 import testimonials, { Testimonial } from "@/data/testimonials";
 
 const TestimonialCard = ({ testimonial }: { testimonial: Testimonial }) => {
@@ -10,7 +10,7 @@ const TestimonialCard = ({ testimonial }: { testimonial: Testimonial }) => {
       <div className="flex items-start gap-3 mb-3">
         {testimonial.avatar ? (
           <div className="h-12 w-12 rounded-full overflow-hidden flex-shrink-0">
-            <Image
+            <SmoothImage
               src={testimonial.avatar}
               alt={testimonial.username}
               width={48}

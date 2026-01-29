@@ -1,4 +1,4 @@
-import Image from "next/image";
+import SmoothImage from "@/components/ui/smooth-image";
 
 const testimonials = [
   { image: "/images/Testimonials/Luke social proof.png" },
@@ -67,13 +67,12 @@ export default function TestimonialPlaceholder({ number, darkBg }: { number: num
     <section className={sectionClass}>
       {testimonialPair.map((testimonial, index) => (
         <div key={`${number}-${index}`} className={`testimonial-wrapper w-[82%] mx-auto ${index === 0 ? "mb-10" : ""}`} style={{ maxWidth: "25%" }}>
-          <Image
+          <SmoothImage
             src={testimonial.image}
             alt={`Testimonial ${number}-${index + 1}`}
             width={1200}
             height={675}
             className="w-full h-auto object-contain"
-            unoptimized={true}
           />
         </div>
       ))}

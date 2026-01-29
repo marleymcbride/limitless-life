@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import SmoothImage from "@/components/ui/smooth-image";
 
 export default function VideoTestimonialCTA() {
   return (
@@ -16,7 +16,7 @@ export default function VideoTestimonialCTA() {
 
           {/* Desktop version - fixed width */}
           <div className="relative rounded-lg overflow-hidden shadow-md mx-auto mt-6 mb-4 hidden md:block" style={{ width: "438px" }}>
-            <Image
+            <SmoothImage
               src="/images/Testimonials/Geoff - 3 month transformation.jpeg"
               alt="Client results"
               width={438}
@@ -27,7 +27,7 @@ export default function VideoTestimonialCTA() {
 
           {/* Mobile version - responsive */}
           <div className="relative rounded-lg overflow-hidden shadow-md w-full max-w-[90%] mx-auto mt-6 mb-4 block md:hidden">
-            <Image
+            <SmoothImage
               src="/images/Testimonials/Geoff - 3 month transformation.jpeg"
               alt="Client results"
               width={438}
@@ -48,7 +48,7 @@ export default function VideoTestimonialCTA() {
 
           {/* Desktop version - fixed width */}
           <div className="relative rounded-lg overflow-hidden shadow-md mx-auto mt-6 mb-4 hidden md:block" style={{ width: "438px" }}>
-            <Image
+            <SmoothImage
               src="/images/Testimonials/Before vs afters/Laurence before vs after.png"
               alt="Client results"
               width={438}
@@ -59,7 +59,7 @@ export default function VideoTestimonialCTA() {
 
           {/* Mobile version - responsive */}
           <div className="relative rounded-lg overflow-hidden shadow-md w-full max-w-[90%] mx-auto mt-6 mb-4 block md:hidden">
-            <Image
+            <SmoothImage
               src="/images/Testimonials/Before vs afters/Laurence before vs after.png"
               alt="Client results"
               width={438}
