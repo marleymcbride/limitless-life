@@ -12,7 +12,7 @@ export default function WeCanHelpIf() {
 
           {/* We Can Help If */}
           <div className="bg-white/5 py-6 md:py-8 lg:py-8 px-2 md:px-12 lg:px-12 border border-green-500/30 rounded-lg mobile-box-width-transparent we-can-help-box">
-            <h3 className="text-2xl md:text-5xl font-bold text-white mb-4 text-center md:text-left lg:text-left md:py-4 lg:py-4" style={{ fontFamily: "Neuemontreal, sans-serif" }}>
+            <h3 className="text-2xl md:text-5xl font-bold text-white mb-4 text-center md:py-4 lg:py-4" style={{ fontFamily: "Neuemontreal, sans-serif" }}>
               We Can Help If:
             </h3>
 
@@ -42,7 +42,7 @@ export default function WeCanHelpIf() {
 
           {/* We Can't Help If */}
           <div className="bg-white/5 py-6 md:py-8 lg:py-8 px-2 md:px-12 lg:px-12 border border-red-500/30 rounded-lg mobile-box-width-transparent we-can-help-box">
-            <h3 className="text-2xl md:text-5xl font-bold text-white mb-4 text-center md:text-left lg:text-left md:py-4 lg:py-4" style={{ fontFamily: "Neuemontreal, sans-serif" }}>
+            <h3 className="text-2xl md:text-5xl font-bold text-white mb-4 text-center md:py-4 lg:py-4" style={{ fontFamily: "Neuemontreal, sans-serif" }}>
               We Can&apos;t Help If:
             </h3>
             <ul className="space-y-4">

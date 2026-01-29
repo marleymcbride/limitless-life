@@ -35,13 +35,15 @@ export default function SmoothImage({
   const [error, setError] = useState(false);
   const [isInView, setIsInView] = useState(priority);
   const [shouldFadeIn, setShouldFadeIn] = useState(priority);
-  const observerRef = useRef<HTMLDivElement>(null);
-  const imgRef = useRef<any>(null);
+  const observerTargetRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (priority) {
       setIsInView(true);
-      setShouldFadeIn(true);
+      // Small delay for priority images to ensure smooth fade-in
+      setTimeout(() => {
+        setShouldFadeIn(true);
+      }, 50);
       return;
     }
 
@@ -63,29 +65,18 @@ export default function SmoothImage({
       }
     );
 
-    if (observerRef.current) {
-      observer.observe(observerRef.current);
+    if (observerTargetRef.current) {
+      observer.observe(observerTargetRef.current);
     }
 
     return () => observer.disconnect();
   }, [priority, isInView]);
 
-  const opacity = shouldFadeIn && !isLoading ? '1' : '0';
-  const transform = shouldFadeIn && !isLoading ? 'scale(1)' : 'scale(1.05)';
-  const filter = shouldFadeIn && !isLoading ? 'blur(0px)' : 'blur(4px)';
-
-  const imageStyle = {
-    ...style,
-    opacity,
-    transform,
-    filter,
-    transition: `all ${SMOOTH_IMAGE_CONFIG.animationDuration}ms ease-out`,
-  };
-
   if (!isInView) {
+    // Placeholder for IntersectionObserver
     return (
       <div
-        ref={observerRef}
+        ref={observerTargetRef}
         className={`bg-zinc-200 dark:bg-zinc-700 ${className}`}
         style={style}
         aria-hidden="true"
@@ -94,9 +85,9 @@ export default function SmoothImage({
   }
 
   return (
-    <div ref={observerRef} className="relative">
+    <div ref={observerTargetRef} className={className} style={style}>
       {error ? (
-        <div className={`bg-zinc-200 dark:bg-zinc-700 flex items-center justify-center ${className}`} style={style}>
+        <div className="absolute inset-0 bg-zinc-200 dark:bg-zinc-700 flex items-center justify-center">
           <svg
             className="w-8 h-8 text-zinc-400"
             fill="none"
@@ -112,27 +103,34 @@ export default function SmoothImage({
           </svg>
         </div>
       ) : (
-        <Image
-          ref={imgRef}
-          src={src}
-          alt={alt}
-          width={!fill ? width : undefined}
-          height={!fill ? height : undefined}
-          fill={fill}
-          sizes={sizes}
-          priority={priority}
-          quality={quality}
-          unoptimized={unoptimized}
-          className={className}
-          style={imageStyle}
-          onLoad={() => {
-            setIsLoading(false);
+        <div
+          style={{
+            opacity: shouldFadeIn && !isLoading ? 1 : 0,
+            transform: shouldFadeIn && !isLoading ? 'scale(1)' : 'scale(1.05)',
+            filter: shouldFadeIn && !isLoading ? 'blur(0px)' : 'blur(8px)',
+            transition: `all ${SMOOTH_IMAGE_CONFIG.animationDuration}ms ease-out`,
           }}
-          onError={() => {
-            setIsLoading(false);
-            setError(true);
-          }}
-        />
+        >
+          <Image
+            src={src}
+            alt={alt}
+            width={!fill ? width : undefined}
+            height={!fill ? height : undefined}
+            fill={fill}
+            sizes={sizes}
+            priority={priority}
+            quality={quality}
+            unoptimized={unoptimized}
+            className="w-full h-full"
+            onLoad={() => {
+              setIsLoading(false);
+            }}
+            onError={() => {
+              setIsLoading(false);
+              setError(true);
+            }}
+          />
+        </div>
       )}
     </div>
   );
