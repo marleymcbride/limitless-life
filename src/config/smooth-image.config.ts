@@ -16,13 +16,13 @@ export const SMOOTH_IMAGE_CONFIG = {
   /**
    * How far outside the viewport to start loading (in pixels)
    *
-   * - "500px" = start loading 500px before entering viewport (earlier preload)
-   * - "100px" = start loading 100px before entering viewport
+   * - "200px" = start loading just before entering viewport
+   * - "100px" = start loading very close to viewport
    * - "0px" = start loading exactly at viewport edge
    *
-   * Recommended: "500px" for better preloading while keeping smooth fade-in
+   * Recommended: "200px" to balance preload time with visible fade-in
    */
-  rootMargin: "500px",
+  rootMargin: "200px",
 
   /**
    * Duration of the fade-in animation (milliseconds)
@@ -33,11 +33,11 @@ export const SMOOTH_IMAGE_CONFIG = {
    * Delay after image enters viewport before starting fade-in (milliseconds)
    * This makes the animation more visible
    */
-  fadeInDelay: 200,
+  fadeInDelay: 150,
 
   /**
    * Enable priority loading for above-fold images
-   * Images with priority={true} will load immediately
+   * Images with priority={true} will load immediately without lazy loading
    */
   enablePriority: true,
 } as const;
