@@ -37,8 +37,8 @@ export default function IntroSection() {
                   alt="Intro image"
                   width={256}
                   height={192}
+                  priority
                   className="rounded-lg shadow-lg mx-auto"
-                  loading="lazy"
                   style={{ width: '50%', height: 'auto' }}
                 />
               </div>
@@ -99,8 +99,8 @@ export default function IntroSection() {
                     alt="Marley Photoshoot"
                     width={600}
                     height={800}
+                    priority
                     className="rounded-l-lg shadow-lg w-full h-auto"
-                    loading="lazy"
                   />
                 </div>
                 <div className="relative ml-16 mx-auto w-[70%] h-auto">
@@ -109,8 +109,8 @@ export default function IntroSection() {
                     alt="Sober 3 Years"
                     width={600}
                     height={800}
+                    priority
                     className="rounded-r-lg shadow-lg w-full h-auto"
-                    loading="lazy"
                   />
                 </div>
               </div>
@@ -125,8 +125,8 @@ export default function IntroSection() {
                     alt="Marley Photoshoot"
                     width={600}
                     height={800}
+                    priority
                     className="rounded-l-lg shadow-lg w-full h-auto"
-                    loading="lazy"
                   />
                 </div>
                 <div className="relative  ml-6 mx-auto w-[90%] h-auto">
@@ -135,8 +135,8 @@ export default function IntroSection() {
                     alt="Sober 3 Years"
                     width={600}
                     height={800}
+                    priority
                     className="rounded-r-lg shadow-lg w-full h-auto"
-                    loading="lazy"
                   />
                 </div>
               </div>

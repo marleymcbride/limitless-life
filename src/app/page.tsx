@@ -393,6 +393,7 @@ export default function Home() {
                     alt="Lewis Allan"
                     width={64}
                     height={64}
+                    priority
                     className="w-full h-full object-cover"
                     unoptimized={true}
                   />
