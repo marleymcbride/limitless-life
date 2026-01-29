@@ -1,4 +1,4 @@
-import Image from "next/image";
+import SmoothImage from "./smooth-image";
 
 interface MicroTestimonialProps {
   quote: string;
@@ -40,7 +40,7 @@ export const MicroTestimonial = ({
           <div className="flex items-center gap-2">
             {imageSrc && (
               <div className="w-8 h-8 rounded-full overflow-hidden">
-                <Image
+                <SmoothImage
                   src={imageSrc}
                   alt={name}
                   width={32}
