@@ -29,9 +29,10 @@ const nextConfig = {
   // NOTE: ESLint errors are ignored during builds for the same reason.
   // The security changes comply with best practices and don't introduce
   // new linting issues.
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
+  //
+  // NOTE: ESLint configuration has been removed from next.config.js
+  // as it's no longer supported in Next.js 16. Use .eslintrc.json
+  // or ESLint config files instead for ESLint configuration.
   async headers() {
     return [
       {
