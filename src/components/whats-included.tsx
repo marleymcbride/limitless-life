@@ -106,7 +106,7 @@ export default function WhatsIncluded() {
           {features.map((feature, index) => (
             <div
               key={index}
-              className={`flex p-4 rounded-lg border transform transition-none  ${
+              className={`flex px-12 md:px-12 lg:px-12 p-4 rounded-lg border transform transition-none  ${
                 feature.highlight
                   ? "bg-[#940909]/10 border-[#940909] hover:bg-[#940909]/15"
                   : "bg-zinc-800/50 border-zinc-700 hover:bg-zinc-800"
