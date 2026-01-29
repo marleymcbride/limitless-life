@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import SmoothImage from "@/components/ui/smooth-image";
 
 export default function ClientTransformationGallery() {
   return (
@@ -20,7 +20,7 @@ export default function ClientTransformationGallery() {
         <div className="hidden md:grid md:grid-cols-3 lg:grid lg:grid-cols-3 gap-8 max-w-7xl py-6 mx-auto">
           {/* Rob transformation */}
           <div className="relative">
-            <Image
+            <SmoothImage
               src="/images/Testimonials/Before vs afters/Rob-before vs after.jpg"
               alt="Rob transformation"
               width={400}
@@ -32,7 +32,7 @@ export default function ClientTransformationGallery() {
 
           {/* Marley's Transformation (Center) */}
           <div className="relative">
-            <Image
+            <SmoothImage
               src="/images/Testimonials/Before vs afters/Marley 2014 vs 2025.png"
               alt="Marley transformation"
               width={400}
@@ -44,7 +44,7 @@ export default function ClientTransformationGallery() {
 
           {/* Matty */}
           <div className="relative">
-            <Image
+            <SmoothImage
               src="/images/Testimonials/Before vs afters/Matty - before vs after.jpeg"
               alt="Matty"
               width={400}
@@ -61,7 +61,7 @@ export default function ClientTransformationGallery() {
 
           {/* Rob transformation */}
           <div className="relative">
-            <Image
+            <SmoothImage
               src="/images/Testimonials/Before vs afters/Rob-before vs after.jpg"
               alt="Rob transformation"
               width={400}
@@ -73,7 +73,7 @@ export default function ClientTransformationGallery() {
 
           {/* Marley's Transformation (Center) */}
           <div className="relative">
-            <Image
+            <SmoothImage
               src="/images/Testimonials/Before vs afters/Marley 2014 vs 2025.png"
               alt="Marley transformation"
               width={400}
@@ -85,7 +85,7 @@ export default function ClientTransformationGallery() {
 
           {/* Matty */}
           <div className="relative">
-            <Image
+            <SmoothImage
               src="/images/Testimonials/Before vs afters/Matty - before vs after.jpeg"
               alt="Matty"
               width={400}
