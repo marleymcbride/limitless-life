@@ -1,33 +1,25 @@
-// N8N Webhook Client - Limitless Protocol Premium Waitlist Integration
-// Connects directly to the live N8N webhook for Systeme.io contact management
+// Waitlist Client - Limitless Protocol Premium Waitlist Integration
+// Secure server-side API integration for waitlist signups
 
-interface WebhookPayload {
-  email: string;
-  firstName: string;
-}
-
-interface WebhookResponse {
+interface WaitlistResponse {
   success: boolean;
   message?: string;
   error?: string;
-  email?: string;
-  timestamp?: string;
 }
 
 /**
- * Submit to N8N webhook for Limitless Protocol waitlist
- * Automatically creates contact in Systeme.io with proper tagging
+ * Submit to waitlist via secure server-side API
+ * @param email - User's email address
+ * @param firstName - User's first name
+ * @param source - Optional source tracking (kept for compatibility)
+ * @throws Error with message if submission fails
  */
 export async function submitToN8nWebhook(
   email: string,
   firstName: string,
-  _source: string = "limitless-protocol-premium-waitlist" // Keep for compatibility, not sent to webhook
+  _source: string = "limitless-protocol-premium-waitlist" // Keep for compatibility, not used
 ): Promise<void> {
-  // Live N8N webhook endpoint from environment
-  const webhookUrl = process.env.NEXT_PUBLIC_N8N_WAITLIST_WEBHOOK ||
-    "https://n8n.marleymcbride.co/webhook/programme-waitlist-leads";
-
-  // Validate inputs
+  // Client-side validation for immediate feedback
   if (!email?.trim()) {
     throw new Error("Email address is required");
   }
@@ -42,72 +34,27 @@ export async function submitToN8nWebhook(
     throw new Error("Please enter a valid email address");
   }
 
-  // Prepare payload (only send fields N8N expects)
-  const payload: WebhookPayload = {
-    email: email.trim(),
-    firstName: firstName.trim(),
-    // Note: source parameter is kept for compatibility but not sent to webhook
-  };
-
+  // Call server-side API endpoint
   try {
-    const response = await fetch(webhookUrl, {
+    const response = await fetch("/api/waitlist", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Accept: "application/json",
       },
-      body: JSON.stringify(payload),
+      body: JSON.stringify({
+        email: email.trim(),
+        firstName: firstName.trim(),
+      }),
     });
 
-    // Handle HTTP error responses
+    const result: WaitlistResponse = await response.json();
+
     if (!response.ok) {
-      let errorMessage: string;
-
-      switch (response.status) {
-        case 400:
-          errorMessage = "Please check your email and name are correct";
-          break;
-        case 503:
-          errorMessage =
-            "Service temporarily unavailable. Please try again in a moment.";
-          break;
-        case 429:
-          errorMessage =
-            "Too many requests. Please wait a moment and try again.";
-          break;
-        case 500:
-        case 502:
-        case 504:
-          errorMessage = "Server error. Please try again in a moment.";
-          break;
-        default:
-          errorMessage =
-            "Unable to join waitlist. Please try again or contact support.";
-      }
-
-      throw new Error(errorMessage);
+      throw new Error(result.error || "Failed to join waitlist");
     }
 
-    // Parse response if available
-    let result: WebhookResponse | null = null;
-    try {
-      const responseText = await response.text();
-      if (responseText) {
-        result = JSON.parse(responseText);
-      }
-    } catch (_parseError) {
-      // If JSON parsing fails but HTTP status was OK, assume success
-      console.warn(
-        "Could not parse webhook response as JSON, assuming success"
-      );
-      return;
-    }
-
-    // Handle application-level errors from N8N
-    if (result && result.success === false) {
-      const errorMessage =
-        result.message || result.error || "Failed to join waitlist";
-      throw new Error(errorMessage);
+    if (!result.success) {
+      throw new Error(result.error || "Failed to join waitlist");
     }
 
     // Success - function completes without throwing
@@ -123,11 +70,10 @@ export async function submitToN8nWebhook(
           "Network error. Please check your connection and try again."
         );
       }
-      // Re-throw form validation and API errors as-is
+      // Re-throw API errors as-is
       throw error;
     }
 
-    // Handle unexpected error types
     throw new Error("An unexpected error occurred. Please try again.");
   }
 }
@@ -167,4 +113,4 @@ export function validateFormData(
 }
 
 // Export types for TypeScript support
-export type { WebhookPayload, WebhookResponse };
+export type { WaitlistResponse };
