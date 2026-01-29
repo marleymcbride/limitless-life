@@ -2,7 +2,7 @@ import React from "react";
 
 export default function The3TestimonialsBoxV2() {
   return (
-      <section className="pt-0 text-white lg:pb-0 mb-0 w-full bg-black">
+      <section className="pt-0 text-white lg:pb-0 mb-0 w-full bg-zinc-400/95">
         <div className="mx-4 md:mx-[3.5%]">
           <div className="p-10 mx-4 mb-24 mt-20 rounded-2xl shadow-xl lg:mx-0 md:mx-0 lg:max-w-full md:max-w-full bg-zinc-800/95">
             <div className="grid grid-cols-1 gap-8 md:gap-12 md:grid-cols-3">
@@ -41,5 +41,8 @@ export default function The3TestimonialsBoxV2() {
           </div>
         </div>
       </section>
+
+
   );
 }
+
