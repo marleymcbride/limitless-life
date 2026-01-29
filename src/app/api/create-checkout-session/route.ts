@@ -6,7 +6,7 @@ const getStripe = () => {
     throw new Error("STRIPE_SECRET_KEY is not configured");
   }
   return new Stripe(process.env.STRIPE_SECRET_KEY, {
-    apiVersion: "2024-11-20.acacia",
+    apiVersion: "2025-01-27.acacia" as any, // Use any to allow flexibility with Stripe API versions
   });
 };
 
@@ -121,7 +121,8 @@ export async function POST(request: NextRequest) {
 // Cleanup old rate limit records periodically
 setInterval(() => {
   const now = Date.now();
-  for (const [key, record] of rateLimitMap.entries()) {
+  const entries = Array.from(rateLimitMap.entries());
+  for (const [key, record] of entries) {
     if (now > record.resetTime) {
       rateLimitMap.delete(key);
     }
