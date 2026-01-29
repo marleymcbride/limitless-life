@@ -2,7 +2,7 @@
 
 import { CTAButton } from "../../components/ui/cta-button";
 import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 
 interface VerifiedSession {
   success: boolean;
@@ -15,7 +15,7 @@ interface VerifiedSession {
   error?: string;
 }
 
-export default function SuccessPage() {
+function SuccessContent() {
   const searchParams = useSearchParams();
   const [verificationStatus, setVerificationStatus] = useState<'loading' | 'success' | 'error'>('loading');
   const [sessionData, setSessionData] = useState<VerifiedSession | null>(null);
@@ -223,5 +223,28 @@ export default function SuccessPage() {
         </div>
       </div>
     </main>
+  );
+}
+
+// Loading fallback for Suspense
+function SuccessFallback() {
+  return (
+    <main className="min-h-screen bg-white flex items-center justify-center px-4">
+      <div className="max-w-4xl mx-auto text-center">
+        <div className="w-16 h-16 border-4 border-gray-200 border-t-[#940909] rounded-full animate-spin mx-auto mb-6"></div>
+        <h1 className="text-2xl font-bold text-black mb-4">
+          Loading...
+        </h1>
+      </div>
+    </main>
+  );
+}
+
+// Main page component with Suspense boundary
+export default function SuccessPage() {
+  return (
+    <Suspense fallback={<SuccessFallback />}>
+      <SuccessContent />
+    </Suspense>
   );
 }
