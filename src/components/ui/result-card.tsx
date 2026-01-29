@@ -1,4 +1,4 @@
-import Image from "next/image";
+import SmoothImage from "./smooth-image";
 
 interface ResultCardProps {
   before: string;
@@ -19,7 +19,7 @@ export const ResultCard = ({
 }: ResultCardProps) => (
   <div className="bg-white rounded-lg overflow-hidden shadow-lg transform  transition-none">
     <div className="relative h-[200px]">
-      <Image
+      <SmoothImage
         src={imageSrc || "/placeholder.svg?height=200&width=400"}
         alt={name}
         width={400}
