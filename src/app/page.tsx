@@ -1,5 +1,6 @@
 "use client";
 
+import { ImagePreloader, CRITICAL_TESTIMONIAL_IMAGES } from "../components/image-preloader";
 import VSLPlayer from "../components/vsl-player";
 import DoesThisSoundLikeYou from "../components/does-this-sound-like-you";
 import PersonalStorySection from "../components/personal-story-section";
@@ -87,6 +88,8 @@ export default function Home() {
 
   return (
     <main className="flex flex-col  min-h-screen">
+      {/* Preload critical testimonial images */}
+      <ImagePreloader images={CRITICAL_TESTIMONIAL_IMAGES} />
       {/* 1. Hero Section (UNTOUCHED - PRESERVED EXACTLY) */}
       <section
         id="hero-section"
