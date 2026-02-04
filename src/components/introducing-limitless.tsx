@@ -57,12 +57,12 @@ export default function IntroducingLimitless() {
 
           {/* MOBILE VERSION */}
           <div className="md:hidden lg:hidden">
-            <p
-              className="introducing-heading-mobile font-normal pl-2 -mx-4 tracking-wide mb-8 relative z-10 text-xs"
+            <div
+              className="introducing-heading-mobile font-normal pl-2 -mx-4 tracking-wide mb-8 relative z-10 text-lg"
               style={{ fontFamily: "Inter, system-ui, sans-serif", color: "#FFFFFF" }}
             >
-              Introducing for the first time:
-            </p>
+              INTRODUCING FOR THE FIRST TIME:
+            </div>
             <div className="rounded-lg px-6 py-4 mb-4 relative introducing-limitless-box-mobile" style={{
               background: "linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%)",
               boxShadow: "20px -10px 40px 5px rgba(45, 52, 65, 0.2)",

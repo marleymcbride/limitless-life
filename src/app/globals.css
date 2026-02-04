@@ -435,8 +435,8 @@
 }
 
 /* Custom container override */
-.container:not(.full-width-container):not(.hero-full-width),
-[class*="max-w-"]:not(.full-width-container):not(.hero-full-width) {
+.container:not(.full-width-container):not(.hero-full-width):not(.hero-container),
+[class*="max-w-"]:not(.full-width-container):not(.hero-full-width):not(.hero-container) {
   max-width: var(--content-max-width) !important;
   width: 100%;
   margin-left: auto;
@@ -476,7 +476,7 @@
 /* Landscape mode: remove max-width constraint to fill screen */
 @media (orientation: landscape) and (max-height: 900px) {
   /* Override the 800px constraint for mobile landscape only */
-  .container:not(.full-width-container):not(.hero-full-width) {
+  .container:not(.full-width-container):not(.hero-full-width):not(.hero-container) {
     max-width: none !important;
     width: 100% !important;
     /* Bring content in from edges - around 12-13% on each side */
@@ -485,7 +485,7 @@
   }
 
   /* Max-width elements get the 12% padding */
-  [class*="max-w-"]:not(.full-width-container):not(.hero-full-width):not(.vsl-wrapper) {
+  [class*="max-w-"]:not(.full-width-container):not(.hero-full-width):not(.hero-container):not(.vsl-wrapper) {
     max-width: none !important;
     width: 100% !important;
     padding-left: 12% !important;
@@ -494,8 +494,8 @@
 
   /* BUT: Keep VSL/video player FULL WIDTH for cinematic feel */
   /* Match specificity to override the padding rule */
-  [class*="max-w-"][class*="px-4"]:not(.full-width-container):not(.hero-full-width),
-  .max-w-4xl:not(.full-width-container):not(.hero-full-width) {
+  [class*="max-w-"][class*="px-4"]:not(.full-width-container):not(.hero-full-width):not(.hero-container),
+  .max-w-4xl:not(.full-width-container):not(.hero-full-width):not(.hero-container) {
     max-width: 100% !important;
     width: 100% !important;
     padding-left: 4% !important;
@@ -1212,11 +1212,51 @@ svg.accordion-chevron {
    MOBILE BOX WIDTHS - All box/card elements
    ======================================== */
 @media (max-width: 768px) {
-  /* Global horizontal padding for ALL sections */
-  section,
-  .container {
-    padding-left: 1rem !important;
-    padding-right: 1rem !important;
+  /* Global horizontal padding for ALL sections (except hero) */
+  section:not(#hero-section),
+  .container:not(.hero-container) {
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+  }
+
+  /* HERO CONTAINER - completely independent from global padding */
+  #hero-section .hero-container {
+    padding-left: 0rem !important;
+    padding-right: 0rem !important;
+    margin-left: 0rem !important;
+    margin-right: 0rem !important;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  /* LANDSCAPE MOBILE - VSL and headline margins */
+  @media (max-width: 768px) and (orientation: landscape) {
+    /* VSL container with horizontal margins in landscape */
+    #vsl-outer-container {
+      max-width: 90% !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+      padding-left: 1rem !important;
+      padding-right: 1rem !important;
+    }
+
+    /* Mobile headline with horizontal margins in landscape */
+    h1.mobile-headline {
+      max-width: 90% !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+      padding-left: 1rem !important;
+      padding-right: 1rem !important;
+    }
+
+    /* Mobile eyebrow with horizontal margins in landscape */
+    p.mobile-eyebrow {
+      max-width: 90% !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+      padding-left: 1rem !important;
+      padding-right: 1rem !important;
+    }
   }
 
   /* GLOBAL BOX STYLING - applies to ALL boxes except introducing-limitless, imaginethis, and protocol-step */

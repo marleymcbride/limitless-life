@@ -26,7 +26,7 @@ export const themeColor = "#000000";
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className="h-full">
+    <html lang="en">
       <head>
         <meta name="theme-color" content="#000000" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -34,7 +34,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <link rel="dns-prefetch" href="//localhost:3000" />
         <link rel="preconnect" href="//localhost:3000" />
       </head>
-      <body className="h-full min-h-screen">{children}</body>
+      <body>{children}</body>
     </html>
   );
 }
