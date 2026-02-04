@@ -821,7 +821,7 @@ export default function VSLPlayer({
             </div>
           )}
           <iframe
-            ref={iframeRef} 
+            ref={iframeRef}
             id={`vsl-player-${videoId}`}
             src={iframeUrl}
             className="absolute top-0 left-0 w-full h-full border-0 rounded-lg shadow-2xl"
@@ -829,6 +829,27 @@ export default function VSLPlayer({
             loading="eager"
             title="The Limitless Protocol"
           />
+
+          {/* End of Video Button - positioned within VSL dimensions */}
+          {hasEnded && isReady && (
+            <div
+              className="absolute inset-0 flex items-center justify-center z-30 rounded-lg"
+              style={{ pointerEvents: "auto" }}
+            >
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  // Navigate to application page when clicked
+                  window.location.href = '/application';
+                }}
+                className="relative group bg-gradient-to-r from-red-700 via-red-600 to-red-700 text-white text-base sm:text-xl font-bold px-6 sm:px-12 py-2 sm:py-5 rounded-lg transition-none transform shadow-2xl border-2 border-red-500"
+                style={{ boxShadow: "0 0 40px rgba(220,38,38,0.6)" }}
+              >
+                <span className="relative z-10">I'm in</span>
+                <div className="absolute inset-0 bg-gradient-to-r from-red-600 to-orange-600 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg" />
+              </button>
+            </div>
+          )}
         </div>
 
         {isReady && (
