@@ -92,16 +92,18 @@ export default function HowLimitlessProtocolWorks() {
               </div>
             </div>
 
-            {/* CTA Button */}
-            <div className="text-center mt-16">
-              <a
-                href="/application"
-                className="font-bold !text-white transition-none duration-0 focus:outline-none bg-[#940909] hover:bg-[#7b0707] py-4 px-12 text-lg rounded-md inline-block relative z-30"
-              >
-                Apply Now
-              </a>
-            </div>
+          </div>
+        </section>
 
+        {/* CTA Button Section - separate section, centered on page */}
+        <section className="py-16 w-full relative">
+          <div className="text-center">
+            <a
+              href="/application"
+              className="font-bold !text-white transition-none duration-0 focus:outline-none bg-[#940909] hover:bg-[#7b0707] py-4 px-12 text-lg rounded-md inline-block relative z-30"
+            >
+              Apply Now
+            </a>
           </div>
         </section>
       </div>
