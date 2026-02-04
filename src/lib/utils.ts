@@ -98,6 +98,7 @@ export const unifiedGradientWithSpotlightDesktop = React.createElement("div", {
         transparent 55%),
       linear-gradient(to bottom, transparent 0%, transparent 30%, rgb(0, 0, 0) 30%, rgb(28, 28, 28) 72%, rgba(148, 9, 9, 0.5) 85%, rgba(148, 9, 9, 0.864) 100%)
     `,
+    pointerEvents: "none",
   },
 });
 
@@ -134,6 +135,7 @@ export const unifiedGradientWithSpotlightMobile = React.createElement("div", {
         transparent 50%),
       linear-gradient(to bottom, transparent 0%, transparent 30%, rgb(0, 0, 0) 30%, rgb(28, 28, 28) 63%, rgba(148, 9, 9, 0.864) 91%)
     `,
+    pointerEvents: "none",
   },
 });
 
