@@ -53,6 +53,7 @@ export default function Home() {
   const [videoHasEnded, setVideoHasEnded] = useState(false);
   const [passedJoinNowTime, setPassedJoinNowTime] = useState(false); // Track if passed 11:36
   const [showPauseOverlay, setShowPauseOverlay] = useState(false); // Track if pause overlay is active
+  const [showClickToUnmute, setShowClickToUnmute] = useState(true); // Track if "Click to unmute" popup is showing
 
   // Smooth scroll function with "soft close" easing
   const smoothScrollToElement = (elementId: string) => {
@@ -211,7 +212,7 @@ export default function Home() {
           </div>
 
           {/* Video Player - Bunny.net VSL */}
-          <div className="mx-auto mt-0 mb-0 w-full max-w-4xl px-4 vsl-container" id="vsl-outer-container">
+          <div className="mx-auto mt-0 mb-0 px-4 vsl-container transition-all duration-700 ease-out" id="vsl-outer-container" style={{ width: showClickToUnmute ? '896px' : '90%', maxWidth: showClickToUnmute ? '896px' : '90%' }}>
             <div className="relative vsl-border-wrapper">
               <div
                 className={`absolute inset-0 rounded-lg shadow-[0_0_20px_rgba(255,255,255,0.018984375),0_0_40px_rgba(255,255,255,0.0094921875),0_0_65px_rgba(255,255,255,0.0050625),0_0_120px_rgba(255,255,255,0.002),0_0_20px_rgba(148,9,9,0.0825),0_0_40px_rgba(148,9,9,0.04125),0_0_65px_rgba(148,9,9,0.022),0_0_120px_rgba(148,9,9,0.008)] pointer-events-none vsl-border-glow transition-opacity duration-300 ${showPauseOverlay ? 'opacity-0' : 'opacity-100'}`}
@@ -225,8 +226,16 @@ export default function Home() {
                 preload={true}
                 controls={true}
                 pauseOverlayContainer="hero-section"
-                onUserStartedPlaying={() => setHasStartedVideo(true)}
+                onUserStartedPlaying={() => {
+                  console.log('🎬 Video started playing! Expanding container...');
+                  setHasStartedVideo(true);
+                  setShowClickToUnmute(false);
+                }}
                 onPauseOverlayChange={(isActive) => setShowPauseOverlay(isActive)}
+                onShowClickToUnmuteChange={(showing) => {
+                  console.log('📺 Click to unmute overlay showing:', showing);
+                  setShowClickToUnmute(showing);
+                }}
                 onProgress={(progress) => {
                   // progress is the percentage (0-100)
                   setVideoProgress(progress.percentage || 0);
@@ -347,7 +356,6 @@ export default function Home() {
                   padding-right: 0 !important;
                 }
                 #vsl-outer-container {
-                  max-width: 100% !important;
                   padding-left: 0 !important;
                   padding-right: 0 !important;
                 }
