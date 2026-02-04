@@ -493,13 +493,13 @@ export default function VSLPlayer({
                     className="text-2xl sm:text-5xl font-black mb-4 sm:mb-8 uppercase tracking-wider text-red-600 popup-heading"
                     style={{ textShadow: "0 0 20px rgba(220,38,38,0.5)" }}
                   >
-                    DON'T GO YET!
+                    DON&apos;T GO YET!
                   </h2>
                   <h3 className="text-xl sm:text-3xl font-bold mb-3 sm:mb-6 text-white popup-subheading">
                     GIVE ME 2 MORE MINUTES
                   </h3>
                   <p className="text-lg sm:text-2xl mb-6 sm:mb-10 text-gray-200 popup-paragraph">
-                    YOU WON'T REGRET IT...
+                    YOU WON&apos;T REGRET IT...
                   </p>
                   <button
                     onClick={handleContinueWatching}
@@ -516,7 +516,7 @@ export default function VSLPlayer({
                       <a
                         href="/application"
                         className="absolute left-1/2 transform -translate-x-1/2 bg-[#940909] hover:bg-[#7b0707] text-white font-bold py-3 -mt-1.5 px-8 sm:py-5 sm:px-12 text-lg sm:text-xl rounded-md inline-block transition-none duration-0 focus:outline-none z-[200] w-[320px] popup-cta-join cursor-pointer"
-                        style={{ top: 'calc(54.5% + 352px)' }}
+                        style={{ top: 'calc(54.5% + 360px)' }}
                       >
                         JOIN NOW
                       </a>
@@ -524,7 +524,7 @@ export default function VSLPlayer({
                       <a
                         href="#apply-for-elite-spots"
                         className="absolute left-1/2 transform -translate-x-1/2 bg-[#940909] hover:bg-[#7b0707] text-white font-bold py-3 -mt-1.5 px-8 sm:py-5 sm:px-12 text-lg sm:text-xl rounded-md inline-block transition-none duration-0 focus:outline-none z-[200] w-[320px] popup-cta-tell cursor-pointer"
-                        style={{ top: 'calc(54.5% + 372px)' }}
+                        style={{ top: 'calc(54.5% + 360px)' }}
                         onClick={(e) => {
                           e.preventDefault();
                           smoothScrollToElement("apply-for-elite-spots");
@@ -546,13 +546,13 @@ export default function VSLPlayer({
                         top: calc(54.5% + 150px) !important;
                       }
                       .popup-cta-join {
-                        top: calc(54.5% + 243.5px) !important;
+                        top: calc(54.5% + 233.5px) !important;
                         width: 180px !important;
                         padding-left: 14px !important;
                         padding-right: 14px !important;
                       }
                       .popup-cta-tell {
-                        top: calc(54.5% + 244px) !important;
+                        top: calc(54.5% + 233.5px) !important;
                         width: 180px !important;
                         padding-left: 14px !important;
                         padding-right: 14px !important;
@@ -593,13 +593,13 @@ export default function VSLPlayer({
                         padding-bottom: 10px !important;
                       }
                       .popup-cta-join {
-                        top: calc(54.5% + 225px) !important;
+                        top: calc(54.5% + 218px) !important;
                         width: 220px !important;
                         padding-left: 16px !important;
                         padding-right: 16px !important;
                       }
                       .popup-cta-tell {
-                        top: calc(54.5% + 220px) !important;
+                        top: calc(54.5% + 218px) !important;
                         width: 220px !important;
                         padding-left: 16px !important;
                         padding-right: 16px !important;
@@ -648,13 +648,13 @@ export default function VSLPlayer({
                   className="text-2xl sm:text-5xl font-black mb-4 sm:mb-8 uppercase tracking-wider text-red-600 popup-heading"
                   style={{ textShadow: "0 0 20px rgba(220,38,38,0.5)" }}
                 >
-                  DON'T GO YET!
+                  DON&apos;T GO YET!
                 </h2>
                 <h3 className="text-xl sm:text-3xl font-bold mb-3 sm:mb-6 text-white popup-subheading">
                   GIVE ME 2 MORE MINUTES
                 </h3>
                 <p className="text-lg sm:text-2xl mb-6 sm:mb-10 text-gray-200 popup-paragraph">
-                  YOU WON'T REGRET IT...
+                  YOU WON&apos;T REGRET IT...
                 </p>
                 <button
                   onClick={handleContinueWatching}
@@ -836,13 +836,28 @@ export default function VSLPlayer({
               className="absolute inset-0 flex items-center justify-center z-30 rounded-lg"
               style={{ pointerEvents: "auto" }}
             >
+              {/* Mobile Button */}
               <button
                 onClick={(e) => {
                   e.preventDefault();
                   // Navigate to application page when clicked
                   window.location.href = '/application';
                 }}
-                className="relative group bg-gradient-to-r from-red-700 via-red-600 to-red-700 text-white text-base sm:text-xl font-bold px-6 sm:px-12 py-6 sm:py-7 rounded-lg transition-none transform shadow-2xl border-2 border-red-500"
+                className="sm:hidden relative group bg-gradient-to-r from-red-700 via-red-600 to-red-700 text-white text-sm font-bold px-4 py-4 rounded-lg transition-none transform shadow-2xl border-2 border-red-500 text-center"
+                style={{ boxShadow: "0 0 40px rgba(220,38,38,0.6)", transform: "scale(0.85)", maxWidth: "400px" }}
+              >
+                <span className="relative text-lg z-10" style={{ display: "block", lineHeight: "1.5" }}>I WANT TO<br/>BECOME LIMITLESS</span>
+                <div className="absolute inset-0 bg-gradient-to-r from-red-600 to-orange-600 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg" />
+              </button>
+
+              {/* Desktop Button */}
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  // Navigate to application page when clicked
+                  window.location.href = '/application';
+                }}
+                className="hidden sm:block relative group bg-gradient-to-r from-red-700 via-red-600 to-red-700 text-white text-xl font-bold px-12 py-7 rounded-lg transition-none transform shadow-2xl border-2 border-red-500 text-center"
                 style={{ boxShadow: "0 0 40px rgba(220,38,38,0.6)" }}
               >
                 <span className="relative px-2 z-10">I WANT TO BECOME LIMITLESS</span>

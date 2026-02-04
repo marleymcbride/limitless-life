@@ -30,7 +30,7 @@ import The3TestimonialsBoxV2 from "../components/the-3-testimonials-box-v2";
 import TestimonialSectionDark from "../components/testimonial-section-dark";
 import { vignetteEffect, unifiedGradientWithSpotlightDesktop, unifiedGradientWithSpotlightMobile } from "../lib/utils";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import RootCauses from "../components/why-traditional-methods-dont-work";
 import DelayedCTA from "../components/delayed-cta";
 
@@ -54,6 +54,7 @@ export default function Home() {
   const [passedJoinNowTime, setPassedJoinNowTime] = useState(false); // Track if passed 11:36
   const [showPauseOverlay, setShowPauseOverlay] = useState(false); // Track if pause overlay is active
   const [showClickToUnmute, setShowClickToUnmute] = useState(true); // Track if "Click to unmute" popup is showing
+  const [isDesktop, setIsDesktop] = useState(false); // Track if desktop for VSL sizing
 
   // Smooth scroll function with "soft close" easing
   const smoothScrollToElement = (elementId: string) => {
@@ -86,6 +87,17 @@ export default function Home() {
 
     requestAnimationFrame(animateScroll);
   };
+
+  // Detect desktop/mobile for VSL sizing
+  useEffect(() => {
+    const checkDesktop = () => {
+      setIsDesktop(window.innerWidth >= 769);
+    };
+
+    checkDesktop();
+    window.addEventListener('resize', checkDesktop);
+    return () => window.removeEventListener('resize', checkDesktop);
+  }, []);
 
   return (
     <main className="flex flex-col">
@@ -212,7 +224,15 @@ export default function Home() {
           </div>
 
           {/* Video Player - Bunny.net VSL */}
-          <div className="mx-auto mt-0 mb-0 px-4 vsl-container transition-all duration-700 ease-out" id="vsl-outer-container" style={{ width: showClickToUnmute ? '896px' : '90%', maxWidth: showClickToUnmute ? '896px' : '90%' }}>
+          <div
+            className="mx-auto mt-0 mb-0 vsl-container transition-all duration-700 ease-out"
+            id="vsl-outer-container"
+            style={
+              isDesktop
+                ? { width: showClickToUnmute ? '896px' : '90%', maxWidth: showClickToUnmute ? '896px' : '90%', marginLeft: 'auto', marginRight: 'auto' }
+                : { width: '100%', maxWidth: '100%', marginLeft: 'auto', marginRight: 'auto', paddingLeft: '1rem', paddingRight: '1rem' }
+            }
+          >
             <div className="relative vsl-border-wrapper">
               <div
                 className={`absolute inset-0 rounded-lg shadow-[0_0_20px_rgba(255,255,255,0.018984375),0_0_40px_rgba(255,255,255,0.0094921875),0_0_65px_rgba(255,255,255,0.0050625),0_0_120px_rgba(255,255,255,0.002),0_0_20px_rgba(148,9,9,0.0825),0_0_40px_rgba(148,9,9,0.04125),0_0_65px_rgba(148,9,9,0.022),0_0_120px_rgba(148,9,9,0.008)] pointer-events-none vsl-border-glow transition-opacity duration-300 ${showPauseOverlay ? 'opacity-0' : 'opacity-100'}`}
