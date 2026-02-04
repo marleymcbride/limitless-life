@@ -87,13 +87,13 @@ export default function Home() {
   };
 
   return (
-    <main className="flex flex-col  min-h-screen">
+    <main className="flex flex-col">
       {/* Preload critical testimonial images */}
       <ImagePreloader images={CRITICAL_TESTIMONIAL_IMAGES} />
       {/* 1. Hero Section (UNTOUCHED - PRESERVED EXACTLY) */}
       <section
         id="hero-section"
-        className={`pt-2 md:pt-6 px-3 pb-16 px-16min-h-[100vh] sm:pb-16 flex flex-col relative w-full overflow-hidden bg-black`}
+        className={`pt-2 md:pt-6 pb-16 px-16min-h-[100vh] sm:pb-16 flex flex-col relative w-full overflow-hidden bg-black`}
       >
         <div className="hidden md:block">{unifiedGradientWithSpotlightDesktop}</div>
         <div className="block md:hidden">{unifiedGradientWithSpotlightMobile}</div>
@@ -103,7 +103,7 @@ export default function Home() {
         {/* <div className="absolute top-0 left-0 w-full h-[25vh] bg-gradient-to-b from-black to-transparent"></div> */}
         {vignetteEffect}
 
-        <div className="container hero-full-width flex relative z-30 flex-col mx-auto h-full">
+        <div className="hero-container flex relative z-30 flex-col mx-auto h-full">
           {/* Mobile view - headline and subheadline optimized for mobile */}
           <div className="flex flex-col flex-grow justify-start pt-5 sm:justify-center sm:pt-0 sm:mt-6 md:mt-0">
             {/* Pill Logo */}
@@ -141,7 +141,7 @@ export default function Home() {
 
             {/* Mobile Eyebrow (visible only on mobile) */}
             <p
-              className="block sm:hidden px-0 mx-auto text-center text-gray-300 mobile-eyebrow w-full"
+              className="block sm:hidden px-2 text-center text-gray-300 mobile-eyebrow w-full"
               style={{ marginTop: "3.6px", marginBottom: "14.4px" }}
             >
               For the man who has EVERYTHING in life, except the energy to enjoy it... here&apos;s how to:
@@ -149,7 +149,7 @@ export default function Home() {
             
             {/* Mobile Headlines (visible only on mobile) */}
             <h1
-              className="mobile-headline block px-1 mx-auto mt-2 mb-6 w-full font-bold text-center text-white sm:hidden capitalize text-[2.06rem]"
+              className="mobile-headline block px-1 mx-auto mt-2 mb-6 w-full font-bold text-center text-white sm:hidden capitalize text-[2.5rem] px-5"
               style={{ lineHeight: "1.125" }}
             >
               Lose Your Gut, Stop Feeling Exhausted & Reverse Years Of Health Decline (In 2 Days Per Week)
@@ -157,10 +157,10 @@ export default function Home() {
 
             {/* Mobile Subheadline - RIGHT AFTER HEADLINE (visible only on mobile) */}
             <p
-              className="mobile-subheadline block mx-auto mb-2 font-light text-center text-gray-300 sm:hidden px-0 text-[1.33rem] leading-[1.28] w-[95%]"
+              className="mobile-subheadline block mx-auto mb-4 font-light text-center text-gray-300 sm:hidden px-0 text-[1.33rem] leading-[1.28] w-[95%]"
             >
-             You don&apos;t need to down 4 coffees, train 6 days a week, or cut out your favorite foods to feel incredible.
-             Restore your energy, lose your gut and build the body you\ve always wanted, and get back YEARS of life:
+             You don&apos;t need to down 4 coffees, train 6 days a week, or cut out your favorite foods to feel LIMITLESS.
+             Restore your energy, build the body you&apos;ve always wanted, and get back YEARS of life (with only 2 days/week in the gym):
             </p>
 
             {/* Spacer div to push headline down */}
@@ -190,7 +190,7 @@ export default function Home() {
             Stop Waking Up Feeling Like Shit and Build [X Body desired result] (Training Only 2 Days Per Week)
             </h1>*/}
             <h1
-              className="hidden sm:block text-5xl sm:text-5xl md:text-4xl  lg:text-5xl font-bold text-white text-center mb-0 mt-0 sm:mt-0 max-w-[87%] mx-auto px-4 capitalize leading-[1.2]"
+              className="hidden sm:block text-5xl sm:text-5xl md:text-4xl  lg:text-5xl font-bold text-white text-center mb-0 mt-0 sm:mt-0 max-w-[87%] mx-auto px-6 capitalize leading-[1.2]"
             >
             Lose Your Gut, Stop Waking Up Exhausted & Reverse Years of Health Decline (In Just 2 Days Per Week)
             </h1>
@@ -200,10 +200,10 @@ export default function Home() {
 
             {/* Desktop Subheadline (hidden on mobile) */}
             <p
-              className="hidden px-1 mx-auto mb-4  text-xl text-center text-gray-300 sm:block sm:text-xl md:text-lg lg:text-xl max-w-[725px]"
+              className="hidden mb-4 py-4 text-xl text-center text-gray-300 sm:block sm:text-xl md:text-lg lg:text-xl max-w-[925px]"
               >
               You don&apos;t need to down 4 coffees a day, train 6 days a week,
-              or cut out your favorite foods to feel incredible. Here&apos;s the
+              or cut out your favorite foods to feel LIMITLESS. Here&apos;s the
               proven system to restore your energy, lose your gut and build the body you&apos;ve always wanted
               and get back YEARS of life
               (training only 2 days):
@@ -265,16 +265,20 @@ export default function Home() {
           <div className="h-5"></div>
 
           {/* CTA Button - positioned directly below VSL in dark section */}
-          <div className="text-center relative my-5">
+          <div className="text-center relative my-5 cta-button-container">
             <style>{`
               @media (max-width: 640px) and (orientation: portrait) {
                 .cta-btn-mob {
                   width: 181px !important;
-                  padding-top: 8px !important;
-                  padding-bottom: 8px !important;
+                  padding-top: 12px !important;
+                  padding-bottom: 12px !important;
                   padding-left: 24px !important;
                   padding-right: 24px !important;
                   font-size: 18px !important;
+                }
+                blockquote[data-testimonial="original-size"] {
+                  font-size: 19px !important;
+                  line-height: 1.2 !important;
                 }
                 .vsl-border-glow {
                   -webkit-mask-image: linear-gradient(to bottom,
@@ -296,8 +300,8 @@ export default function Home() {
               @media (max-width: 640px) and (orientation: landscape) {
                 .cta-btn-mob {
                   width: 220px !important;
-                  padding-top: 12.2px !important;
-                  padding-bottom: 12.2px !important;
+                  padding-top: 20px !important;
+                  padding-bottom: 20px !important;
                   padding-left: 40px !important;
                   padding-right: 40px !important;
                   font-size: 20px !important;
@@ -306,11 +310,32 @@ export default function Home() {
               @media (max-height: 640px) and (orientation: landscape) {
                 .cta-btn-mob {
                   width: 220px !important;
-                  padding-top: 12.2px !important;
-                  padding-bottom: 12.2px !important;
+                  padding-top: 20px !important;
+                  padding-bottom: 20px !important;
                   padding-left: 40px !important;
                   padding-right: 40px !important;
                   font-size: 20px !important;
+                }
+                .cta-button-container {
+                  margin-top: 0px !important;
+                }
+                .mobile-eyebrow {
+                  margin-top: 0px !important;
+                  margin-bottom: 0px !important;
+                  padding-left: 0px !important;
+                  padding-right: 0px !important;
+                }
+                .mobile-headline {
+                  margin-top: 0px !important;
+                  margin-bottom: 0px !important;
+                  padding-left: 0px !important;
+                  padding-right: 0px !important;
+                }
+                .mobile-subheadline {
+                  margin-top: 0px !important;
+                  margin-bottom: 0px !important;
+                  padding-left: 0px !important;
+                  padding-right: 0px !important;
                 }
                 #hero-section {
                   padding-left: 0 !important;
@@ -352,7 +377,7 @@ export default function Home() {
                 videoProgress={videoProgress}
                 videoCurrentTime={videoCurrentTime}
                 videoHasEnded={videoHasEnded}
-                className="font-bold !text-white transition-none duration-0 focus:outline-none bg-[#940909] hover:bg-[#7b0707] py-2 px-8 sm:py-5 sm:px-12 text-base sm:text-lg rounded-md inline-block relative z-[200] w-[280px] cta-btn-mob"
+                className="font-bold !text-white transition-none duration-0 focus:outline-none bg-[#940909] hover:bg-[#7b0707] py-8 px-8 sm:py-8 md:py-6 lg:mx-10 md:mx-6 lg:py-5 sm:px-12 text-xl sm:text-lg  md:text-xl lg:text-xl rounded-md inline-block relative z-[200] w-[320px] cta-btn-mob"
                 href="/application"
               >
                 JOIN NOW
@@ -363,7 +388,7 @@ export default function Home() {
                 videoProgress={videoProgress}
                 videoCurrentTime={videoCurrentTime}
                 videoHasEnded={videoHasEnded}
-                className="font-bold !text-white transition-none duration-0 focus:outline-none bg-[#940909] hover:bg-[#7b0707] py-2 sm:py-5 px-6 sm:px-12 text-base sm:text-lg rounded-md inline-block relative z-[200] w-[280px] sm:w-[280px] cta-btn-mob cursor-pointer"
+                className="font-bold !text-white transition-none duration-0 focus:outline-none bg-[#940909] hover:bg-[#7b0707] py-5 lg:py-5 px-8 sm:py-4 sm:px-12 text-base sm:text-lg md:text-xl lg:text-xl rounded-md inline-block relative z-[200] w-[280px] sm:w-[280px] lg:w-[320px] cta-btn-mob cursor-pointer"
                 href="#apply-for-elite-spots"
                 onClick={(e: { preventDefault: () => void }) => {
                   e.preventDefault();
@@ -381,7 +406,7 @@ export default function Home() {
           {/* Testimonial - Simple thin text at bottom of hero */}
           <div className="text-center mt-0 mb-0 max-w-4xl mx-auto">
             <div className="bg-transparent bg-opacity-10 p-0">
-              <blockquote className="text-xl text-white mb-0" data-testimonial="original-size">
+              <blockquote className="text-xl mx-4 text-white mb-0" data-testimonial="original-size">
                 &ldquo;I&apos;m in the best shape I&apos;ve ever been,
                 haven&apos;t touched booze in over a year and feel
                 incredible.&rdquo;
