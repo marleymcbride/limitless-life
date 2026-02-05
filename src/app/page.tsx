@@ -7,6 +7,7 @@ import PersonalStorySection from "../components/personal-story-section";
 import IntroSection from "../components/intro-section";
 import CoreValueProposition from "../components/core-value-proposition";
 import VideoTestimonialCTA from "../components/video-testimonial-cta";
+import VideoTestimonialLaurenceShortVersion from "../components/video-testimonial-laurence-short-version";
 import ResultsProof from "../components/results-proof";
 // import ImagineThisDark from "../components/imaginethisdark";
 import ImagineThis from "../components/imaginethis";
@@ -497,27 +498,29 @@ export default function Home() {
       {/* INTRO SECTION 2 INSERTED HERE */}
       <BigIdeaSection />
 
+      {/* Laurence Short Version Video Testimonial */}
+      <div className="dark-section-with-grain">
+        <VideoTestimonialLaurenceShortVersion />
+      </div>
+
+
+      {/* 6. Imagine This (Light background with white box) */}
+      <ImagineThis />
 
       {/* 13. More Client Testimonials (Dark background)  */}
       <div className="dark-section-with-grain">
         <MoreClientTestimonials />
       </div>
 
-      {/* 6. Imagine This (Light background with white box) */}
-      <ImagineThis />
-
-      {/* 6.5. Client Transformation Gallery (Before/After photos) */}
-      <ClientTransformationGallery />
+      {/* 6.5. Client Transformation Gallery (Before/After photos) 
+      <ClientTransformationGallery /> */}
 
 
       {/* 10. Introducing Limitless (Dark background) */}
       <IntroducingLimitless />
 
-            {/* 9. More Video Testimonials (Black background) */}
-            
-        <MoreVideoTestimonials />
-
-
+      {/* 6.5. More Results Created (Before/After transformations) */}
+      <ClientTransformationGallery />
 
       {/* 11. What You'll Achieve (Dark with grain) */}
       <WhatYoullAchieve />
@@ -537,6 +540,9 @@ export default function Home() {
 
       {/* How The Limitless Protocol Works (Dark background) */}
       <HowLimitlessProtocolWorks />
+
+      {/* 9. More Video Testimonials (Black background)*/}
+      <MoreVideoTestimonials />
 
       {/* Everything Included (Dark with grain) - wrapper inline */}
       <WhatMakesThisDifferent />
