@@ -46,8 +46,11 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Note: Stripe API version must match your webhook configuration
+    // Check: Stripe Dashboard → Developers → Webhooks
+    // Update this when upgrading Stripe API versions
     const stripe = new Stripe(stripeSecretKey, {
-      apiVersion: "2025-01-27.acacia" as any, // Use any to allow flexibility with Stripe API versions
+      apiVersion: "2023-10-16" as any,
     });
 
     // Verify webhook signature
@@ -99,6 +102,18 @@ export async function POST(request: NextRequest) {
           const amount = (session.amount_total || 0) / 100;
           const currency = (session.currency || 'usd').toUpperCase();
           const paymentIntentId = session.payment_intent as string;
+
+          // Check if payment already exists (idempotency)
+          const existingPayment = await db
+            .select()
+            .from(payments)
+            .where(eq(payments.stripePaymentIntentId, paymentIntentId))
+            .limit(1);
+
+          if (existingPayment.length > 0) {
+            console.log('Payment already recorded, skipping duplicate:', paymentIntentId);
+            return NextResponse.json({ received: true, status: 'duplicate' });
+          }
 
           // Store payment record
           await db.insert(payments).values({
