@@ -9,7 +9,7 @@ export const sessions = pgTable('sessions', {
   utmMedium: text('utm_medium'),
   utmCampaign: text('utm_campaign'),
   referrer: text('referrer'),
-  deviceType: text('device_type'),
+  deviceType: text('device_type').$type<'mobile' | 'tablet' | 'desktop'>(),
 }, (table) => ({
   userIdIdx: index('idx_sessions_user_id').on(table.userId),
   lastSeenIdx: index('idx_sessions_last_seen').on(table.lastSeen),
@@ -21,8 +21,8 @@ export const users = pgTable('users', {
   firstName: text('first_name'),
   lastName: text('last_name'),
   leadScore: integer('lead_score').default(0),
-  leadTemperature: text('lead_temperature'),
-  status: text('status').default('prospect'),
+  leadTemperature: text('lead_temperature').$type<'cold' | 'warm' | 'hot'>(),
+  status: text('status').$type<'prospect' | 'lead' | 'customer'>().default('prospect'),
   firstSeen: timestamp('first_seen').defaultNow(),
   lastSeen: timestamp('last_seen').defaultNow(),
   createdAt: timestamp('created_at').defaultNow(),
@@ -76,9 +76,13 @@ export const webhookQueue = pgTable('webhook_queue', {
   maxAttempts: integer('max_attempts').default(3),
   status: text('status').default('pending'),
   lastAttemptAt: timestamp('last_attempt_at'),
+  nextAttemptAt: timestamp('next_attempt_at'),
+  deliveredAt: timestamp('delivered_at'),
+  errorMessage: text('error_message'),
   createdAt: timestamp('created_at').defaultNow(),
 }, (table) => ({
   statusIdx: index('idx_webhook_queue_status').on(table.status, table.createdAt),
+  nextAttemptIdx: index('idx_webhook_queue_next_attempt').on(table.status, table.nextAttemptAt),
 }));
 
 export const leadAlerts = pgTable('lead_alerts', {
