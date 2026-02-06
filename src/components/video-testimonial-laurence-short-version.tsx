@@ -20,7 +20,7 @@ export default function VideoTestimonialLaurenceShortVersion() {
           {/* Desktop Video (Landscape) - Visible on desktop */}
           <div className="hidden md:block mb-12">
             <SimpleVideoPlayer
-              videoId="6c7c1ab4-55ef-47f0-a85a-3b04b38ca994"
+              videoId="3186cc14-31aa-4c0a-a187-e88ee58f6ce4"
               libraryId="576963"
               className="max-w-3xl mx-auto"
               autoplay={false}
@@ -33,7 +33,7 @@ export default function VideoTestimonialLaurenceShortVersion() {
           {/* Mobile Video (Portrait) - Visible on mobile */}
           <div className="block md:hidden mb-12">
             <SimpleVideoPlayer
-              videoId="6c7c1ab4-55ef-47f0-a85a-3b04b38ca994"
+              videoId="1f40cc5e-93ee-481f-b512-c3763ac88a7a"
               libraryId="576963"
               className="max-w-[80%] mx-auto"
               autoplay={false}
