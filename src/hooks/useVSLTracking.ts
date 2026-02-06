@@ -6,9 +6,7 @@ import {
   shouldTrackMilestone,
   trackVSLEvent,
 } from "@/lib/vslAnalytics";
-import { n8nEvents } from "@/lib/n8nWebhooks";
 import { useAnalytics } from "@/hooks/useAnalytics";
-import { useEffect } from "react";
 
 export const useVSLTracking = (videoId: string) => {
   const sessionId_old = useRef(getSessionId());
@@ -47,11 +45,6 @@ export const useVSLTracking = (videoId: string) => {
         sessionId: sessionId_old.current,
       });
 
-      n8nEvents.vslPlayStarted({
-        userId: userId_old.current,
-        videoId,
-      });
-
       // New analytics system
       if (newSessionId) {
         trackEvent("vsl_start", { videoId });
@@ -86,13 +79,6 @@ export const useVSLTracking = (videoId: string) => {
         currentTime: progress.currentTime,
       });
 
-      n8nEvents.vslProgressMilestone({
-        userId: userId_old.current,
-        videoId,
-        progress: progress.percentage,
-        watchDuration,
-      });
-
       // New analytics system - track milestones
       if (newSessionId) {
         if (progress.percentage >= 95) {
@@ -125,12 +111,6 @@ export const useVSLTracking = (videoId: string) => {
       userId: userId_old.current,
       sessionId: sessionId_old.current,
       metadata: { totalWatchTime },
-    });
-
-    n8nEvents.vslCompleted({
-      userId: userId_old.current,
-      videoId,
-      totalWatchTime,
     });
 
     // New analytics system
