@@ -113,13 +113,13 @@ export default function IntroducingLimitless() {
           </div>
 
 
-          <p className="introducing-paragraph-mobile text-white-300 mt-8 mb-13 w-full px-4 md:px-16 lg:px-16 md:text-left lg:text-left text-center leading-relaxed"
+          <p className="introducing-paragraph-mobile text-white-300 mt-8 mb-13 w-full px-4 md:px-24 md:ml-2 lg:px-24 lg:ml-2 md:text-left lg:text-left text-center leading-relaxed"
           style={{ fontFamily: "Neuemontreal, Arial, sans-serif", fontSize: "1.375rem" }}
           >
           After 12 years and 14,352 hours, I&apos;ve found a system that wakes you up energized, loses your gut in 2 days per week, and lets you feel present and stress-free without needing alcohol.
           </p>
 
-          <p className="introducing-paragraph-mobile md:text-left lg:text-left text-center text-white-300 mb-13 w-full px-4 md:px-16 lg:px-16 mt-8 mb-12 text-left leading-relaxed"
+          <p className="introducing-paragraph-mobile md:text-left lg:text-left text-center text-white-300 mb-13 w-full px-4 md:px-24 md:ml-2 lg:px-24 lg:ml-2 mt-8 mb-12 leading-relaxed"
           style={{ fontFamily: "Neuemontreal, Arial, sans-serif", fontSize: "1.375rem" }}
           >
           Here&apos;s why it works:
