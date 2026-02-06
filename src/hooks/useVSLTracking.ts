@@ -7,40 +7,66 @@ import {
   trackVSLEvent,
 } from "@/lib/vslAnalytics";
 import { n8nEvents } from "@/lib/n8nWebhooks";
+import { useAnalytics } from "@/hooks/useAnalytics";
+import { useEffect } from "react";
 
 export const useVSLTracking = (videoId: string) => {
-  const sessionId = useRef(getSessionId());
-  const userId = useRef(getUserId());
+  const sessionId_old = useRef(getSessionId());
+  const userId_old = useRef(getUserId());
   const startTime = useRef<number>(0);
   const [hasStarted, setHasStarted] = useState(false);
+
+  // Get new session from our session management system
+  // We'll fetch it asynchronously
+  const [newSessionId, setNewSessionId] = useState<string | null>(null);
+  const { trackEvent } = useAnalytics("");
+
+  useEffect(() => {
+    // Fetch session from our new system
+    fetch("/api/session")
+      .then(res => res.json())
+      .then(data => {
+        setNewSessionId(data.sessionId);
+      })
+      .catch(err => {
+        console.error("Failed to get session:", err);
+      });
+  }, []);
 
   const trackPlay = () => {
     if (!hasStarted) {
       setHasStarted(true);
       startTime.current = Date.now();
 
+      // Old tracking system
       trackVSLEvent({
         type: "play",
         videoId,
         timestamp: Date.now(),
-        userId: userId.current,
-        sessionId: sessionId.current,
+        userId: userId_old.current,
+        sessionId: sessionId_old.current,
       });
 
       n8nEvents.vslPlayStarted({
-        userId: userId.current,
+        userId: userId_old.current,
         videoId,
       });
+
+      // New analytics system
+      if (newSessionId) {
+        trackEvent("vsl_start", { videoId });
+      }
     }
   };
 
   const trackPause = (currentTime: number) => {
+    // Old tracking system
     trackVSLEvent({
       type: "pause",
       videoId,
       timestamp: Date.now(),
-      userId: userId.current,
-      sessionId: sessionId.current,
+      userId: userId_old.current,
+      sessionId: sessionId_old.current,
       currentTime,
     });
   };
@@ -49,42 +75,68 @@ export const useVSLTracking = (videoId: string) => {
     if (shouldTrackMilestone(progress.percentage)) {
       const watchDuration = Math.floor((Date.now() - startTime.current) / 1000);
 
+      // Old tracking system
       trackVSLEvent({
         type: "progress",
         videoId,
         timestamp: Date.now(),
-        userId: userId.current,
-        sessionId: sessionId.current,
+        userId: userId_old.current,
+        sessionId: sessionId_old.current,
         progress: progress.percentage,
         currentTime: progress.currentTime,
       });
 
       n8nEvents.vslProgressMilestone({
-        userId: userId.current,
+        userId: userId_old.current,
         videoId,
         progress: progress.percentage,
         watchDuration,
       });
+
+      // New analytics system - track milestones
+      if (newSessionId) {
+        if (progress.percentage >= 95) {
+          trackEvent("vsl_milestone", { videoId, percent: 95, durationWatched: watchDuration });
+        }
+        if (progress.percentage >= 90) {
+          trackEvent("vsl_milestone", { videoId, percent: 90, durationWatched: watchDuration });
+        }
+        if (progress.percentage >= 75) {
+          trackEvent("vsl_milestone", { videoId, percent: 75, durationWatched: watchDuration });
+        }
+        if (progress.percentage >= 50) {
+          trackEvent("vsl_milestone", { videoId, percent: 50, durationWatched: watchDuration });
+        }
+        if (progress.percentage >= 25) {
+          trackEvent("vsl_milestone", { videoId, percent: 25, durationWatched: watchDuration });
+        }
+      }
     }
   };
 
   const trackComplete = () => {
     const totalWatchTime = Math.floor((Date.now() - startTime.current) / 1000);
 
+    // Old tracking system
     trackVSLEvent({
       type: "complete",
       videoId,
       timestamp: Date.now(),
-      userId: userId.current,
-      sessionId: sessionId.current,
+      userId: userId_old.current,
+      sessionId: sessionId_old.current,
       metadata: { totalWatchTime },
     });
 
     n8nEvents.vslCompleted({
-      userId: userId.current,
+      userId: userId_old.current,
       videoId,
       totalWatchTime,
     });
+
+    // New analytics system
+    if (newSessionId) {
+      trackEvent("vsl_complete", { videoId, duration: totalWatchTime });
+    }
   };
 
   useEffect(() => {
@@ -94,8 +146,8 @@ export const useVSLTracking = (videoId: string) => {
           type: "drop_off",
           videoId,
           timestamp: Date.now(),
-          userId: userId.current,
-          sessionId: sessionId.current,
+          userId: userId_old.current,
+          sessionId: sessionId_old.current,
         });
       }
     };
