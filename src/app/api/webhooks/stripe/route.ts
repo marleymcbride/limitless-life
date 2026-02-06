@@ -1,6 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 import { headers } from 'next/headers';
+import { db } from '@/lib/db';
+import { users, payments } from '@/db/schema';
+import { eq } from 'drizzle-orm';
+import { trackEvent } from '@/lib/analytics';
+import { n8nEvents } from '@/lib/n8nWebhooks';
 
 /**
  * POST /api/webhooks/stripe
@@ -70,18 +75,80 @@ export async function POST(request: NextRequest) {
         const session = event.data.object as Stripe.Checkout.Session;
 
         if (session.payment_status === 'paid') {
-          // Payment successful - you can now:
-          // 1. Grant access to premium content
-          // 2. Send confirmation emails
-          // 3. Update your database
-          // 4. Trigger fulfillment workflows
+          const userId = session.metadata?.userId;
+          const email = session.metadata?.email || session.customer_details?.email;
 
-          console.log(`Payment successful for session: ${session.id}`);
-          console.log(`Customer email: ${session.customer_details?.email}`);
-          console.log(`Amount: ${session.amount_total} ${session.currency?.toUpperCase() || 'USD'}`);
+          if (!userId || !email) {
+            console.error('Missing userId or email in session metadata');
+            break;
+          }
 
-          // TODO: Implement your post-payment logic here
-          // Example: Update database, send emails, etc.
+          // Get user details
+          const user = await db
+            .select()
+            .from(users)
+            .where(eq(users.id, userId))
+            .limit(1);
+
+          if (user.length === 0) {
+            console.error('User not found:', userId);
+            break;
+          }
+
+          // Calculate amount (from cents to dollars)
+          const amount = (session.amount_total || 0) / 100;
+          const currency = (session.currency || 'usd').toUpperCase();
+          const paymentIntentId = session.payment_intent as string;
+
+          // Store payment record
+          await db.insert(payments).values({
+            userId,
+            stripePaymentId: paymentIntentId,
+            amount,
+            currency,
+            status: 'succeeded',
+            paymentDate: new Date(),
+            metadata: {
+              sessionId: session.id,
+              ...session.metadata,
+            },
+          });
+
+          // Update user status to customer
+          await db
+            .update(users)
+            .set({
+              status: 'customer',
+              updatedAt: new Date(),
+            })
+            .where(eq(users.id, userId));
+
+          // Track payment event
+          await trackEvent({
+            sessionId: session.metadata?.sessionId || '',
+            userId,
+            eventType: 'payment_complete',
+            eventData: {
+              email,
+              amount,
+              currency,
+              stripePaymentId: paymentIntentId,
+            },
+          });
+
+          // Trigger n8n workflow for customer onboarding
+          await n8nEvents.paymentComplete({
+            userId,
+            email,
+            amount,
+            currency,
+            stripePaymentId: paymentIntentId,
+            productName: session.metadata?.productName || 'Limitless Life Program',
+            firstName: user[0].firstName,
+            lastName: user[0].lastName,
+          });
+
+          console.log(`Payment processed for session: ${session.id}`);
         }
         break;
       }
@@ -89,21 +156,113 @@ export async function POST(request: NextRequest) {
       case 'checkout.session.expired': {
         const session = event.data.object as Stripe.Checkout.Session;
         console.log(`Checkout session expired: ${session.id}`);
-        // TODO: Handle expired sessions if needed
+
+        // Track expired checkout for analytics
+        const email = session.customer_details?.email;
+        if (email) {
+          const user = await db
+            .select()
+            .from(users)
+            .where(eq(users.email, email))
+            .limit(1);
+
+          if (user.length > 0) {
+            await trackEvent({
+              sessionId: session.metadata?.sessionId || '',
+              userId: user[0].id,
+              eventType: 'pricing_view',
+              eventData: {
+                email,
+                checkoutExpired: true,
+              },
+            });
+          }
+        }
         break;
       }
 
       case 'payment_intent.succeeded': {
         const paymentIntent = event.data.object as Stripe.PaymentIntent;
         console.log(`Payment_intent succeeded: ${paymentIntent.id}`);
-        // TODO: Handle successful payment intent if needed
+
+        // If this wasn't handled by checkout.session.completed, handle it here
+        const userId = paymentIntent.metadata.userId;
+        const email = paymentIntent.metadata.email;
+
+        if (userId && email) {
+          // Get user details
+          const user = await db
+            .select()
+            .from(users)
+            .where(eq(users.id, userId))
+            .limit(1);
+
+          if (user.length > 0) {
+            const amount = paymentIntent.amount / 100;
+            const currency = paymentIntent.currency.toUpperCase();
+
+            // Store payment record
+            await db.insert(payments).values({
+              userId,
+              stripePaymentId: paymentIntent.id,
+              amount,
+              currency,
+              status: 'succeeded',
+              paymentDate: new Date(),
+              metadata: paymentIntent.metadata,
+            });
+
+            // Track payment event
+            await trackEvent({
+              sessionId: paymentIntent.metadata.sessionId || '',
+              userId,
+              eventType: 'payment_complete',
+              eventData: {
+                email,
+                amount,
+                currency,
+                stripePaymentId: paymentIntent.id,
+              },
+            });
+
+            // Trigger n8n workflow
+            await n8nEvents.paymentComplete({
+              userId,
+              email,
+              amount,
+              currency,
+              stripePaymentId: paymentIntent.id,
+              productName: paymentIntent.metadata.productName || 'Limitless Life Program',
+              firstName: user[0].firstName,
+              lastName: user[0].lastName,
+            });
+          }
+        }
         break;
       }
 
       case 'payment_intent.payment_failed': {
         const paymentIntent = event.data.object as Stripe.PaymentIntent;
         console.log(`Payment_intent failed: ${paymentIntent.id}`);
-        // TODO: Handle failed payments if needed
+
+        const userId = paymentIntent.metadata.userId;
+        const email = paymentIntent.metadata.email;
+
+        if (userId && email) {
+          // Store failed payment record
+          await db.insert(payments).values({
+            userId,
+            stripePaymentId: paymentIntent.id,
+            amount: paymentIntent.amount / 100,
+            currency: paymentIntent.currency.toUpperCase(),
+            status: 'failed',
+            paymentDate: new Date(),
+            metadata: {
+              ...paymentIntent.metadata,
+              lastPaymentError: paymentIntent.last_payment_error?.message,
+            },
+          });
+        }
         break;
       }
 
