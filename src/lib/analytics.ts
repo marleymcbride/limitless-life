@@ -17,10 +17,20 @@ export async function trackEvent(data: {
   });
 }
 
+/**
+ * Lead Scoring Rules
+ *
+ * VSL milestones are calculated percentage-based:
+ * - 0-99%: proportionally scaled up to 60 points
+ * - 100%: 60 points (max for VSL completion)
+ *
+ * Note: vsl_complete event is NOT scored separately to avoid double-counting.
+ * The vsl_milestone event at 100% already gives the full 60 points.
+ */
 export const LEAD_SCORING_RULES: Record<EventType, number> = {
   vsl_start: 5,
-  vsl_milestone: 0, // Calculated separately
-  vsl_complete: 60,
+  vsl_milestone: 0, // Calculated separately with percentage-based calculation
+  // vsl_complete: 60, // REMOVED - already counted via vsl_milestone at 100%
   email_submit: 10,
   application_start: 30,
   application_step: 5,

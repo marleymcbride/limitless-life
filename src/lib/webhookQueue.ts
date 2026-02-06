@@ -1,5 +1,5 @@
 import { db } from './db';
-import { webhook_queue } from '../db/schema';
+import { webhookQueue } from '../db/schema';
 import { eq, and, lt, sql } from 'drizzle-orm';
 
 export interface WebhookJob {
@@ -23,11 +23,11 @@ export async function queueWebhook(data: {
   maxAttempts?: number;
 }): Promise<string> {
   const [webhook] = await db
-    .insert(webhook_queue)
+    .insert(webhookQueue)
     .values({
-      endpoint: data.endpoint,
+      targetUrl: data.endpoint,
       payload: data.payload,
-      attempts: 0,
+      attemptCount: 0,
       maxAttempts: data.maxAttempts || 3,
       status: 'pending',
       nextAttemptAt: new Date(),
@@ -48,11 +48,11 @@ export async function processWebhookQueue(): Promise<{
   // Get pending webhooks that are ready to be processed
   const pendingWebhooks = await db
     .select()
-    .from(webhook_queue)
+    .from(webhookQueue)
     .where(
       and(
-        eq(webhook_queue.status, 'pending'),
-        lt(webhook_queue.nextAttemptAt, new Date())
+        eq(webhookQueue.status, 'pending'),
+        lt(webhookQueue.nextAttemptAt, new Date())
       )
     )
     .limit(10); // Process 10 at a time
@@ -63,63 +63,63 @@ export async function processWebhookQueue(): Promise<{
   for (const webhook of pendingWebhooks) {
     // Mark as processing
     await db
-      .update(webhook_queue)
+      .update(webhookQueue)
       .set({
         status: 'processing',
         lastAttemptAt: new Date(),
       })
-      .where(eq(webhook_queue.id, webhook.id));
+      .where(eq(webhookQueue.id, webhook.id));
 
     // Attempt to deliver webhook
     const result = await deliverWebhook(
-      webhook.endpoint,
+      webhook.targetUrl,
       webhook.payload,
-      webhook.attempts + 1
+      webhook.attemptCount + 1
     );
 
     if (result.success) {
       // Mark as delivered
       await db
-        .update(webhook_queue)
+        .update(webhookQueue)
         .set({
           status: 'delivered',
-          attempts: webhook.attempts + 1,
+          attemptCount: webhook.attemptCount + 1,
           deliveredAt: new Date(),
         })
-        .where(eq(webhook_queue.id, webhook.id));
+        .where(eq(webhookQueue.id, webhook.id));
 
       processed++;
     } else {
       // Calculate next attempt time with exponential backoff
-      const backoffMinutes = Math.pow(5, webhook.attempts); // 1min, 5min, 25min
+      const backoffMinutes = Math.pow(5, webhook.attemptCount); // 1min, 5min, 25min
       const nextAttemptAt = new Date(Date.now() + backoffMinutes * 60 * 1000);
 
       // Check if max attempts reached
-      if (webhook.attempts + 1 >= webhook.maxAttempts) {
+      if (webhook.attemptCount + 1 >= webhook.maxAttempts) {
         // Mark as failed
         await db
-          .update(webhook_queue)
+          .update(webhookQueue)
           .set({
             status: 'failed',
-            attempts: webhook.attempts + 1,
+            attemptCount: webhook.attemptCount + 1,
             lastAttemptAt: new Date(),
             errorMessage: result.error,
           })
-          .where(eq(webhook_queue.id, webhook.id));
+          .where(eq(webhookQueue.id, webhook.id));
 
         failed++;
       } else {
         // Retry later
         await db
-          .update(webhook_queue)
+          .update(webhookQueue)
           .set({
             status: 'pending',
-            attempts: webhook.attempts + 1,
+            attemptCount: webhook.attemptCount + 1,
             lastAttemptAt: new Date(),
             nextAttemptAt,
             errorMessage: result.error,
           })
-          .where(eq(webhook_queue.id, webhook.id));
+          .where(eq(webhookQueue.id, webhook.id));
       }
     }
   }
@@ -127,8 +127,8 @@ export async function processWebhookQueue(): Promise<{
   // Get remaining count
   const [remainingCount] = await db
     .select({ count: sql<number>`count(*)` })
-    .from(webhook_queue)
-    .where(eq(webhook_queue.status, 'pending'));
+    .from(webhookQueue)
+    .where(eq(webhookQueue.status, 'pending'));
 
   return {
     processed,
@@ -183,23 +183,23 @@ export async function getWebhookQueueStats(): Promise<{
 }> {
   const [pending] = await db
     .select({ count: sql<number>`count(*)` })
-    .from(webhook_queue)
-    .where(eq(webhook_queue.status, 'pending'));
+    .from(webhookQueue)
+    .where(eq(webhookQueue.status, 'pending'));
 
   const [processing] = await db
     .select({ count: sql<number>`count(*)` })
-    .from(webhook_queue)
-    .where(eq(webhook_queue.status, 'processing'));
+    .from(webhookQueue)
+    .where(eq(webhookQueue.status, 'processing'));
 
   const [delivered] = await db
     .select({ count: sql<number>`count(*)` })
-    .from(webhook_queue)
-    .where(eq(webhook_queue.status, 'delivered'));
+    .from(webhookQueue)
+    .where(eq(webhookQueue.status, 'delivered'));
 
   const [failed] = await db
     .select({ count: sql<number>`count(*)` })
-    .from(webhook_queue)
-    .where(eq(webhook_queue.status, 'failed'));
+    .from(webhookQueue)
+    .where(eq(webhookQueue.status, 'failed'));
 
   return {
     pending: pending.count,
@@ -216,11 +216,11 @@ export async function cleanupOldWebhooks(): Promise<number> {
   const sevenDaysAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
 
   const result = await db
-    .delete(webhook_queue)
+    .delete(webhookQueue)
     .where(
       and(
-        eq(webhook_queue.status, 'delivered'),
-        sql`${webhook_queue.deliveredAt} < ${sevenDaysAgo}`
+        eq(webhookQueue.status, 'delivered'),
+        sql`${webhookQueue.deliveredAt} < ${sevenDaysAgo}`
       )
     );
 

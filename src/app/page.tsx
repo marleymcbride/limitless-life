@@ -2,38 +2,39 @@
 
 import { ImagePreloader, CRITICAL_TESTIMONIAL_IMAGES } from "../components/image-preloader";
 import VSLPlayer from "../components/vsl-player";
-import DoesThisSoundLikeYou from "../components/does-this-sound-like-you";
-import PersonalStorySection from "../components/personal-story-section";
-import IntroSection from "../components/intro-section";
-import CoreValueProposition from "../components/core-value-proposition";
-import VideoTestimonialCTA from "../components/video-testimonial-cta";
-import VideoTestimonialLaurenceShortVersion from "../components/video-testimonial-laurence-short-version";
-import ResultsProof from "../components/results-proof";
-// import ImagineThisDark from "../components/imaginethisdark";
-import ImagineThis from "../components/imaginethis";
-import ClientTransformationGallery from "../components/more-results-created";
-import MoreVideoTestimonials from "../components/more-video-testimonials";
-import BigIdeaSection from "../components/big-idea-section";
-import IntroducingLimitless from "../components/introducing-limitless";
-import WhatYoullAchieve from "../components/what-youll-achieve";
-import MoreClientTestimonials from "../components/more-client-testimonials";
-import HowLimitlessProtocolWorks from "../components/how-limitless-protocol-works";
-import WhatHappensIfYouDontFixThis from "../components/what-happens-if-you-dont-fix-this";
-import WhatMakesThisDifferent from "../components/what-makes-this-different";
-import BonusStack from "../components/bonus-stack";
-import WhySmallNumber from "../components/why-small-number";
-import WhatItsCostingYou from "../components/what-its-costing-you";
-import WhoThisIsFor from "../components/who-this-is-for";
-import SecureYourSpot from "../components/secure-your-spot";
-import FinalFAQs from "../components/FAQs";
-import TestimonialsFinal from "../components/testimonials-final";
-import The3TestimonialsBoxV2 from "../components/the-3-testimonials-box-v2";
-import TestimonialSectionDark from "../components/testimonial-section-dark";
+import {
+  LazyDoesThisSoundLikeYou,
+  LazyPersonalStorySection,
+  LazyIntroSection,
+  LazyCoreValueProposition,
+  LazyVideoTestimonialCTA,
+  LazyVideoTestimonialLaurenceShortVersion,
+  LazyResultsProof,
+  LazyImagineThis,
+  LazyClientTransformationGallery,
+  LazyMoreVideoTestimonials,
+  LazyBigIdeaSection,
+  LazyIntroducingLimitless,
+  LazyWhatYoullAchieve,
+  LazyMoreClientTestimonials,
+  LazyHowLimitlessProtocolWorks,
+  LazyWhatHappensIfYouDontFixThis,
+  LazyWhatMakesThisDifferent,
+  LazyBonusStack,
+  LazyWhySmallNumber,
+  LazyWhatItsCostingYou,
+  LazyWhoThisIsFor,
+  LazySecureYourSpot,
+  LazyFinalFAQs,
+  LazyTestimonialsFinal,
+  LazyThe3TestimonialsBoxV2,
+  LazyTestimonialSectionDark,
+  LazyRootCauses,
+  LazyDelayedCTA,
+} from '../components/lazy/LazySections';
 import { vignetteEffect, unifiedGradientWithSpotlightDesktop, unifiedGradientWithSpotlightMobile } from "../lib/utils";
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import RootCauses from "../components/why-traditional-methods-dont-work";
-import DelayedCTA from "../components/delayed-cta";
 
 // import SystemBenefitsProof from "../components/system-benefits-proof";
 // import WhyThisSystemWorks from "../components/[old] why-this-system-works";
@@ -401,7 +402,7 @@ export default function Home() {
               }
             `}</style>
             {passedJoinNowTime ? (
-              <DelayedCTA
+              <LazyDelayedCTA
                 delay={180000} // 3 minutes
                 videoProgress={videoProgress}
                 videoCurrentTime={videoCurrentTime}
@@ -410,9 +411,9 @@ export default function Home() {
                 href="/application"
               >
                 JOIN NOW
-              </DelayedCTA>
+              </LazyDelayedCTA>
             ) : (
-              <DelayedCTA
+              <LazyDelayedCTA
                 delay={180000} // 3 minutes
                 videoProgress={videoProgress}
                 videoCurrentTime={videoCurrentTime}
@@ -425,7 +426,7 @@ export default function Home() {
                 }}
               >
                 TELL ME MORE
-              </DelayedCTA>
+              </LazyDelayedCTA>
             )}
           </div>
 
@@ -472,58 +473,58 @@ export default function Home() {
 
       {/* 2. "Does This Sound Like You?" - Problem Agitation (Black background) */}
       <div className="dark-section-with-grain">
-        <DoesThisSoundLikeYou />
+        <LazyDoesThisSoundLikeYou />
       </div>
 
       {/* 3. Personal Story Section with embedded Intro (White background) */}
-      <PersonalStorySection />
+      <LazyPersonalStorySection />
 
       {/* INTRO SECTION INSERTED HERE */}
-      <IntroSection />
+      <LazyIntroSection />
       
       {/* 4. Core Value Proposition (White background) */}
-      <CoreValueProposition />
+      <LazyCoreValueProposition />
 
       {/* 5. Video Testimonial CTA (Black background) */}
       <div className="dark-section-with-grain">
-        <VideoTestimonialCTA />
+        <LazyVideoTestimonialCTA />
       </div>
 
       {/* INTRO SECTION 2 INSERTED HERE */}
-      <RootCauses />
+      <LazyRootCauses />
 
       {/* 7. Results Proof (White background) */}
-      <ResultsProof />
+      <LazyResultsProof />
 
       {/* INTRO SECTION 2 INSERTED HERE */}
-      <BigIdeaSection />
+      <LazyBigIdeaSection />
 
       {/* Laurence Short Version Video Testimonial */}
       <div className="dark-section-with-grain">
-        <VideoTestimonialLaurenceShortVersion />
+        <LazyVideoTestimonialLaurenceShortVersion />
       </div>
 
 
       {/* 6. Imagine This (Light background with white box) */}
-      <ImagineThis />
+      <LazyImagineThis />
 
       {/* 13. More Client Testimonials (Dark background)  */}
       <div className="dark-section-with-grain">
-        <MoreClientTestimonials />
+        <LazyMoreClientTestimonials />
       </div>
 
       {/* 6.5. Client Transformation Gallery (Before/After photos) 
-      <ClientTransformationGallery /> */}
+      <LazyClientTransformationGallery /> */}
 
 
       {/* 10. Introducing Limitless (Dark background) */}
-      <IntroducingLimitless />
+      <LazyIntroducingLimitless />
 
       {/* 6.5. More Results Created (Before/After transformations) */}
-      <ClientTransformationGallery />
+      <LazyClientTransformationGallery />
 
       {/* 11. What You'll Achieve (Dark with grain) */}
-      <WhatYoullAchieve />
+      <LazyWhatYoullAchieve />
 
             {/* 10. Introducing Limitless (Dark background) 
             <div className="dark-section-with-grain">
@@ -535,74 +536,74 @@ export default function Home() {
 
 
       {/* Testimonial 1 - 3 Testimonials Box */}
-      <The3TestimonialsBoxV2 />      
+      <LazyThe3TestimonialsBoxV2 />      
 
 
       {/* How The Limitless Protocol Works (Dark background) */}
-      <HowLimitlessProtocolWorks />
+      <LazyHowLimitlessProtocolWorks />
 
       {/* 9. More Video Testimonials (Black background)*/}
-      <MoreVideoTestimonials />
+      <LazyMoreVideoTestimonials />
 
       {/* Everything Included (Dark with grain) - wrapper inline */}
-      <WhatMakesThisDifferent />
+      <LazyWhatMakesThisDifferent />
 
       {/* Testimonial section before What Happens */}
-      <TestimonialSectionDark />
+      <LazyTestimonialSectionDark />
 
       {/* What Happens If You Don't Fix This (White background) */}
-      <WhatHappensIfYouDontFixThis />
+      <LazyWhatHappensIfYouDontFixThis />
 
       {/* Bonus Stack (Dark with grain) - wrapper inline */}
-      <BonusStack />
+      <LazyBonusStack />
 
       {/* Testimonial 2 (White background) */}
-      <TestimonialsFinal number={2} />
+      <LazyTestimonialsFinal number={2} />
 
       {/* Why I Only Work With A Small Number (White background) */}
-      <WhySmallNumber />
+      <LazyWhySmallNumber />
 
       {/* We Can Help If / Can't Help If (Dark with grain) - wrapper inline */}
-      <WhoThisIsFor />
+      <LazyWhoThisIsFor />
 
       {/* Testimonial 3 (White background) */}
-      <TestimonialsFinal number={3} />
+      <LazyTestimonialsFinal number={3} />
 
       {/* What NOT Fixing This Is Costing You (White background) */}
-      <WhatItsCostingYou />
+      <LazyWhatItsCostingYou />
 
       {/* FAQs */}
-      <FinalFAQs />
+      <LazyFinalFAQs />
 
             {/* Secure Your Spot (White background) */}
-            <SecureYourSpot />
+            <LazySecureYourSpot />
 
       {/* Testimonial 4 (White background) */}
-      <TestimonialsFinal number={4} />
+      <LazyTestimonialsFinal number={4} />
 
       {/* Testimonial 5 (White background) */}
-      <TestimonialsFinal number={5} />
+      <LazyTestimonialsFinal number={5} />
 
       {/* Testimonial 6 (White background) */}
-      <TestimonialsFinal number={6} />
+      <LazyTestimonialsFinal number={6} />
 
       {/* Testimonial 7 (White background) */}
-      <TestimonialsFinal number={7} />
+      <LazyTestimonialsFinal number={7} />
 
       {/* Testimonial 8 (White background) */}
-      <TestimonialsFinal number={8} />
+      <LazyTestimonialsFinal number={8} />
 
       {/* Testimonial 9 (White background) */}
-      <TestimonialsFinal number={9} />
+      <LazyTestimonialsFinal number={9} />
 
       {/* Testimonial 10 (White background) */}
-      <TestimonialsFinal number={10} />
+      <LazyTestimonialsFinal number={10} />
 
       {/* Testimonial 11 (White background) */}
-      <TestimonialsFinal number={11} />
+      <LazyTestimonialsFinal number={11} />
 
       {/* Testimonial 12 (White background) */}
-      <TestimonialsFinal number={12} />
+      <LazyTestimonialsFinal number={12} />
 
 
       {/* 8. Process Explanation (Black background) */}

@@ -6,7 +6,7 @@ import { eq } from 'drizzle-orm';
 import { getSessionId } from '@/lib/session';
 import { trackEvent } from '@/lib/analytics';
 import { n8nEvents } from '@/lib/n8nWebhooks';
-import { application_submissions } from '@/db/schema';
+import { applicationSubmissions } from '@/db/schema';
 
 const applicationStartSchema = z.object({
   email: z.string().email(),
@@ -117,7 +117,7 @@ export async function POST(req: NextRequest) {
         });
 
         // Store application submission data
-        await db.insert(application_submissions).values({
+        await db.insert(applicationSubmissions).values({
           userId,
           stepName: step,
           stepNumber,
