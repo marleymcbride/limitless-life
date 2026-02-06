@@ -1,3 +1,5 @@
+import { queueWebhook } from './webhookQueue';
+
 interface N8NWebhookPayload {
   event: string;
   data: Record<string, any>;
@@ -8,6 +10,12 @@ interface N8NWebhookPayload {
 const N8N_BASE_URL = process.env.NEXT_PUBLIC_N8N_VSL_WEBHOOK?.replace('/webhook/vsl-events', '') ||
   "https://n8n.marleymcbride.co/webhook";
 
+/**
+ * Send webhook to n8n (via queue for reliability)
+ *
+ * Webhooks are queued and delivered by a background process with automatic retries.
+ * This ensures no events are lost even if n8n is temporarily unavailable.
+ */
 export const sendToN8N = async (
   event: string,
   data: Record<string, any>
@@ -22,22 +30,17 @@ export const sendToN8N = async (
   };
 
   try {
-    const response = await fetch(webhookUrl, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(payload),
+    // Queue webhook for delivery (reliable with retries)
+    await queueWebhook({
+      endpoint: webhookUrl,
+      payload,
+      maxAttempts: 3,
     });
 
-    if (!response.ok) {
-      throw new Error(`N8N webhook failed: ${response.status}`);
-    }
-
-    console.log(`N8N event sent: ${event}`);
+    console.log(`N8N event queued: ${event}`);
   } catch (error) {
-    console.error("Failed to send to N8N:", error);
-    // Don't throw - we don't want n8n failures to break the app
+    console.error("Failed to queue N8N webhook:", error);
+    // Don't throw - we don't want webhook failures to break the app
   }
 };
 
