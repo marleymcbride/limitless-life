@@ -546,13 +546,13 @@ export default function VSLPlayer({
                         top: calc(54.5% + 150px) !important;
                       }
                       .popup-cta-join {
-                        top: calc(54.5% + 233.5px) !important;
+                        top: calc(54.5% + 263px) !important;
                         width: 180px !important;
                         padding-left: 14px !important;
                         padding-right: 14px !important;
                       }
                       .popup-cta-tell {
-                        top: calc(54.5% + 233.5px) !important;
+                        top: calc(54.5% + 263px) !important;
                         width: 180px !important;
                         padding-left: 14px !important;
                         padding-right: 14px !important;
