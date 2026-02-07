@@ -10,7 +10,7 @@ export default function VideoTestimonialLaurenceShortVersion() {
         <div className="text-center">
         <div className="text-center mb-8">
               <h2
-                className="text-4xl md:text-4xl font-bold pt-4 mb-16 text-white leading-tight"
+                className="text-4xl md:text-4xl font-bold pt-4 -mb-14 text-white leading-tight"
                 style={{ fontFamily: "Neuemontreal, sans-serif" }}
               >
                 Discover How to Wake up Feeling Fucking Great
@@ -31,17 +31,19 @@ export default function VideoTestimonialLaurenceShortVersion() {
           </div>
 
           {/* Mobile Video (Portrait) - Visible on mobile */}
-          <div className="block md:hidden mb-12">
-            <SimpleVideoPlayer
-              videoId="1f40cc5e-93ee-481f-b512-c3763ac88a7a"
-              libraryId="576963"
-              className="max-w-[80%] mx-auto"
-              autoplay={false}
-              muted={false}
-              preload={true}
-              controls={true}
-              aspectRatio="9:16"
-            />
+          <div className="block md:hidden lg:hidden mb-0">
+            <div className="scale-[75%] origin-center">
+              <SimpleVideoPlayer
+                videoId="1f40cc5e-93ee-481f-b512-c3763ac88a7a"
+                libraryId="576963"
+                className="mx-auto"
+                autoplay={false}
+                muted={false}
+                preload={true}
+                controls={true}
+                aspectRatio="9:16"
+              />
+            </div>
           </div>
         </div>
 
