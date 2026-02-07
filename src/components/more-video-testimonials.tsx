@@ -16,7 +16,7 @@ export default function MoreVideoTestimonials() {
 
           <div className="space-y-12 mb-12">
             <div className="grid md:grid-cols-2 gap-8 items-center">
-              <div className="w-[90%] md:w-full mx-auto md:mx-0">
+              <div>
                 <SimpleVideoPlayer
                   libraryId="505300"
                   videoId="ae86338e-0493-4ff0-bca9-87f9ad98dd89"
