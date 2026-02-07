@@ -57,7 +57,7 @@ export default function IntroducingLimitless() {
                   >
                     1. It Works Because It Does The Opposite
                   </h3>
-                  <p className="text-gray-300 text-base leading-relaxed">
+                  <p className="text-gray-300 text-sm leading-relaxed">
                     Every program adds more—more gym time, more meal prep, more supplements. This removes what&apos;s destroying you. That&apos;s why it works when everything else fails.
                   </p>
                 </div>
@@ -69,7 +69,7 @@ export default function IntroducingLimitless() {
                   >
                     2. It Works Because Willpower Is A Scam
                   </h3>
-                  <p className="text-gray-300 text-base leading-relaxed">
+                  <p className="text-gray-300 text-sm leading-relaxed">
                     Other programs blame you when you fail. &quot;Just have more discipline.&quot; This fixes the biology so willpower becomes irrelevant.
                   </p>
                 </div>
@@ -81,7 +81,7 @@ export default function IntroducingLimitless() {
                   >
                     3. It Works Because Training Less Actually Builds More
                   </h3>
-                  <p className="text-gray-300 text-base leading-relaxed">
+                  <p className="text-gray-300 text-sm leading-relaxed">
                     Sounds backward but it&apos;s true. Your body builds muscle during recovery, not during training. Two days gives it time to actually grow.
                   </p>
                 </div>
@@ -95,7 +95,7 @@ export default function IntroducingLimitless() {
                   >
                     4. It Works Because It&apos;s Built For Your Actual Life
                   </h3>
-                  <p className="text-gray-300 text-base leading-relaxed">
+                  <p className="text-gray-300 text-sm leading-relaxed">
                     Generic advice is for 25-year-olds with unlimited time. This works around demanding careers, constant travel, and family commitments.
                   </p>
                 </div>
@@ -107,7 +107,7 @@ export default function IntroducingLimitless() {
                   >
                     5. It Works Because It Fixes Why You&apos;re Actually Tired
                   </h3>
-                  <p className="text-gray-300 text-base leading-relaxed">
+                  <p className="text-gray-300 text-sm leading-relaxed">
                     You&apos;re not tired because you need coffee. You need coffee because your energy production is broken. Fix that and coffee becomes optional.
                   </p>
                 </div>
@@ -119,7 +119,7 @@ export default function IntroducingLimitless() {
                   >
                     6. It Works Because Hormones Restore Naturally
                   </h3>
-                  <p className="text-gray-300 text-base leading-relaxed">
+                  <p className="text-gray-300 text-sm leading-relaxed">
                     Your testosterone comes back—300+ point increases on average—when you remove what&apos;s suppressing it. No TRT. No needles. No clinics.
                   </p>
                 </div>

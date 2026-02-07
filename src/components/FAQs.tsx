@@ -106,7 +106,7 @@ export default function FinalFAQsV2() {
                     {faq.question}
                   </span>
                 </AccordionTrigger>
-                <AccordionContent className="text-gray-300 leading-relaxed pb-4 text-lg pl-8">
+                <AccordionContent className="text-gray-300 leading-relaxed pb-4 text-base pl-8">
                   <div
                     className="animate-faq-slide space-y-3"
                     style={{
