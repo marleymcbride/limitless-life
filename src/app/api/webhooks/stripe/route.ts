@@ -78,15 +78,42 @@ export async function POST(request: NextRequest) {
         const session = event.data.object as Stripe.Checkout.Session;
 
         if (session.payment_status === 'paid') {
-          const userId = session.metadata?.userId;
+          // Try to get userId from metadata first (existing user)
+          let userId = session.metadata?.userId;
           const email = session.metadata?.email || session.customer_details?.email;
 
-          if (!userId || !email) {
-            console.error('Missing userId or email in session metadata');
+          if (!email) {
+            console.error('No email found in session');
             break;
           }
 
-          // Get user details
+          // If no userId, find or create user by email (new user flow)
+          if (!userId) {
+            let user = await db
+              .select()
+              .from(users)
+              .where(eq(users.email, email))
+              .limit(1);
+
+            if (user.length === 0) {
+              // Create new user
+              const [newUser] = await db
+                .insert(users)
+                .values({
+                  email,
+                  status: 'customer',
+                  createdAt: new Date(),
+                })
+                .returning();
+              userId = newUser.id;
+              console.log('Created new user from checkout:', email);
+            } else {
+              userId = user[0].id;
+              console.log('Found existing user from checkout:', email);
+            }
+          }
+
+          // Get user details (needed for firstName/lastName in n8n call)
           const user = await db
             .select()
             .from(users)
@@ -94,7 +121,7 @@ export async function POST(request: NextRequest) {
             .limit(1);
 
           if (user.length === 0) {
-            console.error('User not found:', userId);
+            console.error('User not found after lookup:', userId);
             break;
           }
 
@@ -118,7 +145,7 @@ export async function POST(request: NextRequest) {
           // Store payment record
           await db.insert(payments).values({
             userId,
-            stripePaymentId: paymentIntentId,
+            stripePaymentIntentId: paymentIntentId,
             amount,
             currency,
             status: 'succeeded',
@@ -163,7 +190,7 @@ export async function POST(request: NextRequest) {
             lastName: user[0].lastName,
           });
 
-          console.log(`Payment processed for session: ${session.id}`);
+          console.log(`Payment processed for session: ${session.id}, user: ${email}`);
         }
         break;
       }
@@ -219,7 +246,7 @@ export async function POST(request: NextRequest) {
             // Store payment record
             await db.insert(payments).values({
               userId,
-              stripePaymentId: paymentIntent.id,
+              stripePaymentIntentId: paymentIntent.id,
               amount,
               currency,
               status: 'succeeded',
@@ -267,7 +294,7 @@ export async function POST(request: NextRequest) {
           // Store failed payment record
           await db.insert(payments).values({
             userId,
-            stripePaymentId: paymentIntent.id,
+            stripePaymentIntentId: paymentIntent.id,
             amount: paymentIntent.amount / 100,
             currency: paymentIntent.currency.toUpperCase(),
             status: 'failed',
