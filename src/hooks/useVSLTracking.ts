@@ -7,6 +7,7 @@ import {
   trackVSLEvent,
 } from "@/lib/vslAnalytics";
 import { useAnalytics } from "@/hooks/useAnalytics";
+import { useSession } from "@/hooks/useSession";
 
 export const useVSLTracking = (videoId: string) => {
   const sessionId_old = useRef(getSessionId());
@@ -14,22 +15,9 @@ export const useVSLTracking = (videoId: string) => {
   const startTime = useRef<number>(0);
   const [hasStarted, setHasStarted] = useState(false);
 
-  // Get new session from our session management system
-  // We'll fetch it asynchronously
-  const [newSessionId, setNewSessionId] = useState<string | null>(null);
-  const { trackEvent } = useAnalytics("");
-
-  useEffect(() => {
-    // Fetch session from our new system
-    fetch("/api/session")
-      .then(res => res.json())
-      .then(data => {
-        setNewSessionId(data.sessionId);
-      })
-      .catch(err => {
-        console.error("Failed to get session:", err);
-      });
-  }, []);
+  // Use the new session management hook
+  const { session } = useSession();
+  const { trackEvent } = useAnalytics(session?.sessionId || "");
 
   const trackPlay = () => {
     if (!hasStarted) {
@@ -46,7 +34,7 @@ export const useVSLTracking = (videoId: string) => {
       });
 
       // New analytics system
-      if (newSessionId) {
+      if (session?.sessionId) {
         trackEvent("vsl_start", { videoId });
       }
     }
@@ -80,7 +68,7 @@ export const useVSLTracking = (videoId: string) => {
       });
 
       // New analytics system - track milestones
-      if (newSessionId) {
+      if (session?.sessionId) {
         if (progress.percentage >= 95) {
           trackEvent("vsl_milestone", { videoId, percent: 95, durationWatched: watchDuration });
         }
@@ -114,7 +102,7 @@ export const useVSLTracking = (videoId: string) => {
     });
 
     // New analytics system
-    if (newSessionId) {
+    if (session?.sessionId) {
       trackEvent("vsl_complete", { videoId, duration: totalWatchTime });
     }
   };
