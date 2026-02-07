@@ -81,18 +81,18 @@ export async function POST(req: NextRequest) {
         await db
           .update(users)
           .set({
-            status: 'application_started',
+            status: 'lead',
             updatedAt: new Date(),
           })
           .where(eq(users.id, userId));
 
         // Track event
-        await trackEvent({
+        trackEvent({
           sessionId,
           userId,
           eventType: 'application_start',
           eventData: { email, firstName, lastName },
-        });
+        }).catch(console.error);
 
         // Trigger n8n webhook
         await n8nEvents.applicationStart({
@@ -109,20 +109,21 @@ export async function POST(req: NextRequest) {
         const { email, step, stepNumber, data } = applicationStepSchema.parse(body);
 
         // Track event
-        await trackEvent({
+        trackEvent({
           sessionId,
           userId,
           eventType: 'application_step',
           eventData: { email, step, stepNumber, ...data },
-        });
+        }).catch(console.error);
 
         // Store application submission data
         await db.insert(applicationSubmissions).values({
           userId,
-          stepName: step,
-          stepNumber,
-          data: data || {},
+          submissionData: { step, stepNumber, ...data },
+          currentStep: stepNumber,
+          isComplete: false,
           createdAt: new Date(),
+          updatedAt: new Date(),
         });
 
         return NextResponse.json({ success: true, userId });
@@ -136,18 +137,18 @@ export async function POST(req: NextRequest) {
         await db
           .update(users)
           .set({
-            status: 'applied',
+            status: 'lead',
             updatedAt: new Date(),
           })
           .where(eq(users.id, userId));
 
         // Track event
-        await trackEvent({
+        trackEvent({
           sessionId,
           userId,
           eventType: 'application_complete',
           eventData: { email, firstName, lastName, ...applicationData },
-        });
+        }).catch(console.error);
 
         // Trigger n8n webhook
         await n8nEvents.applicationComplete({
