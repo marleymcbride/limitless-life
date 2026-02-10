@@ -2,7 +2,11 @@
 
 import SmoothImage from "@/components/ui/smooth-image";
 
-export default function TestimonialSectionDark() {
+interface TestimonialSectionDarkProps {
+  onApplyNowClick?: (e: React.MouseEvent) => void;
+}
+
+export default function TestimonialSectionDark({ onApplyNowClick }: TestimonialSectionDarkProps) {
   return (
     <section className="results-proof-gradient py-16 px-0">
       <div className="container mx-auto max-w-7xl">

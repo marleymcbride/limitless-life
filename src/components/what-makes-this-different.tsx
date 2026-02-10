@@ -1,4 +1,8 @@
-export default function EverythingIncluded() {
+interface EverythingIncludedProps {
+  onApplyNowClick?: (e: React.MouseEvent) => void;
+}
+
+export default function EverythingIncluded({ onApplyNowClick }: EverythingIncludedProps) {
   const items = [
     {
       icon: (
@@ -78,12 +82,12 @@ export default function EverythingIncluded() {
 
         {/* CTA Button */}
         <div className="text-center mt-12">
-          <a
-            href="/application"
+          <button
+            onClick={onApplyNowClick}
             className="font-bold !text-white transition-none duration-0 focus:outline-none bg-[#940909] hover:bg-[#7b0707] py-4 px-12 text-lg rounded-md inline-block relative z-30"
           >
             Apply Now
-          </a>
+          </button>
           </div>
           </div>
         </section>

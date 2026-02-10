@@ -1,6 +1,10 @@
 import React from "react";
 
-export default function The3TestimonialsBoxV2() {
+interface The3TestimonialsBoxV2Props {
+  onApplyNowClick?: (e: React.MouseEvent) => void;
+}
+
+export default function The3TestimonialsBoxV2({ onApplyNowClick }: The3TestimonialsBoxV2Props) {
   return (
       <section className="pt-0 text-white lg:pb-0 mb-0 w-full bg-zinc-400/95">
         <div className="mx-4 md:mx-[3.5%]">
