@@ -9,7 +9,9 @@ export type EventType =
   | 'application_complete'
   | 'pricing_view'
   | 'cta_click'
-  | 'payment_complete';
+  | 'payment_complete'
+  | 'scroll_depth'
+  | 'tier_click';
 
 export interface Event {
   id: string;
