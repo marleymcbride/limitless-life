@@ -64,8 +64,9 @@ export async function POST(request: NextRequest) {
 
     const { tier, customerEmail } = await request.json();
 
-    // Validate email format
-    if (!isValidEmail(customerEmail)) {
+    // Email is now optional - Stripe will collect it during checkout
+    // Only validate if provided
+    if (customerEmail && !isValidEmail(customerEmail)) {
       return NextResponse.json(
         { error: "Invalid email address format" },
         { status: 400 }
@@ -100,9 +101,10 @@ export async function POST(request: NextRequest) {
     }
 
     const stripe = getStripe();
-    const session = await stripe.checkout.sessions.create({
+
+    // Build checkout session options
+    const checkoutSessionOptions: Stripe.Checkout.SessionCreateParams = {
       payment_method_types: ["card"],
-      customer_email: customerEmail,
       line_items: [
         {
           price_data: {
@@ -127,16 +129,30 @@ export async function POST(request: NextRequest) {
       },
       allow_promotion_codes: false,
       client_reference_id: tier,
-      // Include metadata for n8n workflows
-      metadata: {
-        tier: tier.charAt(0).toUpperCase() + tier.slice(1), // Capitalize: Access, Plus, Premium, Elite
-        email: customerEmail,
-        utm_source: utmSource || '',
-        utm_campaign: utmCampaign || '',
-        utm_medium: utmMedium || '',
-        sessionId: sessionId || '',
-      },
-    });
+    };
+
+    // Only include customer_email if provided (pre-fill the field)
+    if (customerEmail) {
+      checkoutSessionOptions.customer_email = customerEmail;
+    }
+
+    // Include metadata for n8n workflows
+    const metadata: Record<string, string> = {
+      tier: tier.charAt(0).toUpperCase() + tier.slice(1), // Capitalize: Access, Plus, Premium, Elite
+      utm_source: utmSource || '',
+      utm_campaign: utmCampaign || '',
+      utm_medium: utmMedium || '',
+      sessionId: sessionId || '',
+    };
+
+    // Only include email in metadata if provided
+    if (customerEmail) {
+      metadata.email = customerEmail;
+    }
+
+    checkoutSessionOptions.metadata = metadata;
+
+    const session = await stripe.checkout.sessions.create(checkoutSessionOptions);
 
     return NextResponse.json({ sessionId: session.id });
   } catch (error) {

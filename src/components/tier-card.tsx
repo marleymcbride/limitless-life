@@ -42,6 +42,7 @@ export default function TierCard({
       }
 
       // Create checkout session
+      // Stripe will collect email during checkout
       const response = await fetch("/api/create-checkout-session", {
         method: "POST",
         headers: {
@@ -49,7 +50,7 @@ export default function TierCard({
         },
         body: JSON.stringify({
           tier: tier,
-          customerEmail: "", // Could add email field in the future
+          // customerEmail is optional - Stripe collects it during checkout
         }),
       });
 
