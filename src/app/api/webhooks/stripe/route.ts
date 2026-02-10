@@ -5,7 +5,8 @@ import { db } from '@/lib/db';
 import { users, payments } from '@/db/schema';
 import { eq } from 'drizzle-orm';
 import { trackEvent } from '@/lib/analytics';
-import { n8nEvents } from '@/lib/n8nWebhooks';
+import { n8nEvents, syncPaymentToAirtable } from '@/lib/n8nWebhooks';
+import { calculateLeadScore } from '@/lib/scoring';
 
 /**
  * POST /api/webhooks/stripe
@@ -178,7 +179,37 @@ export async function POST(request: NextRequest) {
             },
           });
 
-          // Trigger n8n workflow for customer onboarding
+          // Calculate user's current lead score for n8n sync
+          const scoreData = await calculateLeadScore(userId);
+
+          // Determine tier from metadata or calculate from amount
+          const amountInCents = session.amount_total || 0;
+          let tier: 'Access' | 'Plus' | 'Premium' | 'Elite' = 'Access';
+          if (amountInCents >= 1499700) tier = 'Elite';
+          else if (amountInCents >= 899700) tier = 'Premium';
+          else if (amountInCents >= 499700) tier = 'Plus';
+          else tier = 'Access';
+
+          // Sync to Airtable via n8n (fire-and-forget, non-blocking)
+          syncPaymentToAirtable({
+            email,
+            firstName: user[0].firstName || undefined,
+            lastName: user[0].lastName || undefined,
+            tier,
+            amount: amountInCents, // in cents
+            stripePaymentId: paymentIntentId,
+            paymentDate: new Date().toISOString(),
+            score: scoreData.score,
+            phone: user[0].phone || undefined,
+            utmSource: session.metadata?.utm_source,
+            utmCampaign: session.metadata?.utm_campaign,
+            utmMedium: session.metadata?.utm_medium,
+          }).catch(error => {
+            console.error('[n8n] Payment sync failed (non-blocking):', error);
+            // Don't throw - payment is already saved to Railway
+          });
+
+          // Also trigger legacy n8n event for backward compatibility
           await n8nEvents.paymentComplete({
             userId,
             email,
