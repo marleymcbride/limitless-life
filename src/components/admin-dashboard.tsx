@@ -3,8 +3,21 @@
 import { useState, useEffect } from 'react';
 import LeadsTable from './leads-table';
 import TrafficSourcesTable from './traffic-sources-table';
+import FunnelAnalytics from './admin/funnel-analytics';
+import VSLDropoffAnalytics from './admin/vsl-dropoff-analytics';
+import ScrollDropoffAnalytics from './admin/scroll-dropoff-analytics';
+import CustomerJourneyAnalytics from './admin/customer-journey-analytics';
+import AbandonedFunnelAnalytics from './admin/abandoned-funnel-analytics';
 
-type Tab = 'dashboard' | 'leads' | 'traffic';
+type Tab =
+  | 'dashboard'
+  | 'leads'
+  | 'traffic'
+  | 'funnel'
+  | 'vsl'
+  | 'scroll'
+  | 'journey'
+  | 'abandoned';
 
 export default function AdminDashboard() {
   const [activeTab, setActiveTab] = useState<Tab>('dashboard');
@@ -29,62 +42,56 @@ export default function AdminDashboard() {
     }
   }
 
+  const tabs: { key: Tab; label: string }[] = [
+    { key: 'dashboard', label: 'Dashboard' },
+    { key: 'funnel', label: 'Funnel Analytics' },
+    { key: 'vsl', label: 'VSL Drop-off' },
+    { key: 'scroll', label: 'Scroll Analytics' },
+    { key: 'journey', label: 'Customer Journey' },
+    { key: 'abandoned', label: 'Abandoned Funnel' },
+    { key: 'leads', label: 'Leads' },
+    { key: 'traffic', label: 'Traffic Sources' },
+  ];
+
   return (
     <div className="min-h-screen bg-black text-white p-8">
       <h1 className="text-4xl font-bold mb-8">Admin Dashboard</h1>
 
       {/* Tabs */}
-      <div className="flex gap-4 mb-8">
-        <button
-          onClick={() => setActiveTab('dashboard')}
-          className={`px-4 py-2 rounded ${
-            activeTab === 'dashboard'
-              ? 'bg-[#940909]'
-              : 'bg-gray-800 hover:bg-gray-700'
-          }`}
-        >
-          Dashboard
-        </button>
-        <button
-          onClick={() => setActiveTab('leads')}
-          className={`px-4 py-2 rounded ${
-            activeTab === 'leads'
-              ? 'bg-[#940909]'
-              : 'bg-gray-800 hover:bg-gray-700'
-          }`}
-        >
-          Leads
-        </button>
-        <button
-          onClick={() => setActiveTab('traffic')}
-          className={`px-4 py-2 rounded ${
-            activeTab === 'traffic'
-              ? 'bg-[#940909]'
-              : 'bg-gray-800 hover:bg-gray-700'
-          }`}
-        >
-          Traffic Sources
-        </button>
+      <div className="flex flex-wrap gap-2 mb-8">
+        {tabs.map((tab) => (
+          <button
+            key={tab.key}
+            onClick={() => setActiveTab(tab.key)}
+            className={`px-4 py-2 rounded text-sm font-medium transition-colors ${
+              activeTab === tab.key
+                ? 'bg-[#940909] text-white'
+                : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
+            }`}
+          >
+            {tab.label}
+          </button>
+        ))}
       </div>
 
       {/* Content */}
       {activeTab === 'dashboard' && (
         <div>
           {/* Stats */}
-          <div className="grid grid-cols-4 gap-4 mb-8">
-            <div className="bg-gray-900 p-6 rounded">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+            <div className="bg-gray-900 p-6 rounded border border-gray-800">
               <h3 className="text-gray-400 mb-2">Today's Visitors</h3>
               <p className="text-3xl font-bold">{stats.visitors}</p>
             </div>
-            <div className="bg-gray-900 p-6 rounded">
+            <div className="bg-gray-900 p-6 rounded border border-gray-800">
               <h3 className="text-gray-400 mb-2">Hot Leads</h3>
               <p className="text-3xl font-bold text-[#940909]">{stats.hotLeads}</p>
             </div>
-            <div className="bg-gray-900 p-6 rounded">
+            <div className="bg-gray-900 p-6 rounded border border-gray-800">
               <h3 className="text-gray-400 mb-2">Payments (Month)</h3>
               <p className="text-3xl font-bold">${stats.payments}</p>
             </div>
-            <div className="bg-gray-900 p-6 rounded">
+            <div className="bg-gray-900 p-6 rounded border border-gray-800">
               <h3 className="text-gray-400 mb-2">Conversion Rate</h3>
               <p className="text-3xl font-bold">{stats.conversionRate}%</p>
             </div>
@@ -92,6 +99,11 @@ export default function AdminDashboard() {
         </div>
       )}
 
+      {activeTab === 'funnel' && <FunnelAnalytics />}
+      {activeTab === 'vsl' && <VSLDropoffAnalytics />}
+      {activeTab === 'scroll' && <ScrollDropoffAnalytics />}
+      {activeTab === 'journey' && <CustomerJourneyAnalytics />}
+      {activeTab === 'abandoned' && <AbandonedFunnelAnalytics />}
       {activeTab === 'leads' && <LeadsTable />}
       {activeTab === 'traffic' && <TrafficSourcesTable />}
     </div>

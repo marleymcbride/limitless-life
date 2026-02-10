@@ -39,4 +39,6 @@ export const LEAD_SCORING_RULES: Record<EventType, number> = {
   cta_click: 5,
   page_view: 0,
   payment_complete: 100,
+  scroll_depth: 0, // Scroll depth tracked separately
+  tier_click: 15, // High intent: user clicked a tier button
 };
