@@ -77,17 +77,20 @@ export default function Home() {
 
   // Handle Apply Now button click
   const handleApplyNowClick = (e: React.MouseEvent) => {
+    console.log('[ApplyNow] Clicked!');
     e.preventDefault();
     setShowEmailPopup(true);
+    console.log('[ApplyNow] showEmailPopup set to true');
   };
 
   // Handle popup submit
   const handlePopupSubmit = async (data: { email: string; firstName: string }) => {
+    console.log('[EmailPopup] Submitting with data:', data);
     setIsPopupLoading(true);
 
     try {
       // Track lead interest
-      await fetch('/api/analytics/tier-interest', {
+      const response = await fetch('/api/analytics/tier-interest', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -99,10 +102,18 @@ export default function Home() {
         }),
       });
 
+      console.log('[EmailPopup] Track response:', response.status);
+
+      // Store email in sessionStorage for Stripe checkout
+      if (typeof window !== 'undefined') {
+        sessionStorage.setItem('userEmail', data.email);
+        sessionStorage.setItem('userName', data.firstName);
+      }
+
       // Navigate to application page
       router.push('/application');
     } catch (error) {
-      console.error('Error tracking lead:', error);
+      console.error('[EmailPopup] Error tracking lead:', error);
       // Still navigate even if tracking fails
       router.push('/application');
     } finally {
@@ -526,58 +537,58 @@ export default function Home() {
 
       {/* 2. "Does This Sound Like You?" - Problem Agitation (Black background) */}
       <div className="dark-section-with-grain">
-        <LazyDoesThisSoundLikeYou />
+        <LazyDoesThisSoundLikeYou onApplyNowClick={handleApplyNowClick} />
       </div>
 
       {/* 3. Personal Story Section with embedded Intro (White background) */}
-      <LazyPersonalStorySection />
+      <LazyPersonalStorySection onApplyNowClick={handleApplyNowClick} />
 
       {/* INTRO SECTION INSERTED HERE */}
-      <LazyIntroSection />
+      <LazyIntroSection onApplyNowClick={handleApplyNowClick} />
       
       {/* 4. Core Value Proposition (White background) */}
-      <LazyCoreValueProposition />
+      <LazyCoreValueProposition onApplyNowClick={handleApplyNowClick} />
 
       {/* 5. Video Testimonial CTA (Black background) */}
       <div className="dark-section-with-grain">
-        <LazyVideoTestimonialCTA />
+        <LazyVideoTestimonialCTA onApplyNowClick={handleApplyNowClick} />
       </div>
 
       {/* INTRO SECTION 2 INSERTED HERE */}
-      <LazyRootCauses />
+      <LazyRootCauses onApplyNowClick={handleApplyNowClick} />
 
       {/* 7. Results Proof (White background) */}
-      <LazyResultsProof />
+      <LazyResultsProof onApplyNowClick={handleApplyNowClick} />
 
       {/* INTRO SECTION 2 INSERTED HERE */}
-      <LazyBigIdeaSection />
+      <LazyBigIdeaSection onApplyNowClick={handleApplyNowClick} />
 
       {/* Laurence Short Version Video Testimonial */}
       <div className="dark-section-with-grain">
-        <LazyVideoTestimonialLaurenceShortVersion />
+        <LazyVideoTestimonialLaurenceShortVersion onApplyNowClick={handleApplyNowClick} />
       </div>
 
 
       {/* 6. Imagine This (Light background with white box) */}
-      <LazyImagineThis />
+      <LazyImagineThis onApplyNowClick={handleApplyNowClick} />
 
       {/* 13. More Client Testimonials (Dark background)  */}
       <div className="dark-section-with-grain">
-        <LazyMoreClientTestimonials />
+        <LazyMoreClientTestimonials onApplyNowClick={handleApplyNowClick} />
       </div>
 
-      {/* 6.5. Client Transformation Gallery (Before/After photos) 
+      {/* 6.5. Client Transformation Gallery (Before/After photos)
       <LazyClientTransformationGallery /> */}
 
 
       {/* 10. Introducing Limitless (Dark background) */}
-      <LazyIntroducingLimitless />
+      <LazyIntroducingLimitless onApplyNowClick={handleApplyNowClick} />
 
       {/* 6.5. More Results Created (Before/After transformations) */}
-      <LazyClientTransformationGallery />
+      <LazyClientTransformationGallery onApplyNowClick={handleApplyNowClick} />
 
       {/* 11. What You'll Achieve (Dark with grain) */}
-      <LazyWhatYoullAchieve />
+      <LazyWhatYoullAchieve onApplyNowClick={handleApplyNowClick} />
 
             {/* 10. Introducing Limitless (Dark background) 
             <div className="dark-section-with-grain">
@@ -589,74 +600,74 @@ export default function Home() {
 
 
       {/* Testimonial 1 - 3 Testimonials Box */}
-      <LazyThe3TestimonialsBoxV2 />      
+      <LazyThe3TestimonialsBoxV2 onApplyNowClick={handleApplyNowClick} />
 
 
       {/* How The Limitless Protocol Works (Dark background) */}
-      <LazyHowLimitlessProtocolWorks />
+      <LazyHowLimitlessProtocolWorks onApplyNowClick={handleApplyNowClick} />
 
       {/* 9. More Video Testimonials (Black background)*/}
-      <LazyMoreVideoTestimonials />
+      <LazyMoreVideoTestimonials onApplyNowClick={handleApplyNowClick} />
 
       {/* Everything Included (Dark with grain) - wrapper inline */}
-      <LazyWhatMakesThisDifferent />
+      <LazyWhatMakesThisDifferent onApplyNowClick={handleApplyNowClick} />
 
       {/* Testimonial section before What Happens */}
-      <LazyTestimonialSectionDark />
+      <LazyTestimonialSectionDark onApplyNowClick={handleApplyNowClick} />
 
       {/* What Happens If You Don't Fix This (White background) */}
-      <LazyWhatHappensIfYouDontFixThis />
+      <LazyWhatHappensIfYouDontFixThis onApplyNowClick={handleApplyNowClick} />
 
       {/* Bonus Stack (Dark with grain) - wrapper inline */}
-      <LazyBonusStack />
+      <LazyBonusStack onApplyNowClick={handleApplyNowClick} />
 
       {/* Testimonial 2 (White background) */}
-      <LazyTestimonialsFinal number={2} />
+      <LazyTestimonialsFinal onApplyNowClick={handleApplyNowClick} number={2} />
 
       {/* Why I Only Work With A Small Number (White background) */}
-      <LazyWhySmallNumber />
+      <LazyWhySmallNumber onApplyNowClick={handleApplyNowClick} />
 
       {/* We Can Help If / Can't Help If (Dark with grain) - wrapper inline */}
-      <LazyWhoThisIsFor />
+      <LazyWhoThisIsFor onApplyNowClick={handleApplyNowClick} />
 
       {/* Testimonial 3 (White background) */}
-      <LazyTestimonialsFinal number={3} />
+      <LazyTestimonialsFinal onApplyNowClick={handleApplyNowClick} number={3} />
 
       {/* What NOT Fixing This Is Costing You (White background) */}
-      <LazyWhatItsCostingYou />
+      <LazyWhatItsCostingYou onApplyNowClick={handleApplyNowClick} />
 
       {/* FAQs */}
-      <LazyFinalFAQs />
+      <LazyFinalFAQs onApplyNowClick={handleApplyNowClick} />
 
             {/* Secure Your Spot (White background) */}
             <LazySecureYourSpot onApplyNowClick={handleApplyNowClick} />
 
       {/* Testimonial 4 (White background) */}
-      <LazyTestimonialsFinal number={4} />
+      <LazyTestimonialsFinal onApplyNowClick={handleApplyNowClick} number={4} />
 
       {/* Testimonial 5 (White background) */}
-      <LazyTestimonialsFinal number={5} />
+      <LazyTestimonialsFinal onApplyNowClick={handleApplyNowClick} number={5} />
 
       {/* Testimonial 6 (White background) */}
-      <LazyTestimonialsFinal number={6} />
+      <LazyTestimonialsFinal onApplyNowClick={handleApplyNowClick} number={6} />
 
       {/* Testimonial 7 (White background) */}
-      <LazyTestimonialsFinal number={7} />
+      <LazyTestimonialsFinal onApplyNowClick={handleApplyNowClick} number={7} />
 
       {/* Testimonial 8 (White background) */}
-      <LazyTestimonialsFinal number={8} />
+      <LazyTestimonialsFinal onApplyNowClick={handleApplyNowClick} number={8} />
 
       {/* Testimonial 9 (White background) */}
-      <LazyTestimonialsFinal number={9} />
+      <LazyTestimonialsFinal onApplyNowClick={handleApplyNowClick} number={9} />
 
       {/* Testimonial 10 (White background) */}
-      <LazyTestimonialsFinal number={10} />
+      <LazyTestimonialsFinal onApplyNowClick={handleApplyNowClick} number={10} />
 
       {/* Testimonial 11 (White background) */}
-      <LazyTestimonialsFinal number={11} />
+      <LazyTestimonialsFinal onApplyNowClick={handleApplyNowClick} number={11} />
 
       {/* Testimonial 12 (White background) */}
-      <LazyTestimonialsFinal number={12} />
+      <LazyTestimonialsFinal onApplyNowClick={handleApplyNowClick} number={12} />
 
 
       {/* 8. Process Explanation (Black background) */}

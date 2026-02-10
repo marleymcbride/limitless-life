@@ -2,7 +2,11 @@
 
 import { bgClasses } from "@/lib/utils";
 
-export default function CoreValueProposition() {
+interface CoreValuePropositionProps {
+  onApplyNowClick?: (e: React.MouseEvent) => void;
+}
+
+export default function CoreValueProposition({ onApplyNowClick }: CoreValuePropositionProps) {
   return (
     <section className={`w-full ${bgClasses.white} pt-12 pb-6 text-black relative`} data-section="core-value-proposition">
       {/* Simple, premium white background */}
@@ -87,12 +91,12 @@ export default function CoreValueProposition() {
 
             {/* CTA Button - matching personal story style */}
             <div className="text-center mt-12">
-              <a
-                href="/application"
+              <button
+                onClick={onApplyNowClick}
                 className="font-bold !text-white transition-none duration-0 focus:outline-none bg-[#940909] hover:bg-[#7b0707] py-4 px-12 mb-6 text-lg rounded-md inline-block relative z-30"
               >
                 Show me how
-              </a>
+              </button>
             </div>
           </div>
         </div>

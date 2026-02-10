@@ -1,6 +1,10 @@
 import { bgClasses } from "@/lib/utils";
 
-export default function WhySmallNumber() {
+interface WhySmallNumberProps {
+  onApplyNowClick?: (e: React.MouseEvent) => void;
+}
+
+export default function WhySmallNumber({ onApplyNowClick }: WhySmallNumberProps) {
   return (
     <>
     <section className="w-full results-proof-gradient pt-16 pb-12 relative">
@@ -69,12 +73,12 @@ export default function WhySmallNumber() {
 
           {/* CTA Button */}
           <div className="text-center mt-10 mb-10O">
-            <a
-              href="/application"
+            <button
+              onClick={onApplyNowClick}
               className="font-bold !text-white transition-none duration-0 focus:outline-none bg-[#940909] hover:bg-[#7b0707] py-4 px-12 text-lg rounded-md inline-block relative z-30"
             >
               Apply Now
-            </a>
+            </button>
           </div>
 
         </div>

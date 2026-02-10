@@ -1,4 +1,8 @@
-export default function DoesThisSoundLikeYou() {
+interface DoesThisSoundLikeYouProps {
+  onApplyNowClick?: (e: React.MouseEvent) => void;
+}
+
+export default function DoesThisSoundLikeYou({ onApplyNowClick }: DoesThisSoundLikeYouProps) {
   return (
     <section className="bg-black py-14 px-4 w-full" data-section="does-this-sound-like-you">
       <div className="container mx-auto max-w-5xl">

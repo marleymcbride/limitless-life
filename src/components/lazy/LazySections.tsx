@@ -23,7 +23,7 @@ function createLazySection<T extends object>(
 ) {
   const LazyComponent = lazy(importFunc);
 
-  return function LazySectionWrapper(props: T) {
+  return function LazySectionWrapper(props: T & { onApplyNowClick?: (e: React.MouseEvent) => void }) {
     return (
       <Suspense fallback={<SectionPlaceholder height={fallbackHeight} />}>
         <LazyComponent {...props} />
