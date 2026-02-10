@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
+import { cookies } from 'next/headers';
 
 const getStripe = () => {
   if (!process.env.STRIPE_SECRET_KEY) {
@@ -78,6 +79,26 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Get session data to include UTM parameters
+    const cookieStore = await cookies();
+    const sessionCookie = cookieStore.get('session');
+
+    // Parse session cookie for UTM params (if available)
+    let utmSource: string | undefined;
+    let utmCampaign: string | undefined;
+    let utmMedium: string | undefined;
+    let sessionId: string | undefined;
+
+    if (sessionCookie?.value) {
+      try {
+        // Session cookie might contain session ID or UTM data
+        // The exact format depends on your session implementation
+        sessionId = sessionCookie.value;
+      } catch (e) {
+        // Ignore parsing errors
+      }
+    }
+
     const stripe = getStripe();
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
@@ -106,6 +127,15 @@ export async function POST(request: NextRequest) {
       },
       allow_promotion_codes: false,
       client_reference_id: tier,
+      // Include metadata for n8n workflows
+      metadata: {
+        tier: tier.charAt(0).toUpperCase() + tier.slice(1), // Capitalize: Access, Plus, Premium, Elite
+        email: customerEmail,
+        utm_source: utmSource || '',
+        utm_campaign: utmCampaign || '',
+        utm_medium: utmMedium || '',
+        sessionId: sessionId || '',
+      },
     });
 
     return NextResponse.json({ sessionId: session.id });

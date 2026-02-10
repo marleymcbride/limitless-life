@@ -7,8 +7,10 @@ interface N8NWebhookPayload {
   source: "limitless-sales-page";
 }
 
-const N8N_BASE_URL = process.env.N8N_WEBHOOK_URL ||
-  "https://n8n.marleymcbride.co/webhook";
+// Base URL for n8n webhooks (from environment variable or default)
+const N8N_WEBHOOK_BASE_URL = process.env.N8N_WEBHOOK_BASE_URL ||
+  process.env.N8N_WEBHOOK_URL ||
+  "https://n8n.marleymcbride.co";
 
 /**
  * Send webhook to n8n (via queue for reliability)
@@ -20,7 +22,7 @@ export const sendToN8N = async (
   event: string,
   data: Record<string, any>
 ): Promise<void> => {
-  const webhookUrl = `${N8N_BASE_URL}/${event}`;
+  const webhookUrl = `${N8N_WEBHOOK_BASE_URL}/webhook/${event}`;
 
   const payload: N8NWebhookPayload = {
     event,
@@ -37,12 +39,85 @@ export const sendToN8N = async (
       maxAttempts: 3,
     });
 
-    console.log(`N8N event queued: ${event}`);
+    console.log(`[n8n] Event queued: ${event}`);
   } catch (error) {
-    console.error("Failed to queue N8N webhook:", error);
+    console.error("[n8n] Failed to queue webhook:", error);
     // Don't throw - we don't want webhook failures to break the app
   }
 };
+
+/**
+ * Direct webhook send for n8n integration (fire-and-forget)
+ * Based on n8n specialist's implementation requirements
+ */
+async function sendDirectWebhook(
+  endpoint: string,
+  data: Record<string, any>
+): Promise<boolean> {
+  try {
+    const response = await fetch(`${N8N_WEBHOOK_BASE_URL}${endpoint}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    });
+
+    if (!response.ok) {
+      console.error(`[n8n] Webhook failed to ${endpoint}:`, await response.text());
+      return false;
+    }
+
+    console.log(`[n8n] Webhook sent successfully to ${endpoint}`);
+    return true;
+  } catch (error) {
+    console.error(`[n8n] Webhook error for ${endpoint}:`, error);
+    return false;
+  }
+}
+
+/**
+ * Sync payment data to Airtable via n8n
+ * Workflow: https://n8n.marleymcbride.co/workflow/EGtmK61e7Cx5Ze7v
+ * Webhook: https://n8n.marleymcbride.co/webhook/payment-complete-test
+ *
+ * This is a direct webhook call (fire-and-forget) that syncs:
+ * - Leads table (create/update)
+ * - Payments table (create payment record)
+ * - HotLeads table (if score >= 70)
+ */
+export async function syncPaymentToAirtable(paymentData: {
+  email: string;
+  firstName?: string;
+  lastName?: string;
+  tier: 'Access' | 'Plus' | 'Premium' | 'Elite';
+  amount: number; // in cents (e.g., 299700 for $2,997)
+  stripePaymentId: string;
+  paymentDate: string; // ISO format
+  score: number;
+  phone?: string;
+  utmSource?: string;
+  utmCampaign?: string;
+  utmMedium?: string;
+}): Promise<boolean> {
+  return sendDirectWebhook('/webhook/payment-complete-test', paymentData);
+}
+
+/**
+ * Alert hot lead to Airtable via n8n
+ * Workflow: https://n8n.marleymcbride.co/workflow/JwmunGjOnlynIaks
+ * Webhook: https://n8n.marleymcbride.co/webhook/hot-lead
+ *
+ * This creates a record in the HotLeads table for immediate sales follow-up
+ */
+export async function alertHotLead(hotLeadData: {
+  email: string;
+  name: string;
+  score: number;
+  whatTheyDid: string;
+  phone?: string;
+  becameHotAt?: string; // ISO format, defaults to now if omitted
+}): Promise<boolean> {
+  return sendDirectWebhook('/webhook/hot-lead', hotLeadData);
+}
 
 /**
  * N8N Webhook Events
