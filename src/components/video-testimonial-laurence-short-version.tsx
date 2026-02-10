@@ -14,7 +14,7 @@ export default function VideoTestimonialLaurenceShortVersion({ onApplyNowClick }
         <div className="text-center">
         <div className="text-center mb-8">
               <h2
-                className="text-4xl md:text-4xl font-bold pt-4 -mb-14 text-white leading-tight"
+                className="text-4xl md:text-4xl font-bold pt-4 -mb-14 sm:-mb-14 md:mb-2 lg:mb-2 text-white leading-tight"
                 style={{ fontFamily: "Neuemontreal, sans-serif" }}
               >
                 Discover How to Wake up Feeling Fucking Great
