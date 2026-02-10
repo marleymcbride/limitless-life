@@ -54,10 +54,17 @@ export default function TierCard({
         }),
       });
 
-      const { sessionId } = await response.json();
+      const data = await response.json();
+
+      if (!response.ok) {
+        console.error('Checkout API error:', data);
+        throw new Error(data.error || 'Failed to create checkout session');
+      }
+
+      const { sessionId } = data;
 
       if (!sessionId) {
-        throw new Error("Failed to create checkout session");
+        throw new Error("No sessionId returned from checkout API");
       }
 
       // Redirect to Stripe checkout
@@ -66,12 +73,14 @@ export default function TierCard({
       });
 
       if (error) {
-        throw error.message;
+        console.error('Stripe redirect error:', error);
+        throw new Error(error.message || 'Failed to redirect to checkout');
       }
     } catch (error) {
       console.error("Checkout error:", error);
-      // Could add error handling/toast here
-      alert("Something went wrong. Please try again.");
+      // Show more detailed error for debugging
+      const errorMessage = error instanceof Error ? error.message : 'Something went wrong. Please try again.';
+      alert(errorMessage);
     } finally {
       setIsLoading(false);
     }
