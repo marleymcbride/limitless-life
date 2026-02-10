@@ -8,7 +8,11 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
-export default function FinalFAQsV2() {
+interface FinalFAQsV2Props {
+  onApplyNowClick?: (e: React.MouseEvent) => void;
+}
+
+export default function FinalFAQsV2({ onApplyNowClick }: FinalFAQsV2Props) {
   const [scrollY, setScrollY] = useState(0);
   const accordionRef = useRef<HTMLDivElement>(null);
 
@@ -127,12 +131,12 @@ export default function FinalFAQsV2() {
 
         {/* CTA Button */}
         <div className="text-center">
-          <a
-            href="/application"
+          <button
+            onClick={onApplyNowClick}
             className="font-bold !text-white transition-none duration-0 focus:outline-none bg-[#940909] hover:bg-[#7b0707] py-4 px-12 text-lg rounded-md inline-block relative z-30"
           >
             Apply Now
-          </a>
+          </button>
           </div>
           </div>
         </section>

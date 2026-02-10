@@ -1,6 +1,10 @@
 "use client";
 
-export default function ImagineThis() {
+interface ImagineThisProps {
+  onApplyNowClick?: (e: React.MouseEvent) => void;
+}
+
+export default function ImagineThis({ onApplyNowClick }: ImagineThisProps) {
   return (
     <section className="bg-black py-24 px-4 w-full relative dark-section-with-grain">
       <div className="container mx-auto max-w-6xl relative z-30">

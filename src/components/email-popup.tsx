@@ -30,9 +30,15 @@ export default function EmailPopup({
     setMounted(true);
   }, []);
 
+  // Debug logging
+  useEffect(() => {
+    console.log('[EmailPopup] isOpen:', isOpen, 'mounted:', mounted);
+  }, [isOpen, mounted]);
+
   // Reset form when popup opens/closes
   useEffect(() => {
     if (isOpen) {
+      console.log('[EmailPopup] Popup opening, resetting form');
       setStep(1);
       setEmail('');
       setFirstName('');
@@ -40,7 +46,12 @@ export default function EmailPopup({
     }
   }, [isOpen]);
 
-  if (!isOpen || !mounted) return null;
+  if (!isOpen || !mounted) {
+    console.log('[EmailPopup] Not rendering:', { isOpen, mounted });
+    return null;
+  }
+
+  console.log('[EmailPopup] Rendering popup!');
 
   const handleFirstStep = (e: React.FormEvent) => {
     e.preventDefault();

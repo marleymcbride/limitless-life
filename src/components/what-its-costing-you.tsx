@@ -1,4 +1,8 @@
-export default function WhatItsCostingYou() {
+interface WhatItsCostingYouProps {
+  onApplyNowClick?: (e: React.MouseEvent) => void;
+}
+
+export default function WhatItsCostingYou({ onApplyNowClick }: WhatItsCostingYouProps) {
   return (
     <section className="w-full results-proof-gradient pt-16 pb-12 relative">
       <div className="container mx-auto px-4 relative z-10">
@@ -84,12 +88,12 @@ export default function WhatItsCostingYou() {
 
           {/* CTA Button */}
           <div className="text-center mt-12">
-            <a
-              href="/application"
+            <button
+              onClick={onApplyNowClick}
               className="font-bold !text-white transition-none duration-0 focus:outline-none bg-[#940909] hover:bg-[#7b0707] py-4 px-12 text-lg rounded-md inline-block relative z-30"
             >
               Apply Now
-            </a>
+            </button>
           </div>
 
         </div>
