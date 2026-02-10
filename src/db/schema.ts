@@ -23,6 +23,7 @@ export const users = pgTable('users', {
   leadScore: integer('lead_score').default(0),
   leadTemperature: text('lead_temperature').$type<'cold' | 'warm' | 'hot'>(),
   status: text('status').$type<'prospect' | 'lead' | 'customer'>().default('prospect'),
+  tierInterest: text('tier_interest').$type<'access' | 'plus' | 'premium' | 'elite'>(),
   firstSeen: timestamp('first_seen').defaultNow(),
   lastSeen: timestamp('last_seen').defaultNow(),
   createdAt: timestamp('created_at').defaultNow(),

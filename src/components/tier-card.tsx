@@ -2,11 +2,6 @@
 
 import { useState } from "react";
 import { CTAButton } from "./ui/cta-button";
-import { loadStripe } from "@stripe/stripe-js";
-
-const stripePromise = loadStripe(
-  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!
-);
 
 interface TierCardProps {
   tier: "access" | "plus" | "premium" | "elite";
@@ -35,14 +30,7 @@ export default function TierCard({
     setIsLoading(true);
 
     try {
-      const stripe = await stripePromise;
-
-      if (!stripe) {
-        throw new Error("Stripe failed to initialize");
-      }
-
       // Create checkout session
-      // Stripe will collect email during checkout
       const response = await fetch("/api/create-checkout-session", {
         method: "POST",
         headers: {
@@ -50,7 +38,6 @@ export default function TierCard({
         },
         body: JSON.stringify({
           tier: tier,
-          // customerEmail is optional - Stripe collects it during checkout
         }),
       });
 
@@ -61,24 +48,16 @@ export default function TierCard({
         throw new Error(data.error || 'Failed to create checkout session');
       }
 
-      const { sessionId } = data;
+      const { url } = data;
 
-      if (!sessionId) {
-        throw new Error("No sessionId returned from checkout API");
+      if (!url) {
+        throw new Error("No checkout URL returned from checkout API");
       }
 
-      // Redirect to Stripe checkout
-      const { error } = await stripe.redirectToCheckout({
-        sessionId,
-      });
-
-      if (error) {
-        console.error('Stripe redirect error:', error);
-        throw new Error(error.message || 'Failed to redirect to checkout');
-      }
+      // Redirect to Stripe checkout directly
+      window.location.href = url;
     } catch (error) {
       console.error("Checkout error:", error);
-      // Show more detailed error for debugging
       const errorMessage = error instanceof Error ? error.message : 'Something went wrong. Please try again.';
       alert(errorMessage);
     } finally {
