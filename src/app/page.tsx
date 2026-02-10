@@ -336,6 +336,7 @@ export default function Home() {
                 }}
                 onComplete={() => setVideoHasEnded(true)}
                 passedJoinNowTime={passedJoinNowTime}
+                onApplyNowClick={handleApplyNowClick}
               />
             </div>
           </div>

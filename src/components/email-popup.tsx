@@ -30,6 +30,23 @@ export default function EmailPopup({
     setMounted(true);
   }, []);
 
+  // Block scrolling when popup is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+      document.documentElement.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+      document.documentElement.style.overflow = 'unset';
+    }
+
+    // Cleanup on unmount
+    return () => {
+      document.body.style.overflow = 'unset';
+      document.documentElement.style.overflow = 'unset';
+    };
+  }, [isOpen]);
+
   // Debug logging
   useEffect(() => {
     console.log('[EmailPopup] isOpen:', isOpen, 'mounted:', mounted);
@@ -55,7 +72,7 @@ export default function EmailPopup({
 
   const handleFirstStep = (e: React.FormEvent) => {
     e.preventDefault();
-    if (firstName.trim() && email.trim()) {
+    if (email.trim()) {
       setStep(2);
     }
   };
@@ -74,9 +91,10 @@ export default function EmailPopup({
   };
 
   return createPortal(
-    <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/70 backdrop-blur-sm">
-      {/* Modal - 25% width, centered, tall square shape */}
-      <div className="relative w-full max-w-[25vw] min-w-[320px] max-h-[90vh] overflow-y-auto bg-white shadow-2xl">
+    <div className="fixed inset-0 z-[9999] mx-auto flex items-center justify-center bg-black/70 backdrop-blur-sm">
+     <div className="px-4">
+      {/* Modal - thin width, centered */}
+      <div className="pb-2 px-4 ml-16 w-[420px] max-h-[400vh] overflow-y-auto bg-gradient-to-b from-zinc-400 via-zinc-350 via-zinc-300 via-zinc-250 via-zinc-100 to-zinc-100 shadow-2xl rounded-xl shadow-[inset_0_2px_0_0_rgba(252,252,250,0.9)]">
 
         {/* Close button */}
         <button
@@ -90,129 +108,103 @@ export default function EmailPopup({
         </button>
 
         {/* Content */}
-        <div className="p-8">
+        <div className="p-4">
           {/* Brand */}
-          <div className="text-center mb-6">
-            <div className="text-[#940909] font-bold text-lg tracking-wider">
-              Limitless-life
-            </div>
+          <div className="text-center scale-[60%] mb-0">
+            <img
+              src="/images/LIMITLESS LIFE LOGO 2026.png"
+              alt="Limitless Life"
+              className="h-16 mx-auto"
+            />
           </div>
 
           {/* Headline */}
-          <div className="text-center mb-4">
-            <h2 className="text-2xl font-bold text-gray-900 uppercase tracking-wide">
-              Claim Your Spot
-            </h2>
+          <div className="text-center mb-0">
+            <div className="text-3xl font-bold text-gray-900 tracking-tight">
+              Register Now to Secure Your Spot
+            </div>
           </div>
+        </div>
 
           {step === 1 ? (
             <>
-              {/* Step 1 Content */}
-              <div className="text-center mb-6">
-                <p className="text-sm font-semibold text-gray-600 uppercase tracking-wide">
-                  Step 1: Please enter your full name and email
+              {/* Step 1 Content - Email only */}
+              <div className="text-center mb-2">
+                <p className="text-md font-normal text-stone-600 tracking-wide">
+                <strong className="text-[#d12121]">STEP 1:</strong> Please enter your details below
                 </p>
               </div>
 
               <form onSubmit={handleFirstStep} className="space-y-4">
                 <div>
-                  <label htmlFor="firstName" className="block text-xs font-semibold text-gray-700 mb-1.5 uppercase tracking-wide">
-                    Your Full Name
-                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    required
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="w-full px-3 py-3 border-2 border-gray-300 rounded-lg focus:border-[#940909] focus:ring-2 focus:ring-[#940909]/10 outline-none transition-all text-sm text-gray-900 placeholder-gray-500"
+                    placeholder="Your Email"
+                    autoFocus
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  className="w-full bg-[#940909] hover:bg-[#7b0707] text-white font-bold py-6 px-6 rounded-lg transition-all duration-200 text-md uppercase tracking-wide shadow-lg"
+                >
+                  <strong>Next</strong>
+                </button>
+              </form>
+            </>
+          ) : (
+            <>
+              {/* Step 2 Content - Name field revealed */}
+              <div className="text-center mb-2">
+                <p className="text-md font-normal text-stone-600 tracking-wide">
+                  <strong className="text-[#d12121]">STEP 1:</strong> Please enter your details below
+                </p>
+              </div>
+
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div>
                   <input
                     type="text"
                     id="firstName"
                     required
                     value={firstName}
                     onChange={(e) => setFirstName(e.target.value)}
-                    className="w-full px-3 py-2.5 border-2 border-gray-300 rounded-lg focus:border-[#940909] focus:ring-2 focus:ring-[#940909]/10 outline-none transition-all text-sm"
-                    placeholder="John Doe"
+                    className="w-full px-3 py-3 border-2 border-gray-300 rounded-lg focus:border-[#940909] focus:ring-2 focus:ring-[#940909]/10 outline-none transition-all text-sm text-gray-900 placeholder-gray-500"
+                    placeholder="Your Full Name"
                     autoFocus
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="email" className="block text-xs font-semibold text-gray-700 mb-1.5 uppercase tracking-wide">
-                    Your Email
-                  </label>
                   <input
                     type="email"
                     id="email"
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full px-3 py-2.5 border-2 border-gray-300 rounded-lg focus:border-[#940909] focus:ring-2 focus:ring-[#940909]/10 outline-none transition-all text-sm"
-                    placeholder="you@example.com"
+                    className="w-full px-3 py-3 border-2 border-gray-300 rounded-lg focus:border-[#940909] focus:ring-2 focus:ring-[#940909]/10 outline-none transition-all text-sm text-gray-900 placeholder-gray-500"
+                    placeholder="Your Email"
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full bg-[#940909] hover:bg-[#7b0707] text-white font-bold py-3 px-6 rounded-lg transition-all duration-200 text-sm uppercase tracking-wide shadow-lg mt-6"
+                  disabled={isLoading}
+                  className="w-full bg-[#d12121] hover:bg-[#c62424] text-white font-bold py-6 px-6 rounded-lg transition-all duration-200 text-md uppercase tracking-wide shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  Go To Next Step 2
+                  {isLoading ? 'Processing...' : 'GO TO NEXT STEP 2'}
                 </button>
-              </form>
-            </>
-          ) : (
-            <>
-              {/* Step 2 Content */}
-              <div className="text-center mb-6">
-                <p className="text-sm font-semibold text-gray-600 uppercase tracking-wide">
-                  Step 2: Almost There!
-                </p>
-                <p className="text-xs text-gray-500 mt-2">
-                  You're one step away from accessing the Limitless Protocol.
-                </p>
-              </div>
-
-              <div className="bg-gray-50 rounded-lg p-4 mb-6">
-                <div className="text-xs text-gray-600 space-y-1">
-                  <p><strong>Name:</strong> {firstName}</p>
-                  <p><strong>Email:</strong> {email}</p>
-                </div>
-              </div>
-
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div>
-                  <label htmlFor="confirmEmail" className="block text-xs font-semibold text-gray-700 mb-1.5 uppercase tracking-wide">
-                    Confirm Your Email
-                  </label>
-                  <input
-                    type="email"
-                    id="confirmEmail"
-                    required
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    className="w-full px-3 py-2.5 border-2 border-gray-300 rounded-lg focus:border-[#940909] focus:ring-2 focus:ring-[#940909]/10 outline-none transition-all text-sm"
-                    placeholder="Confirm your email"
-                    autoFocus
-                  />
-                </div>
-
-                <div className="flex gap-3">
-                  <button
-                    type="button"
-                    onClick={handleBack}
-                    className="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-700 font-semibold py-3 px-4 rounded-lg transition-all duration-200 text-xs uppercase tracking-wide"
-                  >
-                    Back
-                  </button>
-                  <button
-                    type="submit"
-                    disabled={isLoading}
-                    className="flex-1 bg-[#940909] hover:bg-[#7b0707] text-white font-bold py-3 px-4 rounded-lg transition-all duration-200 text-xs uppercase tracking-wide shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
-                  >
-                    {isLoading ? 'Processing...' : 'Complete Application'}
-                  </button>
-                </div>
               </form>
             </>
           )}
 
           {/* Trust indicator */}
-          <div className="text-center mt-8 pt-6 border-t border-gray-200">
-            <p className="text-[10px] text-gray-400 uppercase tracking-wide">
+          <div className="text-center mt-8 pt-0 border-t border-gray-200">
+            <p className="text-[10px] pt-2 text-gray-400 uppercase tracking-wide">
               🔒 Secure • Limited Spots Available
             </p>
           </div>
