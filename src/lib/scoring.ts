@@ -2,7 +2,7 @@ import { db } from './db';
 import { events, users } from '../db/schema';
 import { eq, and, sql } from 'drizzle-orm';
 import { LEAD_SCORING_RULES } from './analytics';
-import { n8nEvents } from './n8nWebhooks';
+import { n8nEvents, alertHotLead } from './n8nWebhooks';
 
 export type LeadTemperature = 'cold' | 'warm' | 'hot';
 
@@ -148,6 +148,7 @@ export async function updateUserLeadScore(userId: string): Promise<void> {
       pricingViewed: recentEvents.some(e => e.eventType === 'pricing_view'),
     };
 
+    // Legacy n8n event (via queue)
     n8nEvents.hotLeadAlert({
       userId,
       email,
@@ -156,6 +157,36 @@ export async function updateUserLeadScore(userId: string): Promise<void> {
       lastName: previousUser[0].lastName,
       lastActivity: recentEvents[0]?.createdAt?.toISOString(),
       activitySummary,
+    });
+
+    // Direct n8n webhook (fire-and-forget, per specialist requirements)
+    const firstName = previousUser[0].firstName || '';
+    const lastName = previousUser[0].lastName || '';
+    const name = [firstName, lastName].filter(Boolean).join(' ') || email;
+
+    // Generate activity description for hot lead alert
+    const activities: string[] = [];
+    if (activitySummary.vslWatched) {
+      activities.push(`Watched VSL ${activitySummary.vslCompletionPercent}%`);
+    }
+    if (activitySummary.pricingViewed) {
+      activities.push('Viewed pricing page');
+    }
+    if (activitySummary.applicationStarted) {
+      activities.push(activitySummary.applicationCompleted ? 'Completed application' : 'Started application');
+    }
+    const whatTheyDid = activities.join(', ') || 'Reached hot lead threshold';
+
+    alertHotLead({
+      email,
+      name,
+      score: scoreData.score,
+      whatTheyDid,
+      phone: previousUser[0].phone || undefined,
+      becameHotAt: new Date().toISOString(),
+    }).catch(error => {
+      console.error('[n8n] Hot lead alert failed (non-blocking):', error);
+      // Don't throw - score is already updated in database
     });
   }
 }
