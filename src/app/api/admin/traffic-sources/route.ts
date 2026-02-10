@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
-import { airtable } from '@/lib/airtable';
+import { db } from '@/lib/db';
+import { users, payments, sessions } from '@/db/schema';
 import { isAuthenticated } from '@/lib/admin-auth';
+import { desc, eq } from 'drizzle-orm';
 
 interface TrafficSourceStats {
   source: string;
@@ -20,20 +22,35 @@ export async function GET() {
   }
 
   try {
-    // Get all leads
-    const allLeads = await airtable.leads.getAll();
+    // Get all users
+    const allUsers = await db.select().from(users);
 
     // Get all payments
-    const allPayments = await airtable.payments.getAll();
+    const allPayments = await db.select().from(payments);
+
+    // Create a map of userId -> most recent session (for UTM params)
+    const sessionMap = new Map<string, { utmSource: string | null; utmCampaign: string | null; utmMedium: string | null }>();
+
+    // Get all sessions and map to users
+    const allSessions = await db.select().from(sessions).orderBy(desc(sessions.lastSeen));
+
+    for (const session of allSessions) {
+      if (session.userId && !sessionMap.has(session.userId)) {
+        sessionMap.set(session.userId, {
+          utmSource: session.utmSource,
+          utmCampaign: session.utmCampaign,
+          utmMedium: session.utmMedium,
+        });
+      }
+    }
 
     // Group leads by UTM source and campaign
     const leadsMap = new Map<string, { visitors: number; hotLeads: number }>();
-    const paymentsMap = new Map<string, { count: number; total: number }>();
 
-    allLeads.forEach((record) => {
-      const source = record.get('UTMSource') as string || 'Direct';
-      const campaign = record.get('UTMCampaign') as string || 'None';
-      const temperature = record.get('Temperature') as 'Hot' | 'Warm' | 'Cold';
+    allUsers.forEach((user) => {
+      const sessionData = sessionMap.get(user.id);
+      const source = sessionData?.utmSource || 'Direct';
+      const campaign = sessionData?.utmCampaign || 'None';
 
       const key = `${source}|${campaign}`;
 
@@ -43,20 +60,18 @@ export async function GET() {
 
       const stats = leadsMap.get(key)!;
       stats.visitors++;
-      if (temperature === 'Hot') {
+      if (user.leadScore >= 70) {
         stats.hotLeads++;
       }
     });
 
-    // Group payments by UTM source (by matching email)
-    allPayments.forEach((record) => {
-      const email = record.get('Email') as string;
-      const amount = record.get('Amount') as number;
+    // Group payments by UTM source (by matching userId)
+    const paymentsMap = new Map<string, { count: number; total: number }>();
 
-      // Find the lead with this email to get UTM params
-      const lead = allLeads.find((l) => l.get('Email') === email);
-      const source = lead?.get('UTMSource') as string || 'Direct';
-      const campaign = lead?.get('UTMCampaign') as string || 'None';
+    allPayments.forEach((payment) => {
+      const sessionData = sessionMap.get(payment.userId);
+      const source = sessionData?.utmSource || 'Direct';
+      const campaign = sessionData?.utmCampaign || 'None';
 
       const key = `${source}|${campaign}`;
 
@@ -66,7 +81,7 @@ export async function GET() {
 
       const stats = paymentsMap.get(key)!;
       stats.count++;
-      stats.total += amount;
+      stats.total += payment.amount || 0;
     });
 
     // Combine data and calculate ROI

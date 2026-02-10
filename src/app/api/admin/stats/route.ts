@@ -1,7 +1,13 @@
 import { NextResponse } from 'next/server';
-import { airtable } from '@/lib/airtable';
+import { db } from '@/lib/db';
+import { users, payments, analytics } from '@/db/schema';
 import { isAuthenticated } from '@/lib/admin-auth';
+import { gte, sql, eq } from 'drizzle-orm';
 
+/**
+ * GET /api/admin/stats
+ * Fetch dashboard metrics from Railway (source of truth)
+ */
 export async function GET() {
   if (!(await isAuthenticated())) {
     return NextResponse.json(
@@ -12,18 +18,35 @@ export async function GET() {
 
   try {
     const today = new Date();
+    const startOfToday = new Date(today.getFullYear(), today.getMonth(), today.getDate());
 
-    // Get total visitors (all leads)
-    const allLeads = await airtable.leads.getAll();
-    const totalVisitors = allLeads.length;
+    // Get total visitors (all users)
+    const visitorsResult = await db
+      .select({ count: sql<number>`count(*)` })
+      .from(users);
+    const totalVisitors = visitorsResult[0]?.count || 0;
 
-    // Get hot leads count
-    const hotLeadsCount = await airtable.leads.getCount('Hot');
+    // Get hot leads count (score >= 70)
+    const hotLeadsResult = await db
+      .select({ count: sql<number>`count(*)` })
+      .from(users)
+      .where(sql`${users.leadScore} >= 70`);
+    const hotLeadsCount = hotLeadsResult[0]?.count || 0;
 
     // Get total payments for current month
-    const currentYear = today.getFullYear();
-    const currentMonth = today.getMonth();
-    const totalPaymentsThisMonth = await airtable.payments.getTotalForMonth(currentYear, currentMonth);
+    const startOfMonth = new Date(today.getFullYear(), today.getMonth(), 1);
+
+    const paymentsResult = await db
+      .select({ amount: payments.amount })
+      .from(payments)
+      .where(
+        gte(payments.paymentDate, startOfMonth)
+      );
+
+    const totalPaymentsThisMonth = paymentsResult.reduce(
+      (sum, p) => sum + (p.amount || 0),
+      0
+    );
 
     // Calculate conversion rate (hot leads / total visitors * 100)
     const conversionRate = totalVisitors > 0
