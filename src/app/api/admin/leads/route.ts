@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { airtable } from '@/lib/airtable';
+import { db } from '@/lib/db';
+import { users, sessions } from '@/db/schema';
 import { isAuthenticated } from '@/lib/admin-auth';
+import { desc, eq, and, gte, sql } from 'drizzle-orm';
 
 export async function GET(request: NextRequest) {
   if (!(await isAuthenticated())) {
@@ -14,26 +16,54 @@ export async function GET(request: NextRequest) {
     const searchParams = request.nextUrl.searchParams;
     const filter = searchParams.get('filter') as 'all' | 'hot' | 'warm' | null;
 
-    let temperature: 'Hot' | 'Warm' | 'Cold' | undefined = undefined;
+    // Build query conditions based on filter
+    let conditions = undefined;
 
     if (filter === 'hot') {
-      temperature = 'Hot';
+      conditions = gte(users.leadScore, 70);
     } else if (filter === 'warm') {
-      temperature = 'Warm';
+      conditions = and(gte(users.leadScore, 40), sql`${users.leadScore} < 70`);
     }
-    // If filter is 'all' or null, we don't filter by temperature
+    // If filter is 'all' or null, we don't filter by score
 
-    const records = await airtable.leads.getAll(temperature);
+    // Get all users with optional temperature filter
+    const allUsers = await db
+      .select()
+      .from(users)
+      .where(conditions)
+      .orderBy(desc(users.createdAt));
 
-    const leads = records.map((record) => ({
-      Email: record.get('Email') as string,
-      Name: `${record.get('FirstName') || ''} ${record.get('LastName') || ''}`.trim() || record.get('Email') as string,
-      Score: record.get('Score') as number,
-      Temperature: record.get('Temperature') as 'Hot' | 'Warm' | 'Cold',
-      Phone: record.get('Phone') as string | undefined,
-      UTMSource: record.get('UTMSource') as string | undefined,
-      CreatedAt: record.get('CreatedAt') as string,
-    }));
+    // For each user, get their most recent session to extract UTM params
+    const leads = await Promise.all(
+      allUsers.map(async (user) => {
+        // Get most recent session for this user
+        const userSessions = await db
+          .select()
+          .from(sessions)
+          .where(eq(sessions.userId, user.id))
+          .orderBy(desc(sessions.lastSeen))
+          .limit(1);
+
+        const latestSession = userSessions[0];
+
+        // Determine temperature from leadScore
+        let temperature: 'Hot' | 'Warm' | 'Cold' = 'Cold';
+        if (user.leadScore >= 70) temperature = 'Hot';
+        else if (user.leadScore >= 40) temperature = 'Warm';
+
+        return {
+          Email: user.email,
+          Name: [user.firstName, user.lastName]
+            .filter(Boolean)
+            .join(' ') || user.email,
+          Score: user.leadScore || 0,
+          Temperature: temperature,
+          Phone: undefined, // Phone not stored in users table currently
+          UTMSource: latestSession?.utmSource || undefined,
+          CreatedAt: user.createdAt?.toISOString() || new Date().toISOString(),
+        };
+      })
+    );
 
     return NextResponse.json(leads);
   } catch (error) {
