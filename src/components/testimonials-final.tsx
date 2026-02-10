@@ -1,5 +1,9 @@
 import SmoothImage from "@/components/ui/smooth-image";
 
+interface TestimonialsFinalProps {
+  onApplyNowClick?: (e: React.MouseEvent) => void;
+}
+
 const testimonials = [
   { image: "/images/Testimonials/Luke social proof.png" },
   { image: "/images/Testimonials/Matty feels so good.jpeg" },
@@ -45,7 +49,7 @@ const beforeAfterImages = [
   { image: "/images/Testimonials/Rob feels great - Week 3.png" }
 ];
 
-export default function TestimonialPlaceholder({ number, darkBg }: { number: number, darkBg?: boolean }) {
+export default function TestimonialPlaceholder({ number, darkBg, onApplyNowClick }: { number: number, darkBg?: boolean, onApplyNowClick?: (e: React.MouseEvent) => void }) {
   // For sections 2-7, use regular testimonials only
   // For sections 8+, mix in before/after images
   let testimonialPair;

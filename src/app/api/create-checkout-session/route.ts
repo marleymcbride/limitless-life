@@ -62,7 +62,9 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const { tier, customerEmail } = await request.json();
+    const { tier, customerEmail, customerName } = await request.json();
+
+    console.log('[CreateCheckoutSession] Creating session:', { tier, customerEmail, customerName });
 
     // Email is now optional - Stripe will collect it during checkout
     // Only validate if provided
@@ -148,6 +150,11 @@ export async function POST(request: NextRequest) {
     // Only include email in metadata if provided
     if (customerEmail) {
       metadata.email = customerEmail;
+    }
+
+    // Include name in metadata if provided
+    if (customerName) {
+      metadata.customerName = customerName;
     }
 
     checkoutSessionOptions.metadata = metadata;

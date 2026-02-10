@@ -2,7 +2,11 @@
 
 import SimpleVideoPlayer from "./simple-video-player";
 
-export default function VideoTestimonialCTA() {
+interface VideoTestimonialCTAProps {
+  onApplyNowClick?: (e: React.MouseEvent) => void;
+}
+
+export default function VideoTestimonialCTA({ onApplyNowClick }: VideoTestimonialCTAProps) {
   return (
     <section className="bg-black relative py-16 px-4 w-full">
       <div className="absolute bottom-0 left-0 w-full h-[33vh] bg-gradient-to-t from-[rgba(148,9,9,0.30)] via-[rgba(148,9,9,0.16)] to-transparent"></div>
@@ -45,12 +49,12 @@ export default function VideoTestimonialCTA() {
         </div>
 
         <div className="text-center">
-            <a
-              href="/application"
+            <button
+              onClick={onApplyNowClick}
               className="font-bold !text-white transition-none duration-0 focus:outline-none bg-[#940909] hover:bg-[#7b0707] py-4 px-12 mb-6 text-lg rounded-md inline-block relative z-30"
             >
               Apply Now
-            </a>
+            </button>
             </div>
       </div>
     </section>

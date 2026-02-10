@@ -2,7 +2,11 @@
 
 import SmoothImage from "@/components/ui/smooth-image";
 
-export default function ClientTransformationGallery() {
+interface ClientTransformationGalleryProps {
+  onApplyNowClick?: (e: React.MouseEvent) => void;
+}
+
+export default function ClientTransformationGallery({ onApplyNowClick }: ClientTransformationGalleryProps) {
   return (
     <section className="w-full bg-white pt-14 pb-14 px-10">
 
@@ -98,12 +102,12 @@ export default function ClientTransformationGallery() {
 
         {/* CTA Button */}
         <div className="text-center mt-12">
-          <a
-            href="/application"
+          <button
+            onClick={onApplyNowClick}
             className="font-bold !text-white transition-none duration-0 focus:outline-none bg-[#940909] hover:bg-[#7b0707] py-3 px-12 text-lg rounded-md inline-block relative z-30"
           >
             Apply Now
-          </a>
+          </button>
         </div>
     </section>
   );

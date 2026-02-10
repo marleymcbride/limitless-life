@@ -1,6 +1,10 @@
 import Image from "next/image";
 
-export default function IntroSection() {
+interface IntroSectionProps {
+  onApplyNowClick?: (e: React.MouseEvent) => void;
+}
+
+export default function IntroSection({ onApplyNowClick }: IntroSectionProps) {
   return (
     <section className={`w-full bg-black pt-12 pb-12 text-white relative`}>
       {/* Black background */}
