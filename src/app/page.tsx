@@ -2,6 +2,7 @@
 
 import { ImagePreloader, CRITICAL_TESTIMONIAL_IMAGES } from "../components/image-preloader";
 import VSLPlayer from "../components/vsl-player";
+import EmailPopup from "../components/email-popup";
 import {
   LazyDoesThisSoundLikeYou,
   LazyPersonalStorySection,
@@ -35,6 +36,9 @@ import {
 import { vignetteEffect, unifiedGradientWithSpotlightDesktop, unifiedGradientWithSpotlightMobile } from "../lib/utils";
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import { useSession } from "@/hooks/useSession";
+import { useScrollTracking } from "@/hooks/useScrollTracking";
+import { useRouter } from "next/navigation";
 
 // import SystemBenefitsProof from "../components/system-benefits-proof";
 // import WhyThisSystemWorks from "../components/[old] why-this-system-works";
@@ -49,6 +53,19 @@ import { useState, useEffect } from "react";
 
 
 export default function Home() {
+  const router = useRouter();
+  // Session and analytics hooks
+  const { session } = useSession();
+  useScrollTracking({
+    sessionId: session?.sessionId || '',
+    userId: session?.userId,
+    enabled: !!session?.sessionId,
+  });
+
+  // Email popup state
+  const [showEmailPopup, setShowEmailPopup] = useState(false);
+  const [isPopupLoading, setIsPopupLoading] = useState(false);
+
   const [hasStartedVideo, setHasStartedVideo] = useState(false);
   const [videoProgress, setVideoProgress] = useState(0);
   const [videoCurrentTime, setVideoCurrentTime] = useState(0); // Track actual time in seconds
@@ -57,6 +74,42 @@ export default function Home() {
   const [showPauseOverlay, setShowPauseOverlay] = useState(false); // Track if pause overlay is active
   const [showClickToUnmute, setShowClickToUnmute] = useState(true); // Track if "Click to unmute" popup is showing
   const [isDesktop, setIsDesktop] = useState(false); // Track if desktop for VSL sizing
+
+  // Handle Apply Now button click
+  const handleApplyNowClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setShowEmailPopup(true);
+  };
+
+  // Handle popup submit
+  const handlePopupSubmit = async (data: { email: string; firstName: string }) => {
+    setIsPopupLoading(true);
+
+    try {
+      // Track lead interest
+      await fetch('/api/analytics/tier-interest', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          sessionId: session?.sessionId,
+          userId: session?.userId,
+          email: data.email,
+          firstName: data.firstName,
+          tier: 'undecided', // User hasn't chosen a tier yet
+        }),
+      });
+
+      // Navigate to application page
+      router.push('/application');
+    } catch (error) {
+      console.error('Error tracking lead:', error);
+      // Still navigate even if tracking fails
+      router.push('/application');
+    } finally {
+      setIsPopupLoading(false);
+      setShowEmailPopup(false);
+    }
+  };
 
   // Smooth scroll function with "soft close" easing
   const smoothScrollToElement = (elementId: string) => {
@@ -576,7 +629,7 @@ export default function Home() {
       <LazyFinalFAQs />
 
             {/* Secure Your Spot (White background) */}
-            <LazySecureYourSpot />
+            <LazySecureYourSpot onApplyNowClick={handleApplyNowClick} />
 
       {/* Testimonial 4 (White background) */}
       <LazyTestimonialsFinal number={4} />
@@ -660,16 +713,25 @@ export default function Home() {
       {/* Final CTA - White background with just button */}
       <section className="bg-white pt-0 pb-24">
         <div className="text-center">
-          <a
-            href="/application"
+          <button
+            onClick={handleApplyNowClick}
             className="font-bold !text-white transition-none duration-0 focus:outline-none bg-[#940909] hover:bg-[#7b0707] py-4 px-12 text-lg rounded-md inline-block relative z-30"
           >
             Apply Now
-          </a>
+          </button>
         </div>
       </section>
 
-    
+      {/* Email Popup */}
+      <EmailPopup
+        isOpen={showEmailPopup}
+        tier="undecided"
+        tierName="Limitless Protocol"
+        onClose={() => setShowEmailPopup(false)}
+        onSubmit={handlePopupSubmit}
+        isLoading={isPopupLoading}
+      />
+
     </main>
   );
 }

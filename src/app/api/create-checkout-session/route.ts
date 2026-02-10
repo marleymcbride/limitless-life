@@ -154,7 +154,11 @@ export async function POST(request: NextRequest) {
 
     const session = await stripe.checkout.sessions.create(checkoutSessionOptions);
 
-    return NextResponse.json({ sessionId: session.id });
+    // Return both sessionId and url for modern Stripe.js integration
+    return NextResponse.json({
+      sessionId: session.id,
+      url: session.url
+    });
   } catch (error) {
     console.error("Stripe checkout session creation failed:", error);
     return NextResponse.json(

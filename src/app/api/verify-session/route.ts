@@ -17,7 +17,7 @@ export async function GET(request: NextRequest) {
     }
 
     // Validate session ID format (Stripe session IDs start with 'cs_')
-    if (!sessionId.startsWith('cs_') || sessionId.length !== 28) { // Stripe session IDs are always 28 chars
+    if (!sessionId.startsWith('cs_')) {
       return NextResponse.json(
         { error: "Invalid session ID format" },
         { status: 400 }
