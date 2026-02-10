@@ -8,6 +8,7 @@ import VSLDropoffAnalytics from './admin/vsl-dropoff-analytics';
 import ScrollDropoffAnalytics from './admin/scroll-dropoff-analytics';
 import CustomerJourneyAnalytics from './admin/customer-journey-analytics';
 import AbandonedFunnelAnalytics from './admin/abandoned-funnel-analytics';
+import PaymentsAnalytics from './admin/payments-analytics';
 
 type Tab =
   | 'dashboard'
@@ -17,7 +18,8 @@ type Tab =
   | 'vsl'
   | 'scroll'
   | 'journey'
-  | 'abandoned';
+  | 'abandoned'
+  | 'payments';
 
 export default function AdminDashboard() {
   const [activeTab, setActiveTab] = useState<Tab>('dashboard');
@@ -44,6 +46,7 @@ export default function AdminDashboard() {
 
   const tabs: { key: Tab; label: string }[] = [
     { key: 'dashboard', label: 'Dashboard' },
+    { key: 'payments', label: 'Payments & Customers' },
     { key: 'funnel', label: 'Funnel Analytics' },
     { key: 'vsl', label: 'VSL Drop-off' },
     { key: 'scroll', label: 'Scroll Analytics' },
@@ -104,6 +107,7 @@ export default function AdminDashboard() {
       {activeTab === 'scroll' && <ScrollDropoffAnalytics />}
       {activeTab === 'journey' && <CustomerJourneyAnalytics />}
       {activeTab === 'abandoned' && <AbandonedFunnelAnalytics />}
+      {activeTab === 'payments' && <PaymentsAnalytics />}
       {activeTab === 'leads' && <LeadsTable />}
       {activeTab === 'traffic' && <TrafficSourcesTable />}
     </div>
