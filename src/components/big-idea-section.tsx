@@ -2,7 +2,11 @@
 
 import { bigIdeaGradientDesktop, bigIdeaGradientMobile } from "@/lib/utils";
 
-export default function BigIdeaSection() {
+interface BigIdeaSectionProps {
+  onApplyNowClick?: (e: React.MouseEvent) => void;
+}
+
+export default function BigIdeaSection({ onApplyNowClick }: BigIdeaSectionProps) {
   return (
     <section className="w-full text-white relative pt-10 pb-20 overflow-hidden">
       {/* Big Idea gradients - gradual red fade from 50% */}
@@ -99,12 +103,12 @@ export default function BigIdeaSection() {
 
           {/* CTA Button */}
           <div className="text-center mt-12">
-            <a
-              href="/application"
+            <button
+              onClick={onApplyNowClick}
               className="font-bold !text-white transition-none duration-0 focus:outline-none bg-[#940909] hover:bg-[#7b0707] py-3 px-12 text-lg rounded-md inline-block relative z-30"
             >
               Apply Now
-            </a>
+            </button>
           </div>
         </div>
       </div>

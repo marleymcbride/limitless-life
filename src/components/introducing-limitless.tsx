@@ -2,7 +2,11 @@
 
 import Image from "next/image";
 
-export default function IntroducingLimitless() {
+interface IntroducingLimitlessProps {
+  onApplyNowClick?: (e: React.MouseEvent) => void;
+}
+
+export default function IntroducingLimitless({ onApplyNowClick }: IntroducingLimitlessProps) {
   return (
     <section className="introducing-limitless-bg py-20 px-4 w-full relative overflow-hidden">
       <div className="container mx-auto max-w-4xl relative z-30">
@@ -222,12 +226,12 @@ export default function IntroducingLimitless() {
         </div>
       </div>
       <div className="mx-auto text-center mt-0">
-      <a
-            href="/application"
+      <button
+            onClick={onApplyNowClick}
             className="font-bold !text-white text-center transition-none duration-0 focus:outline-none bg-[#940909] hover:bg-[#7b0707] py-3 mt-12 px-12 text-lg rounded-md inline-block relative z-30"
           >
             Apply Now
-          </a>
+          </button>
 
       </div>
     </section>

@@ -17,13 +17,20 @@ export default function VSLPlayer({
   onUserStartedPlaying,
   onPauseOverlayChange,
   onShowClickToUnmuteChange,
+  onApplyNowClick,
   autoplay = true,
   muted = true,
   controls = true,
   preload = true,
   pauseOverlayContainer,
   passedJoinNowTime = false,
-}: VSLPlayerProps & { onUserStartedPlaying?: () => void; passedJoinNowTime?: boolean; onPauseOverlayChange?: (isActive: boolean) => void; onShowClickToUnmuteChange?: (showing: boolean) => void }) {
+}: VSLPlayerProps & {
+  onUserStartedPlaying?: () => void;
+  passedJoinNowTime?: boolean;
+  onPauseOverlayChange?: (isActive: boolean) => void;
+  onShowClickToUnmuteChange?: (showing: boolean) => void;
+  onApplyNowClick?: (e: React.MouseEvent) => void;
+}) {
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const playerRef = useRef<PlayerJSPlayer | null>(null);
   const [isReady, setIsReady] = useState(false);
@@ -513,13 +520,13 @@ export default function VSLPlayer({
                   {/* CTA Button - positioned to overlay the original CTA button */}
                   {showPopupCTA && (
                     passedJoinNowTime ? (
-                      <a
-                        href="/application"
+                      <button
+                        onClick={onApplyNowClick}
                         className="absolute left-1/2 transform -translate-x-1/2 bg-[#940909] hover:bg-[#7b0707] text-white font-bold py-3 -mt-1.5 px-8 sm:py-5 sm:px-12 text-lg sm:text-xl rounded-md inline-block transition-none duration-0 focus:outline-none z-[200] w-[320px] popup-cta-join cursor-pointer"
                         style={{ top: 'calc(54.5% + 360px)' }}
                       >
                         JOIN NOW
-                      </a>
+                      </button>
                     ) : (
                       <a
                         href="#apply-for-elite-spots"
@@ -668,13 +675,13 @@ export default function VSLPlayer({
                 {/* CTA Button - positioned to overlay the original CTA button */}
                 {showPopupCTA && (
                   passedJoinNowTime ? (
-                    <a
-                      href="/application"
+                    <button
+                      onClick={onApplyNowClick}
                       className="absolute left-1/2 transform -translate-x-1/2 bg-[#940909] hover:bg-[#7b0707] text-white font-bold py-2 px-8 sm:py-5 sm:px-12 text-base sm:text-lg rounded-md inline-block transition-none duration-0 focus:outline-none z-[200] w-[280px] popup-cta-join-fallback"
                       style={{ top: 'calc(54.5% + 300px)' }}
                     >
                       JOIN NOW
-                    </a>
+                    </button>
                   ) : (
                     <a
                       href="#apply-for-elite-spots"

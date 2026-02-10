@@ -1,4 +1,8 @@
-export default function BonusStack() {
+interface BonusStackProps {
+  onApplyNowClick?: (e: React.MouseEvent) => void;
+}
+
+export default function BonusStack({ onApplyNowClick }: BonusStackProps) {
   const bonuses = [
     {
       title: "BONUS 1: Wake Up With More Energy Than You Had At 25 (Value: £1,200+)",
@@ -76,12 +80,12 @@ export default function BonusStack() {
                 These aren&apos;t throw-ins. <span className="font-bold">These are the secrets that actually make everything work.</span>
               </p>
               <div className="text-center mt-12">
-                <a
-                  href="/application"
+                <button
+                  onClick={onApplyNowClick}
                   className="font-bold !text-white transition-none duration-0 focus:outline-none bg-[#940909] hover:bg-[#7b0707] py-4 px-12 text-lg rounded-md inline-block relative z-30"
                 >
                   Apply Now
-                </a>
+                </button>
               </div>
             </div>
 
@@ -120,12 +124,12 @@ export default function BonusStack() {
 
             {/* CTA Button */}
             <div className="text-center mt-16">
-              <a
-                href="/application"
+              <button
+                onClick={onApplyNowClick}
                 className="font-bold !text-white transition-none duration-0 focus:outline-none bg-[#940909] hover:bg-[#7b0707] py-4 px-12 text-lg rounded-md inline-block relative z-30"
               >
                 Apply Now
-              </a>
+              </button>
             </div>
 
           </div>

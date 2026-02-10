@@ -30,6 +30,12 @@ export default function TierCard({
     setIsLoading(true);
 
     try {
+      // Get user email from sessionStorage (set by email popup)
+      const userEmail = typeof window !== 'undefined' ? sessionStorage.getItem('userEmail') : null;
+      const userName = typeof window !== 'undefined' ? sessionStorage.getItem('userName') : null;
+
+      console.log('[TierCard] Starting checkout for tier:', tier, 'with email:', userEmail);
+
       // Create checkout session
       const response = await fetch("/api/create-checkout-session", {
         method: "POST",
@@ -38,6 +44,8 @@ export default function TierCard({
         },
         body: JSON.stringify({
           tier: tier,
+          customerEmail: userEmail, // Pre-fill email in Stripe checkout
+          customerName: userName || undefined,
         }),
       });
 
@@ -55,6 +63,7 @@ export default function TierCard({
       }
 
       // Redirect to Stripe checkout directly
+      console.log('[TierCard] Redirecting to Stripe:', url);
       window.location.href = url;
     } catch (error) {
       console.error("Checkout error:", error);

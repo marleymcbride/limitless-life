@@ -1,7 +1,11 @@
 import { bgClasses } from "@/lib/utils";
 import Image from "next/image";
 
-export default function PersonalStorySection() {
+interface PersonalStorySectionProps {
+  onApplyNowClick?: (e: React.MouseEvent) => void;
+}
+
+export default function PersonalStorySection({ onApplyNowClick }: PersonalStorySectionProps) {
   return (
     <section className={`w-full ${bgClasses.white} pt-12 pb-12 text-black relative`}>
       {/* Simple, premium white background */}
