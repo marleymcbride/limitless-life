@@ -33,7 +33,7 @@ export const users = pgTable('users', {
 }));
 
 export const events = pgTable('events', {
-  id: uuid('id').primaryKey().defaultRandom(),
+  id: uuid('id').primaryKey(),
   sessionId: uuid('session_id').references(() => sessions.id).notNull(),
   userId: uuid('user_id').references(() => users.id),
   eventType: text('event_type').notNull(),
