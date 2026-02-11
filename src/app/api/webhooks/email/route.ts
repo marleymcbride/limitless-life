@@ -30,9 +30,12 @@ const emailSubmitSchema = z.object({
  */
 export async function POST(req: NextRequest) {
   try {
+    console.log('=== [EMAIL WEBHOOK] Request received ===');
     const body = await req.json();
+    console.log('[EMAIL WEBHOOK] Request body:', body);
     const { email, firstName, lastName } = emailSubmitSchema.parse(body);
     const sessionId = getSessionId();
+    console.log('[EMAIL WEBHOOK] Parsed data:', { email, firstName, lastName, sessionId });
 
     // Find or create user
     let user = await db
@@ -44,6 +47,7 @@ export async function POST(req: NextRequest) {
     let userId: string;
 
     if (user.length === 0) {
+      console.log('[EMAIL WEBHOOK] Creating new user in Railway database...');
       // Create new user
       const [newUser] = await db
         .insert(users)
@@ -57,29 +61,36 @@ export async function POST(req: NextRequest) {
         })
         .returning();
       userId = newUser.id;
+      console.log('[EMAIL WEBHOOK] User created in Railway:', { userId, email });
     } else {
       userId = user[0].id;
+      console.log('[EMAIL WEBHOOK] Existing user found in Railway:', { userId, email });
     }
 
     // Track event in analytics
+    console.log('[EMAIL WEBHOOK] Tracking event to analytics...');
     await trackEvent({
       sessionId,
       userId,
       eventType: 'email_submit',
       eventData: { email, firstName, lastName },
     });
+    console.log('[EMAIL WEBHOOK] Event tracked successfully');
 
     // Trigger n8n webhook for Systeme.io sync
+    console.log('[EMAIL WEBHOOK] Sending to n8n webhook...');
     await n8nEvents.emailSubmit({
       userId,
       email,
       firstName,
       lastName,
     });
+    console.log('[EMAIL WEBHOOK] n8n webhook sent');
 
+    console.log('=== [EMAIL WEBHOOK] Complete ===');
     return NextResponse.json({ success: true, userId });
   } catch (error) {
-    console.error('Email webhook error:', error);
+    console.error('[EMAIL WEBHOOK] Error:', error);
     return NextResponse.json(
       { success: false, error: 'Invalid request' },
       { status: 400 }
