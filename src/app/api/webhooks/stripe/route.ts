@@ -77,8 +77,13 @@ export async function POST(request: NextRequest) {
     switch (event.type) {
       case 'checkout.session.completed': {
         const session = event.data.object as Stripe.Checkout.Session;
+        console.log('[STRIPE WEBHOOK] checkout.session.completed received');
+        console.log('[STRIPE WEBHOOK] Session ID:', session.id);
+        console.log('[STRIPE WEBHOOK] Payment status:', session.payment_status);
+        console.log('[STRIPE WEBHOOK] Metadata:', session.metadata);
 
         if (session.payment_status === 'paid') {
+          console.log('[STRIPE WEBHOOK] Payment is paid, processing...');
           // Try to get userId from metadata first (existing user)
           let userId = session.metadata?.userId;
           const email = session.metadata?.email || session.customer_details?.email;
@@ -90,6 +95,7 @@ export async function POST(request: NextRequest) {
 
           // If no userId, find or create user by email (new user flow)
           if (!userId) {
+            console.log('[STRIPE WEBHOOK] No userId in metadata, looking up user by email...');
             let user = await db
               .select()
               .from(users)
@@ -97,6 +103,7 @@ export async function POST(request: NextRequest) {
               .limit(1);
 
             if (user.length === 0) {
+              console.log('[STRIPE WEBHOOK] User not found, creating new user in Railway...');
               // Create new user
               const [newUser] = await db
                 .insert(users)
@@ -107,10 +114,10 @@ export async function POST(request: NextRequest) {
                 })
                 .returning();
               userId = newUser.id;
-              console.log('Created new user from checkout:', email);
+              console.log('[STRIPE WEBHOOK] Created new user from checkout:', { userId, email });
             } else {
               userId = user[0].id;
-              console.log('Found existing user from checkout:', email);
+              console.log('[STRIPE WEBHOOK] Found existing user from checkout:', { userId, email });
             }
           }
 
@@ -144,6 +151,7 @@ export async function POST(request: NextRequest) {
           }
 
           // Store payment record
+          console.log('[STRIPE WEBHOOK] Storing payment in Railway database...');
           await db.insert(payments).values({
             userId,
             stripePaymentIntentId: paymentIntentId,
@@ -156,8 +164,10 @@ export async function POST(request: NextRequest) {
               ...session.metadata,
             },
           });
+          console.log('[STRIPE WEBHOOK] Payment stored in Railway');
 
           // Update user status to customer
+          console.log('[STRIPE WEBHOOK] Updating user status to customer...');
           await db
             .update(users)
             .set({
@@ -165,8 +175,10 @@ export async function POST(request: NextRequest) {
               updatedAt: new Date(),
             })
             .where(eq(users.id, userId));
+          console.log('[STRIPE WEBHOOK] User status updated');
 
           // Track payment event
+          console.log('[STRIPE WEBHOOK] Tracking payment_complete event...');
           await trackEvent({
             sessionId: session.metadata?.sessionId || '',
             userId,
@@ -178,6 +190,7 @@ export async function POST(request: NextRequest) {
               stripePaymentId: paymentIntentId,
             },
           });
+          console.log('[STRIPE WEBHOOK] Event tracked successfully');
 
           // Calculate user's current lead score for n8n sync
           const scoreData = await calculateLeadScore(userId);

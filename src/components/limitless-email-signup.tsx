@@ -52,14 +52,24 @@ export default function LimitlessEmailSignup() {
     setSubmitResult(null);
 
     try {
-      // Submit to N8N webhook with dual-endpoint fallback
-      const { submitToN8nWebhook } = await import("../lib/n8n-webhook-client");
+      // Submit to API endpoint that writes to Railway database first
+      const response = await fetch("/api/webhooks/email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: email.trim(),
+          firstName: "", // Optional - not collected in this form
+          lastName: "", // Optional - not collected in this form
+        }),
+      });
 
-      await submitToN8nWebhook(
-        email,
-        "", // firstName - empty for this form
-        "limitless-waitlist" // source tracking
-      );
+      const result = await response.json();
+
+      if (!response.ok || !result.success) {
+        throw new Error(result.error || "Failed to join waitlist");
+      }
 
       // Success - show success message
       setSubmitResult({
@@ -71,7 +81,7 @@ export default function LimitlessEmailSignup() {
       // Reset form
       setEmail("");
     } catch (error) {
-      // Handle N8N webhook errors with professional messages
+      // Handle errors with professional messages
       const errorMessage =
         error instanceof Error
           ? error.message
