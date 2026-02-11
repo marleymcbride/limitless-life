@@ -9,11 +9,11 @@ export async function trackEvent(data: {
   eventData?: any;
 }) {
   await db.insert(events).values({
+    id: crypto.randomUUID(),
     sessionId: data.sessionId,
     userId: data.userId,
     eventType: data.eventType,
     eventData: data.eventData || {},
-    createdAt: new Date(),
   });
 }
 

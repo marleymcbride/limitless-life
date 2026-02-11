@@ -1,5 +1,5 @@
 import { db } from './db';
-import { events, users } from '../db/schema';
+import { events, users, leadAlerts } from '../db/schema';
 import { eq, and, sql } from 'drizzle-orm';
 import { LEAD_SCORING_RULES } from './analytics';
 import { n8nEvents, alertHotLead } from './n8nWebhooks';
@@ -147,6 +147,16 @@ export async function updateUserLeadScore(userId: string): Promise<void> {
       applicationCompleted: recentEvents.some(e => e.eventType === 'application_complete'),
       pricingViewed: recentEvents.some(e => e.eventType === 'pricing_view'),
     };
+
+    // Create lead alert record in Postgres
+    await db.insert(leadAlerts).values({
+      id: crypto.randomUUID(),
+      userId,
+      alertType: 'hot_lead',
+      sentAt: new Date(),
+      firstContactAt: null,
+      responseTimeSeconds: null,
+    });
 
     // Legacy n8n event (via queue)
     n8nEvents.hotLeadAlert({
