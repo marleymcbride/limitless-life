@@ -132,7 +132,7 @@ export function RevenueIntelligence() {
           {/* Summary Card */}
           <MetricCard
             title="Total Revenue"
-            value={`$${data.totalRevenue.toLocaleString()}`}
+            value={`$${data.metrics.totalRevenue.toLocaleString()}`}
             change="+12%"
             subtitle={data.period}
           />
