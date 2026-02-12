@@ -32,9 +32,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <link rel="icon" href="/favicons.ico" />
         <link rel="apple-touch-icon" href="/favicons.ico" />
-        {/* Preload critical image directories */}
-        <link rel="dns-prefetch" href="//localhost:3000" />
-        <link rel="preconnect" href="//localhost:3000" />
       </head>
       <body>{children}</body>
     </html>
