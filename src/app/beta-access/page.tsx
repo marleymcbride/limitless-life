@@ -472,7 +472,7 @@ export default function BetaAccessPage() {
         <MoreVideoTestimonials />
       </div>
 
-      {/* NEW SECTIONS - Complete Sales Page */}
+      {/* NEW SECTIONS - The omplete Sales Page */}
 
       {/* How The Limitless Protocol Works (Dark background) */}
       <HowLimitlessProtocolWorks />
