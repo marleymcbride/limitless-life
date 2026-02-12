@@ -58,7 +58,7 @@ export async function POST(request: NextRequest) {
             firstName,
             status: 'prospect',
             leadScore: 15, // tier_click = 15 points
-            leadTemperature: 'cold',
+            leadTemperature: 'warm', // They've taken action - not cold!
             tierInterest: tier as 'access' | 'plus' | 'premium' | 'elite' | null,
             lastSeen: new Date(),
           })
