@@ -63,8 +63,8 @@ export async function GET(request: NextRequest) {
       .where(
         and(
           eq(payments.status, 'succeeded'),
-          gte(payments.paymentDate, start),
-          lte(payments.paymentDate, end)
+          gte(payments.createdAt, start),
+          lte(payments.createdAt, end)
         )
       );
 
@@ -79,8 +79,8 @@ export async function GET(request: NextRequest) {
       .where(
         and(
           eq(payments.status, 'succeeded'),
-          gte(payments.paymentDate, start),
-          lte(payments.paymentDate, end)
+          gte(payments.createdAt, start),
+          lte(payments.createdAt, end)
         )
       );
 
@@ -100,8 +100,8 @@ export async function GET(request: NextRequest) {
       .where(
         and(
           eq(payments.status, 'succeeded'),
-          gte(payments.paymentDate, start),
-          lte(payments.paymentDate, end)
+          gte(payments.createdAt, start),
+          lte(payments.createdAt, end)
         )
       )
       .groupBy(payments.tier);
@@ -118,8 +118,8 @@ export async function GET(request: NextRequest) {
       .where(
         and(
           eq(payments.status, 'succeeded'),
-          gte(payments.paymentDate, start),
-          lte(payments.paymentDate, end)
+          gte(payments.createdAt, start),
+          lte(payments.createdAt, end)
         )
       )
       .groupBy(sessions.utmSource);
@@ -133,8 +133,8 @@ export async function GET(request: NextRequest) {
       .where(
         and(
           eq(payments.status, 'succeeded'),
-          gte(payments.paymentDate, start),
-          lte(payments.paymentDate, end)
+          gte(payments.createdAt, start),
+          lte(payments.createdAt, end)
         )
       )
       .groupBy(payments.userId)
@@ -152,8 +152,8 @@ export async function GET(request: NextRequest) {
       .where(
         and(
           eq(payments.status, 'succeeded'),
-          gte(payments.paymentDate, start),
-          lte(payments.paymentDate, end)
+          gte(payments.createdAt, start),
+          lte(payments.createdAt, end)
         )
       );
 

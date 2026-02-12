@@ -48,14 +48,14 @@ export async function GET(req: NextRequest) {
     const start = startDate ? new Date(startDate) : new Date(Date.now() - 30 * 24 * 60 * 60 * 1000);
     const end = endDate ? new Date(endDate) : new Date();
 
-    // Get users who watched VSL (sessions.created in period)
+    // Get users who watched VSL (sessions.firstSeen in period)
     const vslWatchers = await db
       .select({ userId: sessions.userId })
       .from(sessions)
       .where(
         and(
-          gte(sessions.createdAt, start),
-          lte(sessions.createdAt, end)
+          gte(sessions.firstSeen, start),
+          lte(sessions.firstSeen, end)
         )
       );
 
@@ -85,8 +85,8 @@ export async function GET(req: NextRequest) {
       .from(sessions)
       .where(
         and(
-          gte(sessions.createdAt, start),
-          lte(sessions.createdAt, end)
+          gte(sessions.firstSeen, start),
+          lte(sessions.firstSeen, end)
         )
       );
 
