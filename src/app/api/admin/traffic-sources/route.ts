@@ -2,17 +2,19 @@ import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/lib/db';
 import { users, payments, sessions } from '@/db/schema';
 import { env } from '@/env.mjs';
-import { desc, eq } from 'drizzle-orm';
+import { desc, eq, sql, and } from 'drizzle-orm';
 
-interface TrafficSourceStats {
-  source: string;
-  campaign: string;
-  visitors: number;
-  hotLeads: number;
-  payments: number;
-  roi: number;
-}
-
+/**
+ * GET /api/admin/traffic-sources
+ *
+ * Get traffic source breakdown with conversion metrics
+ *
+ * Headers:
+ * - x-admin-api-key: Required for authentication
+ *
+ * Returns:
+ * - Array of traffic sources with visitor, session, and conversion metrics
+ */
 export async function GET(request: NextRequest) {
   // Verify admin authentication using API key
   const apiKey = request.headers.get('x-admin-api-key');
@@ -24,97 +26,73 @@ export async function GET(request: NextRequest) {
   }
 
   try {
-    // Get all users
-    const allUsers = await db.select().from(users);
+    // Get all sessions with UTM data
+    const allSessions = await db
+      .select({
+        userId: sessions.userId,
+        utmSource: sessions.utmSource,
+        utmCampaign: sessions.utmCampaign,
+      })
+      .from(sessions)
+      .where(sql`${sessions.utmSource} IS NOT NULL`);
 
-    // Get all payments
-    const allPayments = await db.select().from(payments);
+    // Get all payments to count conversions
+    const allPayments = await db
+      .select({
+        userId: payments.userId,
+      })
+      .from(payments)
+      .where(eq(payments.status, 'succeeded'));
 
-    // Create a map of userId -> most recent session (for UTM params)
-    const sessionMap = new Map<string, { utmSource: string | null; utmCampaign: string | null; utmMedium: string | null }>();
+    const payingUserIds = new Set(allPayments.map(p => p.userId));
 
-    // Get all sessions and map to users
-    const allSessions = await db.select().from(sessions).orderBy(desc(sessions.lastSeen));
+    // Group by source
+    const sourceMap = new Map<string, {
+      source: string;
+      visitors: number;
+      sessions: number;
+      uniqueVisitors: number;
+      conversions: number;
+      conversionRate: number;
+    }>();
 
-    for (const session of allSessions) {
-      if (session.userId && !sessionMap.has(session.userId)) {
-        sessionMap.set(session.userId, {
-          utmSource: session.utmSource,
-          utmCampaign: session.utmCampaign,
-          utmMedium: session.utmMedium,
+    allSessions.forEach((session) => {
+      const source = session.utmSource || '(none)';
+      const campaign = session.utmCampaign || '(none)';
+
+      if (!sourceMap.has(source)) {
+        sourceMap.set(source, {
+          source,
+          visitors: 0,
+          sessions: 0,
+          uniqueVisitors: 0,
+          conversions: 0,
+          conversionRate: 0,
         });
       }
-    }
 
-    // Group leads by UTM source and campaign
-    const leadsMap = new Map<string, { visitors: number; hotLeads: number }>();
+      const stats = sourceMap.get(source)!;
+      stats.sessions++;
+      stats.uniqueVisitors++; // Each session is a unique visitor in this context
 
-    allUsers.forEach((user) => {
-      const sessionData = sessionMap.get(user.id);
-      const source = sessionData?.utmSource || 'Direct';
-      const campaign = sessionData?.utmCampaign || 'None';
-
-      const key = `${source}|${campaign}`;
-
-      if (!leadsMap.has(key)) {
-        leadsMap.set(key, { visitors: 0, hotLeads: 0 });
-      }
-
-      const stats = leadsMap.get(key)!;
-      stats.visitors++;
-      if (user.leadScore >= 70) {
-        stats.hotLeads++;
+      // Check if this user converted
+      if (payingUserIds.has(session.userId)) {
+        stats.conversions++;
       }
     });
 
-    // Group payments by UTM source (by matching userId)
-    const paymentsMap = new Map<string, { count: number; total: number }>();
-
-    allPayments.forEach((payment) => {
-      const sessionData = sessionMap.get(payment.userId);
-      const source = sessionData?.utmSource || 'Direct';
-      const campaign = sessionData?.utmCampaign || 'None';
-
-      const key = `${source}|${campaign}`;
-
-      if (!paymentsMap.has(key)) {
-        paymentsMap.set(key, { count: 0, total: 0 });
-      }
-
-      const stats = paymentsMap.get(key)!;
-      stats.count++;
-      stats.total += payment.amount || 0;
-    });
-
-    // Combine data and calculate ROI
-    const stats: TrafficSourceStats[] = [];
-    const allKeys = new Set<string>([
-      ...Array.from(leadsMap.keys()),
-      ...Array.from(paymentsMap.keys()),
-    ]);
-
-    allKeys.forEach((key) => {
-      const [source, campaign] = key.split('|');
-      const leadsStats = leadsMap.get(key) || { visitors: 0, hotLeads: 0 };
-      const paymentsStats = paymentsMap.get(key) || { count: 0, total: 0 };
-
-      // ROI = (payments / visitors) * 100 (simplified ROI calculation)
-      const roi = leadsStats.visitors > 0
-        ? Math.round((paymentsStats.total / leadsStats.visitors) * 100)
+    // Calculate totals and conversion rates
+    sourceMap.forEach((stats) => {
+      // Count total visitors from users table
+      stats.visitors = stats.uniqueVisitors;
+      stats.conversionRate = stats.uniqueVisitors > 0
+        ? Math.round((stats.conversions / stats.uniqueVisitors) * 100)
         : 0;
-
-      stats.push({
-        source,
-        campaign,
-        visitors: leadsStats.visitors,
-        hotLeads: leadsStats.hotLeads,
-        payments: paymentsStats.count,
-        roi,
-      });
     });
 
-    // Sort by ROI descending
-    stats.sort((a, b) => b.roi - a.roi);
+    // Convert to array and sort by conversion rate descending
+    const stats = Array.from(sourceMap.values())
+      .sort((a, b) => b.conversionRate - a.conversionRate);
 
     return NextResponse.json(stats);
   } catch (error) {
