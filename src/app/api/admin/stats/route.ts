@@ -1,12 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/lib/db';
-import { users, payments, analytics } from '@/db/schema';
+import { users, payments } from '@/db/schema';
 import { env } from '@/env.mjs';
-import { gte, sql, eq } from 'drizzle-orm';
+import { gte, sql, and, desc } from 'drizzle-orm';
 
 /**
  * GET /api/admin/stats
- * Fetch dashboard metrics from Railway (source of truth)
+ * Fetch dashboard summary metrics
  */
 export async function GET(request: NextRequest) {
   // Verify admin authentication using API key
@@ -22,43 +22,41 @@ export async function GET(request: NextRequest) {
     const today = new Date();
     const startOfToday = new Date(today.getFullYear(), today.getMonth(), today.getDate());
 
-    // Get total visitors (all users)
-    const visitorsResult = await db
+    // Get total visitors (unique users)
+    const totalVisitors = await db
       .select({ count: sql<number>`count(*)` })
       .from(users);
-    const totalVisitors = visitorsResult[0]?.count || 0;
 
-    // Get hot leads count (score >= 70)
-    const hotLeadsResult = await db
+    // Get hot leads (leadScore >= 70)
+    const hotLeads = await db
       .select({ count: sql<number>`count(*)` })
       .from(users)
       .where(sql`${users.leadScore} >= 70`);
-    const hotLeadsCount = hotLeadsResult[0]?.count || 0;
 
-    // Get total payments for current month
+    // Get total payments this month
     const startOfMonth = new Date(today.getFullYear(), today.getMonth(), 1);
 
-    const paymentsResult = await db
-      .select({ amount: payments.amount })
+    const totalPaymentsThisMonth = await db
+      .select({ amount: sql<number>`COALESCE(SUM(${payments.amount}), 0)` })
       .from(payments)
       .where(
-        gte(payments.paymentDate, startOfMonth)
+        and(
+          eq(payments.status, 'succeeded'),
+          gte(payments.createdAt, startOfMonth)
+        )
       );
 
-    const totalPaymentsThisMonth = paymentsResult.reduce(
-      (sum, p) => sum + (p.amount || 0),
-      0
-    );
+    const paymentsThisMonth = totalPaymentsThisMonth[0]?.amount || 0;
 
     // Calculate conversion rate (hot leads / total visitors * 100)
     const conversionRate = totalVisitors > 0
-      ? Math.round((hotLeadsCount / totalVisitors) * 100)
+      ? Math.round((hotLeads / totalVisitors) * 100)
       : 0;
 
     return NextResponse.json({
-      totalVisitors,
-      hotLeadsCount,
-      totalPaymentsThisMonth: Math.round(totalPaymentsThisMonth),
+      totalVisitors: totalVisitors[0]?.count || 0,
+      hotLeads: hotLeads[0]?.count || 0,
+      paymentsThisMonth: Math.round(paymentsThisMonth),
       conversionRate,
     });
   } catch (error) {
