@@ -73,7 +73,7 @@ export async function GET(request: NextRequest) {
     // Get unique customers who made purchases
     const [customerResult] = await db
       .select({
-        count: sql<number>`COUNT(DISTINCT ${payments.userId})`,
+        count: sql<number>`COUNT(DISTINCT "payments"."user_id")`,
       })
       .from(payments)
       .where(
@@ -94,7 +94,7 @@ export async function GET(request: NextRequest) {
       .select({
         tier: payments.tier,
         totalRevenue: sql<number>`SUM(${payments.amount})`,
-        customerCount: sql<number>`COUNT(DISTINCT ${payments.userId})`,
+        customerCount: sql<number>`COUNT(DISTINCT "payments"."user_id")`,
       })
       .from(payments)
       .where(
@@ -111,7 +111,7 @@ export async function GET(request: NextRequest) {
       .select({
         source: sessions.utmSource,
         totalRevenue: sql<number>`SUM(${payments.amount})`,
-        customerCount: sql<number>`COUNT(DISTINCT ${payments.userId})`,
+        customerCount: sql<number>`COUNT(DISTINCT "payments"."user_id")`,
       })
       .from(payments)
       .innerJoin(sessions, eq(payments.userId, sessions.userId))
@@ -127,7 +127,7 @@ export async function GET(request: NextRequest) {
     // Repeat purchase rate (customers who bought 2+ times)
     const [repeatCustomers] = await db
       .select({
-        customerCount: sql<number>`COUNT(DISTINCT ${payments.userId})`,
+        customerCount: sql<number>`COUNT(DISTINCT "payments"."user_id")`,
       })
       .from(payments)
       .where(
