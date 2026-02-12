@@ -137,7 +137,7 @@ export function RevenueIntelligence() {
             title="Total Revenue"
             value={`$${data.metrics.totalRevenue.toLocaleString()}`}
             change="+12%"
-            subtitle={data.period}
+            subtitle={`${data.period.start} to ${data.period.end}`}
           />
 
           {/* Revenue Breakdown by Source */}
