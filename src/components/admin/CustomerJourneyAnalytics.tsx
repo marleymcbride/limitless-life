@@ -7,7 +7,7 @@ import { DateRangeSelector } from './shared/DateRangeSelector';
 function getDaysAgo(days: number): string {
   const date = new Date();
   date.setDate(date.getDate() - days);
-  return date.toISOString().split('T')[0];
+  return date.toISOString();
 }
 
 interface JourneyEvent {
