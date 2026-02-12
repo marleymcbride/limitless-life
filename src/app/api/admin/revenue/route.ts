@@ -4,6 +4,7 @@ import { db } from '@/lib/db';
 import { payments, sessions } from '@/db/schema';
 import { gte, lte, and, sql, desc } from 'drizzle-orm';
 import { env } from '@/env.mjs';
+import { isAuthenticated } from '@/lib/admin-auth';
 
 const schema = z.object({
   startDate: z.string().datetime().optional(),
@@ -30,15 +31,13 @@ const schema = z.object({
  * - metrics: Summary statistics
  */
 export async function GET(request: NextRequest) {
-  try {
-    // Verify admin API key
-    const apiKey = request.headers.get('x-admin-api-key');
-    if (apiKey !== env.ADMIN_API_KEY) {
-      return NextResponse.json(
-        { success: false, error: 'Unauthorized' },
-        { status: 401 }
-      );
-    }
+  // Verify admin authentication using cookie
+  if (!(await isAuthenticated())) {
+    return NextResponse.json(
+      { success: false, error: 'Unauthorized' },
+      { status: 401 }
+    );
+  }
 
     const { searchParams } = request.nextUrl;
     const startDate = searchParams.get('startDate');
