@@ -66,9 +66,6 @@ export function LeadsTable() {
       setLoading(false);
     }
   }
-  const [filter, setFilter] = useState<'all' | 'hot' | 'warm' | 'cold'>('all');
-  const [sortBy, setSortBy] = useState<'score' | 'temperature' | 'lastSeen'>('score');
-  const [searchQuery, setSearchQuery] = useState('');
 
   const filteredLeads = leads.filter((lead) => {
     if (filter === 'all') return true;
