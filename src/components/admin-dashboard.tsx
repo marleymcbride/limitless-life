@@ -40,7 +40,9 @@ export default function AdminDashboard() {
 
   async function fetchStats() {
     try {
-      const res = await fetch('/api/admin/stats');
+      const res = await fetch('/api/admin/stats', {
+        headers: { 'x-admin-api-key': process.env.NEXT_PUBLIC_ADMIN_API_KEY || '' }
+      });
       const data = await res.json();
       setStats(data);
     } catch (error) {
