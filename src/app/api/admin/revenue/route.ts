@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import { db } from '@/lib/db';
 import { payments, sessions } from '@/db/schema';
-import { gte, lte, and, sql, desc } from 'drizzle-orm';
+import { gte, lte, and, eq, sql, desc } from 'drizzle-orm';
 import { env } from '@/env.mjs';
 import { isAuthenticated } from '@/lib/admin-auth';
 
@@ -39,6 +39,7 @@ export async function GET(request: NextRequest) {
     );
   }
 
+  try {
     const { searchParams } = request.nextUrl;
     const startDate = searchParams.get('startDate');
     const endDate = searchParams.get('endDate');
