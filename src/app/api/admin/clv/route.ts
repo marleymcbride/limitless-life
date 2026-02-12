@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import { db } from '@/lib/db';
-import { users, payments } from '@/db/schema';
-import { gte, lte, and, eq } from 'drizzle-orm';
+import { users, payments, sessions } from '@/db/schema';
+import { gte, lte, and, eq, sql } from 'drizzle-orm';
 import { env } from '@/env.mjs';
 import { isAuthenticated } from '@/lib/admin-auth';
 
@@ -40,6 +40,7 @@ export async function GET(request: NextRequest) {
     );
   }
 
+  try {
     const { searchParams } = request.nextUrl;
     const startDate = searchParams.get('startDate');
     const endDate = searchParams.get('endDate');
@@ -141,6 +142,22 @@ export async function GET(request: NextRequest) {
 
     const totalRepeatCustomers = repeatCustomers.reduce((sum, row) => sum + row.customerCount, 0);
     const repeatPurchaseRate = totalCustomers > 0 ? (totalRepeatCustomers / totalCustomers) * 100 : 0;
+
+    // Get total payment count
+    const [paymentCountResult] = await db
+      .select({
+        count: sql<number>`COUNT(*)`,
+      })
+      .from(payments)
+      .where(
+        and(
+          eq(payments.status, 'succeeded'),
+          gte(payments.paymentDate, start),
+          lte(payments.paymentDate, end)
+        )
+      );
+
+    const totalPayments = paymentCountResult[0]?.count || 0;
 
     // Purchase frequency (average days between purchases)
     // For simplicity: total payments in period / total customers
