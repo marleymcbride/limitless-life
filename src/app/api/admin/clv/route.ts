@@ -93,8 +93,8 @@ export async function GET(request: NextRequest) {
     const clvByTier = await db
       .select({
         tier: payments.tier,
-        totalRevenue: sql<number>`SUM(${payments.amount})`,
-        customerCount: sql<number>`COUNT(DISTINCT payments.user_id)`,
+        totalRevenue: sql`SUM(${payments.amount})`,
+        customerCount: sql`COUNT(DISTINCT payments.user_id)`,
       })
       .from(payments)
       .where(
@@ -110,8 +110,8 @@ export async function GET(request: NextRequest) {
     const clvBySource = await db
       .select({
         source: sessions.utmSource,
-        totalRevenue: sql<number>`SUM(${payments.amount})`,
-        customerCount: sql<number>`COUNT(DISTINCT payments.user_id)`,
+        totalRevenue: sql`SUM(${payments.amount})`,
+        customerCount: sql`COUNT(DISTINCT payments.user_id)`,
       })
       .from(payments)
       .innerJoin(sessions, eq(payments.userId, sessions.userId))
@@ -127,7 +127,7 @@ export async function GET(request: NextRequest) {
     // Repeat purchase rate (customers who bought 2+ times)
     const [repeatCustomers] = await db
       .select({
-        customerCount: sql<number>`COUNT(DISTINCT payments.user_id)`,
+        customerCount: sql`COUNT(DISTINCT payments.user_id)`,
       })
       .from(payments)
       .where(
