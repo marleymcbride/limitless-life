@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 interface Lead {
   id: string;
@@ -21,18 +21,51 @@ interface Lead {
   createdAt: string;
 }
 
-interface LeadsTableProps {
-  leads: Lead[];
-  loading: boolean;
-}
-
 /**
  * LeadsTable - Hot leads feed for sales team
  * Shows high-priority leads (warm/hot) with key details
  * Sortable by score, temperature, last seen
  * Quick filters for engagement level
  */
-export function LeadsTable({ leads = [], loading = false }: LeadsTableProps) {
+export function LeadsTable() {
+  const [leads, setLeads] = useState<Lead[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [filter, setFilter] = useState<'all' | 'hot' | 'warm' | 'cold'>('all');
+  const [sortBy, setSortBy] = useState<'score' | 'temperature' | 'lastSeen'>('score');
+  const [searchQuery, setSearchQuery] = useState('');
+
+  useEffect(() => {
+    fetchLeads();
+  }, []);
+
+  async function fetchLeads() {
+    setLoading(true);
+    setError(null);
+
+    try {
+      const response = await fetch('/api/analytics/leads', {
+        headers: { 'x-admin-api-key': process.env.NEXT_PUBLIC_ADMIN_API_KEY || '' },
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to fetch leads');
+      }
+
+      const result = await response.json();
+      // Flatten the structured response { hot, warm, cold } into a single array
+      const allLeads = [
+        ...(result.hot || []),
+        ...(result.warm || []),
+        ...(result.cold || []),
+      ];
+      setLeads(allLeads);
+      setLoading(false);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Failed to fetch leads');
+      setLoading(false);
+    }
+  }
   const [filter, setFilter] = useState<'all' | 'hot' | 'warm' | 'cold'>('all');
   const [sortBy, setSortBy] = useState<'score' | 'temperature' | 'lastSeen'>('score');
   const [searchQuery, setSearchQuery] = useState('');
