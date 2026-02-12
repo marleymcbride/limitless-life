@@ -1,8 +1,8 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import LeadsTable from './leads-table';
-import TrafficSourcesTable from './traffic-sources-table';
+import LeadsTable from './admin/LeadsTable';
+import TrafficSourcesTable from './admin/TrafficSourcesTable';
 import FunnelAnalytics from './admin/funnel-analytics';
 import VSLDropoffAnalytics from './admin/vsl-dropoff-analytics';
 import ScrollDropoffAnalytics from './admin/scroll-dropoff-analytics';

@@ -79,8 +79,8 @@ export async function GET(req: NextRequest) {
       );
     }
 
-    // Get user info
-    const [user] = await db
+    // Get user's events (no session join needed)
+    const user = await db
       .select()
       .from(users)
       .where(eq(users.id, userId))
