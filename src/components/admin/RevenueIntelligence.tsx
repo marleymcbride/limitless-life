@@ -176,7 +176,7 @@ export function RevenueIntelligence() {
             </div>
           )}
 
-          {/* Revenue Breakdown by Tier */}
+          {/* Revenues Breakdown by Tier */}
           {groupBy === 'tier' && data.revenueByTier && (
             <div className="bg-white border rounded-lg p-6">
               <h2 className="text-xl font-bold mb-4">Revenue by Purchased Tier</h2>

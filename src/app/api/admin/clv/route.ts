@@ -18,7 +18,7 @@ const schema = z.object({
  * Headers:
  * - x-admin-api-key: Required for authentication
  *
- * Query Params:
+ * Query Parameters:
  * - startDate: ISO datetime string (default: 30 days ago)
  * - endDate: ISO datetime string (default: now)
  *
