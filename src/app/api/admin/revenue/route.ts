@@ -88,7 +88,7 @@ export async function GET(request: NextRequest) {
           paymentCount: sql<number>`COUNT(*)`,
         })
         .from(payments)
-        .innerJoin(sessions, eq(payments.userId, sessions.id))
+        .innerJoin(sessions, eq(payments.userId, sessions.userId))
         .where(
           and(
             eq(payments.status, 'succeeded'),
@@ -121,7 +121,7 @@ export async function GET(request: NextRequest) {
           paymentCount: sql<number>`COUNT(*)`,
         })
         .from(payments)
-        .innerJoin(sessions, eq(payments.userId, sessions.id))
+        .innerJoin(sessions, eq(payments.userId, sessions.userId))
         .where(
           and(
             eq(payments.status, 'succeeded'),

@@ -114,7 +114,7 @@ export async function GET(request: NextRequest) {
         customerCount: sql<number>`COUNT(DISTINCT ${payments.userId})`,
       })
       .from(payments)
-      .innerJoin(sessions, eq(payments.userId, sessions.id))
+      .innerJoin(sessions, eq(payments.userId, sessions.userId))
       .where(
         and(
           eq(payments.status, 'succeeded'),
