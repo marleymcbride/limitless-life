@@ -3,6 +3,9 @@
 import { useState, useEffect } from 'react';
 import { MetricCard } from './shared/MetricCards';
 import { DateRangeSelector } from './shared/DateRangeSelector';
+import { SourceCard } from './shared/SourceCard';
+import { CampaignCard } from './shared/CampaignCard';
+import { TierCard } from './shared/TierCard';
 
 function getDaysAgo(days: number): string {
   const date = new Date();
