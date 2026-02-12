@@ -4,7 +4,6 @@ import { db } from '@/lib/db';
 import { users, payments, sessions } from '@/db/schema';
 import { gte, lte, and, eq, sql } from 'drizzle-orm';
 import { env } from '@/env.mjs';
-import { isAuthenticated } from '@/lib/admin-auth';
 
 const schema = z.object({
   startDate: z.string().datetime().optional(),
