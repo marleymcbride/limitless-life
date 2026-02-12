@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/lib/db';
 import { users, payments } from '@/db/schema';
 import { env } from '@/env.mjs';
-import { gte, sql, and, desc } from 'drizzle-orm';
+import { gte, sql, and, desc, eq } from 'drizzle-orm';
 
 /**
  * GET /api/admin/stats
@@ -48,14 +48,18 @@ export async function GET(request: NextRequest) {
 
     const paymentsThisMonth = totalPaymentsThisMonth[0]?.amount || 0;
 
+    // Get actual counts from query results
+    const totalVisitorsCount = totalVisitors[0]?.count || 0;
+    const hotLeadsCount = hotLeads[0]?.count || 0;
+
     // Calculate conversion rate (hot leads / total visitors * 100)
-    const conversionRate = totalVisitors > 0
-      ? Math.round((hotLeads / totalVisitors) * 100)
+    const conversionRate = totalVisitorsCount > 0
+      ? Math.round((hotLeadsCount / totalVisitorsCount) * 100)
       : 0;
 
     return NextResponse.json({
-      totalVisitors: totalVisitors[0]?.count || 0,
-      hotLeads: hotLeads[0]?.count || 0,
+      totalVisitors: totalVisitorsCount,
+      hotLeads: hotLeadsCount,
       paymentsThisMonth: Math.round(paymentsThisMonth),
       conversionRate,
     });
