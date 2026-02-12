@@ -4,11 +4,11 @@ import { useState, useEffect } from 'react';
 import { MetricCard } from './shared/MetricCards';
 import { DateRangeSelector } from './shared/DateRangeSelector';
 
-const getDaysAgo = (days: number): string => {
+function getDaysAgo(days: number): string {
   const date = new Date();
   date.setDate(date.getDate() - days);
   return date.toISOString().split('T')[0];
-};
+}
 
 interface FunnelStep {
   step: string;
