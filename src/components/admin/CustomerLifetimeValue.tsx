@@ -97,7 +97,7 @@ export function CustomerLifetimeValue() {
           {/* Summary Card */}
           <MetricCard
             title="Average Customer Lifetime Value"
-            value={`$${Math.round(data.averageCLV).toLocaleString()}`}
+            value={`$${Math.round(data.metrics.averageCLV).toLocaleString()}`}
             change="+5%"
             subtitle={data.period}
           />
