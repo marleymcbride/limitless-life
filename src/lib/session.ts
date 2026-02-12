@@ -13,8 +13,13 @@ export async function createSession(data: {
   utmSource?: string;
   utmMedium?: string;
   utmCampaign?: string;
+  utmContent?: string;
+  utmTerm?: string;
   referrer?: string;
   deviceType?: 'mobile' | 'tablet' | 'desktop';
+  browser?: string;
+  ipAddress?: string;
+  countryCode?: string;
 }) {
   const id = crypto.randomUUID();
 
@@ -25,8 +30,13 @@ export async function createSession(data: {
     utmSource: data.utmSource,
     utmMedium: data.utmMedium,
     utmCampaign: data.utmCampaign,
+    utmContent: data.utmContent,
+    utmTerm: data.utmTerm,
     referrer: data.referrer,
     deviceType: data.deviceType,
+    browser: data.browser,
+    ipAddress: data.ipAddress,
+    countryCode: data.countryCode,
   });
 
   // Return session ID - caller must set cookie

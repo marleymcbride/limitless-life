@@ -8,8 +8,13 @@ export const sessions = pgTable('sessions', {
   utmSource: text('utm_source'),
   utmMedium: text('utm_medium'),
   utmCampaign: text('utm_campaign'),
+  utmContent: text('utm_content'),
+  utmTerm: text('utm_term'),
   referrer: text('referrer'),
   deviceType: text('device_type').$type<'mobile' | 'tablet' | 'desktop'>(),
+  browser: text('browser'),
+  ipAddress: text('ip_address'),
+  countryCode: text('country_code'),
 }, (table) => ({
   userIdIdx: index('idx_sessions_user_id').on(table.userId),
   lastSeenIdx: index('idx_sessions_last_seen').on(table.lastSeen),
@@ -62,6 +67,7 @@ export const payments = pgTable('payments', {
   stripePaymentIntentId: text('stripe_payment_intent_id').unique(),
   amount: integer('amount'),
   currency: text('currency'),
+  tier: text('tier').$type<'Access' | 'Plus' | 'Premium' | 'Elite'>(), // Which tier they purchased
   status: text('status'),
   createdAt: timestamp('created_at').defaultNow(),
 }, (table) => ({
