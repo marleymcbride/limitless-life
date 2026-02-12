@@ -157,6 +157,7 @@ export async function POST(request: NextRequest) {
             stripePaymentIntentId: paymentIntentId,
             amount,
             currency,
+            tier, // Which tier they purchased
             status: 'succeeded',
             paymentDate: new Date(),
             metadata: {
@@ -208,7 +209,7 @@ export async function POST(request: NextRequest) {
             email,
             firstName: user[0].firstName || undefined,
             lastName: user[0].lastName || undefined,
-            tier,
+            tier, // Which tier they purchased
             amount: amountInCents, // in cents
             stripePaymentId: paymentIntentId,
             paymentDate: new Date().toISOString(),
