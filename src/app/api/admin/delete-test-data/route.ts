@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/lib/db';
 import { users, sessions, events, payments, leadAlerts, webhookQueue } from '@/db/schema';
-import { eq, or } from 'drizzle-orm';
+import { eq, or, sql, ilike } from 'drizzle-orm';
 import { isAuthenticated } from '@/lib/admin-auth';
 
 /**
@@ -29,6 +29,7 @@ export async function DELETE(request: NextRequest) {
     );
   }
 
+  try {
     const body = await request.json();
     const { confirm } = body;
 
