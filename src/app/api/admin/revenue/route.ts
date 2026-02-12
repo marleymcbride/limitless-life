@@ -31,8 +31,9 @@ const schema = z.object({
  * - metrics: Summary statistics
  */
 export async function GET(request: NextRequest) {
-  // Verify admin authentication using cookie
-  if (!(await isAuthenticated())) {
+  // Verify admin authentication using API key
+  const apiKey = request.headers.get('x-admin-api-key');
+  if (apiKey !== env.ADMIN_API_KEY) {
     return NextResponse.json(
       { success: false, error: 'Unauthorized' },
       { status: 401 }
