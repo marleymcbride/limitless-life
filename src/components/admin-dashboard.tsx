@@ -1,17 +1,16 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import LeadsTable from './leads-table';
+import TrafficSourcesTable from './traffic-sources-table';
+import FunnelAnalytics from './admin/funnel-analytics';
+import VSLDropoffAnalytics from './admin/vsl-dropoff-analytics';
+import ScrollDropoffAnalytics from './admin/scroll-dropoff-analytics';
+import CustomerJourneyAnalytics from './admin/customer-journey-analytics';
+import AbandonedFunnelAnalytics from './admin/abandoned-funnel-analytics';
+import PaymentsAnalytics from './admin/payments-analytics';
 import { RevenueIntelligence } from './admin/RevenueIntelligence';
 import { CustomerLifetimeValue } from './admin/CustomerLifetimeValue';
-import { FunnelAnalytics } from './admin/FunnelAnalytics';
-import { VSLDropoffAnalytics } from './admin/VSLDropoffAnalytics';
-import { ScrollDropoffAnalytics } from './admin/ScrollDropoffAnalytics';
-import { CustomerJourneyAnalytics } from './admin/CustomerJourneyAnalytics';
-import { AbandonedFunnelAnalytics } from './admin/AbandonedFunnelAnalytics';
-import { PaymentsAnalytics } from './admin/PaymentsAnalytics';
-import { LeadsTable } from './admin/LeadsTable';
-import { TrafficSourcesTable } from './admin/TrafficSourcesTable';
-import { DateRangeSelector } from './admin/shared/DateRangeSelector';
 
 type Tab =
   | 'dashboard'
@@ -52,13 +51,13 @@ export default function AdminDashboard() {
   const tabs: { key: Tab; label: string }[] = [
     { key: 'dashboard', label: 'Dashboard' },
     { key: 'revenue', label: 'Revenue Intelligence' },
-    { key: 'clv', label: 'Customer LTV' },
+    { key: 'clv', label: 'Customer Lifetime Value' },
+    { key: 'payments', label: 'Payments & Customers' },
     { key: 'funnel', label: 'Funnel Analytics' },
     { key: 'vsl', label: 'VSL Drop-off' },
     { key: 'scroll', label: 'Scroll Analytics' },
     { key: 'journey', label: 'Customer Journey' },
     { key: 'abandoned', label: 'Abandoned Funnel' },
-    { key: 'payments', label: 'Payments' },
     { key: 'leads', label: 'Leads' },
     { key: 'traffic', label: 'Traffic Sources' },
   ];
@@ -117,8 +116,8 @@ export default function AdminDashboard() {
       {activeTab === 'journey' && <CustomerJourneyAnalytics />}
       {activeTab === 'abandoned' && <AbandonedFunnelAnalytics />}
       {activeTab === 'payments' && <PaymentsAnalytics />}
-      {activeTab === 'leads' && <LeadsTable leads={[]} loading={false} />}
-      {activeTab === 'traffic' && <TrafficSourcesTable data={[]} loading={false} />}
+      {activeTab === 'leads' && <LeadsTable />}
+      {activeTab === 'traffic' && <TrafficSourcesTable />}
     </div>
   );
 }
