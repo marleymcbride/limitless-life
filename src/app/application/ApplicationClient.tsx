@@ -25,8 +25,7 @@ export default function ApplicationClient() {
               The Complete Limitless Protocol Offer
             </h1>
             <p className="text-xl text-gray-700 max-w-3xl mx-auto">
-              Watch my detailed presentation of what you get with each tier,
-              then choose the perfect fit for your transformation journey.
+              Watch the short video now to see how to proceed.
             </p>
           </div>
 
