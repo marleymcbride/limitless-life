@@ -163,7 +163,12 @@ async function getAggregateJourneys(
   const allSessions = await db
     .select()
     .from(sessions)
-    .where(and(gte(sessions.firstSeen, startDate), lte(sessions.firstSeen, endDate)));
+    .where(
+      and(
+        gte(sessions.firstSeen, startDate),
+        lte(sessions.firstSeen, endDate)
+      )
+    );
 
   // Group by UTM source
   const sourceGroups = new Map<string, { sessionIds: string[]; userIds: Set<string> }>();
