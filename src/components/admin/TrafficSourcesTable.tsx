@@ -117,3 +117,5 @@ export function TrafficSourcesTable() {
     </div>
   );
 }
+
+export default TrafficSourcesTable;
