@@ -1,15 +1,17 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/lib/db';
 import { users, payments, analytics } from '@/db/schema';
-import { isAuthenticated } from '@/lib/admin-auth';
+import { env } from '@/env.mjs';
 import { gte, sql, eq } from 'drizzle-orm';
 
 /**
  * GET /api/admin/stats
  * Fetch dashboard metrics from Railway (source of truth)
  */
-export async function GET() {
-  if (!(await isAuthenticated())) {
+export async function GET(request: NextRequest) {
+  // Verify admin authentication using API key
+  const apiKey = request.headers.get('x-admin-api-key');
+  if (apiKey !== env.ADMIN_API_KEY) {
     return NextResponse.json(
       { error: 'Unauthorized' },
       { status: 401 }
