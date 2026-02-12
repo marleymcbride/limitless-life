@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/lib/db';
 import { users, sessions, events, payments, leadAlerts, webhookQueue } from '@/db/schema';
 import { eq, or } from 'drizzle-orm';
+import { isAuthenticated } from '@/lib/admin-auth';
 
 /**
  * DELETE /api/admin/delete-test-data
@@ -20,15 +21,13 @@ import { eq, or } from 'drizzle-orm';
  * Returns summary of what was deleted.
  */
 export async function DELETE(request: NextRequest) {
-  try {
-    // Verify admin API key
-    const apiKey = request.headers.get('x-admin-api-key');
-    if (apiKey !== process.env.ADMIN_API_KEY) {
-      return NextResponse.json(
-        { error: 'Unauthorized', message: 'Invalid admin API key' },
-        { status: 401 }
-      );
-    }
+  // Verify admin authentication
+  if (!(await isAuthenticated())) {
+    return NextResponse.json(
+      { error: 'Unauthorized' },
+      { status: 401 }
+    );
+  }
 
     const body = await request.json();
     const { confirm } = body;
