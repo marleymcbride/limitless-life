@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 interface TrafficSource {
   source: string; // utm_source
@@ -11,16 +11,40 @@ interface TrafficSource {
   conversionRate: number;
 }
 
-interface TrafficSourcesTableProps {
-  data: TrafficSource[];
-  loading: boolean;
-}
-
 /**
  * TrafficSourcesTable - Shows traffic source breakdown from UTM parameters
  * Helps identify which channels drive best conversions
  */
-export function TrafficSourcesTable({ data, loading = false }: TrafficSourcesTableProps) {
+export function TrafficSourcesTable() {
+  const [data, setData] = useState<TrafficSource[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    fetchTrafficSources();
+  }, []);
+
+  async function fetchTrafficSources() {
+    setLoading(true);
+    setError(null);
+
+    try {
+      const response = await fetch('/api/admin/traffic-sources', {
+        headers: { 'x-admin-api-key': process.env.NEXT_PUBLIC_ADMIN_API_KEY || '' },
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to fetch traffic sources');
+      }
+
+      const result = await response.json();
+      setData(result);
+      setLoading(false);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Failed to fetch traffic sources');
+      setLoading(false);
+    }
+  }
   return (
     <div className="space-y-4">
       {/* Header */}
