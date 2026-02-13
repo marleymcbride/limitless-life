@@ -48,7 +48,7 @@ export default function ApplicationClient() {
       <WhatYouGetSection />
 
       {/* Pricing Tiers Section */}
-      <section id="pricing-section" className="py-20 px-4 bg-white">
+      <section id="pricing-section" className="py-12 md:py-20 px-4 bg-white">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-black mb-6">
