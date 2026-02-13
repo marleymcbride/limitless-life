@@ -64,7 +64,7 @@ export default function ApplicationClient() {
             <TierCard
               tier="access"
               title="Limitless Access"
-              price="$2,997"
+              price="$299"
               description="Complete access to The Limitless Protocol system including all training modules, nutrition protocols, and recovery strategies."
               features={[
                 "Full 4-Step System Protocol",
@@ -79,7 +79,7 @@ export default function ApplicationClient() {
             <TierCard
               tier="plus"
               title="Limitless Plus"
-              price="$4,997"
+              price="$1,649"
               description="Everything in Limitless Access PLUS bi-weekly group coaching calls and personalized protocol adjustments."
               features={[
                 "Everything in Tier 1",
@@ -95,7 +95,7 @@ export default function ApplicationClient() {
             <TierCard
               tier="premium"
               title="Limitless Premium"
-              price="$8,997"
+              price="$4,999"
               description="Everything in Limitless Plus PLUS weekly 1-on-1 calls and direct messaging access with me personally."
               features={[
                 "Everything in Tier 2",
@@ -110,7 +110,7 @@ export default function ApplicationClient() {
             <TierCard
               tier="elite"
               title="Limitless Elite"
-              price="$14,997"
+              price="$8,000"
               description="Everything in Limitless Premium PLUS in-person strategy session, full lifestyle integration, and lifetime access to all future updates."
               features={[
                 "Everything in Tier 3",
