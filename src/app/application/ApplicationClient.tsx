@@ -2,7 +2,7 @@
 
 import VSLPlayer from "../../components/vsl-player";
 import WhatYouGetSection from "../../components/what-you-get-section";
-import TierCard from "../../components/tier-card";
+import PricingSelector from "../../components/pricing-selector";
 
 export default function ApplicationClient() {
   const scrollToPricing = () => {
@@ -60,69 +60,7 @@ export default function ApplicationClient() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-            <TierCard
-              tier="access"
-              title="Limitless Access"
-              price="$299"
-              description="Complete access to The Limitless Protocol system including all training modules, nutrition protocols, and recovery strategies."
-              features={[
-                "Full 4-Step System Protocol",
-                "Video Training Library",
-                "Nutrition & Supplement Guides",
-                "Mobile App Access",
-                "Email Support",
-              ]}
-              ctaText="Choose Access"
-            />
-
-            <TierCard
-              tier="plus"
-              title="Limitless Plus"
-              price="$1,649"
-              description="Everything in Limitless Access PLUS bi-weekly group coaching calls and personalized protocol adjustments."
-              features={[
-                "Everything in Tier 1",
-                "Bi-Weekly Group Coaching Calls",
-                "Monthly Protocol Reviews",
-                "Private Community Access",
-                "Priority Email Support",
-              ]}
-              ctaText="Choose Plus"
-              popular={true}
-            />
-
-            <TierCard
-              tier="premium"
-              title="Limitless Premium"
-              price="$4,999"
-              description="Everything in Limitless Plus PLUS weekly 1-on-1 calls and direct messaging access with me personally."
-              features={[
-                "Everything in Tier 2",
-                "Weekly 1-on-1 Coaching Calls",
-                "Direct Messaging Access",
-                "Priority Protocol Adjustments",
-                "Personal Accountability",
-              ]}
-              ctaText="Choose Premium"
-            />
-
-            <TierCard
-              tier="elite"
-              title="Limitless Elite"
-              price="$8,000"
-              description="Everything in Limitless Premium PLUS in-person strategy session, full lifestyle integration, and lifetime access to all future updates."
-              features={[
-                "Everything in Tier 3",
-                "In-Person Strategy Session",
-                "Full Lifestyle Integration",
-                "Lifetime Access Guarantee",
-                "First Priority for All Updates",
-              ]}
-              ctaText="Choose Elite"
-              elite={true}
-            />
-          </div>
+          <PricingSelector />
 
           {/* Final CTA */}
           <div className="text-center">
