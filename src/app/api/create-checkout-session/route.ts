@@ -29,23 +29,45 @@ const isRateLimited = (ip: string, limit: number, windowMs: number): boolean => 
 };
 
 const tierPrices = {
-  access: parseInt(process.env.PRICE_ACCESS || "29900"),
-  plus: parseInt(process.env.PRICE_PLUS || "164900"),
-  premium: parseInt(process.env.PRICE_PREMIUM || "499700"),
-  elite: parseInt(process.env.PRICE_ELITE || "800000"),
+  protocol: parseInt(process.env.PRICE_PROTOCOL || "29900"),
+  life: parseInt(process.env.PRICE_LIFE || "164900"),
+  'life-whatsapp': parseInt(process.env.PRICE_WHATSAPP || "499700"),
+  vip: parseInt(process.env.PRICE_VIP || "800000"),
 };
 
 const tierNames = {
-  access: "Limitless Access",
-  plus: "Limitless Plus",
-  premium: "Limitless Premium",
-  elite: "Limitless Elite",
+  protocol: "The Limitless Protocol",
+  life: "Limitless Life",
+  'life-whatsapp': "Limitless Life + WhatsApp",
+  vip: "Limitless VIP",
 };
 
 // Email validation helper
 const isValidEmail = (email: string): boolean => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailRegex.test(email.trim());
+};
+
+// Stripe Price IDs for each tier/payment combination
+const stripePriceIds = {
+  protocol: {
+    full: process.env.STRIPE_PRICE_PROTOCOL_FULL,
+  },
+  life: {
+    full: process.env.STRIPE_PRICE_LIFE_FULL,
+    '2pay': process.env.STRIPE_PRICE_LIFE_2PAY,
+    '3pay': process.env.STRIPE_PRICE_LIFE_3PAY,
+  },
+  'life-whatsapp': {
+    full: process.env.STRIPE_PRICE_WHATSAPP_FULL,
+    '2pay': process.env.STRIPE_PRICE_WHATSAPP_2PAY,
+    '3pay': process.env.STRIPE_PRICE_WHATSAPP_3PAY,
+  },
+  vip: {
+    full: process.env.STRIPE_PRICE_VIP_FULL,
+    '2pay': process.env.STRIPE_PRICE_VIP_2PAY,
+    monthly: process.env.STRIPE_PRICE_VIP_MONTHLY,
+  },
 };
 
 export async function POST(request: NextRequest) {
@@ -62,7 +84,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const { tier, customerEmail, customerName } = await request.json();
+    const { tier, paymentPlan, customerEmail, customerName } = await request.json();
 
     console.log('[CreateCheckoutSession] Creating session:', { tier, customerEmail, customerName });
 
@@ -75,10 +97,28 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Validate tier exists
     if (!tier || !tierPrices[tier as keyof typeof tierPrices]) {
       return NextResponse.json(
         { error: "Invalid tier selected" },
         { status: 400 }
+      );
+    }
+
+    // Validate payment plan exists for this tier
+    const tierPaymentPlans = stripePriceIds[tier as keyof typeof stripePriceIds];
+    if (!tierPaymentPlans || !paymentPlan) {
+      return NextResponse.json(
+        { error: "Invalid payment plan for selected tier" },
+        { status: 400 }
+      );
+    }
+
+    const stripePriceId = tierPaymentPlans[paymentPlan as keyof typeof tierPaymentPlans];
+    if (!stripePriceId) {
+      return NextResponse.json(
+        { error: "Stripe Price ID not configured for this tier/payment combination" },
+        { status: 500 }
       );
     }
 
@@ -109,20 +149,11 @@ export async function POST(request: NextRequest) {
       payment_method_types: ["card"],
       line_items: [
         {
-          price_data: {
-            currency: "usd",
-            product_data: {
-              name: tierNames[tier as keyof typeof tierNames],
-              description: `The Limitless Protocol - ${
-                tierNames[tier as keyof typeof tierNames]
-              }`,
-            },
-            unit_amount: tierPrices[tier as keyof typeof tierPrices],
-          },
+          price: stripePriceId,
           quantity: 1,
         },
       ],
-      mode: "payment",
+      mode: "subscription", // Changed from "payment" to support installments
       success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/application?cancelled=true`,
       billing_address_collection: "required",
@@ -140,7 +171,8 @@ export async function POST(request: NextRequest) {
 
     // Include metadata for n8n workflows
     const metadata: Record<string, string> = {
-      tier: tier.charAt(0).toUpperCase() + tier.slice(1), // Capitalize: Access, Plus, Premium, Elite
+      tier: tier.charAt(0).toUpperCase() + tier.slice(1),
+      paymentPlan: paymentPlan,
       utm_source: utmSource || '',
       utm_campaign: utmCampaign || '',
       utm_medium: utmMedium || '',
