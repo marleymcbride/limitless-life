@@ -67,6 +67,57 @@ export default function PricingSelector() {
   const [selectedPayment, setSelectedPayment] = useState<PaymentPlan>(null);
   const [isLoading, setIsLoading] = useState(false);
 
+  const handleCheckout = async () => {
+    if (!selectedTier || !selectedPayment) return;
+
+    setIsLoading(true);
+
+    try {
+      // Get user email from sessionStorage (set by email popup)
+      const userEmail = typeof window !== 'undefined' ? sessionStorage.getItem('userEmail') : null;
+      const userName = typeof window !== 'undefined' ? sessionStorage.getItem('userName') : null;
+
+      console.log('[PricingSelector] Starting checkout:', { selectedTier, selectedPayment, userEmail });
+
+      // Create checkout session
+      const response = await fetch("/api/create-checkout-session", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          tier: selectedTier,
+          paymentPlan: selectedPayment,
+          customerEmail: userEmail,
+          customerName: userName || undefined,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        console.error('Checkout API error:', data);
+        throw new Error(data.error || 'Failed to create checkout session');
+      }
+
+      const { url } = data;
+
+      if (!url) {
+        throw new Error("No checkout URL returned from checkout API");
+      }
+
+      // Redirect to Stripe checkout
+      console.log('[PricingSelector] Redirecting to Stripe:', url);
+      window.location.href = url;
+    } catch (error) {
+      console.error("Checkout error:", error);
+      const errorMessage = error instanceof Error ? error.message : 'Something went wrong. Please try again.';
+      alert(errorMessage);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <div className="grid md:grid-cols-2 gap-8">
       {/* Left Column: Tier Selection */}
@@ -216,7 +267,7 @@ export default function PricingSelector() {
             {/* Checkout Button */}
             <div className="border-t border-gray-200 pt-6">
               <CTAButton
-                onClick={() => {/* TODO: Task 6 - Add handler */}
+                onClick={handleCheckout}
                 disabled={!selectedPayment || isLoading}
                 className="w-full"
               >
