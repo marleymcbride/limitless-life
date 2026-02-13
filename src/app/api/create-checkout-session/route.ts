@@ -29,9 +29,9 @@ const isRateLimited = (ip: string, limit: number, windowMs: number): boolean => 
 };
 
 const tierPrices = {
-  access: parseInt(process.env.PRICE_ACCESS || "29700"),
-  plus: parseInt(process.env.PRICE_PLUS || "165000"),
-  premium: parseInt(process.env.PRICE_PREMIUM || "544300"),
+  access: parseInt(process.env.PRICE_ACCESS || "29900"),
+  plus: parseInt(process.env.PRICE_PLUS || "164900"),
+  premium: parseInt(process.env.PRICE_PREMIUM || "499700"),
   elite: parseInt(process.env.PRICE_ELITE || "800000"),
 };
 
