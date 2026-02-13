@@ -3,14 +3,14 @@
 import { useState } from "react";
 import { CTAButton } from "./ui/cta-button";
 
-type Tier = 'protocol' | 'life' | 'life-whatsapp' | 'vip' | null;
-type PaymentPlan = 'full' | '2pay' | '3pay' | 'monthly' | null;
+type Tier = 'protocol' | 'life' | 'life-whatsapp' | 'concierge' | null;
+type PaymentPlan = 'weekly' | '3pay' | '2pay' | 'full' | null;
 
 const tierContent = {
   protocol: {
     title: "The Limitless Protocol",
     tagline: "Complete transformation system",
-    basePrice: "$299",
+    basePrice: "$297",
     features: [
       "Full 4-Step System Protocol",
       "Video Training Library",
@@ -23,7 +23,7 @@ const tierContent = {
   life: {
     title: "Limitless Life (4-Month Program)",
     tagline: "Comprehensive coaching + protocol",
-    basePrice: "$1,649",
+    basePrice: "$2,597",
     features: [
       "Everything in Protocol, plus:",
       "Weekly 1-on-1 coaching calls (4 total)",
@@ -31,12 +31,12 @@ const tierContent = {
       "Workout plan customization",
       "Priority email support",
     ],
-    paymentOptions: ['full', '2pay', '3pay'],
+    paymentOptions: ['weekly', '3pay', '2pay', 'full'],
   },
   'life-whatsapp': {
     title: "Limitless Life + WhatsApp Access",
     tagline: "Direct access to your coach",
-    basePrice: "$4,997",
+    basePrice: "$4,397",
     features: [
       "Everything in Limitless Life, plus:",
       "Unlimited WhatsApp messaging",
@@ -44,12 +44,12 @@ const tierContent = {
       "Form check via video",
       "Real-time protocol adjustments",
     ],
-    paymentOptions: ['full', '2pay', '3pay'],
+    paymentOptions: ['weekly', '3pay', '2pay', 'full'],
   },
-  vip: {
-    title: "Limitless VIP (6-Month Program)",
+  concierge: {
+    title: "Limitless Health Concierge (6-Month Program)",
     tagline: "Premium everything, extended support",
-    basePrice: "$8,000",
+    basePrice: "$6,897",
     features: [
       "Everything in Life + WhatsApp, plus:",
       "6 months of coaching (2 extra months)",
@@ -58,7 +58,7 @@ const tierContent = {
       "Custom supplement protocol",
       "VIP community access",
     ],
-    paymentOptions: ['full', '2pay', 'monthly'],
+    paymentOptions: ['weekly', '6pay', '3pay', 'full'],
   },
 } as const;
 
@@ -160,7 +160,7 @@ export default function PricingSelector() {
                       Most Popular
                     </span>
                   )}
-                  {tier === 'vip' && (
+                  {tier === 'concierge' && (
                     <span className="inline-block bg-gradient-to-r from-red-600 to-red-700 text-white text-xs px-3 py-1 rounded-full font-semibold">
                       Limited Spots
                     </span>
@@ -180,17 +180,20 @@ export default function PricingSelector() {
                     className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
                   >
                     <option value="" disabled>Select payment option</option>
-                    {content.paymentOptions.includes('full') && (
-                      <option value="full">Pay in Full - {content.basePrice}</option>
-                    )}
-                    {content.paymentOptions.includes('2pay') && (
-                      <option value="2pay">2 Payments</option>
+                    {content.paymentOptions.includes('weekly') && (
+                      <option value="weekly">Weekly Payments</option>
                     )}
                     {content.paymentOptions.includes('3pay') && (
                       <option value="3pay">3 Payments</option>
                     )}
-                    {content.paymentOptions.includes('monthly') && (
-                      <option value="monthly">Monthly Payments</option>
+                    {content.paymentOptions.includes('2pay') && (
+                      <option value="2pay">2 Payments</option>
+                    )}
+                    {content.paymentOptions.includes('6pay') && (
+                      <option value="6pay">6 Monthly Payments</option>
+                    )}
+                    {content.paymentOptions.includes('full') && (
+                      <option value="full">Pay in Full - {content.basePrice}</option>
                     )}
                   </select>
                 </div>
