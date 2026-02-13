@@ -147,6 +147,9 @@ export async function POST(request: NextRequest) {
 
     const stripe = getStripe();
 
+    // Determine checkout mode: subscription for recurring payments, payment for one-time
+    const checkoutMode = paymentPlan === 'full' ? "payment" : "subscription";
+
     // Build checkout session options
     const checkoutSessionOptions: Stripe.Checkout.SessionCreateParams = {
       payment_method_types: ["card"],
@@ -156,7 +159,7 @@ export async function POST(request: NextRequest) {
           quantity: 1,
         },
       ],
-      mode: "subscription", // Changed from "payment" to support installments
+      mode: checkoutMode, // Use subscription for installments, payment for full
       success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/application?cancelled=true`,
       billing_address_collection: "required",
