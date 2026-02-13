@@ -150,8 +150,86 @@ export default function PricingSelector() {
       </div>
 
       {/* Right Column: Dynamic Details */}
-      <div className="tier-details">
-        {/* TODO: Task 5 - Add details display */}
+      <div className="md:sticky md:top-8">
+        {!selectedTier ? (
+          <div className="bg-gray-50 border-2 border-dashed border-gray-300 rounded-lg p-12 text-center">
+            <svg
+              className="mx-auto h-16 w-16 text-gray-400 mb-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M15 15l-2 5L9 9l11 11-5 5m5 5l2-2m-2-2L9 9l-5 5"
+              />
+            </svg>
+            <h3 className="text-xl font-semibold text-gray-900 mb-2">
+              Select a Program
+            </h3>
+            <p className="text-gray-600">
+              Choose your transformation level from options on left.
+            </p>
+          </div>
+        ) : (
+          <div className="bg-white border-2 border-gray-200 rounded-lg p-8 shadow-lg">
+            {/* Header */}
+            <div className="mb-6">
+              <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                {tierContent[selectedTier].title}
+              </h3>
+              <p className="text-lg text-gray-700 mb-4">
+                {tierContent[selectedTier].tagline}
+              </p>
+              <p className="text-sm text-gray-500">
+                Starting at {tierContent[selectedTier].basePrice}
+              </p>
+            </div>
+
+            {/* Features */}
+            <div className="mb-8">
+              <h4 className="text-lg font-semibold text-gray-900 mb-4">What's Included:</h4>
+              <ul className="space-y-3">
+                {tierContent[selectedTier].features.map((feature, index) => (
+                  <li key={index} className="flex items-start gap-3 text-gray-700">
+                    <svg
+                      className="h-5 w-5 mt-0.5 flex-shrink-0 text-red-600"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M5 13l4 4L19 7"
+                      />
+                    </svg>
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Checkout Button */}
+            <div className="border-t border-gray-200 pt-6">
+              <CTAButton
+                onClick={() => {/* TODO: Task 6 - Add handler */}
+                disabled={!selectedPayment || isLoading}
+                className="w-full"
+              >
+                {isLoading ? "Processing..." : "Continue to Checkout"}
+              </CTAButton>
+              {!selectedPayment && (
+                <p className="text-xs text-gray-500 text-center mt-3">
+                  Please select an installment plan above
+                </p>
+              )}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
