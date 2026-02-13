@@ -119,9 +119,9 @@ export default function PricingSelector() {
   };
 
   return (
-    <div className="grid md:grid-cols-2 gap-8">
+    <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
       {/* Left Column: Tier Selection */}
-      <div className="space-y-3">
+      <div className="order-2 md:order-1 space-y-3">
         <h3 className="text-xl font-bold text-gray-900 mb-4">Choose Your Program</h3>
 
         {(Object.keys(tierContent) as Array<Exclude<Tier, null>>).map((tier) => {
@@ -201,7 +201,7 @@ export default function PricingSelector() {
       </div>
 
       {/* Right Column: Dynamic Details */}
-      <div className="md:sticky md:top-8">
+      <div className="order-1 md:order-2 md:sticky md:top-8">
         {!selectedTier ? (
           <div className="bg-gray-50 border-2 border-dashed border-gray-300 rounded-lg p-12 text-center">
             <svg
