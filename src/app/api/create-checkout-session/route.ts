@@ -29,17 +29,17 @@ const isRateLimited = (ip: string, limit: number, windowMs: number): boolean => 
 };
 
 const tierPrices = {
-  protocol: parseInt(process.env.PRICE_PROTOCOL || "29900"),
-  life: parseInt(process.env.PRICE_LIFE || "164900"),
-  'life-whatsapp': parseInt(process.env.PRICE_WHATSAPP || "499700"),
-  vip: parseInt(process.env.PRICE_VIP || "800000"),
+  protocol: parseInt(process.env.PRICE_LIMITLESSPROTOCOL || "29700"),
+  life: parseInt(process.env.PRICE_LIMITLESSLIFE || "259700"),
+  'life-whatsapp': parseInt(process.env.PRICE_LIMITLESSLIFEWHATSAPP || "439700"),
+  concierge: parseInt(process.env.PRICE_LIMITLESSHEALTHCONCIERGE || "689700"),
 };
 
 const tierNames = {
   protocol: "The Limitless Protocol",
   life: "Limitless Life",
   'life-whatsapp': "Limitless Life + WhatsApp",
-  vip: "Limitless VIP",
+  concierge: "Limitless Health Concierge",
 };
 
 // Email validation helper
@@ -54,19 +54,22 @@ const stripePriceIds = {
     full: process.env.STRIPE_PRICE_PROTOCOL_FULL,
   },
   life: {
-    full: process.env.STRIPE_PRICE_LIFE_FULL,
-    '2pay': process.env.STRIPE_PRICE_LIFE_2PAY,
+    weekly: process.env.STRIPE_PRICE_LIFE_WEEKLY,
     '3pay': process.env.STRIPE_PRICE_LIFE_3PAY,
+    '2pay': process.env.STRIPE_PRICE_LIFE_2PAY,
+    full: process.env.STRIPE_PRICE_LIFE_FULL,
   },
   'life-whatsapp': {
-    full: process.env.STRIPE_PRICE_WHATSAPP_FULL,
-    '2pay': process.env.STRIPE_PRICE_WHATSAPP_2PAY,
+    weekly: process.env.STRIPE_PRICE_WHATSAPP_WEEKLY,
     '3pay': process.env.STRIPE_PRICE_WHATSAPP_3PAY,
+    '2pay': process.env.STRIPE_PRICE_WHATSAPP_2PAY,
+    full: process.env.STRIPE_PRICE_WHATSAPP_FULL,
   },
-  vip: {
-    full: process.env.STRIPE_PRICE_VIP_FULL,
-    '2pay': process.env.STRIPE_PRICE_VIP_2PAY,
-    monthly: process.env.STRIPE_PRICE_VIP_MONTHLY,
+  concierge: {
+    weekly: process.env.STRIPE_PRICE_CONCIERGE_WEEKLY,
+    '6pay': process.env.STRIPE_PRICE_CONCIERGE_6PAY,
+    '3pay': process.env.STRIPE_PRICE_CONCIERGE_3PAY,
+    full: process.env.STRIPE_PRICE_CONCIERGE_FULL,
   },
 };
 
