@@ -1,10 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { CTAButton } from "./ui/cta-button";
 
 type Tier = 'protocol' | 'life' | 'life-whatsapp' | 'concierge' | null;
-type PaymentPlan = 'weekly' | '3pay' | '2pay' | 'full' | null;
+type PaymentPlan = 'weekly' | '3pay' | '2pay' | '6pay' | 'full' | null;
 
 const tierContent = {
   protocol: {
@@ -66,6 +66,21 @@ export default function PricingSelector() {
   const [selectedTier, setSelectedTier] = useState<Tier>(null);
   const [selectedPayment, setSelectedPayment] = useState<PaymentPlan>(null);
   const [isLoading, setIsLoading] = useState(false);
+
+  // Enrollment popup state
+  const [showPopup, setShowPopup] = useState(false);
+
+  // Check for URL hash to determine which tier to pre-select
+  useEffect(() => {
+    const hash = window.location.hash.replace('#', '');
+    if (hash === 'protocol' || hash === 'life' || hash === 'life-whatsapp' || hash === 'concierge') {
+      setSelectedTier(hash as Tier);
+      setShowPopup(true);
+      console.log('[PricingSelector] Pre-selecting tier from URL hash:', hash);
+      // Clear hash after reading to prevent re-triggering on refresh
+      window.history.replaceState(null, '', window.location.pathname);
+    }
+  }, []);
 
   const handleCheckout = async () => {
     if (!selectedTier || !selectedPayment) return;
@@ -172,7 +187,7 @@ export default function PricingSelector() {
               {isSelected && (
                 <div className="mt-3 pl-4">
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Choose Installment Plan
+                    Choose Investment Plan
                   </label>
                   <select
                     value={selectedPayment || ''}
@@ -193,7 +208,7 @@ export default function PricingSelector() {
                       <option value="6pay">6 Monthly Payments</option>
                     )}
                     {content.paymentOptions.includes('full') && (
-                      <option value="full">Pay in Full - {content.basePrice}</option>
+                      <option value="full">One-time incentivized pricing</option>
                     )}
                   </select>
                 </div>
@@ -206,7 +221,7 @@ export default function PricingSelector() {
       {/* Right Column: Dynamic Details */}
       <div className="order-1 md:order-2 md:sticky md:top-8">
         {!selectedTier ? (
-          <div className="bg-gray-50 border-2 border-dashed border-gray-300 rounded-lg p-12 text-center">
+          <div className="bg-gray-50 mt-11 border-2 border-dashed border-gray-300 rounded-lg p-12 text-center">
             <svg
               className="mx-auto h-16 w-16 text-gray-400 mb-4"
               fill="none"
@@ -228,7 +243,7 @@ export default function PricingSelector() {
             </p>
           </div>
         ) : (
-          <div className="bg-white border-2 border-gray-200 rounded-lg p-8 shadow-lg">
+          <div className="bg-white border-2 mt-11 border-gray-200 rounded-lg p-8 shadow-lg">
             {/* Header */}
             <div className="mb-6">
               <h3 className="text-2xl font-bold text-gray-900 mb-2">
@@ -237,9 +252,7 @@ export default function PricingSelector() {
               <p className="text-lg text-gray-700 mb-4">
                 {tierContent[selectedTier].tagline}
               </p>
-              <p className="text-sm text-gray-500">
-                Starting at {tierContent[selectedTier].basePrice}
-              </p>
+
             </div>
 
             {/* Features */}
@@ -268,13 +281,17 @@ export default function PricingSelector() {
             </div>
 
             {/* Checkout Button */}
-            <div className="border-t border-gray-200 pt-6">
+            <div className="border-t  border-gray-200 pt-6">
               <CTAButton
-                onClick={handleCheckout}
+                onClick={() => window.location.href = '/enroll'}
                 disabled={!selectedPayment || isLoading}
-                className="w-full"
+                className="w-full mx-auto text-center rounded-3xl"
               >
-                {isLoading ? "Processing..." : "Continue to Checkout"}
+                {isLoading ? "Processing..." : (
+                  <span className="flex mx-auto items-center gap-2">
+                    Enroll Now
+                  </span>
+                )}
               </CTAButton>
               {!selectedPayment && (
                 <p className="text-xs text-gray-500 text-center mt-3">
@@ -285,6 +302,63 @@ export default function PricingSelector() {
           </div>
         )}
       </div>
+      </div>
+
+      {/* Enrollment Popup Modal */}
+      {showPopup && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm">
+          <div className="bg-white rounded-lg shadow-2xl max-w-2xl w-full mx-4 p-8 relative">
+            {/* Close button */}
+            <button
+              onClick={() => setShowPopup(false)}
+              className="absolute top-4 right-4 text-gray-400 hover:text-gray-600"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18 6L6 18M12" />
+              </svg>
+            </button>
+
+            {/* Header */}
+            <div className="text-center mb-6">
+              <h3 className="text-2xl font-bold text-gray-900 mb-2">Complete Your Enrollment</h3>
+              <p className="text-gray-600">Select your program and payment preference to begin your transformation</p>
+            </div>
+
+            {/* Tier selection */}
+            <div className="space-y-4 mb-6">
+              <h4 className="text-lg font-semibold text-gray-900 mb-3">Selected Program</h4>
+              <p className="text-2xl font-bold text-red-600">{selectedTier ? tierContent[selectedTier].title : 'Select a Program'}</p>
+            </div>
+
+            {/* Payment options */}
+            <div className="space-y-4 mb-6">
+              <h4 className="text-lg font-semibold text-gray-900 mb-3">Payment Plan</h4>
+              <select
+                value={selectedPayment || ''}
+                onChange={(e) => setSelectedPayment(e.target.value as PaymentPlan)}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
+              >
+                <option value="">Select payment option</option>
+                {selectedTier && tierContent[selectedTier]?.paymentOptions.map((option: string) => (
+                  <option key={option} value={option}>{option}</option>
+                ))}
+              </select>
+            </div>
+
+            {/* Continue button */}
+            <CTAButton
+              onClick={() => {
+                setShowPopup(false);
+                // Continue to checkout flow...
+              }}
+              disabled={!selectedPayment}
+              className="w-full mx-auto text-center rounded-3xl"
+            >
+              Continue to Checkout
+            </CTAButton>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
