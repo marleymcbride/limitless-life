@@ -34,16 +34,16 @@ export default function ApplicationClient() {
   return (
     <main className="min-h-screen bg-white">
       {/* Hero Section with Video */}
-      <section className="py-16 px-4">
+      <section className="py-8 md:py-16 px-4 md:px-6">
         <div className="container mx-auto max-w-4xl">
           <div className="text-center mb-12">
             <h1
-              className="text-4xl md:text-5xl font-bold text-black mb-6"
+              className="text-2xl md:text-4xl lg:text-5xl font-bold text-black mb-4 md:mb-6"
               style={{ lineHeight: "1.17" }}
             >
               The Complete Limitless Protocol Offer
             </h1>
-            <p className="text-xl text-gray-700 max-w-3xl mx-auto">
+            <p className="text-base md:text-lg lg:text-xl text-gray-700 max-w-3xl mx-auto">
               Watch a short video now to see how to proceed.
             </p>
           </div>
