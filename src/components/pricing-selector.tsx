@@ -161,12 +161,12 @@ export default function PricingSelector({ showEnroll: externalShowEnroll = false
   return (
     <>
       {internalShowEnroll ? (
-        <div className="fixed inset-0 z-50 px-16 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 overflow-y-auto">
-          <div className="bg-white rounded-lg shadow-2xl max-w-6xl w-full relative my-8">
+        <div className="fixed inset-0 z-50 px-2 md:px-4 lg:px-16 flex items-center justify-center bg-black/80 backdrop-blur-sm p-2 md:p-4 overflow-y-auto">
+          <div className="bg-white rounded-lg shadow-2xl max-w-6xl w-full relative my-4 md:my-8">
             {/* Close button */}
 
             <div className="p-8">
-              <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 lg:gap-12">
                 {/* Left Column: Tier Selection */}
                 <div className="order-2 md:order-1 space-y-3">
                   <h3 className="text-xl font-bold text-gray-900 mb-4">Choose Your Program</h3>
@@ -183,7 +183,7 @@ export default function PricingSelector({ showEnroll: externalShowEnroll = false
                               setSelectedTier(tier);
                             }
                           }}
-                          className={`w-full text-left p-6 rounded-lg border-2 transition-all ${
+                          className={`w-full text-left p-3 md:p-4 lg:p-6 rounded-lg border-2 transition-all ${
                             isSelected
                               ? "border-red-600 bg-red-50 cursor-default"
                               : "border-gray-200 bg-white hover:bg-gray-50 cursor-pointer"
@@ -191,12 +191,12 @@ export default function PricingSelector({ showEnroll: externalShowEnroll = false
                         >
                           <div className="flex justify-between items-center">
                             <div>
-                              <h4 className={`font-bold text-lg mb-1 ${isSelected ? "text-gray-900" : "text-gray-800"}`}>
+                              <h4 className={`font-bold text-base md:text-lg mb-0.5 md:mb-1 ${isSelected ? "text-gray-900" : "text-gray-800"}`}>
                                 {content.title}
                               </h4>
-                              <p className="text-sm text-gray-600">{content.tagline}</p>
+                              <p className="text-xs md:text-sm text-gray-600">{content.tagline}</p>
                             </div>
-                            <div className={`font-semibold ${isSelected ? "text-gray-900" : "text-gray-700"}`}>
+                            <div className={`font-semibold text-sm md:text-base ${isSelected ? "text-gray-900" : "text-gray-700"}`}>
                               {content.basePrice}
                             </div>
                           </div>
@@ -217,14 +217,14 @@ export default function PricingSelector({ showEnroll: externalShowEnroll = false
 
                           {/* Installment Dropdown - shows inside when tier is selected */}
                           {isSelected && (
-                            <div className="mt-4 pt-4 border-t border-gray-200">
-                              <label className="block text-sm font-medium text-gray-700 mb-2">
+                            <div className="mt-2 md:mt-4 pt-2 md:pt-4 border-t border-gray-200">
+                              <label className="block text-xs md:text-sm font-medium text-gray-700 mb-1 md:mb-2">
                                 Choose Investment Plan
                               </label>
                               <select
                                 value={selectedPayment || ''}
                                 onChange={(e) => setSelectedPayment(e.target.value as PaymentPlan)}
-                                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                                className="w-full px-3 md:px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent text-sm md:text-base"
                               >
                                 <option value="" disabled>Select payment option</option>
                                 {content.paymentOptions.includes('weekly') && (
@@ -252,9 +252,9 @@ export default function PricingSelector({ showEnroll: externalShowEnroll = false
                 </div>
 
                 {/* Right Column: Dynamic Details */}
-                <div className="order-1 md:order-2 md:sticky md:top-8">
+                <div className="order-1 md:order-2 md:sticky md:top-4 lg:md:top-8">
                   {!selectedTier ? (
-                    <div className="bg-gray-50 mt-11 border-2 border-dashed border-gray-300 rounded-lg p-12 text-center">
+                    <div className="bg-gray-50 mt-4 md:mt-11 border-2 border-dashed border-gray-300 rounded-lg p-6 md:p-12 text-center">
                       <svg
                         className="mx-auto h-16 w-16 text-gray-400 mb-4"
                         fill="none"
@@ -276,10 +276,10 @@ export default function PricingSelector({ showEnroll: externalShowEnroll = false
                       </p>
                     </div>
                   ) : (
-                    <div className="bg-white border-2 mt-11 border-gray-200 rounded-lg p-8 shadow-lg">
+                    <div className="bg-white border-2 mt-4 md:mt-11 border-gray-200 rounded-lg p-4 md:p-6 lg:p-8 shadow-lg">
                       {/* Header */}
                       <div className="mb-6">
-                        <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                        <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-1 md:mb-2">
                           {tierContent[selectedTier].title}
                         </h3>
                         <p className="text-lg text-gray-700 mb-4">
@@ -314,11 +314,11 @@ export default function PricingSelector({ showEnroll: externalShowEnroll = false
                       </div>
 
                       {/* Checkout Button */}
-                      <div className="border-t  border-gray-200 pt-6">
+                      <div className="border-t  border-gray-200 pt-3 md:pt-6">
                         <CTAButton
                           onClick={handleCheckout}
                           disabled={!selectedPayment || isLoading}
-                          className="w-full flex items-center justify-center text-center rounded-3xl"
+                          className="w-full flex items-center justify-center text-center rounded-2xl md:rounded-3xl py-2 md:py-3 px-3 md:px-4 text-sm md:text-base"
                         >
                           {isLoading ? "Processing..." : (
                             <span className="flex mx-auto items-center gap-2">
@@ -357,7 +357,7 @@ export default function PricingSelector({ showEnroll: externalShowEnroll = false
                         setSelectedTier(tier);
                       }
                     }}
-                    className={`w-full text-left p-6 rounded-lg border-2 transition-all ${
+                    className={`w-full text-left p-3 md:p-4 lg:p-6 rounded-lg border-2 transition-all ${
                       isSelected
                         ? "border-red-600 bg-red-50 cursor-default"
                         : "border-gray-200 bg-white hover:bg-gray-50 cursor-pointer"
@@ -428,7 +428,7 @@ export default function PricingSelector({ showEnroll: externalShowEnroll = false
           {/* Right Column: Dynamic Details */}
           <div className="order-1 md:order-2 md:sticky md:top-8">
             {!selectedTier ? (
-              <div className="bg-gray-50 mt-11 border-2 border-dashed border-gray-300 rounded-lg p-12 text-center">
+              <div className="bg-gray-50 mt-4 md:mt-11 border-2 border-dashed border-gray-300 rounded-lg p-6 md:p-12 text-center">
                 <svg
                   className="mx-auto h-16 w-16 text-gray-400 mb-4"
                   fill="none"
@@ -450,10 +450,10 @@ export default function PricingSelector({ showEnroll: externalShowEnroll = false
                 </p>
               </div>
             ) : (
-              <div className="bg-white border-2 mt-11 border-gray-200 rounded-lg p-8 shadow-lg">
+              <div className="bg-white border-2 mt-4 md:mt-11 border-gray-200 rounded-lg p-4 md:p-6 lg:p-8 shadow-lg">
                 {/* Header */}
                 <div className="mb-6">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                  <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-1 md:mb-2">
                     {tierContent[selectedTier].title}
                   </h3>
                   <p className="text-lg text-gray-700 mb-4">
@@ -488,11 +488,11 @@ export default function PricingSelector({ showEnroll: externalShowEnroll = false
                 </div>
 
                 {/* Checkout Button */}
-                <div className="border-t  border-gray-200 pt-6">
+                <div className="border-t  border-gray-200 pt-3 md:pt-6">
                   <CTAButton
                     onClick={handleCheckout}
                     disabled={!selectedPayment || isLoading}
-                    className="w-full mx-auto text-center rounded-3xl"
+                    className="w-full mx-auto text-center rounded-2xl md:rounded-3xl py-2 md:py-3 px-3 md:px-4 text-sm md:text-base"
                   >
                     {isLoading ? "Processing..." : (
                       <span className="flex mx-auto items-center gap-2">
