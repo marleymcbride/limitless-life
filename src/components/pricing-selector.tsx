@@ -154,6 +154,18 @@ export default function PricingSelector({ showEnroll: externalShowEnroll = false
     }
   }, [selectedTier, carouselApi]);
 
+  // Auto-select payment option if tier has only one
+  useEffect(() => {
+    if (selectedTier && selectedTier !== 'ghost-tier') {
+      const options = tierContent[selectedTier].paymentOptions;
+      if (options.length === 1) {
+        setSelectedPayment(options[0]);
+      } else {
+        setSelectedPayment(null);
+      }
+    }
+  }, [selectedTier]);
+
   useEffect(() => {
     if (internalShowEnroll) {
       document.body.style.overflow = 'hidden';
@@ -200,13 +212,176 @@ export default function PricingSelector({ showEnroll: externalShowEnroll = false
       {internalShowEnroll ? (
         <div className="fixed inset-0 z-50 px-2 md:px-4 lg:px-16 flex items-center justify-center bg-black/80 backdrop-blur-sm p-2 md:p-4 overflow-y-auto overflow-x-hidden">
           <div className="bg-white rounded-lg shadow-2xl max-w-6xl w-full relative my-4 md:my-8 flex flex-col">
-            <button onClick={onClose} className="absolute top-4 right-4 z-10 p-2">✕</button>
-
-            <div className="overflow-y-scroll overflow-x-hidden mb-6 -mt-6 h-full rounded-md scrollbar-hide" style={{ maxHeight: '85vh' }}>
+            <div className="overflow-y-scroll overflow-x-hidden md:overflow-y-hidden mb-6 -mt-6 h-full rounded-md scrollbar-hide" style={{ maxHeight: '85vh' }}>
               
+              {/* Desktop Layout - Original Two-Column Grid */}
+              <div className="hidden md:block px-4 md:px-6 lg:px-12 py-0 my-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 lg:gap-12">
+                  {/* Left Column: Tier Selection */}
+                  <div className="order-2 md:order-1 space-y-2 md:space-y-3">
+                    <div className="h-8"></div>
+
+                    {(Object.keys(tierContent).filter(t => t !== 'ghost-tier') as Array<Exclude<Tier, null>>).map((tier) => {
+                      const content = tierContent[tier];
+                      const isSelected = selectedTier === tier;
+
+                      return (
+                        <div key={tier}>
+                          <div
+                            onClick={() => {
+                              if (!isSelected) {
+                                setSelectedTier(tier);
+                              }
+                            }}
+                            className={`w-full text-left p-3 md:p-4 lg:p-6 rounded-lg border-2 transition-all ${
+                              isSelected
+                                ? "border-red-600 bg-red-50 cursor-default"
+                                : "border-gray-200 bg-white hover:bg-gray-50 cursor-pointer"
+                            }`}
+                          >
+                            <div className="flex justify-between items-center">
+                              <div>
+                                <h4 className={`font-bold text-base md:text-lg mb-0.5 md:mb-1 ${isSelected ? "text-gray-900" : "text-gray-800"}`}>
+                                  {content.title}
+                                </h4>
+                                <p className="text-xs md:text-sm text-gray-600">{content.tagline}</p>
+                              </div>
+                              <div className={`font-semibold text-sm md:text-base ${isSelected ? "text-gray-900" : "text-gray-700"}`}>
+                                {content.basePrice}
+                              </div>
+                            </div>
+
+                            {/* Badges */}
+                            <div className="mt-3">
+                              {tier === 'life' && (
+                                <span className="inline-block bg-red-600 text-white text-xs px-3 py-1 rounded-full font-semibold">
+                                  Most Popular
+                                </span>
+                              )}
+                              {tier === 'concierge' && (
+                                <span className="inline-block bg-gradient-to-r from-red-600 to-red-700 text-white text-xs px-3 py-1 rounded-full font-semibold">
+                                  Limited Spots
+                                </span>
+                              )}
+                            </div>
+
+                            {/* Installment Dropdown - shows inside when tier is selected */}
+                            {isSelected && (
+                              <div className="mt-2 md:mt-4 pt-2 md:pt-4 border-t border-gray-200">
+                                <label className="block text-xs md:text-sm font-medium text-gray-700 mb-1 md:mb-2">
+                                  Choose Investment Option
+                                </label>
+                                <select
+                                  value={selectedPayment || ''}
+                                  onChange={(e) => setSelectedPayment(e.target.value as PaymentPlan)}
+                                  className="w-full px-3 md:px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent text-sm md:text-base"
+                                >
+                                  <option value="" disabled>Select investment option</option>
+                                  {content.paymentOptions.includes('weekly') && (
+                                    <option value="weekly">Weekly</option>
+                                  )}
+                                  {content.paymentOptions.includes('3pay') && (
+                                    <option value="3pay">3 Installment split</option>
+                                  )}
+                                  {content.paymentOptions.includes('2pay') && (
+                                    <option value="2pay">3 Installment split</option>
+                                  )}
+                                  {content.paymentOptions.includes('6pay') && (
+                                    <option value="6pay">Monthly</option>
+                                  )}
+                                  {content.paymentOptions.includes('full') && (
+                                    <option value="full">One time investment</option>
+                                  )}
+                                </select>
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+
+                  {/* Right Column: Dynamic Details */}
+                  <div className="order-1 md:order-2 md:sticky md:top-4 lg:md:top-8">
+                    {!selectedTier ? (
+                      <div className="bg-gray-50 mt-4 md:mt-11 border-2 border-dashed border-gray-300 rounded-lg p-6 md:p-12 text-center">
+                        <svg
+                          className="mx-auto h-16 w-16 text-gray-400 mb-4"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M15 15l-2 5L9 9l11 11-5 5m5 5l2-2m-2-2L9 9l-5 5"
+                          />
+                        </svg>
+                        <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                          Select your tier
+                        </h3>
+                        <p className="text-gray-600">
+                          Choose your tier level from options on left.
+                        </p>
+                      </div>
+                    ) : (
+                      <div className="bg-white border-2 mt-4 md:mt-11 border-gray-200 rounded-lg p-4 md:p-6 lg:p-8 shadow-lg">
+                        {/* Header */}
+                        <div className="mb-6">
+                          <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-1 md:mb-2">
+                            {tierContent[selectedTier].title}
+                          </h3>
+                          <p className="text-lg text-gray-700 mb-4">
+                            {tierContent[selectedTier].tagline}
+                          </p>
+                        </div>
+
+                        {/* Features */}
+                        <div className="mb-8">
+                          <h4 className="text-lg font-semibold text-gray-900 mb-4">What's Included:</h4>
+                          <ul className="space-y-3">
+                            {tierContent[selectedTier].features.map((feature, index) => (
+                              <li key={index} className="flex items-start gap-3 text-gray-700">
+                                <svg
+                                  className="h-5 w-5 mt-0.5 flex-shrink-0 text-red-600"
+                                  fill="none"
+                                  stroke="currentColor"
+                                  viewBox="0 0 24 24"
+                                >
+                                  <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth={2}
+                                    d="M5 13l4 4L19 7"
+                                  />
+                                </svg>
+                                <span>{feature}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+
+                        {/* Checkout Button */}
+                        <div className="border-t border-gray-200 pt-3 md:pt-6">
+                          <CTAButton
+                            onClick={handleCheckout}
+                            disabled={!selectedPayment || isLoading}
+                            className="w-full mx-auto text-center rounded-2xl md:rounded-3xl py-2 md:py-3 px-3 md:px-4 text-sm md:text-base"
+                          >
+                            {isLoading ? "Redirecting to Stripe..." : "Confirm Enrollment"}
+                          </CTAButton>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+
               {/* Mobile Carousel */}
-              <div className="block md:hidden rounded-md bg-white px-2 pt-8 pb-4" style={{ transform: 'scale(1.3)', transformOrigin: 'top center' }}>
-                <Carousel setApi={setCarouselApi} opts={{ align: 'center', containScroll: true }} className="w-full scrollbar-hide">
+              <div className="block md:hidden rounded-md bg-white px-2 pt-4 pb-4" style={{ transform: 'scale(1.3)', transformOrigin: 'top center' }}>
+                <div className="text-sm font-bold text-center w-fit mx-auto px-4 py-1 text-white mt-2 rounded-full bg-gray-900/50 border border-gray-300">TIER {currentSlide + 1}</div>
+                <Carousel setApi={setCarouselApi} opts={{ align: 'center', containScroll: true }} className="w-full -mt-4 scrollbar-hide">
                   <CarouselContent className="px-2">
                     {(Object.keys(tierContent) as Array<Exclude<Tier, null>>).map((tier) => {
                       const content = tierContent[tier];
@@ -223,9 +398,9 @@ export default function PricingSelector({ showEnroll: externalShowEnroll = false
                         <CarouselItem key={tier} className="basis-[70%] ml-12 p-2 -mx-10">
                           <div
                             onClick={() => { setSelectedTier(tier); setSelectedPayment(null); }}
-                            className={`w-full shadow-sm text-left p-6 rounded-lg border-2 transition-all ${isSelected ? "border-red-600 bg-red-50" : "border-gray-200 bg-white"}`}
+                            className={`w-full shadow-sm text-left p-6 rounded-lg border-2 transition-all ${isSelected ? "border-gray-500 bg-red-200/20 text-white" : "border-gray-200 bg-white "}`}
                           >
-                            <h4 className="font-bold text-center mx-3 text-lg py-4">{content.displayName}</h4>
+                            <div className="font-bold text-slate-600 text-center -mx-2 text-md mx-3 text-lg py-4 uppercase">{content.displayName}</div>
                           </div>
                         </CarouselItem>
                       );
@@ -244,7 +419,7 @@ export default function PricingSelector({ showEnroll: externalShowEnroll = false
               </div>
 
               {/* Enrollment Content */}
-              <div className="bg-white px-6 py-4 md:p-12 scrollbar-hide">
+              <div className="bg-white px-6 py-4 md:p-12 scrollbar-hide block md:hidden">
                 {!selectedTier ? (
                   <div className="text-center py-12">
                     <h3 className="text-xl font-semibold">Select a Program Above</h3>
@@ -266,29 +441,29 @@ export default function PricingSelector({ showEnroll: externalShowEnroll = false
                         ))}
                       </ul>
                     </div>
-                    <div className="bg-gray-50 p-6 rounded-2xl border border-gray-100">
-                      <label className="block text-sm font-bold uppercase mb-4 text-gray-500">Choose Your Payment Plan</label>
+                    <div className="bg-gray-50 -mt-8 p-6 rounded-2xl border border-gray-100">
+                      <label className="block text-sm font-bold uppercase mb-4 text-gray-500">Choose investment option</label>
                       <div className="mb-8">
                         <select
                           value={selectedPayment || ''}
                           onChange={(e) => setSelectedPayment(e.target.value as PaymentPlan)}
                           className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
                         >
-                          <option value="" disabled>Select payment option</option>
+                          <option value="" disabled>Select investment option</option>
                           {tierContent[selectedTier].paymentOptions.includes('weekly') && (
-                            <option value="weekly">Weekly Payments</option>
+                            <option value="weekly">Weekly</option>
                           )}
                           {tierContent[selectedTier].paymentOptions.includes('3pay') && (
-                            <option value="3pay">3 Payments</option>
+                            <option value="3pay">3 installment split</option>
                           )}
                           {tierContent[selectedTier].paymentOptions.includes('2pay') && (
-                            <option value="2pay">2 Payments</option>
+                            <option value="2pay">2 installment split</option>
                           )}
                           {tierContent[selectedTier].paymentOptions.includes('6pay') && (
-                            <option value="6pay">6 Monthly Payments</option>
+                            <option value="6pay">Monthly</option>
                           )}
                           {tierContent[selectedTier].paymentOptions.includes('full') && (
-                            <option value="full">One-time incentivized pricing</option>
+                            <option value="full">One time investment</option>
                           )}
                         </select>
                       </div>
@@ -305,7 +480,6 @@ export default function PricingSelector({ showEnroll: externalShowEnroll = false
       ) : (
         <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
           <div className="space-y-3">
-            <h3 className="text-xl font-bold text-gray-900 mb-4">Choose Your Program</h3>
             {(Object.keys(tierContent) as Array<Exclude<Tier, null>>).map((tier) => {
               const content = tierContent[tier];
               const isSelected = selectedTier === tier;
