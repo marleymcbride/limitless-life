@@ -1,16 +1,35 @@
 "use client";
 
+import { useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import VSLPlayer from "../../components/vsl-player";
 import WhatYouGetSection from "../../components/what-you-get-section";
 import PricingSelector from "../../components/pricing-selector";
 
 export default function ApplicationClient() {
-  const scrollToPricing = () => {
-    const element = document.getElementById("pricing-section");
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+  const [showPricingEnroll, setShowPricingEnroll] = useState(false);
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    // Check if enroll flag is in URL
+    if (searchParams.get("enroll") === "true") {
+      setShowPricingEnroll(true);
     }
-  };
+  }, [searchParams]);
+
+  // Restore scroll position after enroll popup closes
+  useEffect(() => {
+    if (!showPricingEnroll) {
+      const savedPosition = sessionStorage.getItem('scrollPosition');
+      if (savedPosition) {
+        window.scrollTo(0, parseInt(savedPosition));
+        sessionStorage.removeItem('scrollPosition');
+      }
+    }
+  }, [showPricingEnroll]);
+
+  // Get tier from URL to pre-select in PricingSelector
+  const tierParam = searchParams.get("tier");
 
   return (
     <main className="min-h-screen bg-white">
@@ -25,7 +44,7 @@ export default function ApplicationClient() {
               The Complete Limitless Protocol Offer
             </h1>
             <p className="text-xl text-gray-700 max-w-3xl mx-auto">
-              Watch the short video now to see how to proceed.
+              Watch a short video now to see how to proceed.
             </p>
           </div>
 
@@ -51,7 +70,15 @@ export default function ApplicationClient() {
         <div className="mb-16"></div>
       </section>
 
-    </main>
+      {/* Pricing Selector Popup - only render when enroll is active */}
+      {showPricingEnroll && (
+        <PricingSelector
+          showEnroll={showPricingEnroll}
+          onClose={() => setShowPricingEnroll(false)}
+          initialTier={tierParam}
+        />
+      )}
 
+    </main>
   );
 }
