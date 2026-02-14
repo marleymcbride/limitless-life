@@ -6,6 +6,22 @@ import { n8nEvents, alertHotLead } from './n8nWebhooks';
 
 export type LeadTemperature = 'cold' | 'warm' | 'hot';
 
+// Milestone scores for Phase 2 (60-100pts)
+const MILESTONE_SCORES = {
+  TIER_SELECTED: 70,
+  PAYMENT_PLAN_SELECTED: 85,
+  CHECKOUT_INITIATED: 95,
+  PAYMENT_COMPLETE: 100,
+} as const;
+
+/**
+ * Determine if user is in Phase 1 (Engagement) or Phase 2 (Purchase Intent)
+ */
+function getScorePhase(currentScore: number): 'engagement' | 'purchase_intent' {
+  if (currentScore >= 60) return 'purchase_intent';
+  return 'engagement';
+}
+
 export interface LeadScore {
   score: number;
   temperature: LeadTemperature;
@@ -28,29 +44,54 @@ export async function calculateLeadScore(userId: string): Promise<LeadScore> {
 
   // Calculate base score from events
   const breakdown = new Map<string, { count: number; points: number }>();
+  let totalScore = 0;
+  let currentPhase: 'engagement' | 'purchase_intent' = 'engagement';
 
   for (const event of userEvents) {
-    const basePoints = LEAD_SCORING_RULES[event.eventType] || 0;
-    let points = basePoints;
+    const eventType = event.eventType;
 
-    // Special handling for vsl_milestone - calculate based on percentage
-    if (event.eventType === 'vsl_milestone' && event.eventData) {
-      const percent = event.eventData.percent || 0;
-      points = Math.floor((percent / 100) * 60); // Max 60 points for VSL completion
+    // Determine phase based on current total
+    currentPhase = getScorePhase(totalScore);
+
+    // Phase 1: Add points incrementally
+    if (currentPhase === 'engagement') {
+      const basePoints = LEAD_SCORING_RULES[eventType] || 0;
+      let points = basePoints;
+
+      // Special handling for vsl_milestone
+      if (eventType === 'vsl_milestone' && event.eventData) {
+        const percent = event.eventData.percent || 0;
+        points = Math.floor((percent / 100) * 60);
+      }
+
+      totalScore += points;
+
+      const current = breakdown.get(eventType) || { count: 0, points: 0 };
+      breakdown.set(eventType, {
+        count: current.count + 1,
+        points: current.points + points,
+      });
     }
+    // Phase 2: Milestone overrides
+    else {
+      // Check if this event triggers a milestone
+      if (['tier_select_protocol', 'tier_select_life', 'tier_select_whatsapp', 'tier_select_concierge'].includes(eventType)) {
+        totalScore = MILESTONE_SCORES.TIER_SELECTED;
+      } else if (eventType === 'payment_plan_select') {
+        totalScore = MILESTONE_SCORES.PAYMENT_PLAN_SELECTED;
+      } else if (eventType === 'stripe_checkout_initiated') {
+        totalScore = MILESTONE_SCORES.CHECKOUT_INITIATED;
+      } else if (eventType === 'payment_complete') {
+        totalScore = MILESTONE_SCORES.PAYMENT_COMPLETE;
+      }
 
-    const current = breakdown.get(event.eventType) || { count: 0, points: 0 };
-    breakdown.set(event.eventType, {
-      count: current.count + 1,
-      points: current.points + points,
-    });
+      const current = breakdown.get(eventType) || { count: 0, points: 0 };
+      breakdown.set(eventType, {
+        count: current.count + 1,
+        points: MILESTONE_SCORES[eventType as keyof typeof MILESTONE_SCORES] || 0,
+      });
+    }
   }
-
-  // Sum all points
-  const totalScore = Array.from(breakdown.values()).reduce(
-    (sum, entry) => sum + entry.points,
-    0
-  );
 
   // Determine temperature
   const temperature = getTemperature(totalScore);
