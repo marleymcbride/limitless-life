@@ -41,4 +41,13 @@ export const LEAD_SCORING_RULES: Record<EventType, number> = {
   payment_complete: 100,
   scroll_depth: 0, // Scroll depth tracked separately
   tier_click: 15, // High intent: user clicked a tier button
+
+  // NEW: Tier selection scoring
+  tier_view: 15,                 // User views tier options
+  tier_select_protocol: 10,        // Protocol tier selection
+  tier_select_life: 15,           // Life tier selection
+  tier_select_whatsapp: 20,       // WhatsApp tier selection
+  tier_select_concierge: 25,      // Concierge tier selection
+  payment_plan_select: 10,         // Payment plan selection
+  stripe_checkout_initiated: 20,   // Stripe checkout button click
 };
