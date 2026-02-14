@@ -47,63 +47,11 @@ export default function ApplicationClient() {
       {/* What You Get Section */}
       <WhatYouGetSection />
 
-      {/* Pricing Tiers Section */}
-      <section id="pricing-section" className="py-12 md:py-20 px-4 bg-white">
-        <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-black mb-6">
-              Choose Your Transformation Level
-            </h2>
-            <p className="text-lg text-gray-700">
-              Select the tier that best fits your goals and timeline for
-              transformation.
-            </p>
-          </div>
-
-          <PricingSelector />
-
-          {/* Final CTA */}
-          <div className="text-center">
-            <div className="bg-gray-100 rounded-lg p-8 mb-8">
-              <h3 className="text-2xl font-bold text-black mb-4">
-                Ready to Transform Your Life?
-              </h3>
-              <p className="text-lg text-gray-700 mb-6">
-                Join high-performers who have already built top 1% physiques,
-                restored their energy, and transformed their lives.
-              </p>
-              <div className="flex items-center justify-center gap-4 text-sm text-gray-600">
-                <span>✓ 90-day money-back guarantee</span>
-                <span>•</span>
-                <span>✓ Secure checkout</span>
-                <span>•</span>
-                <span>✓ Instant access</span>
-              </div>
-            </div>
-          </div>
-        </div>
+      <section>
+        <div className="mb-16"></div>
       </section>
 
-      {/* Final CTA Section */}
-      <section className="py-16 px-4 bg-black">
-        <div className="container mx-auto max-w-4xl text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-            Your Transformation Starts Now
-          </h2>
-          <p className="text-xl text-gray-300 mb-8">
-            The choice is yours: continue feeling like you are today, or take
-            the first step toward limitless energy and performance.
-          </p>
-          <div className="text-center">
-            <button
-              className="bg-[#B90021] hover:bg-[#940909] text-white font-bold py-6 px-12 text-xl rounded-sm transition-none duration-0 focus:outline-none"
-              onClick={scrollToPricing}
-            >
-              Choose Your Transformation Level
-            </button>
-          </div>
-        </div>
-      </section>
     </main>
+
   );
 }
