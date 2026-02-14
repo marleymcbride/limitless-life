@@ -9,7 +9,7 @@ import {
   CarouselItem,
 } from "./ui/carousel";
 
-type Tier = 'protocol' | 'life' | 'life-whatsapp' | 'concierge' | null;
+type Tier = 'protocol' | 'life' | 'life-whatsapp' | 'concierge' | 'ghost-tier' | null;
 type PaymentPlan = 'weekly' | '3pay' | '2pay' | 'full' | null;
 
 const tierContent = {
@@ -43,7 +43,7 @@ const tierContent = {
   },
   'life-whatsapp': {
     title: "Limitless Life + WhatsApp Access",
-    displayName: "Limitless Life + WhatsAp Access",
+    displayName: "Limitless Life + WhatsApp Access",
     tagline: "Direct access to your coach",
     basePrice: "$4,397",
     features: [
@@ -69,6 +69,14 @@ const tierContent = {
       "VIP community access",
     ],
     paymentOptions: ['weekly', '6pay', 'full'],
+  },
+  'ghost-tier': {
+    title: "",
+    displayName: "",
+    tagline: "",
+    basePrice: "",
+    features: [],
+    paymentOptions: [],
   },
 } as const;
 
@@ -101,9 +109,31 @@ export default function PricingSelector({ showEnroll: externalShowEnroll = false
   useEffect(() => {
     if (!carouselApi) return;
     setCurrentSlide(carouselApi.selectedScrollSnap());
-    carouselApi.on("select", () => {
-      setCurrentSlide(carouselApi.selectedScrollSnap());
-    });
+
+    const onSelect = () => {
+      const snap = carouselApi.selectedScrollSnap();
+      // Limit scrolling to max index 3 (tier 4 - Concierge)
+      if (snap > 3) {
+        carouselApi.scrollTo(3);
+        setCurrentSlide(3);
+      } else {
+        setCurrentSlide(snap);
+      }
+    };
+
+    const onReach = (index: number) => {
+      // Block scrolling past index 3
+      if (index > 3) {
+        carouselApi.scrollTo(3);
+      }
+    };
+
+    carouselApi.on("select", onSelect);
+    carouselApi.on("reach", onReach);
+    return () => {
+      carouselApi.off("select", onSelect);
+      carouselApi.off("reach", onReach);
+    };
   }, [carouselApi]);
 
   // Scroll carousel to last item on mount so final tier centers
@@ -113,6 +143,16 @@ export default function PricingSelector({ showEnroll: externalShowEnroll = false
       carouselApi.scrollTo(3);
     }
   }, [carouselApi]);
+
+  // Scroll to selected tier when clicked
+  useEffect(() => {
+    if (carouselApi && selectedTier && selectedTier !== 'ghost-tier') {
+      const tierIndex = Object.keys(tierContent).findIndex(t => t === selectedTier);
+      if (tierIndex >= 0) {
+        carouselApi.scrollTo(tierIndex);
+      }
+    }
+  }, [selectedTier, carouselApi]);
 
   useEffect(() => {
     if (internalShowEnroll) {
@@ -158,26 +198,34 @@ export default function PricingSelector({ showEnroll: externalShowEnroll = false
   return (
     <div ref={carouselRef}>
       {internalShowEnroll ? (
-        <div className="fixed inset-0 z-50 px-2 md:px-4 lg:px-16 flex items-center justify-center bg-black/80 backdrop-blur-sm p-2 md:p-4 overflow-y-auto">
+        <div className="fixed inset-0 z-50 px-2 md:px-4 lg:px-16 flex items-center justify-center bg-black/80 backdrop-blur-sm p-2 md:p-4 overflow-y-auto overflow-x-hidden">
           <div className="bg-white rounded-lg shadow-2xl max-w-6xl w-full relative my-4 md:my-8 flex flex-col">
             <button onClick={onClose} className="absolute top-4 right-4 z-10 p-2">✕</button>
 
-            <div className="overflow-y-scroll mb-6 -mt-6 h-full rounded-md scrollbar-hide" style={{ maxHeight: '85vh' }}>
+            <div className="overflow-y-scroll overflow-x-hidden mb-6 -mt-6 h-full rounded-md scrollbar-hide" style={{ maxHeight: '85vh' }}>
               
               {/* Mobile Carousel */}
-              <div className="block md:hidden rounded-md bg-white px-2 pt-8 pb-4">
-                <Carousel setApi={setCarouselApi} opts={{ align: 'start' }} className="w-full scrollbar-hide">
-                  <CarouselContent>
+              <div className="block md:hidden rounded-md bg-white px-2 pt-8 pb-4" style={{ transform: 'scale(1.3)', transformOrigin: 'top center' }}>
+                <Carousel setApi={setCarouselApi} opts={{ align: 'center', containScroll: true }} className="w-full scrollbar-hide">
+                  <CarouselContent className="px-2">
                     {(Object.keys(tierContent) as Array<Exclude<Tier, null>>).map((tier) => {
                       const content = tierContent[tier];
                       const isSelected = selectedTier === tier;
+                      const isGhost = tier === 'ghost-tier';
+
+                      if (isGhost) {
+                        return (
+                          <CarouselItem key={tier} className="basis-[70%] ml-12 p-2" />
+                        );
+                      }
+
                       return (
                         <CarouselItem key={tier} className="basis-[70%] ml-12 p-2 -mx-10">
                           <div
                             onClick={() => { setSelectedTier(tier); setSelectedPayment(null); }}
                             className={`w-full shadow-sm text-left p-6 rounded-lg border-2 transition-all ${isSelected ? "border-red-600 bg-red-50" : "border-gray-200 bg-white"}`}
                           >
-                            <h4 className="font-bold text-center text-lg py-4">{content.displayName}</h4>
+                            <h4 className="font-bold text-center mx-3 text-lg py-4">{content.displayName}</h4>
                           </div>
                         </CarouselItem>
                       );
@@ -185,7 +233,7 @@ export default function PricingSelector({ showEnroll: externalShowEnroll = false
                   </CarouselContent>
                 </Carousel>
                 <div className="flex justify-center gap-2 mt-4">
-                  {(Object.keys(tierContent) as Array<Exclude<Tier, null>>).map((_, index) => (
+                  {(Object.keys(tierContent).filter(t => t !== 'ghost-tier') as Array<Exclude<Tier, null>>).map((_, index) => (
                     <button
                       key={index}
                       onClick={() => carouselApi?.scrollTo(index)}
@@ -204,9 +252,9 @@ export default function PricingSelector({ showEnroll: externalShowEnroll = false
                 ) : (
                   <div className="grid md:grid-cols-2 gap-12">
                     <div>
-                      <h3 className="text-3xl font-bold mb-2">{tierContent[selectedTier].title}</h3>
+                      {/* <h3 className="text-3xl font-bold text-center mb-2">{tierContent[selectedTier].title}</h3> */}
                       <div className="text-lg text-gray-600 mb-8">{tierContent[selectedTier].tagline}</div>
-                      <h4 className="font-bold uppercase tracking-wider text-sm text-gray-400 mb-4">What's Included</h4>
+                      <h4 className="font-bold uppercase tracking-wider text-sm text-gray-400 mb-4">What&apos;s Included</h4>
                       <ul className="space-y-4">
                         {tierContent[selectedTier].features.map((feature, index) => (
                           <li key={index} className="flex items-start gap-3 text-gray-700">
@@ -220,20 +268,29 @@ export default function PricingSelector({ showEnroll: externalShowEnroll = false
                     </div>
                     <div className="bg-gray-50 p-6 rounded-2xl border border-gray-100">
                       <label className="block text-sm font-bold uppercase mb-4 text-gray-500">Choose Your Payment Plan</label>
-                      <div className="space-y-3 mb-8">
-                        {tierContent[selectedTier].paymentOptions.map((opt) => (
-                          <label key={opt} className={`flex items-center p-4 rounded-xl border-2 cursor-pointer transition-all ${selectedPayment === opt ? "border-red-600 bg-white" : "border-gray-200 bg-transparent hover:border-gray-300"}`}>
-                            <input
-                              type="radio"
-                              name="payment"
-                              value={opt}
-                              checked={selectedPayment === opt}
-                              onChange={() => setSelectedPayment(opt)}
-                              className="hidden"
-                            />
-                            <span className="font-bold">{opt.toUpperCase()}</span>
-                          </label>
-                        ))}
+                      <div className="mb-8">
+                        <select
+                          value={selectedPayment || ''}
+                          onChange={(e) => setSelectedPayment(e.target.value as PaymentPlan)}
+                          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                        >
+                          <option value="" disabled>Select payment option</option>
+                          {tierContent[selectedTier].paymentOptions.includes('weekly') && (
+                            <option value="weekly">Weekly Payments</option>
+                          )}
+                          {tierContent[selectedTier].paymentOptions.includes('3pay') && (
+                            <option value="3pay">3 Payments</option>
+                          )}
+                          {tierContent[selectedTier].paymentOptions.includes('2pay') && (
+                            <option value="2pay">2 Payments</option>
+                          )}
+                          {tierContent[selectedTier].paymentOptions.includes('6pay') && (
+                            <option value="6pay">6 Monthly Payments</option>
+                          )}
+                          {tierContent[selectedTier].paymentOptions.includes('full') && (
+                            <option value="full">One-time incentivized pricing</option>
+                          )}
+                        </select>
                       </div>
                       <CTAButton onClick={handleCheckout} disabled={!selectedPayment || isLoading} className="w-full py-4 text-lg">
                         {isLoading ? "Redirecting to Stripe..." : "Confirm Enrollment"}

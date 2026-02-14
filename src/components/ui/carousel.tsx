@@ -1,5 +1,5 @@
 "use client"
-import { useRef } from "react"
+
 import * as React from "react"
 import useEmblaCarousel from "embla-carousel-react"
 
@@ -11,6 +11,7 @@ type CarouselProps = {
   opts?: {
     align?: 'start' | 'center' | 'end'
     dragFree?: boolean
+    containScroll?: boolean
   }
   children: React.ReactNode
 }
@@ -23,31 +24,29 @@ const CarouselContext = React.createContext<CarouselContextProps | null>(null)
 
 function useCarousel() {
   const context = React.useContext(CarouselContext)
-
   if (!context) {
     throw new Error("useCarousel must be used within a <Carousel />")
   }
-
   return context
 }
 
 const Carousel = React.forwardRef<HTMLDivElement, CarouselProps>(
   ({ setApi, className, opts, children }, ref) => {
-    const carouselRef = useRef<HTMLDivElement>(null)
-    const api = useRef<ReturnType<typeof useEmblaCarousel>[1] | undefined>(undefined)
+    // ✅ FIX: Call the hook at the top level, not inside useEffect
+    const [emblaRef, emblaApi] = useEmblaCarousel(opts)
 
+    // Sync the API with the parent component if setApi is provided
     React.useEffect(() => {
-      if (api.current && setApi) setApi(api.current)
-    }, [api.current, setApi])
-
-    React.useImperativeHandle(ref, () => api.current)
+      if (!emblaApi || !setApi) return
+      setApi(emblaApi)
+    }, [emblaApi, setApi])
 
     return (
-      <CarouselContext.Provider value={{ carouselApi: api.current }}>
+      <CarouselContext.Provider value={{ carouselApi: emblaApi }}>
         <div
-          ref={carouselRef}
-          className={`${className || ""} scrollbar-hide`}
-          style={{ overflowX: 'auto', scrollSnapType: opts?.align || 'mandatory' }}
+          ref={emblaRef}
+          className={`${className || ""} overflow-x-scroll scrollbar-hide`}
+          style={{ scrollPaddingLeft: '0%' }}
         >
           {children}
         </div>
@@ -64,7 +63,7 @@ const CarouselContent = React.forwardRef<
   return (
     <div
       ref={ref}
-      className={`flex overflow-x-auto snap-x mandatory snap-always scrollbar-hide ${className || ""}`}
+      className={`flex ${className || ""}`}
       {...props}
     />
   )
@@ -78,7 +77,9 @@ const CarouselItem = React.forwardRef<
   return (
     <div
       ref={ref}
-      className={`flex-shrink-0 ${className || ""}`}
+      role="group"
+      aria-roledescription="slide"
+      className={`min-w-0 shrink-0 grow-0 basis-full ${className || ""}`}
       {...props}
     />
   )
