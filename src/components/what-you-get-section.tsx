@@ -1,7 +1,17 @@
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function WhatYouGetSection() {
+  const router = useRouter();
   const [showPopup, setShowPopup] = useState(false);
+
+  const handleEnrollClick = (tier: string) => {
+    // Save current scroll position before navigating
+    if (typeof window !== 'undefined') {
+      sessionStorage.setItem('scrollPosition', window.pageYOffset.toString());
+    }
+    router.push(`/application?enroll=true&tier=${tier}`);
+  };
 
   const items = [
     {
@@ -135,7 +145,7 @@ export default function WhatYouGetSection() {
               </div>
               <div className="pt-6">
                 <button
-                onClick={() => window.location.href = "#pricing-section"}
+                onClick={() => handleEnrollClick('protocol')}
                 className="w-full bg-[#718096] text-white font-bold py-5 px-8 hover:bg-[#5a6a74] transition-colors text-xl"
               >
                 Enroll Today
@@ -195,7 +205,7 @@ export default function WhatYouGetSection() {
               </div>
               <div className="pt-6">
                 <button
-                onClick={() => window.location.href = "#pricing-section"}
+                onClick={() => handleEnrollClick('life')}
                 className="w-full bg-[#940909] text-white font-bold py-6 px-8 hover:bg-[#B90021] transition-colors text-xl"
               >
                 Enroll Today
@@ -252,7 +262,7 @@ export default function WhatYouGetSection() {
               </div>
               <div className="pt-6">
                 <button
-                onClick={() => window.location.href = "#pricing-section"}
+                onClick={() => handleEnrollClick('life-whatsapp')}
                 className="w-full bg-[#940909] text-white font-bold py-5 px-8 hover:bg-[#B90021] transition-colors text-xl"
               >
                 Enroll Today
