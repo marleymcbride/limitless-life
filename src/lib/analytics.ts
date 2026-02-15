@@ -1,9 +1,5 @@
 import { type EventType } from '../types';
 
-// Server-side trackEvent (imported only in API routes)
-// Re-exported from separate server module to avoid client bundling
-export { trackEvent as trackEventServer } from './analytics.server';
-
 // Client-side trackEvent - calls API route instead of database
 export async function trackEvent(data: {
   sessionId: string;

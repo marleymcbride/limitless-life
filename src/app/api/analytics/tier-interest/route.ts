@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/lib/db';
 import { users, sessions } from '@/db/schema';
 import { eq, and } from 'drizzle-orm';
-import { trackEventServer } from '@/lib/analytics.server';
+import { trackEvent } from '@/lib/analytics.server';
 import { updateUserLeadScore } from '@/lib/scoring';
 
 export async function POST(request: NextRequest) {
@@ -81,7 +81,7 @@ export async function POST(request: NextRequest) {
 
     // Track tier_click event
     console.log('[TIER INTEREST] Tracking tier_click event...');
-    await trackEventServer({
+    await trackEvent({
       sessionId,
       userId: finalUserId,
       eventType: 'tier_click',
