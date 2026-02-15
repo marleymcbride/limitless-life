@@ -58,17 +58,33 @@ export async function getOrCreateSession(data: {
   const existing = await getSessionId(cookieStore);
 
   if (existing) {
-    await db
-      .update(sessions)
-      .set({ lastSeen: new Date() })
-      .where(eq(sessions.id, existing));
+    // Check if we have new UTM data to update
+    const updateData: any = { lastSeen: new Date() };
 
-    // Return session with userId for frontend tracking
+    // Only update UTM fields if they're not already set AND new values are provided
     const session = await db
       .select()
       .from(sessions)
       .where(eq(sessions.id, existing))
       .limit(1);
+
+    if (session.length > 0) {
+      const s = session[0];
+      if (!s.utmSource && data.utmSource) updateData.utmSource = data.utmSource;
+      if (!s.utmMedium && data.utmMedium) updateData.utmMedium = data.utmMedium;
+      if (!s.utmCampaign && data.utmCampaign) updateData.utmCampaign = data.utmCampaign;
+      if (!s.utmContent && data.utmContent) updateData.utmContent = data.utmContent;
+      if (!s.utmTerm && data.utmTerm) updateData.utmTerm = data.utmTerm;
+      if (!s.referrer && data.referrer) updateData.referrer = data.referrer;
+      if (!s.browser && data.browser) updateData.browser = data.browser;
+      if (!s.ipAddress && data.ipAddress) updateData.ipAddress = data.ipAddress;
+      if (!s.countryCode && data.countryCode) updateData.countryCode = data.countryCode;
+    }
+
+    await db
+      .update(sessions)
+      .set(updateData)
+      .where(eq(sessions.id, existing));
 
     return { id: existing, userId: session[0]?.userId };
   }
