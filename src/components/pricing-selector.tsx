@@ -167,12 +167,29 @@ export default function PricingSelector({ showEnroll: externalShowEnroll = false
     }
   }, [selectedTier]);
 
+  // Helper to safely fetch session data
+  const getSessionData = async () => {
+    try {
+      const response = await fetch('/api/session');
+      if (!response.ok) {
+        console.error('Session API error:', response.status);
+        return null;
+      }
+      return await response.json();
+    } catch (error) {
+      console.error('Failed to fetch session:', error);
+      return null;
+    }
+  };
+
   useEffect(() => {
     if (internalShowEnroll) {
       // Track tier view event
       const trackTierView = async () => {
         try {
-          const sessionData = await fetch('/api/session').then(r => r.json());
+          const sessionData = await getSessionData();
+          if (!sessionData) return;
+
           await trackEvent({
             sessionId: sessionData.sessionId,
             userId: sessionData.userId,
@@ -201,18 +218,20 @@ export default function PricingSelector({ showEnroll: externalShowEnroll = false
     if (!selectedTier || !selectedPayment) return;
     setIsLoading(true);
     try {
-      const sessionData = await fetch('/api/session').then(r => r.json());
+      const sessionData = await getSessionData();
 
-      // Track Stripe checkout initiation
-      await trackEvent({
-        sessionId: sessionData.sessionId,
-        userId: sessionData.userId,
-        eventType: 'stripe_checkout_initiated',
-        eventData: {
-          tier: selectedTier,
-          paymentPlan: selectedPayment,
-        },
-      });
+      // Track Stripe checkout initiation (only if we have session data)
+      if (sessionData) {
+        await trackEvent({
+          sessionId: sessionData.sessionId,
+          userId: sessionData.userId,
+          eventType: 'stripe_checkout_initiated',
+          eventData: {
+            tier: selectedTier,
+            paymentPlan: selectedPayment,
+          },
+        });
+      }
 
       const userEmail = typeof window !== 'undefined' ? sessionStorage.getItem('userEmail') : null;
       const userName = typeof window !== 'undefined' ? sessionStorage.getItem('userName') : null;
@@ -308,7 +327,9 @@ export default function PricingSelector({ showEnroll: externalShowEnroll = false
                                     setSelectedPayment(plan);
 
                                     try {
-                                      const sessionData = await fetch('/api/session').then(r => r.json());
+                                      const sessionData = await getSessionData();
+                                      if (!sessionData) return;
+
                                       await trackEvent({
                                         sessionId: sessionData.sessionId,
                                         userId: sessionData.userId,
