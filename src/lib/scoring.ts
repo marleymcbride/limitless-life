@@ -145,13 +145,37 @@ export async function updateUserLeadScore(userId: string): Promise<void> {
   // Calculate new score
   const scoreData = await calculateLeadScore(userId);
 
+  // Get most recent tier selection from events
+  const userEvents = await db
+    .select()
+    .from(events)
+    .where(eq(events.userId, userId))
+    .orderBy(sql`${events.createdAt} DESC`)
+    .limit(20);
+
+  const tierSelectEvent = userEvents.find(e =>
+    ['tier_select_protocol', 'tier_select_life', 'tier_select_whatsapp', 'tier_select_concierge'].includes(e.eventType)
+  );
+
+  // Map tier event to tier interest enum
+  const tierInterestMap = {
+    tier_select_protocol: 'access',
+    tier_select_life: 'plus',
+    tier_select_whatsapp: 'premium',
+    tier_select_concierge: 'elite',
+  } as const;
+
+  const tierInterest = tierSelectEvent
+    ? tierInterestMap[tierSelectEvent.eventType as keyof typeof tierInterestMap]
+    : previousUser[0].tierInterest;
+
   // Update database
   await db
     .update(users)
     .set({
       leadScore: scoreData.score,
       leadTemperature: scoreData.temperature,
-      updatedAt: new Date(),
+      tierInterest,
     })
     .where(eq(users.id, userId));
 
