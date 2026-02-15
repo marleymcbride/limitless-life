@@ -1,15 +1,30 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { trackEvent } from '@/lib/analytics';
 
 export default function WhatYouGetSection() {
   const router = useRouter();
   const [showPopup, setShowPopup] = useState(false);
 
-  const handleEnrollClick = (tier: string) => {
+  const handleEnrollClick = async (tier: string) => {
     // Save current scroll position before navigating
     if (typeof window !== 'undefined') {
       sessionStorage.setItem('scrollPosition', window.pageYOffset.toString());
     }
+
+    // Track tier selection event
+    try {
+      const sessionData = await fetch('/api/session').then(r => r.json());
+      await trackEvent({
+        sessionId: sessionData.sessionId,
+        userId: sessionData.userId,
+        eventType: `tier_select_${tier}` as any,
+        eventData: { tier },
+      });
+    } catch (error) {
+      console.error('Failed to track tier selection:', error);
+    }
+
     router.push(`/application?enroll=true&tier=${tier}`);
   };
 
