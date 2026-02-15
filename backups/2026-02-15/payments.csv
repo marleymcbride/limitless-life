@@ -1,0 +1,8 @@
+id,user_id,stripe_payment_intent_id,amount,currency,status,created_at
+e796f34b-cfd1-4e08-8b29-fe3df3dd2bff,f772c579-db83-4e7e-8338-d4ad3ced0ae3,pi_test_1770844344701,299700,usd,succeeded,Wed Feb 11 2026 21:12:24 GMT+0000 (Greenwich Mean Time)
+2204bb8f-0e82-42ae-aa9a-5fe344fb240b,f772c579-db83-4e7e-8338-d4ad3ced0ae3,pi_test_1770844802158,299700,usd,succeeded,Wed Feb 11 2026 21:20:02 GMT+0000 (Greenwich Mean Time)
+a8f31739-588b-4cda-842d-0e202d93fe5a,f772c579-db83-4e7e-8338-d4ad3ced0ae3,pi_test_1770844924820,299700,usd,succeeded,Wed Feb 11 2026 21:22:04 GMT+0000 (Greenwich Mean Time)
+30f6aea6-bad6-4fb5-b228-7cd481110c2a,f772c579-db83-4e7e-8338-d4ad3ced0ae3,pi_test_1770846268310,299700,usd,succeeded,Wed Feb 11 2026 21:44:28 GMT+0000 (Greenwich Mean Time)
+fc439679-7ba0-4bf3-bf3a-5a85d7c2291f,f6b487a1-6ad5-499f-ab1f-c2c4613d207d,pi_TEST_SYNC_80612,689700,gbp,complete,Sun Feb 15 2026 11:17:34 GMT+0000 (Greenwich Mean Time)
+cd93fe36-4d98-492a-83a2-dcbee6982d15,7dfc1f19-9a6f-43bd-bb45-7063c09dc654,pi_TEST_SYNC_2_304461,50000,gbp,complete,Sun Feb 15 2026 11:56:07 GMT+0000 (Greenwich Mean Time)
+f3821f11-6764-4acb-a9e9-f05369cf1d1e,b2057b47-9b98-4445-b3ec-e1c2f5cb5df2,pi_TEST_SYNC_2_823351,50000,gbp,complete,Sun Feb 15 2026 11:57:32 GMT+0000 (Greenwich Mean Time)
