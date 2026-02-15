@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
-import { trackEvent } from '@/lib/analytics';
+import { trackEventServer } from '@/lib/analytics.server';
 import { updateUserLeadScore } from '@/lib/scoring';
 
 const schema = z.object({
@@ -16,7 +16,7 @@ export async function POST(req: NextRequest) {
     const { sessionId, userId, eventType, eventData } = schema.parse(body);
 
     // Track the event
-    await trackEvent({ sessionId, userId, eventType: eventType as any, eventData });
+    await trackEventServer({ sessionId, userId, eventType: eventType as any, eventData });
 
     // Automatically update lead score if this event is associated with a user
     if (userId) {
