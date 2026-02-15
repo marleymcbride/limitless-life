@@ -331,25 +331,30 @@
   }
 
   /* Override for black backgrounds (admin dashboard, dark sections) */
-  .bg-black h1,
-  .bg-black h2,
-  .bg-black h3,
-  .bg-black h4,
-  .bg-black h5,
-  .bg-black h6,
-  .bg-black .mini-heading,
-  .bg-black p {
+  /* But NOT for elements inside white cards or cards with light backgrounds */
+  .bg-black h1:not(.bg-white h1):not(.bg-gray-50 h1),
+  .bg-black h2:not(.bg-white h2):not(.bg-gray-50 h2),
+  .bg-black h3:not(.bg-white h3):not(.bg-gray-50 h3),
+  .bg-black h4:not(.bg-white h4):not(.bg-gray-50 h4),
+  .bg-black h5:not(.bg-white h5):not(.bg-gray-50 h5),
+  .bg-black h6:not(.bg-white h6):not(.bg-gray-50 h6) {
     color: white !important;
   }
 
-  /* Admin dashboard override - force white text */
-  div[class*="bg-black"] h1,
-  div[class*="bg-black"] h2,
-  div[class*="bg-black"] h3,
-  div[class*="bg-black"] h4,
-  div[class*="bg-black"] h5,
-  div[class*="bg-black"] h6 {
-    color: white !important;
+  /* Specifically target headings inside white cards to keep them dark */
+  .bg-white h1,
+  .bg-white h2,
+  .bg-white h3,
+  .bg-white h4,
+  .bg-white h5,
+  .bg-white h6,
+  .bg-gray-50 h1,
+  .bg-gray-50 h2,
+  .bg-gray-50 h3,
+  .bg-gray-50 h4,
+  .bg-gray-50 h5,
+  .bg-gray-50 h6 {
+    color: #1c1934 !important;
   }
 
   /* Remove default margins that might cause gaps */

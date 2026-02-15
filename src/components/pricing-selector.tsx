@@ -353,7 +353,7 @@ export default function PricingSelector({ showEnroll: externalShowEnroll = false
                                     <option value="3pay">3 Installment split</option>
                                   )}
                                   {content.paymentOptions.includes('2pay') && (
-                                    <option value="2pay">3 Installment split</option>
+                                    <option value="2pay">2 Installment split</option>
                                   )}
                                   {content.paymentOptions.includes('6pay') && (
                                     <option value="6pay">Monthly</option>
