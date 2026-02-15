@@ -51,7 +51,7 @@ export function ScrollDropoffAnalytics() {
       {/* Header */}
       <div className="flex justify-between items-center mb-6">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">Scroll Depth Analytics</h1>
+          <h1 className="text-3xl font-bold text-white">Scroll Depth Analytics</h1>
           <p className="text-sm text-gray-600 mt-1">Shows how far users scroll through your page</p>
         </div>
       </div>
@@ -95,8 +95,8 @@ export function ScrollDropoffAnalytics() {
                 {data.distribution.map((item, index) => (
                   <div key={index} className="py-3 border-b border-gray-200 last:border-0">
                     <div className="flex items-center justify-between mb-2">
-                      <div className="text-sm font-medium text-gray-900">{item.range}</div>
-                      <div className="text-lg font-bold text-gray-900">{item.percentage}%</div>
+                      <div className="text-sm font-medium text-white">{item.range}</div>
+                      <div className="text-lg font-bold text-white">{item.percentage}%</div>
                     </div>
                     <div className="w-full bg-gray-200 rounded h-2">
                       <div

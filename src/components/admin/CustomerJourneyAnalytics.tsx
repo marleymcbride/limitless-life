@@ -79,7 +79,7 @@ export function CustomerJourneyAnalytics() {
       {/* Header */}
       <div className="flex justify-between items-center mb-6">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">Customer Journey Analytics</h1>
+          <h1 className="text-3xl font-bold text-white">Customer Journey Analytics</h1>
           <p className="text-sm text-gray-600 mt-1">Track complete customer journey from first visit</p>
         </div>
         <DateRangeSelector value={dateRange} onChange={setDateRange} />
@@ -146,7 +146,7 @@ export function CustomerJourneyAnalytics() {
                       <div className="text-xs text-gray-500 mb-1">
                         {new Date(event.timestamp).toLocaleString()}
                       </div>
-                      <div className="text-sm font-medium text-gray-900">
+                      <div className="text-sm font-medium text-white">
                         {event.description}
                       </div>
                       <div className="text-xs text-gray-500 mt-1">

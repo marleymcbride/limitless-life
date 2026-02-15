@@ -35,7 +35,7 @@ export function TierCard({ tier, clv, customerCount }: TierCardProps) {
             </div>
             <div className="flex-1">
               <div>
-                <div className="text-5xl font-bold text-gray-900">{clv.toLocaleString()}</div>
+                <div className="text-5xl font-bold text-white">{clv.toLocaleString()}</div>
                 <div className="text-sm text-gray-500">CLV</div>
               </div>
               <div className="flex-2 gap-4">
@@ -47,7 +47,7 @@ export function TierCard({ tier, clv, customerCount }: TierCardProps) {
         </div>
       </div>
       <div className="text-right">
-        <div className="text-3xl font-bold text-gray-900">{tier}</div>
+        <div className="text-3xl font-bold text-white">{tier}</div>
         <div className="text-sm text-gray-500">Tier</div>
         <div className="flex-2">
           <div className="text-lg font-semibold text-green-600">{clv.toLocaleString()}</div>
