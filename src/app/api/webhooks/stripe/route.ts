@@ -4,7 +4,7 @@ import { headers } from 'next/headers';
 import { db } from '@/lib/db';
 import { users, payments } from '@/db/schema';
 import { eq } from 'drizzle-orm';
-import { trackEvent } from '@/lib/analytics';
+import { trackEventServer } from '@/lib/analytics.server';
 import { n8nEvents, syncPaymentToAirtable } from '@/lib/n8nWebhooks';
 import { calculateLeadScore } from '@/lib/scoring';
 
@@ -180,7 +180,7 @@ export async function POST(request: NextRequest) {
 
           // Track payment event
           console.log('[STRIPE WEBHOOK] Tracking payment_complete event...');
-          await trackEvent({
+          await trackEventServer({
             sessionId: session.metadata?.sessionId || '',
             userId,
             eventType: 'payment_complete',
@@ -254,7 +254,7 @@ export async function POST(request: NextRequest) {
             .limit(1);
 
           if (user.length > 0) {
-            await trackEvent({
+            await trackEventServer({
               sessionId: session.metadata?.sessionId || '',
               userId: user[0].id,
               eventType: 'pricing_view',
@@ -300,7 +300,7 @@ export async function POST(request: NextRequest) {
             });
 
             // Track payment event
-            await trackEvent({
+            await trackEventServer({
               sessionId: paymentIntent.metadata.sessionId || '',
               userId,
               eventType: 'payment_complete',

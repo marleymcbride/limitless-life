@@ -1,6 +1,6 @@
 import { config } from 'dotenv';
 import postgres from 'postgres';
-import { existsSync, mkdirSync } from 'fs';
+import { existsSync, mkdirSync, writeFileSync } from 'fs';
 import { join } from 'path';
 
 // Load environment variables from .env.local
@@ -44,10 +44,30 @@ async function wipeDatabase() {
       const rowCount = result[0].count;
 
       if (rowCount > 0) {
-        const csvPath = join(backupDir, `${table}.csv`);
-        await client.unsafe(`COPY ${table} TO '${csvPath}' WITH (FORMAT csv, HEADER true)`);
+        // Query all data from table
+        const data = await client`SELECT * FROM ${client(table)}`;
 
-        console.log(`  ✅ Backed up ${table} (${rowCount} rows → ${table}.csv)`);
+        // Convert to CSV
+        if (data.length > 0) {
+          const headers = Object.keys(data[0]);
+          const csvContent = [
+            headers.join(','),
+            ...data.map(row => headers.map(h => {
+              const val = row[h];
+              // Handle null, strings with commas, quotes
+              if (val === null) return '';
+              if (typeof val === 'string' && (val.includes(',') || val.includes('"') || val.includes('\n'))) {
+                return `"${val.replace(/"/g, '""')}"`;
+              }
+              return String(val);
+            }).join(','))
+          ].join('\n');
+
+          const csvPath = join(backupDir, `${table}.csv`);
+          writeFileSync(csvPath, csvContent);
+
+          console.log(`  ✅ Backed up ${table} (${rowCount} rows → ${table}.csv)`);
+        }
       } else {
         console.log(`  ⏭️  Skipped ${table} (already empty)`);
       }
@@ -87,7 +107,7 @@ async function wipeDatabase() {
         FROM ${client(table)}
       `;
 
-      const count = result[0].count;
+      const count = Number(result[0].count);
 
       if (count === 0) {
         console.log(`  ✅ ${table}: 0 rows (empty)`);
