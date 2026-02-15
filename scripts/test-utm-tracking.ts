@@ -1,7 +1,11 @@
-import { config } from 'dotenv';
 import postgres from 'postgres';
 
-config({ path: '.env.local' });
+// Load env vars
+const result = require('dotenv').config({ path: '.env.local' });
+if (result.error) {
+  console.error('❌ Failed to load .env.local:', result.error);
+  process.exit(1);
+}
 
 interface Session {
   id: string;
