@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { trackEvent } from '@/lib/analytics';
+import { trackEventServer } from '@/lib/analytics.server';
 
 export async function POST(request: NextRequest) {
   try {
@@ -10,7 +10,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'sessionId is required' }, { status: 400 });
     }
 
-    await trackEvent({
+    await trackEventServer({
       sessionId,
       userId,
       eventType: 'scroll_depth',

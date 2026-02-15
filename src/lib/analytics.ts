@@ -1,20 +1,25 @@
-import { db } from './db';
-import { events } from '../db/schema';
 import { type EventType } from '../types';
 
+// Server-side trackEvent (imported only in API routes)
+// Re-exported from separate server module to avoid client bundling
+export { trackEvent as trackEventServer } from './analytics.server';
+
+// Client-side trackEvent - calls API route instead of database
 export async function trackEvent(data: {
   sessionId: string;
   userId?: string;
   eventType: EventType;
   eventData?: any;
 }) {
-  await db.insert(events).values({
-    id: crypto.randomUUID(),
-    sessionId: data.sessionId,
-    userId: data.userId,
-    eventType: data.eventType,
-    eventData: data.eventData || {},
-  });
+  try {
+    await fetch('/api/analytics/events', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    });
+  } catch (error) {
+    console.error('Failed to track event:', error);
+  }
 }
 
 /**
