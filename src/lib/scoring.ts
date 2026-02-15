@@ -159,10 +159,10 @@ export async function updateUserLeadScore(userId: string): Promise<void> {
 
   // Map tier event to tier interest enum
   const tierInterestMap = {
-    tier_select_protocol: 'access',
-    tier_select_life: 'plus',
-    tier_select_whatsapp: 'premium',
-    tier_select_concierge: 'elite',
+    tier_select_protocol: 'course',
+    tier_select_life: 'll',
+    tier_select_whatsapp: 'll+wa',
+    tier_select_concierge: 'lhc',
   } as const;
 
   const tierInterest = tierSelectEvent
