@@ -1,9 +1,12 @@
 import postgres from 'postgres';
+import { resolve } from 'path';
 
-// Load env vars
-const result = require('dotenv').config({ path: '.env.local' });
+// Load env vars from project root
+const projectRoot = resolve(process.cwd(), '.env.local');
+const result = require('dotenv').config({ path: projectRoot });
 if (result.error) {
   console.error('❌ Failed to load .env.local:', result.error);
+  console.error('💡 Hint: Run this script from the project root directory');
   process.exit(1);
 }
 

@@ -49,7 +49,7 @@ export function TrafficSourcesTable() {
     <div className="space-y-4">
       {/* Header */}
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-3xl font-bold text-gray-900">Traffic Sources</h2>
+        <h2 className="text-3xl font-bold text-white">Traffic Sources</h2>
         <div className="text-sm text-gray-600">
           Showing visitor counts and conversion rates by UTM source
         </div>
@@ -88,23 +88,23 @@ export function TrafficSourcesTable() {
             <tbody>
               {data.map((source, index) => (
                 <tr key={source.source + index}>
-                  <td className="px-6 py-4 whitespace-nowrap font-medium text-gray-900">
+                  <td className="px-6 py-4 whitespace-nowrap font-medium text-white">
                     {source.source || '(none)'}
                   </td>
-                  <td className="px-6 py-4 text-right text-gray-900">
+                  <td className="px-6 py-4 text-right text-white">
                     {source.visitors.toLocaleString()}
                   </td>
-                  <td className="px-6 py-4 text-right text-gray-900">
+                  <td className="px-6 py-4 text-right text-white">
                     {source.uniqueVisitors.toLocaleString()}
                   </td>
-                  <td className="px-6 py-4 text-right text-gray-900">
+                  <td className="px-6 py-4 text-right text-white">
                     {source.sessions.toLocaleString()}
                   </td>
-                  <td className="px-6 py-4 text-right text-gray-900">
+                  <td className="px-6 py-4 text-right text-white">
                     {source.conversions.toLocaleString()}
                   </td>
-                  <td className="px-6 py-4 text-right text-gray-900">
-                    <div className={`text-sm font-bold ${source.conversionRate >= 3 ? 'text-green-600' : 'text-gray-900'}`}>
+                  <td className="px-6 py-4 text-right text-white">
+                    <div className={`text-sm font-bold ${source.conversionRate >= 3 ? 'text-green-600' : 'text-white'}`}>
                       {source.conversionRate}%
                     </div>
                   </td>

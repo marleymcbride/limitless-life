@@ -188,7 +188,7 @@ export function FunnelDashboard() {
       <div className="grid grid-cols-3 gap-4">
         <div className="bg-white border rounded-lg p-6">
           <div className="text-gray-500 text-sm">Total Visitors</div>
-          <div className="text-3xl font-bold text-gray-900">
+          <div className="text-3xl font-bold text-white">
             {metrics.steps[0]?.count.toLocaleString() || 0}
           </div>
         </div>
@@ -255,7 +255,7 @@ export function FunnelDashboard() {
               >
                 <div className="flex justify-between items-start">
                   <div>
-                    <h3 className="font-semibold text-gray-900">{dropOff.step}</h3>
+                    <h3 className="font-semibold text-white">{dropOff.step}</h3>
                     {dropOff.commonReasons && (
                       <ul className="mt-2 text-sm text-gray-600 list-disc list-inside">
                         {dropOff.commonReasons.map((reason, i) => (

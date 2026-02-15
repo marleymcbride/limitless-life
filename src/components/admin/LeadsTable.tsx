@@ -96,7 +96,7 @@ export function LeadsTable() {
   };
 
   const getScoreColor = (score: number) => {
-    if (score >= 70) return 'text-purple-900 font-bold';
+    if (score >= 70) return 'text-purple-300 font-bold';
     if (score >= 40) return 'text-blue-600 font-semibold';
     return 'text-gray-600';
   };
@@ -106,7 +106,7 @@ export function LeadsTable() {
       {/* Header */}
       <div className="flex justify-between items-center mb-6">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">Hot Leads Feed</h1>
+          <h1 className="text-3xl font-bold text-white">Hot Leads Feed</h1>
           <p className="text-sm text-gray-600 mt-1">High-priority leads for sales outreach</p>
         </div>
         <div className="flex gap-4 items-center">
@@ -197,7 +197,7 @@ export function LeadsTable() {
                 <tr key={lead.id} className="hover:bg-gray-50">
                   <td className="px-6 py-4 whitespace-nowrap">
                     {lead.firstName && lead.lastName ? (
-                      <div className="font-medium text-gray-900">{lead.firstName} {lead.lastName}</div>
+                      <div className="font-medium text-white">{lead.firstName} {lead.lastName}</div>
                     ) : (
                       <div className="text-gray-500 italic">No name</div>
                     )}
