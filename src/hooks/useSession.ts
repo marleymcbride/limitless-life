@@ -19,7 +19,14 @@ export function useSession() {
   useEffect(() => {
     const fetchSession = async () => {
       try {
-        const response = await fetch('/api/session');
+        // Get URL parameters from browser
+        const urlParams = new URLSearchParams(window.location.search);
+        const queryString = urlParams.toString();
+
+        // Build API URL with query parameters
+        const apiUrl = queryString ? `/api/session?${queryString}` : '/api/session';
+
+        const response = await fetch(apiUrl);
 
         if (!response.ok) {
           throw new Error(`Failed to fetch session: ${response.statusText}`);
