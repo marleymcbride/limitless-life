@@ -323,7 +323,33 @@
     font-family: "Neuemontreal", "Roboto", sans-serif;
     letter-spacing: -0.025em;
     line-height: 1.4 !important;
+  }
+
+  /* Default dark color for headings on light backgrounds */
+  h1, h2, h3, .mini-heading {
     color: #1c1934;
+  }
+
+  /* Override for black backgrounds (admin dashboard, dark sections) */
+  .bg-black h1,
+  .bg-black h2,
+  .bg-black h3,
+  .bg-black h4,
+  .bg-black h5,
+  .bg-black h6,
+  .bg-black .mini-heading,
+  .bg-black p {
+    color: white !important;
+  }
+
+  /* Admin dashboard override - force white text */
+  div[class*="bg-black"] h1,
+  div[class*="bg-black"] h2,
+  div[class*="bg-black"] h3,
+  div[class*="bg-black"] h4,
+  div[class*="bg-black"] h5,
+  div[class*="bg-black"] h6 {
+    color: white !important;
   }
 
   /* Remove default margins that might cause gaps */
