@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/lib/db';
 import { users, payments } from '@/db/schema';
 import { eq } from 'drizzle-orm';
-import { trackEventServer } from '@/lib/analytics.server';
+import { trackEvent } from '@/lib/analytics.server';
 import { syncPaymentToAirtable } from '@/lib/n8nWebhooks';
 import { calculateLeadScore } from '@/lib/scoring';
 
@@ -91,7 +91,7 @@ export async function POST(request: NextRequest) {
       .where(eq(users.id, userId));
 
     // Track analytics event
-    await trackEventServer({
+    await trackEvent({
       sessionId: 'test-session',
       userId,
       eventType: 'payment_complete',

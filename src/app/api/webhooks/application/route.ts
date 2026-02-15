@@ -4,7 +4,7 @@ import { db } from '@/lib/db';
 import { users } from '@/db/schema';
 import { eq } from 'drizzle-orm';
 import { getSessionId } from '@/lib/session';
-import { trackEventServer } from '@/lib/analytics.server';
+import { trackEvent } from '@/lib/analytics.server';
 import { n8nEvents } from '@/lib/n8nWebhooks';
 import { applicationSubmissions } from '@/db/schema';
 
@@ -87,7 +87,7 @@ export async function POST(req: NextRequest) {
           .where(eq(users.id, userId));
 
         // Track event
-        trackEventServer({
+        trackEvent({
           sessionId,
           userId,
           eventType: 'application_start',
@@ -109,7 +109,7 @@ export async function POST(req: NextRequest) {
         const { email, step, stepNumber, data } = applicationStepSchema.parse(body);
 
         // Track event
-        trackEventServer({
+        trackEvent({
           sessionId,
           userId,
           eventType: 'application_step',
@@ -143,7 +143,7 @@ export async function POST(req: NextRequest) {
           .where(eq(users.id, userId));
 
         // Track event
-        trackEventServer({
+        trackEvent({
           sessionId,
           userId,
           eventType: 'application_complete',
