@@ -4,7 +4,7 @@ import { db } from '@/lib/db';
 import { users } from '@/db/schema';
 import { eq } from 'drizzle-orm';
 import { getSessionId } from '@/lib/session';
-import { trackEventServer } from '@/lib/analytics.server';
+import { trackEvent } from '@/lib/analytics.server';
 import { n8nEvents } from '@/lib/n8nWebhooks';
 
 const emailSubmitSchema = z.object({
@@ -69,7 +69,7 @@ export async function POST(req: NextRequest) {
 
     // Track event in analytics
     console.log('[EMAIL WEBHOOK] Tracking event to analytics...');
-    await trackEventServer({
+    await trackEvent({
       sessionId,
       userId,
       eventType: 'email_submit',
