@@ -28,7 +28,7 @@ export const users = pgTable('users', {
   leadScore: integer('lead_score').default(0),
   leadTemperature: text('lead_temperature').$type<'cold' | 'warm' | 'hot'>(),
   status: text('status').$type<'prospect' | 'lead' | 'customer'>().default('prospect'),
-  tierInterest: text('tier_interest').$type<'access' | 'plus' | 'premium' | 'elite'>(),
+  tierInterest: text('tier_interest').$type<'course' | 'll' | 'll+wa' | 'lhc'>(),
   firstSeen: timestamp('first_seen').defaultNow(),
   lastSeen: timestamp('last_seen').defaultNow(),
   createdAt: timestamp('created_at').defaultNow(),
@@ -67,7 +67,7 @@ export const payments = pgTable('payments', {
   stripePaymentIntentId: text('stripe_payment_intent_id').unique(),
   amount: integer('amount'),
   currency: text('currency'),
-  tier: text('tier').$type<'Access' | 'Plus' | 'Premium' | 'Elite'>(), // Which tier they purchased
+  tier: text('tier').$type<'Course' | 'LL' | 'LL+WA' | 'LHC'>(), // Which tier they purchased
   status: text('status'),
   createdAt: timestamp('created_at').defaultNow(),
 }, (table) => ({
