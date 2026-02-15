@@ -47,8 +47,13 @@ export async function getOrCreateSession(data: {
   utmSource?: string;
   utmMedium?: string;
   utmCampaign?: string;
+  utmContent?: string;
+  utmTerm?: string;
   referrer?: string;
   deviceType?: 'mobile' | 'tablet' | 'desktop';
+  browser?: string;
+  ipAddress?: string;
+  countryCode?: string;
 }, cookieStore: any) {
   const existing = await getSessionId(cookieStore);
 
