@@ -259,9 +259,9 @@ export default function PricingSelector({ showEnroll: externalShowEnroll = false
   return (
     <div ref={carouselRef}>
       {internalShowEnroll ? (
-        <div className="fixed inset-0 z-50 px-2 md:px-4 lg:px-16 flex items-center justify-center bg-black/80 backdrop-blur-sm p-2 md:p-4 overflow-y-auto overflow-x-hidden">
+        <div className="fixed inset-0 z-50 px-2 md:px-4 lg:px-16 flex items-center justify-center bg-black/80 backdrop-blur-sm p-2 pt-8 md:p-4 overflow-y-auto overflow-x-hidden">
           <div className="bg-white rounded-lg shadow-xl shadow-stone-800 max-w-6xl w-full relative my-4 md:my-8 flex flex-col">
-            <div className="overflow-y-scroll overflow-x-hidden md:overflow-y-hidden mb-6 -mt-6 h-full rounded-md scrollbar-hide" style={{ maxHeight: '85vh' }}>
+            <div className="overflow-y-scroll overflow-x-hidden md:overflow-y-hidden pb-6 -mt-6 h-full rounded-md scrollbar-hide" style={{ maxHeight: '90vh' }}>
               
               {/* Desktop Layout - Original Two-Column Grid */}
               <div className="hidden md:block px-4 md:px-6 lg:px-12 py-0 my-6">
@@ -448,10 +448,10 @@ export default function PricingSelector({ showEnroll: externalShowEnroll = false
               </div>
 
               {/* Mobile Carousel */}
-              <div className="block md:hidden rounded-md bg-white px-2 pt-4 pb-4" style={{ transform: 'scale(1.3)', transformOrigin: 'top center' }}>
-                <div className="text-sm font-bold text-center w-fit mx-auto px-4 py-1 text-white mt-2 rounded-full bg-gray-900/50 border border-gray-300">TIER {currentSlide + 1}</div>
+              <div className="block md:hidden rounded-md bg-white -mb-0 px-2 pt-4 pb-0" style={{ transform: 'scale(1.2)', transformOrigin: 'top center' }}>
+                <div className="text-sm font-bold text-center w-fit mx-auto px-4 py-1 text-white mt-0 rounded-full bg-gray-900/50 border border-gray-300">TIER {currentSlide + 1}</div>
                 <Carousel setApi={setCarouselApi} opts={{ align: 'center', containScroll: true }} className="w-full -mt-4 scrollbar-hide">
-                  <CarouselContent className="px-2">
+                  <CarouselContent className="px-10">
                     {(Object.keys(tierContent) as Array<Exclude<Tier, null>>).map((tier) => {
                       const content = tierContent[tier];
                       const isSelected = selectedTier === tier;
@@ -469,14 +469,14 @@ export default function PricingSelector({ showEnroll: externalShowEnroll = false
                             onClick={() => { setSelectedTier(tier); setSelectedPayment(null); }}
                             className={`w-full shadow-sm text-left p-6 rounded-lg border-2 transition-all ${isSelected ? "border-gray-500 bg-red-200/20 text-white" : "border-gray-200 bg-white "}`}
                           >
-                            <div className="font-bold text-slate-600 text-center -mx-2 text-md mx-3 text-lg py-4 uppercase">{content.displayName}</div>
+                            <div className="font-bold text-slate-600 text-center -mx-2 text-md mx-3 text-lg py-0 uppercase">{content.displayName}</div>
                           </div>
                         </CarouselItem>
                       );
                     })}
                   </CarouselContent>
                 </Carousel>
-                <div className="flex justify-center gap-2 mt-4">
+                <div className="flex justify-center gap-2 mt-2">
                   {(Object.keys(tierContent).filter(t => t !== 'ghost-tier') as Array<Exclude<Tier, null>>).map((_, index) => (
                     <button
                       key={index}
@@ -488,7 +488,7 @@ export default function PricingSelector({ showEnroll: externalShowEnroll = false
               </div>
 
               {/* Enrollment Content */}
-              <div className="bg-white px-6 py-4 md:p-12 scrollbar-hide block md:hidden">
+              <div className="bg-white px-6 pb-4 md:p-12 scrollbar-hide block md:hidden">
                 {!selectedTier ? (
                   <div className="text-center py-12">
                     <h3 className="text-xl font-semibold">Select a Program Above</h3>
@@ -498,8 +498,8 @@ export default function PricingSelector({ showEnroll: externalShowEnroll = false
                     <div>
                       {/* <h3 className="text-3xl font-bold text-center mb-2">{tierContent[selectedTier].title}</h3> */}
                       <div className="text-lg text-gray-600 mb-8">{tierContent[selectedTier].tagline}</div>
-                      <h4 className="font-bold uppercase tracking-wider text-sm text-gray-400 mb-4">What&apos;s Included</h4>
-                      <ul className="space-y-4">
+                      <h4 className="font-bold uppercase tracking-wider text-lg text-gray-400 mb-2">What&apos;s Included</h4>
+                      <ul className="space-y-1">
                         {tierContent[selectedTier].features.map((feature, index) => (
                           <li key={index} className="flex items-start gap-3 text-gray-700">
                             <svg className="h-5 w-5 mt-0.5 text-red-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -512,7 +512,7 @@ export default function PricingSelector({ showEnroll: externalShowEnroll = false
                     </div>
                     <div className="bg-gray-50 -mt-8 p-6 rounded-2xl border border-gray-100">
                       <label className="block text-sm font-bold uppercase mb-4 text-gray-500">Choose investment option</label>
-                      <div className="mb-8">
+                      <div className="mb-2">
                         <select
                           value={selectedPayment || ''}
                           onChange={async (e) => {
@@ -534,7 +534,7 @@ export default function PricingSelector({ showEnroll: externalShowEnroll = false
                               console.error('Failed to track payment plan selection:', error);
                             }
                           }}
-                          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                          className="w-full -mt-2 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
                         >
                           <option value="" disabled>Select investment option</option>
                           {tierContent[selectedTier].paymentOptions.includes('weekly') && (
@@ -554,7 +554,7 @@ export default function PricingSelector({ showEnroll: externalShowEnroll = false
                           )}
                         </select>
                       </div>
-                      <CTAButton onClick={handleCheckout} disabled={!selectedPayment || isLoading} className="w-full py-4 text-lg">
+                      <CTAButton onClick={handleCheckout} disabled={!selectedPayment || isLoading} className="w-full -mt-4 pb-4 mb-2 text-lg">
                         {isLoading ? "Redirecting to Stripe..." : "Confirm Enrollment"}
                       </CTAButton>
                     </div>
