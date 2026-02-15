@@ -71,7 +71,7 @@ export function VSLDropoffAnalytics() {
       {/* Header */}
       <div className="flex justify-between items-center mb-6">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">VSL Drop-Off Analytics</h1>
+          <h1 className="text-3xl font-bold text-white">VSL Drop-Off Analytics</h1>
           <p className="text-sm text-gray-600 mt-1">Shows where users stop watching your video</p>
         </div>
         <DateRangeSelector value={dateRange} onChange={setDateRange} />
@@ -129,7 +129,7 @@ export function VSLDropoffAnalytics() {
                     <div key={index} className="py-3 border-b border-gray-200 last:border-0">
                       <div className="flex items-center justify-between mb-2">
                         <div className="flex-1">
-                          <div className="text-sm font-medium text-gray-900">{milestone.milestone}</div>
+                          <div className="text-sm font-medium text-white">{milestone.milestone}</div>
                           <div className="text-xs text-gray-500 mt-1">
                             {milestone.count.toLocaleString()} viewers ({milestone.percentage}%)
                           </div>

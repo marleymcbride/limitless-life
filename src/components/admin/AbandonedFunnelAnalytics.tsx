@@ -101,7 +101,7 @@ export function AbandonedFunnelAnalytics() {
       {/* Header */}
       <div className="flex justify-between items-center mb-6">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">Funnel Drop-Off Analysis</h1>
+          <h1 className="text-3xl font-bold text-white">Funnel Drop-Off Analysis</h1>
           <p className="text-sm text-gray-600 mt-1">Identifies where users drop off in your funnel</p>
         </div>
         <DateRangeSelector value={dateRange} onChange={setDateRange} />
@@ -148,7 +148,7 @@ export function AbandonedFunnelAnalytics() {
                     key={index}
                     className="border-l-4 border-red-500 bg-red-50 p-4 rounded"
                   >
-                    <h3 className="text-lg font-bold text-gray-900">{dropOff.step}</h3>
+                    <h3 className="text-lg font-bold text-white">{dropOff.step}</h3>
                     <div className="text-2xl font-bold text-red-600 mt-2">
                       {dropOff.dropOffCount.toLocaleString()} ({dropOff.dropOffPercentage}%)
                     </div>
@@ -171,8 +171,8 @@ export function AbandonedFunnelAnalytics() {
                   className="flex justify-between items-center py-3 border-b border-gray-200 last:border-0"
                 >
                   <div className="flex-1">
-                    <div className="text-sm font-medium text-gray-900">{dropOff.step}</div>
-                    <div className="text-lg font-bold text-gray-900">
+                    <div className="text-sm font-medium text-white">{dropOff.step}</div>
+                    <div className="text-lg font-bold text-white">
                       {dropOff.dropOffCount.toLocaleString()} ({dropOff.dropOffPercentage}%)
                     </div>
                   </div>

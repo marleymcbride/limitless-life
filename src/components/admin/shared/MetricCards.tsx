@@ -26,13 +26,13 @@ export function MetricCard({ title, value, change, subtitle }: CardProps) {
       {/* Title Row */}
       <div className="flex justify-between items-start">
         <div>
-          <div className="text-2xl font-bold text-gray-900">{title}</div>
+          <div className="text-2xl font-bold text-white">{title}</div>
           {subtitle && (
             <div className="text-sm text-gray-500">{subtitle}</div>
           )}
         </div>
         <div className={`text-3xl font-bold ${
-          isPositive ? 'text-green-600' : isNegative ? 'text-red-600' : 'text-gray-900'
+          isPositive ? 'text-green-600' : isNegative ? 'text-red-600' : 'text-white'
         }`}>
           {value}
           {change && (
@@ -63,7 +63,7 @@ export function SourceCard({ source, revenue, count, percentage }: SourceCardPro
     <div className="bg-gray-50 border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow duration-200">
       <div className="flex items-center justify-between">
         <div className="flex-1">
-          <div className="text-5xl font-bold text-gray-900">{source || '(none)'}</div>
+          <div className="text-5xl font-bold text-white">{source || '(none)'}</div>
           <div className="text-right">
             <div className="text-3xl font-bold text-blue-600">${revenue.toLocaleString()}</div>
             <div className="text-sm text-gray-500">revenue</div>
@@ -94,7 +94,7 @@ export function CampaignCard({ campaign, revenue, count, percentage }: CampaignC
     <div className="bg-gray-50 border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow duration-200">
       <div className="flex items-center justify-between">
         <div className="flex-1">
-          <div className="text-5xl font-bold text-gray-900">{campaign || '(none)'}</div>
+          <div className="text-5xl font-bold text-white">{campaign || '(none)'}</div>
           <div className="text-right">
             <div className="text-3xl font-bold text-blue-600">${revenue.toLocaleString()}</div>
             <div className="text-sm text-gray-500">revenue</div>
@@ -143,13 +143,13 @@ export function TierCard({ tier, revenue, count, percentage }: TierCardProps) {
               <span className="text-2xl font-bold text-white">{tier.charAt(0)}</span>
             </div>
             <div className="flex-1">
-              <div className="text-5xl font-bold text-gray-900">{tier}</div>
+              <div className="text-5xl font-bold text-white">{tier}</div>
               <div className="text-sm text-gray-500">Tier</div>
             </div>
           </div>
         </div>
         <div className="text-right">
-          <div className="text-3xl font-bold text-gray-900">{revenue.toLocaleString()}</div>
+          <div className="text-3xl font-bold text-white">{revenue.toLocaleString()}</div>
           <div className="text-sm text-gray-500">revenue</div>
           <div className="text-sm text-gray-600">{count.toLocaleString()} customers</div>
           <div className="flex-2">

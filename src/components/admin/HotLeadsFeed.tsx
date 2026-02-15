@@ -216,7 +216,7 @@ export function HotLeadsFeed() {
                   <tr key={lead.id} className="hover:bg-gray-50">
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="flex flex-col">
-                        <div className="text-sm font-medium text-gray-900">
+                        <div className="text-sm font-medium text-white">
                           {lead.firstName && lead.lastName
                             ? `${lead.firstName} ${lead.lastName}`
                             : lead.email}
@@ -228,7 +228,7 @@ export function HotLeadsFeed() {
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="flex items-center">
-                        <div className="text-sm font-medium text-gray-900">
+                        <div className="text-sm font-medium text-white">
                           {lead.leadScore}
                         </div>
                         <div className="ml-2 w-16 h-2 bg-gray-200 rounded-full overflow-hidden">
@@ -249,7 +249,7 @@ export function HotLeadsFeed() {
                       </span>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <span className="text-sm text-gray-900 capitalize">
+                      <span className="text-sm text-white capitalize">
                         {lead.status.replace('_', ' ')}
                       </span>
                     </td>
