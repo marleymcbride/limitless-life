@@ -8,6 +8,7 @@ import {
   CarouselContent,
   CarouselItem,
 } from "./ui/carousel";
+import { trackEvent } from '@/lib/analytics';
 
 type Tier = 'protocol' | 'life' | 'life-whatsapp' | 'concierge' | 'ghost-tier' | null;
 type PaymentPlan = 'weekly' | '3pay' | '2pay' | 'full' | null;
@@ -168,6 +169,22 @@ export default function PricingSelector({ showEnroll: externalShowEnroll = false
 
   useEffect(() => {
     if (internalShowEnroll) {
+      // Track tier view event
+      const trackTierView = async () => {
+        try {
+          const sessionData = await fetch('/api/session').then(r => r.json());
+          await trackEvent({
+            sessionId: sessionData.sessionId,
+            userId: sessionData.userId,
+            eventType: 'tier_view',
+            eventData: { source: 'pricing_selector' },
+          });
+        } catch (error) {
+          console.error('Failed to track tier view:', error);
+        }
+      };
+      trackTierView();
+
       document.body.style.overflow = 'hidden';
       document.documentElement.style.overflow = 'hidden';
     } else {
@@ -184,6 +201,19 @@ export default function PricingSelector({ showEnroll: externalShowEnroll = false
     if (!selectedTier || !selectedPayment) return;
     setIsLoading(true);
     try {
+      const sessionData = await fetch('/api/session').then(r => r.json());
+
+      // Track Stripe checkout initiation
+      await trackEvent({
+        sessionId: sessionData.sessionId,
+        userId: sessionData.userId,
+        eventType: 'stripe_checkout_initiated',
+        eventData: {
+          tier: selectedTier,
+          paymentPlan: selectedPayment,
+        },
+      });
+
       const userEmail = typeof window !== 'undefined' ? sessionStorage.getItem('userEmail') : null;
       const userName = typeof window !== 'undefined' ? sessionStorage.getItem('userName') : null;
       const response = await fetch("/api/create-checkout-session", {
@@ -211,7 +241,7 @@ export default function PricingSelector({ showEnroll: externalShowEnroll = false
     <div ref={carouselRef}>
       {internalShowEnroll ? (
         <div className="fixed inset-0 z-50 px-2 md:px-4 lg:px-16 flex items-center justify-center bg-black/80 backdrop-blur-sm p-2 md:p-4 overflow-y-auto overflow-x-hidden">
-          <div className="bg-white rounded-lg shadow-2xl max-w-6xl w-full relative my-4 md:my-8 flex flex-col">
+          <div className="bg-white rounded-lg shadow-xl shadow-stone-800 max-w-6xl w-full relative my-4 md:my-8 flex flex-col">
             <div className="overflow-y-scroll overflow-x-hidden md:overflow-y-hidden mb-6 -mt-6 h-full rounded-md scrollbar-hide" style={{ maxHeight: '85vh' }}>
               
               {/* Desktop Layout - Original Two-Column Grid */}
@@ -273,7 +303,25 @@ export default function PricingSelector({ showEnroll: externalShowEnroll = false
                                 </label>
                                 <select
                                   value={selectedPayment || ''}
-                                  onChange={(e) => setSelectedPayment(e.target.value as PaymentPlan)}
+                                  onChange={async (e) => {
+                                    const plan = e.target.value as PaymentPlan;
+                                    setSelectedPayment(plan);
+
+                                    try {
+                                      const sessionData = await fetch('/api/session').then(r => r.json());
+                                      await trackEvent({
+                                        sessionId: sessionData.sessionId,
+                                        userId: sessionData.userId,
+                                        eventType: 'payment_plan_select',
+                                        eventData: {
+                                          tier: selectedTier,
+                                          paymentPlan: plan,
+                                        },
+                                      });
+                                    } catch (error) {
+                                      console.error('Failed to track payment plan selection:', error);
+                                    }
+                                  }}
                                   className="w-full px-3 md:px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent text-sm md:text-base"
                                 >
                                   <option value="" disabled>Select investment option</option>
@@ -446,7 +494,25 @@ export default function PricingSelector({ showEnroll: externalShowEnroll = false
                       <div className="mb-8">
                         <select
                           value={selectedPayment || ''}
-                          onChange={(e) => setSelectedPayment(e.target.value as PaymentPlan)}
+                          onChange={async (e) => {
+                            const plan = e.target.value as PaymentPlan;
+                            setSelectedPayment(plan);
+
+                            try {
+                              const sessionData = await fetch('/api/session').then(r => r.json());
+                              await trackEvent({
+                                sessionId: sessionData.sessionId,
+                                userId: sessionData.userId,
+                                eventType: 'payment_plan_select',
+                                eventData: {
+                                  tier: selectedTier,
+                                  paymentPlan: plan,
+                                },
+                              });
+                            } catch (error) {
+                              console.error('Failed to track payment plan selection:', error);
+                            }
+                          }}
                           className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
                         >
                           <option value="" disabled>Select investment option</option>
