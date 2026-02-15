@@ -8,6 +8,13 @@
       "when": 1770423161279,
       "tag": "0000_opposite_blue_shield",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1771165543130,
+      "tag": "0001_lyrical_snowbird",
+      "breakpoints": true
     }
   ]
 }
