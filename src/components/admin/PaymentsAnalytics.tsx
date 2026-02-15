@@ -76,7 +76,7 @@ export function PaymentsAnalytics() {
       {/* Header */}
       <div className="flex justify-between items-center mb-6">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">Payments Analytics</h1>
+          <h1 className="text-3xl font-bold text-white">Payments Analytics</h1>
           <p className="text-sm text-gray-600 mt-1">Revenue and payment metrics</p>
         </div>
         <DateRangeSelector value={dateRange} onChange={setDateRange} />
@@ -136,7 +136,7 @@ export function PaymentsAnalytics() {
                   <div key={index} className="py-3 border-b border-gray-200 last:border-0">
                     <div className="flex items-center justify-between">
                       <div className="flex-1">
-                        <div className="text-sm font-medium text-gray-900">{tier.tier}</div>
+                        <div className="text-sm font-medium text-white">{tier.tier}</div>
                         <div className="text-xs text-gray-500">
                           {tier.count} purchases ({tier.percentage}%)
                         </div>
@@ -170,7 +170,7 @@ export function PaymentsAnalytics() {
                     className="flex justify-between items-center py-3 border-b border-gray-200 last:border-0"
                   >
                     <div className="flex-1">
-                      <div className="text-sm font-medium text-gray-900">{source.source || '(none)'}</div>
+                      <div className="text-sm font-medium text-white">{source.source || '(none)'}</div>
                       <div className="text-xs text-gray-500">
                         {source.count} payments
                       </div>

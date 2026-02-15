@@ -71,7 +71,7 @@ export function FunnelAnalytics() {
       {/* Header */}
       <div className="flex justify-between items-center mb-6">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">Funnel Analytics</h1>
+          <h1 className="text-3xl font-bold text-white">Funnel Analytics</h1>
           <p className="text-sm text-gray-600 mt-1">Track conversion through each stage</p>
         </div>
         <DateRangeSelector value={dateRange} onChange={setDateRange} />
@@ -125,7 +125,7 @@ export function FunnelAnalytics() {
                     <div className="flex items-center justify-between mb-2">
                       <div className="flex-1">
                         <div className="text-sm font-medium text-gray-500">Step {index + 1}</div>
-                        <h3 className="text-lg font-bold text-gray-900">{step.step}</h3>
+                        <h3 className="text-lg font-bold text-white">{step.step}</h3>
                       </div>
                       <div className="ml-4 text-right">
                         <div className="text-2xl font-bold text-blue-600">
