@@ -49,3 +49,4 @@ components-library/
 # plan docs
 docs/plans/
 .env.local
+docs/
