@@ -16,18 +16,25 @@ import type { AirtableRecord, Submission } from '@/types/submission';
 // Constants and Configuration
 // ============================================================================
 
-const AIRTABLE_FILLOUT_BASE_ID = process.env.AIRTABLE_FILLOUT_BASE_ID;
-const AIRTABLE_FILLOUT_PERSONAL_ACCESS_TOKEN = process.env.AIRTABLE_FILLOUT_PERSONAL_ACCESS_TOKEN;
-const AIRTABLE_FILLOUT_SUBMISSIONS_TABLE_ID = process.env.AIRTABLE_FILLOUT_SUBMISSIONS_TABLE_ID;
+function getAirtableConfig() {
+  const AIRTABLE_FILLOUT_BASE_ID = process.env.AIRTABLE_FILLOUT_BASE_ID;
+  const AIRTABLE_FILLOUT_PERSONAL_ACCESS_TOKEN = process.env.AIRTABLE_FILLOUT_PERSONAL_ACCESS_TOKEN;
+  const AIRTABLE_FILLOUT_SUBMISSIONS_TABLE_ID = process.env.AIRTABLE_FILLOUT_SUBMISSIONS_TABLE_ID;
 
-if (!AIRTABLE_FILLOUT_BASE_ID || !AIRTABLE_FILLOUT_PERSONAL_ACCESS_TOKEN || !AIRTABLE_FILLOUT_SUBMISSIONS_TABLE_ID) {
-  throw new Error(
-    'Missing required Fillout Airtable environment variables: ' +
-    'AIRTABLE_FILLOUT_BASE_ID, AIRTABLE_FILLOUT_PERSONAL_ACCESS_TOKEN, AIRTABLE_FILLOUT_SUBMISSIONS_TABLE_ID'
-  );
+  if (!AIRTABLE_FILLOUT_BASE_ID || !AIRTABLE_FILLOUT_PERSONAL_ACCESS_TOKEN || !AIRTABLE_FILLOUT_SUBMISSIONS_TABLE_ID) {
+    throw new Error(
+      'Missing required Fillout Airtable environment variables: ' +
+      'AIRTABLE_FILLOUT_BASE_ID, AIRTABLE_FILLOUT_PERSONAL_ACCESS_TOKEN, AIRTABLE_FILLOUT_SUBMISSIONS_TABLE_ID'
+    );
+  }
+
+  return {
+    AIRTABLE_FILLOUT_BASE_ID,
+    AIRTABLE_FILLOUT_PERSONAL_ACCESS_TOKEN,
+    AIRTABLE_FILLOUT_SUBMISSIONS_TABLE_ID,
+    AIRTABLE_FILLOUT_API_URL: `https://api.airtable.com/v0/${AIRTABLE_FILLOUT_BASE_ID}/${AIRTABLE_FILLOUT_SUBMISSIONS_TABLE_ID}` as const,
+  };
 }
-
-const AIRTABLE_FILLOUT_API_URL = `https://api.airtable.com/v0/${AIRTABLE_FILLOUT_BASE_ID}/${AIRTABLE_FILLOUT_SUBMISSIONS_TABLE_ID}`;
 
 // ============================================================================
 // Type Definitions
@@ -72,6 +79,7 @@ export async function getSubmissions(params: GetSubmissionsParams = {}): Promise
   records: AirtableRecord[];
   offset?: string;
 }> {
+  const config = getAirtableConfig();
   const searchParams = new URLSearchParams();
 
   if (params.pageSize) {
@@ -86,9 +94,9 @@ export async function getSubmissions(params: GetSubmissionsParams = {}): Promise
     searchParams.append('filterByFormula', params.filterByFormula);
   }
 
-  const response = await fetch(`${AIRTABLE_FILLOUT_API_URL}?${searchParams}`, {
+  const response = await fetch(`${config.AIRTABLE_FILLOUT_API_URL}?${searchParams}`, {
     headers: {
-      Authorization: `Bearer ${AIRTABLE_FILLOUT_PERSONAL_ACCESS_TOKEN}`,
+      Authorization: `Bearer ${config.AIRTABLE_FILLOUT_PERSONAL_ACCESS_TOKEN}`,
       'Content-Type': 'application/json',
     },
     // Enable Next.js caching with 60-second revalidation
@@ -116,9 +124,10 @@ export async function getSubmissions(params: GetSubmissionsParams = {}): Promise
  * }
  */
 export async function getSubmissionById(id: string): Promise<AirtableRecord | null> {
-  const response = await fetch(`${AIRTABLE_FILLOUT_API_URL}/${id}`, {
+  const config = getAirtableConfig();
+  const response = await fetch(`${config.AIRTABLE_FILLOUT_API_URL}/${id}`, {
     headers: {
-      Authorization: `Bearer ${AIRTABLE_FILLOUT_PERSONAL_ACCESS_TOKEN}`,
+      Authorization: `Bearer ${config.AIRTABLE_FILLOUT_PERSONAL_ACCESS_TOKEN}`,
       'Content-Type': 'application/json',
     },
     // Enable Next.js caching with 60-second revalidation
