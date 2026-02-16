@@ -1,179 +1,334 @@
 /**
- * Test script for Revtrack API endpoint
- *
- * This script tests the /api/admin/revtrack endpoint without requiring Jest setup.
- * Run with: npx tsx src/app/api/admin/revtrack/route.test.ts
+ * Jest tests for Revtrack API endpoint
+ * Tests the actual Next.js route handler with mocked dependencies
  */
 
-// Mock campaign data
-const mockCampaigns = [
-  {
-    id: 'camp1',
-    name: 'Test Campaign 1',
-    category: 'video' as const,
-    utmCampaign: 'test-campaign-1',
-    sourceUrl: 'https://example.com/video1',
-    publishedAt: '2024-01-15',
-    firstEventAt: '2024-01-15',
-    views: 1000,
-    clicks: 100,
-    emails: 50,
-    sales: 5,
-    revenue: 500,
+import { GET } from './route';
+import { NextRequest } from 'next/server';
+import { fetchCampaigns } from '@/lib/airtable';
+
+// Mock the fetchCampaigns function
+jest.mock('@/lib/airtable', () => ({
+  fetchCampaigns: jest.fn(),
+}));
+
+// Mock the env module
+jest.mock('@/env.mjs', () => ({
+  env: {
+    ADMIN_API_KEY: 'test-api-key',
+    DATABASE_URL: 'postgresql://test',
+    SYSTEMEIO_API_KEY: 'test-key',
+    STRIPE_SECRET_KEY: 'test-key',
+    STRIPE_WEBHOOK_SECRET: 'test-secret',
+    NODE_ENV: 'test',
+    NEXT_PUBLIC_APP_URL: 'http://localhost:3000',
   },
-  {
-    id: 'camp2',
-    name: 'Test Campaign 2',
-    category: 'comm' as const,
-    utmCampaign: 'test-campaign-2',
-    sourceUrl: 'https://example.com/post1',
-    publishedAt: '2024-01-16',
-    firstEventAt: '2024-01-16',
-    views: 0,
-    clicks: 0,
-    emails: 0,
-    sales: 0,
-    revenue: 0,
-  },
-  {
-    id: 'camp3',
-    name: 'Test Campaign 3',
-    category: 'web' as const,
-    utmCampaign: 'test-campaign-3',
-    sourceUrl: 'https://example.com/web1',
-    publishedAt: '2024-01-17',
-    firstEventAt: '2024-01-17',
-    views: 500,
-    clicks: 50,
-    emails: 25,
-    sales: 3,
-    revenue: 300,
-  },
-];
+}));
 
-// Test results tracking
-const testResults = {
-  passed: 0,
-  failed: 0,
-  tests: [] as { name: string; passed: boolean; error?: string }[],
-};
+describe('GET /api/admin/revtrack', () => {
+  let mockRequest: NextRequest;
 
-function assert(condition: boolean, testName: string, errorMsg?: string) {
-  if (condition) {
-    testResults.passed++;
-    testResults.tests.push({ name: testName, passed: true });
-    console.log(`✓ ${testName}`);
-  } else {
-    testResults.failed++;
-    testResults.tests.push({ name: testName, passed: false, error: errorMsg });
-    console.error(`✗ ${testName}${errorMsg ? ': ' + errorMsg : ''}`);
-  }
-}
+  beforeEach(() => {
+    // Clear all mocks before each test
+    jest.clearAllMocks();
 
-async function runTests() {
-  console.log('Running Revtrack API Unit Tests...\n');
+    // Create a mock NextRequest
+    mockRequest = {
+      headers: {
+        get: jest.fn(),
+      },
+    } as unknown as NextRequest;
+  });
 
-  try {
-    // Unit Test 1: Verify revenuePerView calculation
-    const campaign1 = mockCampaigns[0];
-    const revenuePerView1 = campaign1.views > 0
-      ? campaign1.revenue / campaign1.views
-      : 0;
-    assert(
-      revenuePerView1 === 0.5,
-      'Unit Test 1: revenuePerView calculated correctly for campaign with views',
-      `Expected 0.5, got ${revenuePerView1}`
-    );
+  describe('Authentication', () => {
+    it('should return 401 when API key is missing', async () => {
+      // Mock the headers.get to return null (no API key)
+      (mockRequest.headers.get as jest.Mock).mockReturnValue(null);
 
-    // Unit Test 2: Verify revenuePerView when views = 0
-    const campaign2 = mockCampaigns[1];
-    const revenuePerView2 = campaign2.views > 0
-      ? campaign2.revenue / campaign2.views
-      : 0;
-    assert(
-      revenuePerView2 === 0,
-      'Unit Test 2: revenuePerView is 0 when views = 0',
-      `Expected 0, got ${revenuePerView2}`
-    );
+      const response = await GET(mockRequest);
+      const data = await response.json();
 
-    // Unit Test 3: Verify total count
-    assert(
-      mockCampaigns.length === 3,
-      'Unit Test 3: Campaign count is correct',
-      `Expected 3, got ${mockCampaigns.length}`
-    );
-
-    // Unit Test 4: Verify data structure
-    const campaign3 = mockCampaigns[2];
-    const hasRequiredFields =
-      'id' in campaign3 &&
-      'name' in campaign3 &&
-      'category' in campaign3 &&
-      'views' in campaign3 &&
-      'revenue' in campaign3;
-    assert(
-      hasRequiredFields,
-      'Unit Test 4: Campaign has all required fields',
-      `Missing required fields`
-    );
-
-    // Unit Test 5: Verify category types
-    const validCategories = ['comm', 'video', 'web'];
-    const hasValidCategories = mockCampaigns.every(camp =>
-      validCategories.includes(camp.category)
-    );
-    assert(
-      hasValidCategories,
-      'Unit Test 5: All campaigns have valid categories'
-    );
-
-    // Unit Test 6: Verify revenuePerView calculation for third campaign
-    const revenuePerView3 = mockCampaigns[2].views > 0
-      ? mockCampaigns[2].revenue / mockCampaigns[2].views
-      : 0;
-    assert(
-      revenuePerView3 === 0.6,
-      'Unit Test 6: revenuePerView calculated correctly for campaign 3',
-      `Expected 0.6, got ${revenuePerView3}`
-    );
-
-    console.log('\n✓ All unit tests passed!');
-    console.log('\nNote: To run integration tests with the actual API:');
-    console.log('1. Start the dev server: npm run dev');
-    console.log('2. Run manual API test with curl (see test-curl.sh)\n');
-  } catch (error) {
-    console.error('\nError running tests:', error);
-    testResults.failed++;
-    testResults.tests.push({
-      name: 'Test execution',
-      passed: false,
-      error: error instanceof Error ? error.message : 'Unknown error'
+      expect(response.status).toBe(401);
+      expect(data).toEqual({ error: 'Unauthorized' });
     });
-  }
 
-  // Print summary
-  console.log('='.repeat(50));
-  console.log('Test Summary:');
-  console.log('='.repeat(50));
-  console.log(`Total Tests: ${testResults.passed + testResults.failed}`);
-  console.log(`Passed: ${testResults.passed}`);
-  console.log(`Failed: ${testResults.failed}`);
-  console.log('='.repeat(50));
+    it('should return 401 when API key is invalid', async () => {
+      // Mock the headers.get to return an invalid API key
+      (mockRequest.headers.get as jest.Mock).mockReturnValue('invalid-key');
 
-  if (testResults.failed > 0) {
-    console.log('\nFailed Tests:');
-    testResults.tests
-      .filter(t => !t.passed)
-      .forEach(t => {
-        console.log(`  - ${t.name}${t.error ? ': ' + t.error : ''}`);
-      });
-  }
+      const response = await GET(mockRequest);
+      const data = await response.json();
 
-  process.exit(testResults.failed > 0 ? 1 : 0);
-}
+      expect(response.status).toBe(401);
+      expect(data).toEqual({ error: 'Unauthorized' });
+    });
 
-// Run tests
-runTests().catch((error) => {
-  console.error('Fatal error running tests:', error);
-  process.exit(1);
+    it('should accept requests with valid API key', async () => {
+      // Mock the headers.get to return a valid API key
+      (mockRequest.headers.get as jest.Mock).mockReturnValue('test-api-key');
+
+      // Mock fetchCampaigns to return sample data
+      const mockCampaigns = [
+        {
+          id: 'camp1',
+          name: 'Test Campaign',
+          category: 'video' as const,
+          utmCampaign: 'test-campaign',
+          views: 1000,
+          revenue: 500,
+        },
+      ];
+      (fetchCampaigns as jest.Mock).mockResolvedValue(mockCampaigns);
+
+      const response = await GET(mockRequest);
+
+      expect(response.status).not.toBe(401);
+    });
+  });
+
+  describe('Successful Response', () => {
+    beforeEach(() => {
+      // Set up valid authentication for all success tests
+      (mockRequest.headers.get as jest.Mock).mockReturnValue('test-api-key');
+    });
+
+    it('should return campaigns with revenuePerView calculation', async () => {
+      const mockCampaigns = [
+        {
+          id: 'camp1',
+          name: 'Test Campaign 1',
+          category: 'video' as const,
+          utmCampaign: 'test-campaign-1',
+          sourceUrl: 'https://example.com/video1',
+          publishedAt: '2024-01-15',
+          firstEventAt: '2024-01-15',
+          views: 1000,
+          clicks: 100,
+          emails: 50,
+          sales: 5,
+          revenue: 500,
+        },
+        {
+          id: 'camp2',
+          name: 'Test Campaign 2',
+          category: 'comm' as const,
+          utmCampaign: 'test-campaign-2',
+          sourceUrl: 'https://example.com/post1',
+          publishedAt: '2024-01-16',
+          firstEventAt: '2024-01-16',
+          views: 0,
+          clicks: 0,
+          emails: 0,
+          sales: 0,
+          revenue: 0,
+        },
+      ];
+
+      (fetchCampaigns as jest.Mock).mockResolvedValue(mockCampaigns);
+
+      const response = await GET(mockRequest);
+      const data = await response.json();
+
+      expect(response.status).toBe(200);
+      expect(data.campaigns).toHaveLength(2);
+      expect(data.total).toBe(2);
+
+      // Check first campaign revenuePerView calculation
+      expect(data.campaigns[0].revenuePerView).toBe(0.5);
+
+      // Check second campaign revenuePerView (should be 0 when views is 0)
+      expect(data.campaigns[1].revenuePerView).toBe(0);
+    });
+
+    it('should include all required fields in campaign objects', async () => {
+      const mockCampaigns = [
+        {
+          id: 'camp1',
+          name: 'Test Campaign',
+          category: 'web' as const,
+          utmCampaign: 'test-campaign',
+          sourceUrl: 'https://example.com',
+          publishedAt: '2024-01-15',
+          firstEventAt: '2024-01-15',
+          views: 100,
+          clicks: 10,
+          emails: 5,
+          sales: 1,
+          revenue: 100,
+        },
+      ];
+
+      (fetchCampaigns as jest.Mock).mockResolvedValue(mockCampaigns);
+
+      const response = await GET(mockRequest);
+      const data = await response.json();
+
+      const campaign = data.campaigns[0];
+      expect(campaign).toHaveProperty('id');
+      expect(campaign).toHaveProperty('name');
+      expect(campaign).toHaveProperty('category');
+      expect(campaign).toHaveProperty('utmCampaign');
+      expect(campaign).toHaveProperty('views');
+      expect(campaign).toHaveProperty('clicks');
+      expect(campaign).toHaveProperty('emails');
+      expect(campaign).toHaveProperty('sales');
+      expect(campaign).toHaveProperty('revenue');
+      expect(campaign).toHaveProperty('revenuePerView');
+    });
+
+    it('should handle campaigns with optional fields missing', async () => {
+      const mockCampaigns = [
+        {
+          id: 'camp1',
+          name: 'Minimal Campaign',
+          category: 'comm' as const,
+          utmCampaign: 'minimal-campaign',
+          views: 50,
+          clicks: 5,
+          emails: 2,
+          sales: 0,
+          revenue: 0,
+        },
+      ];
+
+      (fetchCampaigns as jest.Mock).mockResolvedValue(mockCampaigns);
+
+      const response = await GET(mockRequest);
+      const data = await response.json();
+
+      expect(response.status).toBe(200);
+      expect(data.campaigns[0].sourceUrl).toBeUndefined();
+      expect(data.campaigns[0].publishedAt).toBeUndefined();
+      expect(data.campaigns[0].firstEventAt).toBeUndefined();
+    });
+
+    it('should calculate revenuePerView correctly for different values', async () => {
+      const mockCampaigns = [
+        {
+          id: 'camp1',
+          name: 'High Revenue Campaign',
+          category: 'video' as const,
+          utmCampaign: 'high-revenue',
+          views: 1000,
+          clicks: 100,
+          emails: 50,
+          sales: 10,
+          revenue: 2000,
+        },
+        {
+          id: 'camp2',
+          name: 'Low Revenue Campaign',
+          category: 'video' as const,
+          utmCampaign: 'low-revenue',
+          views: 500,
+          clicks: 50,
+          emails: 25,
+          sales: 2,
+          revenue: 100,
+        },
+      ];
+
+      (fetchCampaigns as jest.Mock).mockResolvedValue(mockCampaigns);
+
+      const response = await GET(mockRequest);
+      const data = await response.json();
+
+      expect(data.campaigns[0].revenuePerView).toBe(2.0);
+      expect(data.campaigns[1].revenuePerView).toBe(0.2);
+    });
+
+    it('should return empty array when no campaigns exist', async () => {
+      (fetchCampaigns as jest.Mock).mockResolvedValue([]);
+
+      const response = await GET(mockRequest);
+      const data = await response.json();
+
+      expect(response.status).toBe(200);
+      expect(data.campaigns).toHaveLength(0);
+      expect(data.total).toBe(0);
+    });
+  });
+
+  describe('Error Handling', () => {
+    beforeEach(() => {
+      // Set up valid authentication for all error tests
+      (mockRequest.headers.get as jest.Mock).mockReturnValue('test-api-key');
+    });
+
+    it('should return 500 when fetchCampaigns throws an error', async () => {
+      const mockError = new Error('Airtable connection failed');
+      (fetchCampaigns as jest.Mock).mockRejectedValue(mockError);
+
+      const response = await GET(mockRequest);
+      const data = await response.json();
+
+      expect(response.status).toBe(500);
+      expect(data.error).toBe('Failed to fetch campaigns');
+      expect(data.message).toBe('Airtable connection failed');
+    });
+
+    it('should return 500 with unknown error message when error is not an Error instance', async () => {
+      (fetchCampaigns as jest.Mock).mockRejectedValue('Unknown error');
+
+      const response = await GET(mockRequest);
+      const data = await response.json();
+
+      expect(response.status).toBe(500);
+      expect(data.error).toBe('Failed to fetch campaigns');
+      expect(data.message).toBe('Unknown error');
+    });
+  });
+
+  describe('Data Structure', () => {
+    beforeEach(() => {
+      (mockRequest.headers.get as jest.Mock).mockReturnValue('test-api-key');
+    });
+
+    it('should maintain campaign category types', async () => {
+      const mockCampaigns = [
+        {
+          id: 'camp1',
+          name: 'Video Campaign',
+          category: 'video' as const,
+          utmCampaign: 'video',
+          views: 100,
+          clicks: 10,
+          emails: 5,
+          sales: 1,
+          revenue: 100,
+        },
+        {
+          id: 'camp2',
+          name: 'Community Campaign',
+          category: 'comm' as const,
+          utmCampaign: 'comm',
+          views: 200,
+          clicks: 20,
+          emails: 10,
+          sales: 2,
+          revenue: 200,
+        },
+        {
+          id: 'camp3',
+          name: 'Web Campaign',
+          category: 'web' as const,
+          utmCampaign: 'web',
+          views: 300,
+          clicks: 30,
+          emails: 15,
+          sales: 3,
+          revenue: 300,
+        },
+      ];
+
+      (fetchCampaigns as jest.Mock).mockResolvedValue(mockCampaigns);
+
+      const response = await GET(mockRequest);
+      const data = await response.json();
+
+      expect(data.campaigns[0].category).toBe('video');
+      expect(data.campaigns[1].category).toBe('comm');
+      expect(data.campaigns[2].category).toBe('web');
+    });
+  });
 });
