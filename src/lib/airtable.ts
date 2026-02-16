@@ -1,7 +1,7 @@
 import Airtable from 'airtable';
 
 const baseId = process.env.AIRTABLE_BASE_ID!;
-const accessToken = process.env.AIRTABLE_PERSONAL_ACCESS_TOKEN!;
+const accessToken = process.env.AIRTABLE_ACCESS_TOKEN!;
 
 const base = new Airtable({ apiKey: accessToken }).base(baseId);
 
