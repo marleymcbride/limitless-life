@@ -19,6 +19,7 @@ export default function EmailPopup({
   const [email, setEmail] = useState('');
   const [firstName, setFirstName] = useState('');
   const [step, setStep] = useState(1);
+  const [userChoice, setUserChoice] = useState<'yes' | 'maybe' | 'no' | null>(null);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -44,8 +45,15 @@ export default function EmailPopup({
 
   // Debug logging
   useEffect(() => {
-    console.log('[EmailPopup] isOpen:', isOpen, 'mounted:', mounted);
-  }, [isOpen, mounted]);
+    console.log('[EmailPopup] isOpen:', isOpen, 'mounted:', mounted, 'step:', step);
+  }, [isOpen, mounted, step]);
+
+  // Log user choice for analytics
+  useEffect(() => {
+    if (userChoice) {
+      console.log('[EmailPopup] User choice:', userChoice);
+    }
+  }, [userChoice]);
 
   // Reset form when popup opens/closes
   useEffect(() => {
@@ -54,6 +62,7 @@ export default function EmailPopup({
       setStep(1);
       setEmail('');
       setFirstName('');
+      setUserChoice(null);
     }
   }, [isOpen]);
 
@@ -67,7 +76,7 @@ export default function EmailPopup({
   const handleFirstStep = (e: React.FormEvent) => {
     e.preventDefault();
     if (email.trim()) {
-      setStep(2);
+      setStep(2); // Move to step 2 for name collection
     }
   };
 
@@ -75,12 +84,28 @@ export default function EmailPopup({
     setStep(1);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Combine first and last name
-    const fullName = `${firstName} ${lastName}`.trim();
-    if (fullName && email.trim()) {
-      onSubmit({ email, firstName: fullName });
+  const handleChoice = (choice: 'yes' | 'maybe' | 'no') => {
+    setUserChoice(choice);
+
+    const fullName = `${firstName}`.trim();
+    if (!fullName || !email.trim()) {
+      return;
+    }
+
+    if (choice === 'no') {
+      // Route to enrollment page
+      const params = new URLSearchParams({
+        name: fullName,
+        email: email,
+      });
+      window.location.href = `/enroll?${params.toString()}`;
+    } else {
+      // Route to Fillout application
+      const params = new URLSearchParams({
+        name: fullName,
+        email: email,
+      });
+      window.location.href = `/application-prep?${params.toString()}`;
     }
   };
 
@@ -120,7 +145,53 @@ export default function EmailPopup({
           </div>
         </div>
 
-          {step === 1 ? (
+          {step === 2 ? (
+            <>
+              {/* Step 2 Content - Name field */}
+              <div className="text-center mb-2">
+                <p className="text-md font-normal text-stone-600 tracking-wide">
+                  <strong className="text-[#d12121]">STEP 1:</strong> What should we call you?
+                </p>
+              </div>
+
+              <form onSubmit={(e) => {
+                e.preventDefault();
+                if (firstName.trim()) {
+                  setStep(3);
+                }
+              }} className="space-y-4">
+                <div>
+                  <input
+                    type="email"
+                    id="email"
+                    required
+                    value={email}
+                    readOnly
+                    className="w-full px-3 py-3 border-2 border-gray-300 rounded-lg bg-gray-50 text-gray-500 cursor-not-allowed"
+                    placeholder="Your Email"
+                  />
+                </div>
+                <div>
+                  <input
+                    type="text"
+                    id="firstName"
+                    required
+                    onChange={(e) => setFirstName(e.target.value)}
+                    className="w-full px-3 py-3 border-2 border-gray-300 rounded-lg focus:border-[#940909] focus:ring-2 focus:ring-[#940909]/10 outline-none transition-all text-sm text-gray-900 placeholder-gray-500"
+                    placeholder="Your Full Name"
+                    autoFocus
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  className="w-full bg-[#940909] hover:bg-[#7b0707] text-white font-bold py-6 px-6 rounded-lg transition-all duration-200 text-md uppercase tracking-wide shadow-lg"
+                >
+                  <strong>Next</strong>
+                </button>
+              </form>
+            </>
+          ) : step === 1 ? (
             <>
               {/* Step 1 Content - Email only */}
               <div className="text-center mb-2">
@@ -150,51 +221,44 @@ export default function EmailPopup({
                 </button>
               </form>
             </>
-          ) : (
+          ) : step === 3 ? (
             <>
-              {/* Step 2 Content - Name field revealed */}
-              <div className="text-center mb-2">
-                <p className="text-md font-normal text-stone-600 tracking-wide">
-                  <strong className="text-[#d12121]">STEP 1:</strong> Please enter your details below
-                </p>
-              </div>
-
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div>
-                  <input
-                    type="text"
-                    id="firstName"
-                    required
-                    value={firstName}
-                    onChange={(e) => setFirstName(e.target.value)}
-                    className="w-full px-3 py-3 border-2 border-gray-300 rounded-lg focus:border-[#940909] focus:ring-2 focus:ring-[#940909]/10 outline-none transition-all text-sm text-gray-900 placeholder-gray-500"
-                    placeholder="Your Full Name"
-                    autoFocus
-                  />
+              <div className="animate-fade-in">
+                {/* Step 3 Content - Course vs Coaching choice */}
+                <div className="text-center mb-4">
+                  <p className="text-md font-normal text-stone-600 tracking-wide">
+                    <strong className="text-[#d12121]">STEP 1:</strong> Are you interested in working together, or would you rather do it yourself?
+                  </p>
                 </div>
 
-                <div>
-                  <input
-                    type="email"
-                    id="email"
-                    required
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    className="w-full px-3 py-3 border-2 border-gray-300 rounded-lg focus:border-[#940909] focus:ring-2 focus:ring-[#940909]/10 outline-none transition-all text-sm text-gray-900 placeholder-gray-500"
-                    placeholder="Your Email"
-                  />
-                </div>
+                <div className="space-y-3">
+                <button
+                  onClick={() => handleChoice('yes')}
+                  aria-label="Yes, I want to work together"
+                  className="w-full bg-[#940909] hover:bg-[#7b0707] text-white font-bold py-6 px-6 rounded-lg transition-all duration-200 text-md uppercase tracking-wide shadow-lg"
+                >
+                  <strong>Yes, I want to work together</strong>
+                </button>
 
                 <button
-                  type="submit"
-                  disabled={isLoading}
-                  className="w-full bg-[#d12121] hover:bg-[#c62424] text-white font-bold py-6 px-6 rounded-lg transition-all duration-200 text-md uppercase tracking-wide shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+                  onClick={() => handleChoice('maybe')}
+                  aria-label="Maybe, I want to see what it looks like"
+                  className="w-full bg-[#940909] hover:bg-[#7b0707] text-white font-bold py-6 px-6 rounded-lg transition-all duration-200 text-md uppercase tracking-wide shadow-lg"
                 >
-                  {isLoading ? 'Processing...' : 'GO TO NEXT STEP 2'}
+                  <strong>Maybe, I want to see what it looks like</strong>
                 </button>
-              </form>
+
+                <button
+                  onClick={() => handleChoice('no')}
+                  aria-label="No, I want to do it myself"
+                  className="w-full bg-[#940909] hover:bg-[#7b0707] text-white font-bold py-6 px-6 rounded-lg transition-all duration-200 text-md uppercase tracking-wide shadow-lg"
+                >
+                  <strong>No, I want to do it myself</strong>
+                </button>
+                </div>
+              </div>
             </>
-          )}
+          ) : null}
 
           {/* Trust indicator */}
           <div className="text-center mt-8 pt-0 border-t border-gray-200">
