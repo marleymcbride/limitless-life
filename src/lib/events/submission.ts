@@ -1,6 +1,6 @@
 // src/lib/events/submission.ts
 
-import { db } from '@/db';
+import { db } from '@/lib/db';
 import { events } from '@/db/schema';
 import type { Submission } from '@/types/submission';
 
