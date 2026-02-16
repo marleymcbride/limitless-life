@@ -50,3 +50,8 @@ components-library/
 docs/plans/
 .env.local
 docs/
+
+# specialist guides (sensitive data)
+N8N_AIRTABLE_SPECIALIST_GUIDE.md
+*_SPECIALIST_GUIDE.md
+*_SPECIALIST_BRIEF.md
