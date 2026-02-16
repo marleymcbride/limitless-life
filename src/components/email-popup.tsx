@@ -8,8 +8,6 @@ interface EmailPopupProps {
   tier: string;
   tierName: string;
   onClose: () => void;
-  onSubmit: (data: { email: string; firstName: string }) => void;
-  isLoading?: boolean;
 }
 
 export default function EmailPopup({
@@ -17,8 +15,6 @@ export default function EmailPopup({
   tier,
   tierName,
   onClose,
-  onSubmit,
-  isLoading = false,
 }: EmailPopupProps) {
   const [email, setEmail] = useState('');
   const [firstName, setFirstName] = useState('');
