@@ -219,6 +219,7 @@ export default function EmailPopup({
               <div className="space-y-3">
                 <button
                   onClick={() => handleChoice('yes')}
+                  aria-label="Yes, I want to work together"
                   className="w-full bg-[#940909] hover:bg-[#7b0707] text-white font-bold py-6 px-6 rounded-lg transition-all duration-200 text-md uppercase tracking-wide shadow-lg"
                 >
                   <strong>Yes, I want to work together</strong>
@@ -226,6 +227,7 @@ export default function EmailPopup({
 
                 <button
                   onClick={() => handleChoice('maybe')}
+                  aria-label="Maybe, I want to see what it looks like"
                   className="w-full bg-[#940909] hover:bg-[#7b0707] text-white font-bold py-6 px-6 rounded-lg transition-all duration-200 text-md uppercase tracking-wide shadow-lg"
                 >
                   <strong>Maybe, I want to see what it looks like</strong>
@@ -233,6 +235,7 @@ export default function EmailPopup({
 
                 <button
                   onClick={() => handleChoice('no')}
+                  aria-label="No, I want to do it myself"
                   className="w-full bg-[#940909] hover:bg-[#7b0707] text-white font-bold py-6 px-6 rounded-lg transition-all duration-200 text-md uppercase tracking-wide shadow-lg"
                 >
                   <strong>No, I want to do it myself</strong>
