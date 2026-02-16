@@ -38,6 +38,26 @@ High-performance sales funnel application for Limitless Life, optimized for 8-fi
 - Reliable webhook queue with retries
 - Daily/weekly automated reports
 
+## Submissions Integration
+
+The system integrates with Fillout forms to track application submissions:
+
+- Fillout forms save to Airtable with Quiz score
+- Airtable automation classifies submissions by type (Course/Coaching/Whale)
+- Submissions appear in RevTrack UI at `/admin/submissions`
+- Event tracking logs submissions for analytics
+
+### Environment Variables Required
+
+```bash
+# Airtable
+AIRTABLE_PERSONAL_ACCESS_TOKEN=pat_XXX
+AIRTABLE_BASE_ID=appXXX
+AIRTABLE_SUBMISSIONS_TABLE_ID=tblXXX
+```
+
+See `docs/fillout-submissions-setup-guide.md` for complete setup instructions.
+
 ## Project Structure
 
 ```
