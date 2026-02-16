@@ -207,16 +207,39 @@ export default function EmailPopup({
                 </button>
               </form>
             </>
-          ) : (
+          ) : step === 3 ? (
             <>
-              {/* Placeholder for Step 3 - will be implemented in Task 3 */}
-              <div className="text-center p-8 text-gray-500">
-                <p className="text-lg font-semibold mb-2">Step 3: Choice Selection</p>
-                <p className="text-sm">This step will be implemented in Task 3</p>
-                <p className="text-xs mt-4 text-gray-400">Current flow: Step 1 → Step 2 → Step 3 (Choice)</p>
+              {/* Step 3 Content - Course vs Coaching choice */}
+              <div className="text-center mb-4">
+                <p className="text-md font-normal text-stone-600 tracking-wide">
+                  <strong className="text-[#d12121]">STEP 1:</strong> Are you interested in working together, or would you rather do it yourself?
+                </p>
+              </div>
+
+              <div className="space-y-3">
+                <button
+                  onClick={() => handleChoice('yes')}
+                  className="w-full bg-[#940909] hover:bg-[#7b0707] text-white font-bold py-6 px-6 rounded-lg transition-all duration-200 text-md uppercase tracking-wide shadow-lg"
+                >
+                  <strong>Yes, I want to work together</strong>
+                </button>
+
+                <button
+                  onClick={() => handleChoice('maybe')}
+                  className="w-full bg-[#940909] hover:bg-[#7b0707] text-white font-bold py-6 px-6 rounded-lg transition-all duration-200 text-md uppercase tracking-wide shadow-lg"
+                >
+                  <strong>Maybe, I want to see what it looks like</strong>
+                </button>
+
+                <button
+                  onClick={() => handleChoice('no')}
+                  className="w-full bg-[#940909] hover:bg-[#7b0707] text-white font-bold py-6 px-6 rounded-lg transition-all duration-200 text-md uppercase tracking-wide shadow-lg"
+                >
+                  <strong>No, I want to do it myself</strong>
+                </button>
               </div>
             </>
-          )}
+          ) : null}
 
           {/* Trust indicator */}
           <div className="text-center mt-8 pt-0 border-t border-gray-200">
