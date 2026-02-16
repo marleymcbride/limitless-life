@@ -175,8 +175,9 @@ export default function EmailPopup({
             </>
           ) : (
             <>
+              {/* TEMPORARILY DISABLED: Step 2 form will be re-implemented in Task 2 */}
               {/* Step 2 Content - Name field revealed */}
-              <div className="text-center mb-2">
+              {/* <div className="text-center mb-2">
                 <p className="text-md font-normal text-stone-600 tracking-wide">
                   <strong className="text-[#d12121]">STEP 1:</strong> Please enter your details below
                 </p>
@@ -215,7 +216,12 @@ export default function EmailPopup({
                 >
                   {isLoading ? 'Processing...' : 'GO TO NEXT STEP 2'}
                 </button>
-              </form>
+              </form> */}
+
+              {/* Placeholder for Task 2 implementation */}
+              <div className="text-center p-8 text-gray-500">
+                <p>Step 2 form will be implemented in Task 2</p>
+              </div>
             </>
           )}
 
