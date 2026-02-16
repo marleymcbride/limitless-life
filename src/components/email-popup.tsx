@@ -147,7 +147,7 @@ export default function EmailPopup({
               {/* Step 2 Content - Name field */}
               <div className="text-center mb-2">
                 <p className="text-md font-normal text-stone-600 tracking-wide">
-                  <strong className="text-[#d12121]">STEP 2:</strong> What should we call you?
+                  <strong className="text-[#d12121]">STEP 1:</strong> What should we call you?
                 </p>
               </div>
 
