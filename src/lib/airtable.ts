@@ -1,9 +1,15 @@
 import Airtable from 'airtable';
 
-const baseId = process.env.AIRTABLE_BASE_ID!;
-const accessToken = process.env.AIRTABLE_ACCESS_TOKEN!;
+function getBase() {
+  const baseId = process.env.AIRTABLE_BASE_ID;
+  const accessToken = process.env.AIRTABLE_ACCESS_TOKEN;
 
-const base = new Airtable({ apiKey: accessToken }).base(baseId);
+  if (!baseId || !accessToken) {
+    throw new Error('AIRTABLE_BASE_ID and AIRTABLE_ACCESS_TOKEN environment variables must be set');
+  }
+
+  return new Airtable({ apiKey: accessToken }).base(baseId);
+}
 
 /**
  * Escapes user input for safe use in Airtable formulas
@@ -48,7 +54,7 @@ export const airtable = {
     async createOrUpdate(data: LeadRecord) {
       try {
         // Check if lead exists
-        const records = await base('Leads')
+        const records = await getBase()('Leads')
           .select({
             filterByFormula: `{Email} = "${escapeForFormula(data.Email)}"`,
             maxRecords: 1,
@@ -57,13 +63,13 @@ export const airtable = {
 
         if (records.length > 0) {
           // Update existing
-          await base('Leads').update(records[0].id, {
+          await getBase()('Leads').update(records[0].id, {
             ...data,
           });
           console.log('Airtable: Lead updated', data.Email);
         } else {
           // Create new
-          await base('Leads').create([
+          await getBase()('Leads').create([
             {
               fields: data,
             },
@@ -78,7 +84,7 @@ export const airtable = {
 
     async findHotLeads() {
       try {
-        const records = await base('Leads')
+        const records = await getBase()('Leads')
           .select({
             filterByFormula: `{Temperature} = "Hot"`,
             sort: [{ field: 'Score', direction: 'desc' }],
@@ -99,7 +105,7 @@ export const airtable = {
           formula = `{Temperature} = "${temperature}"`;
         }
 
-        const records = await base('Leads')
+        const records = await getBase()('Leads')
           .select({
             filterByFormula: formula || undefined,
             sort: [{ field: 'CreatedAt', direction: 'desc' }],
@@ -123,7 +129,7 @@ export const airtable = {
         // NOTE: This fetches all records to count them, which is inefficient for large datasets.
         // Airtable doesn't provide a native count API. Future improvement: implement pagination
         // or use a cached count field that's updated on create/delete operations.
-        const records = await base('Leads')
+        const records = await getBase()('Leads')
           .select({
             filterByFormula: formula || undefined,
           })
@@ -147,7 +153,7 @@ export const airtable = {
       BecameHotAt: string;
     }) {
       try {
-        await base('HotLeads').create([
+        await getBase()('HotLeads').create([
           {
             fields: data,
           },
@@ -169,7 +175,7 @@ export const airtable = {
       PaymentDate: string;
     }) {
       try {
-        await base('Payments').create([
+        await getBase()('Payments').create([
           {
             fields: data,
           },
@@ -187,7 +193,7 @@ export const airtable = {
         const firstDay = new Date(year, month, 1).toISOString();
         const lastDay = new Date(year, month + 1, 0, 23, 59, 59).toISOString();
 
-        const records = await base('Payments')
+        const records = await getBase()('Payments')
           .select({
             filterByFormula: `AND(
               IS_AFTER({PaymentDate}, "${firstDay}"),
@@ -211,7 +217,7 @@ export const airtable = {
         const firstDay = new Date(year, month, 1).toISOString();
         const lastDay = new Date(year, month + 1, 0, 23, 59, 59).toISOString();
 
-        const records = await base('Payments')
+        const records = await getBase()('Payments')
           .select({
             filterByFormula: `AND(
               IS_AFTER({PaymentDate}, "${firstDay}"),
@@ -229,7 +235,7 @@ export const airtable = {
 
     async getAll() {
       try {
-        const records = await base('Payments')
+        const records = await getBase()('Payments')
           .select({
             sort: [{ field: 'PaymentDate', direction: 'desc' }],
           })
@@ -251,7 +257,7 @@ export const airtable = {
       }
 
       try {
-        const records = await base(campaignsTableId)
+        const records = await getBase()(campaignsTableId)
           .select({
             sort: [{ field: 'Published', direction: 'desc' }],
           })
@@ -286,7 +292,7 @@ export const airtable = {
       }
 
       try {
-        const createdRecord = await base(campaignsTableId).create([
+        const createdRecord = await getBase()(campaignsTableId).create([
           {
             fields: {
               Name: campaign.name,
@@ -331,7 +337,7 @@ export const airtable = {
         if (metrics.sales !== undefined) fields.Sales = metrics.sales;
         if (metrics.revenue !== undefined) fields.Revenue = metrics.revenue;
 
-        await base(campaignsTableId).update(id, { fields });
+        await getBase()(campaignsTableId).update(id, { fields });
       } catch (error) {
         console.error('Airtable update campaign metrics error:', error);
         throw error;
