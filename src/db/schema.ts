@@ -102,3 +102,37 @@ export const leadAlerts = pgTable('lead_alerts', {
 }, (table) => ({
   userIdIdx: index('idx_lead_alerts_user_id').on(table.userId),
 }));
+
+// Revtrack Campaign Tables
+export const campaigns = pgTable('campaigns', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  name: text('name').notNull(),
+  category: text('category').$type<'comm' | 'video' | 'web'>().notNull(),
+  utmCampaign: text('utm_campaign').notNull().unique(),
+  sourceUrl: text('source_url'),
+  publishedAt: timestamp('published_at'),
+  firstEventAt: timestamp('first_event_at'),
+  createdAt: timestamp('created_at').defaultNow(),
+  updatedAt: timestamp('updated_at').defaultNow(),
+}, (table) => ({
+  utmCampaignIdx: index('idx_campaigns_utm_campaign').on(table.utmCampaign),
+  categoryIdx: index('idx_campaigns_category').on(table.category),
+  publishedAtIdx: index('idx_campaigns_published_at').on(table.publishedAt),
+}));
+
+export const campaignMetrics = pgTable('campaign_metrics', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  campaignId: uuid('campaign_id').references(() => campaigns.id, { onDelete: 'cascade' }).notNull(),
+  metricDate: timestamp('metric_date').notNull(),
+  views: integer('views').default(0),
+  clicks: integer('clicks').default(0),
+  emails: integer('emails').default(0),
+  sales: integer('sales').default(0),
+  revenue: integer('revenue').default(0),
+  createdAt: timestamp('created_at').defaultNow(),
+  updatedAt: timestamp('updated_at').defaultNow(),
+}, (table) => ({
+  campaignIdIdx: index('idx_campaign_metrics_campaign_id').on(table.campaignId),
+  metricDateIdx: index('idx_campaign_metrics_metric_date').on(table.metricDate),
+  campaignDateUniqueIdx: index('idx_campaign_metrics_campaign_date').on(table.campaignId, table.metricDate),
+}));
