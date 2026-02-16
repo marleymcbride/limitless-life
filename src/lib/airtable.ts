@@ -28,6 +28,21 @@ interface LeadRecord {
   CustomerStatus: 'prospect' | 'customer';
 }
 
+interface CampaignRecord {
+  id: string;
+  name: string;
+  category: 'comm' | 'video' | 'web';
+  utmCampaign: string;
+  sourceUrl?: string;
+  publishedAt?: string;
+  firstEventAt?: string;
+  views: number;
+  clicks: number;
+  emails: number;
+  sales: number;
+  revenue: number;
+}
+
 export const airtable = {
   leads: {
     async createOrUpdate(data: LeadRecord) {
@@ -223,6 +238,102 @@ export const airtable = {
         return records;
       } catch (error) {
         console.error('Airtable get all payments error:', error);
+        throw error;
+      }
+    },
+  },
+
+  campaigns: {
+    async fetchAll(): Promise<CampaignRecord[]> {
+      const campaignsTableId = process.env.AIRTABLE_CAMPAIGNS_TABLE_ID;
+      if (!campaignsTableId) {
+        throw new Error('AIRTABLE_CAMPAIGNS_TABLE_ID environment variable is not set');
+      }
+
+      try {
+        const records = await base(campaignsTableId)
+          .select({
+            sort: [{ field: 'Published', direction: 'desc' }],
+          })
+          .all();
+
+        return records.map((record) => ({
+          id: record.id,
+          name: record.fields.Name || record.fields.name || '',
+          category: record.fields.Category || record.fields.category || 'comm',
+          utmCampaign: record.fields.UTM_Campaign || record.fields.utm_campaign || '',
+          sourceUrl: record.fields['Source URL'] || record.fields.source_url,
+          publishedAt: record.fields.Published || record.fields.published,
+          firstEventAt: record.fields['First Event'] || record.fields.first_event,
+          views: record.fields.Views || record.fields.views || 0,
+          clicks: record.fields.Clicks || record.fields.clicks || 0,
+          emails: record.fields.Emails || record.fields.emails || 0,
+          sales: record.fields.Sales || record.fields.sales || 0,
+          revenue: record.fields.Revenue || record.fields.revenue || 0,
+        }));
+      } catch (error) {
+        console.error('Airtable fetch all campaigns error:', error);
+        throw error;
+      }
+    },
+
+    async create(
+      campaign: Omit<CampaignRecord, 'id'>
+    ): Promise<CampaignRecord> {
+      const campaignsTableId = process.env.AIRTABLE_CAMPAIGNS_TABLE_ID;
+      if (!campaignsTableId) {
+        throw new Error('AIRTABLE_CAMPAIGNS_TABLE_ID environment variable is not set');
+      }
+
+      try {
+        const createdRecord = await base(campaignsTableId).create([
+          {
+            fields: {
+              Name: campaign.name,
+              Category: campaign.category,
+              UTM_Campaign: campaign.utmCampaign,
+              'Source URL': campaign.sourceUrl,
+              Published: campaign.publishedAt,
+              'First Event': campaign.firstEventAt,
+              Views: campaign.views,
+              Clicks: campaign.clicks,
+              Emails: campaign.emails,
+              Sales: campaign.sales,
+              Revenue: campaign.revenue,
+            },
+          },
+        ]);
+
+        return {
+          ...campaign,
+          id: createdRecord[0].id,
+        };
+      } catch (error) {
+        console.error('Airtable create campaign error:', error);
+        throw error;
+      }
+    },
+
+    async updateMetrics(
+      id: string,
+      metrics: Partial<Pick<CampaignRecord, 'views' | 'clicks' | 'emails' | 'sales' | 'revenue'>>
+    ): Promise<void> {
+      const campaignsTableId = process.env.AIRTABLE_CAMPAIGNS_TABLE_ID;
+      if (!campaignsTableId) {
+        throw new Error('AIRTABLE_CAMPAIGNS_TABLE_ID environment variable is not set');
+      }
+
+      try {
+        const fields: Record<string, number> = {};
+        if (metrics.views !== undefined) fields.Views = metrics.views;
+        if (metrics.clicks !== undefined) fields.Clicks = metrics.clicks;
+        if (metrics.emails !== undefined) fields.Emails = metrics.emails;
+        if (metrics.sales !== undefined) fields.Sales = metrics.sales;
+        if (metrics.revenue !== undefined) fields.Revenue = metrics.revenue;
+
+        await base(campaignsTableId).update(id, { fields });
+      } catch (error) {
+        console.error('Airtable update campaign metrics error:', error);
         throw error;
       }
     },
