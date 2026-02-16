@@ -339,3 +339,11 @@ export const airtable = {
     },
   },
 };
+
+/**
+ * Standalone function to fetch all campaigns
+ * Provides a cleaner import pattern for API routes
+ */
+export async function fetchCampaigns(): Promise<CampaignRecord[]> {
+  return airtable.campaigns.fetchAll();
+}
