@@ -151,7 +151,12 @@ export default function EmailPopup({
                 </p>
               </div>
 
-              <form onSubmit={(e) => { e.preventDefault(); setStep(3); }} className="space-y-4">
+              <form onSubmit={(e) => {
+                e.preventDefault();
+                if (firstName.trim()) {
+                  setStep(3);
+                }
+              }} className="space-y-4">
                 <div>
                   <input
                     type="text"
