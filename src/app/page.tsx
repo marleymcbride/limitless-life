@@ -64,7 +64,6 @@ export default function Home() {
 
   // Email popup state
   const [showEmailPopup, setShowEmailPopup] = useState(false);
-  const [isPopupLoading, setIsPopupLoading] = useState(false);
 
   const [hasStartedVideo, setHasStartedVideo] = useState(false);
   const [videoProgress, setVideoProgress] = useState(0);
@@ -81,52 +80,6 @@ export default function Home() {
     e.preventDefault();
     setShowEmailPopup(true);
     console.log('[ApplyNow] showEmailPopup set to true');
-  };
-
-  // Handle popup submit
-  const handlePopupSubmit = async (data: { email: string; firstName: string }) => {
-    console.log('[EmailPopup] Submitting with data:', data);
-    setIsPopupLoading(true);
-
-    try {
-      // Track lead interest
-      const response = await fetch('/api/analytics/tier-interest', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          sessionId: session?.sessionId,
-          userId: session?.userId,
-          email: data.email,
-          firstName: data.firstName,
-          tier: 'undecided', // User hasn't chosen a tier yet
-        }),
-      });
-
-      console.log('[EmailPopup] Track response:', response.status);
-
-      // Store email in sessionStorage for Stripe checkout
-      if (typeof window !== 'undefined') {
-        sessionStorage.setItem('userEmail', data.email);
-        sessionStorage.setItem('userName', data.firstName);
-      }
-
-      // Navigate to application-prep with pre-fill data
-      const params = new URLSearchParams();
-      params.set('name', data.firstName);
-      params.set('email', data.email);
-
-      router.push(`/application-prep?${params.toString()}`);
-    } catch (error) {
-      console.error('[EmailPopup] Error tracking lead:', error);
-      // Still navigate even if tracking fails
-      const params = new URLSearchParams();
-      params.set('name', data.firstName);
-      params.set('email', data.email);
-      router.push(`/application-prep?${params.toString()}`);
-    } finally {
-      setIsPopupLoading(false);
-      setShowEmailPopup(false);
-    }
   };
 
   // Smooth scroll function with "soft close" easing
@@ -747,8 +700,6 @@ export default function Home() {
         tier="undecided"
         tierName="Limitless Protocol"
         onClose={() => setShowEmailPopup(false)}
-        onSubmit={handlePopupSubmit}
-        isLoading={isPopupLoading}
       />
 
     </main>
