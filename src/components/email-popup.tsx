@@ -142,7 +142,37 @@ export default function EmailPopup({
           </div>
         </div>
 
-          {step === 1 ? (
+          {step === 2 ? (
+            <>
+              {/* Step 2 Content - Name field */}
+              <div className="text-center mb-2">
+                <p className="text-md font-normal text-stone-600 tracking-wide">
+                  <strong className="text-[#d12121]">STEP 2:</strong> What should we call you?
+                </p>
+              </div>
+
+              <form onSubmit={(e) => { e.preventDefault(); setStep(3); }} className="space-y-4">
+                <div>
+                  <input
+                    type="text"
+                    id="firstName"
+                    required
+                    onChange={(e) => setFirstName(e.target.value)}
+                    className="w-full px-3 py-3 border-2 border-gray-300 rounded-lg focus:border-[#940909] focus:ring-2 focus:ring-[#940909]/10 outline-none transition-all text-sm text-gray-900 placeholder-gray-500"
+                    placeholder="Your Full Name"
+                    autoFocus
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  className="w-full bg-[#940909] hover:bg-[#7b0707] text-white font-bold py-6 px-6 rounded-lg transition-all duration-200 text-md uppercase tracking-wide shadow-lg"
+                >
+                  <strong>Next</strong>
+                </button>
+              </form>
+            </>
+          ) : step === 1 ? (
             <>
               {/* Step 1 Content - Email only */}
               <div className="text-center mb-2">
@@ -174,53 +204,10 @@ export default function EmailPopup({
             </>
           ) : (
             <>
-              {/* TEMPORARILY DISABLED: Step 2 form will be re-implemented in Task 2 */}
-              {/* Step 2 Content - Name field revealed */}
-              {/* <div className="text-center mb-2">
-                <p className="text-md font-normal text-stone-600 tracking-wide">
-                  <strong className="text-[#d12121]">STEP 1:</strong> Please enter your details below
-                </p>
-              </div>
-
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div>
-                  <input
-                    type="text"
-                    id="firstName"
-                    required
-                    value={firstName}
-                    onChange={(e) => setFirstName(e.target.value)}
-                    className="w-full px-3 py-3 border-2 border-gray-300 rounded-lg focus:border-[#940909] focus:ring-2 focus:ring-[#940909]/10 outline-none transition-all text-sm text-gray-900 placeholder-gray-500"
-                    placeholder="Your Full Name"
-                    autoFocus
-                  />
-                </div>
-
-                <div>
-                  <input
-                    type="email"
-                    id="email"
-                    required
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    className="w-full px-3 py-3 border-2 border-gray-300 rounded-lg focus:border-[#940909] focus:ring-2 focus:ring-[#940909]/10 outline-none transition-all text-sm text-gray-900 placeholder-gray-500"
-                    placeholder="Your Email"
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  disabled={isLoading}
-                  className="w-full bg-[#d12121] hover:bg-[#c62424] text-white font-bold py-6 px-6 rounded-lg transition-all duration-200 text-md uppercase tracking-wide shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  {isLoading ? 'Processing...' : 'GO TO NEXT STEP 2'}
-                </button>
-              </form> */}
-
-              {/* Placeholder for Step 2 - will be implemented in Task 2 */}
+              {/* Placeholder for Step 3 - will be implemented in Task 3 */}
               <div className="text-center p-8 text-gray-500">
-                <p className="text-lg font-semibold mb-2">Step 2: Name Collection</p>
-                <p className="text-sm">This step will be implemented in Task 2</p>
+                <p className="text-lg font-semibold mb-2">Step 3: Choice Selection</p>
+                <p className="text-sm">This step will be implemented in Task 3</p>
                 <p className="text-xs mt-4 text-gray-400">Current flow: Step 1 → Step 2 → Step 3 (Choice)</p>
               </div>
             </>
