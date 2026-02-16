@@ -24,6 +24,7 @@ export default function EmailPopup({
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [step, setStep] = useState(1);
+  const [userChoice, setUserChoice] = useState<'yes' | 'maybe' | 'no' | null>(null);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -73,7 +74,7 @@ export default function EmailPopup({
   const handleFirstStep = (e: React.FormEvent) => {
     e.preventDefault();
     if (email.trim()) {
-      setStep(2);
+      setStep(3); // Changed from 2 to 3 - skip to choice step
     }
   };
 
@@ -81,12 +82,34 @@ export default function EmailPopup({
     setStep(1);
   };
 
+  // Temporary stub for step 2 (will be replaced in Task 2)
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Combine first and last name
-    const fullName = `${firstName} ${lastName}`.trim();
-    if (fullName && email.trim()) {
-      onSubmit({ email, firstName: fullName });
+    // This will be implemented in Task 2
+  };
+
+  const handleChoice = (choice: 'yes' | 'maybe' | 'no') => {
+    setUserChoice(choice);
+
+    const fullName = `${firstName}`.trim();
+    if (!fullName || !email.trim()) {
+      return;
+    }
+
+    if (choice === 'no') {
+      // Route to enrollment page
+      const params = new URLSearchParams({
+        name: fullName,
+        email: email,
+      });
+      window.location.href = `/enroll?${params.toString()}`;
+    } else {
+      // Route to Fillout application
+      const params = new URLSearchParams({
+        name: fullName,
+        email: email,
+      });
+      window.location.href = `/application-prep?${params.toString()}`;
     }
   };
 
