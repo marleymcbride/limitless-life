@@ -15,6 +15,7 @@ export default function AirtableFormPopup({ onClose }: AirtableFormPopupProps) {
   const [isLoading, setIsLoading] = useState(true);
   const [isAnimatingIn, setIsAnimatingIn] = useState(true);
   const [isAnimatingOut, setIsAnimatingOut] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const iframeRef = useRef<HTMLIFrameElement>(null);
 
   const name = searchParams.get('name') || '';
@@ -23,13 +24,15 @@ export default function AirtableFormPopup({ onClose }: AirtableFormPopupProps) {
   // Validate required parameters
   useEffect(() => {
     if (!name || !email) {
-      // Redirect to home if missing required params
-      setTimeout(() => {
+      setError('Missing required information');
+      // Redirect to home after 3 seconds
+      const timer = setTimeout(() => {
         setIsAnimatingOut(true);
         setTimeout(() => {
           router.replace('/');
         }, 300);
-      }, 100);
+      }, 3000);
+      return () => clearTimeout(timer);
     }
   }, [name, email, router]);
 
@@ -44,8 +47,11 @@ export default function AirtableFormPopup({ onClose }: AirtableFormPopupProps) {
   // Handle Airtable form submission
   useEffect(() => {
     const handleMessage = (event: MessageEvent) => {
-      // Airtable sends postMessage on form submit
-      if (event.origin === 'https://airtable.com' && event.data === 'submit') {
+      // Validate origin for security
+      if (event.origin !== 'https://airtable.com') return;
+
+      // Airtable sends various messages on form submit
+      if (event.data === 'submit' || (typeof event.data === 'object' && event.data?.type === 'submit')) {
         handleFormSuccess();
       }
     };
@@ -96,10 +102,14 @@ export default function AirtableFormPopup({ onClose }: AirtableFormPopupProps) {
   };
 
   const handleClose = () => {
-    setIsAnimatingOut(true);
-    setTimeout(() => {
-      if (onClose) onClose();
-    }, 300);
+    // Give user a choice to close and return home
+    if (confirm('Close this form and return to the home page?')) {
+      setIsAnimatingOut(true);
+      setTimeout(() => {
+        router.replace('/');
+      }, 300);
+    }
+    if (onClose) onClose();
   };
 
   // Construct Airtable embed URL with pre-filled data
@@ -114,6 +124,40 @@ export default function AirtableFormPopup({ onClose }: AirtableFormPopupProps) {
       setIsLoading(false);
     }, 400);
   };
+
+  const handleIframeError = () => {
+    setError('Failed to load the application form. Please try again.');
+    setIsLoading(false);
+  };
+
+  // Show error state
+  if (error) {
+    return (
+      <div
+        className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm transition-all duration-300 ease-out"
+        style={{
+          opacity: backdropOpacity,
+        }}
+      >
+        <div
+          className="bg-white rounded-lg shadow-2xl p-8 max-w-md text-center transition-all duration-300 ease-out"
+          style={{
+            opacity: modalOpacity,
+            transform: `scale(${modalScale})`,
+          }}
+        >
+          <div className="mb-4 text-red-500">
+            <svg className="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h2 className="text-xl font-bold text-gray-900 mb-2">Oops!</h2>
+          <p className="text-gray-600 mb-4">{error}</p>
+          <p className="text-sm text-gray-500">Redirecting you to the home page...</p>
+        </div>
+      </div>
+    );
+  }
 
   // Calculate opacity and scale based on animation state
   const backdropOpacity = isAnimatingIn ? 0 : (isAnimatingOut ? 0 : 1);
@@ -193,6 +237,7 @@ export default function AirtableFormPopup({ onClose }: AirtableFormPopupProps) {
                 opacity: isLoading ? 0 : 1,
               }}
               onLoad={handleIframeLoad}
+              onError={handleIframeError}
             />
           </div>
         )}
