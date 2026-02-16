@@ -82,12 +82,6 @@ export default function EmailPopup({
     setStep(1);
   };
 
-  // Temporary stub for step 2 (will be replaced in Task 2)
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // This will be implemented in Task 2
-  };
-
   const handleChoice = (choice: 'yes' | 'maybe' | 'no') => {
     setUserChoice(choice);
 
