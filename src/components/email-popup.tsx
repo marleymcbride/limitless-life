@@ -74,7 +74,7 @@ export default function EmailPopup({
   const handleFirstStep = (e: React.FormEvent) => {
     e.preventDefault();
     if (email.trim()) {
-      setStep(3); // Changed from 2 to 3 - skip to choice step
+      setStep(2); // Move to step 2 for name collection
     }
   };
 
@@ -218,9 +218,11 @@ export default function EmailPopup({
                 </button>
               </form> */}
 
-              {/* Placeholder for Task 2 implementation */}
+              {/* Placeholder for Step 2 - will be implemented in Task 2 */}
               <div className="text-center p-8 text-gray-500">
-                <p>Step 2 form will be implemented in Task 2</p>
+                <p className="text-lg font-semibold mb-2">Step 2: Name Collection</p>
+                <p className="text-sm">This step will be implemented in Task 2</p>
+                <p className="text-xs mt-4 text-gray-400">Current flow: Step 1 → Step 2 → Step 3 (Choice)</p>
               </div>
             </>
           )}
