@@ -1,9 +1,9 @@
 'use client';
 
 import { useSearchParams } from 'next/navigation';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 
-export default function EnrollmentPage() {
+function EnrollmentPageContent() {
   const searchParams = useSearchParams();
   const [name, setName] = useState(searchParams.get('name') || '');
   const [email, setEmail] = useState(searchParams.get('email') || '');
@@ -119,5 +119,13 @@ export default function EnrollmentPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function EnrollmentPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-white flex items-center justify-center">Loading...</div>}>
+      <EnrollmentPageContent />
+    </Suspense>
   );
 }
