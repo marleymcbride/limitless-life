@@ -110,12 +110,19 @@ export default function Home() {
         sessionStorage.setItem('userName', data.firstName);
       }
 
-      // Navigate to application page
-      router.push('/application');
+      // Navigate to application-prep with pre-fill data
+      const params = new URLSearchParams();
+      params.set('name', data.firstName);
+      params.set('email', data.email);
+
+      router.push(`/application-prep?${params.toString()}`);
     } catch (error) {
       console.error('[EmailPopup] Error tracking lead:', error);
       // Still navigate even if tracking fails
-      router.push('/application');
+      const params = new URLSearchParams();
+      params.set('name', data.firstName);
+      params.set('email', data.email);
+      router.push(`/application-prep?${params.toString()}`);
     } finally {
       setIsPopupLoading(false);
       setShowEmailPopup(false);
