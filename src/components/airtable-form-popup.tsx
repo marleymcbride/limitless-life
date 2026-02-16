@@ -13,6 +13,8 @@ export default function AirtableFormPopup({ onClose }: AirtableFormPopupProps) {
   const router = useRouter();
   const [showSuccess, setShowSuccess] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [isAnimatingIn, setIsAnimatingIn] = useState(true);
+  const [isAnimatingOut, setIsAnimatingOut] = useState(false);
   const iframeRef = useRef<HTMLIFrameElement>(null);
 
   const name = searchParams.get('name') || '';
@@ -22,9 +24,22 @@ export default function AirtableFormPopup({ onClose }: AirtableFormPopupProps) {
   useEffect(() => {
     if (!name || !email) {
       // Redirect to home if missing required params
-      router.replace('/');
+      setTimeout(() => {
+        setIsAnimatingOut(true);
+        setTimeout(() => {
+          router.replace('/');
+        }, 300);
+      }, 100);
     }
   }, [name, email, router]);
+
+  // Animate in on mount
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsAnimatingIn(false);
+    }, 50);
+    return () => clearTimeout(timer);
+  }, []);
 
   // Handle Airtable form submission
   useEffect(() => {
@@ -73,12 +88,18 @@ export default function AirtableFormPopup({ onClose }: AirtableFormPopupProps) {
     setShowSuccess(true);
     // Redirect to application after 2.5 seconds
     setTimeout(() => {
-      router.push('/application');
+      setIsAnimatingOut(true);
+      setTimeout(() => {
+        router.push('/application');
+      }, 300);
     }, 2500);
   };
 
   const handleClose = () => {
-    if (onClose) onClose();
+    setIsAnimatingOut(true);
+    setTimeout(() => {
+      if (onClose) onClose();
+    }, 300);
   };
 
   // Construct Airtable embed URL with pre-filled data
@@ -88,12 +109,32 @@ export default function AirtableFormPopup({ onClose }: AirtableFormPopupProps) {
   prefillUrl.searchParams.set('prefill_Email', email);
 
   const handleIframeLoad = () => {
-    setIsLoading(false);
+    // Add a small delay for smooth fade-out of loader
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 400);
   };
 
+  // Calculate opacity and scale based on animation state
+  const backdropOpacity = isAnimatingIn ? 0 : (isAnimatingOut ? 0 : 1);
+  const modalScale = isAnimatingIn ? 0.95 : (isAnimatingOut ? 0.95 : 1);
+  const modalOpacity = isAnimatingIn ? 0 : (isAnimatingOut ? 0 : 1);
+
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
-      <div className="relative bg-white rounded-lg shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-hidden">
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm transition-all duration-300 ease-out"
+      style={{
+        opacity: backdropOpacity,
+        transitionDelay: isAnimatingIn ? '0ms' : '0ms',
+      }}
+    >
+      <div
+        className="relative bg-white rounded-lg shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-hidden transition-all duration-300 ease-out"
+        style={{
+          opacity: modalOpacity,
+          transform: `scale(${modalScale})`,
+        }}
+      >
         {/* Close button */}
         <button
           onClick={handleClose}
@@ -104,9 +145,9 @@ export default function AirtableFormPopup({ onClose }: AirtableFormPopupProps) {
         </button>
 
         {showSuccess ? (
-          // Success message
-          <div className="p-12 text-center">
-            <div className="mb-4 text-green-500">
+          // Success message with fade-in
+          <div className="p-12 text-center animate-fade-in">
+            <div className="mb-4 text-green-500 transition-all duration-500 ease-out" style={{ transform: 'scale(0)' }}>
               <svg className="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
@@ -117,23 +158,40 @@ export default function AirtableFormPopup({ onClose }: AirtableFormPopupProps) {
             <p className="text-gray-600">
               Redirecting you to continue...
             </p>
+            <style>{`
+              @keyframes checkmark {
+                0% { transform: scale(0); opacity: 0; }
+                50% { transform: scale(1.2); }
+                100% { transform: scale(1); opacity: 1; }
+              }
+              .text-green-500 > svg {
+                animation: checkmark 0.5s ease-out forwards;
+              }
+            `}</style>
           </div>
         ) : (
-          // Airtable form iframe
+          // Airtable form iframe with smooth loader
           <div className="relative w-full" style={{ height: '533px' }}>
             {isLoading && (
-              <div className="absolute inset-0 flex items-center justify-center bg-gray-100">
-                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900"></div>
+              <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 transition-opacity duration-400 ease-out">
+                <div className="text-center">
+                  <div className="animate-spin rounded-full h-14 w-14 border-4 border-gray-200 border-t-gray-900 mx-auto mb-4"></div>
+                  <p className="text-gray-600 text-sm font-medium animate-pulse">Loading your application...</p>
+                </div>
               </div>
             )}
             <iframe
               ref={iframeRef}
-              className="airtable-embed"
+              className="airtable-embed transition-opacity duration-400 ease-out"
               src={prefillUrl.toString()}
               frameBorder="0"
               width="100%"
               height="533"
-              style={{ background: 'transparent', border: 'none' }}
+              style={{
+                background: 'transparent',
+                border: 'none',
+                opacity: isLoading ? 0 : 1,
+              }}
               onLoad={handleIframeLoad}
             />
           </div>
