@@ -9,8 +9,26 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading...</div>}>
-      <AirtableFormPopup />
-    </Suspense>
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-gray-50 to-white">
+      <Suspense
+        fallback={
+          <div className="text-center animate-fade-in">
+            <div className="animate-spin rounded-full h-16 w-16 border-4 border-gray-200 border-t-gray-900 mx-auto mb-4"></div>
+            <p className="text-gray-600 font-medium">Preparing your application...</p>
+            <style>{`
+              @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(10px); }
+                to { opacity: 1; transform: translateY(0); }
+              }
+              .animate-fade-in {
+                animation: fadeIn 0.5s ease-out;
+              }
+            `}</style>
+          </div>
+        }
+      >
+        <AirtableFormPopup />
+      </Suspense>
+    </div>
   )
 }
