@@ -1,14 +1,15 @@
 'use client';
 
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { X } from 'lucide-react';
+import { FilloutStandardEmbed } from '@fillout/react';
 
-interface AirtableFormPopupProps {
+interface FilloutFormPopupProps {
   onClose?: () => void;
 }
 
-export default function AirtableFormPopup({ onClose }: AirtableFormPopupProps) {
+export default function FilloutFormPopup({ onClose }: FilloutFormPopupProps) {
   const searchParams = useSearchParams();
   const router = useRouter();
   const [showSuccess, setShowSuccess] = useState(false);
@@ -16,7 +17,6 @@ export default function AirtableFormPopup({ onClose }: AirtableFormPopupProps) {
   const [isAnimatingIn, setIsAnimatingIn] = useState(true);
   const [isAnimatingOut, setIsAnimatingOut] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const iframeRef = useRef<HTMLIFrameElement>(null);
 
   const name = searchParams.get('name') || '';
   const email = searchParams.get('email') || '';
@@ -44,51 +44,15 @@ export default function AirtableFormPopup({ onClose }: AirtableFormPopupProps) {
     return () => clearTimeout(timer);
   }, []);
 
-  // Handle Airtable form submission
+  // Fallback: Hide loading state after timeout (in case onReady doesn't fire)
   useEffect(() => {
-    const handleMessage = (event: MessageEvent) => {
-      // Validate origin for security
-      if (event.origin !== 'https://airtable.com') return;
-
-      // Airtable sends various messages on form submit
-      if (event.data === 'submit' || (typeof event.data === 'object' && event.data?.type === 'submit')) {
-        handleFormSuccess();
+    const loadingTimeout = setTimeout(() => {
+      if (isLoading) {
+        setIsLoading(false);
       }
-    };
-
-    window.addEventListener('message', handleMessage);
-    return () => window.removeEventListener('message', handleMessage);
-  }, []);
-
-  // Fallback: Poll for form completion (postMessage backup)
-  useEffect(() => {
-    if (showSuccess) return;
-
-    const checkInterval = setInterval(() => {
-      // Check if iframe URL changed to success page
-      try {
-        const iframe = iframeRef.current;
-        if (iframe && iframe.contentWindow) {
-          const currentUrl = iframe.contentWindow.location.href;
-          if (currentUrl.includes('airtable.com') && currentUrl.includes('success')) {
-            handleFormSuccess();
-          }
-        }
-      } catch (e) {
-        // Cross-origin access blocked - expected, rely on postMessage
-      }
-    }, 2000);
-
-    // Timeout after 5 minutes
-    const timeout = setTimeout(() => {
-      clearInterval(checkInterval);
-    }, 300000);
-
-    return () => {
-      clearInterval(checkInterval);
-      clearTimeout(timeout);
-    };
-  }, [showSuccess]);
+    }, 1500); // 1.5 second fallback
+    return () => clearTimeout(loadingTimeout);
+  }, [isLoading]);
 
   const handleFormSuccess = () => {
     setShowSuccess(true);
@@ -112,24 +76,6 @@ export default function AirtableFormPopup({ onClose }: AirtableFormPopupProps) {
     if (onClose) onClose();
   };
 
-  // Construct Airtable embed URL with pre-filled data
-  const airtableBaseUrl = 'https://airtable.com/embed/appQhGVKy3HwyUkCc/pagHJnWYqMMx4aHkh/form';
-  const prefillUrl = new URL(airtableBaseUrl);
-  prefillUrl.searchParams.set('prefill_Name', name);
-  prefillUrl.searchParams.set('prefill_Email', email);
-
-  const handleIframeLoad = () => {
-    // Add a small delay for smooth fade-out of loader
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 400);
-  };
-
-  const handleIframeError = () => {
-    setError('Failed to load the application form. Please try again.');
-    setIsLoading(false);
-  };
-
   // Show error state
   if (error) {
     return (
@@ -140,7 +86,7 @@ export default function AirtableFormPopup({ onClose }: AirtableFormPopupProps) {
         }}
       >
         <div
-          className="bg-white rounded-lg shadow-2xl p-8 max-w-md text-center transition-all duration-300 ease-out"
+          className="bg-white rounded-2xl shadow-2xl p-8 max-w-md text-center transition-all duration-300 ease-out"
           style={{
             opacity: modalOpacity,
             transform: `scale(${modalScale})`,
@@ -173,7 +119,7 @@ export default function AirtableFormPopup({ onClose }: AirtableFormPopupProps) {
       }}
     >
       <div
-        className="relative bg-white rounded-lg shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-hidden transition-all duration-300 ease-out"
+        className="relative bg-white rounded-xl shadow-2xl max-h-[90vh] overflow-hidden transition-all duration-300 ease-out"
         style={{
           opacity: modalOpacity,
           transform: `scale(${modalScale})`,
@@ -214,8 +160,8 @@ export default function AirtableFormPopup({ onClose }: AirtableFormPopupProps) {
             `}</style>
           </div>
         ) : (
-          // Airtable form iframe with smooth loader
-          <div className="relative w-full" style={{ height: '533px' }}>
+          // Fillout form with smooth loader
+          <div className="relative w-full" style={{ height: '700px', width: '900px'}}>
             {isLoading && (
               <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 transition-opacity duration-400 ease-out">
                 <div className="text-center">
@@ -224,21 +170,34 @@ export default function AirtableFormPopup({ onClose }: AirtableFormPopupProps) {
                 </div>
               </div>
             )}
-            <iframe
-              ref={iframeRef}
-              className="airtable-embed transition-opacity duration-400 ease-out"
-              src={prefillUrl.toString()}
-              frameBorder="0"
-              width="100%"
-              height="533"
+            <div
+              className="w-full h-full transition-opacity duration-400 ease-out"
               style={{
-                background: 'transparent',
-                border: 'none',
                 opacity: isLoading ? 0 : 1,
               }}
-              onLoad={handleIframeLoad}
-              onError={handleIframeError}
-            />
+            >
+              <FilloutStandardEmbed
+                filloutId="uGKMp9dJdtus"
+                domain="forms.fillout.com"
+                parameters={{
+                  name: name,
+                  email: email,
+                  filloutPageId: 'page2',
+                }}
+                onSubmit={() => {
+                  console.log('Fillout form submitted');
+                  handleFormSuccess();
+                }}
+                onReady={() => {
+                  console.log('Fillout form ready');
+                  console.log('Pre-filling with:', { name, email });
+                  // Match the loading delay for smooth transition
+                  setTimeout(() => {
+                    setIsLoading(false);
+                  }, 400);
+                }}
+              />
+            </div>
           </div>
         )}
       </div>
