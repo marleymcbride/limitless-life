@@ -18,7 +18,6 @@ export default function EmailPopup({
 }: EmailPopupProps) {
   const [email, setEmail] = useState('');
   const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
   const [step, setStep] = useState(1);
   const [mounted, setMounted] = useState(false);
 
@@ -55,7 +54,6 @@ export default function EmailPopup({
       setStep(1);
       setEmail('');
       setFirstName('');
-      setLastName('');
     }
   }, [isOpen]);
 
