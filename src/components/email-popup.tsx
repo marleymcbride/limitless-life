@@ -49,8 +49,15 @@ export default function EmailPopup({
 
   // Debug logging
   useEffect(() => {
-    console.log('[EmailPopup] isOpen:', isOpen, 'mounted:', mounted);
-  }, [isOpen, mounted]);
+    console.log('[EmailPopup] isOpen:', isOpen, 'mounted:', mounted, 'step:', step);
+  }, [isOpen, mounted, step]);
+
+  // Log user choice for analytics
+  useEffect(() => {
+    if (userChoice) {
+      console.log('[EmailPopup] User choice:', userChoice);
+    }
+  }, [userChoice]);
 
   // Reset form when popup opens/closes
   useEffect(() => {
@@ -159,6 +166,17 @@ export default function EmailPopup({
               }} className="space-y-4">
                 <div>
                   <input
+                    type="email"
+                    id="email"
+                    required
+                    value={email}
+                    readOnly
+                    className="w-full px-3 py-3 border-2 border-gray-300 rounded-lg bg-gray-50 text-gray-500 cursor-not-allowed"
+                    placeholder="Your Email"
+                  />
+                </div>
+                <div>
+                  <input
                     type="text"
                     id="firstName"
                     required
@@ -209,14 +227,15 @@ export default function EmailPopup({
             </>
           ) : step === 3 ? (
             <>
-              {/* Step 3 Content - Course vs Coaching choice */}
-              <div className="text-center mb-4">
-                <p className="text-md font-normal text-stone-600 tracking-wide">
-                  <strong className="text-[#d12121]">STEP 1:</strong> Are you interested in working together, or would you rather do it yourself?
-                </p>
-              </div>
+              <div className="animate-fade-in">
+                {/* Step 3 Content - Course vs Coaching choice */}
+                <div className="text-center mb-4">
+                  <p className="text-md font-normal text-stone-600 tracking-wide">
+                    <strong className="text-[#d12121]">STEP 1:</strong> Are you interested in working together, or would you rather do it yourself?
+                  </p>
+                </div>
 
-              <div className="space-y-3">
+                <div className="space-y-3">
                 <button
                   onClick={() => handleChoice('yes')}
                   aria-label="Yes, I want to work together"
@@ -240,6 +259,7 @@ export default function EmailPopup({
                 >
                   <strong>No, I want to do it myself</strong>
                 </button>
+                </div>
               </div>
             </>
           ) : null}
