@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import { Suspense } from 'react'
-import AirtableFormPopup from "@/components/airtable-form-popup";
+import FilloutFormPopup from "@/components/airtable-form-popup";
 
 export const metadata: Metadata = {
   title: "Complete Your Application - Step 2",
@@ -27,7 +27,7 @@ export default function Page() {
           </div>
         }
       >
-        <AirtableFormPopup />
+        <FilloutFormPopup />
       </Suspense>
     </div>
   )
