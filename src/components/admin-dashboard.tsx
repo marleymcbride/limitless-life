@@ -11,9 +11,11 @@ import AbandonedFunnelAnalytics from './admin/abandoned-funnel-analytics';
 import PaymentsAnalytics from './admin/payments-analytics';
 import { RevenueIntelligence } from './admin/RevenueIntelligence';
 import { CustomerLifetimeValue } from './admin/CustomerLifetimeValue';
+import { RevtrackDashboard } from './admin/RevtrackDashboard';
 
 type Tab =
   | 'dashboard'
+  | 'revtrack'
   | 'revenue'
   | 'clv'
   | 'leads'
@@ -52,6 +54,7 @@ export default function AdminDashboard() {
 
   const tabs: { key: Tab; label: string }[] = [
     { key: 'dashboard', label: 'Dashboard' },
+    { key: 'revtrack', label: 'Revtrack' },
     { key: 'revenue', label: 'Revenue Intelligence' },
     { key: 'clv', label: 'Customer Lifetime Value' },
     { key: 'payments', label: 'Payments & Customers' },
@@ -110,6 +113,7 @@ export default function AdminDashboard() {
         </div>
       )}
 
+      {activeTab === 'revtrack' && <RevtrackDashboard />}
       {activeTab === 'revenue' && <RevenueIntelligence />}
       {activeTab === 'clv' && <CustomerLifetimeValue />}
       {activeTab === 'funnel' && <FunnelAnalytics />}
