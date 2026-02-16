@@ -84,7 +84,7 @@ export default function EmailPopup({
     setStep(1);
   };
 
-  const handleChoice = (choice: 'yes' | 'maybe' | 'no') => {
+  const handleChoice = async (choice: 'yes' | 'maybe' | 'no') => {
     setUserChoice(choice);
 
     const fullName = `${firstName}`.trim();
@@ -92,6 +92,45 @@ export default function EmailPopup({
       return;
     }
 
+    // Determine interest type based on choice
+    let interestType: 'tire_kicker' | 'course' | 'coaching';
+    let eventType: string;
+
+    if (choice === 'no') {
+      interestType = 'tire_kicker'; // Not ready to commit
+      eventType = 'tire_kicker_interest';
+    } else if (choice === 'maybe') {
+      interestType = 'course'; // Self-directed, maybe course later
+      eventType = 'course_interest';
+    } else {
+      interestType = 'coaching'; // Wants to work together
+      eventType = 'coaching_interest';
+    }
+
+    // Track the choice event before redirecting
+    try {
+      await fetch('/api/analytics/events', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          eventType: eventType,
+          eventData: {
+            choice: choice,
+            interestType: interestType,
+            email: email,
+            name: fullName,
+            source: 'popup_step_3',
+            tier: tier,
+          }
+        }),
+      });
+      console.log(`[EmailPopup] Tracked ${eventType} for ${email}`);
+    } catch (error) {
+      console.error('[EmailPopup] Failed to track choice:', error);
+      // Don't block redirect if tracking fails
+    }
+
+    // Route to appropriate page
     if (choice === 'no') {
       // Route to enrollment page
       const params = new URLSearchParams({
