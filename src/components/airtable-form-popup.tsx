@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { X } from 'lucide-react';
 import { FilloutStandardEmbed } from '@fillout/react';
-import { trackSubmissionEvent } from '@/lib/events/submission';
 
 interface FilloutFormPopupProps {
   onClose?: () => void;
@@ -55,29 +54,7 @@ export default function FilloutFormPopup({ onClose }: FilloutFormPopupProps) {
     return () => clearTimeout(loadingTimeout);
   }, [isLoading]);
 
-  const handleFormSuccess = async () => {
-    // Track submission event
-    try {
-      // We'll need to get the submission ID from Fillout's response
-      // For now, track with available data
-      await trackSubmissionEvent({
-        id: crypto.randomUUID(), // Temporary ID, will be updated when we get Airtable sync
-        name: name,
-        email: email,
-        score: 0, // Will be updated from Airtable
-        type: 'course', // Will be updated from Airtable
-        tier: 'course', // Will be updated from Airtable
-        submittedAt: new Date().toISOString(),
-        utmCampaign: searchParams.get('utm_campaign') || undefined,
-        utmSource: searchParams.get('utm_source') || undefined,
-        utmMedium: searchParams.get('utm_medium') || undefined,
-        status: 'submitted',
-        fullData: { name, email },
-      });
-    } catch (error) {
-      console.error('Error tracking submission:', error);
-    }
-
+  const handleFormSuccess = () => {
     setShowSuccess(true);
     // Redirect to application after 2.5 seconds
     setTimeout(() => {
