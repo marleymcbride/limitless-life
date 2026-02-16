@@ -1,5 +1,0 @@
-id,user_id,alert_type,created_at,first_contact_at,response_time_seconds,email,score,trigger_event
-028ecd4c-9eaa-4e76-9a7f-c50122ed3866,85e1d1ef-6631-4ce8-8027-9cd939f24445,hot_lead,Wed Feb 11 2026 22:51:18 GMT+0000 (Greenwich Mean Time),,,hot-lead-test@example.com,75,migration_backfill
-80828c9c-b707-473b-87d9-595b64981f42,f6b487a1-6ad5-499f-ab1f-c2c4613d207d,hot_lead,Sun Feb 15 2026 11:18:04 GMT+0000 (Greenwich Mean Time),,,,75,checkout_initiated
-4c058805-5e1b-4ba9-b4a7-425ccc4f4360,7dfc1f19-9a6f-43bd-bb45-7063c09dc654,hot_lead,Sun Feb 15 2026 11:56:07 GMT+0000 (Greenwich Mean Time),,,,85,checkout_initiated
-2fc7d76d-3f69-49b2-a704-b1f5c3b9ed75,b2057b47-9b98-4445-b3ec-e1c2f5cb5df2,hot_lead,Sun Feb 15 2026 11:57:33 GMT+0000 (Greenwich Mean Time),,,,85,checkout_initiated
