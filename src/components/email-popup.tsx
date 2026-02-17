@@ -189,9 +189,9 @@ export default function EmailPopup({
 
   return createPortal(
     <div className="fixed inset-0 z-[9999] mx-auto flex items-center justify-center bg-black/70 backdrop-blur-sm">
-     <div className="px-4">
+     <div className="px-8 md:px-4 lg:px-4">
       {/* Modal - thin width, centered */}
-      <div className="pb-2 px-4 ml-16 w-[420px] max-h-[400vh] overflow-y-auto bg-gradient-to-b from-zinc-400 via-zinc-350 via-zinc-300 via-zinc-250 via-zinc-100 to-zinc-100 shadow-2xl rounded-xl shadow-[inset_0_2px_0_0_rgba(252,252,250,0.9)]">
+      <div className="pb-2 py-0 md:py-2 lg:py-2 px-4 md:px-10 lg:px-10 mx-0 ml-0 md:ml-16 lg:ml-16 w-full md:w-[420px] lg:w-[420px] max-h-[400vh] overflow-y-auto bg-gradient-to-b from-zinc-400 via-zinc-350 via-zinc-300 via-zinc-250 via-zinc-100 to-zinc-100 shadow-2xl rounded-xl shadow-[inset_0_2px_0_0_rgba(252,252,250,0.9)]">
 
         {/* Close button */}
         <button
@@ -207,19 +207,27 @@ export default function EmailPopup({
         {/* Content */}
         <div className="p-4">
           {/* Brand */}
-          <div className="text-center scale-[60%] mb-0">
-            <img
-              src="/images/LIMITLESS LIFE LOGO 2026.png"
-              alt="Limitless Life"
-              className="h-16 mx-auto"
-            />
-          </div>
+          {(step === 1 || step === 2 || step === 3) && (
+            <div className="text-center scale-[60%] mb-2">
+              <img
+                src="/images/LIMITLESS LIFE LOGO 2026.png"
+                alt="Limitless Life"
+                className="h-16 mx-auto"
+              />
+            </div>
+          )}
 
           {/* Headline */}
           <div className="text-center mb-0">
-            <div className="text-3xl font-bold text-gray-900 tracking-tight">
-              Register Now to Secure Your Spot
-            </div>
+            {step === 3 ? (
+              <div className="text-[28px] md:text[40px] lg:text[40px] mx-0 md:mx-4 lg:mx-4 mt-2 font-bold text-gray-900 tracking-tight leading-snug">
+                Are you interested in working together?
+              </div>
+            ) : (
+              <div className="text-3xl font-bold text-gray-900 tracking-tight">
+                Register Now to Secure Your Spot
+              </div>
+            )}
           </div>
         </div>
 
@@ -227,9 +235,9 @@ export default function EmailPopup({
             <>
               {/* Step 2 Content - Name field */}
               <div className="text-center mb-2">
-                <p className="text-md font-normal text-stone-600 tracking-wide">
-                  <strong className="text-[#d12121]">STEP 1:</strong> What should we call you?
-                </p>
+                <div className="text-[18px] md:text-[20px] lg:text-[20px] font-normal mb-4 text-stone-600 tracking-wide">
+                  <strong className="text-[#c43427]">STEP 1:</strong> Please enter your details
+                </div>
               </div>
 
               <form onSubmit={(e) => {
@@ -263,7 +271,7 @@ export default function EmailPopup({
 
                 <button
                   type="submit"
-                  className="w-full bg-[#940909] hover:bg-[#7b0707] text-white font-bold py-6 px-6 rounded-lg transition-all duration-200 text-md uppercase tracking-wide shadow-lg"
+                  className="w-full bg-[#940909] hover:bg-[#7b0707] text-white font-bold py-5 px-6 rounded-lg transition-all duration-200 text-md uppercase tracking-wide shadow-lg"
                 >
                   <strong>Next</strong>
                 </button>
@@ -273,9 +281,9 @@ export default function EmailPopup({
             <>
               {/* Step 1 Content - Email only */}
               <div className="text-center mb-2">
-                <p className="text-md font-normal text-stone-600 tracking-wide">
-                <strong className="text-[#d12121]">STEP 1:</strong> Please enter your details below
-                </p>
+                <div className="text-lg md:text-lg lg:text-lg font-normal text-stone-600 tracking-wide">
+                <strong className="text-[#d12121]">STEP 1:</strong> Please enter your details
+                </div>
               </div>
 
               <form onSubmit={handleFirstStep} className="space-y-4">
@@ -293,7 +301,7 @@ export default function EmailPopup({
 
                 <button
                   type="submit"
-                  className="w-full bg-[#940909] hover:bg-[#7b0707] text-white font-bold py-6 px-6 rounded-lg transition-all duration-200 text-md uppercase tracking-wide shadow-lg"
+                  className="w-full bg-[#940909] hover:bg-[#7b0707] text-white font-bold py-5 px-6 rounded-lg transition-all duration-200 text-md uppercase tracking-wide shadow-lg"
                 >
                   <strong>Next</strong>
                 </button>
@@ -302,48 +310,74 @@ export default function EmailPopup({
           ) : step === 3 ? (
             <>
               <div className="animate-fade-in">
+                <div className="">
                 {/* Step 3 Content - Course vs Coaching choice */}
-                <div className="text-center mb-4">
-                  <p className="text-md font-normal text-stone-600 tracking-wide">
-                    <strong className="text-[#d12121]">STEP 1:</strong> Are you interested in working together, or would you rather do it yourself?
-                  </p>
-                </div>
-
                 <div className="space-y-3">
-                <button
-                  onClick={() => handleChoice('yes')}
-                  aria-label="Yes, I want to work together"
-                  className="w-full bg-[#940909] hover:bg-[#7b0707] text-white font-bold py-6 px-6 rounded-lg transition-all duration-200 text-md uppercase tracking-wide shadow-lg"
-                >
-                  <strong>Yes, I want to work together</strong>
-                </button>
+                  {/* Selectable option boxes */}
+                  <div
+                    onClick={() => setUserChoice('yes')}
+                    className={`w-full text-left p-5 rounded-lg border-2 transition-all cursor-pointer ${
+                      userChoice === 'yes'
+                        ? 'border-red-600 bg-red-50'
+                        : 'border-gray-300 bg-gray-50 hover:bg-gray-100'
+                    }`}
+                  >
+                    <div className="font-medium -mr-2 -mx-1 md:-mr-0 md:-mx-0 lg:-mr-0 lg:-mx-0  text-[15px] md:text-[16px] lg:text-[16px] text-gray-700">Yes, I want to work together</div>
+                  </div>
 
-                <button
-                  onClick={() => handleChoice('maybe')}
-                  aria-label="Maybe, I want to see what it looks like"
-                  className="w-full bg-[#940909] hover:bg-[#7b0707] text-white font-bold py-6 px-6 rounded-lg transition-all duration-200 text-md uppercase tracking-wide shadow-lg"
-                >
-                  <strong>Maybe, I want to see what it looks like</strong>
-                </button>
+                  <div
+                    onClick={() => setUserChoice('maybe')}
+                    className={`w-full text-left p-5 rounded-lg border-2 transition-all cursor-pointer ${
+                      userChoice === 'maybe'
+                        ? 'border-red-600 bg-red-50'
+                        : 'border-gray-300 bg-gray-50 hover:bg-gray-100'
+                    }`}
+                  >
+                    <div className="font-medium -mr-2 -mx-1 md:-mr-0 md:-mx-0 lg:-mr-0 lg:-mx-0 text-[15px] md:text-[16px] lg:text-[16px] text-gray-700">Maybe, I&apos;d like to see what it looks like</div>
+                  </div>
 
-                <button
-                  onClick={() => handleChoice('no')}
-                  aria-label="No, I want to do it myself"
-                  className="w-full bg-[#940909] hover:bg-[#7b0707] text-white font-bold py-6 px-6 rounded-lg transition-all duration-200 text-md uppercase tracking-wide shadow-lg"
-                >
-                  <strong>No, I want to do it myself</strong>
-                </button>
+                  <div
+                    onClick={() => setUserChoice('no')}
+                    className={`w-full text-left p-5 rounded-lg border-2 transition-all cursor-pointer ${
+                      userChoice === 'no'
+                        ? 'border-red-600 bg-red-50'
+                        : 'border-gray-300 bg-gray-50 hover:bg-gray-100'
+                    }`}
+                  >
+                    <div className="font-medium -mr-2 -mx-1 md:-mr-0 md:-mx-0 lg:-mr-0 lg:-mx-0  text-[15px] md:text-[16px] lg:text-[16px] text-gray-700">No, I prefer to go at my own pace</div>
+                  </div>
+
+                  {step === 3 && <div className="h-0"></div>}
+
+                  {/* Next button */}
+                  <button
+                    type="button"
+                    onClick={() => userChoice && handleChoice(userChoice)}
+                    disabled={!userChoice}
+                    className={`w-full font-bold py-5 mb-0 px-6 rounded-lg transition-all duration-200 text-md uppercase tracking-wide shadow-lg ${
+                      userChoice
+                        ? 'bg-[#940909] hover:bg-[#7b0707] text-white cursor-pointer'
+                        : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                    }`}
+                  >
+                    <strong>Next</strong>
+                  </button>
+                </div>
                 </div>
               </div>
             </>
           ) : null}
 
+          {step === 3 && <div className="h-6"></div>}
+
           {/* Trust indicator */}
-          <div className="text-center mt-8 pt-0 border-t border-gray-200">
-            <p className="text-[10px] pt-2 text-gray-400 uppercase tracking-wide">
-              🔒 Secure • Limited Spots Available
-            </p>
-          </div>
+          {step !== 3 && (
+            <div className="text-center mt-8 pt-0 border-t border-gray-200">
+              <div className="text-[10px] md:text-[12px] lg:text-[12px] pt-2 text-gray-400 uppercase tracking-wide">
+                🔒 Secure • Limited Spots Available
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>,

@@ -119,7 +119,7 @@ export default function FilloutFormPopup({ onClose }: FilloutFormPopupProps) {
       }}
     >
       <div
-        className="relative bg-white rounded-xl shadow-2xl max-h-[90vh] overflow-hidden transition-all duration-300 ease-out"
+        className="relative bg-white rounded-xl shadow-2xl max-h-[100vh] md:max-h-[90vh] lg:max-h-[90vh] overflow-hidden transition-all duration-300 ease-out"
         style={{
           opacity: modalOpacity,
           transform: `scale(${modalScale})`,
@@ -142,7 +142,7 @@ export default function FilloutFormPopup({ onClose }: FilloutFormPopupProps) {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
-            <h2 className="text-2xl font-bold text-gray-900 mb-2">
+            <h2 className="text-xl md:text-2xl lg:text-2xl font-bold text-gray-900 mb-2">
               Application Step Complete!
             </h2>
             <p className="text-gray-600">
@@ -161,44 +161,58 @@ export default function FilloutFormPopup({ onClose }: FilloutFormPopupProps) {
           </div>
         ) : (
           // Fillout form with smooth loader
-          <div className="relative w-full" style={{ height: '700px', width: '900px'}}>
-            {isLoading && (
-              <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 transition-opacity duration-400 ease-out">
-                <div className="text-center">
-                  <div className="animate-spin rounded-full h-14 w-14 border-4 border-gray-200 border-t-gray-900 mx-auto mb-4"></div>
-                  <p className="text-gray-600 text-sm font-medium animate-pulse">Loading your application...</p>
+          <>
+            <style>{`
+              .fillout-form-mobile {
+                height: 550px;
+                width: 350px;
+              }
+              @media (min-width: 768px) {
+                .fillout-form-mobile {
+                  height: 700px;
+                  width: 900px;
+                }
+              }
+            `}</style>
+            <div className="relative fillout-form-mobile">
+              {isLoading && (
+                <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 transition-opacity duration-400 ease-out">
+                  <div className="text-center">
+                    <div className="animate-spin rounded-full h-14 w-14 border-4 border-gray-200 border-t-gray-900 mx-auto mb-4"></div>
+                    <p className="text-gray-600 text-sm font-medium animate-pulse">Loading your application...</p>
+                  </div>
                 </div>
+              )}
+              <div
+                className="w-full h-full transition-opacity duration-400 ease-out"
+                style={{
+                  opacity: isLoading ? 0 : 1,
+                }}
+              >
+                <FilloutStandardEmbed
+                  filloutId="uGKMp9dJdtus"
+                  domain="forms.fillout.com"
+                  parameters={{
+                    name: name,
+                    email: email,
+                    filloutPageId: 'page2',
+                  }}
+                  onSubmit={() => {
+                    console.log('Fillout form submitted');
+                    handleFormSuccess();
+                  }}
+                  onReady={() => {
+                    console.log('Fillout form ready');
+                    console.log('Pre-filling with:', { name, email });
+                    // Match the loading delay for smooth transition
+                    setTimeout(() => {
+                      setIsLoading(false);
+                    }, 400);
+                  }}
+                />
               </div>
-            )}
-            <div
-              className="w-full h-full transition-opacity duration-400 ease-out"
-              style={{
-                opacity: isLoading ? 0 : 1,
-              }}
-            >
-              <FilloutStandardEmbed
-                filloutId="uGKMp9dJdtus"
-                domain="forms.fillout.com"
-                parameters={{
-                  name: name,
-                  email: email,
-                  filloutPageId: 'page2',
-                }}
-                onSubmit={() => {
-                  console.log('Fillout form submitted');
-                  handleFormSuccess();
-                }}
-                onReady={() => {
-                  console.log('Fillout form ready');
-                  console.log('Pre-filling with:', { name, email });
-                  // Match the loading delay for smooth transition
-                  setTimeout(() => {
-                    setIsLoading(false);
-                  }, 400);
-                }}
-              />
             </div>
-          </div>
+          </>
         )}
       </div>
     </div>
