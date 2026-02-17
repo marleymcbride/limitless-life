@@ -22,7 +22,7 @@ export const sendToN8N = async (
   event: string,
   data: Record<string, any>
 ): Promise<void> => {
-  const webhookUrl = `${N8N_WEBHOOK_BASE_URL}/webhook/${event}`;
+  const webhookUrl = `${N8N_WEBHOOK_BASE_URL}/${event}`;
 
   const payload: N8NWebhookPayload = {
     event,
