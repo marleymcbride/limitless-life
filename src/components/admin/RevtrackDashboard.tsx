@@ -149,7 +149,7 @@ export function RevtrackDashboard() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
             <div className="bg-white border rounded-lg p-6 shadow-sm">
               <div className="text-sm text-gray-500 mb-1">Total Views</div>
-              <div className="text-3xl font-bold text-white">{formatNumber(totalViews)}</div>
+              <div className="text-3xl font-bold text-gray-900">{formatNumber(totalViews)}</div>
             </div>
 
             <div className="bg-white border rounded-lg p-6 shadow-sm">
@@ -159,12 +159,12 @@ export function RevtrackDashboard() {
 
             <div className="bg-white border rounded-lg p-6 shadow-sm">
               <div className="text-sm text-gray-500 mb-1">Total Sales</div>
-              <div className="text-3xl font-bold text-white">{formatNumber(totalSales)}</div>
+              <div className="text-3xl font-bold text-gray-900">{formatNumber(totalSales)}</div>
             </div>
 
             <div className="bg-white border rounded-lg p-6 shadow-sm">
               <div className="text-sm text-gray-500 mb-1">Avg Rev/View</div>
-              <div className="text-3xl font-bold text-white">{formatCurrency(avgRevenuePerView)}</div>
+              <div className="text-3xl font-bold text-gray-900">{formatCurrency(avgRevenuePerView)}</div>
             </div>
           </div>
 
@@ -218,13 +218,13 @@ export function RevtrackDashboard() {
                           {campaign.category}
                         </span>
                       </td>
-                      <td className="px-4 py-3 whitespace-nowrap text-sm text-white">
+                      <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-900">
                         {formatDate(campaign.publishedAt)}
                       </td>
-                      <td className="px-4 py-3 whitespace-nowrap text-sm text-white">
+                      <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-900">
                         {formatDate(campaign.firstEventAt)}
                       </td>
-                      <td className="px-4 py-3 text-sm text-white max-w-xs truncate">
+                      <td className="px-4 py-3 text-sm text-gray-900 max-w-xs truncate">
                         {campaign.sourceUrl ? (
                           <a
                             href={campaign.sourceUrl}
@@ -238,22 +238,22 @@ export function RevtrackDashboard() {
                           <span>{campaign.name}</span>
                         )}
                       </td>
-                      <td className="px-4 py-3 whitespace-nowrap text-sm text-white text-right">
+                      <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-900 text-right">
                         {formatNumber(campaign.views)}
                       </td>
-                      <td className="px-4 py-3 whitespace-nowrap text-sm text-white text-right">
+                      <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-900 text-right">
                         {formatNumber(campaign.clicks)}
                       </td>
-                      <td className="px-4 py-3 whitespace-nowrap text-sm text-white text-right">
+                      <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-900 text-right">
                         {formatNumber(campaign.emails)}
                       </td>
-                      <td className="px-4 py-3 whitespace-nowrap text-sm text-white text-right">
+                      <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-900 text-right">
                         {formatNumber(campaign.sales)}
                       </td>
                       <td className="px-4 py-3 whitespace-nowrap text-sm text-green-600 font-medium text-right">
                         {formatCurrency(campaign.revenue)}
                       </td>
-                      <td className="px-4 py-3 whitespace-nowrap text-sm text-white text-right">
+                      <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-900 text-right">
                         {formatCurrency(campaign.revenuePerView)}
                       </td>
                     </tr>
