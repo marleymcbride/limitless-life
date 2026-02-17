@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import VSLPlayer from "../../components/vsl-player";
-import WhatYouGetSection from "../../components/what-you-get-section";
+import WhatYouGetSection from "../../components/coaching-enrollment";
 import PricingSelector from "../../components/pricing-selector";
 
 export default function ApplicationClient() {
