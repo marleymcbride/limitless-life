@@ -107,24 +107,63 @@ export default function EmailPopup({
       eventType = 'coaching_interest';
     }
 
-    // Track the choice event before redirecting
+    // Get or create session ID
+    let sessionId = null;
     try {
-      await fetch('/api/analytics/events', {
+      // Try to get existing session
+      const sessionCookie = document.cookie
+        .split('; ')
+        .find(row => row.startsWith('ll_session='));
+      sessionId = sessionCookie?.split('=')[1];
+
+      // If no session, create one
+      if (!sessionId) {
+        const sessionResponse = await fetch('/api/analytics/create-session', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, name: fullName }),
+        });
+        if (sessionResponse.ok) {
+          const sessionData = await sessionResponse.json();
+          sessionId = sessionData.sessionId;
+        }
+      }
+
+      // Track the choice event to PostgreSQL
+      if (sessionId) {
+        await fetch('/api/analytics/events', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            sessionId,
+            eventType,
+            eventData: {
+              choice,
+              interestType,
+              email,
+              name: fullName,
+              source: 'popup_step_3',
+              tier,
+            }
+          }),
+        });
+        console.log(`[EmailPopup] Tracked ${eventType} for ${email}`);
+      }
+
+      // Send to n8n for Airtable sync
+      await fetch('/api/webhooks/popup-choice', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          eventType: eventType,
-          eventData: {
-            choice: choice,
-            interestType: interestType,
-            email: email,
-            name: fullName,
-            source: 'popup_step_3',
-            tier: tier,
-          }
+          email,
+          name: fullName,
+          choice,
+          interestType,
+          tier,
+          timestamp: new Date().toISOString(),
         }),
       });
-      console.log(`[EmailPopup] Tracked ${eventType} for ${email}`);
+      console.log(`[EmailPopup] Sent ${eventType} to n8n for ${email}`);
     } catch (error) {
       console.error('[EmailPopup] Failed to track choice:', error);
       // Don't block redirect if tracking fails
