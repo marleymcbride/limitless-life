@@ -4,7 +4,20 @@ function getBase() {
   const baseId = process.env.AIRTABLE_BASE_ID;
   const accessToken = process.env.AIRTABLE_ACCESS_TOKEN;
 
+  // Log all environment variables for debugging
+  console.log('[Airtable] Environment check:', {
+    baseId: baseId ? 'SET' : 'UNSET',
+    accessToken: accessToken ? 'SET' : 'UNSET',
+    baseIdValue: baseId,
+    nodeEnv: process.env.NODE_ENV,
+  });
+
   if (!baseId || !accessToken) {
+    console.error('[Airtable] Missing env vars:', {
+      hasBaseId: !!baseId,
+      hasAccessToken: !!accessToken,
+      allEnvKeys: Object.keys(process.env).filter(k => k.includes('AIRTABLE')),
+    });
     throw new Error('AIRTABLE_BASE_ID and AIRTABLE_ACCESS_TOKEN environment variables must be set');
   }
 
