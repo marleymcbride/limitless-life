@@ -1,8 +1,9 @@
 import Airtable from 'airtable';
+import { env } from '@/env.mjs';
 
 function getBase() {
-  const baseId = process.env.AIRTABLE_BASE_ID;
-  const accessToken = process.env.AIRTABLE_ACCESS_TOKEN;
+  const baseId = env.AIRTABLE_BASE_ID;
+  const accessToken = env.AIRTABLE_ACCESS_TOKEN;
 
   if (!baseId || !accessToken) {
     throw new Error('AIRTABLE_BASE_ID and AIRTABLE_ACCESS_TOKEN environment variables must be set');
@@ -251,7 +252,7 @@ export const airtable = {
 
   campaigns: {
     async fetchAll(): Promise<CampaignRecord[]> {
-      const campaignsTableId = process.env.AIRTABLE_CAMPAIGNS_TABLE_ID;
+      const campaignsTableId = env.AIRTABLE_CAMPAIGNS_TABLE_ID;
       if (!campaignsTableId) {
         throw new Error('AIRTABLE_CAMPAIGNS_TABLE_ID environment variable is not set');
       }
@@ -286,7 +287,7 @@ export const airtable = {
     async create(
       campaign: Omit<CampaignRecord, 'id'>
     ): Promise<CampaignRecord> {
-      const campaignsTableId = process.env.AIRTABLE_CAMPAIGNS_TABLE_ID;
+      const campaignsTableId = env.AIRTABLE_CAMPAIGNS_TABLE_ID;
       if (!campaignsTableId) {
         throw new Error('AIRTABLE_CAMPAIGNS_TABLE_ID environment variable is not set');
       }
@@ -324,7 +325,7 @@ export const airtable = {
       id: string,
       metrics: Partial<Pick<CampaignRecord, 'views' | 'clicks' | 'emails' | 'sales' | 'revenue'>>
     ): Promise<void> {
-      const campaignsTableId = process.env.AIRTABLE_CAMPAIGNS_TABLE_ID;
+      const campaignsTableId = env.AIRTABLE_CAMPAIGNS_TABLE_ID;
       if (!campaignsTableId) {
         throw new Error('AIRTABLE_CAMPAIGNS_TABLE_ID environment variable is not set');
       }
