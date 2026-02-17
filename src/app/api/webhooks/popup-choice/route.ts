@@ -11,7 +11,7 @@ export async function POST(req: NextRequest) {
     // Queue webhook to n8n for popup choice event
     // This will sync to Airtable Leads table with interest classification
     await queueWebhook({
-      endpoint: `${N8N_WEBHOOK_URL}/webhook/popup-choice`,
+      endpoint: `${N8N_WEBHOOK_URL}/popup-choice`,
       payload: {
         event: 'popup_choice',
         data: {
