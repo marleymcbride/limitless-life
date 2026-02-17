@@ -10,8 +10,8 @@ export async function POST(req: NextRequest) {
     // Create session
     const sessionId = await createSession({});
 
-    // Set session cookie
-    const cookieStore = cookies();
+    // Set session cookie (await cookies() in Next.js 15+)
+    const cookieStore = await cookies();
     cookieStore.set('ll_session', sessionId, {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
@@ -21,9 +21,14 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ sessionId });
   } catch (error) {
-    console.error('Failed to create session:', error);
+    console.error('[Create Session] Error:', error);
+    console.error('[Create Session] Error name:', error instanceof Error ? error.name : 'unknown');
+    console.error('[Create Session] Error message:', error instanceof Error ? error.message : 'unknown');
+    if (error instanceof Error) {
+      console.error('[Create Session] Error stack:', error.stack);
+    }
     return NextResponse.json(
-      { error: 'Failed to create session' },
+      { error: 'Failed to create session', details: error instanceof Error ? error.message : 'Unknown error' },
       { status: 500 }
     );
   }

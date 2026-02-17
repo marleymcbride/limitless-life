@@ -78,14 +78,28 @@ export function getClientIP(req: NextRequest): string | null {
 /**
  * Get country code from IP address (using free IPapi.co)
  * Returns ISO 3166-1 alpha-2 country code (e.g., 'US', 'GB', 'DE')
+ *
+ * Note: Gracefully degrades on API failures/rate limits
  */
 export async function getCountryCode(ipAddress: string): Promise<string> {
   if (!ipAddress) return 'Unknown';
 
   try {
-    const response = await fetch(`https://ipapi.co/${ipAddress}`);
+    const response = await fetch(`https://ipapi.co/${ipAddress}/json/`, {
+      // Add timeout to prevent hanging
+      signal: AbortSignal.timeout(5000),
+    });
+
+    // Handle rate limiting (429) and other errors gracefully
     if (!response.ok) {
-      console.error('Failed to get country code:', response.status);
+      console.error('[getCountryCode] API error:', response.status, response.statusText);
+      return 'Unknown';
+    }
+
+    // Check content type to ensure we got JSON, not HTML
+    const contentType = response.headers.get('content-type');
+    if (!contentType?.includes('application/json')) {
+      console.error('[getCountryCode] Unexpected content type:', contentType);
       return 'Unknown';
     }
 
@@ -94,7 +108,12 @@ export async function getCountryCode(ipAddress: string): Promise<string> {
     // API returns { country_code: 'US' }
     return data.country_code || 'Unknown';
   } catch (error) {
-    console.error('Error getting country code:', error);
+    // Log but don't fail - country code is nice-to-have, not required
+    if (error instanceof Error && error.name === 'AbortError') {
+      console.error('[getCountryCode] Request timeout');
+    } else {
+      console.error('[getCountryCode] Error:', error);
+    }
     return 'Unknown';
   }
 }

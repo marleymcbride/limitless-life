@@ -19,7 +19,11 @@ export type EventType =
   | 'tier_select_whatsapp'
   | 'tier_select_concierge'
   | 'payment_plan_select'
-  | 'stripe_checkout_initiated';
+  | 'stripe_checkout_initiated'
+  // Popup choice events
+  | 'tire_kicker_interest'
+  | 'course_interest'
+  | 'coaching_interest';
 
 export interface Event {
   id: string;
