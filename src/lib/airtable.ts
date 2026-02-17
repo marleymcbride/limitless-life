@@ -2,7 +2,7 @@ import Airtable from 'airtable';
 
 function getBase() {
   const baseId = process.env.AIRTABLE_BASE_ID;
-  const accessToken = process.env.AIRTABLE_ACCESS_TOKEN;
+  const accessToken = process.env.AIRTABLE_ACCESS_TOKEN || process.env.AIRTABLE_PERSONAL_ACCESS_TOKEN;
 
   // Log all environment variables for debugging
   console.log('[Airtable] Environment check:', {
