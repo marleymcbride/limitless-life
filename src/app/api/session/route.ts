@@ -13,12 +13,84 @@ export async function GET(req: NextRequest) {
   const ipAddress = getClientIP(req);
   const countryCode = await getCountryCode(ipAddress || 'Unknown');
 
+  // Parse new short params OR fall back to legacy UTM params
+  const yt = url.searchParams.get('yt'); // YouTube
+  const tts = url.searchParams.get('tts'); // Testimonials YouTube
+  const tw = url.searchParams.get('tw'); // Twitter
+  const ig = url.searchParams.get('ig'); // Instagram
+  const em = url.searchParams.get('em'); // Email
+  const fb = url.searchParams.get('fb'); // Facebook
+  const li = url.searchParams.get('li'); // LinkedIn
+  const tt = url.searchParams.get('tt'); // TikTok
+  const bl = url.searchParams.get('bl'); // Blog
+  const lm = url.searchParams.get('lm'); // Lead magnet
+  const go = url.searchParams.get('go'); // Google
+  const rd = url.searchParams.get('rd'); // Reddit
+
+  // Build source and campaign from short params
+  let utmSource = url.searchParams.get('utm_source') || undefined;
+  let utmMedium = url.searchParams.get('utm_medium') || undefined;
+  let utmCampaign = url.searchParams.get('utm_campaign') || undefined;
+  let utmContent = url.searchParams.get('utm_content') || undefined;
+  let utmTerm = url.searchParams.get('utm_term') || undefined;
+
+  // Map short params to UTM equivalent (short params take precedence)
+  if (yt) {
+    utmSource = 'youtube';
+    utmMedium = 'video';
+    utmCampaign = yt;
+  } else if (tts) {
+    utmSource = 'testimonials_yt';
+    utmMedium = 'video';
+    utmCampaign = tts;
+  } else if (tw) {
+    utmSource = 'twitter';
+    utmMedium = 'social';
+    utmCampaign = tw;
+  } else if (ig) {
+    utmSource = 'instagram';
+    utmMedium = 'social';
+    utmCampaign = ig;
+  } else if (em) {
+    utmSource = 'email';
+    utmMedium = 'newsletter';
+    utmCampaign = em;
+  } else if (fb) {
+    utmSource = 'facebook';
+    utmMedium = 'social';
+    utmCampaign = fb;
+  } else if (li) {
+    utmSource = 'linkedin';
+    utmMedium = 'social';
+    utmCampaign = li;
+  } else if (tt) {
+    utmSource = 'tiktok';
+    utmMedium = 'video';
+    utmCampaign = tt;
+  } else if (bl) {
+    utmSource = 'blog';
+    utmMedium = 'link';
+    utmCampaign = bl;
+  } else if (lm) {
+    utmSource = 'lead_magnet';
+    utmMedium = 'content';
+    utmCampaign = lm;
+  } else if (go) {
+    utmSource = 'google';
+    utmMedium = go.includes('ad') ? 'paid' : 'organic';
+    utmCampaign = go;
+  } else if (rd) {
+    utmSource = 'reddit';
+    utmMedium = 'post';
+    utmCampaign = rd;
+  }
+
   const session = await getOrCreateSession({
-    utmSource: url.searchParams.get('utm_source') || undefined,
-    utmMedium: url.searchParams.get('utm_medium') || undefined,
-    utmCampaign: url.searchParams.get('utm_campaign') || undefined,
-    utmContent: url.searchParams.get('utm_content') || undefined,
-    utmTerm: url.searchParams.get('utm_term') || undefined,
+    utmSource,
+    utmMedium,
+    utmCampaign,
+    utmContent,
+    utmTerm,
     referrer: req.headers.get('referer') || undefined,
     deviceType: browserInfo.deviceType,
     browser: browserInfo.name ? JSON.stringify({
