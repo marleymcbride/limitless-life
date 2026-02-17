@@ -253,6 +253,12 @@ export const airtable = {
   campaigns: {
     async fetchAll(): Promise<CampaignRecord[]> {
       const campaignsTableId = env.AIRTABLE_CAMPAIGNS_TABLE_ID;
+      console.log('[DEBUG] env.AIRTABLE_CAMPAIGNS_TABLE_ID:', campaignsTableId);
+      console.log('[DEBUG] All Airtable env values:', {
+        AIRTABLE_BASE_ID: env.AIRTABLE_BASE_ID,
+        AIRTABLE_ACCESS_TOKEN: env.AIRTABLE_ACCESS_TOKEN ? '***SET***' : undefined,
+        AIRTABLE_CAMPAIGNS_TABLE_ID: env.AIRTABLE_CAMPAIGNS_TABLE_ID,
+      });
       if (!campaignsTableId) {
         throw new Error('AIRTABLE_CAMPAIGNS_TABLE_ID environment variable is not set');
       }
