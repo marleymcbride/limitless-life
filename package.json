@@ -16,7 +16,9 @@
     "db:push": "drizzle-kit push",
     "db:studio": "drizzle-kit studio",
     "seed-revtrack": "tsx scripts/seed-revtrack-data.ts",
-    "seed-revtrack:verify": "tsx scripts/seed-revtrack-data.ts --verify"
+    "seed-revtrack:verify": "tsx scripts/seed-revtrack-data.ts --verify",
+    "cleanup-test-data": "tsx scripts/cleanup-test-data.ts",
+    "cleanup-test-data:confirm": "tsx scripts/cleanup-test-data.ts --confirm"
   },
   "dependencies": {
     "@fillout/react": "^3.0.0",
