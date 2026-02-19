@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { processWebhookQueue, getWebhookQueueStats } from '@/lib/webhookQueue';
-import { env } from '@/env.mjs';
+import { isAuthenticated } from '@/lib/admin-auth';
 
 /**
  * POST /api/admin/process-webhooks
@@ -8,9 +8,8 @@ import { env } from '@/env.mjs';
  * Manually trigger webhook queue processing (for testing/debugging)
  */
 export async function POST(request: NextRequest) {
-  // Verify admin authentication
-  const apiKey = request.headers.get('x-admin-api-key');
-  if (apiKey !== env.ADMIN_API_KEY) {
+  // Verify admin authentication using session cookie
+  if (!(await isAuthenticated())) {
     return NextResponse.json(
       { error: 'Unauthorized' },
       { status: 401 }
@@ -52,9 +51,8 @@ export async function POST(request: NextRequest) {
  * Get webhook queue statistics
  */
 export async function GET(request: NextRequest) {
-  // Verify admin authentication
-  const apiKey = request.headers.get('x-admin-api-key');
-  if (apiKey !== env.ADMIN_API_KEY) {
+  // Verify admin authentication using session cookie
+  if (!(await isAuthenticated())) {
     return NextResponse.json(
       { error: 'Unauthorized' },
       { status: 401 }
