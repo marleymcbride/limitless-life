@@ -17,6 +17,7 @@ export default function ProcessWebhooksPage() {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          // Don't send API key from client - let server-side auth handle it
         },
       });
 
