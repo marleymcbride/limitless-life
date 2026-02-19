@@ -1,17 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import { VSLProgress } from "@/types/vsl.types";
-import {
-  getSessionId,
-  getUserId,
-  shouldTrackMilestone,
-  trackVSLEvent,
-} from "@/lib/vslAnalytics";
+import { shouldTrackMilestone } from "@/lib/vslAnalytics";
 import { useAnalytics } from "@/hooks/useAnalytics";
 import { useSession } from "@/hooks/useSession";
 
 export const useVSLTracking = (videoId: string) => {
-  const sessionId_old = useRef(getSessionId());
-  const userId_old = useRef(getUserId());
   const startTime = useRef<number>(0);
   const [hasStarted, setHasStarted] = useState(false);
 
@@ -24,16 +17,7 @@ export const useVSLTracking = (videoId: string) => {
       setHasStarted(true);
       startTime.current = Date.now();
 
-      // Old tracking system
-      trackVSLEvent({
-        type: "play",
-        videoId,
-        timestamp: Date.now(),
-        userId: userId_old.current,
-        sessionId: sessionId_old.current,
-      });
-
-      // New analytics system
+      // Track VSL start event
       if (session?.sessionId) {
         trackEvent("vsl_start", { videoId });
       }
@@ -41,33 +25,17 @@ export const useVSLTracking = (videoId: string) => {
   };
 
   const trackPause = (currentTime: number) => {
-    // Old tracking system
-    trackVSLEvent({
-      type: "pause",
-      videoId,
-      timestamp: Date.now(),
-      userId: userId_old.current,
-      sessionId: sessionId_old.current,
-      currentTime,
-    });
+    // Track pause event
+    if (session?.sessionId) {
+      trackEvent("vsl_pause", { videoId, currentTime });
+    }
   };
 
   const trackProgress = (progress: VSLProgress) => {
     if (shouldTrackMilestone(progress.percentage)) {
       const watchDuration = Math.floor((Date.now() - startTime.current) / 1000);
 
-      // Old tracking system
-      trackVSLEvent({
-        type: "progress",
-        videoId,
-        timestamp: Date.now(),
-        userId: userId_old.current,
-        sessionId: sessionId_old.current,
-        progress: progress.percentage,
-        currentTime: progress.currentTime,
-      });
-
-      // New analytics system - track milestones
+      // Track VSL milestone events
       if (session?.sessionId) {
         if (progress.percentage >= 95) {
           trackEvent("vsl_milestone", { videoId, percent: 95, durationWatched: watchDuration });
@@ -91,17 +59,7 @@ export const useVSLTracking = (videoId: string) => {
   const trackComplete = () => {
     const totalWatchTime = Math.floor((Date.now() - startTime.current) / 1000);
 
-    // Old tracking system
-    trackVSLEvent({
-      type: "complete",
-      videoId,
-      timestamp: Date.now(),
-      userId: userId_old.current,
-      sessionId: sessionId_old.current,
-      metadata: { totalWatchTime },
-    });
-
-    // New analytics system
+    // Track VSL complete event
     if (session?.sessionId) {
       trackEvent("vsl_complete", { videoId, duration: totalWatchTime });
     }
@@ -110,13 +68,10 @@ export const useVSLTracking = (videoId: string) => {
   useEffect(() => {
     const handleVisibilityChange = () => {
       if (document.hidden && hasStarted) {
-        trackVSLEvent({
-          type: "drop_off",
-          videoId,
-          timestamp: Date.now(),
-          userId: userId_old.current,
-          sessionId: sessionId_old.current,
-        });
+        // Track drop-off event when user leaves page
+        if (session?.sessionId) {
+          trackEvent("vsl_drop_off", { videoId });
+        }
       }
     };
 
@@ -124,7 +79,7 @@ export const useVSLTracking = (videoId: string) => {
     return () => {
       document.removeEventListener("visibilitychange", handleVisibilityChange);
     };
-  }, [hasStarted, videoId]);
+  }, [hasStarted, videoId, session]);
 
   return {
     trackPlay,
