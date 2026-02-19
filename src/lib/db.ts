@@ -11,7 +11,11 @@ function getDb() {
     if (!env.DATABASE_URL) {
       throw new Error('DATABASE_URL environment variable is not set');
     }
-    queryClient = postgres(env.DATABASE_URL);
+    queryClient = postgres(env.DATABASE_URL, {
+      max: 1, // Single connection for serverless
+      idle_timeout: 20, // Close idle connections after 20 seconds
+      connect_timeout: 10, // Connection timeout
+    });
     dbInstance = drizzle(queryClient, { schema });
   }
   return dbInstance;
