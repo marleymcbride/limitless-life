@@ -25,6 +25,7 @@ function getCorsHeaders(origin: string | null): HeadersInit {
       'Access-Control-Allow-Methods': 'POST, OPTIONS',
       'Access-Control-Allow-Headers': 'Content-Type, Authorization',
       'Access-Control-Max-Age': '86400',
+      'Vary': 'Origin', // Critical: tells CDN/browser to cache per origin
     };
   }
 
