@@ -25,19 +25,27 @@ export async function POST(req: NextRequest) {
     const { sessionId, userId, eventType, eventData } = body;
 
     if (!sessionId || typeof sessionId !== 'string') {
-      return NextResponse.json({ success: false, error: 'sessionId is required' }, { status: 400 });
+      const response = NextResponse.json({ success: false, error: 'sessionId is required' }, { status: 400 });
+      response.headers.set('Access-Control-Allow-Origin', '*');
+      return response;
     }
 
     if (!UUID_REGEX.test(sessionId)) {
-      return NextResponse.json({ success: false, error: 'Invalid sessionId format' }, { status: 400 });
+      const response = NextResponse.json({ success: false, error: 'Invalid sessionId format' }, { status: 400 });
+      response.headers.set('Access-Control-Allow-Origin', '*');
+      return response;
     }
 
     if (userId && typeof userId === 'string' && !UUID_REGEX.test(userId)) {
-      return NextResponse.json({ success: false, error: 'Invalid userId format' }, { status: 400 });
+      const response = NextResponse.json({ success: false, error: 'Invalid userId format' }, { status: 400 });
+      response.headers.set('Access-Control-Allow-Origin', '*');
+      return response;
     }
 
     if (!eventType || typeof eventType !== 'string') {
-      return NextResponse.json({ success: false, error: 'eventType is required' }, { status: 400 });
+      const response = NextResponse.json({ success: false, error: 'eventType is required' }, { status: 400 });
+      response.headers.set('Access-Control-Allow-Origin', '*');
+      return response;
     }
 
     console.log('[Analytics Events] Validation passed');
@@ -55,7 +63,9 @@ export async function POST(req: NextRequest) {
       });
     }
 
-    return NextResponse.json({ success: true });
+    const response = NextResponse.json({ success: true });
+    response.headers.set('Access-Control-Allow-Origin', '*');
+    return response;
   } catch (error) {
     console.error('[Analytics Events] Error:', error);
     console.error('[Analytics Events] Error name:', error instanceof Error ? error.name : 'unknown');
@@ -63,6 +73,8 @@ export async function POST(req: NextRequest) {
     if (error instanceof Error) {
       console.error('[Analytics Events] Error stack:', error.stack);
     }
-    return NextResponse.json({ success: false, error: 'Invalid request', details: error instanceof Error ? error.message : 'Unknown error' }, { status: 400 });
+    const response = NextResponse.json({ success: false, error: 'Invalid request', details: error instanceof Error ? error.message : 'Unknown error' }, { status: 400 });
+    response.headers.set('Access-Control-Allow-Origin', '*');
+    return response;
   }
 }
