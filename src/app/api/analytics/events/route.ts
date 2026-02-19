@@ -28,12 +28,18 @@ function getCorsHeaders(origin: string | null): HeadersInit {
     };
   }
 
-  // For same-origin or development
-  return {
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Methods': 'POST, OPTIONS',
-    'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-  };
+  // Only use wildcard in development mode
+  // In production, unauthorized origins are rejected by not including CORS headers
+  if (process.env.NODE_ENV === 'development') {
+    return {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'POST, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+    };
+  }
+
+  // Production: return empty headers to reject unauthorized origins
+  return {};
 }
 
 export async function OPTIONS(request: Request) {
@@ -80,6 +86,24 @@ export async function POST(request: Request) {
         { success: false, error: 'eventType is required' },
         { status: 400, headers: corsHeaders }
       );
+    }
+
+    // Validate eventData: must be a plain object, not null, not an array
+    if (eventData !== undefined && eventData !== null) {
+      if (typeof eventData !== 'object' || Array.isArray(eventData)) {
+        return NextResponse.json(
+          { success: false, error: 'eventData must be a plain object' },
+          { status: 400, headers: corsHeaders }
+        );
+      }
+      // Optionally limit the size of eventData to prevent abuse
+      const eventDataSize = JSON.stringify(eventData).length;
+      if (eventDataSize > 100000) { // 100KB limit
+        return NextResponse.json(
+          { success: false, error: 'eventData exceeds maximum size limit' },
+          { status: 400, headers: corsHeaders }
+        );
+      }
     }
 
     console.log('[Analytics Events] Validation passed');
