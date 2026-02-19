@@ -192,40 +192,56 @@ async function getAggregateJourneys(
     // Count unique users
     const totalUsers = group.sessionIds.length;
 
-    // Get avg events per user
-    const eventCounts = await db
-      .select({ count: sql<number>`count(*)` })
-      .from(events)
-      .where(sql`${events.sessionId} = ANY(${group.sessionIds})`);
+    // Batch query to avoid PostgreSQL parameter limit (max 100 per batch)
+    const batchSize = 100;
+    let totalEventCount = 0;
+    let totalConversions = 0;
+    const eventTypeCounts = new Map<string, number>();
 
-    const avgEvents = eventCounts[0]?.count
-      ? Math.round(eventCounts[0].count / totalUsers)
-      : 0;
+    for (let i = 0; i < group.sessionIds.length; i += batchSize) {
+      const batch = group.sessionIds.slice(i, i + batchSize);
 
-    // Get conversions
-    const conversionResult = await db
-      .select({ count: sql<number>`count(distinct ${events.userId})` })
-      .from(events)
-      .where(
-        and(
-          eq(events.eventType, 'payment_complete'),
-          sql`${events.sessionId} = ANY(${group.sessionIds})`
-        )
-      );
+      // Get events count for this batch
+      const eventCounts = await db
+        .select({ count: sql<number>`count(*)` })
+        .from(events)
+        .where(sql`${events.sessionId} = ANY(${batch})`);
 
-    const conversions = conversionResult[0]?.count || 0;
-    const conversionRate = totalUsers > 0 ? Math.round((conversions / totalUsers) * 100) : 0;
+      totalEventCount += eventCounts[0]?.count || 0;
 
-    // Get most common event path (simplified - just top 5 event types)
-    const commonPathResult = await db
-      .select({ type: events.eventType, count: sql<number>`count(*)` })
-      .from(events)
-      .where(sql`${events.sessionId} = ANY(${group.sessionIds})`)
-      .groupBy(events.eventType)
-      .orderBy(desc(sql`count(*)`))
-      .limit(5);
+      // Get conversions for this batch
+      const conversionResult = await db
+        .select({ count: sql<number>`count(distinct ${events.userId})` })
+        .from(events)
+        .where(
+          and(
+            eq(events.eventType, 'payment_complete'),
+            sql`${events.sessionId} = ANY(${batch})`
+          )
+        );
 
-    const commonPath = commonPathResult.map((r) => r.type);
+      totalConversions += conversionResult[0]?.count || 0;
+
+      // Get event type distribution for this batch
+      const commonPathResult = await db
+        .select({ type: events.eventType, count: sql<number>`count(*)` })
+        .from(events)
+        .where(sql`${events.sessionId} = ANY(${batch})`)
+        .groupBy(events.eventType);
+
+      for (const row of commonPathResult) {
+        eventTypeCounts.set(row.type, (eventTypeCounts.get(row.type) || 0) + row.count);
+      }
+    }
+
+    const avgEvents = totalEventCount > 0 ? Math.round(totalEventCount / totalUsers) : 0;
+    const conversionRate = totalUsers > 0 ? Math.round((totalConversions / totalUsers) * 100) : 0;
+
+    // Get top 5 most common event types
+    const commonPath = Array.from(eventTypeCounts.entries())
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 5)
+      .map(([type]) => type);
 
     journeys.push({
       source,
