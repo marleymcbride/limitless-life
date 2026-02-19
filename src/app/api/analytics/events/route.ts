@@ -9,7 +9,6 @@ function getCorsHeaders(origin: string | null): HeadersInit {
   const allowedOrigins = [
     'https://fillout.com',
     'https://forms.fillout.com',
-    // Add your production domain
     'https://www.limitless-life.co',
     'https://limitless-life.co',
   ];
@@ -25,12 +24,16 @@ function getCorsHeaders(origin: string | null): HeadersInit {
       'Access-Control-Allow-Methods': 'POST, OPTIONS',
       'Access-Control-Allow-Headers': 'Content-Type, Authorization',
       'Access-Control-Max-Age': '86400',
-      'Vary': 'Origin', // Critical: tells CDN/browser to cache per origin
+      'Vary': 'Origin',
     };
   }
 
+  // Log unexpected origins for debugging
+  if (origin) {
+    console.log('[CORS] Unexpected origin:', origin);
+  }
+
   // Only use wildcard in development mode
-  // In production, unauthorized origins are rejected by not including CORS headers
   if (process.env.NODE_ENV === 'development') {
     return {
       'Access-Control-Allow-Origin': '*',
@@ -39,8 +42,15 @@ function getCorsHeaders(origin: string | null): HeadersInit {
     };
   }
 
-  // Production: return empty headers to reject unauthorized origins
-  return {};
+  // Production: return permissive headers for now to debug
+  // TODO: Restrict to specific origins once we identify what Fillout is sending
+  return {
+    'Access-Control-Allow-Origin': origin || '*',
+    'Access-Control-Allow-Methods': 'POST, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+    'Access-Control-Max-Age': '86400',
+    'Vary': 'Origin',
+  };
 }
 
 export async function OPTIONS(request: Request) {
