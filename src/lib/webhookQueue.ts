@@ -21,7 +21,13 @@ export async function queueWebhook(data: {
   endpoint: string;
   payload: any;
   maxAttempts?: number;
-}): Promise<string> {
+}): Promise<string | null> {
+  // Skip popup_choice events - handled by n8n polling
+  if (data.payload?.event === 'popup_choice') {
+    console.log('Webhook queue: skipping popup_choice event (handled by n8n polling)');
+    return null;
+  }
+
   const [webhook] = await db
     .insert(webhookQueue)
     .values({
