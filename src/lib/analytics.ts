@@ -47,7 +47,7 @@ export const LEAD_SCORING_RULES: Record<EventType, number> = {
   tier_view: 15,                 // User views tier options
   tier_select_protocol: 10,        // Protocol tier selection
   tier_select_life: 15,           // Life tier selection
-  tier_select_whatsapp: 20,       // WhatsApp tier selection
+  tier_select_life_whatsapp: 20,       // WhatsApp tier selection (corrected from tier_select_whatsapp)
   tier_select_concierge: 25,      // Concierge tier selection
   payment_plan_select: 10,         // Payment plan selection
   stripe_checkout_initiated: 20,   // Stripe checkout button click

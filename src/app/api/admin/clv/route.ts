@@ -140,7 +140,7 @@ export async function GET(request: NextRequest) {
       .groupBy(payments.userId)
       .having(sql`COUNT(*) >= 2`);
 
-    const totalRepeatCustomers = repeatCustomers.reduce((sum, row) => sum + row.customerCount, 0);
+    const totalRepeatCustomers = repeatCustomers?.reduce((sum, row) => sum + row.customerCount, 0) || 0;
     const repeatPurchaseRate = totalCustomers > 0 ? (totalRepeatCustomers / totalCustomers) * 100 : 0;
 
     // Get total payment count
