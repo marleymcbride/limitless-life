@@ -38,22 +38,17 @@ function getCorsHeaders(origin: string | null): HeadersInit {
 
 export async function OPTIONS(request: Request) {
   const origin = request.headers.get('origin');
-  const corsHeaders = getCorsHeaders(origin);
+  const headers = getCorsHeaders(origin);
 
-  const response = new NextResponse(null, { status: 204 });
-  Object.entries(corsHeaders).forEach(([key, value]) => {
-    response.headers.set(key, value);
-  });
-
-  return response;
+  return new Response(null, { status: 204, headers });
 }
 
-export async function POST(req: NextRequest) {
-  const origin = req.headers.get('origin');
+export async function POST(request: Request) {
+  const origin = request.headers.get('origin');
   const corsHeaders = getCorsHeaders(origin);
 
   try {
-    const body = await req.json();
+    const body = await request.json();
     console.log('[Analytics Events] Received body:', JSON.stringify(body, null, 2));
 
     // Manual validation
