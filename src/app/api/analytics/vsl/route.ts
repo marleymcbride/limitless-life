@@ -1,5 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { VSLAnalyticsEvent } from "@/types/vsl.types";
+import { db } from "@/lib/db";
+import { events } from "@/db/schema";
+import { uuid } from "drizzle-orm/pg-core";
 
 // Rate limiting for analytics events (prevent spam)
 const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
@@ -35,19 +38,16 @@ const sanitizeString = (str: string): string => {
 
 /**
  * Validate event type to prevent injection
+ * Allows alphanumeric, underscores, and hyphens
  */
 const isValidEventType = (type: string): boolean => {
-  const validTypes = [
-    'video_start',
-    'video_pause',
-    'video_resume',
-    'video_complete',
-    'video_progress',
-    'video_error',
-    'engagement',
-    'click',
-  ];
-  return validTypes.includes(type);
+  // More permissive validation: allow alphanumeric + underscore + hyphen, max 50 chars
+  const eventTypeRegex = /^[a-zA-Z0-9\-_]{1,50}$/;
+  if (!eventTypeRegex.test(type)) {
+    console.error('[VSL Analytics] Invalid event type format:', type);
+    return false;
+  }
+  return true;
 };
 
 /**
@@ -68,6 +68,17 @@ const isValidSessionId = (sessionId: string): boolean => {
   return sessionIdRegex.test(sessionId);
 };
 
+export async function OPTIONS(request: NextRequest) {
+  return new NextResponse(null, {
+    status: 200,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'POST, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type',
+    },
+  });
+}
+
 export async function POST(request: NextRequest) {
   try {
     // Rate limiting: 60 requests per minute per IP (analytics can be frequent)
@@ -83,12 +94,15 @@ export async function POST(request: NextRequest) {
     }
 
     const body = await request.json();
+    console.log('[VSL Analytics] Received event:', JSON.stringify(body, null, 2));
+
     const { type, videoId, sessionId, ...rest } = body;
 
     // Validate required fields
     if (!type || !videoId || !sessionId) {
+      console.error('[VSL Analytics] Missing required fields:', { type, videoId, sessionId });
       return NextResponse.json(
-        { error: "Missing required fields" },
+        { error: "Missing required fields", received: { type, videoId, sessionId } },
         { status: 400 }
       );
     }
@@ -132,19 +146,35 @@ export async function POST(request: NextRequest) {
       ...rest, // Additional event data
     };
 
-    // TODO: Store analytics event in your database/analytics service
-    // For now, we silently acknowledge receipt
+    // Store the VSL event in the database
+    try {
+      await db.insert(events).values({
+        id: crypto.randomUUID(),
+        sessionId: sanitizedEvent.sessionId,
+        userId: sanitizedEvent.userId || null,
+        eventType: `vsl_${sanitizedEvent.type}`,
+        eventData: sanitizedEvent,
+        createdAt: new Date(),
+      });
+    } catch (dbError) {
+      // Log database error but don't fail the request
+      console.error('Failed to store VSL event:', dbError);
+    }
 
-    return NextResponse.json({ success: true });
+    const response = NextResponse.json({ success: true });
+    response.headers.set('Access-Control-Allow-Origin', '*');
+    return response;
 
   } catch (error) {
     // Log error for debugging
     console.error('Analytics endpoint error:', error);
 
-    return NextResponse.json(
+    const errorResponse = NextResponse.json(
       { error: "Internal server error" },
       { status: 500 }
     );
+    errorResponse.headers.set('Access-Control-Allow-Origin', '*');
+    return errorResponse;
   }
 }
 
