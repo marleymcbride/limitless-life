@@ -154,14 +154,14 @@ export async function updateUserLeadScore(userId: string): Promise<void> {
     .limit(20);
 
   const tierSelectEvent = userEvents.find(e =>
-    ['tier_select_protocol', 'tier_select_life', 'tier_select_whatsapp', 'tier_select_concierge'].includes(e.eventType)
+    ['tier_select_protocol', 'tier_select_life', 'tier_select_life_whatsapp', 'tier_select_concierge'].includes(e.eventType)
   );
 
   // Map tier event to tier interest enum
   const tierInterestMap = {
     tier_select_protocol: 'course',
     tier_select_life: 'll',
-    tier_select_whatsapp: 'll+wa',
+    tier_select_life_whatsapp: 'll+wa',  // Corrected from tier_select_whatsapp
     tier_select_concierge: 'lhc',
   } as const;
 
