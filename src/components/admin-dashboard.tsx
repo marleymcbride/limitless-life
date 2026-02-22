@@ -12,7 +12,7 @@ import PaymentsAnalytics from './admin/payments-analytics';
 import { RevenueIntelligence } from './admin/RevenueIntelligence';
 import { CustomerLifetimeValue } from './admin/CustomerLifetimeValue';
 import { RevtrackDashboard } from './admin/RevtrackDashboard';
-import ApplicationsTable from './admin/ApplicationsTable';
+// import ApplicationsTable from './admin/ApplicationsTable'; // TODO: Coming in next batch
 import FormSubmissionsTable from './admin/FormSubmissionsTable';
 
 type Tab =
@@ -69,7 +69,7 @@ export default function AdminDashboard() {
     {
       label: '🎯 Leads & Prospects',
       tabs: [
-        { key: 'applications' as Tab, label: 'Applications' },
+        // { key: 'applications' as Tab, label: 'Applications' }, // TODO: Coming in next batch
         { key: 'formSubmissions' as Tab, label: 'Form Submissions' },
         { key: 'leads' as Tab, label: 'Leads' },
         { key: 'traffic' as Tab, label: 'Traffic Sources' },
@@ -147,7 +147,7 @@ export default function AdminDashboard() {
       {activeTab === 'journey' && <CustomerJourneyAnalytics />}
       {activeTab === 'abandoned' && <AbandonedFunnelAnalytics />}
       {activeTab === 'payments' && <PaymentsAnalytics />}
-      {activeTab === 'applications' && <ApplicationsTable />}
+      {/* {activeTab === 'applications' && <ApplicationsTable />} TODO: Coming in next batch */}
       {activeTab === 'formSubmissions' && <FormSubmissionsTable />}
       {activeTab === 'leads' && <LeadsTable />}
       {activeTab === 'traffic' && <TrafficSourcesTable />}
