@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/lib/db';
-import { users } from '@/db/schema';
-import { sql, or, and } from 'drizzle-orm';
+import { users, events } from '@/db/schema';
+import { sql, or, and, eq, desc } from 'drizzle-orm';
 import { env } from '@/env.mjs';
 
 /**
@@ -39,6 +39,29 @@ export async function GET(req: NextRequest) {
       .orderBy(sql`${users.leadScore} DESC`)
       .limit(100);
 
+    // Fetch most recent Fillout event for each hot lead
+    const hotLeadsWithEvents = await Promise.all(
+      hotLeads.map(async (lead) => {
+        const recentEvents = await db
+          .select()
+          .from(events)
+          .where(
+            and(
+              eq(events.userId, lead.id),
+              sql`${events.eventType} = 'email_submit'`
+            )
+          )
+          .orderBy(desc(events.createdAt))
+          .limit(1);
+
+        const latestEvent = recentEvents[0];
+        return {
+          ...lead,
+          filloutData: latestEvent?.eventData || null,
+        };
+      })
+    );
+
     // Get warm leads (>= 40 and < 70)
     const warmLeads = await db
       .select()
@@ -62,11 +85,57 @@ export async function GET(req: NextRequest) {
       .orderBy(sql`${users.leadScore} DESC`)
       .limit(100);
 
+    // Fetch most recent Fillout event for warm and cold leads
+    const [warmLeadsWithEvents, coldLeadsWithEvents] = await Promise.all([
+      Promise.all(
+        warmLeads.map(async (lead) => {
+          const recentEvents = await db
+            .select()
+            .from(events)
+            .where(
+              and(
+                eq(events.userId, lead.id),
+                sql`${events.eventType} = 'email_submit'`
+              )
+            )
+            .orderBy(desc(events.createdAt))
+            .limit(1);
+
+          const latestEvent = recentEvents[0];
+          return {
+            ...lead,
+            filloutData: latestEvent?.eventData || null,
+          };
+        })
+      ),
+      Promise.all(
+        coldLeads.map(async (lead) => {
+          const recentEvents = await db
+            .select()
+            .from(events)
+            .where(
+              and(
+                eq(events.userId, lead.id),
+                sql`${events.eventType} = 'email_submit'`
+              )
+            )
+            .orderBy(desc(events.createdAt))
+            .limit(1);
+
+          const latestEvent = recentEvents[0];
+          return {
+            ...lead,
+            filloutData: latestEvent?.eventData || null,
+          };
+        })
+      ),
+    ]);
+
     return NextResponse.json({
       success: true,
-      hot: hotLeads,
-      warm: warmLeads,
-      cold: coldLeads,
+      hot: hotLeadsWithEvents,
+      warm: warmLeadsWithEvents,
+      cold: coldLeadsWithEvents,
     });
   } catch (error) {
     console.error('Error fetching leads:', error);
