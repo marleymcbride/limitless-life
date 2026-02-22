@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/lib/db';
 import { users, events } from '@/db/schema';
-import { eq, desc, sql } from 'drizzle-orm';
+import { eq, desc, sql, and } from 'drizzle-orm';
 import { env } from '@/env.mjs';
 
 /**
@@ -31,80 +31,69 @@ export async function GET(req: NextRequest) {
     const offset = (page - 1) * pageSize;
 
     // Get users who have submitted Fillout forms
-    const allSubmissions = await db.execute(sql`
-      SELECT
-        u.id,
-        u.email,
-        u.first_name as "firstName",
-        u.last_name as "lastName",
-        u.lead_score as "leadScore",
-        u.tier_interest as "tierInterest",
-        (
-          SELECT MAX(created_at)
-          FROM events
-          WHERE user_id = u.id
-            AND event_type IN ('email_submit', 'application_complete')
-        ) as "submittedAt",
-        (
-          SELECT event_data
-          FROM events
-          WHERE user_id = u.id
-            AND event_type IN ('email_submit', 'application_complete')
-          ORDER BY created_at DESC
-          LIMIT 1
-        ) as "filloutData"
-      FROM users u
-      WHERE u.email IS NOT NULL
-        AND EXISTS (
-          SELECT 1
-          FROM events
-          WHERE user_id = u.id
-            AND event_type IN ('email_submit', 'application_complete')
-        )
-      ORDER BY "submittedAt" DESC NULLS LAST
-      LIMIT ${pageSize}
-      OFFSET ${offset}
-    `);
+    const allUsers = await db
+      .select()
+      .from(users)
+      .where(sql`${users.email} IS NOT NULL`)
+      .orderBy(desc(users.createdAt))
+      .limit(1000);
+
+    // Fetch events for each user and filter those with form submissions
+    const usersWithSubmissions = await Promise.all(
+      allUsers.map(async (user) => {
+        const userEvents = await db
+          .select()
+          .from(events)
+          .where(
+            and(
+              eq(events.userId, user.id),
+              sql`${events.eventType} IN ('email_submit', 'application_complete')`
+            )
+          )
+          .orderBy(desc(events.createdAt))
+          .limit(1);
+
+        if (userEvents.length === 0) {
+          return null;
+        }
+
+        const latestEvent = userEvents[0];
+        return {
+          ...user,
+          submittedAt: latestEvent.createdAt,
+          filloutData: latestEvent.eventData || {},
+        };
+      })
+    );
+
+    // Filter out nulls and sort by submitted date
+    const submissions = usersWithSubmissions
+      .filter((u): u is NonNullable<typeof u> => u !== null)
+      .sort((a, b) => new Date(b.submittedAt).getTime() - new Date(a.submittedAt).getTime())
+      .slice(offset, offset + pageSize)
+      .map((row) => {
+        const filloutData = row.filloutData || {};
+        return {
+          id: row.id,
+          email: row.email,
+          firstName: row.firstName,
+          lastName: row.lastName,
+          leadScore: row.leadScore,
+          tierInterest: row.tierInterest,
+          submittedAt: row.submittedAt,
+          fullName: filloutData.fullName || '',
+          lookingFor: filloutData.lookingFor || null,
+          howToGetHere: filloutData.howToGetHere || null,
+          currentSituation: filloutData.currentSituation || null,
+          problemsToSolve: filloutData.problemsToSolve || null,
+          whatWellInstall: filloutData.whatWellInstall || null,
+          desiredResult: filloutData.desiredResult || null,
+          filloutScore: filloutData.filloutScore || null,
+        };
+      });
 
     // Get total count
-    const countResult = await db.execute(sql`
-      SELECT COUNT(DISTINCT u.id) as count
-      FROM users u
-      WHERE u.email IS NOT NULL
-        AND EXISTS (
-          SELECT 1
-          FROM events
-          WHERE user_id = u.id
-            AND event_type IN ('email_submit', 'application_complete')
-        )
-    `);
-
-    // Handle empty count results
-    const total = countResult.rows && countResult.rows[0]
-      ? parseInt(countResult.rows[0].count || '0')
-      : 0;
-
-    // Transform results
-    const submissions = (allSubmissions.rows || []).map((row: any) => {
-      const filloutData = row.filloutData || {};
-      return {
-        id: row.id,
-        email: row.email,
-        firstName: row.firstName,
-        lastName: row.lastName,
-        leadScore: row.leadScore,
-        tierInterest: row.tierInterest,
-        submittedAt: row.submittedAt,
-        fullName: filloutData.fullName || '',
-        lookingFor: filloutData.lookingFor || null,
-        howToGetHere: filloutData.howToGetHere || null,
-        currentSituation: filloutData.currentSituation || null,
-        problemsToSolve: filloutData.problemsToSolve || null,
-        whatWellInstall: filloutData.whatWellInstall || null,
-        desiredResult: filloutData.desiredResult || null,
-        filloutScore: filloutData.filloutScore || null,
-      };
-    });
+    const total = usersWithSubmissions.filter((u) => u !== null).length;
 
     return NextResponse.json({
       success: true,
