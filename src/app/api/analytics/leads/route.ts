@@ -48,7 +48,7 @@ export async function GET(req: NextRequest) {
           .where(
             and(
               eq(events.userId, lead.id),
-              sql`${events.eventType} = 'email_submit'`
+              sql`${events.eventType} IN ('email_submit', 'application_complete')`
             )
           )
           .orderBy(desc(events.createdAt))
@@ -95,7 +95,7 @@ export async function GET(req: NextRequest) {
             .where(
               and(
                 eq(events.userId, lead.id),
-                sql`${events.eventType} = 'email_submit'`
+                sql`${events.eventType} IN ('email_submit', 'application_complete')`
               )
             )
             .orderBy(desc(events.createdAt))
@@ -116,7 +116,7 @@ export async function GET(req: NextRequest) {
             .where(
               and(
                 eq(events.userId, lead.id),
-                sql`${events.eventType} = 'email_submit'`
+                sql`${events.eventType} IN ('email_submit', 'application_complete')`
               )
             )
             .orderBy(desc(events.createdAt))
