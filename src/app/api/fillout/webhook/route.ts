@@ -40,6 +40,13 @@ async function ensureWebhookSession() {
 
 export async function POST(request: Request) {
   try {
+    // Log ALL headers for debugging
+    const allHeaders: Record<string, string> = {};
+    request.headers.forEach((value, key) => {
+      allHeaders[key] = value;
+    });
+    console.log('[Fillout Webhook] All headers:', JSON.stringify(allHeaders, null, 2));
+
     // 1. Verify API key
     const authHeader = request.headers.get('authorization');
     if (!verifyFilloutApiKey(authHeader)) {
