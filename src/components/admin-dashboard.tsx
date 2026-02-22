@@ -12,12 +12,16 @@ import PaymentsAnalytics from './admin/payments-analytics';
 import { RevenueIntelligence } from './admin/RevenueIntelligence';
 import { CustomerLifetimeValue } from './admin/CustomerLifetimeValue';
 import { RevtrackDashboard } from './admin/RevtrackDashboard';
+import ApplicationsTable from './admin/ApplicationsTable';
+import FormSubmissionsTable from './admin/FormSubmissionsTable';
 
 type Tab =
   | 'dashboard'
   | 'revtrack'
   | 'revenue'
   | 'clv'
+  | 'applications'
+  | 'formSubmissions'
   | 'leads'
   | 'traffic'
   | 'funnel'
@@ -52,41 +56,62 @@ export default function AdminDashboard() {
     }
   }
 
-  const tabs: { key: Tab; label: string }[] = [
-    { key: 'dashboard', label: 'Dashboard' },
-    { key: 'revtrack', label: 'Revtrack' },
-    { key: 'revenue', label: 'Revenue Intelligence' },
-    { key: 'clv', label: 'Customer Lifetime Value' },
-    { key: 'payments', label: 'Payments & Customers' },
-    { key: 'funnel', label: 'Funnel Analytics' },
-    { key: 'vsl', label: 'VSL Drop-off' },
-    { key: 'scroll', label: 'Scroll Analytics' },
-    { key: 'journey', label: 'Customer Journey' },
-    { key: 'abandoned', label: 'Abandoned Funnel' },
-    { key: 'leads', label: 'Leads' },
-    { key: 'traffic', label: 'Traffic Sources' },
+  const tabGroups = [
+    {
+      label: '💰 Revenue & Sales',
+      tabs: [
+        { key: 'revtrack' as Tab, label: 'Revtrack' },
+        { key: 'revenue' as Tab, label: 'Revenue Intelligence' },
+        { key: 'clv' as Tab, label: 'Customer Lifetime Value' },
+        { key: 'payments' as Tab, label: 'Payments & Customers' },
+      ]
+    },
+    {
+      label: '🎯 Leads & Prospects',
+      tabs: [
+        { key: 'applications' as Tab, label: 'Applications' },
+        { key: 'formSubmissions' as Tab, label: 'Form Submissions' },
+        { key: 'leads' as Tab, label: 'Leads' },
+        { key: 'traffic' as Tab, label: 'Traffic Sources' },
+        { key: 'abandoned' as Tab, label: 'Abandoned Funnel' },
+      ]
+    },
+    {
+      label: '📊 Analytics & Funnel',
+      tabs: [
+        { key: 'funnel' as Tab, label: 'Funnel Analytics' },
+        { key: 'vsl' as Tab, label: 'VSL Drop-off' },
+        { key: 'scroll' as Tab, label: 'Scroll Analytics' },
+        { key: 'journey' as Tab, label: 'Customer Journey' },
+      ]
+    }
   ];
 
   return (
     <div className="min-h-screen bg-black text-white p-8">
       <h1 className="text-4xl font-bold mb-8">Admin Dashboard</h1>
 
-      {/* Tabs */}
-      <div className="flex flex-wrap gap-2 mb-8">
-        {tabs.map((tab) => (
-          <button
-            key={tab.key}
-            onClick={() => setActiveTab(tab.key)}
-            className={`px-4 py-2 rounded text-sm font-medium transition-colors ${
-              activeTab === tab.key
-                ? 'bg-[#940909] text-white'
-                : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
-            }`}
-          >
-            {tab.label}
-          </button>
-        ))}
-      </div>
+      {/* Tab Groups */}
+      {tabGroups.map((group) => (
+        <div key={group.label} className="mb-4">
+          <div className="text-xs text-gray-400 mb-2 px-2">{group.label}</div>
+          <div className="flex flex-wrap gap-2">
+            {group.tabs.map((tab) => (
+              <button
+                key={tab.key}
+                onClick={() => setActiveTab(tab.key)}
+                className={`px-4 py-2 rounded text-sm font-medium transition-colors ${
+                  activeTab === tab.key
+                    ? 'bg-[#940909] text-white'
+                    : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
+                }`}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
+        </div>
+      ))}
 
       {/* Content */}
       {activeTab === 'dashboard' && (
@@ -122,6 +147,8 @@ export default function AdminDashboard() {
       {activeTab === 'journey' && <CustomerJourneyAnalytics />}
       {activeTab === 'abandoned' && <AbandonedFunnelAnalytics />}
       {activeTab === 'payments' && <PaymentsAnalytics />}
+      {activeTab === 'applications' && <ApplicationsTable />}
+      {activeTab === 'formSubmissions' && <FormSubmissionsTable />}
       {activeTab === 'leads' && <LeadsTable />}
       {activeTab === 'traffic' && <TrafficSourcesTable />}
     </div>
