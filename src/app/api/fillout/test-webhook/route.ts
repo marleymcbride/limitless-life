@@ -21,11 +21,14 @@ export async function POST(request: Request) {
     console.log('Body:', JSON.stringify(body, null, 2));
     console.log('=== END FILLOUT TEST WEBHOOK ===');
 
+    // Return the actual data for easier testing
     return NextResponse.json({
       success: true,
       message: 'Webhook received and logged',
       receivedHeaders: Object.keys(headers),
       receivedBodyKeys: Object.keys(body),
+      // Include actual body data so we can see it in Fillout
+      body: body,
     });
   } catch (error) {
     console.error('Test webhook error:', error);
