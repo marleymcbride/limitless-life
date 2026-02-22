@@ -17,6 +17,8 @@ export function verifyFilloutApiKey(authHeader: string | null): boolean {
     return false;
   }
 
+  console.log('[Fillout] Received Authorization header:', authHeader.substring(0, 20) + '...');
+
   // Extract the token from "Bearer <token>"
   const match = authHeader.match(/^Bearer\s+(.+)$/i);
   if (!match) {
