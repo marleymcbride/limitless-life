@@ -13,12 +13,13 @@ function getCorsHeaders(origin: string | null): HeadersInit {
     'https://limitless-life.co',
   ];
 
-  // Allow any Fillout subdomain
+  // If origin is in allowed list or is a Fillout subdomain, return exact origin
   if (origin && (
     allowedOrigins.includes(origin) ||
     origin.endsWith('.fillout.com') ||
     origin.endsWith('.fillout.dev')
   )) {
+    console.log('[CORS] Allowing origin:', origin);
     return {
       'Access-Control-Allow-Origin': origin,
       'Access-Control-Allow-Methods': 'POST, OPTIONS',
@@ -30,24 +31,16 @@ function getCorsHeaders(origin: string | null): HeadersInit {
 
   // Log unexpected origins for debugging
   if (origin) {
-    console.log('[CORS] Unexpected origin:', origin);
+    console.log('[CORS] Unexpected origin, allowing anyway:', origin);
   }
 
-  // Only use wildcard in development mode
-  if (process.env.NODE_ENV === 'development') {
-    return {
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'POST, OPTIONS',
-      'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-    };
-  }
-
-  // Production: return permissive headers for now to debug
-  // TODO: Restrict to specific origins once we identify what Fillout is sending
+  // Allow all origins in production for debugging
+  // Important: Don't use '*' when there's an Origin header - use the exact origin
   return {
     'Access-Control-Allow-Origin': origin || '*',
     'Access-Control-Allow-Methods': 'POST, OPTIONS',
     'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+    'Access-Control-Allow-Credentials': 'false',
     'Access-Control-Max-Age': '86400',
     'Vary': 'Origin',
   };
