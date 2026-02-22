@@ -26,8 +26,8 @@ export async function GET(req: NextRequest) {
     `);
 
     return NextResponse.json({
-      eventTypes: eventTypes.rows,
-      sampleEvents: sampleEvents.rows.map((row: any) => ({
+      eventTypes: eventTypes.rows || [],
+      sampleEvents: (sampleEvents.rows || []).map((row: any) => ({
         eventType: row.event_type,
         createdAt: row.created_at,
         eventDataKeys: row.event_data ? Object.keys(row.event_data) : [],
