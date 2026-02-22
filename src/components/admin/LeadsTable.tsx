@@ -19,6 +19,18 @@ interface Lead {
   applicationStarted: boolean;
   pricingViewed: boolean;
   createdAt: string;
+  filloutData?: {
+    source: string;
+    email: string;
+    fullName: string;
+    lookingFor?: string[];
+    howToGetHere?: string;
+    currentSituation?: string;
+    problemsToSolve?: string;
+    whatWellInstall?: string;
+    desiredResult?: string;
+    filloutScore?: number;
+  } | null;
 }
 
 /**
@@ -106,7 +118,7 @@ export function LeadsTable() {
       {/* Header */}
       <div className="flex justify-between items-center mb-6">
         <div>
-          <h1 className="text-3xl font-bold text-white">Hot Leads Feed</h1>
+          <h1 className="text-3xl font-bold text-gray-900">Hot Leads Feed</h1>
           <p className="text-sm text-gray-600 mt-1">High-priority leads for sales outreach</p>
         </div>
         <div className="flex gap-4 items-center">
@@ -190,6 +202,9 @@ export function LeadsTable() {
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   Last Seen
                 </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Form Details
+                </th>
               </tr>
             </thead>
             <tbody>
@@ -197,12 +212,12 @@ export function LeadsTable() {
                 <tr key={lead.id} className="hover:bg-gray-50">
                   <td className="px-6 py-4 whitespace-nowrap">
                     {lead.firstName && lead.lastName ? (
-                      <div className="font-medium text-white">{lead.firstName} {lead.lastName}</div>
+                      <div className="font-medium text-gray-900">{lead.firstName} {lead.lastName}</div>
                     ) : (
                       <div className="text-gray-500 italic">No name</div>
                     )}
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                     {lead.email}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
@@ -215,23 +230,51 @@ export function LeadsTable() {
                       {lead.leadTemperature}
                     </span>
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                     {lead.tierInterest || "-"}
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                     {lead.status}
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                     {lead.vslWatched ? `${lead.vslCompletionPercent}%` : 'No'}
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                     {lead.applicationStarted ? 'Yes' : 'No'}
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                     {lead.pricingViewed ? 'Yes' : 'No'}
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                     {new Date(lead.lastSeen).toLocaleDateString()}
+                  </td>
+                  <td className="px-6 py-4 text-sm text-gray-900 max-w-md">
+                    {lead.filloutData ? (
+                      <div className="space-y-1">
+                        {lead.filloutData.lookingFor && (
+                          <div className="truncate">
+                            <span className="font-medium">Looking for:</span> {Array.isArray(lead.filloutData.lookingFor) ? lead.filloutData.lookingFor.join(', ') : lead.filloutData.lookingFor}
+                          </div>
+                        )}
+                        {lead.filloutData.currentSituation && (
+                          <div className="truncate" title={lead.filloutData.currentSituation}>
+                            <span className="font-medium">Situation:</span> {lead.filloutData.currentSituation}
+                          </div>
+                        )}
+                        {lead.filloutData.problemsToSolve && (
+                          <div className="truncate" title={lead.filloutData.problemsToSolve}>
+                            <span className="font-medium">Problems:</span> {lead.filloutData.problemsToSolve}
+                          </div>
+                        )}
+                        {lead.filloutData.desiredResult && (
+                          <div className="truncate" title={lead.filloutData.desiredResult}>
+                            <span className="font-medium">Goal:</span> {lead.filloutData.desiredResult}
+                          </div>
+                        )}
+                      </div>
+                    ) : (
+                      <div className="text-gray-400 italic">No form data</div>
+                    )}
                   </td>
                 </tr>
               ))}
