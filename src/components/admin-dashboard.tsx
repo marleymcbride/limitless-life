@@ -92,26 +92,30 @@ export default function AdminDashboard() {
       <h1 className="text-4xl font-bold mb-8">Admin Dashboard</h1>
 
       {/* Tab Groups */}
-      {tabGroups.map((group) => (
-        <div key={group.label} className="mb-4">
-          <div className="text-xs text-gray-400 mb-2 px-2">{group.label}</div>
-          <div className="flex flex-wrap gap-2">
-            {group.tabs.map((tab) => (
-              <button
-                key={tab.key}
-                onClick={() => setActiveTab(tab.key)}
-                className={`px-4 py-2 rounded text-sm font-medium transition-colors ${
-                  activeTab === tab.key
-                    ? 'bg-[#940909] text-white'
-                    : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
-                }`}
-              >
-                {tab.label}
-              </button>
-            ))}
+      <div className="flex flex-wrap gap-8 mb-8">
+        {tabGroups.map((group) => (
+          <div key={group.label} className="flex-1 min-w-[280px]">
+            <div className="text-xs text-gray-400 mb-3 px-2 font-semibold uppercase tracking-wider">
+              {group.label}
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {group.tabs.map((tab) => (
+                <button
+                  key={tab.key}
+                  onClick={() => setActiveTab(tab.key)}
+                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+                    activeTab === tab.key
+                      ? 'bg-[#940909] text-white shadow-lg shadow-red-900/20'
+                      : 'bg-gray-800/50 text-gray-300 hover:bg-gray-700 border border-gray-700/50'
+                  }`}
+                >
+                  {tab.label}
+                </button>
+              ))}
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
 
       {/* Content */}
       {activeTab === 'dashboard' && (
