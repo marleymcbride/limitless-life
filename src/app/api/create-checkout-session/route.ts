@@ -3,7 +3,7 @@ import Stripe from "stripe";
 import { cookies } from 'next/headers';
 import { db } from '@/lib/db';
 import { users, events } from '@/db/schema';
-import { eq, desc } from 'drizzle-orm';
+import { eq, desc, sql } from 'drizzle-orm';
 
 const getStripe = () => {
   if (!process.env.STRIPE_SECRET_KEY) {
@@ -205,6 +205,8 @@ export async function POST(request: NextRequest) {
     // Track pricing plan selection and checkout initiation events
     if (customerEmail) {
       try {
+        console.log('[Checkout] Looking for user with email:', customerEmail);
+
         // Find user by email
         const userRecords = await db
           .select()
@@ -212,15 +214,18 @@ export async function POST(request: NextRequest) {
           .where(eq(users.email, customerEmail))
           .limit(1);
 
+        console.log('[Checkout] User records found:', userRecords.length);
+
         if (userRecords.length > 0) {
           const user = userRecords[0];
+          console.log('[Checkout] Found user:', user.id, user.email);
 
           // Get session ID from cookie for event tracking
           const sessionCookie = cookieStore.get('ll_session');
           const sessionId = sessionCookie?.value;
 
           // Track pricing plan selection
-          await db.insert(events).values({
+          const pricingEvent = {
             id: crypto.randomUUID(),
             sessionId: sessionId || crypto.randomUUID(),
             userId: user.id,
@@ -232,10 +237,13 @@ export async function POST(request: NextRequest) {
               timestamp: new Date().toISOString(),
             },
             createdAt: new Date(),
-          });
+          };
+
+          console.log('[Checkout] Inserting pricing event:', pricingEvent);
+          await db.insert(events).values(pricingEvent);
 
           // Track checkout initiation
-          await db.insert(events).values({
+          const checkoutEvent = {
             id: crypto.randomUUID(),
             sessionId: sessionId || crypto.randomUUID(),
             userId: user.id,
@@ -248,16 +256,22 @@ export async function POST(request: NextRequest) {
               timestamp: new Date().toISOString(),
             },
             createdAt: new Date(),
-          });
+          };
 
-          console.log('[Checkout] Events tracked:', { userId: user.id, tier, paymentPlan });
+          console.log('[Checkout] Inserting checkout event:', checkoutEvent);
+          await db.insert(events).values(checkoutEvent);
+
+          console.log('[Checkout] ✓ Events tracked successfully:', { userId: user.id, tier, paymentPlan });
         } else {
-          console.warn('[Checkout] User not found for email:', customerEmail);
+          console.warn('[Checkout] ✗ User NOT found for email:', customerEmail);
+          console.warn('[Checkout] Available users count:', await db.select({ count: sql`COUNT(*)` }).from(users));
         }
       } catch (error) {
-        console.error('[Checkout] Failed to track events:', error);
+        console.error('[Checkout] ✗ Failed to track events:', error);
         // Don't fail the checkout if tracking fails
       }
+    } else {
+      console.warn('[Checkout] No customerEmail provided');
     }
 
     // Return both sessionId and url for modern Stripe.js integration
