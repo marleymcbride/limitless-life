@@ -3,6 +3,7 @@ import { db } from '@/lib/db';
 import { users, events, payments } from '@/db/schema';
 import { eq, desc, sql, and, or } from 'drizzle-orm';
 import { env } from '@/env.mjs';
+import { calculateLeadScore } from '@/lib/scoring';
 
 /**
  * GET /api/admin/applications
@@ -51,6 +52,23 @@ export async function GET(req: NextRequest) {
 
         if (!hasFormSubmission) {
           return null;
+        }
+
+        // Calculate score on-the-fly if not already calculated
+        let calculatedScore = user.leadScore;
+        let calculatedTemp = user.leadTemperature;
+        let calculatedTier = user.tierInterest;
+
+        // If score is default/low, recalculate from events
+        if (!calculatedScore || calculatedScore <= 10) {
+          try {
+            const scoreData = await calculateLeadScore(user.id);
+            calculatedScore = scoreData.score;
+            calculatedTemp = scoreData.temperature;
+            calculatedTier = scoreData.tierInterest;
+          } catch (error) {
+            console.error('[Applications] Score calculation error:', error);
+          }
         }
 
         // Extract journey data
@@ -104,9 +122,9 @@ export async function GET(req: NextRequest) {
           email: user.email,
           firstName: user.firstName,
           lastName: user.lastName,
-          leadScore: user.leadScore,
-          leadTemperature: user.leadTemperature,
-          tierInterest: user.tierInterest,
+          leadScore: calculatedScore,
+          leadTemperature: calculatedTemp,
+          tierInterest: calculatedTier,
           lastSeen: user.lastSeen,
           createdAt: user.createdAt,
           vslWatched: !!vslStartEvent,
