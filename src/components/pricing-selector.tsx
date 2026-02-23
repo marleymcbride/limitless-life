@@ -220,12 +220,23 @@ export default function PricingSelector({ showEnroll: externalShowEnroll = false
     try {
       const sessionData = await getSessionData();
 
-      // Track Stripe checkout initiation (only if we have session data)
+      // Track pricing plan selection
       if (sessionData) {
         await trackEvent({
           sessionId: sessionData.sessionId,
           userId: sessionData.userId,
-          eventType: 'stripe_checkout_initiated',
+          eventType: 'pricing_plan_selected',
+          eventData: {
+            tier: selectedTier,
+            plan: selectedPayment,
+          },
+        });
+
+        // Track checkout initiation
+        await trackEvent({
+          sessionId: sessionData.sessionId,
+          userId: sessionData.userId,
+          eventType: 'checkout_initiated',
           eventData: {
             tier: selectedTier,
             paymentPlan: selectedPayment,
