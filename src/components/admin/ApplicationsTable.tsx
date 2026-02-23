@@ -7,6 +7,7 @@ interface Application {
   email: string;
   firstName?: string;
   lastName?: string;
+  fullName?: string;
   leadScore: number;
   leadTemperature: 'cold' | 'warm' | 'hot';
   tierInterest?: string;
@@ -228,9 +229,9 @@ export default function ApplicationsTable() {
               {filteredApplications.map((app) => (
                 <tr key={app.id} className="hover:bg-gray-800">
                   <td className="px-4 py-4 whitespace-nowrap">
-                    {app.firstName && app.lastName ? (
+                    {(app.firstName && app.lastName) || app.fullName ? (
                       <div className="font-medium text-white">
-                        {app.firstName} {app.lastName}
+                        {app.fullName || `${app.firstName} ${app.lastName}`.trim()}
                       </div>
                     ) : (
                       <div className="text-gray-500 italic">No name</div>
