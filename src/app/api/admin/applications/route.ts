@@ -92,6 +92,11 @@ export async function GET(req: NextRequest) {
           e.eventType === 'email_submit' || e.eventType === 'application_complete'
         );
 
+        // Get name from form event data (not from users table)
+        const formFullName = formEvent?.eventData?.fullName || '';
+        const formFirstName = formEvent?.eventData?.firstName || user.firstName || '';
+        const formLastName = formEvent?.eventData?.lastName || user.lastName || '';
+
         // Check if purchased
         const userPayments = await db
           .select()
@@ -120,8 +125,9 @@ export async function GET(req: NextRequest) {
         return {
           id: user.id,
           email: user.email,
-          firstName: user.firstName,
-          lastName: user.lastName,
+          firstName: formFirstName,
+          lastName: formLastName,
+          fullName: formFullName, // Store full name too
           leadScore: calculatedScore,
           leadTemperature: calculatedTemp,
           tierInterest: calculatedTier,
