@@ -19,18 +19,6 @@ interface Lead {
   applicationStarted: boolean;
   pricingViewed: boolean;
   createdAt: string;
-  filloutData?: {
-    source: string;
-    email: string;
-    fullName: string;
-    lookingFor?: string[];
-    howToGetHere?: string;
-    currentSituation?: string;
-    problemsToSolve?: string;
-    whatWellInstall?: string;
-    desiredResult?: string;
-    filloutScore?: number;
-  } | null;
 }
 
 /**
@@ -202,9 +190,6 @@ export function LeadsTable() {
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   Last Seen
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Form Details
-                </th>
               </tr>
             </thead>
             <tbody>
@@ -247,34 +232,6 @@ export function LeadsTable() {
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                     {new Date(lead.lastSeen).toLocaleDateString()}
-                  </td>
-                  <td className="px-6 py-4 text-sm text-gray-900 max-w-md">
-                    {lead.filloutData ? (
-                      <div className="space-y-1">
-                        {lead.filloutData.lookingFor && (
-                          <div className="truncate">
-                            <span className="font-medium">Looking for:</span> {Array.isArray(lead.filloutData.lookingFor) ? lead.filloutData.lookingFor.join(', ') : lead.filloutData.lookingFor}
-                          </div>
-                        )}
-                        {lead.filloutData.currentSituation && (
-                          <div className="truncate" title={lead.filloutData.currentSituation}>
-                            <span className="font-medium">Situation:</span> {lead.filloutData.currentSituation}
-                          </div>
-                        )}
-                        {lead.filloutData.problemsToSolve && (
-                          <div className="truncate" title={lead.filloutData.problemsToSolve}>
-                            <span className="font-medium">Problems:</span> {lead.filloutData.problemsToSolve}
-                          </div>
-                        )}
-                        {lead.filloutData.desiredResult && (
-                          <div className="truncate" title={lead.filloutData.desiredResult}>
-                            <span className="font-medium">Goal:</span> {lead.filloutData.desiredResult}
-                          </div>
-                        )}
-                      </div>
-                    ) : (
-                      <div className="text-gray-400 italic">No form data</div>
-                    )}
                   </td>
                 </tr>
               ))}
