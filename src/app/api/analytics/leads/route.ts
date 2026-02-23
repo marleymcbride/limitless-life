@@ -39,29 +39,6 @@ export async function GET(req: NextRequest) {
       .orderBy(sql`${users.leadScore} DESC`)
       .limit(100);
 
-    // Fetch most recent Fillout event for each hot lead
-    const hotLeadsWithEvents = await Promise.all(
-      hotLeads.map(async (lead) => {
-        const recentEvents = await db
-          .select()
-          .from(events)
-          .where(
-            and(
-              eq(events.userId, lead.id),
-              sql`${events.eventType} IN ('email_submit', 'application_complete')`
-            )
-          )
-          .orderBy(desc(events.createdAt))
-          .limit(1);
-
-        const latestEvent = recentEvents[0];
-        return {
-          ...lead,
-          filloutData: latestEvent?.eventData || null,
-        };
-      })
-    );
-
     // Get warm leads (>= 40 and < 70)
     const warmLeads = await db
       .select()
@@ -85,57 +62,11 @@ export async function GET(req: NextRequest) {
       .orderBy(sql`${users.leadScore} DESC`)
       .limit(100);
 
-    // Fetch most recent Fillout event for warm and cold leads
-    const [warmLeadsWithEvents, coldLeadsWithEvents] = await Promise.all([
-      Promise.all(
-        warmLeads.map(async (lead) => {
-          const recentEvents = await db
-            .select()
-            .from(events)
-            .where(
-              and(
-                eq(events.userId, lead.id),
-                sql`${events.eventType} IN ('email_submit', 'application_complete')`
-              )
-            )
-            .orderBy(desc(events.createdAt))
-            .limit(1);
-
-          const latestEvent = recentEvents[0];
-          return {
-            ...lead,
-            filloutData: latestEvent?.eventData || null,
-          };
-        })
-      ),
-      Promise.all(
-        coldLeads.map(async (lead) => {
-          const recentEvents = await db
-            .select()
-            .from(events)
-            .where(
-              and(
-                eq(events.userId, lead.id),
-                sql`${events.eventType} IN ('email_submit', 'application_complete')`
-              )
-            )
-            .orderBy(desc(events.createdAt))
-            .limit(1);
-
-          const latestEvent = recentEvents[0];
-          return {
-            ...lead,
-            filloutData: latestEvent?.eventData || null,
-          };
-        })
-      ),
-    ]);
-
     return NextResponse.json({
       success: true,
-      hot: hotLeadsWithEvents,
-      warm: warmLeadsWithEvents,
-      cold: coldLeadsWithEvents,
+      hot: hotLeads,
+      warm: warmLeads,
+      cold: coldLeads,
     });
   } catch (error) {
     console.error('Error fetching leads:', error);
