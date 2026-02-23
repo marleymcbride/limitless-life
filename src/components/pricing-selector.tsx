@@ -218,9 +218,16 @@ export default function PricingSelector({ showEnroll: externalShowEnroll = false
     if (!selectedTier || !selectedPayment) return;
     setIsLoading(true);
     try {
+      // Get session data for tracking
       const sessionData = await getSessionData();
 
-      // Track pricing plan selection
+      // Get email from sessionStorage (set during email capture)
+      const userEmail = typeof window !== 'undefined' ? sessionStorage.getItem('userEmail') : null;
+      const userName = typeof window !== 'undefined' ? sessionStorage.getItem('userName') : null;
+
+      console.log('[Pricing Selector] Checkout clicked:', { selectedTier, selectedPayment, sessionData, userEmail });
+
+      // Track pricing plan selection (with or without session)
       if (sessionData) {
         await trackEvent({
           sessionId: sessionData.sessionId,
@@ -229,10 +236,11 @@ export default function PricingSelector({ showEnroll: externalShowEnroll = false
           eventData: {
             tier: selectedTier,
             plan: selectedPayment,
+            email: userEmail,
           },
         });
 
-        // Track checkout initiation
+        // Track checkout initiation (with or without session)
         await trackEvent({
           sessionId: sessionData.sessionId,
           userId: sessionData.userId,
@@ -240,12 +248,12 @@ export default function PricingSelector({ showEnroll: externalShowEnroll = false
           eventData: {
             tier: selectedTier,
             paymentPlan: selectedPayment,
+            email: userEmail,
           },
         });
+      } else {
+        console.warn('[Pricing Selector] No session data, skipping event tracking');
       }
-
-      const userEmail = typeof window !== 'undefined' ? sessionStorage.getItem('userEmail') : null;
-      const userName = typeof window !== 'undefined' ? sessionStorage.getItem('userName') : null;
       const response = await fetch("/api/create-checkout-session", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
