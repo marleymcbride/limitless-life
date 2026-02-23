@@ -1,6 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 import { cookies } from 'next/headers';
+import { db } from '@/lib/db';
+import { users, events } from '@/db/schema';
+import { eq, desc } from 'drizzle-orm';
 
 const getStripe = () => {
   if (!process.env.STRIPE_SECRET_KEY) {
@@ -198,6 +201,64 @@ export async function POST(request: NextRequest) {
     checkoutSessionOptions.metadata = metadata;
 
     const session = await stripe.checkout.sessions.create(checkoutSessionOptions);
+
+    // Track pricing plan selection and checkout initiation events
+    if (customerEmail) {
+      try {
+        // Find user by email
+        const userRecords = await db
+          .select()
+          .from(users)
+          .where(eq(users.email, customerEmail))
+          .limit(1);
+
+        if (userRecords.length > 0) {
+          const user = userRecords[0];
+
+          // Get session ID from cookie for event tracking
+          const sessionCookie = cookieStore.get('ll_session');
+          const sessionId = sessionCookie?.value;
+
+          // Track pricing plan selection
+          await db.insert(events).values({
+            id: crypto.randomUUID(),
+            sessionId: sessionId || crypto.randomUUID(),
+            userId: user.id,
+            eventType: 'pricing_plan_selected',
+            eventData: {
+              tier: tier,
+              plan: paymentPlan,
+              email: customerEmail,
+              timestamp: new Date().toISOString(),
+            },
+            createdAt: new Date(),
+          });
+
+          // Track checkout initiation
+          await db.insert(events).values({
+            id: crypto.randomUUID(),
+            sessionId: sessionId || crypto.randomUUID(),
+            userId: user.id,
+            eventType: 'checkout_initiated',
+            eventData: {
+              tier: tier,
+              paymentPlan: paymentPlan,
+              email: customerEmail,
+              stripeSessionId: session.id,
+              timestamp: new Date().toISOString(),
+            },
+            createdAt: new Date(),
+          });
+
+          console.log('[Checkout] Events tracked:', { userId: user.id, tier, paymentPlan });
+        } else {
+          console.warn('[Checkout] User not found for email:', customerEmail);
+        }
+      } catch (error) {
+        console.error('[Checkout] Failed to track events:', error);
+        // Don't fail the checkout if tracking fails
+      }
+    }
 
     // Return both sessionId and url for modern Stripe.js integration
     return NextResponse.json({
