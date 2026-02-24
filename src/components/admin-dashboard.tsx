@@ -78,7 +78,7 @@ export default function AdminDashboard() {
         { key: 'leads' as Tab, label: 'Leads' },
         { key: 'traffic' as Tab, label: 'Traffic Sources' },
         { key: 'abandoned' as Tab, label: 'Abandoned Funnel' },
-        { key: 'workWithMe' as Tab, label: 'Work With Me' },
+        { key: 'workWithMe' as Tab, label: '3weeks' },
         { key: 'emailLeads' as Tab, label: 'Email Course' },
       ]
     },
