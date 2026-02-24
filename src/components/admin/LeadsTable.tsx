@@ -19,6 +19,12 @@ interface Lead {
   applicationStarted: boolean;
   pricingViewed: boolean;
   createdAt: string;
+  // New multi-site lead tracking fields
+  sourceSite?: string | null;
+  leadAction?: string | null;
+  lastAction?: string | null;
+  lastSeenSite?: string | null;
+  firstTouchDate?: string | null;
 }
 
 /**
@@ -101,6 +107,34 @@ export function LeadsTable() {
     return 'text-gray-600';
   };
 
+  const getSourceSiteColor = (site: string | null | undefined) => {
+    if (!site) return 'text-gray-400';
+    const colors: Record<string, string> = {
+      '3weeks.co': 'text-purple-600 font-medium',
+      'limitless-life.co': 'text-blue-600 font-medium',
+      'marleymcbride.co': 'text-green-600 font-medium',
+      'systeme.io': 'text-orange-600 font-medium',
+      'other': 'text-gray-600 font-medium',
+    };
+    return colors[site] || 'text-gray-400';
+  };
+
+  const getLeadActionColor = (action: string | null | undefined) => {
+    if (!action) return 'text-gray-400';
+    const colors: Record<string, string> = {
+      'work-with-me': 'text-red-600 font-bold bg-red-50 px-2 py-1 rounded',
+      'email-signup': 'text-yellow-600 font-medium bg-yellow-50 px-2 py-1 rounded',
+      'popup-completed': 'text-blue-600 font-medium bg-blue-50 px-2 py-1 rounded',
+      'applied': 'text-green-600 font-medium bg-green-50 px-2 py-1 rounded',
+    };
+    return colors[action] || 'text-gray-400';
+  };
+
+  const formatLeadAction = (action: string | null | undefined) => {
+    if (!action) return 'N/A';
+    return action.replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase());
+  };
+
   return (
     <div className="space-y-6">
       {/* Header */}
@@ -179,6 +213,18 @@ export function LeadsTable() {
                   Status
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Source Site
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Lead Action
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Last Action
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Last Seen Site
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   VSL
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -220,6 +266,22 @@ export function LeadsTable() {
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                     {lead.status}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                    <span className={getSourceSiteColor(lead.sourceSite)}>
+                      {lead.sourceSite || 'N/A'}
+                    </span>
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                    <span className={getLeadActionColor(lead.leadAction)}>
+                      {formatLeadAction(lead.leadAction)}
+                    </span>
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                    {formatLeadAction(lead.lastAction) || 'N/A'}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                    {lead.lastSeenSite || 'N/A'}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                     {lead.vslWatched ? `${lead.vslCompletionPercent}%` : 'No'}
