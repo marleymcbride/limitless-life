@@ -32,9 +32,32 @@ export const users = pgTable('users', {
   firstSeen: timestamp('first_seen').defaultNow(),
   lastSeen: timestamp('last_seen').defaultNow(),
   createdAt: timestamp('created_at').defaultNow(),
+  // New columns for multi-site lead tracking
+  sourceSite: text('source_site').$type<'3weeks.co' | 'limitless-life.co' | 'marleymcbride.co' | 'systeme.io' | 'other'>(),
+  leadAction: text('lead_action').$type<'work-with-me' | 'email-signup' | 'popup-completed' | 'applied'>(),
+  lastAction: text('last_action').$type<'work-with-me' | 'email-signup' | 'popup-completed' | 'applied'>(),
+  lastSeenSite: text('last_seen_site'),
+  firstTouchDate: timestamp('first_touch_date'),
 }, (table) => ({
   emailIdx: index('idx_users_email').on(table.email),
   leadScoreIdx: index('idx_users_lead_score').on(table.leadScore),
+  // New indexes for multi-site lead tracking
+  sourceSiteIdx: index('idx_users_source_site').on(table.sourceSite),
+  leadActionIdx: index('idx_users_lead_action').on(table.leadAction),
+  leadTemperatureIdx: index('idx_users_lead_temperature').on(table.leadTemperature),
+}));
+
+export const contactTagEvents = pgTable('contact_tag_events', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  userId: uuid('user_id').references(() => users.id, { onDelete: 'set null' }),
+  email: text('email').notNull(),
+  tagId: integer('tag_id').notNull(),
+  tagName: text('tag_name').notNull(),
+  detectedAt: timestamp('detected_at').defaultNow(),
+}, (table) => ({
+  emailIdx: index('idx_tag_events_email').on(table.email),
+  tagIdIdx: index('idx_tag_events_tag_id').on(table.tagId),
+  detectedAtIdx: index('idx_tag_events_detected_at').on(table.detectedAt),
 }));
 
 export const events = pgTable('events', {
