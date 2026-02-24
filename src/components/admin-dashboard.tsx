@@ -15,6 +15,7 @@ import { CustomerLifetimeValue } from './admin/CustomerLifetimeValue';
 import { RevtrackDashboard } from './admin/RevtrackDashboard';
 import ApplicationsTable from './admin/ApplicationsTable';
 import FormSubmissionsTable from './admin/FormSubmissionsTable';
+import { WorkWithMeLeads } from './admin/WorkWithMeLeads';
 
 type Tab =
   | 'dashboard'
@@ -160,22 +161,7 @@ export default function AdminDashboard() {
       {activeTab === 'formSubmissions' && <FormSubmissionsTable />}
       {activeTab === 'leads' && <LeadsTable />}
       {activeTab === 'traffic' && <TrafficSourcesTable />}
-      {activeTab === 'workWithMe' && (
-        <div className="space-y-6">
-          <div className="bg-gray-50 border border-gray-200 rounded-lg p-8 text-center">
-            <h2 className="text-2xl font-bold mb-4">Work With Me Leads</h2>
-            <p className="text-gray-600 mb-6">
-              View filtered leads who clicked the "Work With Me" button
-            </p>
-            <Link
-              href="/admin/leads/work-with-me"
-              className="inline-block bg-[#940909] text-white px-6 py-3 rounded-lg font-medium hover:bg-red-800 transition-colors"
-            >
-              Open Work With Me Leads
-            </Link>
-          </div>
-        </div>
-      )}
+      {activeTab === 'workWithMe' && <WorkWithMeLeads />}
       {activeTab === 'emailLeads' && (
         <div className="space-y-6">
           <div className="bg-gray-50 border border-gray-200 rounded-lg p-8 text-center">
