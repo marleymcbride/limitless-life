@@ -4,6 +4,35 @@ import { users } from '@/db/schema';
 import { eq, sql } from 'drizzle-orm';
 
 /**
+ * Forward lead data to n8n for Airtable sync
+ * Fire-and-forget — non-blocking, doesn't affect user response
+ */
+async function forwardToN8n(email: string, source: string, timestamp: string) {
+  const webhookMap: Record<string, string> = {
+    '3weeks-email-capture': 'https://n8n.marleymcbride.co/webhook/3weeks-email-capture',
+    'work-with-me-3weeks': 'https://n8n.marleymcbride.co/webhook/antistack-workwithme-leads',
+  };
+
+  const webhookUrl = webhookMap[source];
+  if (!webhookUrl) {
+    console.log('[n8n Forward] No webhook configured for source:', source);
+    return;
+  }
+
+  try {
+    await fetch(webhookUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, source, timestamp }),
+    });
+    console.log('[n8n Forward] Successfully forwarded to n8n for:', email);
+  } catch (error) {
+    // Silently fail — don't let n8n errors affect the main flow
+    console.error('[n8n Forward] Failed to forward to n8n:', error);
+  }
+}
+
+/**
  * CORS headers for cross-origin requests from 3weeks.co
  */
 function getCorsHeaders(origin: string | null) {
@@ -141,6 +170,9 @@ export async function POST(req: NextRequest) {
         })
         .where(eq(users.email, email));
 
+      // Fire-and-forget: Forward to n8n for Airtable sync
+      forwardToN8n(email, source, timestamp);
+
       return NextResponse.json({
         success: true,
         message: 'Lead updated',
@@ -164,6 +196,9 @@ export async function POST(req: NextRequest) {
         leadScore: leadTemperature === 'hot' ? 80 : leadTemperature === 'warm' ? 50 : 20,
         status: 'prospect',
       });
+
+      // Fire-and-forget: Forward to n8n for Airtable sync
+      forwardToN8n(email, source, timestamp);
 
       return NextResponse.json({
         success: true,
