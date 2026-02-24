@@ -7,16 +7,18 @@ import { eq, sql } from 'drizzle-orm';
  * CORS headers for cross-origin requests from 3weeks.co
  */
 function getCorsHeaders(origin: string | null) {
-  // Allow requests from 3weeks.co and limitless-life.co
+  // Allow requests from 3weeks.co (with and without www), limitless-life.co (with and without www), and localhost
   const allowedOrigins = [
     'https://3weeks.co',
+    'https://www.3weeks.co',
     'https://limitless-life.co',
+    'https://www.limitless-life.co',
     'http://localhost:3000', // For local development
   ];
 
   const originHeader = allowedOrigins.includes(origin || '')
     ? origin
-    : 'https://limitless-life.co';
+    : 'https://www.limitless-life.co';
 
   return {
     'Access-Control-Allow-Origin': originHeader,
