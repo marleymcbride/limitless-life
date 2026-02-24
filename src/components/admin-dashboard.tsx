@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 import LeadsTable from './admin/LeadsTable';
 import TrafficSourcesTable from './admin/TrafficSourcesTable';
 import FunnelAnalytics from './admin/funnel-analytics';
@@ -29,7 +30,9 @@ type Tab =
   | 'scroll'
   | 'journey'
   | 'abandoned'
-  | 'payments';
+  | 'payments'
+  | 'workWithMe'
+  | 'emailLeads';
 
 export default function AdminDashboard() {
   const [activeTab, setActiveTab] = useState<Tab>('dashboard');
@@ -74,6 +77,8 @@ export default function AdminDashboard() {
         { key: 'leads' as Tab, label: 'Leads' },
         { key: 'traffic' as Tab, label: 'Traffic Sources' },
         { key: 'abandoned' as Tab, label: 'Abandoned Funnel' },
+        { key: 'workWithMe' as Tab, label: 'Work With Me' },
+        { key: 'emailLeads' as Tab, label: 'Email Course' },
       ]
     },
     {
@@ -155,6 +160,38 @@ export default function AdminDashboard() {
       {activeTab === 'formSubmissions' && <FormSubmissionsTable />}
       {activeTab === 'leads' && <LeadsTable />}
       {activeTab === 'traffic' && <TrafficSourcesTable />}
+      {activeTab === 'workWithMe' && (
+        <div className="space-y-6">
+          <div className="bg-gray-50 border border-gray-200 rounded-lg p-8 text-center">
+            <h2 className="text-2xl font-bold mb-4">Work With Me Leads</h2>
+            <p className="text-gray-600 mb-6">
+              View filtered leads who clicked the "Work With Me" button
+            </p>
+            <Link
+              href="/admin/leads/work-with-me"
+              className="inline-block bg-[#940909] text-white px-6 py-3 rounded-lg font-medium hover:bg-red-800 transition-colors"
+            >
+              Open Work With Me Leads
+            </Link>
+          </div>
+        </div>
+      )}
+      {activeTab === 'emailLeads' && (
+        <div className="space-y-6">
+          <div className="bg-gray-50 border border-gray-200 rounded-lg p-8 text-center">
+            <h2 className="text-2xl font-bold mb-4">Email Course Leads</h2>
+            <p className="text-gray-600 mb-6">
+              View email engagement data from the 30-day course
+            </p>
+            <Link
+              href="/admin/leads/email"
+              className="inline-block bg-[#940909] text-white px-6 py-3 rounded-lg font-medium hover:bg-red-800 transition-colors"
+            >
+              Open Email Course Leads
+            </Link>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
