@@ -68,8 +68,8 @@ export default function Home() {
     enabled: !!session?.sessionId,
   });
 
-  // Email popup state
-  const [showEmailPopup, setShowEmailPopup] = useState(false);
+  // Beta Email popup state
+  const [showBetaPopup, setShowBetaPopup] = useState(false);
 
   // Waitlist modal state
   const [showWaitlistModal, setShowWaitlistModal] = useState(false);
@@ -85,10 +85,10 @@ export default function Home() {
 
   // Handle Apply Now button click
   const handleApplyNowClick = (e: React.MouseEvent) => {
-    console.log('[ApplyNow] Clicked!');
+    console.log('[BetaApplyNow] Clicked!');
     e.preventDefault();
-    setShowEmailPopup(true);
-    console.log('[ApplyNow] showEmailPopup set to true');
+    setShowBetaPopup(true);
+    console.log('[BetaApplyNow] showBetaPopup set to true');
   };
 
   // Smooth scroll function with "soft close" easing
@@ -728,12 +728,12 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Waitlist Email Popup */}
+      {/* Beta Email Popup */}
       <BetaEmailPopup
-        isOpen={showEmailPopup}
+        isOpen={showBetaPopup}
         tier="undecided"
-        tierName="Limitless Protocol"
-        onClose={() => setShowEmailPopup(false)}
+        tierName="Limitless Protocol Beta"
+        onClose={() => setShowBetaPopup(false)}
       />
 
       {/* Waitlist Modal */}
