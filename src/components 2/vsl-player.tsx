@@ -847,8 +847,12 @@ export default function VSLPlayer({
               <button
                 onClick={(e) => {
                   e.preventDefault();
-                  // Navigate to application page when clicked
-                  window.location.href = '/application';
+                  if (onApplyNowClick) {
+                    onApplyNowClick(e);
+                  } else {
+                    // Fallback to navigation if no handler provided
+                    window.location.href = '/application';
+                  }
                 }}
                 className="sm:hidden relative group bg-gradient-to-r from-red-700 via-red-600 to-red-700 text-white text-sm font-bold px-4 py-4 rounded-lg transition-none transform shadow-2xl border-2 border-red-500 text-center"
                 style={{ boxShadow: "0 0 40px rgba(220,38,38,0.6)", transform: "scale(0.85)", maxWidth: "400px" }}
@@ -861,8 +865,12 @@ export default function VSLPlayer({
               <button
                 onClick={(e) => {
                   e.preventDefault();
-                  // Navigate to application page when clicked
-                  window.location.href = '/application';
+                  if (onApplyNowClick) {
+                    onApplyNowClick(e);
+                  } else {
+                    // Fallback to navigation if no handler provided
+                    window.location.href = '/application';
+                  }
                 }}
                 className="hidden sm:block relative group bg-gradient-to-r from-red-700 via-red-600 to-red-700 text-white text-xl font-bold px-12 py-7 rounded-lg transition-none transform shadow-2xl border-2 border-red-500 text-center"
                 style={{ boxShadow: "0 0 40px rgba(220,38,38,0.6)" }}
