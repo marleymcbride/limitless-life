@@ -2,9 +2,9 @@
 
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import VSLPlayer from "../../components/vsl-player";
-import WhatYouGetSection from "../../components/coaching-enrollment";
-import PricingSelector from "../../components/pricing-selector";
+import VSLPlayer from "../../components 2/vsl-player";
+import WhatYouGetSection from "../../components 2/coaching-enrollment";
+import PricingSelector from "../../components 2/pricing-selector";
 
 export default function ApplicationClient() {
   const [showPricingEnroll, setShowPricingEnroll] = useState(false);
