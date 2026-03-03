@@ -1,59 +1,90 @@
 "use client";
 
-import VSLPlayer from "../../components/vsl-player";
-import DoesThisSoundLikeYou from "../../components/does-this-sound-like-you";
-import PersonalStorySection from "../../components/personal-story-section";
-import IntroSection from "../../components/intro-section";
-import CoreValueProposition from "../../components/core-value-proposition";
-import VideoTestimonialCTA from "../../components/video-testimonial-cta";
-import ResultsProof from "../../components/results-proof";
-// import ImagineThisDark from "../../components/imaginethisdark";
-import ImagineThis from "../../components/imaginethis";
-import MoreVideoTestimonials from "../../components/more-video-testimonials";
-import BigIdeaSection from "../../components/big-idea-section";
-import IntroducingLimitless from "../../components/introducing-limitless";
-import WhatYoullAchieve from "../../components/what-youll-achieve";
-import MoreClientTestimonials from "../../components/more-client-testimonials";
-import HowLimitlessProtocolWorks from "../../components/how-limitless-protocol-works";
-import WhatHappensIfYouDontFixThis from "../../components/what-happens-if-you-dont-fix-this";
-import EverythingIncluded from "../../components/what-makes-this-different";
-import BonusStack from "../../components/bonus-stack";
-import WhySmallNumber from "../../components/why-small-number";
-import WhatItsCostingYou from "../../components/what-its-costing-you";
-import WeCanHelpIf from "../../components/who-this-is-for";
-import SecureYourSpot from "../../components/secure-your-spot";
-import BetaOpportunity from "../../components/beta-opportunity";
-import BetaPricing from "../../components/beta-pricing";
-import BetaValueStack from "../../components/beta-value-stack";
-import BetaFAQs from "../../components/FAQs-Beta-access";
-import TestimonialPlaceholder from "../../components/testimonials-final";
-import The3TestimonialsBoxV2 from "../../components/the-3-testimonials-box-v2";
-import { vignetteEffect, unifiedGradientWithSpotlightDesktop, unifiedGradientWithSpotlightMobile } from "../../lib/utils";
+import { ImagePreloader, CRITICAL_TESTIMONIAL_IMAGES } from "@/components 2/image-preloader";
+import VSLPlayer from "@/components 2/vsl-player";
+import BetaEmailPopup from "@/components 2/beta-email-popup";
+import WaitlistModal from "@/components 2/waitlist-modal";
+import {
+  LazyDoesThisSoundLikeYou,
+  LazyPersonalStorySection,
+  LazyIntroSection,
+  LazyCoreValueProposition,
+  LazyVideoTestimonialCTA,
+  LazyVideoTestimonialLaurenceShortVersion,
+  LazyResultsProof,
+  LazyImagineThis,
+  LazyClientTransformationGallery,
+  LazyMoreVideoTestimonials,
+  LazyBigIdeaSection,
+  LazyIntroducingLimitless,
+  LazyWhatYoullAchieve,
+  LazyMoreClientTestimonials,
+  LazyHowLimitlessProtocolWorks,
+  LazyWhatHappensIfYouDontFixThis,
+  LazyWhatMakesThisDifferent,
+  LazyBonusStack,
+  LazyWhySmallNumber,
+  LazyWhatItsCostingYou,
+  LazyWhoThisIsFor,
+  LazySecureYourSpot,
+  LazyFinalFAQs,
+  LazyTestimonialsFinal,
+  LazyThe3TestimonialsBoxV2,
+  LazyTestimonialSectionDark,
+  LazyRootCauses,
+  LazyDelayedCTA,
+} from '@/components 2/lazy/LazySections';
+import { vignetteEffect, unifiedGradientWithSpotlightDesktop, unifiedGradientWithSpotlightMobile } from "@/lib/utils";
 import Image from "next/image";
-import { useState } from "react";
-import RootCauses from "../../components/why-traditional-methods-dont-work";
-import DelayedCTA from "../../components/delayed-cta";
-import LimitedSpotsBanner from "../../components/limited-spots-banner";
+import { useState, useEffect } from "react";
+import { useSession } from "@/hooks/useSession";
+import { useScrollTracking } from "@/hooks/useScrollTracking";
+import { useRouter } from "next/navigation";
 
-// import SystemBenefitsProof from "../../components/system-benefits-proof";
-// import WhyThisSystemWorks from "../../components/[old] why-this-system-works";
-// import ProcessExplanation from "../../components/process-explanation";
-// import FourStepSystem from "../../components/four-step-system";
-// import ExclusivityPersonalAttention from "../../components/exclusivity-personal-attention";
-// import FAQSection from "../../components/faq-section";
-// import UrgencyFinalCTA from "../../components/urgency-final-cta";
-// import WallClientTestimonials from "../../components/wall-client-testimonials";
-// import FooterSection from "../../components/footer-section";
-// import StickyCTA from "../../components/sticky-cta";
+// import SystemBenefitsProof from "../components/system-benefits-proof";
+// import WhyThisSystemWorks from "../components/[old] why-this-system-works";
+// import ProcessExplanation from "../components/process-explanation";
+// import FourStepSystem from "../components/four-step-system";
+// import ExclusivityPersonalAttention from "../components/exclusivity-personal-attention";
+// import FAQSection from "../components/faq-section";
+// import UrgencyFinalCTA from "../components/urgency-final-cta";
+// import WallClientTestimonials from "../components/wall-client-testimonials";
+// import FooterSection from "../components/footer-section";
+// import StickyCTA from "../components/sticky-cta";
 
 
-export default function BetaAccessPage() {
+export default function Home() {
+  const router = useRouter();
+  // Session and analytics hooks
+  const { session } = useSession();
+  useScrollTracking({
+    sessionId: session?.sessionId || '',
+    userId: session?.userId,
+    enabled: !!session?.sessionId,
+  });
+
+  // Email popup state
+  const [showEmailPopup, setShowEmailPopup] = useState(false);
+
+  // Waitlist modal state
+  const [showWaitlistModal, setShowWaitlistModal] = useState(false);
+
   const [hasStartedVideo, setHasStartedVideo] = useState(false);
   const [videoProgress, setVideoProgress] = useState(0);
   const [videoCurrentTime, setVideoCurrentTime] = useState(0); // Track actual time in seconds
   const [videoHasEnded, setVideoHasEnded] = useState(false);
   const [passedJoinNowTime, setPassedJoinNowTime] = useState(false); // Track if passed 11:36
   const [showPauseOverlay, setShowPauseOverlay] = useState(false); // Track if pause overlay is active
+  const [showClickToUnmute, setShowClickToUnmute] = useState(true); // Track if "Click to unmute" popup is showing
+  const [isDesktop, setIsDesktop] = useState(false); // Track if desktop for VSL sizing
+
+  // Handle Apply Now button click
+  const handleApplyNowClick = (e: React.MouseEvent) => {
+    console.log('[ApplyNow] Clicked!');
+    e.preventDefault();
+    setShowEmailPopup(true);
+    console.log('[ApplyNow] showEmailPopup set to true');
+  };
 
   // Smooth scroll function with "soft close" easing
   const smoothScrollToElement = (elementId: string) => {
@@ -87,15 +118,25 @@ export default function BetaAccessPage() {
     requestAnimationFrame(animateScroll);
   };
 
-  return (
-    <main className="flex flex-col  min-h-screen">
-      {/* Limited Spots Banner */}
-      <LimitedSpotsBanner />
+  // Detect desktop/mobile for VSL sizing
+  useEffect(() => {
+    const checkDesktop = () => {
+      setIsDesktop(window.innerWidth >= 769);
+    };
 
+    checkDesktop();
+    window.addEventListener('resize', checkDesktop);
+    return () => window.removeEventListener('resize', checkDesktop);
+  }, []);
+
+  return (
+    <main className="flex flex-col">
+      {/* Preload critical testimonial images */}
+      <ImagePreloader images={CRITICAL_TESTIMONIAL_IMAGES} />
       {/* 1. Hero Section (UNTOUCHED - PRESERVED EXACTLY) */}
       <section
         id="hero-section"
-        className={`pt-2 md:pt-6 px-3 pb-16 px-16min-h-[100vh] sm:pb-16 flex flex-col relative w-full overflow-hidden bg-black`}
+        className={`pt-2 md:pt-6 pb-16 px-16min-h-[100vh] sm:pb-16 flex flex-col relative w-full overflow-hidden bg-black`}
       >
         <div className="hidden md:block">{unifiedGradientWithSpotlightDesktop}</div>
         <div className="block md:hidden">{unifiedGradientWithSpotlightMobile}</div>
@@ -105,7 +146,7 @@ export default function BetaAccessPage() {
         {/* <div className="absolute top-0 left-0 w-full h-[25vh] bg-gradient-to-b from-black to-transparent"></div> */}
         {vignetteEffect}
 
-        <div className="container hero-full-width flex relative z-30 flex-col mx-auto h-full">
+        <div className="hero-container flex relative z-30 flex-col mx-auto h-full">
           {/* Mobile view - headline and subheadline optimized for mobile */}
           <div className="flex flex-col flex-grow justify-start pt-5 sm:justify-center sm:pt-0 sm:mt-6 md:mt-0">
             {/* Pill Logo */}
@@ -141,17 +182,17 @@ export default function BetaAccessPage() {
               For the man who has EVERYTHING in life, except the energy to enjoy it... here&apos;s how to:
             </p>
 
-            {/* Mobile Eyebrow (visible only on mobile) - HIDDEN when banner is present */}
+            {/* Mobile Eyebrow (visible only on mobile) */}
             <p
-              className="hidden sm:hidden px-0 mx-auto text-center text-gray-300 mobile-eyebrow w-full"
+              className="block sm:hidden px-2 text-center text-gray-300 mobile-eyebrow w-full"
               style={{ marginTop: "3.6px", marginBottom: "14.4px" }}
             >
               For the man who has EVERYTHING in life, except the energy to enjoy it... here&apos;s how to:
             </p>
-
+            
             {/* Mobile Headlines (visible only on mobile) */}
             <h1
-              className="mobile-headline block px-1 mx-auto mt-2 mb-6 w-full font-bold text-center text-white sm:hidden capitalize text-[2.06rem]"
+              className="mobile-headline block px-1 mx-auto mt-2 mb-6 w-full font-bold text-center text-white sm:hidden capitalize text-[2.5rem] px-5"
               style={{ lineHeight: "1.125" }}
             >
               Lose Your Gut, Stop Feeling Exhausted & Reverse Years Of Health Decline (In 2 Days Per Week)
@@ -159,10 +200,10 @@ export default function BetaAccessPage() {
 
             {/* Mobile Subheadline - RIGHT AFTER HEADLINE (visible only on mobile) */}
             <p
-              className="mobile-subheadline block mx-auto mb-2 font-light text-center text-gray-300 sm:hidden px-0 text-[1.33rem] leading-[1.28] w-[95%]"
+              className="mobile-subheadline block mx-auto mb-4 font-light text-center text-gray-300 sm:hidden px-0 text-[1.33rem] leading-[1.28] w-[95%]"
             >
-             You don&apos;t need to down 4 coffees, train 6 days a week, or cut out your favorite foods to feel incredible.
-             Restore your energy, lose your gut and build the body you&apos;ve always wanted, and get back YEARS of life:
+             You don&apos;t need to down 4 coffees, train 6 days a week, or cut out your favorite foods to feel LIMITLESS.
+             Restore your energy, build the body you&apos;ve always wanted, and get back YEARS of life (with only 2 days/week in the gym):
             </p>
 
             {/* Spacer div to push headline down */}
@@ -192,7 +233,7 @@ export default function BetaAccessPage() {
             Stop Waking Up Feeling Like Shit and Build [X Body desired result] (Training Only 2 Days Per Week)
             </h1>*/}
             <h1
-              className="hidden sm:block text-5xl sm:text-5xl md:text-4xl  lg:text-5xl font-bold text-white text-center mb-0 mt-0 sm:mt-0 max-w-[87%] mx-auto px-4 capitalize leading-[1.2]"
+              className="hidden sm:block text-5xl sm:text-5xl md:text-4xl  lg:text-5xl font-bold text-white text-center mb-0 mt-0 sm:mt-0 max-w-[87%] mx-auto px-6 capitalize leading-[1.2]"
             >
             Lose Your Gut, Stop Waking Up Exhausted & Reverse Years of Health Decline (In Just 2 Days Per Week)
             </h1>
@@ -202,10 +243,10 @@ export default function BetaAccessPage() {
 
             {/* Desktop Subheadline (hidden on mobile) */}
             <p
-              className="hidden px-1 mx-auto mb-4  text-xl text-center text-gray-300 sm:block sm:text-xl md:text-lg lg:text-xl max-w-[725px]"
+              className="hidden mb-4 py-4 text-xl text-center text-gray-300 sm:block sm:text-xl md:text-lg lg:text-xl max-w-[925px]"
               >
               You don&apos;t need to down 4 coffees a day, train 6 days a week,
-              or cut out your favorite foods to feel incredible. Here&apos;s the
+              or cut out your favorite foods to feel LIMITLESS. Here&apos;s the
               proven system to restore your energy, lose your gut and build the body you&apos;ve always wanted
               and get back YEARS of life
               (training only 2 days):
@@ -213,7 +254,15 @@ export default function BetaAccessPage() {
           </div>
 
           {/* Video Player - Bunny.net VSL */}
-          <div className="mx-auto mt-0 mb-0 w-full max-w-4xl px-4 vsl-container" id="vsl-outer-container">
+          <div
+            className="mx-auto mt-0 mb-0 vsl-container transition-all duration-700 ease-out"
+            id="vsl-outer-container"
+            style={
+              isDesktop
+                ? { width: showClickToUnmute ? '896px' : '90%', maxWidth: showClickToUnmute ? '896px' : '90%', marginLeft: 'auto', marginRight: 'auto' }
+                : { width: '100%', maxWidth: '100%', marginLeft: 'auto', marginRight: 'auto', paddingLeft: '1rem', paddingRight: '1rem' }
+            }
+          >
             <div className="relative vsl-border-wrapper">
               <div
                 className={`absolute inset-0 rounded-lg shadow-[0_0_20px_rgba(255,255,255,0.018984375),0_0_40px_rgba(255,255,255,0.0094921875),0_0_65px_rgba(255,255,255,0.0050625),0_0_120px_rgba(255,255,255,0.002),0_0_20px_rgba(148,9,9,0.0825),0_0_40px_rgba(148,9,9,0.04125),0_0_65px_rgba(148,9,9,0.022),0_0_120px_rgba(148,9,9,0.008)] pointer-events-none vsl-border-glow transition-opacity duration-300 ${showPauseOverlay ? 'opacity-0' : 'opacity-100'}`}
@@ -227,8 +276,16 @@ export default function BetaAccessPage() {
                 preload={true}
                 controls={true}
                 pauseOverlayContainer="hero-section"
-                onUserStartedPlaying={() => setHasStartedVideo(true)}
+                onUserStartedPlaying={() => {
+                  console.log('🎬 Video started playing! Expanding container...');
+                  setHasStartedVideo(true);
+                  setShowClickToUnmute(false);
+                }}
                 onPauseOverlayChange={(isActive) => setShowPauseOverlay(isActive)}
+                onShowClickToUnmuteChange={(showing) => {
+                  console.log('📺 Click to unmute overlay showing:', showing);
+                  setShowClickToUnmute(showing);
+                }}
                 onProgress={(progress) => {
                   // progress is the percentage (0-100)
                   setVideoProgress(progress.percentage || 0);
@@ -243,6 +300,7 @@ export default function BetaAccessPage() {
                 }}
                 onComplete={() => setVideoHasEnded(true)}
                 passedJoinNowTime={passedJoinNowTime}
+                onApplyNowClick={handleApplyNowClick}
               />
             </div>
           </div>
@@ -267,16 +325,20 @@ export default function BetaAccessPage() {
           <div className="h-5"></div>
 
           {/* CTA Button - positioned directly below VSL in dark section */}
-          <div className="text-center relative my-5">
+          <div className="text-center relative my-5 cta-button-container">
             <style>{`
               @media (max-width: 640px) and (orientation: portrait) {
                 .cta-btn-mob {
                   width: 181px !important;
-                  padding-top: 8px !important;
-                  padding-bottom: 8px !important;
+                  padding-top: 12px !important;
+                  padding-bottom: 12px !important;
                   padding-left: 24px !important;
                   padding-right: 24px !important;
                   font-size: 18px !important;
+                }
+                blockquote[data-testimonial="original-size"] {
+                  font-size: 19px !important;
+                  line-height: 1.2 !important;
                 }
                 .vsl-border-glow {
                   -webkit-mask-image: linear-gradient(to bottom,
@@ -298,8 +360,8 @@ export default function BetaAccessPage() {
               @media (max-width: 640px) and (orientation: landscape) {
                 .cta-btn-mob {
                   width: 220px !important;
-                  padding-top: 12.2px !important;
-                  padding-bottom: 12.2px !important;
+                  padding-top: 20px !important;
+                  padding-bottom: 20px !important;
                   padding-left: 40px !important;
                   padding-right: 40px !important;
                   font-size: 20px !important;
@@ -308,11 +370,32 @@ export default function BetaAccessPage() {
               @media (max-height: 640px) and (orientation: landscape) {
                 .cta-btn-mob {
                   width: 220px !important;
-                  padding-top: 12.2px !important;
-                  padding-bottom: 12.2px !important;
+                  padding-top: 20px !important;
+                  padding-bottom: 20px !important;
                   padding-left: 40px !important;
                   padding-right: 40px !important;
                   font-size: 20px !important;
+                }
+                .cta-button-container {
+                  margin-top: 0px !important;
+                }
+                .mobile-eyebrow {
+                  margin-top: 0px !important;
+                  margin-bottom: 0px !important;
+                  padding-left: 0px !important;
+                  padding-right: 0px !important;
+                }
+                .mobile-headline {
+                  margin-top: 0px !important;
+                  margin-bottom: 0px !important;
+                  padding-left: 0px !important;
+                  padding-right: 0px !important;
+                }
+                .mobile-subheadline {
+                  margin-top: 0px !important;
+                  margin-bottom: 0px !important;
+                  padding-left: 0px !important;
+                  padding-right: 0px !important;
                 }
                 #hero-section {
                   padding-left: 0 !important;
@@ -324,7 +407,6 @@ export default function BetaAccessPage() {
                   padding-right: 0 !important;
                 }
                 #vsl-outer-container {
-                  max-width: 100% !important;
                   padding-left: 0 !important;
                   padding-right: 0 !important;
                 }
@@ -349,23 +431,23 @@ export default function BetaAccessPage() {
               }
             `}</style>
             {passedJoinNowTime ? (
-              <DelayedCTA
+              <LazyDelayedCTA
                 delay={180000} // 3 minutes
                 videoProgress={videoProgress}
                 videoCurrentTime={videoCurrentTime}
                 videoHasEnded={videoHasEnded}
-                className="font-bold !text-white transition-none duration-0 focus:outline-none bg-[#940909] hover:bg-[#7b0707] py-2 px-8 sm:py-5 sm:px-12 text-base sm:text-lg rounded-md inline-block relative z-[200] w-[280px] cta-btn-mob"
+                className="font-bold !text-white transition-none duration-0 focus:outline-none bg-[#940909] hover:bg-[#7b0707] py-8 px-8 sm:py-8 md:py-6 lg:mx-10 md:mx-6 lg:py-5 sm:px-12 text-xl sm:text-lg  md:text-xl lg:text-xl rounded-md inline-block relative z-[200] w-[320px] cta-btn-mob"
                 href="/application"
               >
                 JOIN NOW
-              </DelayedCTA>
+              </LazyDelayedCTA>
             ) : (
-              <DelayedCTA
+              <LazyDelayedCTA
                 delay={180000} // 3 minutes
                 videoProgress={videoProgress}
                 videoCurrentTime={videoCurrentTime}
                 videoHasEnded={videoHasEnded}
-                className="font-bold !text-white transition-none duration-0 focus:outline-none bg-[#940909] hover:bg-[#7b0707] py-2 sm:py-5 px-6 sm:px-12 text-base sm:text-lg rounded-md inline-block relative z-[200] w-[280px] sm:w-[280px] cta-btn-mob cursor-pointer"
+                className="font-bold !text-white transition-none duration-0 focus:outline-none bg-[#940909] hover:bg-[#7b0707] py-5 lg:py-5 px-8 sm:py-4 sm:px-12 text-base sm:text-lg md:text-xl lg:text-xl rounded-md inline-block relative z-[200] w-[280px] sm:w-[280px] lg:w-[320px] cta-btn-mob cursor-pointer"
                 href="#apply-for-elite-spots"
                 onClick={(e: { preventDefault: () => void }) => {
                   e.preventDefault();
@@ -373,7 +455,7 @@ export default function BetaAccessPage() {
                 }}
               >
                 TELL ME MORE
-              </DelayedCTA>
+              </LazyDelayedCTA>
             )}
           </div>
 
@@ -383,7 +465,7 @@ export default function BetaAccessPage() {
           {/* Testimonial - Simple thin text at bottom of hero */}
           <div className="text-center mt-0 mb-0 max-w-4xl mx-auto">
             <div className="bg-transparent bg-opacity-10 p-0">
-              <blockquote className="text-xl text-white mb-0" data-testimonial="original-size">
+              <blockquote className="text-xl mx-4 text-white mb-0" data-testimonial="original-size">
                 &ldquo;I&apos;m in the best shape I&apos;ve ever been,
                 haven&apos;t touched booze in over a year and feel
                 incredible.&rdquo;
@@ -395,6 +477,7 @@ export default function BetaAccessPage() {
                     alt="Lewis Allan"
                     width={64}
                     height={64}
+                    priority
                     className="w-full h-full object-cover"
                     unoptimized={true}
                   />
@@ -419,135 +502,138 @@ export default function BetaAccessPage() {
 
       {/* 2. "Does This Sound Like You?" - Problem Agitation (Black background) */}
       <div className="dark-section-with-grain">
-        <DoesThisSoundLikeYou />
+        <LazyDoesThisSoundLikeYou onApplyNowClick={handleApplyNowClick} />
       </div>
 
       {/* 3. Personal Story Section with embedded Intro (White background) */}
-      <PersonalStorySection />
+      <LazyPersonalStorySection onApplyNowClick={handleApplyNowClick} />
 
       {/* INTRO SECTION INSERTED HERE */}
-      <IntroSection />
-
+      <LazyIntroSection onApplyNowClick={handleApplyNowClick} />
+      
       {/* 4. Core Value Proposition (White background) */}
-      <CoreValueProposition />
+      <LazyCoreValueProposition onApplyNowClick={handleApplyNowClick} />
 
       {/* 5. Video Testimonial CTA (Black background) */}
       <div className="dark-section-with-grain">
-        <VideoTestimonialCTA />
+        <LazyVideoTestimonialCTA onApplyNowClick={handleApplyNowClick} />
       </div>
 
       {/* INTRO SECTION 2 INSERTED HERE */}
-      <RootCauses />
+      <LazyRootCauses onApplyNowClick={handleApplyNowClick} />
 
       {/* 7. Results Proof (White background) */}
-      <ResultsProof />
+      <LazyResultsProof onApplyNowClick={handleApplyNowClick} />
 
       {/* INTRO SECTION 2 INSERTED HERE */}
-      <BigIdeaSection />
+      <LazyBigIdeaSection onApplyNowClick={handleApplyNowClick} />
 
+      {/* Laurence Short Version Video Testimonial */}
+      <div className="dark-section-with-grain">
+        <LazyVideoTestimonialLaurenceShortVersion onApplyNowClick={handleApplyNowClick} />
+      </div>
+
+
+      {/* 6. Imagine This (Light background with white box) */}
+      <LazyImagineThis onApplyNowClick={handleApplyNowClick} />
 
       {/* 13. More Client Testimonials (Dark background)  */}
       <div className="dark-section-with-grain">
-        <MoreClientTestimonials />
+        <LazyMoreClientTestimonials onApplyNowClick={handleApplyNowClick} />
       </div>
 
-      {/* 6. Imagine This (Light background with white box) */}
-      <ImagineThis />
-
+      {/* 6.5. Client Transformation Gallery (Before/After photos)
+      <LazyClientTransformationGallery /> */}
 
 
       {/* 10. Introducing Limitless (Dark background) */}
-      <IntroducingLimitless />
+      <LazyIntroducingLimitless onApplyNowClick={handleApplyNowClick} />
 
-      {/* What You'll Achieve (Dark with grain) */}
-      <WhatYoullAchieve />
+      {/* 6.5. More Results Created (Before/After transformations) */}
+      <LazyClientTransformationGallery onApplyNowClick={handleApplyNowClick} />
 
-            {/* 10. Introducing Limitless (Dark background)
+      {/* 11. What You'll Achieve (Dark with grain) */}
+      <LazyWhatYoullAchieve onApplyNowClick={handleApplyNowClick} />
+
+            {/* 10. Introducing Limitless (Dark background) 
             <div className="dark-section-with-grain">
         <IntroducingLimitless2 />
       </div> */}
 
-            {/* 9. More Video Testimonials (Black background) */}
-            <div className="dark-section-with-grain">
-        <MoreVideoTestimonials />
-      </div>
 
-      {/* NEW SECTIONS - The omplete Sales Page */}
+      {/* NEW SECTIONS - Complete Sales Page */}
 
-      {/* How The Limitless Protocol Works (Dark background) */}
-      <HowLimitlessProtocolWorks />
-
-      {/* Everything Included (Dark with grain) - wrapper inline */}
-      <EverythingIncluded />
 
       {/* Testimonial 1 - 3 Testimonials Box */}
-      <The3TestimonialsBoxV2 />
+      <LazyThe3TestimonialsBoxV2 onApplyNowClick={handleApplyNowClick} />
+
+
+      {/* How The Limitless Protocol Works (Dark background) */}
+      <LazyHowLimitlessProtocolWorks onApplyNowClick={handleApplyNowClick} />
+
+      {/* 9. More Video Testimonials (Black background)*/}
+      <LazyMoreVideoTestimonials onApplyNowClick={handleApplyNowClick} />
+
+      {/* Everything Included (Dark with grain) - wrapper inline */}
+      <LazyWhatMakesThisDifferent onApplyNowClick={handleApplyNowClick} />
+
+      {/* Testimonial section before What Happens */}
+      <LazyTestimonialSectionDark onApplyNowClick={handleApplyNowClick} />
 
       {/* What Happens If You Don't Fix This (White background) */}
-      <WhatHappensIfYouDontFixThis />
+      <LazyWhatHappensIfYouDontFixThis onApplyNowClick={handleApplyNowClick} />
 
       {/* Bonus Stack (Dark with grain) - wrapper inline */}
-      <BonusStack />
+      <LazyBonusStack onApplyNowClick={handleApplyNowClick} />
 
       {/* Testimonial 2 (White background) */}
-      <TestimonialPlaceholder number={2} />
+      <LazyTestimonialsFinal onApplyNowClick={handleApplyNowClick} number={2} />
 
       {/* Why I Only Work With A Small Number (White background) */}
-      <WhySmallNumber />
+      <LazyWhySmallNumber onApplyNowClick={handleApplyNowClick} />
 
       {/* We Can Help If / Can't Help If (Dark with grain) - wrapper inline */}
-      <WeCanHelpIf />
+      <LazyWhoThisIsFor onApplyNowClick={handleApplyNowClick} />
 
       {/* Testimonial 3 (White background) */}
-      <TestimonialPlaceholder number={3} />
+      <LazyTestimonialsFinal onApplyNowClick={handleApplyNowClick} number={3} />
 
       {/* What NOT Fixing This Is Costing You (White background) */}
-      <WhatItsCostingYou />
-
-      {/* Secure Your Spot (White background) */}
-      <SecureYourSpot />
-
-      {/* BETA OFFER SECTIONS */}
-      {/* Beta Opportunity (Dark with grain) */}
-      <BetaOpportunity />
-
-      {/* Beta Pricing (Dark with grain) */}
-      <BetaPricing />
-
-      {/* Beta Value Stack (Dark with grain) */}
-      <BetaValueStack />
-
-      {/* END BETA OFFER SECTIONS */}
+      <LazyWhatItsCostingYou onApplyNowClick={handleApplyNowClick} />
 
       {/* FAQs */}
-      <BetaFAQs />
+      <LazyFinalFAQs onApplyNowClick={handleApplyNowClick} />
+
+            {/* Secure Your Spot (White background) */}
+            <LazySecureYourSpot onApplyNowClick={handleApplyNowClick} />
 
       {/* Testimonial 4 (White background) */}
-      <TestimonialPlaceholder number={4} />
+      <LazyTestimonialsFinal onApplyNowClick={handleApplyNowClick} number={4} />
 
       {/* Testimonial 5 (White background) */}
-      <TestimonialPlaceholder number={5} />
+      <LazyTestimonialsFinal onApplyNowClick={handleApplyNowClick} number={5} />
 
       {/* Testimonial 6 (White background) */}
-      <TestimonialPlaceholder number={6} />
+      <LazyTestimonialsFinal onApplyNowClick={handleApplyNowClick} number={6} />
 
       {/* Testimonial 7 (White background) */}
-      <TestimonialPlaceholder number={7} />
+      <LazyTestimonialsFinal onApplyNowClick={handleApplyNowClick} number={7} />
 
       {/* Testimonial 8 (White background) */}
-      <TestimonialPlaceholder number={8} />
+      <LazyTestimonialsFinal onApplyNowClick={handleApplyNowClick} number={8} />
 
       {/* Testimonial 9 (White background) */}
-      <TestimonialPlaceholder number={9} />
+      <LazyTestimonialsFinal onApplyNowClick={handleApplyNowClick} number={9} />
 
       {/* Testimonial 10 (White background) */}
-      <TestimonialPlaceholder number={10} />
+      <LazyTestimonialsFinal onApplyNowClick={handleApplyNowClick} number={10} />
 
       {/* Testimonial 11 (White background) */}
-      <TestimonialPlaceholder number={11} />
+      <LazyTestimonialsFinal onApplyNowClick={handleApplyNowClick} number={11} />
 
       {/* Testimonial 12 (White background) */}
-      <TestimonialPlaceholder number={12} />
+      <LazyTestimonialsFinal onApplyNowClick={handleApplyNowClick} number={12} />
+
 
       {/* 8. Process Explanation (Black background) */}
       {/*
@@ -555,11 +641,13 @@ export default function BetaAccessPage() {
         <ProcessExplanation />
       </div>
       */}
-
       {/* 11. The 4-Step System (White background) */}
       {/*
       <FourStepSystem />
       */}
+
+
+
 
       {/* 14. Exclusivity & Personal Attention (Dark background) */}
       {/*
@@ -596,16 +684,42 @@ export default function BetaAccessPage() {
 
       {/* Sticky CTA that appears on significant scroll */}
       {/* <StickyCTA /> */}
-
+    
 
       {/* Final CTA - White background with just button */}
-      <section className="bg-white py-0 pb-12">
-        <div className="text-center">
-          <a href="/application" className="font-bold !text-white transition-none duration-0 focus:outline-none bg-[#940909] hover:bg-[#7b0707] py-4 px-12 text-lg rounded-md inline-block relative z-30">
+      <section className="bg-white pt-0 pb-24">
+        <div className="text-center space-y-4">
+          <button
+            onClick={handleApplyNowClick}
+            className="font-bold !text-white transition-none duration-0 focus:outline-none bg-[#940909] hover:bg-[#7b0707] py-4 px-12 text-lg rounded-md inline-block relative z-30"
+          >
             Apply Now
-          </a>
+          </button>
+          <div>
+            <button
+              onClick={() => setShowWaitlistModal(true)}
+              className="font-semibold text-gray-600 hover:text-gray-900 text-sm underline transition-colors"
+            >
+              Or join the waitlist
+            </button>
+          </div>
         </div>
       </section>
+
+      {/* Waitlist Email Popup */}
+      <BetaEmailPopup
+        isOpen={showEmailPopup}
+        tier="undecided"
+        tierName="Limitless Protocol"
+        onClose={() => setShowEmailPopup(false)}
+      />
+
+      {/* Waitlist Modal */}
+      <WaitlistModal
+        isOpen={showWaitlistModal}
+        onClose={() => setShowWaitlistModal(false)}
+      />
+
     </main>
   );
 }
