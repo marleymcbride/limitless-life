@@ -1,56 +1,58 @@
-import { db } from './db';
-import { users } from '../db/schema';
-import { eq } from 'drizzle-orm';
-import type { ParsedFilloutSubmission } from '@/types/fillout';
+// User operations utilities
+// This would handle user CRUD operations in production
 
-/**
- * Find existing user by email or create a new one
- * Returns the user ID and whether it was newly created
- */
-export async function findOrCreateUser(
-  submission: ParsedFilloutSubmission
-): Promise<{ userId: string; isNewUser: boolean }> {
-  const email = submission.email.toLowerCase().trim();
+export interface User {
+  id: string;
+  email: string;
+  name?: string;
+  createdAt: Date;
+  updatedAt: Date;
+}
 
-  // Try to find existing user
-  const existingUsers = await db
-    .select()
-    .from(users)
-    .where(eq(users.email, email))
-    .limit(1);
+export interface CreateUserInput {
+  email: string;
+  name?: string;
+}
 
-  if (existingUsers.length > 0) {
-    const existingUser = existingUsers[0];
+export interface UpdateUserInput {
+  email?: string;
+  name?: string;
+}
 
-    // Update lastSeen timestamp
-    await db
-      .update(users)
-      .set({
-        lastSeen: new Date(),
-        // Update name if provided and current values are empty
-        ...(submission.firstName && !existingUser.firstName ? { firstName: submission.firstName } : {}),
-        ...(submission.lastName && !existingUser.lastName ? { lastName: submission.lastName } : {}),
-      })
-      .where(eq(users.id, existingUser.id));
+// TODO: Implement actual database operations
+export async function createUser(input: CreateUserInput): Promise<User> {
+  // Placeholder - would create user in database in production
+  console.log('[user-operations] Creating user:', input);
 
-    return { userId: existingUser.id, isNewUser: false };
-  }
+  return {
+    id: `user_${Date.now()}`,
+    email: input.email,
+    name: input.name,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  };
+}
 
-  // Create new user
-  const newUser = await db
-    .insert(users)
-    .values({
-      email,
-      firstName: submission.firstName || null,
-      lastName: submission.lastName || null,
-      leadScore: 0, // Will be updated by lead scoring system
-      leadTemperature: 'cold',
-      status: 'prospect',
-      tierInterest: null,
-      firstSeen: new Date(),
-      lastSeen: new Date(),
-    })
-    .returning();
+export async function getUserById(id: string): Promise<User | null> {
+  // Placeholder - would query database in production
+  console.log('[user-operations] Getting user by id:', id);
+  return null;
+}
 
-  return { userId: newUser[0].id, isNewUser: true };
+export async function getUserByEmail(email: string): Promise<User | null> {
+  // Placeholder - would query database in production
+  console.log('[user-operations] Getting user by email:', email);
+  return null;
+}
+
+export async function updateUser(id: string, input: UpdateUserInput): Promise<User | null> {
+  // Placeholder - would update user in database in production
+  console.log('[user-operations] Updating user:', id, input);
+  return null;
+}
+
+export async function deleteUser(id: string): Promise<boolean> {
+  // Placeholder - would delete user from database in production
+  console.log('[user-operations] Deleting user:', id);
+  return true;
 }

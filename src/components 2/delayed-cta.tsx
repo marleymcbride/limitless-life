@@ -10,6 +10,7 @@ interface DelayedCTAProps {
   href?: string;
   className?: string;
   onClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void;
+  onApplyNowClick?: (e: React.MouseEvent) => void;
   children: React.ReactNode;
 }
 
@@ -21,6 +22,7 @@ export default function DelayedCTA({
   href = "/application",
   className = "",
   onClick,
+  onApplyNowClick,
   children
 }: DelayedCTAProps) {
   const [showCTA, setShowCTA] = useState(false);
@@ -82,8 +84,17 @@ export default function DelayedCTA({
     return null;
   }
 
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (onApplyNowClick) {
+      e.preventDefault();
+      onApplyNowClick(e);
+    } else if (onClick) {
+      onClick(e);
+    }
+  };
+
   return (
-    <a href={href} className={className} onClick={onClick}>
+    <a href={href} className={className} onClick={handleClick}>
       {children}
     </a>
   );

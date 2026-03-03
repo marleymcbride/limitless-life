@@ -1,8 +1,9 @@
 "use client";
 
-import { ImagePreloader, CRITICAL_TESTIMONIAL_IMAGES } from "../components/image-preloader";
-import VSLPlayer from "../components/vsl-player";
-import EmailPopup from "../components/email-popup";
+import { ImagePreloader, CRITICAL_TESTIMONIAL_IMAGES } from "../components 2/image-preloader";
+import VSLPlayer from "../components 2/vsl-player";
+import EmailPopup from "../components 2/email-popup";
+import WaitlistModal from "../components 2/waitlist-modal";
 import {
   LazyDoesThisSoundLikeYou,
   LazyPersonalStorySection,
@@ -32,7 +33,7 @@ import {
   LazyTestimonialSectionDark,
   LazyRootCauses,
   LazyDelayedCTA,
-} from '../components/lazy/LazySections';
+} from '../components 2/lazy/LazySections';
 import { vignetteEffect, unifiedGradientWithSpotlightDesktop, unifiedGradientWithSpotlightMobile } from "../lib/utils";
 import Image from "next/image";
 import { useState, useEffect } from "react";
@@ -64,6 +65,9 @@ export default function Home() {
 
   // Email popup state
   const [showEmailPopup, setShowEmailPopup] = useState(false);
+
+  // Waitlist modal state
+  const [showWaitlistModal, setShowWaitlistModal] = useState(false);
 
   const [hasStartedVideo, setHasStartedVideo] = useState(false);
   const [videoProgress, setVideoProgress] = useState(0);
@@ -434,6 +438,7 @@ export default function Home() {
                 videoHasEnded={videoHasEnded}
                 className="font-bold !text-white transition-none duration-0 focus:outline-none bg-[#940909] hover:bg-[#7b0707] py-8 px-8 sm:py-8 md:py-6 lg:mx-10 md:mx-6 lg:py-5 sm:px-12 text-xl sm:text-lg  md:text-xl lg:text-xl rounded-md inline-block relative z-[200] w-[320px] cta-btn-mob"
                 href="/application"
+                onApplyNowClick={handleApplyNowClick}
               >
                 JOIN NOW
               </LazyDelayedCTA>
@@ -445,10 +450,7 @@ export default function Home() {
                 videoHasEnded={videoHasEnded}
                 className="font-bold !text-white transition-none duration-0 focus:outline-none bg-[#940909] hover:bg-[#7b0707] py-5 lg:py-5 px-8 sm:py-4 sm:px-12 text-base sm:text-lg md:text-xl lg:text-xl rounded-md inline-block relative z-[200] w-[280px] sm:w-[280px] lg:w-[320px] cta-btn-mob cursor-pointer"
                 href="#apply-for-elite-spots"
-                onClick={(e: { preventDefault: () => void }) => {
-                  e.preventDefault();
-                  smoothScrollToElement("apply-for-elite-spots");
-                }}
+                onApplyNowClick={handleApplyNowClick}
               >
                 TELL ME MORE
               </LazyDelayedCTA>
@@ -684,13 +686,21 @@ export default function Home() {
 
       {/* Final CTA - White background with just button */}
       <section className="bg-white pt-0 pb-24">
-        <div className="text-center">
+        <div className="text-center space-y-4">
           <button
             onClick={handleApplyNowClick}
             className="font-bold !text-white transition-none duration-0 focus:outline-none bg-[#940909] hover:bg-[#7b0707] py-4 px-12 text-lg rounded-md inline-block relative z-30"
           >
             Apply Now
           </button>
+          <div>
+            <button
+              onClick={() => setShowWaitlistModal(true)}
+              className="font-semibold text-gray-600 hover:text-gray-900 text-sm underline transition-colors"
+            >
+              Or join the waitlist
+            </button>
+          </div>
         </div>
       </section>
 
@@ -700,6 +710,12 @@ export default function Home() {
         tier="undecided"
         tierName="Limitless Protocol"
         onClose={() => setShowEmailPopup(false)}
+      />
+
+      {/* Waitlist Modal */}
+      <WaitlistModal
+        isOpen={showWaitlistModal}
+        onClose={() => setShowWaitlistModal(false)}
       />
 
     </main>
