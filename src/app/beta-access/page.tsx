@@ -4,6 +4,11 @@ import { ImagePreloader, CRITICAL_TESTIMONIAL_IMAGES } from "@/components 2/imag
 import VSLPlayer from "@/components 2/vsl-player";
 import BetaEmailPopup from "@/components 2/beta-email-popup";
 import WaitlistModal from "@/components 2/waitlist-modal";
+import BetaOpportunity from "@/components 2/beta-opportunity";
+import BetaPricing from "@/components 2/beta-pricing";
+import BetaValueStack from "@/components 2/beta-value-stack";
+import BetaFAQs from "@/components 2/FAQs-Beta-access";
+import LimitedSpotsBanner from "@/components 2/limited-spots-banner";
 import {
   LazyDoesThisSoundLikeYou,
   LazyPersonalStorySection,
@@ -130,7 +135,10 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="flex flex-col">
+    <main className="flex flex-col min-h-screen">
+      {/* Limited Spots Banner */}
+      <LimitedSpotsBanner />
+
       {/* Preload critical testimonial images */}
       <ImagePreloader images={CRITICAL_TESTIMONIAL_IMAGES} />
       {/* 1. Hero Section (UNTOUCHED - PRESERVED EXACTLY) */}
@@ -601,11 +609,25 @@ export default function Home() {
       {/* What NOT Fixing This Is Costing You (White background) */}
       <LazyWhatItsCostingYou onApplyNowClick={handleApplyNowClick} />
 
-      {/* FAQs */}
-      <LazyFinalFAQs onApplyNowClick={handleApplyNowClick} />
+      {/* Beta FAQs */}
+      <div className="bg-white">
+        <BetaFAQs />
+      </div>
 
-            {/* Secure Your Spot (White background) */}
-            <LazySecureYourSpot onApplyNowClick={handleApplyNowClick} />
+            {/* Beta Opportunity Section */}
+            <div className="bg-white">
+              <BetaOpportunity />
+            </div>
+
+            {/* Beta Pricing Section */}
+            <div className="dark-section-with-grain">
+              <BetaPricing />
+            </div>
+
+            {/* Beta Value Stack Section */}
+            <div className="bg-white">
+              <BetaValueStack />
+            </div>
 
       {/* Testimonial 4 (White background) */}
       <LazyTestimonialsFinal onApplyNowClick={handleApplyNowClick} number={4} />
