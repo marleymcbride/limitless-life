@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { isAuthenticated } from '@/lib/admin-auth';
+import { isAdminAuthenticated } from '@/lib/admin-auth';
 import { db } from '@/lib/db';
 import { events } from '@/db/schema';
 import { and, gte, lte, eq, sql } from 'drizzle-orm';
@@ -12,7 +12,7 @@ interface ScrollDropOffMetrics {
 }
 
 export async function GET(request: NextRequest) {
-  if (!(await isAuthenticated())) {
+  if (!(await isAdminAuthenticated())) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 

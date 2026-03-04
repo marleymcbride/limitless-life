@@ -3,7 +3,7 @@ import { z } from 'zod';
 import { db } from '@/lib/db';
 import { users } from '@/db/schema';
 import { eq } from 'drizzle-orm';
-import { getSessionId } from '@/lib/session';
+import { cookies } from 'next/headers';
 import { trackEvent } from '@/lib/analytics.server';
 import { n8nEvents } from '@/lib/n8nWebhooks';
 
@@ -34,7 +34,9 @@ export async function POST(req: NextRequest) {
     const body = await req.json();
     console.log('[EMAIL WEBHOOK] Request body:', body);
     const { email, firstName, lastName } = emailSubmitSchema.parse(body);
-    const sessionId = getSessionId();
+    const cookieStore = await cookies();
+    const sessionCookie = cookieStore.get('ll_session');
+    const sessionId = sessionCookie?.value || 'unknown';
     console.log('[EMAIL WEBHOOK] Parsed data:', { email, firstName, lastName, sessionId });
 
     // Find or create user

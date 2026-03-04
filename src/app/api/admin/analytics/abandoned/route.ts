@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { isAuthenticated } from '@/lib/admin-auth';
+import { isAdminAuthenticated } from '@/lib/admin-auth';
 import { db } from '@/lib/db';
 import { users, sessions, events, payments } from '@/db/schema';
 import { eq, and, gte, lte, sql, isNull, or, desc } from 'drizzle-orm';
@@ -17,7 +17,7 @@ interface AbandonedLead {
 }
 
 export async function GET(request: NextRequest) {
-  if (!(await isAuthenticated())) {
+  if (!(await isAdminAuthenticated())) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 

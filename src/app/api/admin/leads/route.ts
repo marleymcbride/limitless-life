@@ -1,11 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/lib/db';
 import { users, sessions } from '@/db/schema';
-import { isAuthenticated } from '@/lib/admin-auth';
+import { isAdminAuthenticated } from '@/lib/admin-auth';
 import { desc, eq, and, gte, sql } from 'drizzle-orm';
 
 export async function GET(request: NextRequest) {
-  if (!(await isAuthenticated())) {
+  if (!(await isAdminAuthenticated())) {
     return NextResponse.json(
       { error: 'Unauthorized' },
       { status: 401 }

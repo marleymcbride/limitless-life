@@ -3,7 +3,7 @@ import { z } from 'zod';
 import { db } from '@/lib/db';
 import { users } from '@/db/schema';
 import { eq } from 'drizzle-orm';
-import { getSessionId } from '@/lib/session';
+import { cookies } from 'next/headers';
 import { trackEvent } from '@/lib/analytics.server';
 import { n8nEvents } from '@/lib/n8nWebhooks';
 import { applicationSubmissions } from '@/db/schema';
@@ -55,7 +55,9 @@ export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
     const action = body.action;
-    const sessionId = getSessionId();
+    const cookieStore = await cookies();
+    const sessionCookie = cookieStore.get('ll_session');
+    const sessionId = sessionCookie?.value || 'unknown';
 
     // Find user
     const user = await db
