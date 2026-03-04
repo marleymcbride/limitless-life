@@ -1,14 +1,14 @@
 "use client";
 
-import { ImagePreloader, CRITICAL_TESTIMONIAL_IMAGES } from "@/components 2/image-preloader";
-import VSLPlayer from "@/components 2/vsl-player";
-import BetaEmailPopup from "@/components 2/beta-email-popup";
-import WaitlistModal from "@/components 2/waitlist-modal";
-import BetaOpportunity from "@/components 2/beta-opportunity";
-import BetaPricing from "@/components 2/beta-pricing";
-import BetaValueStack from "@/components 2/beta-value-stack";
-import BetaFAQs from "@/components 2/FAQs-Beta-access";
-import BetaBanner from "@/components 2/beta-banner";
+import { ImagePreloader, CRITICAL_TESTIMONIAL_IMAGES } from "@/components/image-preloader";
+import VSLPlayer from "@/components/vsl-player";
+import BetaEmailPopup from "@/components/beta-email-popup";
+import WaitlistModal from "@/components/waitlist-modal";
+import BetaOpportunity from "@/components/beta-opportunity";
+import BetaPricing from "@/components/beta-pricing";
+import BetaValueStack from "@/components/beta-value-stack";
+import BetaFAQs from "@/components/FAQs-Beta-access";
+import BetaBanner from "@/components/beta-banner";
 import {
   LazyDoesThisSoundLikeYou,
   LazyPersonalStorySection,
@@ -38,7 +38,7 @@ import {
   LazyTestimonialSectionDark,
   LazyRootCauses,
   LazyDelayedCTA,
-} from '@/components 2/lazy/LazySections';
+} from '@/components/lazy/LazySections';
 import { vignetteEffect, unifiedGradientWithSpotlightDesktop, unifiedGradientWithSpotlightMobile } from "@/lib/utils";
 import Image from "next/image";
 import { useState, useEffect } from "react";
@@ -185,9 +185,12 @@ export default function Home() {
 
             {/* Desktop Eyebrow (hidden on mobile) */}
             <div className="hidden sm:flex flex-col items-center justify-center mb-6 mt-1 max-w-2xl mx-auto">
-              <div className="font-['-apple-system'] uppercase font-bold text-2xl md:text-3xl lg:text-3xl text-center text-white mb-4">
-              <span className="no-underline">&ldquo;</span><span className="">The Lifestyle Athlete</span><span className="no-underline"> 90 Day Reset&rdquo;</span>
+              <div className="font-['-apple-system'] uppercase font-bold text-2xl md:text-3xl lg:text-3xl text-center text-white py-2 my-2">
+              <span className="no-underline"></span><span className="">The Lifestyle Athlete</span><span className="no-underline"> 90-Day Reset</span>
               </div>
+              <p className="font-['-apple-system'] font-semibold text-lg md:text-xl lg:text-2xl text-center text-gray-50 mb-2">
+              Starting April 1st, 2026
+              </p>
             </div>
 
             {/* Mobile Eyebrow (visible only on mobile) */}
@@ -454,11 +457,9 @@ export default function Home() {
               }
             `}</style>
               <div className="mt-4 mb-6">
-              <p className="font-['-apple-system'] font-normal text-lg md:text-xl lg:text-2xl text-center text-gray-50 mb-2">
-              <strong>The Limitless 90-Day Energy Reset</strong>
-              </p>
+
               <p className="font-['-apple-system'] font-normal text-lg md:text-xl lg:text-xl text-center text-gray-50 mb-8">
-              Starts April 1st, 2026
+              
               </p>
               </div>
             {passedJoinNowTime ? (
