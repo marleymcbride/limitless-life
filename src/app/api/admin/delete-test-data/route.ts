@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/lib/db';
 import { users, sessions, events, payments, leadAlerts, webhookQueue } from '@/db/schema';
 import { eq, or, sql, ilike } from 'drizzle-orm';
-import { isAuthenticated } from '@/lib/admin-auth';
+import { isAdminAuthenticated } from '@/lib/admin-auth';
 
 /**
  * DELETE /api/admin/delete-test-data
@@ -22,7 +22,7 @@ import { isAuthenticated } from '@/lib/admin-auth';
  */
 export async function DELETE(request: NextRequest) {
   // Verify admin authentication
-  if (!(await isAuthenticated())) {
+  if (!(await isAdminAuthenticated())) {
     return NextResponse.json(
       { error: 'Unauthorized' },
       { status: 401 }

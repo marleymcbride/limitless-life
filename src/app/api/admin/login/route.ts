@@ -1,10 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { authenticate } from '@/lib/admin-auth';
+import { authenticateAdmin } from '@/lib/admin-auth';
 
 export async function POST(req: NextRequest) {
   const { password } = await req.json();
 
-  const success = await authenticate(password);
+  const success = await authenticateAdmin(password);
 
   if (success) {
     return NextResponse.json({ success: true });

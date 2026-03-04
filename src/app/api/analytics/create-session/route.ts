@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { createSession } from '@/lib/session';
+import { getOrCreateSession } from '@/lib/session';
 import { cookies } from 'next/headers';
 
 function getCorsHeaders(origin: string | null): HeadersInit {
@@ -54,10 +54,11 @@ export async function POST(req: NextRequest) {
     const { email, name } = body;
 
     // Create session
-    const sessionId = await createSession({});
-
-    // Set session cookie (await cookies() in Next.js 15+)
     const cookieStore = await cookies();
+    const session = await getOrCreateSession({}, cookieStore);
+    const sessionId = session.id;
+
+    // Set session cookie
     cookieStore.set('ll_session', sessionId, {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
