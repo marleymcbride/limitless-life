@@ -48,6 +48,13 @@ export default function VSLPlayer({
   const [containerElement, setContainerElement] = useState<HTMLElement | null>(null);
   const [showPopupCTA, setShowPopupCTA] = useState(false);
   const hasShownPopupCTA = useRef(false);
+
+  // Detect if using beta classes based on className prop
+  const isBeta = className?.includes("-beta");
+  const resumeContainerClass = isBeta ? "vsl-resume-container-beta" : "vsl-resume-container";
+  const resumeHeadingClass = isBeta ? "vsl-resume-heading-beta" : "vsl-resume-heading";
+  const pauseOverlayClass = isBeta ? "pause-overlay-gradient-beta" : "pause-overlay-gradient";
+
   const popupCTATimerRef = useRef<NodeJS.Timeout | null>(null);
 
   // Smooth scroll function with "soft close" easing
@@ -420,8 +427,8 @@ export default function VSLPlayer({
 
       {showResumeChoice && isReady && (
         <div className="absolute inset-0 flex items-center justify-center z-30 bg-gradient-to-br from-gray-900 via-black to-gray-900 rounded-lg overflow-hidden">
-          <div className="vsl-resume-container text-center w-full max-w-[95%] max-h-full overflow-y-auto flex flex-col justify-center items-center md:justify-end md:pb-8" style={{ transform: "translateY(15%)" }}>
-            <h2 className="vsl-resume-heading mobile-headline font-bold mb-7 md:mb-12 lg:mb-16 leading-tight text-white" style={{ fontSize: "22px" }}>
+          <div className={`${resumeContainerClass} text-center w-full max-w-[95%] max-h-full overflow-y-auto flex flex-col justify-center items-center md:justify-end md:pb-8`} style={{ transform: "translateY(15%)" }}>
+            <h2 className={`${resumeHeadingClass} mobile-headline font-bold mb-7 md:mb-12 lg:mb-16 leading-tight text-white`} style={{ fontSize: "22px" }}>
               Already started watching?
             </h2>
             <div className="flex flex-row gap-3 md:gap-12 lg:gap-16 justify-center items-center w-full">
@@ -464,10 +471,8 @@ export default function VSLPlayer({
           {containerElement ? (
             createPortal(
               <div
-                className="absolute inset-0 flex items-center justify-center z-[100] popup-fade-background"
+                className={`absolute inset-0 flex items-center justify-center z-[100] popup-fade-background ${pauseOverlayClass}`}
                 style={{
-                  background:
-                    "linear-gradient(to bottom, rgba(20,5,5,0) 0%, rgba(20,5,5,0) 22%, rgba(20,5,5,0.94) 24%, rgba(30,5,5,0.92) 50%, rgba(20,5,5,0.94) 77%, rgba(20,5,5,0.5) 82%, rgba(20,5,5,0.2) 86%, rgba(20,5,5,0) 92%, rgba(20,5,5,0) 100%)",
                   pointerEvents: "none",
                 }}
               >
@@ -523,7 +528,7 @@ export default function VSLPlayer({
                       <button
                         onClick={onApplyNowClick}
                         className="absolute left-1/2 transform -translate-x-1/2 bg-[#940909] hover:bg-[#7b0707] text-white font-bold py-3 -mt-1.5 px-8 sm:py-5 sm:px-12 text-lg sm:text-xl rounded-md inline-block transition-none duration-0 focus:outline-none z-[200] w-[320px] popup-cta-join cursor-pointer"
-                        style={{ top: 'calc(54.5% + 360px)' }}
+                        style={{ top: isBeta ? 'calc(54.5% + 215px)' : 'calc(54.5% + 360px)' }}
                       >
                         JOIN NOW
                       </button>
@@ -531,7 +536,7 @@ export default function VSLPlayer({
                       <a
                         href="#apply-for-elite-spots"
                         className="absolute left-1/2 transform -translate-x-1/2 bg-[#940909] hover:bg-[#7b0707] text-white font-bold py-3 -mt-1.5 px-8 sm:py-5 sm:px-12 text-lg sm:text-xl rounded-md inline-block transition-none duration-0 focus:outline-none z-[200] w-[320px] popup-cta-tell cursor-pointer"
-                        style={{ top: 'calc(54.5% + 360px)' }}
+                        style={{ top: isBeta ? 'calc(54.5% + 215px)' : 'calc(54.5% + 360px)' }}
                         onClick={(e) => {
                           e.preventDefault();
                           smoothScrollToElement("apply-for-elite-spots");
@@ -542,31 +547,40 @@ export default function VSLPlayer({
                     )
                   )}
                   <style>{`
+                    /* BETA PAGE - MOBILE PORTRAIT - DIAL IN LINE 552 */
                     @media (max-width: 640px) and (orientation: portrait) {
-                      .popup-fade-background {
+                      .popup-fade-background.pause-overlay-gradient-beta {
+                        background: linear-gradient(to bottom, rgba(20,5,5,0) 0%, rgba(20,5,5,0) 25%, rgba(20,5,5,0.15) 27%, rgba(20,5,5,0.30) 27.5%, rgba(20,5,5,0.50) 28%, rgba(20,5,5,0.70) 28.5%, rgba(20,5,5,0.85) 29%, rgba(20,5,5,0.94) 28.5%, rgba(30,5,5,0.92) 50%, rgba(20,5,5,0.94) 58%, rgba(20,5,5,0.935) 58.3%, rgba(20,5,5,0.93) 58.6%, rgba(20,5,5,0.925) 58.9%, rgba(20,5,5,0.92) 59.2%, rgba(20,5,5,0.91) 59.5%, rgba(20,5,5,0.90) 59.8%, rgba(20,5,5,0.89) 60.1%, rgba(20,5,5,0.88) 60.4%, rgba(20,5,5,0.87) 60.7%, rgba(20,5,5,0.86) 61%, rgba(20,5,5,0.85) 61.3%, rgba(20,5,5,0.84) 61.6%, rgba(20,5,5,0.83) 61.9%, rgba(20,5,5,0.82) 62.2%, rgba(20,5,5,0.81) 62.5%, rgba(20,5,5,0.80) 62.8%, rgba(20,5,5,0.79) 63.1%, rgba(20,5,5,0.78) 63.4%, rgba(20,5,5,0.77) 63.7%, rgba(20,5,5,0.76) 64%, rgba(20,5,5,0.75) 64.3%, rgba(20,5,5,0.74) 64.6%, rgba(20,5,5,0.73) 64.9%, rgba(20,5,5,0.72) 65.2%, rgba(20,5,5,0.71) 65.5%, rgba(20,5,5,0.70) 65.8%, rgba(20,5,5,0.69) 66.1%, rgba(20,5,5,0.68) 66.4%, rgba(20,5,5,0.67) 66.7%, rgba(20,5,5,0.66) 67%, rgba(20,5,5,0.65) 67.3%, rgba(20,5,5,0.64) 67.6%, rgba(20,5,5,0.63) 67.9%, rgba(20,5,5,0.62) 68.2%, rgba(20,5,5,0.61) 68.5%, rgba(20,5,5,0.60) 68.8%, rgba(20,5,5,0.59) 69.1%, rgba(20,5,5,0.58) 69.4%, rgba(20,5,5,0.57) 69.7%, rgba(20,5,5,0.56) 70%, rgba(20,5,5,0.55) 70.3%, rgba(20,5,5,0.54) 70.6%, rgba(20,5,5,0.53) 70.9%, rgba(20,5,5,0.52) 71.2%, rgba(20,5,5,0.51) 71.5%, rgba(20,5,5,0.50) 71.8%, rgba(20,5,5,0.49) 72.1%, rgba(20,5,5,0.48) 72.4%, rgba(20,5,5,0.47) 72.7%, rgba(20,5,5,0.46) 73%, rgba(20,5,5,0.45) 73.3%, rgba(20,5,5,0.44) 73.6%, rgba(20,5,5,0.43) 73.9%, rgba(20,5,5,0.42) 74.2%, rgba(20,5,5,0.41) 74.5%, rgba(20,5,5,0.40) 74.8%, rgba(20,5,5,0.39) 75.1%, rgba(20,5,5,0.38) 75.4%, rgba(20,5,5,0.37) 75.7%, rgba(20,5,5,0.36) 76%, rgba(20,5,5,0.35) 76.3%, rgba(20,5,5,0.34) 76.6%, rgba(20,5,5,0.33) 76.9%, rgba(20,5,5,0.32) 77.2%, rgba(20,5,5,0.31) 77.5%, rgba(20,5,5,0.30) 77.8%, rgba(20,5,5,0.29) 78.1%, rgba(20,5,5,0.28) 78.4%, rgba(20,5,5,0.27) 78.7%, rgba(20,5,5,0.26) 79%, rgba(20,5,5,0.25) 79.3%, rgba(20,5,5,0.24) 79.6%, rgba(20,5,5,0.23) 79.9%, rgba(20,5,5,0.22) 80.2%, rgba(20,5,5,0.21) 80.5%, rgba(20,5,5,0.20) 80.8%, rgba(20,5,5,0.19) 81.1%, rgba(20,5,5,0.18) 81.4%, rgba(20,5,5,0.17) 81.7%, rgba(20,5,5,0.16) 82%, rgba(20,5,5,0.15) 82.3%, rgba(20,5,5,0.14) 82.6%, rgba(20,5,5,0.13) 82.9%, rgba(20,5,5,0.12) 83.2%, rgba(20,5,5,0.11) 83.5%, rgba(20,5,5,0.10) 83.8%, rgba(20,5,5,0.09) 84.1%, rgba(20,5,5,0.08) 84.4%, rgba(20,5,5,0.07) 84.7%, rgba(20,5,5,0.06) 85%, rgba(20,5,5,0.05) 85.3%, rgba(20,5,5,0.04) 85.6%, rgba(20,5,5,0.03) 85.9%, rgba(20,5,5,0.02) 86.2%, rgba(20,5,5,0.01) 86.5%, rgba(20,5,5,0) 87%, rgba(20,5,5,0) 100%) !important;
+                        transform: translateY(2%) translateX(2%) !important;
+                      }
+                      .popup-fade-background:not(.pause-overlay-gradient-beta) {
                         background: linear-gradient(to bottom, rgba(20,5,5,0) 0%, rgba(20,5,5,0) 28%, rgba(20,5,5,0.15) 28%, rgba(20,5,5,0.30) 28%, rgba(20,5,5,0.50) 28%, rgba(20,5,5,0.70) 28%, rgba(20,5,5,0.85) 28.5%, rgba(20,5,5,0.94) 30%, rgba(30,5,5,0.92) 50%, rgba(20,5,5,0.94) 58%, rgba(20,5,5,0.935) 58.3%, rgba(20,5,5,0.93) 58.6%, rgba(20,5,5,0.925) 58.9%, rgba(20,5,5,0.92) 59.2%, rgba(20,5,5,0.91) 59.5%, rgba(20,5,5,0.90) 59.8%, rgba(20,5,5,0.89) 60.1%, rgba(20,5,5,0.88) 60.4%, rgba(20,5,5,0.87) 60.7%, rgba(20,5,5,0.86) 61%, rgba(20,5,5,0.85) 61.3%, rgba(20,5,5,0.84) 61.6%, rgba(20,5,5,0.83) 61.9%, rgba(20,5,5,0.82) 62.2%, rgba(20,5,5,0.81) 62.5%, rgba(20,5,5,0.80) 62.8%, rgba(20,5,5,0.79) 63.1%, rgba(20,5,5,0.78) 63.4%, rgba(20,5,5,0.77) 63.7%, rgba(20,5,5,0.76) 64%, rgba(20,5,5,0.75) 64.3%, rgba(20,5,5,0.74) 64.6%, rgba(20,5,5,0.73) 64.9%, rgba(20,5,5,0.72) 65.2%, rgba(20,5,5,0.71) 65.5%, rgba(20,5,5,0.70) 65.8%, rgba(20,5,5,0.69) 66.1%, rgba(20,5,5,0.68) 66.4%, rgba(20,5,5,0.67) 66.7%, rgba(20,5,5,0.66) 67%, rgba(20,5,5,0.65) 67.3%, rgba(20,5,5,0.64) 67.6%, rgba(20,5,5,0.63) 67.9%, rgba(20,5,5,0.62) 68.2%, rgba(20,5,5,0.61) 68.5%, rgba(20,5,5,0.60) 68.8%, rgba(20,5,5,0.59) 69.1%, rgba(20,5,5,0.58) 69.4%, rgba(20,5,5,0.57) 69.7%, rgba(20,5,5,0.56) 70%, rgba(20,5,5,0.55) 70.3%, rgba(20,5,5,0.54) 70.6%, rgba(20,5,5,0.53) 70.9%, rgba(20,5,5,0.52) 71.2%, rgba(20,5,5,0.51) 71.5%, rgba(20,5,5,0.50) 71.8%, rgba(20,5,5,0.49) 72.1%, rgba(20,5,5,0.48) 72.4%, rgba(20,5,5,0.47) 72.7%, rgba(20,5,5,0.46) 73%, rgba(20,5,5,0.45) 73.3%, rgba(20,5,5,0.44) 73.6%, rgba(20,5,5,0.43) 73.9%, rgba(20,5,5,0.42) 74.2%, rgba(20,5,5,0.41) 74.5%, rgba(20,5,5,0.40) 74.8%, rgba(20,5,5,0.39) 75.1%, rgba(20,5,5,0.38) 75.4%, rgba(20,5,5,0.37) 75.7%, rgba(20,5,5,0.36) 76%, rgba(20,5,5,0.35) 76.3%, rgba(20,5,5,0.34) 76.6%, rgba(20,5,5,0.33) 76.9%, rgba(20,5,5,0.32) 77.2%, rgba(20,5,5,0.31) 77.5%, rgba(20,5,5,0.30) 77.8%, rgba(20,5,5,0.29) 78.1%, rgba(20,5,5,0.28) 78.4%, rgba(20,5,5,0.27) 78.7%, rgba(20,5,5,0.26) 79%, rgba(20,5,5,0.25) 79.3%, rgba(20,5,5,0.24) 79.6%, rgba(20,5,5,0.23) 79.9%, rgba(20,5,5,0.22) 80.2%, rgba(20,5,5,0.21) 80.5%, rgba(20,5,5,0.20) 80.8%, rgba(20,5,5,0.19) 81.1%, rgba(20,5,5,0.18) 81.4%, rgba(20,5,5,0.17) 81.7%, rgba(20,5,5,0.16) 82%, rgba(20,5,5,0.15) 82.3%, rgba(20,5,5,0.14) 82.6%, rgba(20,5,5,0.13) 82.9%, rgba(20,5,5,0.12) 83.2%, rgba(20,5,5,0.11) 83.5%, rgba(20,5,5,0.10) 83.8%, rgba(20,5,5,0.09) 84.1%, rgba(20,5,5,0.08) 84.4%, rgba(20,5,5,0.07) 84.7%, rgba(20,5,5,0.06) 85%, rgba(20,5,5,0.05) 85.3%, rgba(20,5,5,0.04) 85.6%, rgba(20,5,5,0.03) 85.9%, rgba(20,5,5,0.02) 86.2%, rgba(20,5,5,0.01) 86.5%, rgba(20,5,5,0) 87%, rgba(20,5,5,0) 100%) !important;
                       }
                       .popup-button {
                         position: absolute !important;
                         left: 50% !important;
                         transform: translateX(-50%) !important;
-                        top: calc(54.5% + 150px) !important;
+                        top: calc(54.5% + 90px) !important;
                       }
                       .popup-cta-join {
-                        top: calc(54.5% + 263px) !important;
+                        top: calc(54.5% + 219px) !important;
                         width: 180px !important;
                         padding-left: 14px !important;
                         padding-right: 14px !important;
                       }
                       .popup-cta-tell {
-                        top: calc(54.5% + 263px) !important;
+                        top: calc(54.5% + 219px) !important;
                         width: 180px !important;
                         padding-left: 14px !important;
                         padding-right: 14px !important;
                       }
                     }
+                    /* BETA PAGE - MOBILE LANDSCAPE - DIAL IN LINE 556 */
                     @media (max-height: 640px) and (orientation: landscape) {
-                      .popup-fade-background {
+                      .popup-fade-background.pause-overlay-gradient-beta {
+                        background: linear-gradient(to bottom, rgba(20,5,5,0) 0%, rgba(20,5,5,0) 17%, rgba(20,5,5,0.15) 18%, rgba(20,5,5,0.30) 19%, rgba(20,5,5,0.50) 20%, rgba(20,5,5,0.70) 21%, rgba(20,5,5,0.85) 21.5%, rgba(20,5,5,0.94) 22%, rgba(30,5,5,0.92) 30%, rgba(30,5,5,0.92) 70%, rgba(20,5,5,0.94) 73%, rgba(20,5,5,0.92) 74%, rgba(20,5,5,0.86) 75%, rgba(20,5,5,0.78) 76%, rgba(20,5,5,0.70) 77%, rgba(20,5,5,0.60) 78%, rgba(20,5,5,0.50) 79%, rgba(20,5,5,0.40) 80%, rgba(20,5,5,0.30) 81%, rgba(20,5,5,0.20) 82%, rgba(20,5,5,0.12) 83%, rgba(20,5,5,0.06) 86%, rgba(20,5,5,0.04) 88%, rgba(20,5,5,0.02) 90%, rgba(20,5,5,0.01) 92%, rgba(20,5,5,0) 100%) !important;
+                      }
+                      .popup-fade-background:not(.pause-overlay-gradient-beta) {
                         background: linear-gradient(to bottom, rgba(20,5,5,0) 0%, rgba(20,5,5,0) 17%, rgba(20,5,5,0.15) 18%, rgba(20,5,5,0.30) 19%, rgba(20,5,5,0.50) 20%, rgba(20,5,5,0.70) 21%, rgba(20,5,5,0.85) 21.5%, rgba(20,5,5,0.94) 22%, rgba(30,5,5,0.92) 30%, rgba(30,5,5,0.92) 70%, rgba(20,5,5,0.94) 73%, rgba(20,5,5,0.92) 74%, rgba(20,5,5,0.86) 75%, rgba(20,5,5,0.78) 76%, rgba(20,5,5,0.70) 77%, rgba(20,5,5,0.60) 78%, rgba(20,5,5,0.50) 79%, rgba(20,5,5,0.40) 80%, rgba(20,5,5,0.30) 81%, rgba(20,5,5,0.20) 82%, rgba(20,5,5,0.12) 83%, rgba(20,5,5,0.06) 86%, rgba(20,5,5,0.04) 88%, rgba(20,5,5,0.02) 90%, rgba(20,5,5,0.01) 92%, rgba(20,5,5,0) 100%) !important;
                       }
                       .popup-icon {
@@ -610,6 +624,19 @@ export default function VSLPlayer({
                         width: 220px !important;
                         padding-left: 16px !important;
                         padding-right: 16px !important;
+                      }
+                    }
+                    /* BETA PAGE - DESKTOP - DIAL IN LINE 631 */
+                    @media (min-width: 641px) {
+                      .popup-fade-background.pause-overlay-gradient-beta {
+                        transform: translateY(0%) !important;
+                      }
+                      .popup-button.pause-overlay-gradient-beta {
+                        top: calc(54.5% + 360px) !important;
+                      }
+                      .popup-cta-join.pause-overlay-gradient-beta,
+                      .popup-cta-tell.pause-overlay-gradient-beta {
+                        top: calc(54.5% + 440px) !important;
                       }
                     }
                   `}</style>
