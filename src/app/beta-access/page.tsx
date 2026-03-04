@@ -143,7 +143,7 @@ export default function Home() {
       <ImagePreloader images={CRITICAL_TESTIMONIAL_IMAGES} />
       {/* 1. Hero Section (UNTOUCHED - PRESERVED EXACTLY) */}
       <section
-        id="hero-section"
+        id="beta-hero-section"
         className={`pt-2 md:pt-6 pb-16 px-16min-h-[100vh] sm:pb-16 flex flex-col relative w-full overflow-hidden bg-black`}
       >
         <div className="hidden md:block">{unifiedGradientWithSpotlightDesktop}</div>
@@ -188,69 +188,62 @@ export default function Home() {
               <div className="font-['-apple-system'] uppercase font-bold text-2xl md:text-3xl lg:text-3xl text-center text-white py-2 my-2">
               <span className="no-underline"></span><span className="">The Lifestyle Athlete</span><span className="no-underline"> 90-Day Reset</span>
               </div>
-              <p className="font-['-apple-system'] font-semibold text-lg md:text-xl lg:text-2xl text-center text-gray-50 mb-2">
+              <p className="font-['-apple-system'] font-semibold text-lg md:text-xl lg:text-2xl text-center text-gray-200 mb-2">
               Starting April 1st, 2026
               </p>
             </div>
 
             {/* Mobile Eyebrow (visible only on mobile) */}
-            <div className="flex sm:hidden flex-col items-center justify-center mb-6 mt-1 w-full px-4">
-              <h2 className="font-['-apple-system'] font-bold text-xl md:text-2xl text-center text-white mb-2">
-                The Limitless 90-Day Energy Reset
-              </h2>
-              <p className="font-['-apple-system'] text-base md:text-lg text-center text-gray-300">
-                Begins April 1st, 2026
-              </p>
+            <div className="flex rounded-lg sm:hidden flex-col items-center justify-center mb-2 mt-3 w-full px-6 relative overflow-hidden" style={{ background: 'linear-gradient(to bottom, rgba(71, 14, 14, 0.15) 0%, rgba(71, 14, 14, 0.12) 33%, rgba(71, 14, 14, 0.08) 66%, transparent 100%)' }}>
+              <div className="font-['-apple-system'] font-bold text-2xl md:text-2xl text-center -ml-4 -mr-3  text-gray-100 mb-3">
+                Limitless 90-Day Energy Reset
+              </div>
+              <div className="font-['-apple-system'] mb-4 pb-2 text-1.5xl md:text-lg text-center text-gray-200">
+                Beginning April 1st, 2026
+              </div>
             </div>
 
             {/* Mobile Headlines (visible only on mobile) */}
             <h1
-              className="mobile-headline block px-1 mx-auto mt-2 mb-6 w-full font-bold text-center text-white sm:hidden capitalize text-[2.5rem] px-5"
+              className="mobile-headline block px-1 mx-auto mt-4 mb-6 w-full font-bold text-center text-white sm:hidden capitalize -ml-0 -mr-0 text-[2.7rem] px-5"
               style={{ lineHeight: "1.125" }}
             >
-              Become the most energetic Guy In Every Room (training just 2 days a week)
+              Become the most energetic Guy In Every Room
             </h1>
+            <div className="md:hidden lg:hidden block text-white text-center mb-0 mt-0 sm:mt-0 max-w-full mx-auto px-0 pb-8">
+            <div
+              className="md:hidden lg:hidden font-['-apple-system'] font-bold block text-2xl md:text-4xl  lg:text-4.5xl text-white text-center mb-0 mt-0 sm:mt-0 capitalize tracking-normal leading-[1]"
+            >
+            (training just 2 days a week)
+            </div>
+            </div>
 
             {/* Mobile Subheadline - RIGHT AFTER HEADLINE (visible only on mobile) */}
             <p
               className="mobile-subheadline block mx-auto mb-4 font-light text-center text-gray-300 sm:hidden px-0 text-[1.33rem] leading-[1.28] w-[95%]"
             >
-             A 12-Week
+             A 90-day reset to lose the gut and stop feeling tired using The Lifestyle Athlete™ protocol so you can be full of life without alcohol or stimulants and become the man your family deserves.
             </p>
 
             {/* Spacer div to push headline down */}
             <div className="hidden h-4"></div>
 
             {/* Desktop Headlines (hidden on mobile) */}
-            {/*<h1 className="hidden sm:block text-5xl sm:text-5xl md:text-4xl  lg:text-5xl font-bold text-white text-center mb-0 mt-0 sm:mt-0 max-w-[87%] mx-auto px-4 capitalize" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif', lineHeight: "1.17" }}>
-            How To Look And Feel Better Than You Did At 25 (While Training 2 days a Week)
-            </h1>*/}
-            {/*<h1 className="hidden sm:block text-5xl sm:text-5xl md:text-4xl  lg:text-5xl font-bold text-white text-center mb-0 mt-0 sm:mt-0 max-w-[87%] mx-auto px-4 capitalize" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif', lineHeight: "1.17" }}>
-            Wake Up With More Energy Than You Had At 25 (Training Just 2 Days a Week)
-            </h1>*/}
-            {/*<h1 className="hidden sm:block text-5xl sm:text-5xl md:text-4xl  lg:text-5xl font-bold text-white text-center mb-0 mt-0 sm:mt-0 max-w-[87%] mx-auto px-4 capitalize" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif', lineHeight: "1.17" }}>
-            Discover How To Look And Feel Better Than You Did At 25 (Without Obsessing Over Your Health)"
-            </h1>*/}
-            {/*<h1 className="hidden sm:block text-5xl sm:text-5xl md:text-4xl  lg:text-5xl font-bold text-white text-center mb-0 mt-0 sm:mt-0 max-w-[87%] mx-auto px-4 capitalize" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif', lineHeight: "1.17" }}>
-            How I Got My Energy Back, Dropped 30 Pounds, And Got Off Alcohol—Without Willpower Or Restrictive Diets
-            </h1>*/}
-            {/*<h1 className="hidden sm:block text-5xl sm:text-5xl md:text-4xl  lg:text-5xl font-bold text-white text-center mb-0 mt-0 sm:mt-0 max-w-[87%] mx-auto px-4 capitalize" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif', lineHeight: "1.17" }}>
-            How I Went From Addicted to Caffine and 20lbs Overweight to Naturally Energized, and in the Shape of My Life (Training 2 Days A Week)
-            </h1>*/}
-            {/*<h1 className="hidden sm:block text-5xl sm:text-5xl md:text-4xl  lg:text-5xl font-bold text-white text-center mb-0 mt-0 sm:mt-0 max-w-[87%] mx-auto px-4 capitalize" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif', lineHeight: "1.17" }}>
-            How I Stopped Feeling Like Shit Every Morning And Built An Elite
-              Body (Training Only 2 Days Per Week)
-            </h1>*/}
-            {/*<h1 className="hidden sm:block text-5xl sm:text-5xl md:text-4xl  lg:text-5xl font-bold text-white text-center mb-0 mt-0 sm:mt-0 max-w-[87%] mx-auto px-4 capitalize" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif', lineHeight: "1.17" }}>
-            Stop Waking Up Feeling Like Shit and Build [X Body desired result] (Training Only 2 Days Per Week)
-            </h1>*/}
+
             <div className="px-16">
             <div className="hidden sm:block text-white text-center mb-0 mt-0 sm:mt-0 max-w-full mx-auto px-0">
             <h1
-              className="hidden font-['-apple-system'] font-bold sm:block text-5xl sm:text-5xl md:text-4xl  lg:text-5xl text-white text-center mb-0 mt-0 sm:mt-0 capitalize tracking-normal leading-[1]"
+              className="hidden font-['-apple-system'] font-bold sm:block text-5xl sm:text-5xl md:text-4xl  lg:text-5xl text-white text-center mb-0 mt-0 sm:mt-0 capitalize tracking-normal leading-[0]"
             >
-            Become the most energetic Guy In Every Room (training just 2 days a week)
+            Become the most energetic Guy In Every Room
             </h1>
+            <div className="hidden sm:block text-white text-center mb-0 mt-0 sm:mt-0 max-w-full mx-auto px-0">
+            <h1
+              className="hidden font-['-apple-system'] font-bold sm:block text-5xl sm:text-5xl md:text-4xl  lg:text-4.5xl text-white text-center mb-0 mt-0 sm:mt-0 capitalize tracking-normal leading-[1]"
+            >
+            (training just 2 days a week)
+            </h1>
+            </div>
             </div>
             </div>
 
@@ -270,7 +263,7 @@ export default function Home() {
           {/* Video Player - Bunny.net VSL */}
           <div
             className="mx-auto mt-0 mb-0"
-            id="vsl-outer-container"
+            id="vsl-outer-container-beta"
             style={
               isDesktop
                 ? { width: '640px', maxWidth: '90%', marginLeft: 'auto', marginRight: 'auto' }
@@ -286,8 +279,8 @@ export default function Home() {
                 muted={true}
                 preload={true}
                 controls={true}
-                pauseOverlayContainer="hero-section"
-                className="vsl-compact"
+                pauseOverlayContainer="beta-hero-section"
+                className="vsl-compact-beta"
                 onUserStartedPlaying={() => {
                   console.log('🎬 Video started playing! Expanding container...');
                   setHasStartedVideo(true);
@@ -339,19 +332,7 @@ export default function Home() {
           {/* CTA Button - positioned directly below VSL in dark section */}
           <div className="text-center relative my-5 cta-button-container">
             <style>{`
-              /* Beta-specific compact VSL sizing */
-              #vsl-outer-container .vsl-compact {
-                width: 640px !important;
-                max-width: 640px !important;
-              }
-
-              #vsl-outer-container .vsl-resume-heading {
-                font-size: 18px !important;
-              }
-
-              #vsl-outer-container .vsl-resume-container {
-                max-width: 90% !important;
-              }
+              /* Beta-specific inline styles now handled by globals.css -beta classes */
 
               @media (max-width: 640px) and (orientation: portrait) {
                 .cta-btn-mob {

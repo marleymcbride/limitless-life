@@ -983,18 +983,8 @@ Mini headings - cognitive dissonance and attention capture */
   padding-bottom: 20px;
 }
 
-/* Custom text size utilities */
-.text-4\.5xl {
-  font-size: 2.0625rem; /* Halfway between text-3xl (1.875rem) and text-4xl (2.25rem) */
-  line-height: 1.2;
-}
-
-@media (max-width: 640px) {
-  .text-4\.5xl {
-    font-size: 1.875rem; /* Adjusted for mobile - between text-3xl and text-4xl mobile sizes */
-    line-height: 1.2;
-  }
-}
+/* Custom text size utilities - Now defined in tailwind.config.ts */
+/* Use: text-1.5xl, text-2.5xl, text-3.5xl, text-4.5xl, etc. */
 
 /* Force white color for headings on dark backgrounds - highest specificity */
 .heading-white-force {
@@ -1568,7 +1558,6 @@ svg.accordion-chevron {
     margin-right: -1rem !important;
     border: 3px solid rgba(50, 50, 50, 0.9) !important;
   }
-}
 
 /* FAQ answers - smaller on mobile */
 .faq-answer {
@@ -1579,4 +1568,39 @@ svg.accordion-chevron {
   .faq-answer {
     font-size: 1.3rem !important;
   }
+}
+
+/* ========== PAUSE OVERLAY GRADIENTS ========== */
+/* "DON'T GO YET!" popup background gradients - controls where dark overlay appears */
+
+/* MAIN PAGE pause overlay */
+.pause-overlay-gradient {
+  background: linear-gradient(
+    to bottom,
+    rgba(20,5,5,0) 0%,         /* Top - transparent */
+    rgba(20,5,5,0) 22%,        /* Transparent until 22% */
+    rgba(20,5,5,0.94) 24%,     /* Dark starts at 24% */
+    rgba(30,5,5,0.92) 50%,     /* Peak darkness at 50% */
+    rgba(20,5,5,0.94) 77%,     /* Dark until 77% */
+    rgba(20,5,5,0.5) 82%,      /* Starting to fade */
+    rgba(20,5,5,0.2) 86%,      /* Mostly transparent */
+    rgba(20,5,5,0) 92%,        /* Back to transparent */
+    rgba(20,5,5,0) 100%        /* Bottom - transparent */
+  ) !important;
+}
+
+/* BETA PAGE pause overlay - DIAL IN THESE SETTINGS FOR BETA-ACCESS */
+.pause-overlay-gradient-beta {
+  background: linear-gradient(
+    to bottom,
+    rgba(20,5,5,0) 0%,         /* Top - transparent */
+    rgba(20,5,5,0) 26%,        /* Transparent until 26% (more headline room) */
+    rgba(20,5,5,0.94) 27%,     /* Dark starts at 27% (6% lower than main) */
+    rgba(30,5,5,0.92) 50%,     /* Peak darkness at 50% */
+    rgba(20,5,5,0.94) 70%,     /* Dark until 70% (7% higher than main) */
+    rgba(20,5,5,0.5) 75%,      /* Starting to fade */
+    rgba(20,5,5,0.2) 80%,      /* Mostly transparent */
+    rgba(20,5,5,0) 85%,        /* Back to transparent */
+    rgba(20,5,5,0) 100%        /* Bottom - transparent */
+  ) !important;
 }
