@@ -2,8 +2,8 @@
 
 import React from "react";
 import { useRouter } from "next/navigation";
-import TestimonialSection from "@/components 2/waitlist-testimonial-section";
-import The3TestimonialsBox from "@/components 2/[old] the-3-testimonials-box";
+import TestimonialSection from "@/components/waitlist-testimonial-section";
+import The3TestimonialsBox from "@/components/[old] the-3-testimonials-box";
 
 export default function WaitlistPage() {
   return (

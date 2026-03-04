@@ -91,12 +91,17 @@ export default function WaitlistModal({
         message: "You're on the waitlist.",
       });
 
+      const params = new URLSearchParams({
+        name: formData.firstName,
+        email: formData.email,
+      });
+
       setFormData({ firstName: '', email: '' });
 
-      // Wait 2 seconds then close modal and redirect to confirmation page
+      // Wait 2 seconds then close modal and redirect to application prep page
       setTimeout(() => {
         onClose();
-        router.push('/waitlist/confirmed');
+        window.location.href = `/application-prep-waitlist-version?${params.toString()}`;
       }, 2000);
     } catch {
       setSubmitResult({
@@ -214,7 +219,7 @@ export default function WaitlistModal({
                 <p className="text-xl font-bold text-gray-900 mb-2" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif' }}>
                   You&apos;re on the waitlist!
                 </p>
-                <p className="text-sm text-gray-600">Redirecting to confirmation page...</p>
+                <p className="text-sm text-gray-600">Redirecting to application...</p>
               </div>
             </>
           )}

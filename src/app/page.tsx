@@ -1,9 +1,9 @@
 "use client";
 
-import { ImagePreloader, CRITICAL_TESTIMONIAL_IMAGES } from "../components 2/image-preloader";
-import VSLPlayer from "../components 2/vsl-player";
-import EmailPopup from "../components 2/email-popup";
-import WaitlistModal from "../components 2/waitlist-modal";
+import { ImagePreloader, CRITICAL_TESTIMONIAL_IMAGES } from "../components/image-preloader";
+import VSLPlayer from "../components/vsl-player";
+import EmailPopup from "../components/email-popup";
+import WaitlistModal from "../components/waitlist-modal";
 import {
   LazyDoesThisSoundLikeYou,
   LazyPersonalStorySection,
@@ -33,7 +33,7 @@ import {
   LazyTestimonialSectionDark,
   LazyRootCauses,
   LazyDelayedCTA,
-} from '../components 2/lazy/LazySections';
+} from '../components/lazy/LazySections';
 import { vignetteEffect, unifiedGradientWithSpotlightDesktop, unifiedGradientWithSpotlightMobile } from "../lib/utils";
 import Image from "next/image";
 import { useState, useEffect } from "react";

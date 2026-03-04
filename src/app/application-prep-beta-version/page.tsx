@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import { Suspense } from 'react'
-import BetaFilloutFormPopup from "@/components 2/beta-fillout-form-popup";
+import BetaFilloutFormPopup from "@/components/beta-fillout-form-popup";
 
 export const metadata: Metadata = {
   title: "Complete Your Beta Application - Step 2",

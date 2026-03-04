@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import { Suspense } from 'react'
-import WaitlistFilloutFormPopup from "@/components 2/waitlist-fillout-form-popup";
+import WaitlistFilloutFormPopup from "@/components/waitlist-fillout-form-popup";
 
 export const metadata: Metadata = {
   title: "Complete Your Application - Step 2",
