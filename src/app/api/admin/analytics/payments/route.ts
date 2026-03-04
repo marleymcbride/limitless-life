@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { isAuthenticated } from "@/lib/admin-auth";
+import { isAdminAuthenticated } from "@/lib/admin-auth";
 import { db } from "@/lib/db";
 import { payments, users, events } from "@/db/schema";
 import { eq, and, gte, lte, desc, sql } from "drizzle-orm";
@@ -10,7 +10,7 @@ import { eq, and, gte, lte, desc, sql } from "drizzle-orm";
  */
 export async function GET(request: NextRequest) {
   // Check admin authentication
-  if (!(await isAuthenticated())) {
+  if (!(await isAdminAuthenticated())) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 

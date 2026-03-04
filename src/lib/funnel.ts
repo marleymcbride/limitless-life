@@ -36,10 +36,44 @@ export function calculateDropoffRate(currentCount: number, previousCount: number
 }
 
 // TODO: Implement database queries to get actual funnel metrics
-export async function getFunnelMetrics(timeframe?: string): Promise<FunnelMetrics[]> {
+export async function getFunnelMetrics(startDate?: Date, endDate?: Date, timeframe?: string): Promise<FunnelMetrics[]> {
   // Placeholder - would query database in production
   return FUNNEL_STAGES.map(stage => ({
     stage: stage.name,
     count: 0,
   }));
+}
+
+export interface DropOffPoint {
+  stage: string;
+  dropOffCount: number;
+  dropOffRate: number;
+}
+
+export async function getDropOffPoints(startDate: Date, endDate: Date): Promise<DropOffPoint[]> {
+  // Placeholder - would query database in production
+  return FUNNEL_STAGES.slice(0, -1).map(stage => ({
+    stage: stage.name,
+    dropOffCount: 0,
+    dropOffRate: 0,
+  }));
+}
+
+export async function getFunnelBySource(startDate: Date, endDate: Date): Promise<Record<string, FunnelMetrics[]>> {
+  // Placeholder - would query database in production
+  return {
+    direct: [],
+    organic: [],
+    referral: [],
+    social: [],
+  };
+}
+
+export async function getFunnelByDevice(startDate: Date, endDate: Date): Promise<Record<string, FunnelMetrics[]>> {
+  // Placeholder - would query database in production
+  return {
+    desktop: [],
+    mobile: [],
+    tablet: [],
+  };
 }
