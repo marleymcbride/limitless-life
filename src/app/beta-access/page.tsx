@@ -8,7 +8,7 @@ import BetaOpportunity from "@/components 2/beta-opportunity";
 import BetaPricing from "@/components 2/beta-pricing";
 import BetaValueStack from "@/components 2/beta-value-stack";
 import BetaFAQs from "@/components 2/FAQs-Beta-access";
-import LimitedSpotsBanner from "@/components 2/limited-spots-banner";
+import BetaBanner from "@/components 2/beta-banner";
 import {
   LazyDoesThisSoundLikeYou,
   LazyPersonalStorySection,
@@ -137,7 +137,7 @@ export default function Home() {
   return (
     <main className="flex flex-col min-h-screen">
       {/* Limited Spots Banner */}
-      <LimitedSpotsBanner />
+      <BetaBanner />
 
       {/* Preload critical testimonial images */}
       <ImagePreloader images={CRITICAL_TESTIMONIAL_IMAGES} />
@@ -184,34 +184,35 @@ export default function Home() {
             */}
 
             {/* Desktop Eyebrow (hidden on mobile) */}
-            <p
-              className="hidden sm:block px-0 mx-auto mb-4 mt-1 text-xl text-center text-gray-300 md:text-lg lg:text-xl max-w-2xl"
-            >
-              For the man who has EVERYTHING in life, except the energy to enjoy it... here&apos;s how to:
-            </p>
+            <div className="hidden sm:flex flex-col items-center justify-center mb-6 mt-1 max-w-2xl mx-auto">
+              <div className="font-['-apple-system'] uppercase font-bold text-2xl md:text-3xl lg:text-3xl text-center text-white mb-4">
+              <span className="no-underline">&ldquo;</span><span className="">The Lifestyle Athlete</span><span className="no-underline"> 90 Day Reset&rdquo;</span>
+              </div>
+            </div>
 
             {/* Mobile Eyebrow (visible only on mobile) */}
-            <p
-              className="block sm:hidden px-2 text-center text-gray-300 mobile-eyebrow w-full"
-              style={{ marginTop: "3.6px", marginBottom: "14.4px" }}
-            >
-              For the man who has EVERYTHING in life, except the energy to enjoy it... here&apos;s how to:
-            </p>
-            
+            <div className="flex sm:hidden flex-col items-center justify-center mb-6 mt-1 w-full px-4">
+              <h2 className="font-['-apple-system'] font-bold text-xl md:text-2xl text-center text-white mb-2">
+                The Limitless 90-Day Energy Reset
+              </h2>
+              <p className="font-['-apple-system'] text-base md:text-lg text-center text-gray-300">
+                Begins April 1st, 2026
+              </p>
+            </div>
+
             {/* Mobile Headlines (visible only on mobile) */}
             <h1
               className="mobile-headline block px-1 mx-auto mt-2 mb-6 w-full font-bold text-center text-white sm:hidden capitalize text-[2.5rem] px-5"
               style={{ lineHeight: "1.125" }}
             >
-              Lose Your Gut, Stop Feeling Exhausted & Reverse Years Of Health Decline (In 2 Days Per Week)
+              Become the most energetic Guy In Every Room (training just 2 days a week)
             </h1>
 
             {/* Mobile Subheadline - RIGHT AFTER HEADLINE (visible only on mobile) */}
             <p
               className="mobile-subheadline block mx-auto mb-4 font-light text-center text-gray-300 sm:hidden px-0 text-[1.33rem] leading-[1.28] w-[95%]"
             >
-             You don&apos;t need to down 4 coffees, train 6 days a week, or cut out your favorite foods to feel LIMITLESS.
-             Restore your energy, build the body you&apos;ve always wanted, and get back YEARS of life (with only 2 days/week in the gym):
+             A 12-Week
             </p>
 
             {/* Spacer div to push headline down */}
@@ -240,41 +241,40 @@ export default function Home() {
             {/*<h1 className="hidden sm:block text-5xl sm:text-5xl md:text-4xl  lg:text-5xl font-bold text-white text-center mb-0 mt-0 sm:mt-0 max-w-[87%] mx-auto px-4 capitalize" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif', lineHeight: "1.17" }}>
             Stop Waking Up Feeling Like Shit and Build [X Body desired result] (Training Only 2 Days Per Week)
             </h1>*/}
+            <div className="px-16">
+            <div className="hidden sm:block text-white text-center mb-0 mt-0 sm:mt-0 max-w-full mx-auto px-0">
             <h1
-              className="hidden sm:block text-5xl sm:text-5xl md:text-4xl  lg:text-5xl font-bold text-white text-center mb-0 mt-0 sm:mt-0 max-w-[87%] mx-auto px-6 capitalize leading-[1.2]"
+              className="hidden font-['-apple-system'] font-bold sm:block text-5xl sm:text-5xl md:text-4xl  lg:text-5xl text-white text-center mb-0 mt-0 sm:mt-0 capitalize tracking-normal leading-[1]"
             >
-            Lose Your Gut, Stop Waking Up Exhausted & Reverse Years of Health Decline (In Just 2 Days Per Week)
+            Become the most energetic Guy In Every Room (training just 2 days a week)
             </h1>
+            </div>
+            </div>
 
             {/* Spacer div to push subtitle down */}
             <div className="h-4"></div>
 
             {/* Desktop Subheadline (hidden on mobile) */}
+            <div className="px-12">
             <p
-              className="hidden mb-4 py-4 text-xl text-center text-gray-300 sm:block sm:text-xl md:text-lg lg:text-xl max-w-[925px]"
+              className="hidden mb-4 py-4 text-xl text-center text-gray-300 sm:block sm:text-xl md:text-lg lg:text-2xl max-w-[925px]"
               >
-              You don&apos;t need to down 4 coffees a day, train 6 days a week,
-              or cut out your favorite foods to feel LIMITLESS. Here&apos;s the
-              proven system to restore your energy, lose your gut and build the body you&apos;ve always wanted
-              and get back YEARS of life
-              (training only 2 days):
+              A 90-day reset to lose the gut and stop feeling tired using The Lifestyle Athlete™ protocol so you can be full of life without alcohol or stimulants and become the man your family deserves.
             </p>
+            </div>
           </div>
 
           {/* Video Player - Bunny.net VSL */}
           <div
-            className="mx-auto mt-0 mb-0 vsl-container transition-all duration-700 ease-out"
+            className="mx-auto mt-0 mb-0"
             id="vsl-outer-container"
             style={
               isDesktop
-                ? { width: showClickToUnmute ? '896px' : '90%', maxWidth: showClickToUnmute ? '896px' : '90%', marginLeft: 'auto', marginRight: 'auto' }
+                ? { width: '640px', maxWidth: '90%', marginLeft: 'auto', marginRight: 'auto' }
                 : { width: '100%', maxWidth: '100%', marginLeft: 'auto', marginRight: 'auto', paddingLeft: '1rem', paddingRight: '1rem' }
             }
           >
-            <div className="relative vsl-border-wrapper">
-              <div
-                className={`absolute inset-0 rounded-lg shadow-[0_0_20px_rgba(255,255,255,0.018984375),0_0_40px_rgba(255,255,255,0.0094921875),0_0_65px_rgba(255,255,255,0.0050625),0_0_120px_rgba(255,255,255,0.002),0_0_20px_rgba(148,9,9,0.0825),0_0_40px_rgba(148,9,9,0.04125),0_0_65px_rgba(148,9,9,0.022),0_0_120px_rgba(148,9,9,0.008)] pointer-events-none vsl-border-glow transition-opacity duration-300 ${showPauseOverlay ? 'opacity-0' : 'opacity-100'}`}
-              ></div>
+            <div className="relative">
               {/* TODO: videoId="a6751ee5-c1d3-4006-9776-7d1a9ced040c" */}
               <VSLPlayer
                 videoId="a6751ee5-c1d3-4006-9776-7d1a9ced040c"
@@ -284,6 +284,7 @@ export default function Home() {
                 preload={true}
                 controls={true}
                 pauseOverlayContainer="hero-section"
+                className="vsl-compact"
                 onUserStartedPlaying={() => {
                   console.log('🎬 Video started playing! Expanding container...');
                   setHasStartedVideo(true);
@@ -335,6 +336,20 @@ export default function Home() {
           {/* CTA Button - positioned directly below VSL in dark section */}
           <div className="text-center relative my-5 cta-button-container">
             <style>{`
+              /* Beta-specific compact VSL sizing */
+              #vsl-outer-container .vsl-compact {
+                width: 640px !important;
+                max-width: 640px !important;
+              }
+
+              #vsl-outer-container .vsl-resume-heading {
+                font-size: 18px !important;
+              }
+
+              #vsl-outer-container .vsl-resume-container {
+                max-width: 90% !important;
+              }
+
               @media (max-width: 640px) and (orientation: portrait) {
                 .cta-btn-mob {
                   width: 181px !important;
@@ -438,6 +453,14 @@ export default function Home() {
                 }
               }
             `}</style>
+              <div className="mt-4 mb-6">
+              <p className="font-['-apple-system'] font-normal text-lg md:text-xl lg:text-2xl text-center text-gray-50 mb-2">
+              <strong>The Limitless 90-Day Energy Reset</strong>
+              </p>
+              <p className="font-['-apple-system'] font-normal text-lg md:text-xl lg:text-xl text-center text-gray-50 mb-8">
+              Starts April 1st, 2026
+              </p>
+              </div>
             {passedJoinNowTime ? (
               <LazyDelayedCTA
                 delay={180000} // 3 minutes
@@ -446,6 +469,7 @@ export default function Home() {
                 videoHasEnded={videoHasEnded}
                 className="font-bold !text-white transition-none duration-0 focus:outline-none bg-[#940909] hover:bg-[#7b0707] py-8 px-8 sm:py-8 md:py-6 lg:mx-10 md:mx-6 lg:py-5 sm:px-12 text-xl sm:text-lg  md:text-xl lg:text-xl rounded-md inline-block relative z-[200] w-[320px] cta-btn-mob"
                 href="/application"
+                onApplyNowClick={handleApplyNowClick}
               >
                 JOIN NOW
               </LazyDelayedCTA>
@@ -457,10 +481,7 @@ export default function Home() {
                 videoHasEnded={videoHasEnded}
                 className="font-bold !text-white transition-none duration-0 focus:outline-none bg-[#940909] hover:bg-[#7b0707] py-5 lg:py-5 px-8 sm:py-4 sm:px-12 text-base sm:text-lg md:text-xl lg:text-xl rounded-md inline-block relative z-[200] w-[280px] sm:w-[280px] lg:w-[320px] cta-btn-mob cursor-pointer"
                 href="#apply-for-elite-spots"
-                onClick={(e: { preventDefault: () => void }) => {
-                  e.preventDefault();
-                  smoothScrollToElement("apply-for-elite-spots");
-                }}
+                onApplyNowClick={handleApplyNowClick}
               >
                 TELL ME MORE
               </LazyDelayedCTA>
