@@ -55,11 +55,17 @@ export default function WaitlistFilloutFormPopup({ onClose }: WaitlistFilloutFor
 
   const handleFormSuccess = () => {
     setShowSuccess(true);
-    // Redirect to waitlist confirmed after 2.5 seconds
+    // Redirect to waitlist beta offer doc after 2.5 seconds
     setTimeout(() => {
       setIsAnimatingOut(true);
       setTimeout(() => {
-        router.push('/waitlist/confirmed');
+        // Pass user data to the waitlist intake doc
+        const params = new URLSearchParams();
+        if (name) params.set('name', name);
+        if (email) params.set('email', email);
+        params.set('source', 'waitlist-application');
+
+        router.push(`/intake-open-doc-beta-waitlist?${params.toString()}`);
       }, 300);
     }, 2500);
   };

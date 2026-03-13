@@ -296,10 +296,10 @@ export default function IntakeDocContent() {
 
       <GammaParagraph>
         <strong>Step 1:</strong>{" "}
-        <GammaCTA href="/beta-application">
-          Secure your spot with a deposit
+        <GammaCTA href="/waitlist-deposit">
+          Confirm your spot
         </GammaCTA>{" "}
-        for one of the places in our March Growth Squad.
+        with a deposit (hefty waitlist discount applied!).
       </GammaParagraph>
 
       <GammaParagraph>
