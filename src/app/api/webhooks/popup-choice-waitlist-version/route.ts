@@ -4,7 +4,7 @@ import { db } from '@/lib/db';
 import { waitlistSignups } from '@/db/schema';
 import { eq } from 'drizzle-orm';
 
-const N8N_WEBHOOK_URL = process.env.N8N_WEBHOOK_URL || 'https://n8n.marleymcbride.co';
+const N8N_WAITLIST_WEBHOOK_URL = process.env.N8N_WAITLIST_WEBHOOK_URL || 'https://n8n.marleymcbride.co/webhook/waitlist-sync';
 
 function getCorsHeaders(origin: string | null): HeadersInit {
   // Allow requests from same origin and development
@@ -132,7 +132,7 @@ export async function POST(req: NextRequest) {
 
     // Queue webhook to n8n for Airtable sync (fire-and-forget)
     queueWebhook({
-      endpoint: `${N8N_WEBHOOK_URL}/popup-choice-waitlist-version`,
+      endpoint: N8N_WAITLIST_WEBHOOK_URL,
       payload: {
         event: 'waitlist_signup',
         data: {
