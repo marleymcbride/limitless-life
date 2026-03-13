@@ -16,6 +16,7 @@ import { RevtrackDashboard } from './admin/RevtrackDashboard';
 import ApplicationsTable from './admin/ApplicationsTable';
 import FormSubmissionsTable from './admin/FormSubmissionsTable';
 import { WorkWithMeLeads } from './admin/WorkWithMeLeads';
+import WaitlistDashboard from './admin/waitlist/WaitlistDashboard';
 
 type Tab =
   | 'dashboard'
@@ -33,7 +34,8 @@ type Tab =
   | 'abandoned'
   | 'payments'
   | 'workWithMe'
-  | 'emailLeads';
+  | 'emailLeads'
+  | 'waitlist';
 
 export default function AdminDashboard() {
   const [activeTab, setActiveTab] = useState<Tab>('dashboard');
@@ -75,6 +77,7 @@ export default function AdminDashboard() {
       tabs: [
         { key: 'applications' as Tab, label: 'Applications' },
         { key: 'formSubmissions' as Tab, label: 'Form Submissions' },
+        { key: 'waitlist' as Tab, label: 'Waitlist' },
         { key: 'leads' as Tab, label: 'Leads' },
         { key: 'traffic' as Tab, label: 'Traffic Sources' },
         { key: 'abandoned' as Tab, label: 'Abandoned Funnel' },
@@ -162,6 +165,7 @@ export default function AdminDashboard() {
       {activeTab === 'leads' && <LeadsTable />}
       {activeTab === 'traffic' && <TrafficSourcesTable />}
       {activeTab === 'workWithMe' && <WorkWithMeLeads />}
+      {activeTab === 'waitlist' && <WaitlistDashboard />}
       {activeTab === 'emailLeads' && (
         <div className="space-y-6">
           <div className="bg-gray-50 border border-gray-200 rounded-lg p-8 text-center">

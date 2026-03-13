@@ -51,4 +51,12 @@ export const LEAD_SCORING_RULES: Record<EventType, number> = {
   tier_select_concierge: 25,      // Concierge tier selection
   payment_plan_select: 10,         // Payment plan selection
   stripe_checkout_initiated: 20,   // Stripe checkout button click
+
+  // Waitlist events
+  waitlist_thank_you_viewed: 5,
+  waitlist_variant_A_viewed: 10,   // Hot lead views thank you page
+  waitlist_variant_B_viewed: 5,    // Warm lead views thank you page
+  waitlist_variant_C_viewed: 2,    // Cold lead views thank you page
+  waitlist_application_started: 30, // Started Fillout application
+  waitlist_application_completed: 50, // Completed Fillout application
 };

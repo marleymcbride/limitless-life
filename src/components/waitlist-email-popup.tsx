@@ -107,19 +107,26 @@ export default function WaitlistEmailPopup({
         }),
       });
 
-      // Route to waitlist application prep page
-      const params = new URLSearchParams({
-        name: fullName,
-        email: email,
-      });
-      window.location.href = `/application-prep-waitlist-version?${params.toString()}`;
+      // Map choice to variant
+      const variantMap: Record<string, string> = {
+        'yes': 'A',
+        'maybe': 'B',
+        'no': 'C'
+      };
+      const variant = variantMap[choice] || 'C';
+
+      // Route to thank you page with variant
+      window.location.href = `/waitlist-thank-you?variant=${variant}`;
     } catch (error) {
       console.error('[WaitlistEmailPopup] Failed to track choice:', error);
-      const params = new URLSearchParams({
-        name: fullName,
-        email: email,
-      });
-      window.location.href = `/application-prep-waitlist-version?${params.toString()}`;
+      // Still route to thank you page even if webhook fails
+      const variantMap: Record<string, string> = {
+        'yes': 'A',
+        'maybe': 'B',
+        'no': 'C'
+      };
+      const variant = variantMap[choice] || 'C';
+      window.location.href = `/waitlist-thank-you?variant=${variant}`;
     }
   };
 
