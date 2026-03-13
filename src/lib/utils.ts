@@ -504,3 +504,14 @@ export const blackRedGradientOverlay = React.createElement("div", {
     background: "linear-gradient(135deg, rgba(148, 9, 9, 0.8) 0%, rgba(0, 0, 0, 0.9) 100%)",
   },
 });
+
+// Waitlist variant mapping utility
+export function mapChoiceToVariant(choice: string): 'A' | 'B' | 'C' {
+  const variantMap: Record<string, 'A' | 'B' | 'C'> = {
+    'yes': 'A',
+    'maybe': 'B',
+    'no': 'C'
+  };
+  return variantMap[choice] || 'C';
+}
+

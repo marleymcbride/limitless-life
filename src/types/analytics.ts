@@ -23,7 +23,14 @@ export type EventType =
   // Popup choice events
   | 'tire_kicker_interest'
   | 'course_interest'
-  | 'coaching_interest';
+  | 'coaching_interest'
+  // Waitlist events
+  | 'waitlist_thank_you_viewed'
+  | 'waitlist_variant_A_viewed'
+  | 'waitlist_variant_B_viewed'
+  | 'waitlist_variant_C_viewed'
+  | 'waitlist_application_started'
+  | 'waitlist_application_completed';
 
 export interface Event {
   id: string;

@@ -189,6 +189,13 @@ export const waitlistSignups = pgTable('waitlist_signups', {
   // Status tracking
   status: text('status').$type<'waitlist' | 'applied' | 'accepted' | 'rejected' | 'withdrawn'>().default('waitlist'),
 
+  // Application data (for those who filled out Fillout form)
+  applicationFields: jsonb('application_fields'),
+  applicationDate: timestamp('application_date'),
+
+  // Admin notes
+  notes: text('notes'),
+
   // Metadata
   ipAddress: text('ip_address'),
   userAgent: text('user_agent'),
