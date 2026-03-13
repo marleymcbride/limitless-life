@@ -115,8 +115,13 @@ export default function WaitlistEmailPopup({
       };
       const variant = variantMap[choice] || 'C';
 
-      // Route to thank you page with variant
-      window.location.href = `/waitlist-thank-you?variant=${variant}`;
+      // Route to thank you page with variant and user data
+      const params = new URLSearchParams();
+      params.set('variant', variant);
+      if (email) params.set('email', email);
+      if (fullName) params.set('name', fullName);
+
+      window.location.href = `/waitlist-thank-you?${params.toString()}`;
     } catch (error) {
       console.error('[WaitlistEmailPopup] Failed to track choice:', error);
       // Still route to thank you page even if webhook fails
@@ -126,7 +131,14 @@ export default function WaitlistEmailPopup({
         'no': 'C'
       };
       const variant = variantMap[choice] || 'C';
-      window.location.href = `/waitlist-thank-you?variant=${variant}`;
+
+      // Route to thank you page with variant and user data (fallback)
+      const params = new URLSearchParams();
+      params.set('variant', variant);
+      if (email) params.set('email', email);
+      if (fullName) params.set('name', fullName);
+
+      window.location.href = `/waitlist-thank-you?${params.toString()}`;
     }
   };
 
