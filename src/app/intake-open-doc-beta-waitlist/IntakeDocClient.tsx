@@ -58,5 +58,55 @@ export default function IntakeDocClient({ children }: ScrollRevealProps) {
     };
   }, []);
 
+  // Add global function for waitlist deposit
+  useEffect(() => {
+    (window as any).handleWaitlistDeposit = async (e: Event) => {
+      e.preventDefault();
+
+      // Get email and name from URL params
+      const params = new URLSearchParams(window.location.search);
+      const email = params.get('email') || '';
+      const name = params.get('name') || '';
+
+      try {
+        console.log('[Waitlist Deposit] Creating Stripe checkout session');
+
+        const response = await fetch('/api/create-checkout-session', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            tier: 'life-whatsapp',
+            paymentPlan: 'full',
+            customerEmail: email,
+            customerName: name,
+          }),
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.error || 'Failed to create checkout session');
+        }
+
+        console.log('[Waitlist Deposit] Checkout session created:', data.sessionId);
+
+        // Immediately redirect to Stripe Checkout
+        if (data.url) {
+          console.log('[Waitlist Deposit] Redirecting to Stripe...');
+          window.location.href = data.url;
+        } else {
+          throw new Error('No checkout URL returned');
+        }
+      } catch (err) {
+        console.error('[Waitlist Deposit] Error:', err);
+        alert('Failed to process deposit. Please try again or contact support.');
+      }
+    };
+
+    return () => {
+      delete (window as any).handleWaitlistDeposit;
+    };
+  }, []);
+
   return <div ref={containerRef}>{children}</div>;
 }

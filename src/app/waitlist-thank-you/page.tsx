@@ -7,17 +7,28 @@ export const metadata: Metadata = {
   description: 'Thank you for joining the Limitless Life beta waitlist.',
 };
 
-function WaitlistThankYouPageContent({
+async function WaitlistThankYouPageContent({
   searchParams,
 }: {
-  searchParams: { variant?: string };
+  searchParams: Promise<{ variant?: string }>;
 }) {
+  // Await searchParams (Next.js 14+ requires this)
+  const params = await searchParams;
+
+  // Debug: Log raw searchParams
+  console.log('[WaitlistThankYouPage] Raw params:', params);
+  console.log('[WaitlistThankYouPage] params.variant:', params.variant);
+
   // Get variant from URL params, default to 'C' (safest option)
-  const variant = (searchParams.variant || 'C').toUpperCase();
+  const variant = (params.variant || 'C').toUpperCase();
+
+  console.log('[WaitlistThankYouPage] Processed variant:', variant);
 
   // Validate variant
   const validVariants = ['A', 'B', 'C'];
   const safeVariant = validVariants.includes(variant) ? variant : 'C';
+
+  console.log('[WaitlistThankYouPage] Safe variant:', safeVariant);
 
   return <ThankYouClient variant={safeVariant} />;
 }
@@ -25,7 +36,7 @@ function WaitlistThankYouPageContent({
 export default function WaitlistThankYouPage({
   searchParams,
 }: {
-  searchParams: { variant?: string };
+  searchParams: Promise<{ variant?: string }>;
 }) {
   return (
     <Suspense fallback={<div>Loading...</div>}>
