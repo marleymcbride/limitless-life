@@ -1,13 +1,5 @@
-import React from 'react';
-
-interface GammaArticleProps {
-  children: React.ReactNode;
-}
-
-export function GammaArticle({ children }: GammaArticleProps) {
-  return (
-    <article className="max-w-3xl mx-auto bg-white px-8 py-16 md:px-16">
-      {children}
-    </article>
-  );
-}
+export { GammaArticle } from './gamma-article-component';
+export { GammaHeader } from './gamma-header';
+export { GammaHeadline } from './gamma-headline';
+export { GammaParagraph, GammaList, GammaBlockquote, GammaSectionHeading } from './gamma-content';
+export { GammaCTA } from './gamma-cta';

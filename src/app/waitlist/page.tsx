@@ -4,6 +4,11 @@ import { ImagePreloader, CRITICAL_TESTIMONIAL_IMAGES } from "@/components/image-
 import VSLPlayer from "@/components/vsl-player";
 import WaitlistEmailPopup from "@/components/waitlist-email-popup";
 import WaitlistModal from "@/components/waitlist-modal";
+import WaitlistBanner from "@/components/waitlist-banner";
+import BetaOpportunity from "@/components/beta-opportunity";
+import BetaPricing from "@/components/beta-pricing";
+import BetaValueStack from "@/components/beta-value-stack";
+import BetaFAQs from "@/components/FAQs-Beta-access";
 import {
   LazyDoesThisSoundLikeYou,
   LazyPersonalStorySection,
@@ -33,13 +38,15 @@ import {
   LazyTestimonialSectionDark,
   LazyRootCauses,
   LazyDelayedCTA,
+  LazySenjaTestimonials1,
 } from '@/components/lazy/LazySections';
-import { vignetteEffect, unifiedGradientWithSpotlightDesktop, unifiedGradientWithSpotlightMobile } from "@/lib/utils";
+import { vignetteEffect, betaUnifiedGradientWithSpotlightDesktop, betaUnifiedGradientWithSpotlightMobile } from "@/lib/utils";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { useSession } from "@/hooks/useSession";
 import { useScrollTracking } from "@/hooks/useScrollTracking";
 import { useRouter } from "next/navigation";
+import Script from "next/script";
 
 // import SystemBenefitsProof from "../components/system-benefits-proof";
 // import WhyThisSystemWorks from "../components/[old] why-this-system-works";
@@ -63,8 +70,8 @@ export default function Home() {
     enabled: !!session?.sessionId,
   });
 
-  // Email popup state
-  const [showEmailPopup, setShowEmailPopup] = useState(false);
+  // Beta Email popup state
+  const [showBetaPopup, setShowBetaPopup] = useState(false);
 
   // Waitlist modal state
   const [showWaitlistModal, setShowWaitlistModal] = useState(false);
@@ -80,10 +87,10 @@ export default function Home() {
 
   // Handle Apply Now button click
   const handleApplyNowClick = (e: React.MouseEvent) => {
-    console.log('[ApplyNow] Clicked!');
+    console.log('[BetaApplyNow] Clicked!');
     e.preventDefault();
-    setShowEmailPopup(true);
-    console.log('[ApplyNow] showEmailPopup set to true');
+    setShowBetaPopup(true);
+    console.log('[BetaApplyNow] showBetaPopup set to true');
   };
 
   // Smooth scroll function with "soft close" easing
@@ -130,16 +137,19 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="flex flex-col">
+    <main className="flex flex-col min-h-screen">
+      {/* Limited Spots Banner */}
+      <WaitlistBanner />
+
       {/* Preload critical testimonial images */}
       <ImagePreloader images={CRITICAL_TESTIMONIAL_IMAGES} />
       {/* 1. Hero Section (UNTOUCHED - PRESERVED EXACTLY) */}
       <section
-        id="hero-section"
+        id="beta-hero-section"
         className={`pt-2 md:pt-6 pb-16 px-16min-h-[100vh] sm:pb-16 flex flex-col relative w-full overflow-hidden bg-black`}
       >
-        <div className="hidden md:block">{unifiedGradientWithSpotlightDesktop}</div>
-        <div className="block md:hidden">{unifiedGradientWithSpotlightMobile}</div>
+        <div className="hidden md:block">{betaUnifiedGradientWithSpotlightDesktop}</div>
+        <div className="block md:hidden">{betaUnifiedGradientWithSpotlightMobile}</div>
         <div className="hero-grain-overlay"></div>
         <div className="hero-darkening-overlay"></div>
         {/* {redAccentBottom} */}
@@ -176,97 +186,93 @@ export default function Home() {
             */}
 
             {/* Desktop Eyebrow (hidden on mobile) */}
-            <p
-              className="hidden sm:block px-0 mx-auto mb-4 mt-1 text-xl text-center text-gray-300 md:text-lg lg:text-xl max-w-2xl"
-            >
-              For the man who has EVERYTHING in life, except the energy to enjoy it... here&apos;s how to:
-            </p>
+            <div className="hidden sm:flex flex-col items-center justify-center mb-6 mt-1 max-w-2xl mx-auto">
+              <div className="font-['-apple-system'] uppercase font-bold text-2xl md:text-3xl lg:text-3xl text-center text-white py-2 my-2">
+              <span className="no-underline"></span><span className="">The Lifestyle Athlete</span><span className="no-underline"> 90-Day Reset</span>
+              </div>
+              <p className="font-['-apple-system'] font-semibold text-lg md:text-xl lg:text-2xl text-center text-gray-200 mb-2">
+              Starting April 1st, 2026
+              </p>
+            </div>
 
             {/* Mobile Eyebrow (visible only on mobile) */}
-            <p
-              className="block sm:hidden px-2 text-center text-gray-300 mobile-eyebrow w-full"
-              style={{ marginTop: "3.6px", marginBottom: "14.4px" }}
-            >
-              For the man who has EVERYTHING in life, except the energy to enjoy it... here&apos;s how to:
-            </p>
-            
+            <div className="flex rounded-lg sm:hidden flex-col items-center justify-center mb-2 mt-3 w-full px-6 relative overflow-hidden" style={{ background: 'linear-gradient(to bottom, rgba(71, 14, 14, 0.15) 0%, rgba(71, 14, 14, 0.12) 33%, rgba(71, 14, 14, 0.08) 66%, transparent 100%)' }}>
+              <div className="font-['-apple-system'] font-bold text-2xl md:text-2xl text-center -ml-4 -mr-3  text-gray-100 mb-3">
+                Limitless 90-Day Energy Reset
+              </div>
+              <div className="font-['-apple-system'] mb-4 pb-2 text-1.5xl md:text-lg text-center text-gray-200">
+                Beginning April 1st, 2026
+              </div>
+            </div>
+
             {/* Mobile Headlines (visible only on mobile) */}
             <h1
-              className="mobile-headline block px-1 mx-auto mt-2 mb-6 w-full font-bold text-center text-white sm:hidden capitalize text-[2.5rem] px-5"
+              className="mobile-headline block px-1 mx-auto mt-4 mb-6 w-full font-bold text-center text-white sm:hidden capitalize -ml-0 -mr-0 text-[2.7rem] px-5"
               style={{ lineHeight: "1.125" }}
             >
-              Lose Your Gut, Stop Feeling Exhausted & Reverse Years Of Health Decline (In 2 Days Per Week)
+              Become the most energetic Guy In Every Room
             </h1>
+            <div className="md:hidden lg:hidden block text-white text-center mb-0 mt-0 sm:mt-0 max-w-full mx-auto px-0 pb-8">
+            <div
+              className="md:hidden lg:hidden font-['-apple-system'] font-bold block text-2xl md:text-4xl  lg:text-4.5xl text-white text-center mb-0 mt-0 capitalize tracking-normal leading-[1]"
+            >
+            (training just 2 days a week)
+            </div>
+            </div>
 
             {/* Mobile Subheadline - RIGHT AFTER HEADLINE (visible only on mobile) */}
             <p
               className="mobile-subheadline block mx-auto mb-4 font-light text-center text-gray-300 sm:hidden px-0 text-[1.33rem] leading-[1.28] w-[95%]"
             >
-             You don&apos;t need to down 4 coffees, train 6 days a week, or cut out your favorite foods to feel LIMITLESS.
-             Restore your energy, build the body you&apos;ve always wanted, and get back YEARS of life (with only 2 days/week in the gym):
+             A 90-day reset to lose the gut and stop feeling tired using The Lifestyle Athlete™ protocol so you can be full of life without alcohol or stimulants and become the man your family deserves.
             </p>
 
             {/* Spacer div to push headline down */}
             <div className="hidden h-4"></div>
 
             {/* Desktop Headlines (hidden on mobile) */}
-            {/*<h1 className="hidden sm:block text-5xl sm:text-5xl md:text-4xl  lg:text-5xl font-bold text-white text-center mb-0 mt-0 sm:mt-0 max-w-[87%] mx-auto px-4 capitalize" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif', lineHeight: "1.17" }}>
-            How To Look And Feel Better Than You Did At 25 (While Training 2 days a Week)
-            </h1>*/}
-            {/*<h1 className="hidden sm:block text-5xl sm:text-5xl md:text-4xl  lg:text-5xl font-bold text-white text-center mb-0 mt-0 sm:mt-0 max-w-[87%] mx-auto px-4 capitalize" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif', lineHeight: "1.17" }}>
-            Wake Up With More Energy Than You Had At 25 (Training Just 2 Days a Week)
-            </h1>*/}
-            {/*<h1 className="hidden sm:block text-5xl sm:text-5xl md:text-4xl  lg:text-5xl font-bold text-white text-center mb-0 mt-0 sm:mt-0 max-w-[87%] mx-auto px-4 capitalize" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif', lineHeight: "1.17" }}>
-            Discover How To Look And Feel Better Than You Did At 25 (Without Obsessing Over Your Health)"
-            </h1>*/}
-            {/*<h1 className="hidden sm:block text-5xl sm:text-5xl md:text-4xl  lg:text-5xl font-bold text-white text-center mb-0 mt-0 sm:mt-0 max-w-[87%] mx-auto px-4 capitalize" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif', lineHeight: "1.17" }}>
-            How I Got My Energy Back, Dropped 30 Pounds, And Got Off Alcohol—Without Willpower Or Restrictive Diets
-            </h1>*/}
-            {/*<h1 className="hidden sm:block text-5xl sm:text-5xl md:text-4xl  lg:text-5xl font-bold text-white text-center mb-0 mt-0 sm:mt-0 max-w-[87%] mx-auto px-4 capitalize" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif', lineHeight: "1.17" }}>
-            How I Went From Addicted to Caffine and 20lbs Overweight to Naturally Energized, and in the Shape of My Life (Training 2 Days A Week)
-            </h1>*/}
-            {/*<h1 className="hidden sm:block text-5xl sm:text-5xl md:text-4xl  lg:text-5xl font-bold text-white text-center mb-0 mt-0 sm:mt-0 max-w-[87%] mx-auto px-4 capitalize" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif', lineHeight: "1.17" }}>
-            How I Stopped Feeling Like Shit Every Morning And Built An Elite
-              Body (Training Only 2 Days Per Week)
-            </h1>*/}
-            {/*<h1 className="hidden sm:block text-5xl sm:text-5xl md:text-4xl  lg:text-5xl font-bold text-white text-center mb-0 mt-0 sm:mt-0 max-w-[87%] mx-auto px-4 capitalize" style={{ fontFamily: 'Neuemontreal, Arial, sans-serif', lineHeight: "1.17" }}>
-            Stop Waking Up Feeling Like Shit and Build [X Body desired result] (Training Only 2 Days Per Week)
-            </h1>*/}
+
+            <div className="px-16">
+            <div className="hidden sm:block text-white text-center mb-0 mt-0 sm:mt-0 max-w-full mx-auto px-0">
             <h1
-              className="hidden sm:block text-5xl sm:text-5xl md:text-4xl  lg:text-5xl font-bold text-white text-center mb-0 mt-0 sm:mt-0 max-w-[87%] mx-auto px-6 capitalize leading-[1.2]"
+              className="hidden font-['-apple-system'] font-bold sm:block text-5xl sm:text-5xl md:text-4xl  lg:text-5xl text-white text-center mb-0 mt-0 sm:mt-0 capitalize tracking-normal leading-[0]"
             >
-            Lose Your Gut, Stop Waking Up Exhausted & Reverse Years of Health Decline (In Just 2 Days Per Week)
+            Become the most energetic Guy In Every Room
             </h1>
+            <div className="hidden sm:block text-white text-center mb-0 mt-0 sm:mt-0 max-w-full mx-auto px-0">
+            <h1
+              className="hidden font-['-apple-system'] font-bold sm:block text-5xl sm:text-5xl md:text-4xl  lg:text-4.5xl text-white text-center mb-0 mt-0 sm:mt-0 capitalize tracking-normal leading-[1]"
+            >
+            (training just 2 days a week)
+            </h1>
+            </div>
+            </div>
+            </div>
 
             {/* Spacer div to push subtitle down */}
             <div className="h-4"></div>
 
             {/* Desktop Subheadline (hidden on mobile) */}
+            <div className="px-12">
             <p
-              className="hidden mb-4 py-4 text-xl text-center text-gray-300 sm:block sm:text-xl md:text-lg lg:text-xl max-w-[925px]"
+              className="hidden mb-4 py-4 text-xl text-center text-gray-300 sm:block sm:text-xl md:text-lg lg:text-2xl max-w-[925px]"
               >
-              You don&apos;t need to down 4 coffees a day, train 6 days a week,
-              or cut out your favorite foods to feel LIMITLESS. Here&apos;s the
-              proven system to restore your energy, lose your gut and build the body you&apos;ve always wanted
-              and get back YEARS of life
-              (training only 2 days):
+              A 90-day reset to lose the gut and stop feeling tired using The Lifestyle Athlete™ protocol so you can be full of life without alcohol or stimulants and become the man your family deserves.
             </p>
+            </div>
           </div>
 
           {/* Video Player - Bunny.net VSL */}
           <div
-            className="mx-auto mt-0 mb-0 vsl-container transition-all duration-700 ease-out"
-            id="vsl-outer-container"
+            className="mx-auto mt-0 mb-0"
+            id="vsl-outer-container-beta"
             style={
               isDesktop
-                ? { width: showClickToUnmute ? '896px' : '90%', maxWidth: showClickToUnmute ? '896px' : '90%', marginLeft: 'auto', marginRight: 'auto' }
+                ? { width: '640px', maxWidth: '90%', marginLeft: 'auto', marginRight: 'auto' }
                 : { width: '100%', maxWidth: '100%', marginLeft: 'auto', marginRight: 'auto', paddingLeft: '1rem', paddingRight: '1rem' }
             }
           >
-            <div className="relative vsl-border-wrapper">
-              <div
-                className={`absolute inset-0 rounded-lg shadow-[0_0_20px_rgba(255,255,255,0.018984375),0_0_40px_rgba(255,255,255,0.0094921875),0_0_65px_rgba(255,255,255,0.0050625),0_0_120px_rgba(255,255,255,0.002),0_0_20px_rgba(148,9,9,0.0825),0_0_40px_rgba(148,9,9,0.04125),0_0_65px_rgba(148,9,9,0.022),0_0_120px_rgba(148,9,9,0.008)] pointer-events-none vsl-border-glow transition-opacity duration-300 ${showPauseOverlay ? 'opacity-0' : 'opacity-100'}`}
-              ></div>
+            <div className="relative">
               {/* TODO: videoId="a6751ee5-c1d3-4006-9776-7d1a9ced040c" */}
               <VSLPlayer
                 videoId="a6751ee5-c1d3-4006-9776-7d1a9ced040c"
@@ -275,7 +281,8 @@ export default function Home() {
                 muted={true}
                 preload={true}
                 controls={true}
-                pauseOverlayContainer="hero-section"
+                pauseOverlayContainer="beta-hero-section"
+                className="vsl-compact-beta"
                 onUserStartedPlaying={() => {
                   console.log('🎬 Video started playing! Expanding container...');
                   setHasStartedVideo(true);
@@ -327,6 +334,8 @@ export default function Home() {
           {/* CTA Button - positioned directly below VSL in dark section */}
           <div className="text-center relative my-5 cta-button-container">
             <style>{`
+              /* Beta-specific inline styles now handled by globals.css -beta classes */
+
               @media (max-width: 640px) and (orientation: portrait) {
                 .cta-btn-mob {
                   width: 181px !important;
@@ -430,6 +439,12 @@ export default function Home() {
                 }
               }
             `}</style>
+              <div className="mt-4 mb-6">
+
+              <p className="font-['-apple-system'] font-normal text-lg md:text-xl lg:text-xl text-center text-gray-50 mb-8">
+
+              </p>
+              </div>
             {passedJoinNowTime ? (
               <LazyDelayedCTA
                 delay={180000} // 3 minutes
@@ -438,6 +453,7 @@ export default function Home() {
                 videoHasEnded={videoHasEnded}
                 className="font-bold !text-white transition-none duration-0 focus:outline-none bg-[#940909] hover:bg-[#7b0707] py-8 px-8 sm:py-8 md:py-6 lg:mx-10 md:mx-6 lg:py-5 sm:px-12 text-xl sm:text-lg  md:text-xl lg:text-xl rounded-md inline-block relative z-[200] w-[320px] cta-btn-mob"
                 href="/application"
+                onApplyNowClick={handleApplyNowClick}
               >
                 JOIN NOW
               </LazyDelayedCTA>
@@ -449,10 +465,7 @@ export default function Home() {
                 videoHasEnded={videoHasEnded}
                 className="font-bold !text-white transition-none duration-0 focus:outline-none bg-[#940909] hover:bg-[#7b0707] py-5 lg:py-5 px-8 sm:py-4 sm:px-12 text-base sm:text-lg md:text-xl lg:text-xl rounded-md inline-block relative z-[200] w-[280px] sm:w-[280px] lg:w-[320px] cta-btn-mob cursor-pointer"
                 href="#apply-for-elite-spots"
-                onClick={(e: { preventDefault: () => void }) => {
-                  e.preventDefault();
-                  smoothScrollToElement("apply-for-elite-spots");
-                }}
+                onApplyNowClick={handleApplyNowClick}
               >
                 TELL ME MORE
               </LazyDelayedCTA>
@@ -507,6 +520,9 @@ export default function Home() {
 
       {/* 3. Personal Story Section with embedded Intro (White background) */}
       <LazyPersonalStorySection onApplyNowClick={handleApplyNowClick} />
+
+      {/* Senja Testimonials 1 - Results Created */}
+      <LazySenjaTestimonials1 onApplyNowClick={handleApplyNowClick} />
 
       {/* INTRO SECTION INSERTED HERE */}
       <LazyIntroSection onApplyNowClick={handleApplyNowClick} />
@@ -601,11 +617,25 @@ export default function Home() {
       {/* What NOT Fixing This Is Costing You (White background) */}
       <LazyWhatItsCostingYou onApplyNowClick={handleApplyNowClick} />
 
-      {/* FAQs */}
-      <LazyFinalFAQs onApplyNowClick={handleApplyNowClick} />
+      {/* Beta FAQs */}
+      <div className="bg-white">
+        <BetaFAQs />
+      </div>
 
-            {/* Secure Your Spot (White background) */}
-            <LazySecureYourSpot onApplyNowClick={handleApplyNowClick} />
+            {/* Beta Opportunity Section */}
+            <div className="bg-white">
+              <BetaOpportunity />
+            </div>
+
+            {/* Beta Pricing Section */}
+            <div className="dark-section-with-grain">
+              <BetaPricing />
+            </div>
+
+            {/* Beta Value Stack Section */}
+            <div className="bg-white">
+              <BetaValueStack />
+            </div>
 
       {/* Testimonial 4 (White background) */}
       <LazyTestimonialsFinal onApplyNowClick={handleApplyNowClick} number={4} />
@@ -633,6 +663,26 @@ export default function Home() {
 
       {/* Testimonial 12 (White background) */}
       <LazyTestimonialsFinal onApplyNowClick={handleApplyNowClick} number={12} />
+
+      {/* Senja Testimonials Embed */}
+      <section className="bg-white py-16">
+        <div className="max-w-4xl mx-auto px-4">
+          <div
+            className="senja-embed"
+            data-id="f8eb0d9c-a489-4ea7-bf96-c89dd2a7c22f"
+            data-mode="shadow"
+            data-lazyload="false"
+            style={{ display: 'block', width: '100%' }}
+          ></div>
+        </div>
+      </section>
+
+      {/* Senja Widget Script */}
+      <Script
+        src="https://widget.senja.io/widget/f8eb0d9c-a489-4ea7-bf96-c89dd2a7c22f/platform.js"
+        strategy="afterInteractive"
+        async
+      />
 
 
       {/* 8. Process Explanation (Black background) */}
@@ -688,30 +738,22 @@ export default function Home() {
 
       {/* Final CTA - White background with just button */}
       <section className="bg-white pt-0 pb-24">
-        <div className="text-center space-y-4">
+        <div className="text-center">
           <button
             onClick={handleApplyNowClick}
             className="font-bold !text-white transition-none duration-0 focus:outline-none bg-[#940909] hover:bg-[#7b0707] py-4 px-12 text-lg rounded-md inline-block relative z-30"
           >
             Apply Now
           </button>
-          <div>
-            <button
-              onClick={() => setShowWaitlistModal(true)}
-              className="font-semibold text-gray-600 hover:text-gray-900 text-sm underline transition-colors"
-            >
-              Or join the waitlist
-            </button>
-          </div>
         </div>
       </section>
 
       {/* Waitlist Email Popup */}
       <WaitlistEmailPopup
-        isOpen={showEmailPopup}
+        isOpen={showBetaPopup}
         tier="undecided"
-        tierName="Limitless Protocol"
-        onClose={() => setShowEmailPopup(false)}
+        tierName="Limitless Protocol Beta"
+        onClose={() => setShowBetaPopup(false)}
       />
 
       {/* Waitlist Modal */}

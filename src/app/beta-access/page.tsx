@@ -38,13 +38,15 @@ import {
   LazyTestimonialSectionDark,
   LazyRootCauses,
   LazyDelayedCTA,
+  LazySenjaTestimonials1,
 } from '@/components/lazy/LazySections';
-import { vignetteEffect, unifiedGradientWithSpotlightDesktop, unifiedGradientWithSpotlightMobile } from "@/lib/utils";
+import { vignetteEffect, betaUnifiedGradientWithSpotlightDesktop, betaUnifiedGradientWithSpotlightMobile } from "@/lib/utils";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { useSession } from "@/hooks/useSession";
 import { useScrollTracking } from "@/hooks/useScrollTracking";
 import { useRouter } from "next/navigation";
+import Script from "next/script";
 
 // import SystemBenefitsProof from "../components/system-benefits-proof";
 // import WhyThisSystemWorks from "../components/[old] why-this-system-works";
@@ -146,8 +148,8 @@ export default function Home() {
         id="beta-hero-section"
         className={`pt-2 md:pt-6 pb-16 px-16min-h-[100vh] sm:pb-16 flex flex-col relative w-full overflow-hidden bg-black`}
       >
-        <div className="hidden md:block">{unifiedGradientWithSpotlightDesktop}</div>
-        <div className="block md:hidden">{unifiedGradientWithSpotlightMobile}</div>
+        <div className="hidden md:block">{betaUnifiedGradientWithSpotlightDesktop}</div>
+        <div className="block md:hidden">{betaUnifiedGradientWithSpotlightMobile}</div>
         <div className="hero-grain-overlay"></div>
         <div className="hero-darkening-overlay"></div>
         {/* {redAccentBottom} */}
@@ -519,9 +521,12 @@ export default function Home() {
       {/* 3. Personal Story Section with embedded Intro (White background) */}
       <LazyPersonalStorySection onApplyNowClick={handleApplyNowClick} />
 
+      {/* Senja Testimonials 1 - Results Created */}
+      <LazySenjaTestimonials1 onApplyNowClick={handleApplyNowClick} />
+
       {/* INTRO SECTION INSERTED HERE */}
       <LazyIntroSection onApplyNowClick={handleApplyNowClick} />
-      
+
       {/* 4. Core Value Proposition (White background) */}
       <LazyCoreValueProposition onApplyNowClick={handleApplyNowClick} />
 
@@ -659,6 +664,26 @@ export default function Home() {
       {/* Testimonial 12 (White background) */}
       <LazyTestimonialsFinal onApplyNowClick={handleApplyNowClick} number={12} />
 
+      {/* Senja Testimonials Embed */}
+      <section className="bg-white py-16">
+        <div className="max-w-4xl mx-auto px-4">
+          <div
+            className="senja-embed"
+            data-id="f8eb0d9c-a489-4ea7-bf96-c89dd2a7c22f"
+            data-mode="shadow"
+            data-lazyload="false"
+            style={{ display: 'block', width: '100%' }}
+          ></div>
+        </div>
+      </section>
+
+      {/* Senja Widget Script */}
+      <Script
+        src="https://widget.senja.io/widget/f8eb0d9c-a489-4ea7-bf96-c89dd2a7c22f/platform.js"
+        strategy="afterInteractive"
+        async
+      />
+
 
       {/* 8. Process Explanation (Black background) */}
       {/*
@@ -713,21 +738,13 @@ export default function Home() {
 
       {/* Final CTA - White background with just button */}
       <section className="bg-white pt-0 pb-24">
-        <div className="text-center space-y-4">
+        <div className="text-center">
           <button
             onClick={handleApplyNowClick}
             className="font-bold !text-white transition-none duration-0 focus:outline-none bg-[#940909] hover:bg-[#7b0707] py-4 px-12 text-lg rounded-md inline-block relative z-30"
           >
             Apply Now
           </button>
-          <div>
-            <button
-              onClick={() => setShowWaitlistModal(true)}
-              className="font-semibold text-gray-600 hover:text-gray-900 text-sm underline transition-colors"
-            >
-              Or join the waitlist
-            </button>
-          </div>
         </div>
       </section>
 
