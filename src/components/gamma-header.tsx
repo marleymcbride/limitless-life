@@ -8,17 +8,17 @@ interface GammaHeaderProps {
 
 export function GammaHeader({ authorName, authorAvatar, lastUpdated }: GammaHeaderProps) {
   return (
-    <div className="flex items-center gap-4 mb-12">
+    <div className="flex items-center justify-center gap-4 -mt-6 mb-8">
       {authorAvatar && (
         <img
           src={authorAvatar}
           alt={authorName}
-          className="w-16 h-16 rounded-full object-cover"
+          className="w-11 h-11 rounded-full object-cover"
         />
       )}
-      <div>
-        <div className="font-semibold text-lg">{authorName}</div>
-        <div className="text-gray-600 text-sm">
+      <div className="flex items-center gap-2" style={{ fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif' }}>
+        <div className="text-base" style={{ color: '#E1E5E8' }}>{authorName}</div>
+        <div style={{ color: '#E1E5E8' }} className="text-base">
           · Last updated <time>{lastUpdated}</time>
         </div>
       </div>

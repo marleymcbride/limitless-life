@@ -151,12 +151,13 @@ export default function WaitlistEmailPopup({
 
           <div className="text-center mb-0">
             {step === 3 ? (
-              <div className="text-[28px] md:text[40px] lg:text[40px] mx-0 md:mx-4 lg:mx-4 mt-2 font-bold text-gray-900 tracking-tight leading-snug">
-                Are you interested in working together?
+              <div className="mx-auto md:mx-0 lg:mx-auto -ml-10 -mr-10 mt-2 font-bold text-gray-900 tracking-tight leading-snug"
+                style={{ fontFamily: "Neuemontreal, sans-serif", lineHeight: "1.4" }}>
+                <div className="text-3xl mx-auto -ml-10 mr-10">We kick off May 1st.<br/>Are you interested in joining?</div>
               </div>
             ) : (
               <div className="text-3xl font-bold text-gray-900 tracking-tight">
-                Get Early Access
+                Join the waitlist
               </div>
             )}
           </div>
@@ -249,7 +250,7 @@ export default function WaitlistEmailPopup({
                         : 'border-gray-300 bg-gray-50 hover:bg-gray-100'
                     }`}
                   >
-                    <div className="font-medium -mr-2 -mx-1 md:-mr-0 md:-mx-0 lg:-mr-0 lg:-mx-0  text-[15px] md:text-[16px] lg:text-[16px] text-gray-700">Yes, I want to work together</div>
+                    <div className="font-medium -mr-2 -mx-1 md:-mr-0 md:-mx-0 lg:-mr-0 lg:-mx-0 text-center text-[15px] md:text-[20px] lg:text-[20px] text-gray-700">Yes, save me a spot!</div>
                   </div>
 
                   <div
@@ -260,7 +261,7 @@ export default function WaitlistEmailPopup({
                         : 'border-gray-300 bg-gray-50 hover:bg-gray-100'
                     }`}
                   >
-                    <div className="font-medium -mr-2 -mx-1 md:-mr-0 md:-mx-0 lg:-mr-0 lg:-mx-0 text-[15px] md:text-[16px] lg:text-[16px] text-gray-700">Maybe, I&apos;d like to see what it looks like</div>
+                    <div className="font-medium -mr-2 -mx-1 md:-mr-0 md:-mx-0 lg:-mr-0 lg:-mx-0 text-center text-[15px] md:text-[20px] lg:text-[20px] text-gray-700">Maybe, I&apos;d like more details</div>
                   </div>
 
                   <div
@@ -271,7 +272,7 @@ export default function WaitlistEmailPopup({
                         : 'border-gray-300 bg-gray-50 hover:bg-gray-100'
                     }`}
                   >
-                    <div className="font-medium -mr-2 -mx-1 md:-mr-0 md:-mx-0 lg:-mr-0 lg:-mx-0  text-[15px] md:text-[16px] lg:text-[16px] text-gray-700">No, I prefer to go at my own pace</div>
+                    <div className="font-medium -mr-2 -mx-1 md:-mr-0 md:-mx-0 lg:-mr-0 lg:-mx-0 text-center text-[15px] md:text-[20px] lg:text-[20px] text-gray-700">I&apos;m not ready this cohort but keep me in the loop</div>
                   </div>
 
                   {step === 3 && <div className="h-0"></div>}

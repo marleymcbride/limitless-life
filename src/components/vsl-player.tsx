@@ -899,7 +899,7 @@ export default function VSLPlayer({
                     window.location.href = '/application';
                   }
                 }}
-                className="hidden sm:block relative group bg-gradient-to-r from-red-700 via-red-600 to-red-700 text-white text-xl font-bold px-12 py-7 rounded-lg transition-none transform shadow-2xl border-2 border-red-500 text-center"
+                className="hidden sm:block relative group bg-gradient-to-r from-red-700 via-red-600 to-red-700 text-white text-xl font-bold px-12 py-7 -mt-12 rounded-lg transition-none transform shadow-2xl border-2 border-red-500 text-center"
                 style={{ boxShadow: "0 0 40px rgba(220,38,38,0.6)" }}
               >
                 <span className="relative px-2 z-10">I WANT TO BECOME LIMITLESS</span>

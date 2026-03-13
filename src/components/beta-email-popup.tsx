@@ -156,7 +156,7 @@ export default function BetaEmailPopup({
               </div>
             ) : (
               <div className="text-3xl font-bold text-gray-900 tracking-tight">
-                Join the Beta
+                Apply for a   Beta Spot
               </div>
             )}
           </div>
@@ -173,7 +173,13 @@ export default function BetaEmailPopup({
               <form onSubmit={(e) => {
                 e.preventDefault();
                 if (firstName.trim()) {
-                  setStep(3);
+                  // Go directly to beta application page
+                  const fullName = `${firstName}`.trim();
+                  const params = new URLSearchParams({
+                    name: fullName,
+                    email: email,
+                  });
+                  window.location.href = `/beta-application?${params.toString()}`;
                 }
               }} className="space-y-4">
                 <div>
@@ -203,7 +209,7 @@ export default function BetaEmailPopup({
                   type="submit"
                   className="w-full bg-[#940909] hover:bg-[#7b0707] text-white font-bold py-5 px-6 rounded-lg transition-all duration-200 text-md uppercase tracking-wide shadow-lg"
                 >
-                  <strong>Next</strong>
+                  <strong>Apply Now</strong>
                 </button>
               </form>
             </>

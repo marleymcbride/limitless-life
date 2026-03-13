@@ -174,3 +174,8 @@ export const LazyDelayedCTA = createLazySection(
   () => import('../delayed-cta'),
   '300px'
 );
+
+export const LazySenjaTestimonials1 = createLazySection(
+  () => import('../senja-testimonials-1'),
+  '500px'
+);

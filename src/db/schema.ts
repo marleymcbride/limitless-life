@@ -159,3 +159,54 @@ export const campaignMetrics = pgTable('campaign_metrics', {
   metricDateIdx: index('idx_campaign_metrics_metric_date').on(table.metricDate),
   campaignDateUniqueIdx: index('idx_campaign_metrics_campaign_date').on(table.campaignId, table.metricDate),
 }));
+
+// Waitlist signups table - separate from users for clean data segmentation
+export const waitlistSignups = pgTable('waitlist_signups', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  email: text('email').notNull().unique(),
+  firstName: text('first_name'),
+  createdAt: timestamp('created_at').defaultNow(),
+
+  // Waitlist-specific fields
+  cohortLaunchDate: timestamp('cohort_launch_date').defaultNow(),
+
+  // Interest level from Step 3 choice
+  interestLevel: text('interest_level').$type<'cohort-hot' | 'cohort-warm' | 'cohort-future'>().notNull(),
+
+  // Choice mapping
+  choice: text('choice').$type<'yes' | 'maybe' | 'no'>().notNull(),
+  choiceDescription: text('choice_description'),
+
+  // Lead scoring for waitlist
+  leadScore: integer('lead_score').default(50),
+  leadTemperature: text('lead_temperature').$type<'cold' | 'warm' | 'hot'>().default('warm'),
+
+  // Source tracking
+  flowType: text('flow_type').default('waitlist'),
+  sourceSite: text('source_site').default('limitless-life.co'),
+  tier: text('tier'),
+
+  // Status tracking
+  status: text('status').$type<'waitlist' | 'applied' | 'accepted' | 'rejected' | 'withdrawn'>().default('waitlist'),
+
+  // Metadata
+  ipAddress: text('ip_address'),
+  userAgent: text('user_agent'),
+  referrer: text('referrer'),
+  utmSource: text('utm_source'),
+  utmMedium: text('utm_medium'),
+  utmCampaign: text('utm_campaign'),
+  utmTerm: text('utm_term'),
+  utmContent: text('utm_content'),
+
+  // Timestamps
+  firstSeen: timestamp('first_seen').defaultNow(),
+  lastSeen: timestamp('last_seen').defaultNow(),
+  updatedAt: timestamp('updated_at').defaultNow(),
+}, (table) => ({
+  emailIdx: index('idx_waitlist_signups_email').on(table.email),
+  interestLevelIdx: index('idx_waitlist_signups_interest_level').on(table.interestLevel),
+  leadScoreIdx: index('idx_waitlist_signups_lead_score').on(table.leadScore),
+  statusIdx: index('idx_waitlist_signups_status').on(table.status),
+  createdAtIdx: index('idx_waitlist_signups_created_at').on(table.createdAt),
+}));
