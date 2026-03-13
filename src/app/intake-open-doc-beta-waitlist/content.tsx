@@ -5,6 +5,7 @@ import {
   GammaSectionHeading,
   GammaCTA,
 } from '@/components/gamma-article';
+import WaitlistDepositCTA from './WaitlistDepositCTA';
 
 export default function IntakeDocContent() {
   return (
@@ -296,9 +297,7 @@ export default function IntakeDocContent() {
 
       <GammaParagraph>
         <strong>Step 1:</strong>{" "}
-        <GammaCTA href="/waitlist-deposit">
-          Confirm your spot
-        </GammaCTA>{" "}
+        <WaitlistDepositCTA />{" "}
         with a deposit (hefty waitlist discount applied!).
       </GammaParagraph>
 

@@ -15,6 +15,12 @@ interface ThankYouClientProps {
 export default function ThankYouClient({ variant }: ThankYouClientProps) {
   const { sessionId } = useSession();
 
+  // Debug: Log variant value
+  useEffect(() => {
+    console.log('[ThankYouClient] Variant prop:', variant);
+    console.log('[ThankYouClient] Variant type:', typeof variant);
+  }, [variant]);
+
   useEffect(() => {
     // Track page view with variant
     const trackThankYouView = async () => {
@@ -44,13 +50,20 @@ export default function ThankYouClient({ variant }: ThankYouClientProps) {
 
   // Render appropriate variant component
   const renderVariant = () => {
+    console.log('[renderVariant] Switch variant:', variant, 'Type:', typeof variant);
+
     switch (variant) {
       case 'A':
+        console.log('[renderVariant] Rendering VariantA');
         return <VariantA />;
       case 'B':
+        console.log('[renderVariant] Rendering VariantB');
         return <VariantB />;
       case 'C':
+        console.log('[renderVariant] Rendering VariantC');
+        return <VariantC />;
       default:
+        console.log('[renderVariant] Default case - rendering VariantC');
         return <VariantC />;
     }
   };
