@@ -55,8 +55,23 @@ docs/
 N8N_AIRTABLE_SPECIALIST_GUIDE.md
 *_SPECIALIST_GUIDE.md
 *_SPECIALIST_BRIEF.md
+N8N_AIRTABLE*.md
+WAITLIST*.md
+
+# screenshots (CleanShot and other captures)
+*.webp
+*.png
+*.jpg
+*.jpeg
+!public/images/**/*.png
+!public/images/**/*.webp
+!public/images/**/*.jpg
+!public/images/**/*.jpeg
 
 # readme files
 README.md
 README.md.old
 MULTI_SITE_LEAD_INTEGRATION_SUMMARY.md
+
+# test data cleanup scripts
+scripts/clean-test-data*.sql
