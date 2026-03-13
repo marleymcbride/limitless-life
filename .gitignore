@@ -58,15 +58,11 @@ N8N_AIRTABLE_SPECIALIST_GUIDE.md
 N8N_AIRTABLE*.md
 WAITLIST*.md
 
-# screenshots (CleanShot and other captures)
-*.webp
-*.png
-*.jpg
-*.jpeg
-!public/images/**/*.png
-!public/images/**/*.webp
-!public/images/**/*.jpg
-!public/images/**/*.jpeg
+# screenshots (CleanShot and other captures) - specific files only
+CleanShot*.webp
+CleanShot*.png
+current-intake-doc-implementation.png
+gamma-doc-style-example.png
 
 # readme files
 README.md
