@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 import ThankYouClient from './ThankYouClient';
 
 export const metadata: Metadata = {
-  title: 'Thank You - Limitless Life Beta Waitlist',
+  title: 'Waitlist Confirmed | Limitless-Life ',
   description: 'Thank you for joining the Limitless Life beta waitlist.',
 };
 
@@ -39,8 +39,17 @@ export default function WaitlistThankYouPage({
   searchParams: Promise<{ variant?: string }>;
 }) {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <WaitlistThankYouPageContent searchParams={searchParams} />
-    </Suspense>
+    <>
+      <Suspense fallback={<div>Loading...</div>}>
+        <WaitlistThankYouPageContent searchParams={searchParams} />
+      </Suspense>
+
+      {/* Footer - outside everything on dark background */}
+      <div className="text-center py-8" style={{ backgroundColor: '#FFFFFF' }}>
+        <p className="text-sm font-medium text-gray-600" style={{ fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif' }}>
+          © EVLV Fitness LLC {new Date().getFullYear()}
+        </p>
+      </div>
+    </>
   );
 }

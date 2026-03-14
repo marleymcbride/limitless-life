@@ -1,4 +1,8 @@
-export default function BetaOpportunity() {
+interface BetaOpportunityProps {
+  ctaText?: string;
+}
+
+export default function BetaOpportunity({ ctaText = "Apply Now" }: BetaOpportunityProps) {
   return (
     <>
       <div className="dark-section-with-grain">
@@ -16,31 +20,31 @@ export default function BetaOpportunity() {
 
         <div className="prose prose-lg max-w-none mobile-text-large body-copy" style={{ fontSize: "1.3rem" }}>
 
-          <p className="text-gray-200 leading-relaxed mb-6">
+          <p className="text-gray-900 leading-relaxed mb-6">
             The Limitless Protocol is updated for 2026.
           </p>
 
-          <p className="text-gray-200 leading-relaxed mb-6">
+          <p className="text-gray-900 leading-relaxed mb-6">
             All the systems work. The framework is dialed in. The results are consistent.
           </p>
 
-          <p className="text-gray-200 leading-relaxed mb-6">
+          <p className="text-gray-900 leading-relaxed mb-6">
             Before I release this publicly, I'm opening 10 spots at a reduced rate.
           </p>
 
-          <p className="text-gray-200 leading-relaxed mb-6">
+          <p className="text-gray-900 leading-relaxed mb-6">
             Why?
           </p>
 
-          <p className="text-gray-200 leading-relaxed mb-6">
+          <p className="text-gray-900 leading-relaxed mb-6">
             Your feedback helps me refine the final release. That's the whole thing.
           </p>
 
-          <p className="text-gray-200 leading-relaxed mb-6">
+          <p className="text-gray-900 leading-relaxed mb-6">
             You get the complete 90-day transformation. All the systems. All the coaching. All the support.
           </p>
 
-          <p className="text-gray-200 leading-relaxed mb-6">
+          <p className="text-gray-900 leading-relaxed mb-6">
             Same program. Lower price. Limited to 10 spots.
           </p>
 
@@ -52,7 +56,7 @@ export default function BetaOpportunity() {
             href="/application"
             className="font-bold !text-white transition-none duration-0 focus:outline-none bg-[#940909] hover:bg-[#7b0707] py-4 px-12 text-lg rounded-md inline-block relative z-30"
           >
-            Apply Now
+            {ctaText}
           </a>
           </div>
           </div>

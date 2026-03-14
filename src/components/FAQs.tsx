@@ -7,12 +7,15 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { usePageType } from "@/contexts/PageContext";
 
 interface FinalFAQsV2Props {
   onApplyNowClick?: (e: React.MouseEvent) => void;
 }
 
 export default function FinalFAQsV2({ onApplyNowClick }: FinalFAQsV2Props) {
+  const { pageType } = usePageType();
+  const ctaText = pageType === 'waitlist' ? 'Join the waitlist' : 'Apply Now';
   const [scrollY, setScrollY] = useState(0);
   const accordionRef = useRef<HTMLDivElement>(null);
 
@@ -135,7 +138,7 @@ export default function FinalFAQsV2({ onApplyNowClick }: FinalFAQsV2Props) {
             onClick={onApplyNowClick}
             className="font-bold !text-white transition-none duration-0 focus:outline-none bg-[#940909] hover:bg-[#7b0707] py-4 px-12 text-lg rounded-md inline-block relative z-30"
           >
-            Apply Now
+            {ctaText}
           </button>
           </div>
           </div>

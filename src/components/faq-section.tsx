@@ -1,8 +1,11 @@
 "use client";
 
 import { CTAButton } from "./ui/cta-button";
+import { usePageType } from "@/contexts/PageContext";
 
 export default function FAQSection() {
+  const { pageType } = usePageType();
+  const ctaText = pageType === 'waitlist' ? 'Join the waitlist' : 'Apply Now';
   return (
     <section className="bg-black py-20 px-4 w-full">
       <div className="container mx-auto max-w-5xl">
@@ -117,7 +120,7 @@ export default function FAQSection() {
             href="/application"
             className="font-bold !text-white transition-none duration-0 focus:outline-none bg-[#940909] hover:bg-[#7b0707] py-3 px-12 text-lg rounded-md inline-block relative z-30"
           >
-            Still Have Questions? Apply Now.
+            Still Have Questions? {ctaText}
           </a>
         </div>
       </div>

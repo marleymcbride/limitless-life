@@ -12,6 +12,7 @@ import {
 } from '@/components/gamma-article';
 import IntakeDocClient from './IntakeDocClient';
 import IntakeDocWrapper from './IntakeDocWrapper';
+import { COHORT_CONFIG } from '@/config/waitlist';
 
 export const metadata: Metadata = {
   title: 'Limitless 2026 Beta Launch',
@@ -24,13 +25,13 @@ export default function IntakeOpenDoc() {
       <GammaArticle>
         {/* Page Title Heading */}
         <div className="mb-4 pb-4 text-center">
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-100 mb-2">
+          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
             THE LIFESTYLE ATHLETE 90-DAY RESET
           </h1>
-          <p className="text-1.5lg italic text-gray-100 mb-4" style={{ fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif' }}>
-            Starting April 1st, 2026
+          <p className="text-1.5lg italic text-gray-700 mb-4" style={{ fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif' }}>
+            Starting {COHORT_CONFIG.DATE_FULL}
           </p>
-          <div className="w-1/6 mx-auto border-b border-gray-700"></div>
+          <div className="w-1/6 mx-auto border-b border-gray-300"></div>
         </div>
 
         <GammaHeader

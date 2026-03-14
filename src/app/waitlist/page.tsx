@@ -9,6 +9,8 @@ import BetaOpportunity from "@/components/beta-opportunity";
 import BetaPricing from "@/components/beta-pricing";
 import BetaValueStack from "@/components/beta-value-stack";
 import BetaFAQs from "@/components/FAQs-Beta-access";
+import { PageProvider } from '@/contexts/PageContext';
+import { COHORT_CONFIG } from '@/config/waitlist';
 import {
   LazyDoesThisSoundLikeYou,
   LazyPersonalStorySection,
@@ -137,9 +139,10 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="flex flex-col min-h-screen">
-      {/* Limited Spots Banner */}
-      <WaitlistBanner />
+    <PageProvider pageType="waitlist">
+      <main className="flex flex-col min-h-screen">
+        {/* Limited Spots Banner */}
+        <WaitlistBanner />
 
       {/* Preload critical testimonial images */}
       <ImagePreloader images={CRITICAL_TESTIMONIAL_IMAGES} />
@@ -191,7 +194,7 @@ export default function Home() {
               <span className="no-underline"></span><span className="">The Lifestyle Athlete</span><span className="no-underline"> 90-Day Reset</span>
               </div>
               <p className="font-['-apple-system'] font-semibold text-lg md:text-xl lg:text-2xl text-center text-gray-200 mb-2">
-              Starting April 1st, 2026
+              Starting {COHORT_CONFIG.DATE}, 2026
               </p>
             </div>
 
@@ -201,7 +204,7 @@ export default function Home() {
                 Limitless 90-Day Energy Reset
               </div>
               <div className="font-['-apple-system'] mb-4 pb-2 text-1.5xl md:text-lg text-center text-gray-200">
-                Beginning April 1st, 2026
+                Beginning {COHORT_CONFIG.DATE}, 2026
               </div>
             </div>
 
@@ -210,7 +213,7 @@ export default function Home() {
               className="mobile-headline block px-1 mx-auto mt-4 mb-6 w-full font-bold text-center text-white sm:hidden capitalize -ml-0 -mr-0 text-[2.7rem] px-5"
               style={{ lineHeight: "1.125" }}
             >
-              Become the most energetic Guy In Every Room
+              Become the most energetic man In Every Room
             </h1>
             <div className="md:hidden lg:hidden block text-white text-center mb-0 mt-0 sm:mt-0 max-w-full mx-auto px-0 pb-8">
             <div
@@ -237,7 +240,7 @@ export default function Home() {
             <h1
               className="hidden font-['-apple-system'] font-bold sm:block text-5xl sm:text-5xl md:text-4xl  lg:text-5xl text-white text-center mb-0 mt-0 sm:mt-0 capitalize tracking-normal leading-[0]"
             >
-            Become the most energetic Guy In Every Room
+            Become the most energetic man In Every Room
             </h1>
             <div className="hidden sm:block text-white text-center mb-0 mt-0 sm:mt-0 max-w-full mx-auto px-0">
             <h1
@@ -255,9 +258,9 @@ export default function Home() {
             {/* Desktop Subheadline (hidden on mobile) */}
             <div className="px-12">
             <p
-              className="hidden mb-4 py-4 text-xl text-center text-gray-300 sm:block sm:text-xl md:text-lg lg:text-2xl max-w-[925px]"
+              className="hidden mb-4 py-4 text-xl text-center text-gray-300 sm:block sm:text-xl md:text-lg lg:text-2xl max-w-full"
               >
-              A 90-day reset to lose the gut and stop feeling tired using The Lifestyle Athlete™ protocol so you can be full of life without alcohol or stimulants and become the man your family deserves.
+              A 90-day reset to lose your gut, get off alcohol and stop feeling tired using The Lifestyle Athlete™ protocol so you become the man your family deserves:
             </p>
             </div>
           </div>
@@ -624,17 +627,17 @@ export default function Home() {
 
             {/* Beta Opportunity Section */}
             <div className="bg-white">
-              <BetaOpportunity />
+              <BetaOpportunity ctaText="Join Now" />
             </div>
 
             {/* Beta Pricing Section */}
             <div className="dark-section-with-grain">
-              <BetaPricing />
+              <BetaPricing ctaText="Join Now" />
             </div>
 
             {/* Beta Value Stack Section */}
             <div className="bg-white">
-              <BetaValueStack />
+              <BetaValueStack ctaText="Join Now" />
             </div>
 
       {/* Testimonial 4 (White background) */}
@@ -743,7 +746,7 @@ export default function Home() {
             onClick={handleApplyNowClick}
             className="font-bold !text-white transition-none duration-0 focus:outline-none bg-[#940909] hover:bg-[#7b0707] py-4 px-12 text-lg rounded-md inline-block relative z-30"
           >
-            Apply Now
+            Join Now
           </button>
         </div>
       </section>
@@ -762,6 +765,7 @@ export default function Home() {
         onClose={() => setShowWaitlistModal(false)}
       />
 
-    </main>
+      </main>
+    </PageProvider>
   );
 }

@@ -1,11 +1,15 @@
+"use client";
+
 import React from "react";
 import { cn } from "@/lib/utils";
+import { usePageType } from "@/contexts/PageContext";
 
 interface CTAButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   variant?: "primary" | "secondary";
   size?: "default" | "large";
   onClick?: () => void;
+  overrideText?: string;
 }
 
 const CTAButton = React.forwardRef<HTMLButtonElement, CTAButtonProps>(
@@ -16,10 +20,15 @@ const CTAButton = React.forwardRef<HTMLButtonElement, CTAButtonProps>(
       variant = "primary",
       size = "default",
       onClick,
+      overrideText,
       ...props
     },
     ref
   ) => {
+    const { pageType } = usePageType();
+    const defaultText = pageType === 'waitlist' ? 'Join the waitlist' : 'Apply Now';
+    const buttonText = overrideText || (children as string) || defaultText;
+
     const baseClasses =
       "font-bold !text-white transition-none duration-0 focus:outline-none";
 
@@ -48,7 +57,7 @@ const CTAButton = React.forwardRef<HTMLButtonElement, CTAButtonProps>(
         onClick={onClick}
         {...props}
       >
-        {children}
+        {buttonText}
       </button>
     );
   }

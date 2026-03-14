@@ -22,37 +22,34 @@ export default function VariantB() {
 
   return (
     <>
-      <GammaHeadline level={1}>
-        Thank You for Your Interest
-      </GammaHeadline>
+    <div className="h-24"></div>
+      <div className="mx-24">
 
-      <GammaParagraph>
-        We'll send you the full details to your email in the coming weeks. Keep a lookout!
-      </GammaParagraph>
+      <h1 className="text-4xl md:text-5xl font-bold mb-8 -ml-2 leading-tight" style={{ color: '#111827', fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif' }}>
+        You&apos;re officially on the waitlist.
+      </h1>
 
-      <div className="my-8 p-6 bg-blue-50 border border-blue-200 rounded-lg">
-        <h3 className="text-lg font-semibold text-blue-900 mb-3">
-          Want to guarantee a spot when details come out?
-        </h3>
-        <p className="text-blue-800 mb-4">
-          Fill in this quick form to jump the queue when we open applications.
-        </p>
+      <p className="text-lg md:text-xl mb-6" style={{ color: '#111827', fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif', lineHeight: '1.728' }}>
+        Keep an eye open for your inbox where I&apos;ll send you the details in the coming weeks.
+      </p>
 
+      <p className="text-lg md:text-xl mb-6" style={{ color: '#111827', fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif', lineHeight: '1.728' }}>
+        <strong>Want to jump the queue?</strong> Share what you&apos;re looking for (takes 2 minutes) and I&apos;ll reach out with more info.
+      </p>
+
+      <div className="my-8">
         <button
           onClick={handleOptionalForm}
-          className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors"
+          className="px-8 py-4 text-white font-bold text-lg rounded-lg transition-colors"
+          style={{ backgroundColor: '#851910' }}
+          onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#6a140d'}
+          onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#851910'}
         >
-          Fill in Quick Form (Optional)
+          Share What You're Looking For →
         </button>
-
-        <p className="text-sm text-blue-700 mt-3 italic">
-          No pressure - just a way to jump the queue if you're excited.
-        </p>
+      </div>
       </div>
 
-      <GammaParagraph>
-        In the meantime, you'll be first to know when cohort details are announced.
-      </GammaParagraph>
     </>
   );
 }

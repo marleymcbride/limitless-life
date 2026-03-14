@@ -1,12 +1,15 @@
 "use client";
 
 import { bigIdeaGradientDesktop, bigIdeaGradientMobile } from "@/lib/utils";
+import { usePageType } from "@/contexts/PageContext";
 
 interface BigIdeaSectionProps {
   onApplyNowClick?: (e: React.MouseEvent) => void;
 }
 
 export default function BigIdeaSection({ onApplyNowClick }: BigIdeaSectionProps) {
+  const { pageType } = usePageType();
+  const ctaText = pageType === 'waitlist' ? 'Join the waitlist' : 'Apply Now';
   return (
     <section className="w-full text-white relative pt-10 pb-20 overflow-hidden">
       {/* Big Idea gradients - gradual red fade from 50% */}
@@ -107,7 +110,7 @@ export default function BigIdeaSection({ onApplyNowClick }: BigIdeaSectionProps)
               onClick={onApplyNowClick}
               className="font-bold !text-white transition-none duration-0 focus:outline-none bg-[#940909] hover:bg-[#7b0707] py-3 px-12 text-lg rounded-md inline-block relative z-30"
             >
-              Apply Now
+              {ctaText}
             </button>
           </div>
         </div>

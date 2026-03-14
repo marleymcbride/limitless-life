@@ -1,10 +1,15 @@
+"use client";
+
 import { bgClasses } from "@/lib/utils";
+import { usePageType } from "@/contexts/PageContext";
 
 interface The4RootCausesProps {
   onApplyNowClick?: (e: React.MouseEvent) => void;
 }
 
 export default function The4RootCauses({ onApplyNowClick }: The4RootCausesProps) {
+  const { pageType } = usePageType();
+  const ctaText = pageType === 'waitlist' ? 'Join the waitlist' : 'Apply Now';
   return (
     <section className={`w-full ${bgClasses.white} pt-12 pb-12 text-black relative`}>
       {/* Simple, premium white background */}
@@ -51,7 +56,7 @@ export default function The4RootCauses({ onApplyNowClick }: The4RootCausesProps)
                 onClick={onApplyNowClick}
                 className="font-bold !text-white transition-none duration-0 focus:outline-none bg-[#940909] hover:bg-[#7b0707] py-4 px-12 mb-6 text-lg rounded-md inline-block relative z-30"
               >
-                Apply now
+                {ctaText}
               </button>
             </div>
 

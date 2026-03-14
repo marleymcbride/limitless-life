@@ -1,12 +1,15 @@
 "use client";
 
 import Script from "next/script";
+import { usePageType } from "@/contexts/PageContext";
 
 interface SenjaTestimonials1Props {
   onApplyNowClick?: (e: React.MouseEvent) => void;
 }
 
 export default function SenjaTestimonials1({ onApplyNowClick }: SenjaTestimonials1Props) {
+  const { pageType } = usePageType();
+  const ctaText = pageType === 'waitlist' ? 'Join the waitlist' : 'Apply Now';
   return (
     <section id="senja-testimonials-1" className="results-proof-gradient py-20 px-0">
       <div className="container mx-auto max-w-7xl">
@@ -32,7 +35,7 @@ export default function SenjaTestimonials1({ onApplyNowClick }: SenjaTestimonial
             onClick={onApplyNowClick}
             className="font-bold !text-white transition-none duration-0 focus:outline-none bg-[#940909] hover:bg-[#7b0707] py-3 px-12 text-lg rounded-md inline-block mt-12 relative z-30 "
           >
-            Apply Now
+            {ctaText}
           </button>
         </div>
       </div>

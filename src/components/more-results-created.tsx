@@ -1,12 +1,15 @@
 "use client";
 
 import SmoothImage from "@/components/ui/smooth-image";
+import { usePageType } from "@/contexts/PageContext";
 
 interface ClientTransformationGalleryProps {
   onApplyNowClick?: (e: React.MouseEvent) => void;
 }
 
 export default function ClientTransformationGallery({ onApplyNowClick }: ClientTransformationGalleryProps) {
+  const { pageType } = usePageType();
+  const ctaText = pageType === 'waitlist' ? 'Join the waitlist' : 'Apply Now';
   return (
     <section className="w-full bg-white pt-14 pb-14 px-10">
 
@@ -106,7 +109,7 @@ export default function ClientTransformationGallery({ onApplyNowClick }: ClientT
             onClick={onApplyNowClick}
             className="font-bold !text-white transition-none duration-0 focus:outline-none bg-[#940909] hover:bg-[#7b0707] py-3 px-12 text-lg rounded-md inline-block relative z-30"
           >
-            Apply Now
+            {ctaText}
           </button>
         </div>
     </section>

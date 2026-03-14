@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
+import { COHORT_CONFIG } from '@/config/waitlist';
 
 interface WaitlistEmailPopupProps {
   isOpen: boolean;
@@ -168,11 +169,11 @@ export default function WaitlistEmailPopup({
             </div>
           )}
 
-          <div className="text-center mb-0">
+          <div className="text-center pr-4 pl-4 mb-0">
             {step === 3 ? (
               <div className="mx-auto md:mx-0 lg:mx-auto -ml-10 -mr-10 mt-2 font-bold text-gray-900 tracking-tight leading-snug"
                 style={{ fontFamily: "Neuemontreal, sans-serif", lineHeight: "1.4" }}>
-                <div className="text-3xl mx-auto -ml-10 mr-10">We kick off May 1st.<br/>Are you interested in joining?</div>
+                <div className="text-3xl mx-auto md:-mr-0 md:-ml-0 lg:-mr-0 lg:-ml-0">We kick off {COHORT_CONFIG.DATE}.<br/>Are you interested in joining?</div>
               </div>
             ) : (
               <div className="text-3xl font-bold text-gray-900 tracking-tight">

@@ -1,8 +1,14 @@
+"use client";
+
+import { usePageType } from "@/contexts/PageContext";
+
 interface WhatItsCostingYouProps {
   onApplyNowClick?: (e: React.MouseEvent) => void;
 }
 
 export default function WhatItsCostingYou({ onApplyNowClick }: WhatItsCostingYouProps) {
+  const { pageType } = usePageType();
+  const ctaText = pageType === 'waitlist' ? 'Join the waitlist' : 'Apply Now';
   return (
     <section className="w-full results-proof-gradient pt-16 pb-12 relative">
       <div className="container mx-auto px-4 relative z-10">
@@ -10,17 +16,17 @@ export default function WhatItsCostingYou({ onApplyNowClick }: WhatItsCostingYou
 
           <div className="prose prose-lg max-w-none mobile-text-large body-copy" style={{ fontSize: "1.3rem" }}>
 
-            <div className="text-center mb-12">
+            <div className="text-center mb-8">
               <h2
-                className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-0 text-white"
+                className="text-2xl sm:text-3xl mx-0 md:text-4xl lg:text-5xl font-bold mb-0 text-white"
                 style={{ fontFamily: "Neuemontreal, sans-serif", lineHeight: "1.1" }}
               >
-                What This Is Actually Costing You
+                What&apos;s This Actually Costing You?
               </h2>
             </div>
 
             <p className="text-gray-200 leading-relaxed mb-6">
-              Let me be straight with you.
+              Let just lay it out.
             </p>
 
             <p className="text-gray-200 leading-relaxed mb-6">
@@ -36,23 +42,19 @@ export default function WhatItsCostingYou({ onApplyNowClick }: WhatItsCostingYou
             </p>
 
             <p className="text-gray-200 leading-relaxed mb-6">
-              It&apos;s in a pretty bad state.
+              You got complacent.
             </p>
 
             <p className="text-gray-200 leading-relaxed mb-6">
-              Maybe your doctor&apos;s already warned you about your blood pressure or your blood sugar or something else.
+              You didn&apos;t used to feel so drained, or have a belly forming.
             </p>
 
-            <p className="text-gray-200 leading-relaxed mb-6">
-              And you told yourself you&apos;d fix it.
-            </p>
+            <div className="text-gray-200 text-2.5xl py-1 leading-relaxed mb-6">
+              <strong>When did you&apos;ve let your standards drop so far?</strong>
+            </div>
 
             <p className="text-gray-200 leading-relaxed mb-6">
-              But you haven&apos;t.
-            </p>
-
-            <p className="text-gray-200 leading-relaxed mb-6">
-              And the reality is you could be looking at heart disease, diabetes or even worse in the next few years.
+              The reality is you could be looking at heart disease, diabetes or even worse in the next few years.
             </p>
 
             <p className="text-white font-bold text-xl mb-6">
@@ -73,15 +75,11 @@ export default function WhatItsCostingYou({ onApplyNowClick }: WhatItsCostingYou
             </p>
 
             <p className="text-gray-200 leading-relaxed mb-6">
-              <strong>You don&apos;t get these years back.</strong>
+              Every day you gamble is another chance to fix your health gone.
             </p>
 
             <p className="text-gray-200 leading-relaxed mb-6">
-              Every day you don&apos;t act is another day closer to this reality.
-            </p>
-
-            <p className="text-gray-200 leading-relaxed mb-6">
-              Really ask yourself, what is the cost of NOT fixing this costing you?
+              How long are you willing to play Russian Roulette?
             </p>
 
           </div>
@@ -92,7 +90,7 @@ export default function WhatItsCostingYou({ onApplyNowClick }: WhatItsCostingYou
               onClick={onApplyNowClick}
               className="font-bold !text-white transition-none duration-0 focus:outline-none bg-[#940909] hover:bg-[#7b0707] py-4 px-12 text-lg rounded-md inline-block relative z-30"
             >
-              Apply Now
+              {ctaText}
             </button>
           </div>
 

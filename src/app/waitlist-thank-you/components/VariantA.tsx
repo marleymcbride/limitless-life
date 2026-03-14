@@ -40,46 +40,31 @@ export default function VariantA() {
 
   return (
     <>
-      <GammaHeadline level={1}>
-        Thank You for Your Interest
-      </GammaHeadline>
+    <div className="h-24"></div>
+      <div className="mx-24">
+          
+      <h1 className="text-4xl md:text-5xl font-bold mb-8 -ml-2 leading-tight" style={{ color: '#111827', fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif' }}>
+        You&apos;re officially on the waitlist.
+      </h1>
 
-      <GammaParagraph>
-        Please enter a few details now to help me customise the cohort specifically for you.
-      </GammaParagraph>
-
-      <GammaParagraph>
-        This helps me ensure you're the right fit for the cohort.
-      </GammaParagraph>
+      <p className="text-lg md:text-xl mb-6" style={{ color: '#111827', fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif', lineHeight: '1.728' }}>
+        To secure your spot, <strong>answer a few quick questions</strong> (takes 2 minutes). Then I&apos;ll send you through to the full offer.
+      </p>
 
       <div className="my-8">
         <button
           onClick={handleOpenApplication}
-          className="px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold text-lg rounded-lg transition-colors"
+          className="px-8 py-4 text-white font-bold text-lg rounded-lg transition-colors"
+          style={{ backgroundColor: '#851910' }}
+          onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#6a140d'}
+          onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#851910'}
         >
-          Continue to Application →
+          Continue to the Offer →
         </button>
       </div>
 
-      <div className="my-8 p-6 bg-blue-50 border border-blue-200 rounded-lg">
-        <h3 className="text-lg font-semibold text-blue-900 mb-3">
-          What happens next?
-        </h3>
-        <ol className="space-y-2 text-blue-800">
-          <li className="flex items-start">
-            <span className="text-blue-600 mr-2 font-bold">1.</span>
-            <span>Complete your application (2 minutes)</span>
-          </li>
-          <li className="flex items-start">
-            <span className="text-blue-600 mr-2 font-bold">2.</span>
-            <span>Review the full beta program details</span>
-          </li>
-          <li className="flex items-start">
-            <span className="text-blue-600 mr-2 font-bold">3.</span>
-            <span>Secure your spot with a deposit (optional)</span>
-          </li>
-        </ol>
       </div>
     </>
+    
   );
 }
