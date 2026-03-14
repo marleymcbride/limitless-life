@@ -71,13 +71,6 @@ export default function ThankYouClient({ variant }: ThankYouClientProps) {
   return (
     <GammaArticle>
       {renderVariant()}
-
-      {/* Footer - outside article on dark background */}
-      <div className="text-center py-8" style={{ backgroundColor: '#0B151B' }}>
-        <p className="text-sm font-medium text-gray-600" style={{ fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif' }}>
-          © EVLV Fitness LLC {new Date().getFullYear()}
-        </p>
-      </div>
     </GammaArticle>
   );
 }

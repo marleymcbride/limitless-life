@@ -1,8 +1,14 @@
+"use client";
+
+import { usePageType } from "@/contexts/PageContext";
+
 interface BonusStackProps {
   onApplyNowClick?: (e: React.MouseEvent) => void;
 }
 
 export default function BonusStack({ onApplyNowClick }: BonusStackProps) {
+  const { pageType } = usePageType();
+  const ctaText = pageType === 'waitlist' ? 'Join the waitlist' : 'Apply Now';
   const bonuses = [
     {
       title: "BONUS 1: Wake Up With More Energy Than You Had At 25 (Value: £1,200+)",
@@ -84,7 +90,7 @@ export default function BonusStack({ onApplyNowClick }: BonusStackProps) {
                   onClick={onApplyNowClick}
                   className="font-bold !text-white transition-none duration-0 focus:outline-none bg-[#940909] hover:bg-[#7b0707] py-4 px-12 text-lg rounded-md inline-block relative z-30"
                 >
-                  Apply Now
+                  {ctaText}
                 </button>
               </div>
             </div>

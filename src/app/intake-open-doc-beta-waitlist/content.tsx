@@ -6,6 +6,7 @@ import {
   GammaCTA,
 } from '@/components/gamma-article';
 import WaitlistDepositCTA from './WaitlistDepositCTA';
+import { COHORT_CONFIG } from '@/config/waitlist';
 
 export default function IntakeDocContent() {
   return (
@@ -292,7 +293,7 @@ export default function IntakeDocContent() {
       </GammaList>
 
       <GammaParagraph>
-        We kick off on March 3, so if this sounds like you, and you'd like to work with me:
+        We kick off on {COHORT_CONFIG.DATE}, so if this sounds like you, and you'd like to work with me:
       </GammaParagraph>
 
       <GammaParagraph>

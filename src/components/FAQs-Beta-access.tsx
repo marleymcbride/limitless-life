@@ -7,8 +7,11 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { usePageType } from "@/contexts/PageContext";
 
 export default function FinalFAQsV2() {
+  const { pageType } = usePageType();
+  const ctaText = pageType === 'waitlist' ? 'Join the waitlist' : 'Apply Now';
   const [scrollY, setScrollY] = useState(0);
   const accordionRef = useRef<HTMLDivElement>(null);
 
@@ -101,12 +104,12 @@ export default function FinalFAQsV2() {
                 value={`item-${index}`}
                 style={{ scrollMarginTop: "100px" }}
               >
-                <AccordionTrigger className="hover:no-underline py-2 text-white [&[data-state=open]>svg]:rotate-180">
+                <AccordionTrigger className="hover:no-underline py-2 text-gray-900 [&[data-state=open]>svg]:rotate-180">
                   <span className="text-2xl font-medium" style={{ fontFamily: "Neuemontreal, sans-serif" }}>
                     {faq.question}
                   </span>
                 </AccordionTrigger>
-                <AccordionContent className="text-gray-300 leading-relaxed pb-4 text-lg pl-8">
+                <AccordionContent className="text-gray-900 leading-relaxed pb-4 text-lg pl-8">
                   <div
                     className="animate-faq-slide space-y-3"
                     style={{
@@ -131,7 +134,7 @@ export default function FinalFAQsV2() {
             href="/application"
             className="font-bold !text-white transition-none duration-0 focus:outline-none bg-[#940909] hover:bg-[#7b0707] py-4 px-12 text-lg rounded-md inline-block relative z-30"
           >
-            Apply Now
+            {ctaText}
           </a>
           </div>
           </div>

@@ -1,4 +1,8 @@
-export default function BetaValueStack() {
+interface BetaValueStackProps {
+  ctaText?: string;
+}
+
+export default function BetaValueStack({ ctaText = "Apply Now" }: BetaValueStackProps) {
   const items = [
     {
       icon: (
@@ -111,7 +115,7 @@ export default function BetaValueStack() {
             href="/application"
             className="font-bold !text-white transition-none duration-0 focus:outline-none bg-[#940909] hover:bg-[#7b0707] py-4 px-12 text-lg rounded-md inline-block relative z-30"
           >
-            Apply Now
+            {ctaText}
           </a>
           </div>
           </div>

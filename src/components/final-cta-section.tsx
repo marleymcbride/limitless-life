@@ -1,6 +1,11 @@
+"use client";
+
 import { bgClasses } from "@/lib/utils";
+import { usePageType } from "@/contexts/PageContext";
 
 export default function FinalCTASection() {
+  const { pageType } = usePageType();
+  const ctaText = pageType === 'waitlist' ? 'Join the waitlist' : 'Apply Now';
   return (
     <section className="w-full results-proof-gradient pt-16 pb-16 relative">
       <div className="container mx-auto px-4 relative z-10">
@@ -75,7 +80,7 @@ export default function FinalCTASection() {
               href="/application"
               className="font-bold !text-white transition-none duration-0 focus:outline-none bg-[#940909] hover:bg-[#7b0707] py-5 px-16 text-xl rounded-md inline-block relative z-30"
             >
-              Apply Now
+              {ctaText}
             </a>
           </div>
 

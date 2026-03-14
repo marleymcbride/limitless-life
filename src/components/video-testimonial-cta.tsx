@@ -1,12 +1,15 @@
 "use client";
 
 import SimpleVideoPlayer from "./simple-video-player";
+import { usePageType } from "@/contexts/PageContext";
 
 interface VideoTestimonialCTAProps {
   onApplyNowClick?: (e: React.MouseEvent) => void;
 }
 
 export default function VideoTestimonialCTA({ onApplyNowClick }: VideoTestimonialCTAProps) {
+  const { pageType } = usePageType();
+  const ctaText = pageType === 'waitlist' ? 'Join the waitlist' : 'Apply Now';
   return (
     <section className="bg-black relative py-16 px-4 w-full">
       <div className="absolute bottom-0 left-0 w-full h-[33vh] bg-gradient-to-t from-[rgba(148,9,9,0.30)] via-[rgba(148,9,9,0.16)] to-transparent"></div>
@@ -53,7 +56,7 @@ export default function VideoTestimonialCTA({ onApplyNowClick }: VideoTestimonia
               onClick={onApplyNowClick}
               className="font-bold !text-white transition-none duration-0 focus:outline-none bg-[#940909] hover:bg-[#7b0707] py-4 px-12 mb-6 text-lg rounded-md inline-block relative z-30"
             >
-              Apply Now
+              {ctaText}
             </button>
             </div>
       </div>

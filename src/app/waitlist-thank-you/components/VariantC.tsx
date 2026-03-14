@@ -1,50 +1,58 @@
 'use client';
 
-import React from 'react';
-import { GammaHeadline, GammaParagraph } from '@/components/gamma-article';
+import React, { useEffect } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
+import { COHORT_CONFIG } from '@/config/waitlist';
 
 export default function VariantC() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    // Check if form was already submitted
+    const formSubmitted = searchParams.get('form_submitted');
+
+    // If not submitted, redirect to the form page
+    if (formSubmitted !== 'true') {
+      const params = new URLSearchParams();
+      const email = searchParams.get('email');
+      const name = searchParams.get('name');
+      if (email) params.set('email', email);
+      if (name) params.set('name', name);
+
+      router.push(`/waitlist-variant-c-form?${params.toString()}`);
+    }
+  }, [router, searchParams]);
+
+  const formSubmitted = searchParams.get('form_submitted') === 'true';
+
+  // If form was submitted, show the actual thank you content
+  if (formSubmitted) {
+    return (
+      <>
+        <div className="h-24"></div>
+
+        <div className="mx-20">
+          <h1 className="text-4xl md:text-5xl font-bold mb-8 -ml-2 leading-tight" style={{ color: '#111827', fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif' }}>
+            You&apos;re officially on the waitlist.
+          </h1>
+
+          <p className="text-lg md:text-xl mb-6" style={{ color: '#111827', fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif', lineHeight: '1.728' }}>
+            The next cohort will be starting on {COHORT_CONFIG.DATE}. Once the next cohort dates open up you&apos;ll be the first to know.
+          </p>
+
+          <p className="text-lg md:text-xl mb-12" style={{ color: '#111827', fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif', lineHeight: '1.728' }}>
+            If i have any other offerings that might be a better fit i&apos;ll let you know before anyone.
+          </p>
+        </div>
+      </>
+    );
+  }
+
+  // Show loading while redirecting
   return (
-    <>
-      <GammaHeadline level={1}>
-        Thank You for Joining the Waitlist
-      </GammaHeadline>
-
-      <GammaParagraph>
-        We'll get in touch once the next cohort dates are announced.
-      </GammaParagraph>
-
-      <GammaParagraph>
-        If we have any other offerings that might be a better fit, we'll be in touch.
-      </GammaParagraph>
-
-      <div className="my-8 p-6 bg-gray-50 border border-gray-200 rounded-lg">
-        <h3 className="text-lg font-semibold text-gray-900 mb-3">
-          What Happens Next?
-        </h3>
-        <ul className="space-y-2 text-gray-700">
-          <li className="flex items-start">
-            <span className="text-blue-600 mr-2">✓</span>
-            <span>You're on our exclusive waitlist</span>
-          </li>
-          <li className="flex items-start">
-            <span className="text-blue-600 mr-2">✓</span>
-            <span>We'll email you when cohort dates are set</span>
-          </li>
-          <li className="flex items-start">
-            <span className="text-blue-600 mr-2">✓</span>
-            <span>You'll get early access to applications</span>
-          </li>
-          <li className="flex items-start">
-            <span className="text-blue-600 mr-2">✓</span>
-            <span>We'll share other relevant opportunities</span>
-          </li>
-        </ul>
-      </div>
-
-      <GammaParagraph>
-        Thanks for your interest in the Limitless Life program!
-      </GammaParagraph>
-    </>
+    <div className="flex items-center justify-center min-h-screen">
+      <p className="text-lg" style={{ color: '#111827' }}>Loading...</p>
+    </div>
   );
 }

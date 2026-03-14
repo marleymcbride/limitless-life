@@ -1,8 +1,11 @@
 "use client";
 
 import Image from "next/image";
+import { usePageType } from "@/contexts/PageContext";
 
 export default function IntroducingLimitless() {
+  const { pageType } = usePageType();
+  const ctaText = pageType === 'waitlist' ? 'Join the waitlist' : 'Apply Now';
   return (
     <section className="introducing-limitless-bg py-20 px-4 w-full relative overflow-hidden">
       <div className="container mx-auto max-w-4xl relative z-30">
@@ -129,7 +132,7 @@ export default function IntroducingLimitless() {
             href="/application"
             className="font-bold !text-white transition-none duration-0 focus:outline-none bg-[#940909] hover:bg-[#7b0707] py-3 px-12 text-lg rounded-md inline-block relative z-30"
           >
-            Apply Now
+            {ctaText}
           </a>
         </div>
       </div>
