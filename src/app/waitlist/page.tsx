@@ -190,20 +190,20 @@ export default function Home() {
 
             {/* Desktop Eyebrow (hidden on mobile) */}
             <div className="hidden sm:flex flex-col items-center justify-center mb-6 mt-1 max-w-2xl mx-auto">
-              <div className="font-['-apple-system'] uppercase font-bold text-2xl md:text-3xl lg:text-3xl text-center text-white py-2 my-2">
-              <span className="no-underline"></span><span className="">The Lifestyle Athlete</span><span className="no-underline"> 90-Day Reset</span>
+              <div className="font-sans uppercase font-bold text-2xl md:text-3xl lg:text-3xl text-center text-white py-2 my-2">
+              <span className="no-underline"></span><span className="font-sans">The Lifestyle Athlete</span><span className="font-sans no-underline"> 90-Day Reset</span>
               </div>
-              <p className="font-['-apple-system'] font-semibold text-lg md:text-xl lg:text-2xl text-center text-gray-200 mb-2">
+              <p className="font-sans font-semibold text-lg md:text-xl lg:text-2xl text-center text-gray-200 mb-2">
               Starting {COHORT_CONFIG.DATE}, 2026
               </p>
             </div>
 
             {/* Mobile Eyebrow (visible only on mobile) */}
             <div className="flex rounded-lg sm:hidden flex-col items-center justify-center mb-2 mt-3 w-full px-6 relative overflow-hidden" style={{ background: 'linear-gradient(to bottom, rgba(71, 14, 14, 0.15) 0%, rgba(71, 14, 14, 0.12) 33%, rgba(71, 14, 14, 0.08) 66%, transparent 100%)' }}>
-              <div className="font-['-apple-system'] font-bold text-2xl md:text-2xl text-center -ml-4 -mr-3  text-gray-100 mb-3">
+              <div className="font-sans font-bold text-2xl md:text-2xl text-center -ml-4 -mr-3  text-gray-100 mb-3">
                 Limitless 90-Day Energy Reset
               </div>
-              <div className="font-['-apple-system'] mb-4 pb-2 text-1.5xl md:text-lg text-center text-gray-200">
+              <div className="font-sans mb-4 pb-2 text-1.5xl md:text-lg text-center text-gray-200">
                 Beginning {COHORT_CONFIG.DATE}, 2026
               </div>
             </div>
@@ -217,7 +217,7 @@ export default function Home() {
             </h1>
             <div className="md:hidden lg:hidden block text-white text-center mb-0 mt-0 sm:mt-0 max-w-full mx-auto px-0 pb-8">
             <div
-              className="md:hidden lg:hidden font-['-apple-system'] font-bold block text-2xl md:text-4xl  lg:text-4.5xl text-white text-center mb-0 mt-0 capitalize tracking-normal leading-[1]"
+              className="md:hidden lg:hidden font-sans font-bold block text-2xl md:text-4xl  lg:text-4.5xl text-white text-center mb-0 mt-0 capitalize tracking-normal leading-[1]"
             >
             (training just 2 days a week)
             </div>
@@ -238,13 +238,13 @@ export default function Home() {
             <div className="px-16">
             <div className="hidden sm:block text-white text-center mb-0 mt-0 sm:mt-0 max-w-full mx-auto px-0">
             <h1
-              className="hidden font-['-apple-system'] font-bold sm:block text-5xl sm:text-5xl md:text-4xl  lg:text-5xl text-white text-center mb-0 mt-0 sm:mt-0 capitalize tracking-normal leading-[0]"
+              className="hidden font-sans md:-mx-4 lg:-mx-4 font-bold sm:block text-5xl sm:text-5xl md:text-4xl  lg:text-5xl text-white text-center mb-0 mt-0 sm:mt-0 capitalize tracking-normal leading-[0]"
             >
             Become the most energetic man In Every Room
             </h1>
             <div className="hidden sm:block text-white text-center mb-0 mt-0 sm:mt-0 max-w-full mx-auto px-0">
             <h1
-              className="hidden font-['-apple-system'] font-bold sm:block text-5xl sm:text-5xl md:text-4xl  lg:text-4.5xl text-white text-center mb-0 mt-0 sm:mt-0 capitalize tracking-normal leading-[1]"
+              className="hidden font-sans font-bold sm:block text-5xl sm:text-5xl md:text-4xl  lg:text-4.5xl text-white text-center mb-0 mt-0 sm:mt-0 capitalize tracking-normal leading-[1]"
             >
             (training just 2 days a week)
             </h1>
@@ -444,7 +444,7 @@ export default function Home() {
             `}</style>
               <div className="mt-4 mb-6">
 
-              <p className="font-['-apple-system'] font-normal text-lg md:text-xl lg:text-xl text-center text-gray-50 mb-8">
+              <p className="font-sans font-normal text-lg md:text-xl lg:text-xl text-center text-gray-50 mb-8">
 
               </p>
               </div>
@@ -458,7 +458,7 @@ export default function Home() {
                 href="/application"
                 onApplyNowClick={handleApplyNowClick}
               >
-                JOIN NOW
+                Join the waitlist
               </LazyDelayedCTA>
             ) : (
               <LazyDelayedCTA

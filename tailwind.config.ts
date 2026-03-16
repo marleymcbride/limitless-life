@@ -52,7 +52,7 @@ const config: Config = {
       // Clean serif typography for conversion focus
       fontFamily: {
         serif: ['Georgia', 'serif'],
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        sans: ['-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'],
       },
       // Enhanced line-height options for better typography control
       lineHeight: {
