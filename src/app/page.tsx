@@ -120,9 +120,9 @@ export default function Home() {
     requestAnimationFrame(animateScroll);
   };
 
-  // Redirect to beta-access page
+  // Redirect to waitlist page
   useEffect(() => {
-    router.replace('/beta-access');
+    router.replace('/waitlist');
   }, []);
 
   // Detect desktop/mobile for VSL sizing

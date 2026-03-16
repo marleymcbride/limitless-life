@@ -171,7 +171,7 @@ export default function WaitlistEmailPopup({
 
           <div className="text-center pr-4 pl-4 mb-0">
             {step === 3 ? (
-              <div className="mx-auto md:mx-0 lg:mx-auto -ml-10 -mr-10 mt-2 font-bold text-gray-900 tracking-tight leading-snug"
+              <div className="mx-auto md:mx-0 lg:mx-auto lg:-ml-16 lg:-mr-16 mt-2 font-bold text-gray-900 tracking-tight leading-snug"
                 style={{ fontFamily: "Neuemontreal, sans-serif", lineHeight: "1.4" }}>
                 <div className="text-3xl mx-auto md:-mr-0 md:-ml-0 lg:-mr-0 lg:-ml-0">We kick off {COHORT_CONFIG.DATE}.<br/>Are you interested in joining?</div>
               </div>
@@ -270,7 +270,7 @@ export default function WaitlistEmailPopup({
                         : 'border-gray-300 bg-gray-50 hover:bg-gray-100'
                     }`}
                   >
-                    <div className="font-medium -mr-2 -mx-1 md:-mr-0 md:-mx-0 lg:-mr-0 lg:-mx-0 text-center text-[15px] md:text-[20px] lg:text-[20px] text-gray-700">Yes, save me a spot!</div>
+                    <div className="font-medium -mr-2 -mx-1 md:-mr-0 md:-mx-0 lg:-mr-0 lg:-mx-0 text-center text-[15px] md:text-[20px] lg:text-[20px] text-gray-700">Yes, secure my spot!</div>
                   </div>
 
                   <div

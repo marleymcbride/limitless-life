@@ -44,11 +44,11 @@ export default function VariantA() {
       <div className="mx-24">
           
       <h1 className="text-4xl md:text-5xl font-bold mb-8 -ml-2 leading-tight" style={{ color: '#111827', fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif' }}>
-        You&apos;re officially on the waitlist.
+        Secure Your Spot Now
       </h1>
 
       <p className="text-lg md:text-xl mb-6" style={{ color: '#111827', fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif', lineHeight: '1.728' }}>
-        To secure your spot, <strong>answer a few quick questions</strong> (takes 2 minutes). Then I&apos;ll send you through to the full offer.
+        One final step (takes 2 minutes) and I&apos;ll send you through to the full offer.
       </p>
 
       <div className="my-8">

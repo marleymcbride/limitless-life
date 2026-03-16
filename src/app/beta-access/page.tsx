@@ -136,6 +136,11 @@ export default function Home() {
     return () => window.removeEventListener('resize', checkDesktop);
   }, []);
 
+  // Redirect to /waitlist
+  useEffect(() => {
+    router.replace('/waitlist');
+  }, [router]);
+
   return (
     <main className="flex flex-col min-h-screen">
       {/* Limited Spots Banner */}
