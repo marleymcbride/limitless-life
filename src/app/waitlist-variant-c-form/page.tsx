@@ -1,10 +1,10 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { FilloutStandardEmbed } from '@fillout/react';
 
-export default function WaitlistVariantCFormPage() {
+function WaitlistFormContent() {
   const searchParams = useSearchParams();
   const email = searchParams.get('email') || '';
   const name = searchParams.get('name') || '';
@@ -85,5 +85,19 @@ export default function WaitlistVariantCFormPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function WaitlistVariantCFormPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-white flex items-center justify-center">
+        <div className="text-center">
+          <p className="text-gray-600">Loading...</p>
+        </div>
+      </div>
+    }>
+      <WaitlistFormContent />
+    </Suspense>
   );
 }
