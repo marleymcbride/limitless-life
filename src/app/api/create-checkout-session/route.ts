@@ -98,6 +98,8 @@ export async function POST(request: NextRequest) {
     const { tier, paymentPlan, customerEmail, customerName } = await request.json();
 
     console.log('[CreateCheckoutSession] Creating session:', { tier, customerEmail, customerName });
+    console.log('[CreateCheckoutSession] Available tiers:', Object.keys(tierPrices));
+    console.log('[CreateCheckoutSession] Tier exists in tierPrices?', tier, tierPrices[tier as keyof typeof tierPrices]);
 
     // Email is now optional - Stripe will collect it during checkout
     // Only validate if provided
@@ -110,6 +112,7 @@ export async function POST(request: NextRequest) {
 
     // Validate tier exists
     if (!tier || !tierPrices[tier as keyof typeof tierPrices]) {
+      console.log('[CreateCheckoutSession] Tier validation failed:', { tier, tierKeys: Object.keys(tierPrices) });
       return NextResponse.json(
         { error: "Invalid tier selected" },
         { status: 400 }
