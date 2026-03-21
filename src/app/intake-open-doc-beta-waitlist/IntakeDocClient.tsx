@@ -13,15 +13,20 @@ export default function IntakeDocClient({ children }: ScrollRevealProps) {
     const container = containerRef.current;
     if (!container) return;
 
+    // Check if mobile device - skip animations entirely
+    const isMobile = window.innerWidth < 768;
+    if (isMobile) {
+      return;
+    }
+
     // Get elements to animate
     const elements = container.querySelectorAll('p, h1, h2, h3, ul, li, blockquote, div[style*="background-color"]');
 
-    // IMMEDIATELY set all elements to hidden state (synchronously)
+    // IMMEDIATELY set all elements to hidden state (synchronously) - NO TRANSFORM to prevent scroll issues
     elements.forEach((el) => {
       const element = el as HTMLElement;
       element.style.opacity = '0';
-      element.style.transform = 'translateY(30px)';
-      element.style.transition = 'opacity 1.8s ease-out, transform 1.8s ease-out';
+      element.style.transition = 'opacity 1s ease-out';
     });
 
     // Set up intersection observer for scroll animations
@@ -31,10 +36,9 @@ export default function IntakeDocClient({ children }: ScrollRevealProps) {
           if (entry.isIntersecting) {
             const element = entry.target as HTMLElement;
 
-            // Fade in
+            // Fade in only - no transform to prevent rubber banding
             setTimeout(() => {
               element.style.opacity = '1';
-              element.style.transform = 'translateY(0)';
             }, 50);
 
             observer.unobserve(entry.target);

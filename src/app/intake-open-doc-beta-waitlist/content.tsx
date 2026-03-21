@@ -14,8 +14,8 @@ export default function IntakeDocContent() {
   return (
     <>
 
-<GammaParagraph>
-  <GammaMiniHeading>The mission is simple:</GammaMiniHeading> gain an <strong>extra 3 hours of unrelenting energy</strong> every day , training only 2 days per week (without relying on alcohol or stimulants to get by).
+<GammaParagraph className="-mr-2">
+  <GammaMiniHeading className="pb-4 pt-2">The mission is simple:</GammaMiniHeading> Gain an <strong>extra 3 hours of unrelenting energy</strong> every day , training only 2 days per week (without relying on alcohol or stimulants to get by).
 </GammaParagraph>
 
       <GammaDivider />
@@ -60,16 +60,20 @@ export default function IntakeDocContent() {
 
       <GammaOrderedList>
         <li className="-mb-1 pb-3">
-          <strong>You've Been Eating The Wrong Way:</strong> Restrictive diets like fasting and carnivore slow your metabolism. The way to fuelling energy and fat loss is to eat MORE.
+          <strong>You've Been Eating Wrong:</strong>
+          <div className="mt-2">Restrictive diets like fasting and carnivore slow your metabolism. The way to fuelling energy and fat loss is to eat MORE.</div>
         </li>
         <li className="-mb-1 pb-3">
-          <strong>You're Training Too Much:</strong> Growth happens during recovery, not in the gym. A minimal approach of just 2 days a week is the best overall balance to fit around a high-value lifestyle.
+          <strong>You're Training Too Much:</strong>
+          <div className="mt-2">Growth happens during recovery, not in the gym. A minimal approach of just 2 days a week is the best overall balance to fit around a high-value lifestyle.</div>
         </li>
-        <li className="-mb-1 pb-3">
-          <strong>You're Trying To Use "Willpower":</strong> You've been told hard discipline and willpower is the way to success, but this is a straight to path disaster long-term.
+        <li className="-mb-1 pb-3 -mr-2">
+          <strong>You've Tried Using 'Willpower':</strong>
+          <div className="mt-2">You've been told hard discipline and willpower is the way to success, but this is a straight to path disaster long-term.</div>
         </li>
         <li className="-mb-1 pb-2">
-          <strong>You Can't Outwork A Broken Metabolism:</strong> The biggest problems start within (e.g. gut issues and imbalanced hormones). Until you fix these, your energy will stay throttled.
+          <strong>You Can't Outwork A Broken Metabolism:</strong>
+          <div className="mt-2">The biggest problems start within (e.g. gut issues and imbalanced hormones). Until you fix these, your energy will stay throttled.</div>
         </li>
       </GammaOrderedList>
 
@@ -97,8 +101,8 @@ export default function IntakeDocContent() {
         This is the system I've crafted over 12 years and goes against every other online 'guru'.
       </GammaParagraph>
 
-      <GammaMiniHeading className="mt-24">
-        Here's what makes this different:
+      <GammaMiniHeading className="">
+        What makes this different?
       </GammaMiniHeading>
 
       <GammaOrderedList className="mt-6">
@@ -115,11 +119,11 @@ export default function IntakeDocContent() {
         <strong>Obsession:</strong> I've spent over a decade researching why certain guys radiate an infectious energy and operate at a higher frequency than most.
       </GammaParagraph>
 
-      <GammaParagraph className="-mb-2 pb-6">
+      <GammaParagraph className="-mb-0 pb-0 md:-mb-2 md:pb-6 lg:-mb-2 lg:pb-6">
         <strong>Humanity:</strong> I am so passionate about this niche area because:
       </GammaParagraph>
 
-      <GammaOrderedList>
+      <GammaOrderedList className="-mt-4 md:-mt-0 lg:-mt-0">
         <li>Millions (if not billions) of men are secretly suffering.</li>
         <li>The doctors and "professionals" have no clue about male life in 2026.</li>
         <li>All the typical methods completely took over your life.</li>
@@ -129,19 +133,19 @@ export default function IntakeDocContent() {
         I built this system from scratch because nothing out there was designed for men who actually have a life, and don't want to spend their days eating broccoli and frying themselves in the gym every night.
       </GammaParagraph>
 
-      <GammaParagraph className="-mb-1 pt-3">
-        <GammaMiniHeading>Here's a few results we've gotten:</GammaMiniHeading>
+      <GammaParagraph className="-mb-5 pb-10 md:-mb-1 md:pt-3 lg:-mb-5 lg:pt-3">
+        <GammaMiniHeading>Some results we've gotten:</GammaMiniHeading>
       </GammaParagraph>
 
       <GammaParagraph>
         My past client Lewis went from 85kg to 68kg in 4 months and hasn't touched alcohol in 2 years now.
       </GammaParagraph>
 
-      <GammaParagraph className="-mt-4 -mb-4 pb-8">
+      <GammaParagraph className="-mt-2 pb-0 md:-mt-4 md:-mb-4 md:pb-8 lg:-mt-4 lg:-mb-4 lg:pb-8">
         Or Aaron, a stressed out business exec a few weeks in: <em>"I've never had this much natural energy in my life."</em>
       </GammaParagraph>
 
-      <GammaParagraph>
+      <GammaParagraph className="-mt-2">
         As for me.. I'm coming up 4 years sober now, 2 years off caffeine, training twice a week and feeling like a different human. I want this for you too.
       </GammaParagraph>
 
@@ -155,24 +159,24 @@ export default function IntakeDocContent() {
         We'll implement the <strong>Limitless Protocol</strong> in three phases:
       </GammaParagraph>
 
-      <GammaParagraph className="pt-2 -mb-2 pb-5">
-        <strong>Phase 1: The Foundations (Weeks 1-4)</strong>
+      <GammaParagraph className="pt-0 md:pt-2 lg:pt-2 -mb-5 pb-8 -mr-4 md:-mb-0 md:pb-0 md:-mr-0 lg:-mb-0 lg:pb-0 lg:-mr-0">
+        <strong>Phase 1: The Foundations (Wk 1-4)</strong>
       </GammaParagraph>
 
       <GammaParagraph>
         Every man's situation is different, so we run <strong>The Bottleneck Test</strong> to identify your single biggest constraint. From here, you get your custom <strong>Rest-Focused Training</strong> and <strong>Metabolic Priming</strong> gameplan, so you can eat more while burning fat, see your gut flattening, and sleep improving.
       </GammaParagraph>
 
-      <GammaParagraph className="pt-2 -mb-2 pb-5">
-        <strong>Phase 2: Energy (Weeks 5-8)</strong>
+      <GammaParagraph className="pt-2 -mb-5 pb-8 -mr-4 md:-mb-0 md:pb-0 md:-mr-0 lg:-mb-0 lg:pb-0 lg:-mr-0">
+        <strong>Phase 2: Energy (Wk 5-8)</strong>
       </GammaParagraph>
 
       <GammaParagraph>
         Now we shift focus to your lifestyle. We bring in <strong>The Limitless Morning</strong> and <strong>Metabolic Priming Protocol</strong>, to heal your body and build your Unlimited Energy Flywheel. Your energy is rising every day, visible muscle is developing, and less stress means you stop feeling the tie for booze.
       </GammaParagraph>
 
-      <GammaParagraph className="pt-2 -mb-2 pb-5">
-        <strong>Phase 3: Limitless (Week 9-12)</strong>
+      <GammaParagraph className="pt-2 -mb-5 pb-8 -mr-4 md:-mb-0 md:pb-0 md:-mr-0 lg:-mb-0 lg:pb-0 lg:-mr-0">
+        <strong>Phase 3: Limitless (Wk 9-12)</strong>
       </GammaParagraph>
 
       <GammaParagraph>
@@ -234,13 +238,15 @@ export default function IntakeDocContent() {
       </GammaSectionHeading>
 
       <GammaParagraph>
-        I respect both of our time, so let's skip the 'sales call' and complicated process.
+        I respect both of our time, so let's skip the 'sales call' and complicated BS.
       </GammaParagraph>
 
       <GammaOrderedList>
-        <li>
-          <WaitlistDepositCTA />
-        </li>
+        <p >
+        <li className="">
+          <WaitlistDepositCTA/>
+          </li>
+        </p>
         <li>Once doors open, if it looks like a match we'll get you enrolled.</li>
         <li>You'll be welcomed to The Lifestyle Athlete squad.</li>
       </GammaOrderedList>
