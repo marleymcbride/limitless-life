@@ -74,6 +74,9 @@ const stripePriceIds = {
     '3pay': process.env.STRIPE_PRICE_CONCIERGE_3PAY,
     full: process.env.STRIPE_PRICE_CONCIERGE_FULL,
   },
+  'beta-waitlist': {
+    full: process.env.STRIPE_PRICE_BETA_WAITLIST_DEPOSIT,
+  },
 };
 
 export async function POST(request: NextRequest) {

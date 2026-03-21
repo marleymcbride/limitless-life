@@ -20,7 +20,7 @@ export default function WaitlistDepositCTA() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          tier: 'life-whatsapp',
+          tier: 'beta-waitlist',
           paymentPlan: 'full',
           customerEmail: email,
           customerName: name,
