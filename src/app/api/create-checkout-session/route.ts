@@ -111,7 +111,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Validate tier exists
-    if (!tier || !tierPrices[tier as keyof typeof tierPrices]) {
+    if (!tier || !(tier in tierPrices)) {
       console.log('[CreateCheckoutSession] Tier validation failed:', { tier, tierKeys: Object.keys(tierPrices) });
       return NextResponse.json(
         { error: "Invalid tier selected" },
