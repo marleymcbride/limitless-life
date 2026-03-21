@@ -50,7 +50,7 @@ export default function WaitlistDepositCTA() {
 
   return (
     <GammaCTA href="javascript:void(0)" onClick={handleDeposit}>
-      Confirm your spot
+      Click here to make your waitlist application
     </GammaCTA>
   );
 }

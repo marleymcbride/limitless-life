@@ -1,9 +1,11 @@
 import React from 'react';
 import {
   GammaParagraph,
-  GammaList,
+  GammaMiniHeading,
+  GammaOrderedList,
   GammaSectionHeading,
   GammaCTA,
+  GammaDivider,
 } from '@/components/gamma-article';
 import WaitlistDepositCTA from './WaitlistDepositCTA';
 import { COHORT_CONFIG } from '@/config/waitlist';
@@ -11,323 +13,245 @@ import { COHORT_CONFIG } from '@/config/waitlist';
 export default function IntakeDocContent() {
   return (
     <>
-      <GammaParagraph>
-        Here's what we're doing...
-      </GammaParagraph>
 
-      <GammaParagraph>
-        Our goal is simple: To add $1M a year, in just 4 days a week.
-      </GammaParagraph>
+<GammaParagraph>
+  <GammaMiniHeading>The mission is simple:</GammaMiniHeading> gain an <strong>extra 3 hours of unrelenting energy</strong> every day , training only 2 days per week (without relying on alcohol or stimulants to get by).
+</GammaParagraph>
 
-      <GammaList>
-        <li>Leads every day</li>
-        <li>Sales every week, and</li>
-        <li>Clients who stay with you for years.</li>
-      </GammaList>
-
-      <GammaParagraph>
-        Money. Meaning. And lots of Freedom.
-      </GammaParagraph>
-
-      <GammaParagraph>
-        I've built our business to 8-figures, travelling the world — barefoot and caffeinated.
-      </GammaParagraph>
-
-      <GammaParagraph>
-        We've helped 3,000+ coaches grow faster than they thought possible.
-      </GammaParagraph>
-
-      <GammaParagraph>
-        Big name clients like Dan Martell, Todd Herman, Martha Krejci, Erika Cramer, Alex Charfen, Ryan Deiss, Richmond Dinh, Brian Mark & Maria Wendt...
-      </GammaParagraph>
-
-      <GammaParagraph>
-        ...as well as hundreds of 'micro celebrities' in their niche, like James Kemp, Steph Gorton & Dan Bolton.
-      </GammaParagraph>
-
-      <GammaParagraph>
-        Over the last 15 years, we've helped them build
-        <strong>7 & 8-figure Lifestyle Empires</strong>
-        , with our guidance and systems.
-      </GammaParagraph>
-
-      <GammaParagraph>
-        And in 2026, it could be your turn.
-      </GammaParagraph>
-
-      <GammaParagraph>
-        We've got a great reputation because we only take on clients we know we can help.
-      </GammaParagraph>
-
-      <GammaParagraph>
-        <strong>It's a small group, so I'm looking for the best fit here.</strong>
-      </GammaParagraph>
-
-      <GammaParagraph>
-        <strong>This won't work for you if you...</strong>
-      </GammaParagraph>
-
-      <GammaList>
-        <li>Are just starting a coaching business, and haven't made a sale yet.</li>
-        <li>Think all you need to do is manifest, and success will just come to you.</li>
-        <li>Have worked with 7 other coaches and 'they' were the problem.</li>
-        <li>Want to build a huge team, hustle 24x7, and be stuck in meetings all day trying to manage everyone.</li>
-      </GammaList>
-
-      <GammaParagraph>
-        <strong>But if you...</strong>
-      </GammaParagraph>
-
-      <GammaList>
-        <li>Have actual skills and can help people win.</li>
-        <li>Have clients already, and want more.</li>
-        <li>Take direction well, and can follow a custom growth plan.</li>
-        <li>Know that you're the one who's going to get the results and earn the rewards.</li>
-        <li>Want to build something where as your business gets bigger, your life gets better.</li>
-      </GammaList>
-
-      <GammaParagraph>
-        ...This could be the year that things get
-        <strong>exciting!</strong>
-      </GammaParagraph>
-
-      <GammaParagraph>
-        We'll do it with the perfect mix of 1:1 Strategy. A custom game plan. Proven playbooks. 6-Week project cycles. And personal guidance and direction from me and my team.
-      </GammaParagraph>
+      <GammaDivider />
 
       <GammaSectionHeading>
-        The plan is simple:
+        WHERE YOU PROBABLY ARE RIGHT NOW
       </GammaSectionHeading>
 
       <GammaParagraph>
-        <strong>"Phase 1: Two Months of Leads, Clients and Money"</strong>
+        I know exactly what it feels like to be where you are.
       </GammaParagraph>
 
       <GammaParagraph>
-        The first two months will be tactical — focused on putting enough money in your bank account to more than pay for Black Belt for the entire year and giving you a game plan to scale up fast.
+        You're likely waking up each morning and 'cracking on' with another day… but secretly you'd do absolutely <strong>goddamn ANYTHING</strong> to not have to get out of bed. Not because you don't want to, you physically, mentally (and even spiritually) don't have the energy to push through.
       </GammaParagraph>
 
       <GammaParagraph>
-        We start with a 1:1 gameplan to get clear on your 12 month goals, and decide on the most important quick-win strategies for your first 30-60 days.
+        But despite watching what you eat, trying these different diets, and maybe even getting caught up in the "scam land" of supplements & stimulants.. you feel shit.
       </GammaParagraph>
 
       <GammaParagraph>
-        We'll use
-        <strong>The Offer Chassis™</strong>
-        {" "}to make your offer so compelling that it sells itself. Easy to understand, easy to buy, and easy to deliver.
+        I resonate hard with this because I've been caught in the "vicious cycle". Back in 2021 I was so drained I was literally falling asleep on my desk at 10am. This impacted my work, my health and even my relationships.
       </GammaParagraph>
 
       <GammaParagraph>
-        Then we'll deploy our
-        <strong>$10k in 10-Minutes™</strong>
-        {" "}strategies to bring you leads, clients and cash first, to get you a quick ROI.
+        You feel stressed out from underperforming at work, start neglecting your health, notice you're getting flabby, become even more stressed out and reach for the booze.
       </GammaParagraph>
 
       <GammaParagraph>
-        In a mix of small group workshops and 1:1's, we'll sharpen your offer, messaging and sales process until it hums.
+        Wake up tomorrow and repeat.
       </GammaParagraph>
+
+      <GammaDivider />
+
+      <GammaSectionHeading>
+        THE REAL ROOT CAUSE
+      </GammaSectionHeading>
 
       <GammaParagraph>
-        That's
-        <strong>Phase 1</strong>
-        —two months of stacking wins, signing clients, and putting money in your bank account so that Black Belt is effectively free forever.
+        I went through every diet and tactic the online gurus sold, before understanding there are just <strong>4 real problems</strong>:
       </GammaParagraph>
 
-      <GammaParagraph>
-        <strong>"Phase 2: Strategy & Growth"</strong>
-      </GammaParagraph>
-
-      <GammaParagraph>
-        Now that you've got quick wins, and Black Belt is paid for, it's time to get strategic.
-      </GammaParagraph>
-
-      <GammaList>
-        <li>We'll start by taking you through
-          <strong>The Focus Finder™</strong>
-          , our Diagnostic Tool for identifying the biggest strategic constraint in your business right now.
+      <GammaOrderedList>
+        <li className="-mb-1 pb-3">
+          <strong>You've Been Eating The Wrong Way:</strong> Restrictive diets like fasting and carnivore slow your metabolism. The way to fuelling energy and fat loss is to eat MORE.
         </li>
-        <li>Whether that's generating leads, optimising your sales process, or designing a killer program that gets clients fast, measurable results — I've got an arsenal of proven plug-and-play systems:
+        <li className="-mb-1 pb-3">
+          <strong>You're Training Too Much:</strong> Growth happens during recovery, not in the gym. A minimal approach of just 2 days a week is the best overall balance to fit around a high-value lifestyle.
         </li>
-      </GammaList>
+        <li className="-mb-1 pb-3">
+          <strong>You're Trying To Use "Willpower":</strong> You've been told hard discipline and willpower is the way to success, but this is a straight to path disaster long-term.
+        </li>
+        <li className="-mb-1 pb-2">
+          <strong>You Can't Outwork A Broken Metabolism:</strong> The biggest problems start within (e.g. gut issues and imbalanced hormones). Until you fix these, your energy will stay throttled.
+        </li>
+      </GammaOrderedList>
 
-      <GammaList>
+      <GammaDivider />
+
+      <GammaSectionHeading>
+        WHAT YOU ACTUALLY WANT
+      </GammaSectionHeading>
+
+      <GammaParagraph>
+        You probably don't actually care about "smashing the gym every night" or boasting about your latest bench press. You care about looking and <strong>FEELING your best every day</strong>, with the least time spent possible.. so you have energy for the things and people that matter most.
+      </GammaParagraph>
+
+      <GammaParagraph>
+      <strong>Beyond the body, you have one core desire:</strong> to feel like that guy. The guy who walks into a room with infectious energy. A presence. An aura. For me there is no better feeling as a man.
+      </GammaParagraph>
+
+      <GammaDivider />
+
+      <GammaSectionHeading className="-mt-0 pt-0">
+        WHY ME
+      </GammaSectionHeading>
+
+      <GammaParagraph>
+        This is the system I've crafted over 12 years and goes against every other online 'guru'.
+      </GammaParagraph>
+
+      <GammaMiniHeading className="mt-24">
+        Here's what makes this different:
+      </GammaMiniHeading>
+
+      <GammaOrderedList className="mt-6">
+        <li>We spend 5 days RESTING, and 2 days working.</li>
+        <li>We create an Unlimited Energy Flywheel, not metabolism-killing starvation approaches.</li>
+        <li>Instead of building a 'fitness regime', we design a LIFESTYLE.</li>
+      </GammaOrderedList>
+
+      <GammaParagraph>
+        I've used this same method in men (such as banking, entrepreneurship, finance, petroleum, every high level career you can think of) to become a <strong>Lifestyle Athlete</strong>.
+      </GammaParagraph>
+
+      <GammaParagraph>
+        <strong>Obsession:</strong> I've spent over a decade researching why certain guys radiate an infectious energy and operate at a higher frequency than most.
+      </GammaParagraph>
+
+      <GammaParagraph className="-mb-2 pb-6">
+        <strong>Humanity:</strong> I am so passionate about this niche area because:
+      </GammaParagraph>
+
+      <GammaOrderedList>
+        <li>Millions (if not billions) of men are secretly suffering.</li>
+        <li>The doctors and "professionals" have no clue about male life in 2026.</li>
+        <li>All the typical methods completely took over your life.</li>
+      </GammaOrderedList>
+
+      <GammaParagraph>
+        I built this system from scratch because nothing out there was designed for men who actually have a life, and don't want to spend their days eating broccoli and frying themselves in the gym every night.
+      </GammaParagraph>
+
+      <GammaParagraph className="-mb-1 pt-3">
+        <GammaMiniHeading>Here's a few results we've gotten:</GammaMiniHeading>
+      </GammaParagraph>
+
+      <GammaParagraph>
+        My past client Lewis went from 85kg to 68kg in 4 months and hasn't touched alcohol in 2 years now.
+      </GammaParagraph>
+
+      <GammaParagraph className="-mt-4 -mb-4 pb-8">
+        Or Aaron, a stressed out business exec a few weeks in: <em>"I've never had this much natural energy in my life."</em>
+      </GammaParagraph>
+
+      <GammaParagraph>
+        As for me.. I'm coming up 4 years sober now, 2 years off caffeine, training twice a week and feeling like a different human. I want this for you too.
+      </GammaParagraph>
+
+      <GammaDivider />
+
+      <GammaSectionHeading>
+        THE PLAN
+      </GammaSectionHeading>
+
+      <GammaParagraph className="-mb-1 pb-0">
+        We'll implement the <strong>Limitless Protocol</strong> in three phases:
+      </GammaParagraph>
+
+      <GammaParagraph className="pt-2 -mb-2 pb-5">
+        <strong>Phase 1: The Foundations (Weeks 1-4)</strong>
+      </GammaParagraph>
+
+      <GammaParagraph>
+        Every man's situation is different, so we run <strong>The Bottleneck Test</strong> to identify your single biggest constraint. From here, you get your custom <strong>Rest-Focused Training</strong> and <strong>Metabolic Priming</strong> gameplan, so you can eat more while burning fat, see your gut flattening, and sleep improving.
+      </GammaParagraph>
+
+      <GammaParagraph className="pt-2 -mb-2 pb-5">
+        <strong>Phase 2: Energy (Weeks 5-8)</strong>
+      </GammaParagraph>
+
+      <GammaParagraph>
+        Now we shift focus to your lifestyle. We bring in <strong>The Limitless Morning</strong> and <strong>Metabolic Priming Protocol</strong>, to heal your body and build your Unlimited Energy Flywheel. Your energy is rising every day, visible muscle is developing, and less stress means you stop feeling the tie for booze.
+      </GammaParagraph>
+
+      <GammaParagraph className="pt-2 -mb-2 pb-5">
+        <strong>Phase 3: Limitless (Week 9-12)</strong>
+      </GammaParagraph>
+
+      <GammaParagraph>
+        Finally, with the natural flow system and our signature <strong>Anti-Stack</strong> method, you reach REAL energy without caffeine / supplements. What to expect: morning wood back, drive you haven't seen in years, and most importantly a peaceful state of mind. Oh yeah… and a SHREDDED physique.
+      </GammaParagraph>
+
+      <GammaDivider />
+
+      <GammaSectionHeading>
+        IS THIS FOR YOU?
+      </GammaSectionHeading>
+
+      <GammaParagraph>
+        This is a highly selective offer. It's for you if:
+      </GammaParagraph>
+
+      <GammaParagraph>
+        <strong>YES:</strong> You want to become the man with the energy that reflects the success of your life. Rather than a typical 'fitness plan', you want a LIFESTYLE.
+      </GammaParagraph>
+
+      <GammaParagraph>
+        <strong>NO:</strong> This is not for the casual guy. I only work with men who are dedicated to change, and take their performance seriously.
+      </GammaParagraph>
+
+      <GammaDivider />
+
+      <GammaSectionHeading>
+        HOW TO GET IN
+      </GammaSectionHeading>
+
+      <GammaParagraph>
+        We are kicking off the public beta cohort the first week of May. There are just <strong>10 spots total</strong>.
+      </GammaParagraph>
+
+      <GammaParagraph>
+        The official launch in Q3 will be opening at £3,997 investment. The 10 men selected will join this round for <strong>£997</strong>, just 25% of the launch price.
+      </GammaParagraph>
+
+      <GammaParagraph>
+        If you're loving the results come the end of Phase 1 and ready to progress to Phase 2 & 3, your founding member investment will be honored.
+      </GammaParagraph>
+
+      <GammaParagraph>
+        But if you've got everything you need and happy enjoying your new relentless daily energy, then my job is done.
+      </GammaParagraph>
+
+      <GammaParagraph>
+        To get started, all that's needed is <strong>£197 deposit today</strong> until doors open in April. If you're accepted, you'll be welcomed into The Lifestyle Athlete cohort. If not, I'll refund your deposit and no harm done.
+      </GammaParagraph>
+
+      <GammaParagraph>
+        So there's no risk to getting started, right?
+      </GammaParagraph>
+
+      <GammaDivider />
+
+      <GammaSectionHeading>
+        NEXT STEPS
+      </GammaSectionHeading>
+
+      <GammaParagraph>
+        I respect both of our time, so let's skip the 'sales call' and complicated process.
+      </GammaParagraph>
+
+      <GammaOrderedList>
         <li>
-          <strong>To generate leads</strong>
-          , we'll use The Audience Amplifier, The 100-Lead Bundle or Brandwidth.
+          <WaitlistDepositCTA />
         </li>
-        <li>
-          <strong>To bring you hot prospects ready to buy</strong>
-          , we'll choose from The New Lead Sequence, The Weekly Client Machine or The Webinar That Doesn't Matter.
-        </li>
-        <li>
-          <strong>We'll convert them</strong>
-          with The Appointment Engine, Sell By Chat, or a Million Dollar Workshop.
-        </li>
-        <li>And to
-          <strong>make sure they win and stay with you for years</strong>
-          we'll design a year, a month and a week in your program so it's seamless.
-        </li>
-      </GammaList>
+        <li>Once doors open, if it looks like a match we'll get you enrolled.</li>
+        <li>You'll be welcomed to The Lifestyle Athlete squad.</li>
+      </GammaOrderedList>
 
       <GammaParagraph>
-        Even though the fundamentals of every coaching business are the same, every coach is different. So we'll map out a custom plan, tailored to your situation, market and skillset.
+        You in?
       </GammaParagraph>
 
-      <GammaParagraph>
-        No one-size-fits-all cookie cutters here.
+      <GammaParagraph className="-mt-4">
+      Marley
       </GammaParagraph>
-
-      <GammaParagraph>
-        So, Phase 2 gets you a clear plan, and adds $10k a month.
-      </GammaParagraph>
-
-      <GammaParagraph>
-        <strong>"Phase 3: Scale"</strong>
-      </GammaParagraph>
-
-      <GammaList>
-        <li>Every 6 weeks, we get together as a group on Zoom to map out your
-          <strong>6-Week Gameplan™</strong>
-          . We'll Identify your current constraint, select the next system to install and map out your so you continue to build momentum.
-        </li>
-        <li>You'll have
-          <strong>personal guidance</strong>
-          from me and my coaching team every week. Together, we'll track your progress, and celebrate every time you have a $10k/m income jump — or refine your strategy as needed to get you there.
-        </li>
-        <li>We run
-          <strong>monthly Workshops</strong>
-          ,"
-          <strong>Skill Sessions</strong>
-          ,"
-          <strong>Masterminds</strong>
-          {" "}and
-          <strong>Hotseats</strong>
-          {" "}so you'll have the latest strategies, tactics and tools from the best coaches in the industry.
-          <strong>PLUS:</strong>
-          {" "}We do 3 live events a year. You and your team can attend our virtual events in March and November, and join us in-person somewhere tropical in July.
-        </li>
-        <li>We've got a system for everything. You'll install our
-          <strong>lead gen, sales and delivery playbooks</strong>
-          , so you don't have to reinvent the wheel. Just add your content and your personality, and have the business grow every cycle.
-        </li>
-      </GammaList>
-
-      <GammaParagraph>
-        You'll also have my hand
-        <strong>guiding your strategy</strong>
-        , and smart, capable eyes
-        <strong>critiquing your campaigns</strong>
-        . And if you get stuck, a quick post in the group will get you clear and moving.
-      </GammaParagraph>
-
-      <GammaParagraph>
-        <strong>We make it easy to get started and ROI quickly.</strong>
-      </GammaParagraph>
-
-      <GammaParagraph>
-        We kick things off the first week of March to
-        <strong>design your Gameplan</strong>
-        and decide on the most important money-getting things you're going to implement in our first 6-week cycle together.
-      </GammaParagraph>
-
-      <GammaParagraph>
-        It's $1,500 to get started. $2,000 in a month. Then $2,500 a month for the following 12 months.
-      </GammaParagraph>
-
-      <GammaParagraph>
-        After that, we'll go month to month, as long as you're loving it and making progress.
-      </GammaParagraph>
-
-      <GammaParagraph>
-        We call Black Belt a 'profitable addiction' — it makes you more than you spend, and the community is full of amazing humans running great coaching businesses. I hope you call it home for years.
-      </GammaParagraph>
-
-      <GammaParagraph>
-        <strong>It pays for itself in the first 60-days.</strong>
-      </GammaParagraph>
-
-      <GammaParagraph>
-        By the end of Phase 1, we'll both know if we want to keep working together or not, so there's a 60-day 'Love it or leave it' period.
-      </GammaParagraph>
-
-      <GammaParagraph>
-        If something's not right, or either of us isn't feeling it, we'll just tear up the agreement and walk away as friends.
-      </GammaParagraph>
-
-      <GammaParagraph>
-        As long as we're both good, we move onto scaling you up in Phase 2 & 3 for the next 12 months.
-      </GammaParagraph>
-
-      <GammaParagraph>
-        So, there's no risk to getting started, is there?
-      </GammaParagraph>
-
-      <GammaParagraph>
-        <strong>Here's the QuickFacts™</strong>
-      </GammaParagraph>
-
-      <GammaParagraph>
-        Black Belt has 3 tiers.
-      </GammaParagraph>
-
-      <GammaList>
-        <li>From $10k/m — $30k/m</li>
-        <li>$30k/m — $84k/m (1M/y)</li>
-        <li>$1–2M a year</li>
-      </GammaList>
-
-      <GammaParagraph>
-        <strong>Like I said, it's a small group, and I'm looking for the right people.</strong>
-      </GammaParagraph>
-
-      <GammaParagraph>
-        So if you...
-      </GammaParagraph>
-
-      <GammaList>
-        <li>Are a business coach, consistently doing over $10k a month.</li>
-        <li>Have 500 people or more on your email list.</li>
-        <li>Have space to take on new clients every month, starting this month.</li>
-        <li>Are friendly and coachable.</li>
-        <li>And you won't get distracted by my handsomeness and my striking Australian accent.</li>
-      </GammaList>
-
-      <GammaParagraph>
-        We kick off on {COHORT_CONFIG.DATE}, so if this sounds like you, and you'd like to work with me:
-      </GammaParagraph>
-
-      <GammaParagraph>
-        <strong>Step 1:</strong>{" "}
-        <WaitlistDepositCTA />{" "}
-        with a deposit (hefty waitlist discount applied!).
-      </GammaParagraph>
-
-      <GammaParagraph>
-        <strong>🎉 Waitlist Bonus:</strong> As a waitlist applicant, you'll receive a <strong>hefty discount</strong> on the deposit when you secure your spot through this page!
-      </GammaParagraph>
-
-      <GammaParagraph>
-        <strong>Step 2:</strong> We'll review your application, and let you know within 72 hours.
-      </GammaParagraph>
-
-      <GammaParagraph>
-        If your application is not accepted, we'll refund your deposit immediately, let you know what to work on, and point you in the right direction.
-      </GammaParagraph>
-
-      <GammaParagraph>
-        Taki
-      </GammaParagraph>
-
-      <GammaParagraph>
-        <strong>P.S.</strong>{" "}
-        As soon as you decide, we'll get you access to $10k in 10 minutes — a cash injection series: 6 short videos, that
-      </GammaParagraph>
-
-      <GammaList>
-        <li>take 10 minutes or less to watch,</li>
-        <li>10 minutes or less to implement, and</li>
-        <li>are each designed to quickly add $10k to your income.</li>
-      </GammaList>
     </>
   );
 }

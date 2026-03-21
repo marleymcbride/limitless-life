@@ -52,7 +52,7 @@ export default function ClientTransformationGallery({ onApplyNowClick }: ClientT
           {/* Matty */}
           <div className="relative">
             <SmoothImage
-              src="/images/Testimonials/Before vs afters/Matty - before vs after.jpeg"
+              src="/images/Testimonials/Before vs afters/Matty new transformation2.png"
               alt="Matty"
               width={400}
               height={500}
@@ -93,7 +93,7 @@ export default function ClientTransformationGallery({ onApplyNowClick }: ClientT
           {/* Matty */}
           <div className="relative">
             <SmoothImage
-              src="/images/Testimonials/Before vs afters/Matty - before vs after.jpeg"
+              src="/images/Testimonials/Before vs afters/Matty new transformation2.png"
               alt="Matty"
               width={400}
               height={500}

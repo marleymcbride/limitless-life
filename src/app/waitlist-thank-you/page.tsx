@@ -45,7 +45,7 @@ export default function WaitlistThankYouPage({
       </Suspense>
 
       {/* Footer - outside everything on dark background */}
-      <div className="text-center py-8" style={{ backgroundColor: '#FFFFFF' }}>
+      <div className="text-center py-8" style={{ backgroundColor: '#0B151B' }}>
         <p className="text-sm font-medium text-gray-600" style={{ fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif' }}>
           © EVLV Fitness LLC {new Date().getFullYear()}
         </p>

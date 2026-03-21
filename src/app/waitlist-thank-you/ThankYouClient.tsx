@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect } from 'react';
-import { GammaArticle } from '@/components/gamma-article';
+import { VariantArticle } from '@/components/variant-article';
 import { trackEvent } from '@/lib/analytics';
 import { useSession } from '@/hooks/useSession';
 import VariantA from './components/VariantA';
@@ -69,8 +69,8 @@ export default function ThankYouClient({ variant }: ThankYouClientProps) {
   };
 
   return (
-    <GammaArticle>
+    <VariantArticle>
       {renderVariant()}
-    </GammaArticle>
+    </VariantArticle>
   );
 }

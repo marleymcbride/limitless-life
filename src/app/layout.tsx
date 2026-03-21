@@ -26,14 +26,14 @@ export const themeColor = "#000000";
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" style={{ backgroundColor: '#0B151B' }}>
       <head>
         <meta name="theme-color" content="#000000" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <link rel="icon" href="/favicons.ico" />
         <link rel="apple-touch-icon" href="/favicons.ico" />
       </head>
-      <body>{children}</body>
+      <body style={{ backgroundColor: '#0B151B', margin: 0, padding: 0 }}>{children}</body>
     </html>
   );
 }

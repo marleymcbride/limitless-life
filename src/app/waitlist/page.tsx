@@ -524,8 +524,10 @@ export default function Home() {
       {/* 3. Personal Story Section with embedded Intro (White background) */}
       <LazyPersonalStorySection onApplyNowClick={handleApplyNowClick} />
 
-      {/* Senja Testimonials 1 - Results Created */}
-      <LazySenjaTestimonials1 onApplyNowClick={handleApplyNowClick} />
+      {/* 13. More Client Testimonials (Dark background) - MOVED HERE */}
+      <div className="dark-section-with-grain">
+        <LazyMoreClientTestimonials onApplyNowClick={handleApplyNowClick} />
+      </div>
 
       {/* INTRO SECTION INSERTED HERE */}
       <LazyIntroSection onApplyNowClick={handleApplyNowClick} />
@@ -556,10 +558,8 @@ export default function Home() {
       {/* 6. Imagine This (Light background with white box) */}
       <LazyImagineThis onApplyNowClick={handleApplyNowClick} />
 
-      {/* 13. More Client Testimonials (Dark background)  */}
-      <div className="dark-section-with-grain">
-        <LazyMoreClientTestimonials onApplyNowClick={handleApplyNowClick} />
-      </div>
+      {/* Senja Testimonials 1 - Results Created - MOVED HERE */}
+      <LazySenjaTestimonials1 onApplyNowClick={handleApplyNowClick} />
 
       {/* 6.5. Client Transformation Gallery (Before/After photos)
       <LazyClientTransformationGallery /> */}

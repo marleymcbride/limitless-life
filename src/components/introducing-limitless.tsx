@@ -54,7 +54,7 @@ export default function IntroducingLimitless({ onApplyNowClick }: IntroducingLim
               </h2>
 
               <h2
-              className="text-3xl md:text-6xl font-bold text-black mx-10 my-6"
+              className="!text-black text-3xl md:text-6xl font-bold mx-10 my-6"
               style={{ fontFamily: "Inter, system-ui, sans-serif" }}
             >
                 The Limitless Protocol<sup style={{ fontSize: "0.4em", verticalAlign: "super" }}>™</sup>
@@ -111,7 +111,7 @@ export default function IntroducingLimitless({ onApplyNowClick }: IntroducingLim
               }}></div>
 
               <h2
-              className="font-bold text-black -mr-3 leading-tight relative z-10"
+              className="!text-black font-bold -mr-3 leading-tight relative z-10"
               style={{ fontFamily: "Inter, system-ui, sans-serif", fontSize: "3rem" }}
             >
                 The Limitless Protocol<sup style={{ fontSize: "0.4em", verticalAlign: "super" }}>™</sup>

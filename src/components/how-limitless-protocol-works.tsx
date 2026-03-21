@@ -13,7 +13,7 @@ export default function HowLimitlessProtocolWorks({ onApplyNowClick }: HowLimitl
     {
       number: 1,
       title: "Limitless Morning",
-      description: "A morning fuel system that designed to maximises your energy in the first 3 hours of your day. You will have lazer focus and smooth energy without caffeine or supplements, and eat MORE food in the morning unlike most methods. You'll feel fired up before you even leave the house."
+      description: "A morning fuel system designed to maximises your energy in the first 3 hours of your day. You will have lazer focus and smooth energy without caffeine or supplements, and eat MORE food in the morning unlike most methods. You'll feel fired up before you even leave the house."
     },
     {
       number: 2,
@@ -55,17 +55,17 @@ export default function HowLimitlessProtocolWorks({ onApplyNowClick }: HowLimitl
             {/* Vertical steps with red guide line */}
             <div className="relative">
               {/* Red vertical guide line - outside the cards on the left */}
-              <div className="absolute left-24 top-16 bottom-0 w-1 bg-[#940909] hidden md:block"></div>
+              <div className="absolute left-20 top-16 bottom-0 w-1 bg-[#940909] hidden md:block"></div>
 
               {/* Steps */}
-              <div className="flex flex-col items-stretch gap-8 md:items-stretch md:space-y-8 md:pl-24">
+              <div className="flex flex-col items-stretch mx-20 gap-8 md:items-stretch md:space-y-8 md:pl-24">
                 {systems.map((system, index) => (
                   <div
                     key={index}
                     className="bg-white px-12 md:px-12 lg:px-12 rounded-lg p-6 md:p-8 shadow-lg relative md:ml-24 min-h-[380px] flex flex-col mobile-box-width protocol-step-card"
                   >
                     {/* Number circle - positioned on the red line (outside card) - desktop only */}
-                    <div className="absolute -left-24 top-24 -translate-y-1/2 -translate-x-1/2 hidden md:block">
+                    <div className="absolute -left-20 pr-3 top-24 -translate-y-1/2 -translate-x-1/2 hidden md:block">
                       <div className="bg-black text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold relative z-10 border-2 border-gray-300 border-opacity-30">
                         {system.number}
                       </div>

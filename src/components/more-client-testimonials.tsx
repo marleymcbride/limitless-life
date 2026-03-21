@@ -11,12 +11,11 @@ export default function VideoTestimonialCTA({ onApplyNowClick }: VideoTestimonia
   const { pageType } = usePageType();
   const ctaText = pageType === 'waitlist' ? 'Join the waitlist' : 'Apply Now';
   return (
-    <section className="bg-white relative py-16 px-4 w-full z-10">
-      <div className="absolute bottom-0 left-0 w-full h-[33vh"></div>
-      <div className="container mx-auto max-w-5xl">
+    <section className="relative py-16 px-4 w-full z-10" style={{ background: 'linear-gradient(to bottom, #141414 0%, via: #181818 50% #4A4A4A 100%)' }}>
+      <div className="container mx-auto max-w-5xl relative z-10">
         <div className="text-center">
           <div className="max-w-md mx-auto mb-0">
-            <p className="text-base md:text-2xl lg:text-3xl max-w-md text-black font-normal">
+            <p className="text-base md:text-2xl pt-6 lg:text-3xl max-w-md text-grey-900 font-normal">
               &ldquo;It&apos;s working mate, lots of people in work talking about it&quot;
             </p>
           </div>
@@ -24,7 +23,7 @@ export default function VideoTestimonialCTA({ onApplyNowClick }: VideoTestimonia
           {/* Desktop version - fixed width */}
           <div className="relative rounded-lg overflow-hidden shadow-md mx-auto mt-6 mb-4 hidden md:block" style={{ width: "438px" }}>
             <SmoothImage
-              src="/images/Testimonials/Geoff - 3 month transformation.jpeg"
+              src="/images/Testimonials/Before vs afters/Geoff - before vs after NEW.png"
               alt="Client results"
               width={438}
               height={293}
@@ -35,7 +34,7 @@ export default function VideoTestimonialCTA({ onApplyNowClick }: VideoTestimonia
           {/* Mobile version - responsive */}
           <div className="relative rounded-lg overflow-hidden shadow-md w-full max-w-[90%] mx-auto mt-6 mb-4 block md:hidden">
             <SmoothImage
-              src="/images/Testimonials/Geoff - 3 month transformation.jpeg"
+              src="/images/Testimonials/Before vs afters/Geoff - before vs after NEW.png"
               alt="Client results"
               width={438}
               height={293}
@@ -43,12 +42,12 @@ export default function VideoTestimonialCTA({ onApplyNowClick }: VideoTestimonia
             />
           </div>
 
-          <div className="text-md md:text-xl lg:text-xl text-gray-600 mb-12">
+          <div className="text-md md:text-xl lg:text-xl text-gray-200 mb-12">
             Geoff, 3 months - Energy Sector
           </div>
 
-          <div className="max-w-lg -pl-4 mb-0">
-            <p className="text-base md:text-2xl lg:text-3xl max-w-md text-black font-normal">
+          <div className="max-w-lg pt-4 -pl-4 mb-0">
+            <p className="text-base md:text-2xl lg:text-3xl max-w-md text-grey-900 font-normal">
             &ldquo;I feel stronger, bigger and more confident thanks to Marley&apos;s mentorship, coaching and friendship.&ldquo;
             </p>
           </div>
@@ -75,7 +74,7 @@ export default function VideoTestimonialCTA({ onApplyNowClick }: VideoTestimonia
             />
           </div>
 
-          <div className="text-md md:text-xl lg:text-xl text-gray-600 mb-12">
+          <div className="text-md md:text-xl pb-2 lg:text-xl text-gray-200 mb-12">
             Laurence, 10 weeks - age 53
           </div>
 

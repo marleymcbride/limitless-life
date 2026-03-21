@@ -37,7 +37,7 @@ export default function IntakeOpenDoc() {
         <GammaHeader
           authorName="Marley McBride"
           authorAvatar="/images/Offer doc/F2C9OR3X0AIuRPS copy 2.jpeg"
-          lastUpdated="March 2025"
+          lastUpdated="March 2026"
         />
 
         <GammaBlockquote>

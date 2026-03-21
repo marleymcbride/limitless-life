@@ -24,7 +24,7 @@ const testimonials = [
   { image: "/images/Testimonials/Aaron testimonial - great energy.png" },
   { image: "/images/Testimonials/Geoff feeling great.jpeg" },
   { image: "/images/Testimonials/Matty down 19kg.jpeg" },
-  { image: "/images/Testimonials/Geoff - 3 month transformation.jpeg" },
+  { image: "/images/Testimonials/Before vs afters/Geoff - before vs after NEW.png" },
   { image: "/images/Testimonials/Luis down 6kg.jpg" }
 ];
 
@@ -39,7 +39,7 @@ const beforeAfterImages = [
   { image: "/images/Testimonials/Matty down 19kg.jpeg" },
   { image: "/images/Testimonials/Before vs afters/Matty - before vs after.jpeg" },
   { image: "/images/Testimonials/Laurence social proof.png" },
-  { image: "/images/Testimonials/Before vs afters/Geoff - before vs after.jpeg" },
+  { image: "/images/Testimonials/Before vs afters/Geoff - before vs after NEW.png" },
   { image: "/images/Testimonials/Luis social proof copy.png" },
   { image: "/images/Testimonials/Me/Physique transformation v4.jpg" },
   { image: "/images/Testimonials/Geoff - best shape ever been in.jpg" },

@@ -34,7 +34,7 @@ export default function VariantB() {
       </p>
 
       <p className="text-lg md:text-xl mb-6" style={{ color: '#111827', fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif', lineHeight: '1.728' }}>
-        <strong>Want to jump to the front of the line?</strong> Tell me what you&apos;re looking for (takes 2 minutes) and I&apos;ll prioritize your spot.
+        <strong>Want to jump to the front of the line?</strong> Tell me what you&apos;re looking for and I&apos;ll prioritize your spot.
       </p>
 
       <div className="my-8">

@@ -40,27 +40,28 @@ export default function VariantA() {
 
   return (
     <>
-    <div className="h-24"></div>
-      <div className="mx-24">
+    <div className="min-h-[200px]"></div>
+      <div className="mx-24 items-center -mt-24 pb-24">
           
-      <h1 className="text-4xl md:text-5xl font-bold mb-8 -ml-2 leading-tight" style={{ color: '#111827', fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif' }}>
+      <h1 className="text-4xl text-center md:text-5xl font-bold mb-8 -ml-2 leading-tight" style={{ color: '#FFFFFF', fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif' }}>
         Secure Your Spot Now
       </h1>
 
-      <p className="text-lg md:text-xl mb-6" style={{ color: '#111827', fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif', lineHeight: '1.728' }}>
-        One final step (takes 2 minutes) and I&apos;ll send you through to the full offer.
+      <p className="text-center text-lg md:text-xl mb-6" style={{ color: '#FFFFFF', fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif', lineHeight: '1.728' }}>
+        One final step and I&apos;ll send you through to the full offer.
       </p>
 
-      <div className="my-8">
+      <div className="flex justify-center my-8">
         <button
           onClick={handleOpenApplication}
-          className="px-8 py-4 text-white font-bold text-lg rounded-lg transition-colors"
+          className="px-8 py-4 max-h-[80px] text-white font-bold text-lg rounded-lg transition-colors"
           style={{ backgroundColor: '#851910' }}
           onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#6a140d'}
           onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#851910'}
         >
           Continue to the Offer →
         </button>
+        <div className="mb-24 pb-24 h-24"></div>
       </div>
 
       </div>

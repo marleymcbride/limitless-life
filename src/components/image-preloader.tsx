@@ -24,10 +24,10 @@ export function ImagePreloader({ images }: { images: string[] }) {
  */
 export const CRITICAL_TESTIMONIAL_IMAGES = [
   // Early testimonials - preload these
-  "/images/Testimonials/Geoff - 3 month transformation.jpeg",
+  "/images/Testimonials/Before vs afters/Geoff - before vs after NEW.png",
   "/images/Testimonials/Before vs afters/Laurence before vs after.png",
   "/images/Testimonials/Gav social proof - 10lbs in 8 weeks.png",
-  "/images/Testimonials/Matty down 19kg.jpeg",
+  "/images/Testimonials/Before vs afters/Matty new transformation2.png",
   "/images/Testimonials/Luis social proof.png",
   "/images/Testimonials/Lewis hits 168 feels great.png",
   "/images/Testimonials/Aaron testimonial - great energy.png",

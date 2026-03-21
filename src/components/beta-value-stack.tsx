@@ -71,12 +71,12 @@ export default function BetaValueStack({ ctaText = "Apply Now" }: BetaValueStack
           <div className="container mx-auto max-w-4xl relative z-30">
 
         <div className="text-center mb-12">
-          <h2
-            className="text-3xl md:text-4xl md:mx-24 lg:mx-24 lg:text-5xl font-bold text-white mb-18"
+          <div
+            className="text-3xl md:text-4xl md:mx-24 lg:mx-24 lg:text-5xl font-bold text-white mt-4 mb-20"
             style={{ fontFamily: "Neuemontreal, sans-serif", lineHeight: "1.1" }}
           >
             What You Get With The Beta Programme
-          </h2>
+          </div>
         </div>
 
         {/* Grid layout - 2 columns */}

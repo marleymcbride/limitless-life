@@ -28,7 +28,7 @@ export default function IntakeOpenDoc() {
           <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
             THE LIFESTYLE ATHLETE 90-DAY RESET
           </h1>
-          <p className="text-1.5lg italic text-gray-700 mb-4" style={{ fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif' }}>
+          <p className="text-1.5lg italic text-gray-300 mb-4" style={{ fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif' }}>
             Starting {COHORT_CONFIG.DATE_FULL}
           </p>
           <div className="w-1/6 mx-auto border-b border-gray-300"></div>
@@ -37,7 +37,7 @@ export default function IntakeOpenDoc() {
         <GammaHeader
           authorName="Marley McBride"
           authorAvatar="/images/Offer doc/F2C9OR3X0AIuRPS copy 2.jpeg"
-          lastUpdated="March 2025"
+          lastUpdated="March 2026"
         />
 
         <GammaBlockquote>
@@ -58,8 +58,8 @@ export default function IntakeOpenDoc() {
         </GammaBlockquote>
 
         <div className="" style={{ backgroundColor: '#204166' }}>
-          <p className="text-2xl md:text-3xl font-bold leading-relaxed mb-6 text-gray-100" style={{ fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif' }}>
-            I'm going to work with a handful of coaches to build a 7-figure Lifestyle Empire™ in 2026.
+          <p className="text-2xl md:text-2xl lg:text-2xl font-bold leading-relaxed mb-6 text-gray-100" style={{ fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif' }}>
+          I'm working with a small group of men who are ready to be reborn in 2026.
           </p>
         </div>
 
