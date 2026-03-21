@@ -15,7 +15,7 @@ export default function IntakeDocContent() {
     <>
 
 <GammaParagraph className="-mr-2">
-  <GammaMiniHeading className="pb-4 pt-2">The mission is simple:</GammaMiniHeading> Gain an <strong>extra 3 hours of unrelenting energy</strong> every day , training only 2 days per week (without relying on alcohol or stimulants to get by).
+  <GammaMiniHeading className="-mb-4 pt-2">The mission is simple:</GammaMiniHeading> <br /> <div className="mb-0 pt-0 md:mb-8 md:pt-2 lg:mb-8 lg:pt-2"> Gain an <strong>extra 3 hours of unrelenting energy</strong> every day , training only 2 days per week (without relying on alcohol or stimulants to get by).</div>
 </GammaParagraph>
 
       <GammaDivider />

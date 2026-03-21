@@ -2,7 +2,7 @@ import React from 'react';
 
 export function GammaParagraph({ children, className }: { children: React.ReactNode; className?: string }) {
   return (
-    <div className={`text-xl md:text-xl lg:text-xl mb-8 md:mb-6 lg:mb-6 text-gray-100 ${className || ''}`} style={{ fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif', lineHeight: '1.728' }}>
+    <div className={`text-xl md:text-xl lg:text-xl mb-6 md:mb-6 lg:mb-6 text-gray-100 ${className || ''}`} style={{ fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif', lineHeight: '1.728' }}>
       {children}
     </div>
   );

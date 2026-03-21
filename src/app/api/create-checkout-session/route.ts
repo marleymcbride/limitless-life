@@ -36,6 +36,7 @@ const tierPrices = {
   life: parseInt(process.env.PRICE_LIMITLESSLIFE || "259700"),
   'life-whatsapp': parseInt(process.env.PRICE_LIMITLESSLIFEWHATSAPP || "439700"),
   concierge: parseInt(process.env.PRICE_LIMITLESSHEALTHCONCIERGE || "689700"),
+  'beta-waitlist': 0, // Price is handled via Stripe Price ID
 };
 
 const tierNames = {
@@ -43,6 +44,7 @@ const tierNames = {
   life: "Limitless Life",
   'life-whatsapp': "Limitless Life + WhatsApp",
   concierge: "Limitless Health Concierge",
+  'beta-waitlist': "Beta Waitlist Deposit",
 };
 
 // Email validation helper
