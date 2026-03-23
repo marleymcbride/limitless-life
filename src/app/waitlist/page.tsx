@@ -213,13 +213,13 @@ export default function Home() {
               className="mobile-headline block px-1 mx-auto mt-4 mb-6 w-full font-bold text-center text-white sm:hidden capitalize -ml-0 -mr-0 text-[2.7rem] px-5"
               style={{ lineHeight: "1.125" }}
             >
-              Become the most energetic man In Every Room
+              Get 3 more hours of pure energy every day (training only 2 days a week)
             </h1>
             <div className="md:hidden lg:hidden block text-white text-center mb-0 mt-0 sm:mt-0 max-w-full mx-auto px-0 pb-8">
             <div
               className="md:hidden lg:hidden font-sans font-bold block text-2xl md:text-4xl  lg:text-4.5xl text-white text-center mb-0 mt-0 capitalize tracking-normal leading-[1]"
             >
-            (training just 2 days a week)
+            (training only 2 days a week)
             </div>
             </div>
 
@@ -227,8 +227,15 @@ export default function Home() {
             <p
               className="mobile-subheadline block mx-auto mb-4 font-light text-center text-gray-300 sm:hidden px-0 text-[1.33rem] leading-[1.28] w-[95%]"
             >
-             A 90-day reset to lose the gut and stop feeling tired using The Lifestyle Athlete™ protocol so you can be full of life without alcohol or stimulants and become the man your family deserves.
+             A 90-day reset to fix your health, body and mind using The Lifestyle Athlete™ protocol, so you can become the <strong>high energy man</strong> your family deserves.
             </p>
+
+            {/* Mobile Subheadline old - RIGHT AFTER HEADLINE (visible only on mobile)
+            <p
+              className="mobile-subheadline block mx-auto mb-4 font-light text-center text-gray-300 sm:hidden px-0 text-[1.33rem] leading-[1.28] w-[95%]"
+            >
+             A 90-day reset to lose the gut and stop feeling tired using The Lifestyle Athlete™ protocol so you can be full of life without alcohol or stimulants and become the man your family deserves.
+            </p>  */}
 
             {/* Spacer div to push headline down */}
             <div className="hidden h-4"></div>
