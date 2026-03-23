@@ -33,7 +33,7 @@ export default function ImagineThis({ onApplyNowClick }: ImagineThisProps) {
             `}</style>
             <div className="prose prose-lg max-w-none mobile-text-large body-copy imaginethis-mobile-text" style={{ fontSize: "1.04rem" }}>
               <h2black
-                className="imaginethis-heading text-6xl md:text-6xl font-bold pt-4 pb-5 md:pt-8 mb-6 md:mb-8 text-gray-900 leading-tight mt-2"
+                className="imaginethis-heading text-6xl md:text-6xl mt-6 md:mt-2 lg:mt-2 font-bold pb-5 md:pt-0 lg:pt-0 mb-6 md:mb-12 lg:mb-12 text-gray-900 leading-tight"
                 style={{ fontFamily: "Neuemontreal, sans-serif" }}
               >
                 Imagine this

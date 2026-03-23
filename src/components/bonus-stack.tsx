@@ -80,10 +80,10 @@ export default function BonusStack({ onApplyNowClick }: BonusStackProps) {
                 Not even close.
               </p>
               <p className="text-2xl text-gray-300 mt-6">
-                These are the <span className="font-bold">exact systems</span> that got guys off alcohol for 3+ years. The morning protocol that has high-performers waking up with more energy than they had at 25. The training that builds more muscle in 2 days than most guys get in 6.
+                These are the <span className="font-bold">exact systems</span> that got guys off alcohol for 3+ years. The morning protocol that has high-performers waking up with more energy than they had at 25. The training that builds more muscle in 2 days a week than most achieve in 6.
               </p>
               <p className="text-2xl text-gray-300 mt-6">
-                These aren&apos;t throw-ins. <span className="font-bold">These are the secrets that actually make everything work.</span>
+                These aren&apos;t throw-ins. <span className="">This is my 12 years of research, experience & industry secrets, handed to you.</span>
               </p>
               <div className="text-center mt-12">
                 <button
@@ -134,7 +134,7 @@ export default function BonusStack({ onApplyNowClick }: BonusStackProps) {
                 onClick={onApplyNowClick}
                 className="font-bold !text-white transition-none duration-0 focus:outline-none bg-[#940909] hover:bg-[#7b0707] py-4 px-12 text-lg rounded-md inline-block relative z-30"
               >
-                Apply Now
+                Join now
               </button>
             </div>
 

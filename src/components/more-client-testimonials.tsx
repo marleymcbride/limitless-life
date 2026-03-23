@@ -11,7 +11,7 @@ export default function VideoTestimonialCTA({ onApplyNowClick }: VideoTestimonia
   const { pageType } = usePageType();
   const ctaText = pageType === 'waitlist' ? 'Join the waitlist' : 'Apply Now';
   return (
-    <section className="relative py-16 px-4 w-full z-10" style={{ background: 'linear-gradient(to bottom, #141414 0%, via: #181818 50% #4A4A4A 100%)' }}>
+    <section className="relative py-16 px-4 w-full z-10" style={{ background: '#000000' }}>
       <div className="container mx-auto max-w-5xl relative z-10">
         <div className="text-center">
           <div className="max-w-md mx-auto mb-0">

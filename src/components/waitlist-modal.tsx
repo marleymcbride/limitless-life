@@ -98,10 +98,10 @@ export default function WaitlistModal({
 
       setFormData({ firstName: '', email: '' });
 
-      // Wait 2 seconds then close modal and redirect to application prep page
+      // Wait 2 seconds then close modal and redirect to thank you page (Variant A)
       setTimeout(() => {
         onClose();
-        window.location.href = `/application-prep-waitlist-version?${params.toString()}`;
+        window.location.href = `/waitlist-thank-you?${params.toString()}`;
       }, 2000);
     } catch {
       setSubmitResult({

@@ -39,17 +39,17 @@ export default function WaitlistThankYouPage({
   searchParams: Promise<{ variant?: string }>;
 }) {
   return (
-    <>
+    <div className="flex flex-col min-h-screen" style={{ backgroundColor: '#000000' }}>
       <Suspense fallback={<div>Loading...</div>}>
         <WaitlistThankYouPageContent searchParams={searchParams} />
       </Suspense>
 
       {/* Footer - outside everything on dark background */}
-      <div className="text-center py-8" style={{ backgroundColor: '#0B151B' }}>
-        <p className="text-sm font-medium text-gray-600" style={{ fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif' }}>
+      <div className="mt-auto text-center py-8" style={{ backgroundColor: '#000000' }}>
+        <div className="text-sm md:text-sm lg:text-sm font-medium text-gray-600" style={{ fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif' }}>
           © EVLV Fitness LLC {new Date().getFullYear()}
-        </p>
+        </div>
       </div>
-    </>
+    </div>
   );
 }

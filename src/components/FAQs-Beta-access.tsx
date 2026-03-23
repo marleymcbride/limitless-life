@@ -77,12 +77,12 @@ export default function FinalFAQsV2() {
           <div className="container mx-auto max-w-5xl relative z-30">
 
         <div className="text-center mb-12">
-          <h2
+          <h2white
             className="text-4xl md:text-5xl lg:text-5xl font-bold text-white mb-0"
             style={{ fontFamily: "Neuemontreal, sans-serif", lineHeight: "1.1" }}
           >
             FAQs
-          </h2>
+          </h2white>
         </div>
 
         <div className="mb-12 mx-auto px-4" style={{ maxWidth: "750px" }} ref={accordionRef}>
@@ -104,12 +104,12 @@ export default function FinalFAQsV2() {
                 value={`item-${index}`}
                 style={{ scrollMarginTop: "100px" }}
               >
-                <AccordionTrigger className="hover:no-underline py-2 text-gray-900 [&[data-state=open]>svg]:rotate-180">
+                <AccordionTrigger className="hover:no-underline py-2 text-white [&[data-state=open]>svg]:rotate-180">
                   <span className="text-2xl font-medium" style={{ fontFamily: "Neuemontreal, sans-serif" }}>
                     {faq.question}
                   </span>
                 </AccordionTrigger>
-                <AccordionContent className="text-gray-900 leading-relaxed pb-4 text-lg pl-8">
+                <AccordionContent className="text-gray-300 leading-relaxed pb-4 text-lg pl-8">
                   <div
                     className="animate-faq-slide space-y-3"
                     style={{

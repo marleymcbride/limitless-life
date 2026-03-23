@@ -57,13 +57,13 @@ export default function WaitlistDepositCTA() {
           onClick={handleDeposit}
           className="text-blue-400 font-bold underline hover:text-blue-300 cursor-pointer"
         >
-          Click here to complete your<br />waitlist application
+          Click here to complete your<br /> application
         </a>
       </span>
 
       {/* Desktop version */}
       <GammaCTA href="javascript:void(0)" onClick={handleDeposit} className="hidden md:inline-block lg:inline-block">
-        Click here to complete your waitlist application
+        Click here to complete your application
       </GammaCTA>
     </>
   );

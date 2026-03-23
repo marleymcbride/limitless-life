@@ -140,7 +140,7 @@ export default function Home() {
 
   return (
     <PageProvider pageType="waitlist">
-      <main className="flex flex-col min-h-screen">
+      <main className="flex flex-col min-h-screen" style={{ backgroundColor: '#050A0F' }}>
         {/* Limited Spots Banner */}
         <WaitlistBanner />
 
@@ -240,14 +240,16 @@ export default function Home() {
             <h1
               className="hidden font-sans md:-mx-4 lg:-mx-4 font-bold sm:block text-5xl sm:text-5xl md:text-4xl  lg:text-5xl text-white text-center mb-0 mt-0 sm:mt-0 capitalize tracking-normal leading-[0]"
             >
-            Become the most energetic man In Every Room
+            Get 3 more hours of pure energy every day (training only 2 days a week)
             </h1>
             <div className="hidden sm:block text-white text-center mb-0 mt-0 sm:mt-0 max-w-full mx-auto px-0">
+            
+            {/* Spacer div to push subtitle down
             <h1
               className="hidden font-sans font-bold sm:block text-5xl sm:text-5xl md:text-4xl  lg:text-4.5xl text-white text-center mb-0 mt-0 sm:mt-0 capitalize tracking-normal leading-[1]"
             >
             (training just 2 days a week)
-            </h1>
+            </h1> */}
             </div>
             </div>
             </div>
@@ -260,7 +262,7 @@ export default function Home() {
             <p
               className="hidden mb-4 py-4 text-xl text-center text-gray-300 sm:block sm:text-xl md:text-lg lg:text-2xl max-w-full"
               >
-              A 90-day reset to lose your gut, get off alcohol and stop feeling tired using The Lifestyle Athlete™ protocol so you become the man your family deserves:
+              A 90-day reset to fix your health, body and mind using The Lifestyle Athlete™ protocol, so you can become the <strong>high energy man</strong> your family deserves.
             </p>
             </div>
           </div>
@@ -625,20 +627,23 @@ export default function Home() {
         <BetaFAQs />
       </div>
 
-            {/* Beta Opportunity Section */}
+
+      {/* Beta sections */}
+
+        {/* Beta Opportunity Section */}
             <div className="bg-white">
               <BetaOpportunity ctaText="Join Now" />
             </div>
 
-            {/* Beta Pricing Section */}
+        {/* Beta Pricing Section 
             <div className="dark-section-with-grain">
               <BetaPricing ctaText="Join Now" />
-            </div>
+            </div> */}
 
-            {/* Beta Value Stack Section */}
+        {/* Beta Value Stack Section 
             <div className="bg-white">
               <BetaValueStack ctaText="Join Now" />
-            </div>
+            </div> */}
 
       {/* Testimonial 4 (White background) */}
       <LazyTestimonialsFinal onApplyNowClick={handleApplyNowClick} number={4} />
@@ -649,6 +654,26 @@ export default function Home() {
       {/* Testimonial 6 (White background) */}
       <LazyTestimonialsFinal onApplyNowClick={handleApplyNowClick} number={6} />
 
+      {/* Senja Testimonials Embed */}
+      <section className="bg-white py-16">
+      <div className="hidden md:block mx-auto " style={{ maxHeight: '180px', maxWidth: '400px' , overflow: 'hidden' }}>
+          <div
+            className="senja-embed"
+            data-id="fd8cc308-5ecf-4509-abb6-1de51c2842b9"
+            data-mode="shadow"
+            data-lazyload="false"
+            style={{ display: 'block', width: '100%' }}
+          ></div>
+        </div>
+      </section>
+
+      {/* Senja Widget Script */}
+      <Script
+        src="https://widget.senja.io/widget/fd8cc308-5ecf-4509-abb6-1de51c2842b9/platform.js"
+        strategy="afterInteractive"
+        async
+      />
+
       {/* Testimonial 7 (White background) */}
       <LazyTestimonialsFinal onApplyNowClick={handleApplyNowClick} number={7} />
 
@@ -657,6 +682,26 @@ export default function Home() {
 
       {/* Testimonial 9 (White background) */}
       <LazyTestimonialsFinal onApplyNowClick={handleApplyNowClick} number={9} />
+
+      {/* Senja Testimonials Embed */}
+      <section className="bg-white py-16">
+      <div className="hidden md:block mx-auto " style={{ maxHeight: '180px', maxWidth: '400px' , overflow: 'hidden' }}>
+          <div
+            className="senja-embed"
+            data-id="885410f8-1537-4917-906a-cc7e2028c592"
+            data-mode="shadow"
+            data-lazyload="false"
+            style={{ display: 'block', width: '100%' }}
+          ></div>
+        </div>
+      </section>
+
+      {/* Senja Widget Script */}
+      <Script
+        src="https://widget.senja.io/widget/885410f8-1537-4917-906a-cc7e2028c592/platform.js"
+        strategy="afterInteractive"
+        async
+      />
 
       {/* Testimonial 10 (White background) */}
       <LazyTestimonialsFinal onApplyNowClick={handleApplyNowClick} number={10} />
@@ -667,12 +712,12 @@ export default function Home() {
       {/* Testimonial 12 (White background) */}
       <LazyTestimonialsFinal onApplyNowClick={handleApplyNowClick} number={12} />
 
-      {/* Senja Testimonials Embed */}
-      <section className="bg-white py-16">
-        <div className="max-w-4xl mx-auto px-4">
+         {/* Senja Testimonials Embed */}
+         <section className="bg-white py-16">
+         <div className="hidden md:block mx-auto " style={{ maxHeight: '180px', maxWidth: '400px' , overflow: 'hidden' }}>
           <div
             className="senja-embed"
-            data-id="f8eb0d9c-a489-4ea7-bf96-c89dd2a7c22f"
+            data-id="472804b8-1b87-435d-ab8a-d43b244ddf75"
             data-mode="shadow"
             data-lazyload="false"
             style={{ display: 'block', width: '100%' }}
@@ -682,10 +727,12 @@ export default function Home() {
 
       {/* Senja Widget Script */}
       <Script
-        src="https://widget.senja.io/widget/f8eb0d9c-a489-4ea7-bf96-c89dd2a7c22f/platform.js"
+        src="https://widget.senja.io/widget/472804b8-1b87-435d-ab8a-d43b244ddf75/platform.js"
         strategy="afterInteractive"
         async
       />
+
+
 
 
       {/* 8. Process Explanation (Black background) */}

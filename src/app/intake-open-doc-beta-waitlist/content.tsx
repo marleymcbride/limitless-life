@@ -163,7 +163,7 @@ export default function IntakeDocContent() {
         <strong>Phase 1: The Foundations (Wk 1-4)</strong>
       </GammaParagraph>
 
-      <GammaParagraph>
+      <GammaParagraph className="-mt-12">
         Every man's situation is different, so we run <strong>The Bottleneck Test</strong> to identify your single biggest constraint. From here, you get your custom <strong>Rest-Focused Training</strong> and <strong>Metabolic Priming</strong> gameplan, so you can eat more while burning fat, see your gut flattening, and sleep improving.
       </GammaParagraph>
 
@@ -171,7 +171,7 @@ export default function IntakeDocContent() {
         <strong>Phase 2: Energy (Wk 5-8)</strong>
       </GammaParagraph>
 
-      <GammaParagraph>
+      <GammaParagraph className="-mt-12">
         Now we shift focus to your lifestyle. We bring in <strong>The Limitless Morning</strong> and <strong>Metabolic Priming Protocol</strong>, to heal your body and build your Unlimited Energy Flywheel. Your energy is rising every day, visible muscle is developing, and less stress means you stop feeling the tie for booze.
       </GammaParagraph>
 
@@ -179,7 +179,7 @@ export default function IntakeDocContent() {
         <strong>Phase 3: Limitless (Wk 9-12)</strong>
       </GammaParagraph>
 
-      <GammaParagraph>
+      <GammaParagraph className="-mt-12">
         Finally, with the natural flow system and our signature <strong>Anti-Stack</strong> method, you reach REAL energy without caffeine / supplements. What to expect: morning wood back, drive you haven't seen in years, and most importantly a peaceful state of mind. Oh yeah… and a SHREDDED physique.
       </GammaParagraph>
 

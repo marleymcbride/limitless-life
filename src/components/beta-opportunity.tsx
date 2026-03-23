@@ -9,45 +9,36 @@ export default function BetaOpportunity({ ctaText = "Apply Now" }: BetaOpportuni
         <section className="py-16 px-4 w-full relative overflow-hidden">
           <div className="container mx-auto max-w-5xl relative z-30">
 
-        <div className="text-center mb-12">
-          <h2
-            className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4"
+        <div className="text-center mx-auto md:mx-24 lg:mx-24 mb-12">
+          <h2white
+            className="text-3xl mx-auto md:mx-24 lg:mx-24 md:text-4xl lg:text-5xl font-bold text-white mb-4"
             style={{ fontFamily: "Neuemontreal, sans-serif", lineHeight: "1.1" }}
           >
-            Beta Access
-          </h2>
+            What is The Lifestyle Athlete Beta Cohort?
+          </h2white>
         </div>
 
         <div className="prose prose-lg max-w-none mobile-text-large body-copy" style={{ fontSize: "1.3rem" }}>
 
-          <p className="text-gray-900 leading-relaxed mb-6">
-            The Limitless Protocol is updated for 2026.
+          <p className="text-gray-200 leading-relaxed mb-6">
+            I've been quietly carfefully crafting and redesigining The Limitless Protocol for 2026.
           </p>
 
-          <p className="text-gray-900 leading-relaxed mb-6">
-            All the systems work. The framework is dialed in. The results are consistent.
+          <p className="text-gray-200 leading-relaxed mb-6">
+            This is my most impactful programme to date, and i can't wait to see the results over the next 1-2 years.
           </p>
 
-          <p className="text-gray-900 leading-relaxed mb-6">
-            Before I release this publicly, I'm opening 10 spots at a reduced rate.
+          <p className="text-gray-200 leading-relaxed mb-6">
+            But before I release it publicly, I'm opening 10 spots at a reduced rate to get live feedback and help me improve it.
           </p>
 
-          <p className="text-gray-900 leading-relaxed mb-6">
-            Why?
+          <p className="text-gray-200 leading-relaxed mb-6">
+            The 10 selected beta testers will get the full Limitless experience for a fraction of the full cost, with all my time and effort dedicated to you.
           </p>
 
-          <p className="text-gray-900 leading-relaxed mb-6">
-            Your feedback helps me refine the final release. That's the whole thing.
+          <p className="text-gray-200 leading-relaxed mb-6">
+          So if you're serious about getting up to 30 hours of unrelenting energy per week, join the waitlist now.
           </p>
-
-          <p className="text-gray-900 leading-relaxed mb-6">
-            You get the complete 90-day transformation. All the systems. All the coaching. All the support.
-          </p>
-
-          <p className="text-gray-900 leading-relaxed mb-6">
-            Same program. Lower price. Limited to 10 spots.
-          </p>
-
         </div>
 
         {/* CTA Button */}
