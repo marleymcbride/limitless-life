@@ -27,6 +27,9 @@ export interface Session {
 // In production, you'd want to use a database like Redis or PostgreSQL
 const sessionStore = new Map<string, Session>();
 
+// Track pending session creation requests to prevent race conditions
+const pendingSessionCreations = new Map<string, Promise<Session>>();
+
 function generateSessionId(): string {
   // Generate a proper UUID v4
   return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
@@ -84,49 +87,72 @@ export async function getOrCreateSession(
     }
   }
 
-  // Create new session
-  const sessionId = generateSessionId();
-  const newSession: Session = {
-    id: sessionId,
-    userId: null,
-    createdAt: new Date(),
-    data,
-  };
+  // Create a unique key for this request based on IP + user agent (to detect duplicate simultaneous requests)
+  const requestKey = `${data.ipAddress || 'unknown'}-${data.deviceType || 'unknown'}-${data.utmCampaign || 'none'}`;
 
-  // Store session
-  sessionStore.set(sessionId, newSession);
-
-  console.log('[SESSION] Created new session:', sessionId);
-
-  // Persist session to database
-  try {
-    const insertData = {
-      id: sessionId,
-      utmSource: data.utmSource || null,
-      utmMedium: data.utmMedium || null,
-      utmCampaign: data.utmCampaign || null,
-      utmContent: data.utmContent || null,
-      utmTerm: data.utmTerm || null,
-      referrer: data.referrer || null,
-      deviceType: data.deviceType || null,
-      browser: data.browser || null,
-      ipAddress: data.ipAddress || null,
-      countryCode: data.countryCode || null,
-      firstSeen: new Date(),
-      lastSeen: new Date(),
-    };
-
-    console.log('[SESSION DB] Inserting session with data:', JSON.stringify(insertData, null, 2));
-
-    await db.insert(sessions).values(insertData);
-
-    console.log('[SESSION DB] Persisted session to database:', sessionId);
-  } catch (error) {
-    console.error('[SESSION DB] Failed to persist session:', error);
-    // Continue anyway - session still exists in memory
+  // Check if there's already a pending session creation for this request
+  const pendingCreation = pendingSessionCreations.get(requestKey);
+  if (pendingCreation) {
+    console.log('[SESSION] Waiting for existing session creation:', requestKey);
+    return pendingCreation;
   }
 
-  return newSession;
+  // Create the session creation promise
+  const sessionCreationPromise = (async () => {
+    // Create new session
+    const sessionId = generateSessionId();
+    const newSession: Session = {
+      id: sessionId,
+      userId: null,
+      createdAt: new Date(),
+      data,
+    };
+
+    // Store session
+    sessionStore.set(sessionId, newSession);
+
+    console.log('[SESSION] Created new session:', sessionId);
+
+    // Persist session to database
+    try {
+      const insertData = {
+        id: sessionId,
+        utmSource: data.utmSource || null,
+        utmMedium: data.utmMedium || null,
+        utmCampaign: data.utmCampaign || null,
+        utmContent: data.utmContent || null,
+        utmTerm: data.utmTerm || null,
+        referrer: data.referrer || null,
+        deviceType: data.deviceType || null,
+        browser: data.browser || null,
+        ipAddress: data.ipAddress || null,
+        countryCode: data.countryCode || null,
+        firstSeen: new Date(),
+        lastSeen: new Date(),
+      };
+
+      console.log('[SESSION DB] Inserting session with data:', JSON.stringify(insertData, null, 2));
+
+      await db.insert(sessions).values(insertData);
+
+      console.log('[SESSION DB] Persisted session to database:', sessionId);
+    } catch (error) {
+      console.error('[SESSION DB] Failed to persist session:', error);
+      // Continue anyway - session still exists in memory
+    }
+
+    // Clean up pending map after creation
+    setTimeout(() => {
+      pendingSessionCreations.delete(requestKey);
+    }, 1000); // Remove after 1 second to allow other simultaneous requests to complete
+
+    return newSession;
+  })();
+
+  // Store the promise so other simultaneous requests can wait for it
+  pendingSessionCreations.set(requestKey, sessionCreationPromise);
+
+  return sessionCreationPromise;
 }
 
 export function getSession(sessionId: string): Session | undefined {
