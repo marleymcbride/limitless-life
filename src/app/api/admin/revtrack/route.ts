@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { fetchCampaigns } from '@/lib/airtable';
 import { env } from '@/env.mjs';
+import { db } from '@/lib/db';
+import { sessions } from '@/db/schema';
 
 /**
  * Campaign record with calculated metrics
@@ -39,13 +41,33 @@ export async function GET(request: NextRequest): Promise<NextResponse<{ campaign
     // Fetch campaigns from Airtable
     const campaigns = await fetchCampaigns();
 
-    // Calculate revenuePerView for each campaign
-    const campaignsWithMetrics: CampaignWithMetrics[] = campaigns.map((campaign) => ({
-      ...campaign,
-      revenuePerView: campaign.views > 0
-        ? campaign.revenue / campaign.views
-        : 0,
-    }));
+    // Query database for session counts by campaign
+    const sessionCounts = await db.execute(`
+      SELECT
+        COALESCE(utm_campaign, 'unknown') as campaign,
+        COUNT(*) as total_sessions
+      FROM sessions
+      GROUP BY utm_campaign
+    `);
+
+    // Create map of campaign -> session count
+    const sessionCountMap = new Map(
+      sessionCounts.rows.map((row: any) => [row.campaign, parseInt(row.total_sessions)])
+    );
+
+    console.log('[REVTRACK] Session counts from DB:', Object.fromEntries(sessionCountMap));
+
+    // Update campaigns with actual database data
+    const campaignsWithMetrics: CampaignWithMetrics[] = campaigns.map((campaign) => {
+      const views = sessionCountMap.get(campaign.utmCampaign) || 0;
+
+      return {
+        ...campaign,
+        views,
+        clicks: views, // For now, clicks = views (every page view is a click)
+        revenuePerView: views > 0 ? campaign.revenue / views : 0,
+      };
+    });
 
     return NextResponse.json({
       campaigns: campaignsWithMetrics,
