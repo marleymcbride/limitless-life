@@ -2,6 +2,8 @@ import { cookies } from 'next/headers';
 import { db } from '@/lib/db';
 import { sessions } from '@/db/schema';
 import { eq, desc } from 'drizzle-orm';
+import { airtable } from '@/lib/airtable';
+import { fetchCampaigns } from '@/lib/airtable';
 
 export interface SessionData {
   utmSource?: string;
@@ -179,6 +181,34 @@ export async function getOrCreateSession(
       await db.insert(sessions).values(insertData);
 
       console.log('[SESSION DB] Persisted session to database:', sessionId);
+
+      // Update Airtable click count in real-time
+      if (data.utmCampaign) {
+        try {
+          console.log('[SESSION AIRTABLE] Fetching campaigns to find match for:', data.utmCampaign);
+          const campaigns = await fetchCampaigns();
+          const matchingCampaign = campaigns.find(c => c.utmCampaign === data.utmCampaign);
+
+          if (matchingCampaign) {
+            // Get current total sessions for this campaign
+            const sessionCountResult = await db.execute(`
+              SELECT COUNT(*) as total_sessions
+              FROM sessions
+              WHERE utm_campaign = '${data.utmCampaign}'
+            `);
+            const totalSessions = parseInt(sessionCountResult?.rows?.[0]?.total_sessions || sessionCountResult?.[0]?.total_sessions || '0');
+
+            console.log(`[SESSION AIRTABLE] Updating campaign ${matchingCampaign.name} (${data.utmCampaign}) with ${totalSessions} clicks`);
+            await airtable.campaigns.updateMetrics(matchingCampaign.id, { clicks: totalSessions });
+            console.log('[SESSION AIRTABLE] Successfully updated Airtable');
+          } else {
+            console.log('[SESSION AIRTABLE] No matching campaign found for:', data.utmCampaign);
+          }
+        } catch (error) {
+          console.error('[SESSION AIRTABLE] Failed to update Airtable:', error);
+          // Don't fail the session creation if Airtable update fails
+        }
+      }
     } catch (error) {
       console.error('[SESSION DB] Failed to persist session:', error);
       // Continue anyway - session still exists in memory
