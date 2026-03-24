@@ -43,7 +43,7 @@ export default function VideoTestimonialCTA({ onApplyNowClick }: VideoTestimonia
           </div>
 
           <div className="text-md md:text-xl lg:text-xl text-gray-200 mb-12">
-            Geoff, 3 months - Energy Sector
+            Geoff, 4 months - Energy Sector
           </div>
 
           <div className="max-w-lg pt-4 -pl-4 mb-0">
