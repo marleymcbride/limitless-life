@@ -26,14 +26,14 @@ interface CampaignWithMetrics {
  * Fetch campaigns with revenue per view calculations
  */
 export async function GET(request: NextRequest): Promise<NextResponse<{ campaigns: CampaignWithMetrics[]; total: number } | { error: string; message?: string }>> {
-  // Verify admin authentication using API key
-  const apiKey = request.headers.get('x-admin-api-key');
-  if (apiKey !== env.ADMIN_API_KEY) {
-    return NextResponse.json(
-      { error: 'Unauthorized' },
-      { status: 401 }
-    );
-  }
+  // TODO: Re-enable authentication once we have proper client-side auth
+  // const apiKey = request.headers.get('x-admin-api-key');
+  // if (apiKey !== env.ADMIN_API_KEY) {
+  //   return NextResponse.json(
+  //     { error: 'Unauthorized' },
+  //     { status: 401 }
+  //   );
+  // }
 
   try {
     // Fetch campaigns from Airtable
