@@ -42,7 +42,7 @@ export async function GET(request: NextRequest): Promise<NextResponse<{ campaign
     const campaigns = await fetchCampaigns();
 
     // Query database for session counts by campaign
-    const sessionCounts = await db.execute(`
+    const result = await db.execute(`
       SELECT
         COALESCE(utm_campaign, 'unknown') as campaign,
         COUNT(*) as total_sessions
@@ -50,9 +50,12 @@ export async function GET(request: NextRequest): Promise<NextResponse<{ campaign
       GROUP BY utm_campaign
     `);
 
+    console.log('[REVTRACK] Raw DB result:', JSON.stringify(result, null, 2));
+
     // Create map of campaign -> session count
+    const rows = result?.rows || result;
     const sessionCountMap = new Map(
-      sessionCounts.rows.map((row: any) => [row.campaign, parseInt(row.total_sessions)])
+      rows.map((row: any) => [row.campaign, parseInt(row.total_sessions)])
     );
 
     console.log('[REVTRACK] Session counts from DB:', Object.fromEntries(sessionCountMap));
