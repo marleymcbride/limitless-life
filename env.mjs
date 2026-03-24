@@ -13,7 +13,6 @@ export const env = createEnv({
   },
   client: {
     NEXT_PUBLIC_APP_URL: z.string().url(),
-    NEXT_PUBLIC_ADMIN_API_KEY: z.string().min(1),
   },
   runtimeEnv: {
     DATABASE_URL: process.env.DATABASE_URL,
@@ -24,7 +23,6 @@ export const env = createEnv({
     ADMIN_API_KEY: process.env.ADMIN_API_KEY,
     NODE_ENV: process.env.NODE_ENV,
     NEXT_PUBLIC_APP_URL: process.env.NEXT_PUBLIC_APP_URL,
-    NEXT_PUBLIC_ADMIN_API_KEY: process.env.NEXT_PUBLIC_ADMIN_API_KEY,
   },
   skipValidation: !!process.env.SKIP_ENV_VALIDATION,
 });

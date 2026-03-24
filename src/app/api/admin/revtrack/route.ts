@@ -1,9 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { fetchCampaigns } from '@/lib/airtable';
 import { env } from '@/env.mjs';
-import { db } from '@/lib/db';
-import { sessions, campaignMetrics } from '@/db/schema';
-import { eq } from 'drizzle-orm';
 
 /**
  * Campaign record with calculated metrics
@@ -39,57 +36,20 @@ export async function GET(request: NextRequest): Promise<NextResponse<{ campaign
   }
 
   try {
-    console.log('[REVTRACK] Fetching campaigns from Airtable...');
-
     // Fetch campaigns from Airtable
     const campaigns = await fetchCampaigns();
 
-    console.log('[REVTRACK] Campaigns fetched:', campaigns?.length, 'campaigns');
-
-    if (!campaigns || !Array.isArray(campaigns)) {
-      console.error('[REVTRACK] Invalid campaigns response:', campaigns);
-      throw new Error('Failed to fetch campaigns from Airtable');
-    }
-
-    // Query database for session counts by campaign
-    const sessionCounts = await db.execute(`
-      SELECT
-        COALESCE(utm_campaign, 'unknown') as campaign,
-        COUNT(*) as total_sessions
-      FROM sessions
-      GROUP BY utm_campaign
-    `);
-
-    // Create map of campaign -> session count
-    const sessionCountMap = new Map(
-      sessionCounts.rows.map((row: any) => [row.campaign, parseInt(row.total_sessions)])
-    );
-
-    // Update campaigns with actual database data
-    const campaignsWithRealMetrics = await Promise.all(
-      campaigns.map(async (campaign) => {
-        const views = sessionCountMap.get(campaign.utmCampaign) || 0;
-
-        // Get clicks from campaign_metrics table
-        const metrics = await db.query.campaignMetrics.findFirst({
-          where: eq(campaignMetrics.campaignId, campaign.id)
-        });
-
-        return {
-          ...campaign,
-          views,
-          clicks: metrics?.clicks || 0,
-          emails: metrics?.emails || 0,
-          sales: metrics?.sales || 0,
-          revenue: metrics?.revenue || 0,
-          revenuePerView: views > 0 ? (metrics?.revenue || 0) / views : 0,
-        };
-      })
-    );
+    // Calculate revenuePerView for each campaign
+    const campaignsWithMetrics: CampaignWithMetrics[] = campaigns.map((campaign) => ({
+      ...campaign,
+      revenuePerView: campaign.views > 0
+        ? campaign.revenue / campaign.views
+        : 0,
+    }));
 
     return NextResponse.json({
-      campaigns: campaignsWithRealMetrics,
-      total: campaignsWithRealMetrics.length,
+      campaigns: campaignsWithMetrics,
+      total: campaignsWithMetrics.length,
     });
   } catch (error) {
     console.error('Error fetching revtrack data:', error);
