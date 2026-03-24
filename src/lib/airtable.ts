@@ -357,7 +357,7 @@ export const airtable = {
         if (metrics.revenue !== undefined) fields.revenue = metrics.revenue;
 
         console.log('[Airtable] Updating campaign metrics:', { id, fields });
-        await getBase()(campaignsTableId).update(id, { fields });
+        await getBase()(campaignsTableId).update(id, fields);
         console.log('[Airtable] Successfully updated campaign metrics');
       } catch (error) {
         console.error('Airtable update campaign metrics error:', error);
