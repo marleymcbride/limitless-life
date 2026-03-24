@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { env } from '@/env.mjs';
+import { adminConfig } from '@/config/admin';
 
 interface CampaignData {
   id: string;
@@ -88,7 +88,7 @@ export function RevtrackDashboard() {
     try {
       const response = await fetch('/api/admin/revtrack', {
         headers: {
-          'x-admin-api-key': env.NEXT_PUBLIC_ADMIN_API_KEY,
+          'x-admin-api-key': adminConfig.apiKey,
         },
       });
 
