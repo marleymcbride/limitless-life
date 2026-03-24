@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { fetchCampaigns } from '@/lib/airtable';
+import { fetchCampaigns, airtable } from '@/lib/airtable';
 import { env } from '@/env.mjs';
 import { db } from '@/lib/db';
 import { sessions } from '@/db/schema';
@@ -60,17 +60,30 @@ export async function GET(request: NextRequest): Promise<NextResponse<{ campaign
 
     console.log('[REVTRACK] Session counts from DB:', Object.fromEntries(sessionCountMap));
 
-    // Update campaigns with actual database data
-    const campaignsWithMetrics: CampaignWithMetrics[] = campaigns.map((campaign) => {
-      const views = sessionCountMap.get(campaign.utmCampaign) || 0;
+    // Update campaigns with actual database data AND sync to Airtable
+    const campaignsWithMetrics: CampaignWithMetrics[] = await Promise.all(
+      campaigns.map(async (campaign) => {
+        const views = sessionCountMap.get(campaign.utmCampaign) || 0;
+        const clicks = views; // For now, clicks = views (every page view is a click)
 
-      return {
-        ...campaign,
-        views,
-        clicks: views, // For now, clicks = views (every page view is a click)
-        revenuePerView: views > 0 ? campaign.revenue / views : 0,
-      };
-    });
+        // Update Airtable with latest click count from database
+        if (campaign.utmCampaign && views > 0) {
+          try {
+            console.log(`[REVTRACK] Updating Airtable campaign ${campaign.utmCampaign} with clicks: ${clicks}`);
+            await airtable.campaigns.updateMetrics(campaign.id, { clicks });
+          } catch (error) {
+            console.error(`[REVTRACK] Failed to update Airtable for ${campaign.utmCampaign}:`, error);
+          }
+        }
+
+        return {
+          ...campaign,
+          views,
+          clicks,
+          revenuePerView: views > 0 ? campaign.revenue / views : 0,
+        };
+      })
+    );
 
     return NextResponse.json({
       campaigns: campaignsWithMetrics,
