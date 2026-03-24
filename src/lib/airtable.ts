@@ -350,13 +350,15 @@ export const airtable = {
 
       try {
         const fields: Record<string, number> = {};
-        if (metrics.views !== undefined) fields.Views = metrics.views;
-        if (metrics.clicks !== undefined) fields.Clicks = metrics.clicks;
-        if (metrics.emails !== undefined) fields.Emails = metrics.emails;
-        if (metrics.sales !== undefined) fields.Sales = metrics.sales;
-        if (metrics.revenue !== undefined) fields.Revenue = metrics.revenue;
+        if (metrics.views !== undefined) fields.views = metrics.views;
+        if (metrics.clicks !== undefined) fields.clicks = metrics.clicks;
+        if (metrics.emails !== undefined) fields.emails = metrics.emails;
+        if (metrics.sales !== undefined) fields.sales = metrics.sales;
+        if (metrics.revenue !== undefined) fields.revenue = metrics.revenue;
 
+        console.log('[Airtable] Updating campaign metrics:', { id, fields });
         await getBase()(campaignsTableId).update(id, { fields });
+        console.log('[Airtable] Successfully updated campaign metrics');
       } catch (error) {
         console.error('Airtable update campaign metrics error:', error);
         throw error;
