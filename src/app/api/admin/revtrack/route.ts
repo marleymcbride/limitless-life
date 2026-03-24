@@ -39,8 +39,17 @@ export async function GET(request: NextRequest): Promise<NextResponse<{ campaign
   }
 
   try {
+    console.log('[REVTRACK] Fetching campaigns from Airtable...');
+
     // Fetch campaigns from Airtable
     const campaigns = await fetchCampaigns();
+
+    console.log('[REVTRACK] Campaigns fetched:', campaigns?.length, 'campaigns');
+
+    if (!campaigns || !Array.isArray(campaigns)) {
+      console.error('[REVTRACK] Invalid campaigns response:', campaigns);
+      throw new Error('Failed to fetch campaigns from Airtable');
+    }
 
     // Query database for session counts by campaign
     const sessionCounts = await db.execute(`
