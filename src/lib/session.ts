@@ -48,44 +48,55 @@ export async function getOrCreateSession(
   // Check if session already exists in cookie
   const existingSessionCookie = cookieStore.get('ll_session');
 
+  // Validate UUID format before querying database
+  const isValidUUID = (id: string) => {
+    const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+    return uuidRegex.test(id);
+  };
+
   if (existingSessionCookie?.value) {
-    // First check in-memory store (fast path)
-    const existingSession = sessionStore.get(existingSessionCookie.value);
-    if (existingSession) {
-      console.log('[SESSION] Found existing session in memory:', existingSession.id);
-      return existingSession;
-    }
-
-    // If not in memory, check database (handles server restarts)
-    try {
-      const dbSession = await db.select().from(sessions).where(eq(sessions.id, existingSessionCookie.value)).limit(1);
-
-      if (dbSession && dbSession.length > 0) {
-        console.log('[SESSION] Found existing session in database:', dbSession[0].id);
-        // Cache in memory for future requests
-        const session: Session = {
-          id: dbSession[0].id,
-          userId: dbSession[0].userId,
-          createdAt: dbSession[0].firstSeen,
-          data: {
-            utmSource: dbSession[0].utmSource || undefined,
-            utmMedium: dbSession[0].utmMedium || undefined,
-            utmCampaign: dbSession[0].utmCampaign || undefined,
-            utmContent: dbSession[0].utmContent || undefined,
-            utmTerm: dbSession[0].utmTerm || undefined,
-            referrer: dbSession[0].referrer || undefined,
-            deviceType: dbSession[0].deviceType || undefined,
-            browser: dbSession[0].browser || undefined,
-            ipAddress: dbSession[0].ipAddress,
-            countryCode: dbSession[0].countryCode,
-          }
-        };
-        sessionStore.set(dbSession[0].id, session);
-        return session;
+    // Skip invalid session IDs (old format)
+    if (!isValidUUID(existingSessionCookie.value)) {
+      console.log('[SESSION] Invalid session ID format in cookie, creating new session');
+    } else {
+      // First check in-memory store (fast path)
+      const existingSession = sessionStore.get(existingSessionCookie.value);
+      if (existingSession) {
+        console.log('[SESSION] Found existing session in memory:', existingSession.id);
+        return existingSession;
       }
-    } catch (error) {
-      console.error('[SESSION] Error checking database for existing session:', error);
-      // Continue to create new session
+
+      // If not in memory, check database (handles server restarts)
+      try {
+        const dbSession = await db.select().from(sessions).where(eq(sessions.id, existingSessionCookie.value)).limit(1);
+
+        if (dbSession && dbSession.length > 0) {
+          console.log('[SESSION] Found existing session in database:', dbSession[0].id);
+          // Cache in memory for future requests
+          const session: Session = {
+            id: dbSession[0].id,
+            userId: dbSession[0].userId,
+            createdAt: dbSession[0].firstSeen,
+            data: {
+              utmSource: dbSession[0].utmSource || undefined,
+              utmMedium: dbSession[0].utmMedium || undefined,
+              utmCampaign: dbSession[0].utmCampaign || undefined,
+              utmContent: dbSession[0].utmContent || undefined,
+              utmTerm: dbSession[0].utmTerm || undefined,
+              referrer: dbSession[0].referrer || undefined,
+              deviceType: dbSession[0].deviceType || undefined,
+              browser: dbSession[0].browser || undefined,
+              ipAddress: dbSession[0].ipAddress,
+              countryCode: dbSession[0].countryCode,
+            }
+          };
+          sessionStore.set(dbSession[0].id, session);
+          return session;
+        }
+      } catch (error) {
+        console.error('[SESSION] Error checking database for existing session:', error);
+        // Continue to create new session
+      }
     }
   }
 
