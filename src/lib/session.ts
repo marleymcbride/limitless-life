@@ -100,12 +100,12 @@ export async function getOrCreateSession(
     return pendingCreation;
   }
 
-  // Check database for sessions created in the last 10 seconds with same IP/campaign (to catch race conditions)
+  // Check database for sessions created in the last 10 seconds with same campaign (to catch race conditions)
   try {
     const recentSessions = await db.select().from(sessions)
       .where(eq(sessions.ipAddress, data.ipAddress || ''))
       .orderBy(desc(sessions.firstSeen))
-      .limit(5);
+      .limit(3);
 
     const veryRecentSession = recentSessions.find(s =>
       s.utmCampaign === (data.utmCampaign || null) &&
