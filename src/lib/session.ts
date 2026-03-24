@@ -1,4 +1,6 @@
 import { cookies } from 'next/headers';
+import { db } from '@/lib/db';
+import { sessions } from '@/db/schema';
 
 export interface SessionData {
   utmSource?: string;
@@ -25,7 +27,12 @@ export interface Session {
 const sessionStore = new Map<string, Session>();
 
 function generateSessionId(): string {
-  return `sess_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+  // Generate a proper UUID v4
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+    const r = Math.random() * 16 | 0;
+    const v = c === 'x' ? r : (r & 0x3 | 0x8);
+    return v.toString(16);
+  });
 }
 
 export async function getOrCreateSession(
@@ -56,6 +63,34 @@ export async function getOrCreateSession(
   sessionStore.set(sessionId, newSession);
 
   console.log('[SESSION] Created new session:', sessionId);
+
+  // Persist session to database
+  try {
+    const insertData = {
+      id: sessionId,
+      utmSource: data.utmSource || null,
+      utmMedium: data.utmMedium || null,
+      utmCampaign: data.utmCampaign || null,
+      utmContent: data.utmContent || null,
+      utmTerm: data.utmTerm || null,
+      referrer: data.referrer || null,
+      deviceType: data.deviceType || null,
+      browser: data.browser || null,
+      ipAddress: data.ipAddress || null,
+      countryCode: data.countryCode || null,
+      firstSeen: new Date(),
+      lastSeen: new Date(),
+    };
+
+    console.log('[SESSION DB] Inserting session with data:', JSON.stringify(insertData, null, 2));
+
+    await db.insert(sessions).values(insertData);
+
+    console.log('[SESSION DB] Persisted session to database:', sessionId);
+  } catch (error) {
+    console.error('[SESSION DB] Failed to persist session:', error);
+    // Continue anyway - session still exists in memory
+  }
 
   return newSession;
 }

@@ -213,7 +213,7 @@ export default function Home() {
               className="mobile-headline block px-1 mx-auto mt-4 mb-6 w-full font-bold text-center text-white sm:hidden capitalize -ml-0 -mr-0 text-[2.7rem] px-5"
               style={{ lineHeight: "1.125" }}
             >
-              Get 3 more hours of pure energy every day (training only 2 days a week)
+              Get 3 more hours of pure energy every day
             </h1>
             <div className="md:hidden lg:hidden block text-white text-center mb-0 mt-0 sm:mt-0 max-w-full mx-auto px-0 pb-8">
             <div

@@ -26,6 +26,7 @@ export async function GET(req: NextRequest) {
   const lm = url.searchParams.get('lm'); // Lead magnet
   const go = url.searchParams.get('go'); // Google
   const rd = url.searchParams.get('rd'); // Reddit
+  const x = url.searchParams.get('x'); // Campaign identifier
 
   // Build source and campaign from short params
   let utmSource = url.searchParams.get('utm_source') || undefined;
@@ -83,6 +84,11 @@ export async function GET(req: NextRequest) {
     utmSource = 'reddit';
     utmMedium = 'post';
     utmCampaign = rd;
+  } else if (x) {
+    // Campaign identifier (e.g., "bio" from ?x=bio)
+    utmSource = 'campaign';
+    utmMedium = 'link';
+    utmCampaign = x;
   }
 
   const session = await getOrCreateSession({

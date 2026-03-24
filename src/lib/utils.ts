@@ -367,7 +367,7 @@ export const betaUnifiedGradientWithSpotlightMobile = React.createElement("div",
         rgba(148, 9, 9, 0.0096) 46%,
         rgba(148, 9, 9, 0.0048) 48%,
         transparent 50%),
-      linear-gradient(to bottom, transparent 0%, transparent 25%, rgba(5, 5, 5, 0.3) 28%, rgba(5, 5, 5, 0.6) 29%, rgb(5, 5, 5) 30%, rgb(8, 8, 8) 70%, rgba(148, 9, 9, 0.3) 80%, rgba(148, 9, 9, 0.6) 85%, rgba(148, 9, 9, 0.864) 90%)
+      linear-gradient(to bottom, transparent 0%, transparent 25%, rgba(5, 5, 5, 0.3) 28%, rgba(5, 5, 5, 0.6) 29%, rgb(5, 5, 5) 30%, rgb(8, 8, 8) 60%,  rgba(148, 9, 9, 0.3) 75%, rgba(148, 9, 9, 0.6) 85%, rgba(148, 9, 9, 0.864) 90%)
     `,
     pointerEvents: "none",
   },
