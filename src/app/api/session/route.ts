@@ -14,19 +14,22 @@ export async function GET(req: NextRequest) {
   const countryCode = await getCountryCode(ipAddress || 'Unknown');
 
   // Parse new short params OR fall back to legacy UTM params
-  const yt = url.searchParams.get('yt'); // YouTube
-  const tts = url.searchParams.get('tts'); // Testimonials YouTube
-  const tw = url.searchParams.get('tw'); // Twitter
-  const ig = url.searchParams.get('ig'); // Instagram
-  const em = url.searchParams.get('em'); // Email
-  const fb = url.searchParams.get('fb'); // Facebook
-  const li = url.searchParams.get('li'); // LinkedIn
-  const tt = url.searchParams.get('tt'); // TikTok
-  const bl = url.searchParams.get('bl'); // Blog
-  const lm = url.searchParams.get('lm'); // Lead magnet
-  const go = url.searchParams.get('go'); // Google
-  const rd = url.searchParams.get('rd'); // Reddit
-  const x = url.searchParams.get('x'); // Campaign identifier
+  // Strip trailing slashes from parameter values
+  const stripTrailingSlash = (val: string | null) => val?.replace(/\/$/, '') || null;
+
+  const yt = stripTrailingSlash(url.searchParams.get('yt')); // YouTube
+  const tts = stripTrailingSlash(url.searchParams.get('tts')); // Testimonials YouTube
+  const tw = stripTrailingSlash(url.searchParams.get('tw')); // Twitter
+  const ig = stripTrailingSlash(url.searchParams.get('ig')); // Instagram
+  const em = stripTrailingSlash(url.searchParams.get('em')); // Email
+  const fb = stripTrailingSlash(url.searchParams.get('fb')); // Facebook
+  const li = stripTrailingSlash(url.searchParams.get('li')); // LinkedIn
+  const tt = stripTrailingSlash(url.searchParams.get('tt')); // TikTok
+  const bl = stripTrailingSlash(url.searchParams.get('bl')); // Blog
+  const lm = stripTrailingSlash(url.searchParams.get('lm')); // Lead magnet
+  const go = stripTrailingSlash(url.searchParams.get('go')); // Google
+  const rd = stripTrailingSlash(url.searchParams.get('rd')); // Reddit
+  const x = stripTrailingSlash(url.searchParams.get('x')); // Campaign identifier
 
   // Build source and campaign from short params
   let utmSource = url.searchParams.get('utm_source') || undefined;
