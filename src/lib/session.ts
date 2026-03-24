@@ -1,7 +1,7 @@
 import { cookies } from 'next/headers';
 import { db } from '@/lib/db';
 import { sessions } from '@/db/schema';
-import { eq } from 'drizzle-orm';
+import { eq, desc } from 'drizzle-orm';
 
 export interface SessionData {
   utmSource?: string;
@@ -90,11 +90,54 @@ export async function getOrCreateSession(
   // Create a unique key for this request based on IP + user agent (to detect duplicate simultaneous requests)
   const requestKey = `${data.ipAddress || 'unknown'}-${data.deviceType || 'unknown'}-${data.utmCampaign || 'none'}`;
 
+  console.log('[SESSION] Request key:', requestKey);
+  console.log('[SESSION] Pending creations:', Array.from(pendingSessionCreations.keys()));
+
   // Check if there's already a pending session creation for this request
   const pendingCreation = pendingSessionCreations.get(requestKey);
   if (pendingCreation) {
     console.log('[SESSION] Waiting for existing session creation:', requestKey);
     return pendingCreation;
+  }
+
+  // Check database for sessions created in the last 10 seconds with same IP/campaign (to catch race conditions)
+  try {
+    const recentSessions = await db.select().from(sessions)
+      .where(eq(sessions.ipAddress, data.ipAddress || ''))
+      .orderBy(desc(sessions.firstSeen))
+      .limit(5);
+
+    const veryRecentSession = recentSessions.find(s =>
+      s.utmCampaign === (data.utmCampaign || null) &&
+      s.firstSeen &&
+      new Date(s.firstSeen).getTime() > Date.now() - 10000 // Last 10 seconds
+    );
+
+    if (veryRecentSession) {
+      console.log('[SESSION] Found very recent session in DB, reusing:', veryRecentSession.id);
+      const session: Session = {
+        id: veryRecentSession.id,
+        userId: veryRecentSession.userId,
+        createdAt: veryRecentSession.firstSeen,
+        data: {
+          utmSource: veryRecentSession.utmSource || undefined,
+          utmMedium: veryRecentSession.utmMedium || undefined,
+          utmCampaign: veryRecentSession.utmCampaign || undefined,
+          utmContent: veryRecentSession.utmContent || undefined,
+          utmTerm: veryRecentSession.utmTerm || undefined,
+          referrer: veryRecentSession.referrer || undefined,
+          deviceType: veryRecentSession.deviceType || undefined,
+          browser: veryRecentSession.browser || undefined,
+          ipAddress: veryRecentSession.ipAddress,
+          countryCode: veryRecentSession.countryCode,
+        }
+      };
+      sessionStore.set(veryRecentSession.id, session);
+      return session;
+    }
+  } catch (error) {
+    console.error('[SESSION] Error checking for recent sessions:', error);
+    // Continue to create new session
   }
 
   // Create the session creation promise

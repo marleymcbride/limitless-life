@@ -8,7 +8,7 @@ export async function GET(req: NextRequest) {
   const userAgent = req.headers.get('user-agent') || '';
   const cookieStore = await cookies();
 
-  // Extract device and browser info
+  // Extract device and browser info first (needed for deduplication check)
   const browserInfo = parseBrowser(userAgent);
   const ipAddress = getClientIP(req);
   const countryCode = await getCountryCode(ipAddress || 'Unknown');
