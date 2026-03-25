@@ -1,10 +1,10 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { Suspense, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { FilloutStandardEmbed } from '@fillout/react';
 
-export default function WaitlistVariantCFormPage() {
+function WaitlistVariantCFormContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -77,5 +77,13 @@ export default function WaitlistVariantCFormPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function WaitlistVariantCFormPage() {
+  return (
+    <Suspense fallback={<div style={{ backgroundColor: '#0E0F12', minHeight: '100vh' }}>Loading...</div>}>
+      <WaitlistVariantCFormContent />
+    </Suspense>
   );
 }
