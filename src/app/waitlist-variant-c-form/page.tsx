@@ -12,7 +12,7 @@ function WaitlistVariantCFormContent() {
   const email = searchParams.get('email') || '';
   const name = searchParams.get('name') || '';
 
-  const handleFormSuccess = () => {
+  const handleFormSubmit = () => {
     console.log('[VariantC Form] Form submitted at:', new Date().toISOString());
 
     // Show submitted state immediately
@@ -23,6 +23,10 @@ function WaitlistVariantCFormContent() {
       console.log('[VariantC Form] Redirecting to success page');
       router.push('/waitlist-variant-c-form-success');
     }, 5000);
+  };
+
+  const handleFormSuccess = () => {
+    console.log('[VariantC Form] onSuccess fired at:', new Date().toISOString());
   };
 
   return (
@@ -68,8 +72,8 @@ function WaitlistVariantCFormContent() {
                 email: email || undefined,
                 name: name || undefined,
               }}
+              onSubmit={handleFormSubmit}
               onSuccess={handleFormSuccess}
-              onSubmit={() => console.log('[VariantC Form] onSubmit fired')}
               onButtonClick={() => console.log('[VariantC Form] onButtonClick fired')}
               className="w-full"
             />
