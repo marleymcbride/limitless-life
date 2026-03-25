@@ -18,7 +18,7 @@ export default function WeCanHelpIf({ onApplyNowClick }: WeCanHelpIfProps) {
         <div className="text-center mb-12">
         </div>
 
-        <div className="flex flex-col items-stretch md:grid md:grid-cols-2 gap-10 mb-12">
+        <div className="flex flex-col items-stretch mx-3 md:mx-20 lg:mx-20 md:grid md:grid-cols-2 gap-10 mb-12">
 
           {/* We Can Help If */}
           <div className="bg-white/5 py-6 md:py-8 lg:py-8 px-2 md:px-12 lg:px-12 border border-green-500/30 rounded-lg mobile-box-width-transparent we-can-help-box">

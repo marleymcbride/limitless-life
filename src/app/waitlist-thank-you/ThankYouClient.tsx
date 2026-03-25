@@ -10,9 +10,10 @@ import VariantC from './components/VariantC';
 
 interface ThankYouClientProps {
   variant: 'A' | 'B' | 'C';
+  backgroundColor?: string;
 }
 
-export default function ThankYouClient({ variant }: ThankYouClientProps) {
+export default function ThankYouClient({ variant, backgroundColor = '#000000' }: ThankYouClientProps) {
   const { sessionId } = useSession();
 
   // Debug: Log variant value
@@ -69,8 +70,10 @@ export default function ThankYouClient({ variant }: ThankYouClientProps) {
   };
 
   return (
-    <VariantArticle>
-      {renderVariant()}
-    </VariantArticle>
+    <div className="flex flex-col min-h-screen" style={{ backgroundColor }}>
+      <VariantArticle backgroundColor={backgroundColor}>
+        {renderVariant()}
+      </VariantArticle>
+    </div>
   );
 }

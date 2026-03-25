@@ -57,7 +57,7 @@ export default function EverythingIncluded({ onApplyNowClick }: EverythingInclud
         </div>
 
         {/* Grid layout - 3 columns on desktop, 1 on mobile */}
-        <div className="flex flex-col items-stretch gap-10 mb-24 md:grid md:grid-cols-2 lg:grid-cols-3">
+        <div className="flex flex-col items-stretch mx-3 md:mx-20 lg:mx-20 gap-10 mb-24 md:grid md:grid-cols-2 lg:grid-cols-3">
 
           {items.map((item, index) => (
             <div

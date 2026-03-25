@@ -28,7 +28,7 @@ export default function WeCanHelpIf({ onApplyNowClick }: WeCanHelpIfProps) {
             <ul className="space-y-4">
               <li className="flex items-start text-gray-300">
                 <span className="text-green-400 mr-3 mt-1">✓</span>
-                <span>You're a high-performer who's burned out and relying on caffeine and alcohol to get through the day</span>
+                <span>You&apos;re a high-performer who&apos;s burned out and relying on caffeine and alcohol to get through the day</span>
               </li>
               <li className="flex items-start text-gray-300">
                 <span className="text-green-400 mr-3 mt-1">✓</span>
@@ -36,15 +36,15 @@ export default function WeCanHelpIf({ onApplyNowClick }: WeCanHelpIfProps) {
               </li>
               <li className="flex items-start text-gray-300">
                 <span className="text-green-400 mr-3 mt-1">✓</span>
-                <span>You're committed to the process: follow the protocols, track results, adjust</span>
+                <span>You&apos;re committed to the process: follow the protocols, track results, adjust</span>
               </li>
               <li className="flex items-start text-gray-300">
                 <span className="text-green-400 mr-3 mt-1">✓</span>
-                <span>You're willing to train LESS and recover MORE</span>
+                <span>You&apos;re willing to train LESS and recover MORE</span>
               </li>
               <li className="flex items-start text-gray-300">
                 <span className="text-green-400 mr-3 mt-1">✓</span>
-                <span>You're ready to actually fix what's broken</span>
+                <span>You&apos;re ready to actually fix what&apos;s broken</span>
               </li>
             </ul>
           </div>
@@ -57,19 +57,19 @@ export default function WeCanHelpIf({ onApplyNowClick }: WeCanHelpIfProps) {
             <ul className="space-y-4">
               <li className="flex items-start text-gray-300">
                 <span className="text-red-400 mr-3 mt-1">✗</span>
-                <span>You're looking for a magic pill or quick fix</span>
+                <span>You&apos;re looking for a magic pill or quick fix</span>
               </li>
               <li className="flex items-start text-gray-300">
                 <span className="text-red-400 mr-3 mt-1">✗</span>
-                <span>You're not ready to commit 90 days to this</span>
+                <span>You&apos;re not ready to commit 90 days to this</span>
               </li>
               <li className="flex items-start text-gray-300">
                 <span className="text-red-400 mr-3 mt-1">✗</span>
-                <span>You can't afford the investment</span>
+                <span>You can&apos;t afford the investment</span>
               </li>
               <li className="flex items-start text-gray-300">
                 <span className="text-red-400 mr-3 mt-1">✗</span>
-                <span>You don't want to be challenged</span>
+                <span>You don&apos;t want to be challenged</span>
               </li>
             </ul>
           </div>

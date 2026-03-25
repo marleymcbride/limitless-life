@@ -13,12 +13,12 @@ export default function HowLimitlessProtocolWorks({ onApplyNowClick }: HowLimitl
     {
       number: 1,
       title: "Limitless Morning",
-      description: "A morning fuel system designed to maximises your energy in the first 3 hours of your day. You will have lazer focus and smooth energy without caffeine or supplements, and eat MORE food in the morning unlike most methods. You'll feel fired up before you even leave the house."
+      description: "A morning fuel system designed to maximises your energy in the first 3 hours of your day. You will have lazer focus and smooth energy without caffeine or supplements, and eat MORE food in the morning unlike most methods. You&apos;ll feel fired up before you even leave the house."
     },
     {
       number: 2,
       title: "Limitless Training",
-      description: "Our lifestyle training style, minimalist Training. Get results training 2-3 times per week. That's it. When your body is already fried, more training just burns you out faster. We target muscles that matter. We protect your CNS. Build masculine presence and aura."
+      description: "Our lifestyle training style, minimalist Training. Get results training 2-3 times per week. That&apos;s it. When your body is already fried, more training just burns you out faster. We target muscles that matter. We protect your CNS. Build masculine presence and aura."
     },
     {
       number: 3,
@@ -58,11 +58,11 @@ export default function HowLimitlessProtocolWorks({ onApplyNowClick }: HowLimitl
               <div className="absolute left-20 top-16 bottom-0 w-1 bg-[#940909] hidden md:block"></div>
 
               {/* Steps */}
-              <div className="flex flex-col items-stretch mx-20 gap-8 md:items-stretch md:space-y-8 md:pl-24">
+              <div className="flex flex-col items-stretch mx-3 md:mx-20 lg:mx-20 gap-8 md:items-stretch md:space-y-8 md:pl-24">
                 {systems.map((system, index) => (
                   <div
                     key={index}
-                    className="bg-white px-12 md:px-12 lg:px-12 rounded-lg p-6 md:p-8 shadow-lg relative md:ml-24 min-h-[380px] flex flex-col mobile-box-width protocol-step-card"
+                    className="bg-white px-8 md:px-12 lg:px-12 rounded-lg p-6 md:p-8 shadow-lg relative md:ml-24 min-h-[380px] flex flex-col mobile-box-width protocol-step-card"
                   >
                     {/* Number circle - positioned on the red line (outside card) - desktop only */}
                     <div className="absolute -left-20 pr-3 top-24 -translate-y-1/2 -translate-x-1/2 hidden md:block">
@@ -72,9 +72,9 @@ export default function HowLimitlessProtocolWorks({ onApplyNowClick }: HowLimitl
                     </div>
 
                     {/* Content */}
-                    <div className="py-8">
+                    <div className="py-8 min-w-[100%]">
                       {/* Mobile version - number above title */}
-                      <div className="md:hidden">
+                      <div className="md:hidden lg:hidden">
                         <div className="bg-black text-white w-10 h-10 rounded-full flex items-center justify-center text-lg font-bold border-2 border-gray-300 border-opacity-30 mx-auto mb-3">
                           {system.number}
                         </div>

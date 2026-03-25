@@ -30,7 +30,10 @@ async function WaitlistThankYouPageContent({
 
   console.log('[WaitlistThankYouPage] Safe variant:', safeVariant);
 
-  return <ThankYouClient variant={safeVariant} />;
+  // Determine background color based on variant
+  const backgroundColor = safeVariant === 'C' ? '#0E0F12' : '#000000';
+
+  return <ThankYouClient variant={safeVariant} backgroundColor={backgroundColor} />;
 }
 
 export default function WaitlistThankYouPage({
@@ -39,17 +42,8 @@ export default function WaitlistThankYouPage({
   searchParams: Promise<{ variant?: string }>;
 }) {
   return (
-    <div className="flex flex-col min-h-screen" style={{ backgroundColor: '#000000' }}>
-      <Suspense fallback={<div>Loading...</div>}>
-        <WaitlistThankYouPageContent searchParams={searchParams} />
-      </Suspense>
-
-      {/* Footer - outside everything on dark background */}
-      <div className="mt-auto text-center py-8" style={{ backgroundColor: '#000000' }}>
-        <div className="text-sm md:text-sm lg:text-sm font-medium text-gray-600" style={{ fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif' }}>
-          © EVLV Fitness LLC {new Date().getFullYear()}
-        </div>
-      </div>
-    </div>
+    <Suspense fallback={<div style={{ backgroundColor: '#000000', minHeight: '100vh' }}>Loading...</div>}>
+      <WaitlistThankYouPageContent searchParams={searchParams} />
+    </Suspense>
   );
 }

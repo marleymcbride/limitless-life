@@ -8,10 +8,10 @@ export default function ImagineThis({ onApplyNowClick }: ImagineThisProps) {
   return (
     <section className="bg-black py-24 px-4 w-full relative dark-section-with-grain">
       <div className="container mx-auto max-w-6xl relative z-30">
-        <div className="text-center">
+        <div className="text-center mx-5">
           {/* White round rectangle box with shadow - Mobile optimized */}
           <div
-            className="rounded-xl md:rounded-2xl light-card-bg-small-orb p-8 md:p-14 md:pt-3 md:px-16 lg:px-20 mx-auto border border-gray-200/50"
+            className="rounded-xl md:rounded-2xl light-card-bg-small-orb p-8 md:p-14 md:pt-3 md:px-16 lg:px-20 md:mx-auto lg:mx-auto border border-gray-200/50"
             style={{
               boxShadow: "20px -10px 40px 5px rgba(45, 52, 65, 0.7)",
               width: "95%",
@@ -33,7 +33,7 @@ export default function ImagineThis({ onApplyNowClick }: ImagineThisProps) {
             `}</style>
             <div className="prose prose-lg max-w-none mobile-text-large body-copy imaginethis-mobile-text" style={{ fontSize: "1.04rem" }}>
               <h2black
-                className="imaginethis-heading text-6xl md:text-6xl mt-6 md:mt-2 lg:mt-2 font-bold pb-5 md:pt-0 lg:pt-0 mb-6 md:mb-12 lg:mb-12 text-gray-900 leading-tight"
+                className="imaginethis-heading -mx-4 md:mx-0 lg:mx-0 text-6xl md:text-6xl mt-6 md:mt-2 lg:mt-2 font-bold pb-5 md:pt-0 lg:pt-0 mb-6 md:mb-12 lg:mb-12 text-gray-900 leading-tight"
                 style={{ fontFamily: "Neuemontreal, sans-serif" }}
               >
                 Imagine this

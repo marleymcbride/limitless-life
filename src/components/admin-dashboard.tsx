@@ -58,7 +58,13 @@ export default function AdminDashboard() {
         return;
       }
       const data = await res.json();
-      setStats(data);
+      // Map API response to state property names
+      setStats({
+        visitors: data.totalVisitors || 0,
+        hotLeads: data.hotLeads || 0,
+        payments: data.paymentsThisMonth || 0,
+        conversionRate: data.conversionRate || 0,
+      });
     } catch (error) {
       console.error('Failed to fetch stats:', error);
     }

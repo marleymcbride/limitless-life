@@ -142,15 +142,15 @@ export default function DepositClient() {
             </li>
             <li className="flex items-start">
               <span className="text-blue-400 mr-2 font-bold">2.</span>
-              <span>We'll review your application within 72 hours</span>
+              <span>We&apos;ll review your application within 72 hours</span>
             </li>
             <li className="flex items-start">
               <span className="text-blue-400 mr-2 font-bold">3.</span>
-              <span>If accepted, you'll get immediate access to the beta cohort</span>
+              <span>If accepted, you&apos;ll get immediate access to the beta cohort</span>
             </li>
             <li className="flex items-start">
               <span className="text-blue-400 mr-2 font-bold">4.</span>
-              <span>If not accepted, we'll refund your deposit immediately</span>
+              <span>If not accepted, we&apos;ll refund your deposit immediately</span>
             </li>
           </ol>
         </div>

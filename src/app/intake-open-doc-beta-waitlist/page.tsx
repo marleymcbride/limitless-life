@@ -62,7 +62,7 @@ export default function IntakeOpenDoc() {
 
         <div className=" -mr-4 -ml-1 md:-ml-8 md:-mr-2 lg:-ml-2 lg:-mr-8" style={{ backgroundColor: '#204166' }}>
           <div className="text-2xl ml-2 md:text-2xl lg:text-2xl font-bold leading-relaxed mb-6 text-gray-100" style={{ fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif' }}>
-          I'm working with a small group of men who are ready to be reborn in 2026.
+          I&apos;m working with a small group of men who are ready to be reborn in 2026.
           </div>
         </div>
 

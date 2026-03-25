@@ -193,7 +193,7 @@ export default function WaitlistModal({
                   disabled={isSubmitting}
                   className="w-full bg-[#940909] hover:bg-[#7b0707] text-white font-bold py-5 px-6 rounded-lg transition-all duration-200 text-md uppercase tracking-wide shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  <strong>{isSubmitting ? 'JOINING...' : "I'M INTERESTED"}</strong>
+                  <strong>{isSubmitting ? 'JOINING...' : "I&apos;M INTERESTED"}</strong>
                 </button>
               </form>
             </>

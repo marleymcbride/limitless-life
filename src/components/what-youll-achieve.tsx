@@ -44,7 +44,7 @@ export default function WhatYoullAchieve({ onApplyNowClick }: WhatYoullAchievePr
         </svg>
       ),
       title: "Skyrocket Your Testosterone",
-      description: "Your body produces testosterone again. You'll notice more energy and ambition, higher sex drive, better erections, more muscle and stubborn body fat dissapearing."
+      description: "Your body produces testosterone again. You&apos;ll notice more energy and ambition, higher sex drive, better erections, more muscle and stubborn body fat dissapearing."
     },
     {
       icon: (
@@ -54,7 +54,7 @@ export default function WhatYoullAchieve({ onApplyNowClick }: WhatYoullAchievePr
         </svg>
       ),
       title: "Save Your Marriage",
-      description: "She notices the changes and she's attracted to you again. The dead bedroom wakes up and you actually reconnect like you did when you first met instead of just co-existing in the same house and taking each other for granted."
+      description: "She notices the changes and she&apos;s attracted to you again. The dead bedroom wakes up and you actually reconnect like you did when you first met instead of just co-existing in the same house and taking each other for granted."
     },
     {
       icon: (
@@ -63,7 +63,7 @@ export default function WhatYoullAchieve({ onApplyNowClick }: WhatYoullAchievePr
         </svg>
       ),
       title: "Be Present For Your Kids",
-      description: "You have the energy to play catch, go to the park, build forts instead of being too tired and always collapsing on the couch. They'll remember you as the dad who was actually fun and present, not the guy who was always exhausted."
+      description: "You have the energy to play catch, go to the park, build forts instead of being too tired and always collapsing on the couch. They&apos;ll remember you as the dad who was actually fun and present, not the guy who was always exhausted."
     }
   ];
 
@@ -85,7 +85,7 @@ export default function WhatYoullAchieve({ onApplyNowClick }: WhatYoullAchievePr
         </div>
 
         {/* Grid layout - 3 columns on desktop, 1 on mobile */}
-        <div className="flex flex-col items-stretch gap-10 mb-12 md:grid md:grid-cols-2 lg:grid-cols-3">
+        <div className="flex flex-col items-stretch mx-3 md:mx-20 lg:mx-20 gap-10 mb-12 md:grid md:grid-cols-2 lg:grid-cols-3">
 
           {items.map((item, index) => (
             <div

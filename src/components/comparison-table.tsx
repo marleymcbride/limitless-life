@@ -90,7 +90,7 @@ export default function ComparisonTable() {
                 <th className="p-4 text-left border-b border-white/10 w-3/8 bg-white/10">
                   <div className="flex items-center text-white">
                     <Check className="h-5 w-5 text-white mr-2" />
-                    <span>After Limitless (Where You'll Be)</span>
+                    <span>After Limitless (Where You&apos;ll Be)</span>
                   </div>
                 </th>
               </tr>

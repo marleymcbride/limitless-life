@@ -96,8 +96,8 @@ export default function BonusStack({ onApplyNowClick }: BonusStackProps) {
             </div>
 
             {/* Bonus cards - like How Limitless Protocol Works */}
-            <div className="max-w-4xl mx-auto px-4 md:px-4 bonus-container-mobile">
-              <div className="space-y-16">
+            <div className="max-w-4xl px-4 md:px-4 bonus-container-mobile">
+              <div className="mx-3 md:mx-20 lg:mx-20 space-y-16">
                 {bonuses.map((bonus, index) => (
                   <div
                     key={index}

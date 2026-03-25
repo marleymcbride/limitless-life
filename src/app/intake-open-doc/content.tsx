@@ -59,17 +59,17 @@ export default function IntakeDocContent() {
       </GammaParagraph>
 
       <GammaParagraph>
-        <strong>It's a small group, so I'm looking for the best fit here.</strong>
+        <strong>It&apos;s a small group, so I&apos;m looking for the best fit here.</strong>
       </GammaParagraph>
 
       <GammaParagraph>
-        <strong>This won't work for you if you...</strong>
+        <strong>This won&apos;t work for you if you...</strong>
       </GammaParagraph>
 
       <GammaList>
-        <li>Are just starting a coaching business, and haven't made a sale yet.</li>
+        <li>Are just starting a coaching business, and haven&apos;t made a sale yet.</li>
         <li>Think all you need to do is manifest, and success will just come to you.</li>
-        <li>Have worked with 7 other coaches and 'they' were the problem.</li>
+        <li>Have worked with 7 other coaches and &apos;they&apos; were the problem.</li>
         <li>Want to build a huge team, hustle 24x7, and be stuck in meetings all day trying to manage everyone.</li>
       </GammaList>
 
@@ -81,7 +81,7 @@ export default function IntakeDocContent() {
         <li>Have actual skills and can help people win.</li>
         <li>Have clients already, and want more.</li>
         <li>Take direction well, and can follow a custom growth plan.</li>
-        <li>Know that you're the one who's going to get the results and earn the rewards.</li>
+        <li>Know that you&apos;re the one who&apos;s going to get the results and earn the rewards.</li>
         <li>Want to build something where as your business gets bigger, your life gets better.</li>
       </GammaList>
 
@@ -137,39 +137,39 @@ export default function IntakeDocContent() {
       </GammaParagraph>
 
       <GammaParagraph>
-        Now that you've got quick wins, and Black Belt is paid for, it's time to get strategic.
+        Now that you&apos;ve got quick wins, and Black Belt is paid for, it&apos;s time to get strategic.
       </GammaParagraph>
 
       <GammaList>
-        <li>We'll start by taking you through
+        <li>We&apos;ll start by taking you through
           <strong>The Focus Finder™</strong>
           , our Diagnostic Tool for identifying the biggest strategic constraint in your business right now.
         </li>
-        <li>Whether that's generating leads, optimising your sales process, or designing a killer program that gets clients fast, measurable results — I've got an arsenal of proven plug-and-play systems:
+        <li>Whether that&apos;s generating leads, optimising your sales process, or designing a killer program that gets clients fast, measurable results — I&apos;ve got an arsenal of proven plug-and-play systems:
         </li>
       </GammaList>
 
       <GammaList>
         <li>
           <strong>To generate leads</strong>
-          , we'll use The Audience Amplifier, The 100-Lead Bundle or Brandwidth.
+          , we&apos;ll use The Audience Amplifier, The 100-Lead Bundle or Brandwidth.
         </li>
         <li>
           <strong>To bring you hot prospects ready to buy</strong>
-          , we'll choose from The New Lead Sequence, The Weekly Client Machine or The Webinar That Doesn't Matter.
+          , we&apos;ll choose from The New Lead Sequence, The Weekly Client Machine or The Webinar That Doesn&apos;t Matter.
         </li>
         <li>
-          <strong>We'll convert them</strong>
+          <strong>We&apos;ll convert them</strong>
           with The Appointment Engine, Sell By Chat, or a Million Dollar Workshop.
         </li>
         <li>And to
           <strong>make sure they win and stay with you for years</strong>
-          we'll design a year, a month and a week in your program so it's seamless.
+          we&apos;ll design a year, a month and a week in your program so it&apos;s seamless.
         </li>
       </GammaList>
 
       <GammaParagraph>
-        Even though the fundamentals of every coaching business are the same, every coach is different. So we'll map out a custom plan, tailored to your situation, market and skillset.
+        Even though the fundamentals of every coaching business are the same, every coach is different. So we&apos;ll map out a custom plan, tailored to your situation, market and skillset.
       </GammaParagraph>
 
       <GammaParagraph>
@@ -187,11 +187,11 @@ export default function IntakeDocContent() {
       <GammaList>
         <li>Every 6 weeks, we get together as a group on Zoom to map out your
           <strong>6-Week Gameplan™</strong>
-          . We'll Identify your current constraint, select the next system to install and map out your so you continue to build momentum.
+          . We&apos;ll Identify your current constraint, select the next system to install and map out your so you continue to build momentum.
         </li>
-        <li>You'll have
+        <li>You&apos;ll have
           <strong>personal guidance</strong>
-          from me and my coaching team every week. Together, we'll track your progress, and celebrate every time you have a $10k/m income jump — or refine your strategy as needed to get you there.
+          from me and my coaching team every week. Together, we&apos;ll track your progress, and celebrate every time you have a $10k/m income jump — or refine your strategy as needed to get you there.
         </li>
         <li>We run
           <strong>monthly Workshops</strong>
@@ -201,18 +201,18 @@ export default function IntakeDocContent() {
           <strong>Masterminds</strong>
           {" "}and
           <strong>Hotseats</strong>
-          {" "}so you'll have the latest strategies, tactics and tools from the best coaches in the industry.
+          {" "}so you&apos;ll have the latest strategies, tactics and tools from the best coaches in the industry.
           <strong>PLUS:</strong>
           {" "}We do 3 live events a year. You and your team can attend our virtual events in March and November, and join us in-person somewhere tropical in July.
         </li>
-        <li>We've got a system for everything. You'll install our
+        <li>We&apos;ve got a system for everything. You&apos;ll install our
           <strong>lead gen, sales and delivery playbooks</strong>
-          , so you don't have to reinvent the wheel. Just add your content and your personality, and have the business grow every cycle.
+          , so you don&apos;t have to reinvent the wheel. Just add your content and your personality, and have the business grow every cycle.
         </li>
       </GammaList>
 
       <GammaParagraph>
-        You'll also have my hand
+        You&apos;ll also have my hand
         <strong>guiding your strategy</strong>
         , and smart, capable eyes
         <strong>critiquing your campaigns</strong>
@@ -250,19 +250,19 @@ export default function IntakeDocContent() {
       </GammaParagraph>
 
       <GammaParagraph>
-        If something's not right, or either of us isn't feeling it, we'll just tear up the agreement and walk away as friends.
+        If something&apos;s not right, or either of us isn&apos;t feeling it, we&apos;ll just tear up the agreement and walk away as friends.
       </GammaParagraph>
 
       <GammaParagraph>
-        As long as we're both good, we move onto scaling you up in Phase 2 & 3 for the next 12 months.
+        As long as we&apos;re both good, we move onto scaling you up in Phase 2 & 3 for the next 12 months.
       </GammaParagraph>
 
       <GammaParagraph>
-        So, there's no risk to getting started, is there?
+        So, there&apos;s no risk to getting started, is there?
       </GammaParagraph>
 
       <GammaParagraph>
-        <strong>Here's the QuickFacts™</strong>
+        <strong>Here&apos;s the QuickFacts™</strong>
       </GammaParagraph>
 
       <GammaParagraph>
@@ -276,7 +276,7 @@ export default function IntakeDocContent() {
       </GammaList>
 
       <GammaParagraph>
-        <strong>Like I said, it's a small group, and I'm looking for the right people.</strong>
+        <strong>Like I said, it&apos;s a small group, and I&apos;m looking for the right people.</strong>
       </GammaParagraph>
 
       <GammaParagraph>
@@ -288,11 +288,11 @@ export default function IntakeDocContent() {
         <li>Have 500 people or more on your email list.</li>
         <li>Have space to take on new clients every month, starting this month.</li>
         <li>Are friendly and coachable.</li>
-        <li>And you won't get distracted by my handsomeness and my striking Australian accent.</li>
+        <li>And you won&apos;t get distracted by my handsomeness and my striking Australian accent.</li>
       </GammaList>
 
       <GammaParagraph>
-        We kick off on {COHORT_CONFIG.DATE}, so if this sounds like you, and you'd like to work with me:
+        We kick off on {COHORT_CONFIG.DATE}, so if this sounds like you, and you&apos;d like to work with me:
       </GammaParagraph>
 
       <GammaParagraph>
@@ -304,15 +304,15 @@ export default function IntakeDocContent() {
       </GammaParagraph>
 
       <GammaParagraph>
-        <strong>🎉 Waitlist Bonus:</strong> As a waitlist applicant, you'll receive a <strong>hefty discount</strong> on the deposit when you secure your spot through this page!
+        <strong>🎉 Waitlist Bonus:</strong> As a waitlist applicant, you&apos;ll receive a <strong>hefty discount</strong> on the deposit when you secure your spot through this page!
       </GammaParagraph>
 
       <GammaParagraph>
-        <strong>Step 2:</strong> We'll review your application, and let you know within 72 hours.
+        <strong>Step 2:</strong> We&apos;ll review your application, and let you know within 72 hours.
       </GammaParagraph>
 
       <GammaParagraph>
-        If your application is not accepted, we'll refund your deposit immediately, let you know what to work on, and point you in the right direction.
+        If your application is not accepted, we&apos;ll refund your deposit immediately, let you know what to work on, and point you in the right direction.
       </GammaParagraph>
 
       <GammaParagraph>

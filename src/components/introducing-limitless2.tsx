@@ -52,8 +52,9 @@ export default function IntroducingLimitless() {
           Here&apos;s why it works:
           </p>
 
-          <div className="grid md:grid-cols-3 gap-4 mb-12 text-left">
-                <div className="w-full px-12 md:px-12 lg:px-12 bg-white/10 rounded-lg p-6 border border-white/20">
+          <div className="mx-3 md:mx-20 lg:mx-20">
+            <div className="flex flex-col items-stretch md:grid md:grid-cols-3 gap-4 mb-12 text-left">
+                  <div className="w-full mx-3 md:mx-0 lg:mx-0 px-12 md:px-12 lg:px-12 bg-white/10 rounded-lg p-6 border border-white/20">
                   <h3
                     className="text-2xl font-bold text-white mb-4"
                     style={{ fontFamily: "Neuemontreal, sans-serif" }}
@@ -65,7 +66,7 @@ export default function IntroducingLimitless() {
                   </p>
                 </div>
 
-                <div className="w-full px-12 md:px-12 lg:px-12 bg-white/10 rounded-lg p-6 border border-white/20">
+                <div className="w-full mx-3 md:mx-0 lg:mx-0 px-12 md:px-12 lg:px-12 bg-white/10 rounded-lg p-6 border border-white/20">
                   <h3
                     className="text-2xl font-bold text-white mb-4"
                     style={{ fontFamily: "Neuemontreal, sans-serif" }}
@@ -77,7 +78,7 @@ export default function IntroducingLimitless() {
                   </p>
                 </div>
 
-                <div className="w-full px-12 md:px-12 lg:px-12 bg-white/10 rounded-lg p-6 border border-white/20">
+                <div className="w-full mx-3 md:mx-0 lg:mx-0 px-12 md:px-12 lg:px-12 bg-white/10 rounded-lg p-6 border border-white/20">
                   <h3
                     className="text-2xl font-bold text-white mb-4"
                     style={{ fontFamily: "Neuemontreal, sans-serif" }}
@@ -88,10 +89,12 @@ export default function IntroducingLimitless() {
                     Sounds backward but it&apos;s true. Your body builds muscle during recovery, not during training. Two days gives it time to actually grow.
                   </p>
                 </div>
-              </div>
+            </div>
+          </div>
 
-              <div className="grid md:grid-cols-3 gap-4 mb-12 text-left">
-                <div className="w-full px-12 md:px-12 lg:px-12 bg-white/10 rounded-lg p-6 border border-white/20">
+              <div className="mx-3 md:mx-20 lg:mx-20">
+            <div className="flex flex-col items-stretch md:grid md:grid-cols-3 gap-4 mb-12 text-left">
+                  <div className="w-full mx-3 md:mx-0 lg:mx-0 px-12 md:px-12 lg:px-12 bg-white/10 rounded-lg p-6 border border-white/20">
                   <h3
                     className="text-2xl font-bold text-white mb-4"
                     style={{ fontFamily: "Neuemontreal, sans-serif" }}
@@ -103,7 +106,7 @@ export default function IntroducingLimitless() {
                   </p>
                 </div>
 
-                <div className="w-full px-12 md:px-12 lg:px-12 bg-white/10 rounded-lg p-6 border border-white/20">
+                <div className="w-full mx-3 md:mx-0 lg:mx-0 px-12 md:px-12 lg:px-12 bg-white/10 rounded-lg p-6 border border-white/20">
                   <h3
                     className="text-2xl font-bold text-white mb-4"
                     style={{ fontFamily: "Neuemontreal, sans-serif" }}
@@ -115,7 +118,7 @@ export default function IntroducingLimitless() {
                   </p>
                 </div>
 
-                <div className="w-full px-12 md:px-12 lg:px-12 bg-white/10 rounded-lg p-6 border border-white/20">
+                <div className="w-full mx-3 md:mx-0 lg:mx-0 px-12 md:px-12 lg:px-12 bg-white/10 rounded-lg p-6 border border-white/20">
                   <h3
                     className="text-2xl font-bold text-white mb-4"
                     style={{ fontFamily: "Neuemontreal, sans-serif" }}
@@ -126,7 +129,8 @@ export default function IntroducingLimitless() {
                     Your testosterone comes back—300+ point increases on average—when you remove what&apos;s suppressing it. No TRT. No needles. No clinics.
                   </p>
                 </div>
-              </div>
+            </div>
+          </div>
 
           <a
             href="/application"
