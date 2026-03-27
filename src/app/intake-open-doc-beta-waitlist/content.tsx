@@ -113,11 +113,11 @@ export default function IntakeDocContent() {
         I&apos;ve used this same method in men (such as banking, entrepreneurship, finance, petroleum, every high level career you can think of) to become a <strong>Lifestyle Athlete</strong>.
       </GammaParagraph>
 
-      <GammaParagraph>
+      <GammaParagraph className="-mb-0 pb-0 md:-mb-2 md:pb-0 lg:pb-0 lg:-mb-2">
         <strong>Obsession:</strong> I&apos;ve spent over a decade researching why certain guys radiate an infectious energy and operate at a higher frequency than most.
       </GammaParagraph>
 
-      <GammaParagraph className="-mb-0 pb-0 md:-mb-2 md:pb-6 lg:-mb-2 lg:pb-6">
+      <GammaParagraph className="-mb-0 pb-0 md:-mb-4 md:pb-0 md:pb-10 lg:pb-10 lg:-mb-6">
         <strong>Humanity:</strong> I am so passionate about this niche area because:
       </GammaParagraph>
 
@@ -127,11 +127,11 @@ export default function IntakeDocContent() {
         <li>All the typical methods completely took over your life.</li>
       </GammaOrderedList>
 
-      <GammaParagraph>
+      <GammaParagraph className="pt-0 md:pt-2 lg:pt-2 pb-0 md:pb-2 lg:pb-2">
         I built this system from scratch because nothing out there was designed for men who actually have a life, and don&apos;t want to spend their days eating broccoli and frying themselves in the gym every night.
       </GammaParagraph>
 
-      <GammaParagraph className="-mb-5 pb-10 md:-mb-1 md:pt-3 lg:-mb-5 lg:pt-3">
+      <GammaParagraph className="-mb-5 pb-10 md:pb-0 lg:pb-0 md:-mb-1 md:pt-3 lg:-mb-5 lg:pt-3">
         <GammaMiniHeading>Some results we&apos;ve gotten:</GammaMiniHeading>
       </GammaParagraph>
 
@@ -139,11 +139,11 @@ export default function IntakeDocContent() {
         My past client Lewis went from 85kg to 68kg in 4 months and hasn&apos;t touched alcohol in 2 years now.
       </GammaParagraph>
 
-      <GammaParagraph className="-mt-2 pb-0 md:-mt-4 md:-mb-4 md:pb-8 lg:-mt-4 lg:-mb-4 lg:pb-8">
+      <GammaParagraph className="-mt-2 pb-0 md:-mt-4 md:-mb-4 md:pb-- lg:-mt-4 lg:-mb-4 lg:pb-0">
         Or Aaron, a stressed out business exec a few weeks in: <em>&quot;I&apos;ve never had this much natural energy in my life.&quot;</em>
       </GammaParagraph>
 
-      <GammaParagraph className="-mt-2">
+      <GammaParagraph className="-mt-2 pb-4">
         As for me.. I&apos;m coming up 4 years sober now, 2 years off caffeine, training twice a week and feeling like a different human. I want this for you too.
       </GammaParagraph>
 
@@ -157,11 +157,11 @@ export default function IntakeDocContent() {
         We&apos;ll implement the <strong>Limitless Protocol</strong> in three phases:
       </GammaParagraph>
 
-      <GammaParagraph className="pt-0 md:pt-2 lg:pt-2 -mb-5 pb-8 -mr-4 md:-mb-0 md:pb-0 md:-mr-0 lg:-mb-0 lg:pb-0 lg:-mr-0">
+      <GammaParagraph className="pt-0 md:pt-2 lg:pt-2 -mb-5 md:-mb-0 lg:-mb-0 pb-8 md:pb-0 lg:pb-0 -mr-4 md:-mr-0 lg:-mr-0">
         <strong>Phase 1: The Foundations (Wk 1-4)</strong>
       </GammaParagraph>
 
-      <GammaParagraph className="-mt-12">
+      <GammaParagraph className="-mt-12 md:mt-4 lg:-mt-4">
         Every man&apos;s situation is different, so we run <strong>The Bottleneck Test</strong> to identify your single biggest constraint. From here, you get your custom <strong>Rest-Focused Training</strong> and <strong>Metabolic Priming</strong> gameplan, so you can eat more while burning fat, see your gut flattening, and sleep improving.
       </GammaParagraph>
 
@@ -169,7 +169,7 @@ export default function IntakeDocContent() {
         <strong>Phase 2: Energy (Wk 5-8)</strong>
       </GammaParagraph>
 
-      <GammaParagraph className="-mt-12">
+      <GammaParagraph className="-mt-12 md:mt-4 lg:-mt-4">
         Now we shift focus to your lifestyle. We bring in <strong>The Limitless Morning</strong> and <strong>Metabolic Priming Protocol</strong>, to heal your body and build your Unlimited Energy Flywheel. Your energy is rising every day, visible muscle is developing, and less stress means you stop feeling the tie for booze.
       </GammaParagraph>
 
@@ -177,7 +177,7 @@ export default function IntakeDocContent() {
         <strong>Phase 3: Limitless (Wk 9-12)</strong>
       </GammaParagraph>
 
-      <GammaParagraph className="-mt-12">
+      <GammaParagraph className="-mt-12 md:mt-4 lg:-mt-4">
         Finally, with the natural flow system and our signature <strong>Anti-Stack</strong> method, you reach REAL energy without caffeine / supplements. What to expect: morning wood back, drive you haven&apos;t seen in years, and most importantly a peaceful state of mind. Oh yeah… and a SHREDDED physique.
       </GammaParagraph>
 

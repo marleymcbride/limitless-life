@@ -8,7 +8,7 @@ export default function WaitlistVariantCFormSuccessPage() {
 
   return (
     <div style={{ backgroundColor: '#0E0F12', minHeight: '100vh' }}>
-      <div className="flex flex-col items-center justify-center px-4" style={{ minHeight: '100vh', paddingTop: '100px' }}>
+      <div className="flex flex-col items-center justify-center px-4" style={{ minHeight: '85vh', paddingTop: '100px' }}>
         <div className="max-w-2xl text-center">
           {/* Success Icon */}
           <div className="mb-8 flex justify-center">
@@ -17,7 +17,7 @@ export default function WaitlistVariantCFormSuccessPage() {
               style={{
                 width: '80px',
                 height: '80px',
-                backgroundColor: '#10B981'
+                backgroundColor: '#851910'
               }}
             >
               <svg
@@ -38,13 +38,13 @@ export default function WaitlistVariantCFormSuccessPage() {
 
           {/* Success Message */}
           <h1
-            className="text-4xl md:text-5xl font-bold mb-6"
+            className="text-4xl md:text-4.5xl font-bold mb-6"
             style={{
               fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif',
               color: 'white'
             }}
           >
-            Quiz Complete!
+            Your results will be emailed to you.
           </h1>
 
           <p
@@ -55,17 +55,16 @@ export default function WaitlistVariantCFormSuccessPage() {
               lineHeight: '1.728'
             }}
           >
-            Your results will be emailed to you
           </p>
 
           <p
-            className="text-lg"
+            className="text-1.5xl font-normal"
             style={{
               fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif',
-              color: '#9ca3af'
+              color: '#FFFFFF'
             }}
           >
-            Check your inbox in the next few minutes
+            Check your inbox in 2-3 minutes for your Energy Audit.
           </p>
         </div>
       </div>
