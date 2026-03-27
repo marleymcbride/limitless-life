@@ -131,20 +131,20 @@ export default function IntakeDocContent() {
         I built this system from scratch because nothing out there was designed for men who actually have a life, and don&apos;t want to spend their days eating broccoli and frying themselves in the gym every night.
       </GammaParagraph>
 
-      <GammaParagraph className="-mb-5 pb-10 md:pb-0 lg:pb-0 md:-mb-1 md:pt-3 lg:-mb-5 lg:pt-3">
-        <GammaMiniHeading>Some results we&apos;ve gotten:</GammaMiniHeading>
+      <GammaParagraph className="mb-0 mr-4 pb-0 md:-pb-0 lg:-pb-0 md:-mb-0 lg:-mb-0 lg:pb-0 md:pt-3 lg:pt-3">
+        <GammaMiniHeading className="text-3xl">Real-world examples this system has achieved:</GammaMiniHeading>
       </GammaParagraph>
 
       <GammaParagraph>
-        My past client Lewis went from 85kg to 68kg in 4 months and hasn&apos;t touched alcohol in 2 years now.
+        Lewis often works 80 hours as an engineer. He went from 85kg to 68kg over 4 months and hasn&apos;t touched alcohol in 2 years now.
       </GammaParagraph>
 
       <GammaParagraph className="-mt-2 pb-0 md:-mt-4 md:-mb-4 md:pb-- lg:-mt-4 lg:-mb-4 lg:pb-0">
-        Or Aaron, a stressed out business exec a few weeks in: <em>&quot;I&apos;ve never had this much natural energy in my life.&quot;</em>
+        Aaron was a stressed-out business exec, he said a month in: <em>&quot;I&apos;ve never had this much natural energy in my life.&quot;</em>
       </GammaParagraph>
 
       <GammaParagraph className="-mt-2 pb-4">
-        As for me.. I&apos;m coming up 4 years sober now, 2 years off caffeine, training twice a week and feeling like a different human. I want this for you too.
+        As for me.. I&apos;m coming up 4 years sober now, training twice a week, and feeling like a different human. Life is sweet.
       </GammaParagraph>
 
       <GammaDivider />
