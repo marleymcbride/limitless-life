@@ -120,7 +120,7 @@ export default function WaitlistFilloutFormPopup({ onClose }: WaitlistFilloutFor
             <div className="flex-1 overflow-y-auto">
               <FilloutStandardEmbed
                 filloutId="fhD1iaRf1fus"
-                domain="forms.fillout.com"
+                domain="limitless-life.fillout.com"
                 parameters={{
                   name: name,
                   email: email,

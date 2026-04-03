@@ -8,7 +8,7 @@ const UUID_REGEX = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12
 function getCorsHeaders(origin: string | null): HeadersInit {
   const allowedOrigins = [
     'https://fillout.com',
-    'https://forms.fillout.com',
+    'https://limitless-life.fillout.com',
     'https://www.limitless-life.co',
     'https://limitless-life.co',
   ];

@@ -62,8 +62,8 @@ function WaitlistVariantCFormContent() {
       <div className="py-4 md:py-16 px-4 md:px-20">
         <div className="h-12 md:h-24"></div>
 
-        <div className="z-20 relative mt-0 mx-auto" style={{ width: '100%', maxWidth: '1000px', height:'60%', marginTop: '2rem' }}>
-          <div className="relative z-20 mt-2 pl-0 md:pl-5 max-h-[400px] md:max-h-[500px] lg:max-h-[600px] overflow-hidden">
+        <div className="z-20 relative mt-0 mx-auto" style={{ width: '100%', maxWidth: '1000px', height:'50%', marginTop: '2rem' }}>
+          <div className="relative z-20 mt-2 pl-0 md:pl-5 max-h-[400px] md:max-h-[400px] lg:max-h-[400px] overflow-hidden">
             <FilloutStandardEmbed
               filloutId="pb6W8WqeTPus"
               domain="limitless-life.fillout.com"
