@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { db } from '@/lib/db';
+import { isAdminAuthenticated } from '@/lib/admin-auth';
 
 /**
  * GET /api/test/check-db
@@ -7,6 +8,14 @@ import { db } from '@/lib/db';
  * Check database extensions and configuration
  */
 export async function GET() {
+  // Require admin authentication for security
+  if (!(await isAdminAuthenticated())) {
+    return NextResponse.json(
+      { error: 'Unauthorized' },
+      { status: 401 }
+    );
+  }
+
   try {
     // Check if pgcrypto extension exists
     const result = await db.execute(

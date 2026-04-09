@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { db } from '@/lib/db';
 import { events, users } from '@/db/schema';
 import { desc, eq, isNull, isNotNull } from 'drizzle-orm';
+import { isAdminAuthenticated } from '@/lib/admin-auth';
 
 /**
  * GET /api/test/check-events
@@ -9,6 +10,14 @@ import { desc, eq, isNull, isNotNull } from 'drizzle-orm';
  * Check if recent events have userId
  */
 export async function GET() {
+  // Require admin authentication for security
+  if (!(await isAdminAuthenticated())) {
+    return NextResponse.json(
+      { error: 'Unauthorized' },
+      { status: 401 }
+    );
+  }
+
   try {
     // Get most recent events
     const recentEvents = await db

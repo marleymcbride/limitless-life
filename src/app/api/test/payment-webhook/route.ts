@@ -3,6 +3,7 @@ import { db } from '@/lib/db';
 import { users, payments, events } from '@/db/schema';
 import { eq } from 'drizzle-orm';
 import { randomUUID } from 'crypto';
+import { isAdminAuthenticated } from '@/lib/admin-auth';
 
 /**
  * POST /api/test/payment-webhook
@@ -11,6 +12,14 @@ import { randomUUID } from 'crypto';
  * Verifies full payment tracking flow without needing real Stripe webhooks
  */
 export async function POST(request: NextRequest) {
+  // Require admin authentication for security
+  if (!(await isAdminAuthenticated())) {
+    return NextResponse.json(
+      { error: 'Unauthorized' },
+      { status: 401 }
+    );
+  }
+
   try {
     console.log('=== [TEST WEBHOOK] Simulating Stripe payment ===');
 

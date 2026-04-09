@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { db } from '@/lib/db';
 import { sessions, events } from '@/db/schema';
+import { isAdminAuthenticated } from '@/lib/admin-auth';
 
 /**
  * GET /api/test/create-session
@@ -8,6 +9,14 @@ import { sessions, events } from '@/db/schema';
  * Test creating a session and event directly
  */
 export async function GET() {
+  // Require admin authentication for security
+  if (!(await isAdminAuthenticated())) {
+    return NextResponse.json(
+      { error: 'Unauthorized' },
+      { status: 401 }
+    );
+  }
+
   try {
     console.log('=== [TEST] Creating session ===');
 

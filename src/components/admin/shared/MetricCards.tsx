@@ -5,8 +5,6 @@
  * Reusable metric display cards with consistent styling
  */
 
-import { RevenueData } from './RevenueIntelligence';
-
 interface CardProps {
   title: string;
   value: string;

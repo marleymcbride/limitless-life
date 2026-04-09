@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { db } from '@/lib/db';
+import { isAdminAuthenticated } from '@/lib/admin-auth';
 
 /**
  * GET /api/test/events-schema
@@ -7,6 +8,14 @@ import { db } from '@/lib/db';
  * Check if events.session_id column allows NULL or requires valid UUID
  */
 export async function GET() {
+  // Require admin authentication for security
+  if (!(await isAdminAuthenticated())) {
+    return NextResponse.json(
+      { error: 'Unauthorized' },
+      { status: 401 }
+    );
+  }
+
   try {
     // Check events table schema
     const result = await db.execute(`

@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/lib/db';
 import { users, sessions, events, payments, application_submissions, webhook_queue, lead_alerts } from '@/db/schema';
+import { isAdminAuthenticated } from '@/lib/admin-auth';
 
 /**
  * GET /api/test/db-schema
@@ -9,6 +10,14 @@ import { users, sessions, events, payments, application_submissions, webhook_que
  * and sample data to understand what's being stored where
  */
 export async function GET(request: NextRequest) {
+  // Require admin authentication for security
+  if (!(await isAdminAuthenticated())) {
+    return NextResponse.json(
+      { error: 'Unauthorized' },
+      { status: 401 }
+    );
+  }
+
   try {
     console.log('=== [DB SCHEMA] Fetching database structure ===');
 

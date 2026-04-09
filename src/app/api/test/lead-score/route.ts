@@ -1,7 +1,16 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { calculateLeadScore } from '@/lib/scoring';
+import { isAdminAuthenticated } from '@/lib/admin-auth';
 
 export async function POST(req: NextRequest) {
+  // Require admin authentication for security
+  if (!(await isAdminAuthenticated())) {
+    return NextResponse.json(
+      { error: 'Unauthorized' },
+      { status: 401 }
+    );
+  }
+
   try {
     const { userId } = await req.json();
 

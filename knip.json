@@ -1,0 +1,31 @@
+{
+  "$schema": "https://raw.githubusercontent.com/webpro-knip/knip/main/schema.json",
+  "entry": [
+    "src/app/layout.tsx",
+    "src/app/page.tsx",
+    "create-tsconfig.js"
+  ],
+  "project": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "scripts/**/*.ts",
+    "scripts/**/*.js"
+  ],
+  "ignore": [
+    "**/node_modules/**",
+    "**/.next/**",
+    "**/dist/**",
+    "**/build/**",
+    "**/*.config.{js,ts}",
+    "**/.cache/**",
+    "**/coverage/**"
+  ],
+  "ignoreDependencies": [
+    "eslint-config-next",
+    "next",
+    "react",
+    "react-dom",
+    "@types/react",
+    "@types/react-dom"
+  ]
+}

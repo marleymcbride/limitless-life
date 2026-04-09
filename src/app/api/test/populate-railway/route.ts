@@ -5,6 +5,7 @@ import { eq } from 'drizzle-orm';
 import { trackEvent } from '@/lib/analytics.server';
 import { syncPaymentToAirtable } from '@/lib/n8nWebhooks';
 import { calculateLeadScore } from '@/lib/scoring';
+import { isAdminAuthenticated } from '@/lib/admin-auth';
 
 /**
  * TEST ENDPOINT: Simulate a payment to populate Railway and trigger n8n
@@ -21,6 +22,14 @@ import { calculateLeadScore } from '@/lib/scoring';
  * }
  */
 export async function POST(request: NextRequest) {
+  // Require admin authentication for security
+  if (!(await isAdminAuthenticated())) {
+    return NextResponse.json(
+      { error: 'Unauthorized' },
+      { status: 401 }
+    );
+  }
+
   try {
     const body = await request.json();
     const { email, tier, amount, skipN8N = false } = body;

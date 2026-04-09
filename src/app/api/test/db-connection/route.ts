@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/lib/db';
 import { users, events, payments } from '@/db/schema';
 import { desc, count } from 'drizzle-orm';
+import { isAdminAuthenticated } from '@/lib/admin-auth';
 
 /**
  * GET /api/test/db-connection
@@ -10,6 +11,14 @@ import { desc, count } from 'drizzle-orm';
  * This helps diagnose if data is being written to the database
  */
 export async function GET(request: NextRequest) {
+  // Require admin authentication for security
+  if (!(await isAdminAuthenticated())) {
+    return NextResponse.json(
+      { error: 'Unauthorized' },
+      { status: 401 }
+    );
+  }
+
   try {
     console.log('=== [DB TEST] Testing Railway database connection ===');
 
