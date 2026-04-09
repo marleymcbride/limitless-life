@@ -3,7 +3,7 @@ import { z } from 'zod';
 import { db } from '@/lib/db';
 import { payments, sessions } from '@/db/schema';
 import { gte, lte, and, eq, sql, desc } from 'drizzle-orm';
-import { env } from '@/env.mjs';
+import { isAdminAuthenticated } from '@/lib/admin-auth';
 
 const schema = z.object({
   startDate: z.string().datetime().optional(),
@@ -17,7 +17,7 @@ const schema = z.object({
  * Calculate revenue metrics for business intelligence dashboard
  *
  * Headers:
- * - x-admin-api-key: Required for authentication
+ * - Authentication: Required via JWT cookie
  *
  * Query Params:
  * - startDate: ISO datetime string (default: 30 days ago)
@@ -30,9 +30,8 @@ const schema = z.object({
  * - metrics: Summary statistics
  */
 export async function GET(request: NextRequest) {
-  // Verify admin authentication using API key
-  const apiKey = request.headers.get('x-admin-api-key');
-  if (apiKey !== env.ADMIN_API_KEY) {
+  // Verify admin authentication
+  if (!(await isAdminAuthenticated())) {
     return NextResponse.json(
       { success: false, error: 'Unauthorized' },
       { status: 401 }

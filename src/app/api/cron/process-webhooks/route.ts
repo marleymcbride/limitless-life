@@ -62,11 +62,14 @@ export async function POST(req: NextRequest) {
  * GET /api/cron/process-webhooks
  *
  * Get webhook queue statistics (for monitoring)
+ *
+ * Headers:
+ * - x-cron-api-key: Required for authentication
  */
 export async function GET(req: NextRequest) {
   try {
-    // Verify API key
-    const apiKey = req.headers.get('x-admin-api-key');
+    // Verify cron API key
+    const apiKey = req.headers.get('x-cron-api-key');
     if (apiKey !== env.ADMIN_API_KEY) {
       return NextResponse.json(
         { success: false, error: 'Unauthorized' },

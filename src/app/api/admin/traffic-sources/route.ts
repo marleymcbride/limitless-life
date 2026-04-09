@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/lib/db';
 import { users, payments, sessions } from '@/db/schema';
-import { env } from '@/env.mjs';
+import { isAdminAuthenticated } from '@/lib/admin-auth';
 import { desc, eq, sql, and } from 'drizzle-orm';
 
 /**
@@ -10,15 +10,14 @@ import { desc, eq, sql, and } from 'drizzle-orm';
  * Get traffic source breakdown with conversion metrics
  *
  * Headers:
- * - x-admin-api-key: Required for authentication
+ * - Authentication: Required via JWT cookie
  *
  * Returns:
  * - Array of traffic sources with visitor, session, and conversion metrics
  */
 export async function GET(request: NextRequest) {
-  // Verify admin authentication using API key
-  const apiKey = request.headers.get('x-admin-api-key');
-  if (apiKey !== env.ADMIN_API_KEY) {
+  // Verify admin authentication
+  if (!(await isAdminAuthenticated())) {
     return NextResponse.json(
       { error: 'Unauthorized' },
       { status: 401 }

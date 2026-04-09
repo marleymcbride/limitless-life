@@ -1,16 +1,16 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/lib/db';
 import { users, events } from '@/db/schema';
-import { sql, or, and, eq, desc } from 'drizzle-orm';
-import { env } from '@/env.mjs';
+import { sql, and, desc } from 'drizzle-orm';
+import { isAdminAuthenticated } from '@/lib/admin-auth';
 
 /**
  * GET /api/analytics/leads
  *
  * Get all leads segmented by temperature (hot/warm/cold).
  *
- * Headers:
- * - x-admin-api-key: Required for authentication
+ * Authentication: Uses secure JWT cookie authentication
+ * (No API key needed - client components can call this directly after logging in)
  *
  * Returns:
  * - hot: leads with score >= 70
@@ -18,16 +18,15 @@ import { env } from '@/env.mjs';
  * - cold: leads with score < 40
  */
 export async function GET(req: NextRequest) {
-  try {
-    // Verify admin API key
-    const apiKey = req.headers.get('x-admin-api-key');
-    if (apiKey !== env.ADMIN_API_KEY) {
-      return NextResponse.json(
-        { success: false, error: 'Unauthorized' },
-        { status: 401 }
-      );
-    }
+  // Verify admin authentication using JWT cookie
+  if (!(await isAdminAuthenticated())) {
+    return NextResponse.json(
+      { success: false, error: 'Unauthorized' },
+      { status: 401 }
+    );
+  }
 
+  try {
     // Get hot leads (>= 70)
     const hotLeads = await db
       .select()
@@ -36,7 +35,7 @@ export async function GET(req: NextRequest) {
         sql`${users.leadScore} >= 70`,
         sql`${users.email} IS NOT NULL`
       ))
-      .orderBy(sql`${users.leadScore} DESC`)
+      .orderBy(desc(users.leadScore))
       .limit(100);
 
     // Get warm leads (>= 40 and < 70)
@@ -48,7 +47,7 @@ export async function GET(req: NextRequest) {
         sql`${users.leadScore} < 70`,
         sql`${users.email} IS NOT NULL`
       ))
-      .orderBy(sql`${users.leadScore} DESC`)
+      .orderBy(desc(users.leadScore))
       .limit(100);
 
     // Get cold leads (< 40)
@@ -59,7 +58,7 @@ export async function GET(req: NextRequest) {
         sql`${users.leadScore} < 40`,
         sql`${users.email} IS NOT NULL`
       ))
-      .orderBy(sql`${users.leadScore} DESC`)
+      .orderBy(desc(users.leadScore))
       .limit(100);
 
     return NextResponse.json({

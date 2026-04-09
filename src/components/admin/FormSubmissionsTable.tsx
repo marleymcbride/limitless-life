@@ -42,12 +42,7 @@ export default function FormSubmissionsTable() {
 
     try {
       const response = await fetch(
-        `/api/admin/form-submissions?page=${page}&pageSize=50`,
-        {
-          headers: {
-            'x-admin-api-key': process.env.NEXT_PUBLIC_ADMIN_API_KEY || '',
-          },
-        }
+        `/api/admin/form-submissions?page=${page}&pageSize=50`
       );
 
       if (!response.ok) {

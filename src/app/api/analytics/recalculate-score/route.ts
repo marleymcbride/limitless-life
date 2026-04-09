@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import { updateUserLeadScore, calculateLeadScore } from '@/lib/scoring';
-import { env } from '@/env.mjs';
+import { isAdminAuthenticated } from '@/lib/admin-auth';
 
 const schema = z.object({
   userId: z.string().uuid(),
@@ -13,7 +13,7 @@ const schema = z.object({
  * Recalculates and updates a user's lead score based on all their events.
  *
  * Headers:
- * - x-admin-api-key: Required for authentication
+ * - Authentication: Required via JWT cookie
  *
  * Body:
  * - userId: UUID of the user to recalculate
@@ -26,9 +26,8 @@ const schema = z.object({
  */
 export async function POST(req: NextRequest) {
   try {
-    // Verify admin API key
-    const apiKey = req.headers.get('x-admin-api-key');
-    if (apiKey !== env.ADMIN_API_KEY) {
+    // Verify admin authentication
+    if (!(await isAdminAuthenticated())) {
       return NextResponse.json(
         { success: false, error: 'Unauthorized' },
         { status: 401 }

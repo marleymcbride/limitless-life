@@ -34,9 +34,7 @@ export function WorkWithMeLeads() {
     setError(null);
 
     try {
-      const response = await fetch('/api/admin/leads/work-with-me', {
-        headers: { 'x-admin-api-key': process.env.NEXT_PUBLIC_ADMIN_API_KEY || '' },
-      });
+      const response = await fetch('/api/admin/leads/work-with-me');
 
       if (!response.ok) {
         throw new Error('Failed to fetch work with me leads');

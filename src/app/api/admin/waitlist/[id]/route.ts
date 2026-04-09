@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/lib/db';
 import { waitlistSignups } from '@/db/schema';
-import { env } from '@/env.mjs';
+import { isAdminAuthenticated } from '@/lib/admin-auth';
 import { eq } from 'drizzle-orm';
 
 /**
@@ -14,14 +14,16 @@ import { eq } from 'drizzle-orm';
  *   leadScore?: number
  *   leadTemperature?: 'cold' | 'warm' | 'hot'
  * }
+ *
+ * Headers:
+ * - Authentication: Required via JWT cookie
  */
 export async function PATCH(
   request: NextRequest,
   { params }: { params: { id: string } }
 ) {
-  // Verify admin authentication using API key
-  const apiKey = request.headers.get('x-admin-api-key');
-  if (apiKey !== env.ADMIN_API_KEY) {
+  // Verify admin authentication
+  if (!(await isAdminAuthenticated())) {
     return NextResponse.json(
       { error: 'Unauthorized' },
       { status: 401 }
@@ -87,14 +89,16 @@ export async function PATCH(
 /**
  * DELETE /api/admin/waitlist/[id]
  * Delete individual waitlist signup
+ *
+ * Headers:
+ * - Authentication: Required via JWT cookie
  */
 export async function DELETE(
   request: NextRequest,
   { params }: { params: { id: string } }
 ) {
-  // Verify admin authentication using API key
-  const apiKey = request.headers.get('x-admin-api-key');
-  if (apiKey !== env.ADMIN_API_KEY) {
+  // Verify admin authentication
+  if (!(await isAdminAuthenticated())) {
     return NextResponse.json(
       { error: 'Unauthorized' },
       { status: 401 }

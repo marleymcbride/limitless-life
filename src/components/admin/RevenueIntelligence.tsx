@@ -67,9 +67,7 @@ export function RevenueIntelligence() {
     });
 
     try {
-      const response = await fetch(`/api/admin/revenue?${params}`, {
-        headers: { 'x-admin-api-key': process.env.NEXT_PUBLIC_ADMIN_API_KEY || '' },
-      });
+      const response = await fetch(`/api/admin/revenue?${params}`);
 
       if (!response.ok) {
         throw new Error('Failed to fetch revenue data');

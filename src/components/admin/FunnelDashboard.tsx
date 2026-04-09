@@ -72,11 +72,7 @@ export function FunnelDashboard() {
         breakdown,
       });
 
-      const response = await fetch(`/api/analytics/funnel?${params}`, {
-        headers: {
-          'x-admin-api-key': process.env.NEXT_PUBLIC_ADMIN_API_KEY || '',
-        },
-      });
+      const response = await fetch(`/api/analytics/funnel?${params}`);
 
       if (!response.ok) {
         throw new Error('Failed to fetch funnel data');

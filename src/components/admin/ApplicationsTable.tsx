@@ -43,11 +43,7 @@ export default function ApplicationsTable() {
         url.searchParams.set('temperature', filter);
       }
 
-      const response = await fetch(url.toString(), {
-        headers: {
-          'x-admin-api-key': process.env.NEXT_PUBLIC_ADMIN_API_KEY || '',
-        },
-      });
+      const response = await fetch(url.toString());
 
       if (!response.ok) {
         throw new Error('Failed to fetch applications');

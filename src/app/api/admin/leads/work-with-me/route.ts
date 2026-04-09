@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/lib/db';
 import { users } from '@/db/schema';
 import { eq, desc } from 'drizzle-orm';
-import { env } from '@/env.mjs';
+import { isAdminAuthenticated } from '@/lib/admin-auth';
 
 /**
  * GET /api/admin/leads/work-with-me
@@ -11,16 +11,15 @@ import { env } from '@/env.mjs';
  * These are the hottest prospects who clicked "Work With Me" button
  *
  * Headers:
- * - x-admin-api-key: Required for authentication
+ * - Authentication: Required via JWT cookie
  *
  * Returns:
  * - leads: array of work-with-me leads sorted by created_at DESC
  */
 export async function GET(req: NextRequest) {
   try {
-    // Verify admin API key
-    const apiKey = req.headers.get('x-admin-api-key');
-    if (apiKey !== env.ADMIN_API_KEY) {
+    // Verify admin authentication
+    if (!(await isAdminAuthenticated())) {
       return NextResponse.json(
         { success: false, error: 'Unauthorized' },
         { status: 401 }

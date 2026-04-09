@@ -38,9 +38,7 @@ export default function WaitlistDashboard() {
   async function fetchSignups() {
     try {
       setLoading(true);
-      const res = await fetch('/api/admin/waitlist', {
-        headers: { 'x-admin-api-key': process.env.NEXT_PUBLIC_ADMIN_API_KEY || '' }
-      });
+      const res = await fetch('/api/admin/waitlist');
 
       if (!res.ok) {
         throw new Error('Failed to fetch waitlist signups');
@@ -74,7 +72,6 @@ export default function WaitlistDashboard() {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
-          'x-admin-api-key': process.env.NEXT_PUBLIC_ADMIN_API_KEY || ''
         },
         body: JSON.stringify({ status }),
       });
@@ -97,7 +94,6 @@ export default function WaitlistDashboard() {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
-          'x-admin-api-key': process.env.NEXT_PUBLIC_ADMIN_API_KEY || ''
         },
         body: JSON.stringify({ notes }),
       });
@@ -121,7 +117,6 @@ export default function WaitlistDashboard() {
     try {
       const res = await fetch(`/api/admin/waitlist/${id}`, {
         method: 'DELETE',
-        headers: { 'x-admin-api-key': process.env.NEXT_PUBLIC_ADMIN_API_KEY || '' }
       });
 
       if (!res.ok) throw new Error('Failed to delete');

@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/lib/db';
 import { users, events } from '@/db/schema';
 import { eq, desc, sql, and } from 'drizzle-orm';
-import { env } from '@/env.mjs';
+import { isAdminAuthenticated } from '@/lib/admin-auth';
 
 /**
  * GET /api/admin/form-submissions
@@ -11,13 +11,12 @@ import { env } from '@/env.mjs';
  * One row per email (most recent submission only).
  *
  * Headers:
- * - x-admin-api-key: Required for authentication
+ * - Authentication: Required via JWT cookie
  */
 export async function GET(req: NextRequest) {
   try {
-    // Verify admin API key
-    const apiKey = req.headers.get('x-admin-api-key');
-    if (apiKey !== env.ADMIN_API_KEY) {
+    // Verify admin authentication
+    if (!(await isAdminAuthenticated())) {
       return NextResponse.json(
         { success: false, error: 'Unauthorized' },
         { status: 401 }

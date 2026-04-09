@@ -3,7 +3,7 @@ import { z } from 'zod';
 import { db } from '@/lib/db';
 import { users, sessions, events } from '@/db/schema';
 import { sql, and, gte, lte, eq } from 'drizzle-orm';
-import { env } from '@/env.mjs';
+import { isAdminAuthenticated } from '@/lib/admin-auth';
 
 const schema = z.object({
   userId: z.string().optional(),
@@ -17,7 +17,7 @@ const schema = z.object({
  * Get customer journey events and timeline
  *
  * Headers:
- * - x-admin-api-key: Required for authentication
+ * - Authentication: Required via JWT cookie
  *
  * Query Params:
  * - userId: Filter by specific user ID
@@ -26,9 +26,8 @@ const schema = z.object({
  */
 export async function GET(req: NextRequest) {
   try {
-    // Verify admin API key
-    const apiKey = req.headers.get('x-admin-api-key');
-    if (apiKey !== env.ADMIN_API_KEY) {
+    // Verify admin authentication
+    if (!(await isAdminAuthenticated())) {
       return NextResponse.json(
         { success: false, error: 'Unauthorized' },
         { status: 401 }

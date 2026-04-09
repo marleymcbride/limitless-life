@@ -8,8 +8,6 @@ global.fetch = mockFetch;
 describe('RevtrackDashboard', () => {
   beforeEach(() => {
     jest.clearAllMocks();
-    // Mock process.env.NEXT_PUBLIC_ADMIN_API_KEY
-    process.env.NEXT_PUBLIC_ADMIN_API_KEY = 'test-api-key';
   });
 
   it('displays loading state initially', () => {

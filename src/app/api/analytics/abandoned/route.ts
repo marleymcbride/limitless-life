@@ -3,7 +3,7 @@ import { z } from 'zod';
 import { db } from '@/lib/db';
 import { users, sessions, payments } from '@/db/schema';
 import { sql, and, gte, lte, eq, or } from 'drizzle-orm';
-import { env } from '@/env.mjs';
+import { isAdminAuthenticated } from '@/lib/admin-auth';
 
 const schema = z.object({
   startDate: z.string().datetime().optional(),
@@ -16,7 +16,7 @@ const schema = z.object({
  * Get abandoned funnel metrics - users who started but didn't complete
  *
  * Headers:
- * - x-admin-api-key: Required for authentication
+ * - Authentication: Required via JWT cookie
  *
  * Query Params:
  * - startDate: ISO datetime string (default: 30 days ago)
@@ -31,9 +31,8 @@ const schema = z.object({
  */
 export async function GET(req: NextRequest) {
   try {
-    // Verify admin API key
-    const apiKey = req.headers.get('x-admin-api-key');
-    if (apiKey !== env.ADMIN_API_KEY) {
+    // Verify admin authentication
+    if (!(await isAdminAuthenticated())) {
       return NextResponse.json(
         { success: false, error: 'Unauthorized' },
         { status: 401 }

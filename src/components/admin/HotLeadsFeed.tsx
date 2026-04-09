@@ -35,11 +35,7 @@ export function HotLeadsFeed() {
       setLoading(true);
       setError(null);
 
-      const response = await fetch('/api/analytics/leads', {
-        headers: {
-          'x-admin-api-key': process.env.NEXT_PUBLIC_ADMIN_API_KEY || '',
-        },
-      });
+      const response = await fetch('/api/analytics/leads');
 
       if (!response.ok) {
         throw new Error('Failed to fetch leads');

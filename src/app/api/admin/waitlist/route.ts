@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/lib/db';
 import { waitlistSignups } from '@/db/schema';
-import { env } from '@/env.mjs';
+import { isAdminAuthenticated } from '@/lib/admin-auth';
 import { desc, eq, and, sql } from 'drizzle-orm';
 
 /**
@@ -10,11 +10,13 @@ import { desc, eq, and, sql } from 'drizzle-orm';
  * Query params:
  *   - choice: yes|maybe|no (filter by choice)
  *   - status: waitlist|applied|accepted|rejected|withdrawn (filter by status)
+ *
+ * Headers:
+ * - Authentication: Required via JWT cookie
  */
 export async function GET(request: NextRequest) {
-  // Verify admin authentication using API key
-  const apiKey = request.headers.get('x-admin-api-key');
-  if (apiKey !== env.ADMIN_API_KEY) {
+  // Verify admin authentication
+  if (!(await isAdminAuthenticated())) {
     return NextResponse.json(
       { error: 'Unauthorized' },
       { status: 401 }
@@ -83,11 +85,13 @@ export async function GET(request: NextRequest) {
  * Delete all waitlist signups (useful for test data cleanup)
  * Query params:
  *   - email: optional - delete only specific email
+ *
+ * Headers:
+ * - Authentication: Required via JWT cookie
  */
 export async function DELETE(request: NextRequest) {
-  // Verify admin authentication using API key
-  const apiKey = request.headers.get('x-admin-api-key');
-  if (apiKey !== env.ADMIN_API_KEY) {
+  // Verify admin authentication
+  if (!(await isAdminAuthenticated())) {
     return NextResponse.json(
       { error: 'Unauthorized' },
       { status: 401 }
