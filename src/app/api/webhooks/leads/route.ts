@@ -3,6 +3,48 @@ import { db } from '@/lib/db';
 import { users } from '@/db/schema';
 import { eq, sql } from 'drizzle-orm';
 
+// ============================================================================
+// SECURE WEBHOOK FOR EXTERNAL LEAD CAPTURE
+// ============================================================================
+// This webhook is called from external sites (3weeks.co, marleymcbride.co)
+// to capture leads. It requires a shared secret API key for authentication.
+//
+// Environment variable: WEBHOOK_LEADS_API_KEY
+// ============================================================================
+
+const WEBHOOK_API_KEY = process.env.WEBHOOK_LEADS_API_KEY;
+
+/**
+ * Verify webhook API key using constant-time comparison
+ */
+function verifyApiKey(req: NextRequest): boolean {
+  if (!WEBHOOK_API_KEY) {
+    throw new Error(
+      'WEBHOOK_LEADS_API_KEY environment variable is not set. ' +
+      'This is required for external lead capture webhooks.'
+    );
+  }
+  const apiKey = req.headers.get('x-webhook-api-key');
+  if (!apiKey) {
+    return false;
+  }
+
+  // Use constant-time comparison to prevent timing attacks
+  const keyBuffer = Buffer.from(apiKey);
+  const expectedKeyBuffer = Buffer.from(WEBHOOK_API_KEY);
+
+  if (keyBuffer.length !== expectedKeyBuffer.length) {
+    return false;
+  }
+
+  let result = 0;
+  for (let i = 0; i < keyBuffer.length; i++) {
+    result |= keyBuffer[i] ^ expectedKeyBuffer[i];
+  }
+
+  return result === 0;
+}
+
 /**
  * Forward lead data to n8n for Airtable sync
  * Fire-and-forget — non-blocking, doesn't affect user response
@@ -52,7 +94,7 @@ function getCorsHeaders(origin: string | null) {
   return {
     'Access-Control-Allow-Origin': originHeader,
     'Access-Control-Allow-Methods': 'POST, OPTIONS',
-    'Access-Control-Allow-Headers': 'Content-Type',
+    'Access-Control-Allow-Headers': 'Content-Type, x-webhook-api-key',
     'Access-Control-Max-Age': '86400', // 24 hours
   };
 }
@@ -77,6 +119,8 @@ export async function OPTIONS(req: NextRequest) {
  * Accepts lead data from 3weeks.co, marleymcbride.co, etc.
  * Performs upsert logic to handle first-touch attribution
  *
+ * Security: Requires x-webhook-api-key header with WEBHOOK_LEADS_API_KEY
+ *
  * Payload format:
  * {
  *   "email": "user@example.com",
@@ -88,6 +132,15 @@ export async function OPTIONS(req: NextRequest) {
  */
 export async function POST(req: NextRequest) {
   const origin = req.headers.get('origin');
+
+  // Verify API key for security
+  if (!verifyApiKey(req)) {
+    console.warn('[Leads Webhook] Unauthorized request - missing or invalid API key');
+    return NextResponse.json(
+      { success: false, error: 'Unauthorized' },
+      { status: 401, headers: getCorsHeaders(origin) }
+    );
+  }
 
   try {
     const body = await req.json();

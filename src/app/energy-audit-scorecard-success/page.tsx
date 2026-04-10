@@ -44,7 +44,7 @@ export default function EnergyAuditScorecardSuccessPage() {
               color: 'white'
             }}
           >
-            Your results will be emailed to you.
+            Your energy audit is on the way.
           </h1>
 
           <p
@@ -64,7 +64,7 @@ export default function EnergyAuditScorecardSuccessPage() {
               color: '#FFFFFF'
             }}
           >
-            Check your inbox in 2-3 minutes for your Energy Audit.
+            Check your inbox in 2-3 minutes for your customized gameplan.
           </p>
         </div>
       </div>

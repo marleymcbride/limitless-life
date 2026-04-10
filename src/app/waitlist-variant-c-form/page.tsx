@@ -27,13 +27,25 @@ function WaitlistVariantCFormContent() {
 
   const handleFormSuccess = () => {
     console.log('[VariantC Form] onSuccess fired at:', new Date().toISOString());
+    handleFormSubmit();
   };
 
   return (
     <div style={{ backgroundColor: '#0E0F12', minHeight: '100vh' }}>
       {/* Loading overlay shown after submission */}
       {isSubmitted && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center" style={{ backgroundColor: '#0E0F12' }}>
+        <div
+          className="fixed inset-0 flex items-center justify-center"
+          style={{
+            backgroundColor: '#0E0F12',
+            zIndex: 99999,
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0
+          }}
+        >
           <div className="text-center">
             <div className="mb-6 flex justify-center">
               <div
@@ -72,9 +84,8 @@ function WaitlistVariantCFormContent() {
                 name: name || undefined,
               }}
               dynamicResize={true}
+              onSubmit={handleFormSubmit}
               onSuccess={handleFormSuccess}
-              onSubmit={() => console.log('[VariantC Form] onSubmit fired')}
-              onButtonClick={() => console.log('[VariantC Form] onButtonClick fired')}
               className="w-full"
             />
           </div>
