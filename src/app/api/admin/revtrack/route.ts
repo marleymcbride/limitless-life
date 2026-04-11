@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { fetchCampaigns, airtable } from '@/lib/airtable';
-import { env } from '@/env.mjs';
+import { isAdminAuthenticated } from '@/lib/admin-auth';
 import { db } from '@/lib/db';
 import { sessions } from '@/db/schema';
 
@@ -28,14 +28,9 @@ interface CampaignWithMetrics {
  * Fetch campaigns with revenue per view calculations
  */
 export async function GET(request: NextRequest): Promise<NextResponse<{ campaigns: CampaignWithMetrics[]; total: number } | { error: string; message?: string }>> {
-  // TODO: Re-enable authentication once we have proper client-side auth
-  // const apiKey = request.headers.get('x-admin-api-key');
-  // if (apiKey !== env.ADMIN_API_KEY) {
-  //   return NextResponse.json(
-  //     { error: 'Unauthorized' },
-  //     { status: 401 }
-  //   );
-  // }
+  if (!(await isAdminAuthenticated())) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
 
   try {
     // Fetch campaigns from Airtable

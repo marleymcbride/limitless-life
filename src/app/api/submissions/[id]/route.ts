@@ -1,11 +1,16 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getSubmissionById, mapAirtableRecordToSubmission } from '@/lib/airtable-fillout';
+import { isAdminAuthenticated } from '@/lib/admin-auth';
 import type { Submission } from '@/types/submission';
 
 export async function GET(
   request: NextRequest,
   { params }: { params: { id: string } }
 ) {
+  if (!(await isAdminAuthenticated())) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
+
   try {
     const record = await getSubmissionById(params.id);
 

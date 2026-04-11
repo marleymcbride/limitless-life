@@ -4,6 +4,8 @@ import { headers } from 'next/headers';
 /**
  * Verify API key from request headers
  * Used to protect webhook endpoints from unauthorized access
+ *
+ * SECURITY: Fails closed if WEBHOOKS_API_KEY is not configured
  */
 export async function verifyApiKey(): Promise<{ valid: boolean; error?: NextResponse }> {
   const headerList = await headers();
@@ -12,18 +14,52 @@ export async function verifyApiKey(): Promise<{ valid: boolean; error?: NextResp
   // Get expected API key from environment
   const expectedApiKey = process.env.WEBHOOKS_API_KEY;
 
-  // If no API key is configured, allow access (development mode)
+  // Fail closed - if no API key is configured, deny access
   if (!expectedApiKey) {
-    console.warn('[API Auth] WEBHOOKS_API_KEY not configured, allowing access');
-    return { valid: true };
-  }
-
-  // If API key is provided but doesn't match, deny access
-  if (!apiKey || apiKey !== expectedApiKey) {
+    console.error('[API Auth] WEBHOOKS_API_KEY not configured, denying access');
     return {
       valid: false,
       error: NextResponse.json(
-        { error: 'Unauthorized', message: 'Invalid or missing API key' },
+        { error: 'Unauthorized', message: 'Server configuration error' },
+        { status: 401 }
+      ),
+    };
+  }
+
+  // Use constant-time comparison to prevent timing attacks
+  if (!apiKey) {
+    return {
+      valid: false,
+      error: NextResponse.json(
+        { error: 'Unauthorized', message: 'Missing API key' },
+        { status: 401 }
+      ),
+    };
+  }
+
+  // Constant-time comparison
+  const keyBuffer = Buffer.from(apiKey);
+  const expectedKeyBuffer = Buffer.from(expectedApiKey);
+  if (keyBuffer.length !== expectedKeyBuffer.length) {
+    return {
+      valid: false,
+      error: NextResponse.json(
+        { error: 'Unauthorized', message: 'Invalid API key' },
+        { status: 401 }
+      ),
+    };
+  }
+
+  let result = 0;
+  for (let i = 0; i < keyBuffer.length; i++) {
+    result |= keyBuffer[i] ^ expectedKeyBuffer[i];
+  }
+
+  if (result !== 0) {
+    return {
+      valid: false,
+      error: NextResponse.json(
+        { error: 'Unauthorized', message: 'Invalid API key' },
         { status: 401 }
       ),
     };

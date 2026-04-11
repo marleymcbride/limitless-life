@@ -1,9 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/lib/db';
 import { events } from '@/db/schema';
+import { isAdminAuthenticated } from '@/lib/admin-auth';
 import { desc } from 'drizzle-orm';
 
 export async function GET(req: NextRequest) {
+  if (!(await isAdminAuthenticated())) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
+
   try {
     // Get all unique event types using raw SQL
     const eventTypesResult = await db.execute(`

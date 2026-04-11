@@ -29,6 +29,7 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import { getSubmissions, mapAirtableRecordToSubmission } from '@/lib/airtable-fillout';
+import { isAdminAuthenticated } from '@/lib/admin-auth';
 import type { SubmissionListResponse, AirtableRecord } from '@/types/submission';
 
 // Constants
@@ -96,6 +97,10 @@ function isValidStringLength(value: string, maxLength: number): boolean {
 }
 
 export async function GET(request: NextRequest) {
+  if (!(await isAdminAuthenticated())) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
+
   try {
     const searchParams = request.nextUrl.searchParams;
 
