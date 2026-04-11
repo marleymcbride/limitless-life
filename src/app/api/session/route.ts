@@ -111,8 +111,9 @@ export async function GET(req: NextRequest) {
     countryCode: countryCode,
   }, cookieStore);
 
-  // Set cookie if new session
-  if (!cookieStore.get('ll_session')) {
+  // Set/update cookie with current session ID
+  const existingCookie = cookieStore.get('ll_session');
+  if (!existingCookie || existingCookie.value !== session.id) {
     cookieStore.set({
       name: 'll_session',
       value: session.id,
@@ -122,6 +123,7 @@ export async function GET(req: NextRequest) {
       maxAge: 30 * 24 * 60 * 60,
       path: '/',
     });
+    console.log('[SESSION API] Updated session cookie:', session.id);
   }
 
   console.log('[SESSION API] Returning:', { sessionId: session.id, userId: session.userId });

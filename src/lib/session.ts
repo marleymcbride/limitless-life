@@ -62,8 +62,18 @@ export async function getOrCreateSession(
       // First check in-memory store (fast path)
       const existingSession = sessionStore.get(existingSessionCookie.value);
       if (existingSession) {
-        console.log('[SESSION] Found existing session in memory:', existingSession.id);
-        return existingSession;
+        // Check if UTM campaign matches - if not, create new session for new campaign
+        if (existingSession.data.utmCampaign !== data.utmCampaign) {
+          console.log('[SESSION] Existing session has different UTM campaign:', {
+            existing: existingSession.data.utmCampaign,
+            new: data.utmCampaign,
+            sessionId: existingSession.id
+          });
+          // Don't return existing session - fall through to create new one
+        } else {
+          console.log('[SESSION] Found existing session in memory with matching UTM:', existingSession.id);
+          return existingSession;
+        }
       }
 
       // If not in memory, check database (handles server restarts)
@@ -71,27 +81,39 @@ export async function getOrCreateSession(
         const dbSession = await db.select().from(sessions).where(eq(sessions.id, existingSessionCookie.value)).limit(1);
 
         if (dbSession && dbSession.length > 0) {
-          console.log('[SESSION] Found existing session in database:', dbSession[0].id);
-          // Cache in memory for future requests
-          const session: Session = {
-            id: dbSession[0].id,
-            userId: dbSession[0].userId,
-            createdAt: dbSession[0].firstSeen,
-            data: {
-              utmSource: dbSession[0].utmSource || undefined,
-              utmMedium: dbSession[0].utmMedium || undefined,
-              utmCampaign: dbSession[0].utmCampaign || undefined,
-              utmContent: dbSession[0].utmContent || undefined,
-              utmTerm: dbSession[0].utmTerm || undefined,
-              referrer: dbSession[0].referrer || undefined,
-              deviceType: dbSession[0].deviceType || undefined,
-              browser: dbSession[0].browser || undefined,
-              ipAddress: dbSession[0].ipAddress,
-              countryCode: dbSession[0].countryCode,
-            }
-          };
-          sessionStore.set(dbSession[0].id, session);
-          return session;
+          const dbUtmCampaign = dbSession[0].utmCampaign || undefined;
+
+          // Check if UTM campaign matches
+          if (dbUtmCampaign !== data.utmCampaign) {
+            console.log('[SESSION] DB session has different UTM campaign:', {
+              existing: dbUtmCampaign,
+              new: data.utmCampaign,
+              sessionId: dbSession[0].id
+            });
+            // Don't reuse - fall through to create new session for new campaign
+          } else {
+            console.log('[SESSION] Found existing session in database with matching UTM:', dbSession[0].id);
+            // Cache in memory for future requests
+            const session: Session = {
+              id: dbSession[0].id,
+              userId: dbSession[0].userId,
+              createdAt: dbSession[0].firstSeen,
+              data: {
+                utmSource: dbSession[0].utmSource || undefined,
+                utmMedium: dbSession[0].utmMedium || undefined,
+                utmCampaign: dbSession[0].utmCampaign || undefined,
+                utmContent: dbSession[0].utmContent || undefined,
+                utmTerm: dbSession[0].utmTerm || undefined,
+                referrer: dbSession[0].referrer || undefined,
+                deviceType: dbSession[0].deviceType || undefined,
+                browser: dbSession[0].browser || undefined,
+                ipAddress: dbSession[0].ipAddress,
+                countryCode: dbSession[0].countryCode,
+              }
+            };
+            sessionStore.set(dbSession[0].id, session);
+            return session;
+          }
         }
       } catch (error) {
         console.error('[SESSION] Error checking database for existing session:', error);
