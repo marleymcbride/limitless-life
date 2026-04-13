@@ -1,8 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/lib/db';
-import { waitlistSignups } from '@/db/schema';
 import { isAdminAuthenticated } from '@/lib/admin-auth';
-import { eq } from 'drizzle-orm';
 
 /**
  * PATCH /api/admin/waitlist/[id]
@@ -34,39 +32,42 @@ export async function PATCH(
     const id = params.id;
     const body = await request.json();
 
-    // Build update object with only provided fields
-    const updateData: Record<string, any> = {
-      updatedAt: new Date(),
-    };
+    // Build update fields
+    const updateFields: string[] = ['updated_at = NOW()'];
+    const values: string[] = [];
 
     if (body.status !== undefined) {
-      updateData.status = body.status;
+      updateFields.push(`status = $${values.length + 1}`);
+      values.push(body.status);
     }
 
     if (body.notes !== undefined) {
-      updateData.notes = body.notes;
-    }
-
-    if (body.applicationFields !== undefined) {
-      updateData.applicationFields = body.applicationFields;
+      updateFields.push(`notes = $${values.length + 1}`);
+      values.push(body.notes);
     }
 
     if (body.leadScore !== undefined) {
-      updateData.leadScore = body.leadScore;
+      updateFields.push(`lead_score = $${values.length + 1}`);
+      values.push(body.leadScore.toString());
     }
 
     if (body.leadTemperature !== undefined) {
-      updateData.leadTemperature = body.leadTemperature;
+      updateFields.push(`lead_temperature = $${values.length + 1}`);
+      values.push(body.leadTemperature);
     }
 
-    // Update the signup
-    const result = await db
-      .update(waitlistSignups)
-      .set(updateData)
-      .where(eq(waitlistSignups.id, id))
-      .returning();
+    if (body.applicationFields !== undefined) {
+      updateFields.push(`application_fields = $${values.length + 1}`);
+      values.push(JSON.stringify(body.applicationFields));
+    }
 
-    if (result.length === 0) {
+    // Use raw SQL for update to avoid Drizzle ORM issues
+    const query = `UPDATE waitlist_signups SET ${updateFields.join(', ')} WHERE id = $${values.length + 1} RETURNING *`;
+    values.push(id);
+
+    const result = await db.execute(query, values);
+
+    if (!result || result.rows.length === 0) {
       return NextResponse.json(
         { error: 'Waitlist signup not found' },
         { status: 404 }
@@ -75,7 +76,7 @@ export async function PATCH(
 
     return NextResponse.json({
       success: true,
-      signup: result[0],
+      signup: result.rows[0],
     });
   } catch (error) {
     console.error('[API] Error updating waitlist signup:', error);
@@ -108,13 +109,12 @@ export async function DELETE(
   try {
     const id = params.id;
 
-    // Delete the signup
-    const result = await db
-      .delete(waitlistSignups)
-      .where(eq(waitlistSignups.id, id))
-      .returning();
+    // Use raw SQL for delete to avoid Drizzle ORM issues with .returning()
+    const result = await db.execute(
+      `DELETE FROM waitlist_signups WHERE id = '${id}' RETURNING id, email`
+    );
 
-    if (result.length === 0) {
+    if (!result || result.rows.length === 0) {
       return NextResponse.json(
         { error: 'Waitlist signup not found' },
         { status: 404 }
@@ -127,8 +127,16 @@ export async function DELETE(
     });
   } catch (error) {
     console.error('[API] Error deleting waitlist signup:', error);
+    console.error('[API] Error details:', {
+      message: error instanceof Error ? error.message : 'Unknown',
+      stack: error instanceof Error ? error.stack : undefined,
+      cause: error instanceof Error ? error.cause : undefined,
+    });
     return NextResponse.json(
-      { error: 'Failed to delete waitlist signup' },
+      {
+        error: 'Failed to delete waitlist signup',
+        details: error instanceof Error ? error.message : 'Unknown error'
+      },
       { status: 500 }
     );
   }

@@ -119,13 +119,16 @@ export default function WaitlistDashboard() {
         method: 'DELETE',
       });
 
-      if (!res.ok) throw new Error('Failed to delete');
+      if (!res.ok) {
+        const errorData = await res.json().catch(() => ({ error: 'Unknown error', message: `Status ${res.status}` }));
+        throw new Error(errorData.error || errorData.message || `Failed to delete (Status ${res.status})`);
+      }
 
       // Update local state
       setSignups(signups.filter(s => s.id !== id));
     } catch (err) {
       console.error('Error deleting signup:', err);
-      alert('Failed to delete signup');
+      alert(`Failed to delete signup: ${err instanceof Error ? err.message : 'Unknown error'}`);
     }
   }
 
