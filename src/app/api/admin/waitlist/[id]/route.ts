@@ -32,40 +32,39 @@ export async function PATCH(
     const id = params.id;
     const body = await request.json();
 
-    // Build update fields
+    // Build update fields with escaped values
     const updateFields: string[] = ['updated_at = NOW()'];
-    const values: string[] = [];
 
     if (body.status !== undefined) {
-      updateFields.push(`status = $${values.length + 1}`);
-      values.push(body.status);
+      const escaped = body.status.replace(/'/g, "''");
+      updateFields.push(`status = '${escaped}'`);
     }
 
     if (body.notes !== undefined) {
-      updateFields.push(`notes = $${values.length + 1}`);
-      values.push(body.notes);
+      const escaped = body.notes.replace(/'/g, "''");
+      updateFields.push(`notes = '${escaped}'`);
     }
 
     if (body.leadScore !== undefined) {
-      updateFields.push(`lead_score = $${values.length + 1}`);
-      values.push(body.leadScore.toString());
+      updateFields.push(`lead_score = ${body.leadScore}`);
     }
 
     if (body.leadTemperature !== undefined) {
-      updateFields.push(`lead_temperature = $${values.length + 1}`);
-      values.push(body.leadTemperature);
+      const escaped = body.leadTemperature.replace(/'/g, "''");
+      updateFields.push(`lead_temperature = '${escaped}'`);
     }
 
     if (body.applicationFields !== undefined) {
-      updateFields.push(`application_fields = $${values.length + 1}`);
-      values.push(JSON.stringify(body.applicationFields));
+      const escaped = JSON.stringify(body.applicationFields).replace(/'/g, "''");
+      updateFields.push(`application_fields = '${escaped}'`);
     }
 
-    // Use raw SQL for update to avoid Drizzle ORM issues
-    const query = `UPDATE waitlist_signups SET ${updateFields.join(', ')} WHERE id = $${values.length + 1} RETURNING *`;
-    values.push(id);
+    // Escape the ID
+    const escapedId = id.replace(/'/g, "''");
 
-    const result = await db.execute(query, values);
+    // Use raw SQL for update
+    const query = `UPDATE waitlist_signups SET ${updateFields.join(', ')} WHERE id = '${escapedId}' RETURNING *`;
+    const result = await db.execute(query);
 
     if (!result || result.rows.length === 0) {
       return NextResponse.json(
@@ -109,9 +108,12 @@ export async function DELETE(
   try {
     const id = params.id;
 
-    // Use raw SQL for delete to avoid Drizzle ORM issues with .returning()
+    // Escape the ID to prevent SQL injection
+    const escapedId = id.replace(/'/g, "''");
+
+    // Use raw SQL for delete
     const result = await db.execute(
-      `DELETE FROM waitlist_signups WHERE id = '${id}' RETURNING id, email`
+      `DELETE FROM waitlist_signups WHERE id = '${escapedId}' RETURNING id, email`
     );
 
     if (!result || result.rows.length === 0) {
@@ -127,16 +129,8 @@ export async function DELETE(
     });
   } catch (error) {
     console.error('[API] Error deleting waitlist signup:', error);
-    console.error('[API] Error details:', {
-      message: error instanceof Error ? error.message : 'Unknown',
-      stack: error instanceof Error ? error.stack : undefined,
-      cause: error instanceof Error ? error.cause : undefined,
-    });
     return NextResponse.json(
-      {
-        error: 'Failed to delete waitlist signup',
-        details: error instanceof Error ? error.message : 'Unknown error'
-      },
+      { error: 'Failed to delete waitlist signup' },
       { status: 500 }
     );
   }
