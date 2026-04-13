@@ -18,7 +18,7 @@ import { isAdminAuthenticated } from '@/lib/admin-auth';
  */
 export async function PATCH(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   // Verify admin authentication
   if (!(await isAdminAuthenticated())) {
@@ -29,7 +29,7 @@ export async function PATCH(
   }
 
   try {
-    const id = params.id;
+    const { id } = await params;
     const body = await request.json();
 
     // Build update fields with escaped values
@@ -95,7 +95,7 @@ export async function PATCH(
  */
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   // Verify admin authentication
   if (!(await isAdminAuthenticated())) {
@@ -106,7 +106,7 @@ export async function DELETE(
   }
 
   try {
-    const id = params.id;
+    const { id } = await params;
 
     // Escape the ID to prevent SQL injection
     const escapedId = String(id || '').replace(/'/g, "''");
