@@ -35,32 +35,32 @@ export async function PATCH(
     // Build update fields with escaped values
     const updateFields: string[] = ['updated_at = NOW()'];
 
-    if (body.status !== undefined) {
-      const escaped = body.status.replace(/'/g, "''");
+    if (body.status !== undefined && body.status !== null) {
+      const escaped = String(body.status).replace(/'/g, "''");
       updateFields.push(`status = '${escaped}'`);
     }
 
-    if (body.notes !== undefined) {
-      const escaped = body.notes.replace(/'/g, "''");
+    if (body.notes !== undefined && body.notes !== null) {
+      const escaped = String(body.notes).replace(/'/g, "''");
       updateFields.push(`notes = '${escaped}'`);
     }
 
-    if (body.leadScore !== undefined) {
+    if (body.leadScore !== undefined && body.leadScore !== null) {
       updateFields.push(`lead_score = ${body.leadScore}`);
     }
 
-    if (body.leadTemperature !== undefined) {
-      const escaped = body.leadTemperature.replace(/'/g, "''");
+    if (body.leadTemperature !== undefined && body.leadTemperature !== null) {
+      const escaped = String(body.leadTemperature).replace(/'/g, "''");
       updateFields.push(`lead_temperature = '${escaped}'`);
     }
 
-    if (body.applicationFields !== undefined) {
+    if (body.applicationFields !== undefined && body.applicationFields !== null) {
       const escaped = JSON.stringify(body.applicationFields).replace(/'/g, "''");
       updateFields.push(`application_fields = '${escaped}'`);
     }
 
     // Escape the ID
-    const escapedId = id.replace(/'/g, "''");
+    const escapedId = String(id || '').replace(/'/g, "''");
 
     // Use raw SQL for update
     const query = `UPDATE waitlist_signups SET ${updateFields.join(', ')} WHERE id = '${escapedId}' RETURNING *`;
@@ -109,7 +109,7 @@ export async function DELETE(
     const id = params.id;
 
     // Escape the ID to prevent SQL injection
-    const escapedId = id.replace(/'/g, "''");
+    const escapedId = String(id || '').replace(/'/g, "''");
 
     // Use raw SQL for delete
     const result = await db.execute(
