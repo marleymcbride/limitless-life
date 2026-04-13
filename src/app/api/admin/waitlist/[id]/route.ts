@@ -66,7 +66,8 @@ export async function PATCH(
     const query = `UPDATE waitlist_signups SET ${updateFields.join(', ')} WHERE id = '${escapedId}' RETURNING *`;
     const result = await db.execute(query);
 
-    if (!result || result.rows.length === 0) {
+    const rows = result?.rows || result;
+    if (!rows || rows.length === 0) {
       return NextResponse.json(
         { error: 'Waitlist signup not found' },
         { status: 404 }
@@ -75,7 +76,7 @@ export async function PATCH(
 
     return NextResponse.json({
       success: true,
-      signup: result.rows[0],
+      signup: rows[0],
     });
   } catch (error) {
     console.error('[API] Error updating waitlist signup:', error);
@@ -116,7 +117,8 @@ export async function DELETE(
       `DELETE FROM waitlist_signups WHERE id = '${escapedId}' RETURNING id, email`
     );
 
-    if (!result || result.rows.length === 0) {
+    const rows = result?.rows || result;
+    if (!rows || rows.length === 0) {
       return NextResponse.json(
         { error: 'Waitlist signup not found' },
         { status: 404 }
