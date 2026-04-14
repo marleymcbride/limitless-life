@@ -15,17 +15,33 @@ import { eq, sql } from 'drizzle-orm';
 const WEBHOOK_API_KEY = process.env.WEBHOOK_LEADS_API_KEY;
 
 /**
- * Verify webhook API key using constant-time comparison
+ * Verify request is from allowed origin or has valid API key
  */
-function verifyApiKey(req: NextRequest): boolean {
-  if (!WEBHOOK_API_KEY) {
-    throw new Error(
-      'WEBHOOK_LEADS_API_KEY environment variable is not set. ' +
-      'This is required for external lead capture webhooks.'
-    );
+function verifyRequest(req: NextRequest): boolean {
+  const origin = req.headers.get('origin');
+  const referer = req.headers.get('referer');
+
+  // Allowed origins
+  const allowedOrigins = [
+    'https://3weeks.co',
+    'https://www.3weeks.co',
+    'https://marleymcbride.co',
+    'https://www.marleymcbride.co',
+    'http://localhost:3000',
+  ];
+
+  // Check if origin or referer is allowed
+  const isAllowedOrigin = allowedOrigins.some(allowed => {
+    return origin === allowed || referer?.startsWith(allowed);
+  });
+
+  if (isAllowedOrigin) {
+    return true; // Allow from trusted domains
   }
+
+  // Fallback to API key check for server-to-server requests
   const apiKey = req.headers.get('x-webhook-api-key');
-  if (!apiKey) {
+  if (!apiKey || !WEBHOOK_API_KEY) {
     return false;
   }
 
@@ -133,9 +149,9 @@ export async function OPTIONS(req: NextRequest) {
 export async function POST(req: NextRequest) {
   const origin = req.headers.get('origin');
 
-  // Verify API key for security
-  if (!verifyApiKey(req)) {
-    console.warn('[Leads Webhook] Unauthorized request - missing or invalid API key');
+  // Verify request is from allowed origin or has valid API key
+  if (!verifyRequest(req)) {
+    console.warn('[Leads Webhook] Unauthorized request - not from allowed origin');
     return NextResponse.json(
       { success: false, error: 'Unauthorized' },
       { status: 401, headers: getCorsHeaders(origin) }

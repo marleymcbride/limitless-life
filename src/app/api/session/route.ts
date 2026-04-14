@@ -29,6 +29,7 @@ export async function GET(req: NextRequest) {
   const lm = stripTrailingSlash(url.searchParams.get('lm')); // Lead magnet
   const go = stripTrailingSlash(url.searchParams.get('go')); // Google
   const rd = stripTrailingSlash(url.searchParams.get('rd')); // Reddit
+  const threeWeeks = stripTrailingSlash(url.searchParams.get('3w')); // 3weeks.co
   const x = stripTrailingSlash(url.searchParams.get('x')); // Campaign identifier
 
   // Build source and campaign from short params
@@ -87,6 +88,10 @@ export async function GET(req: NextRequest) {
     utmSource = 'reddit';
     utmMedium = 'post';
     utmCampaign = rd;
+  } else if (threeWeeks) {
+    utmSource = '3weeks';
+    utmMedium = 'referral';
+    utmCampaign = threeWeeks;
   } else if (x) {
     // Campaign identifier (e.g., "bio" from ?x=bio)
     utmSource = 'campaign';

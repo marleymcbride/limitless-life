@@ -9,7 +9,7 @@ const IntakeDocContent = dynamic(() => import('./content'), {
   loading: () => null
 });
 
-export default function IntakeDocWrapper({ children }: { children: React.ReactNode }) {
+export default function IntakeDocWrapper({ children = null }: { children?: React.ReactNode }) {
   return (
     <>
       {children}

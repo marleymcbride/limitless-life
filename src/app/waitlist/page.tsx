@@ -2,7 +2,7 @@
 
 import { ImagePreloader, CRITICAL_TESTIMONIAL_IMAGES } from "@/components/image-preloader";
 import VSLPlayer from "@/components/vsl-player";
-import WaitlistEmailPopup from "@/components/waitlist-email-popup";
+import UnifiedPopup from "@/components/unified-popup";
 import WaitlistModal from "@/components/waitlist-modal";
 import WaitlistBanner from "@/components/waitlist-banner";
 import BetaOpportunity from "@/components/beta-opportunity";
@@ -201,7 +201,7 @@ export default function Home() {
             {/* Mobile Eyebrow (visible only on mobile) */}
             <div className="flex rounded-lg sm:hidden flex-col items-center justify-center mb-2 mt-3 w-full px-6 relative overflow-hidden" style={{ background: 'linear-gradient(to bottom, rgba(71, 14, 14, 0.15) 0%, rgba(71, 14, 14, 0.12) 33%, rgba(71, 14, 14, 0.08) 66%, transparent 100%)' }}>
               <div className="font-sans font-bold text-2xl md:text-2xl text-center -ml-4 -mr-3  text-gray-100 mb-3">
-                Limitless 90-Day Energy Reset
+                The Lifestyle Athlete <br /> 90-Day Energy Reset
               </div>
               <div className="font-sans mb-4 pb-2 text-1.5xl md:text-lg text-center text-gray-200">
                 Beginning {COHORT_CONFIG.DATE}, 2026
@@ -805,11 +805,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Waitlist Email Popup */}
-      <WaitlistEmailPopup
+      {/* Unified Popup - Works for both doors open and closed states */}
+      <UnifiedPopup
         isOpen={showBetaPopup}
-        tier="undecided"
-        tierName="Limitless Protocol Beta"
         onClose={() => setShowBetaPopup(false)}
       />
 

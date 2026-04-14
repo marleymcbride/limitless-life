@@ -8,12 +8,12 @@ export default function ImagineThisDark() {
           {/* White round rectangle box with shadow - Mobile optimized */}
           <div className="rounded-2xl light-card-bg-small-orb p-8 md:p-14 md:pt-12 md:px-16 lg:px-20 shadow-2xl mx-auto md:mx-4 max-w-6xl w-full">
             <div className="prose prose-lg max-w-none mobile-text-large body-copy" style={{ fontSize: "1.04rem" }}>
-              <h2black
+              <h2
                 className="text-4xl md:text-6xl font-bold pt-4 md:pt-8 mb-6 md:mb-8 leading-tight mt-2"
                 style={{ fontFamily: "Neuemontreal, sans-serif" }}
               >
                 Imagine this
-              </h2black>
+              </h2>
 
 
 
