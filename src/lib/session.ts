@@ -5,7 +5,7 @@ import { eq, desc } from 'drizzle-orm';
 import { airtable } from '@/lib/airtable';
 import { fetchCampaigns } from '@/lib/airtable';
 
-export interface SessionData {
+interface SessionData {
   utmSource?: string;
   utmMedium?: string;
   utmCampaign?: string;
@@ -18,7 +18,7 @@ export interface SessionData {
   countryCode?: string;
 }
 
-export interface Session {
+interface Session {
   id: string;
   userId?: string | null;
   createdAt: Date;
@@ -261,11 +261,12 @@ export async function getOrCreateSession(
   return sessionCreationPromise;
 }
 
-export function getSession(sessionId: string): Session | undefined {
+// Internal helper functions (not exported - only used internally)
+function getSession(sessionId: string): Session | undefined {
   return sessionStore.get(sessionId);
 }
 
-export function updateSession(sessionId: string, data: Partial<SessionData>): Session | undefined {
+function updateSession(sessionId: string, data: Partial<SessionData>): Session | undefined {
   const session = sessionStore.get(sessionId);
   if (session) {
     session.data = { ...session.data, ...data };
@@ -275,12 +276,12 @@ export function updateSession(sessionId: string, data: Partial<SessionData>): Se
   return undefined;
 }
 
-export function deleteSession(sessionId: string): void {
+function deleteSession(sessionId: string): void {
   sessionStore.delete(sessionId);
 }
 
 // Clean up old sessions (call this periodically in production)
-export function cleanupOldSessions(maxAge: number = 30 * 24 * 60 * 60 * 1000): void {
+function cleanupOldSessions(maxAge: number = 30 * 24 * 60 * 60 * 1000): void {
   const now = Date.now();
   for (const [id, session] of sessionStore.entries()) {
     const sessionAge = now - session.createdAt.getTime();

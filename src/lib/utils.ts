@@ -21,21 +21,6 @@ export const bgClasses = {
   black: "bg-black text-white relative overflow-hidden",
 };
 
-// Hero spotlight component - recreated from CSS for proper layering
-export const heroSpotlight = React.createElement("div", {
-  className: "absolute z-5",
-  style: {
-    top: "-42%",
-    right: "-36%",
-    width: "1050px",
-    height: "1050px",
-    background: "radial-gradient(circle at center, rgba(148, 9, 9, 0.76) 0%, rgba(148, 9, 9, 0.27) 32%, transparent 65%)",
-    filter: "blur(50px)",
-    pointerEvents: "none",
-    borderRadius: "50%",
-  },
-});
-
 // Desktop background with top-right spotlight
 export const unifiedGradientWithSpotlightDesktop = React.createElement("div", {
   className: "absolute inset-0 z-10",
@@ -374,15 +359,6 @@ export const betaUnifiedGradientWithSpotlightMobile = React.createElement("div",
 });
 
 
-// Unified hero gradient: starts at 30% to work in parallel with original overlay (BACKUP)
-export const unifiedHeroGradient = React.createElement("div", {
-  className: "absolute inset-0 z-10",
-  style: {
-    background: "linear-gradient(to bottom, transparent 0%, transparent 30%, rgb(0, 0, 0) 30%, rgb(8, 8, 8) 65%, #0F0F0F 80%, rgba(148, 9, 9, 0.30) 100%)",
-  },
-});
-
-
 // Inverted hero gradient (mostly black with red accents) for program sections
 export const invertedGradientOverlay = React.createElement("div", {
   className: "absolute inset-0",
@@ -504,14 +480,4 @@ export const blackRedGradientOverlay = React.createElement("div", {
     background: "linear-gradient(135deg, rgba(148, 9, 9, 0.8) 0%, rgba(0, 0, 0, 0.9) 100%)",
   },
 });
-
-// Waitlist variant mapping utility
-export function mapChoiceToVariant(choice: string): 'A' | 'B' | 'C' {
-  const variantMap: Record<string, 'A' | 'B' | 'C'> = {
-    'yes': 'A',
-    'maybe': 'B',
-    'no': 'C'
-  };
-  return variantMap[choice] || 'C';
-}
 

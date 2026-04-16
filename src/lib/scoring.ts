@@ -108,18 +108,18 @@ export async function calculateLeadScore(userId: string): Promise<LeadScore> {
 }
 
 /**
- * Get lead temperature based on score
+ * Get lead temperature based on score (internal helper)
  */
-export function getTemperature(score: number): LeadTemperature {
+function getTemperature(score: number): LeadTemperature {
   if (score >= 70) return 'hot';
   if (score >= 40) return 'warm';
   return 'cold';
 }
 
 /**
- * Check if user is a hot lead
+ * Check if user is a hot lead (internal helper)
  */
-export async function isHotLead(userId: string): Promise<boolean> {
+async function isHotLead(userId: string): Promise<boolean> {
   const result = await calculateLeadScore(userId);
   return result.temperature === 'hot';
 }
@@ -267,9 +267,9 @@ export async function updateUserLeadScore(userId: string): Promise<void> {
 }
 
 /**
- * Get hot leads (score >= 70)
+ * Get hot leads (score >= 70) - internal helper, not currently used
  */
-export async function getHotLeads(limit: number = 50) {
+async function getHotLeads(limit: number = 50) {
   const hotLeads = await db
     .select()
     .from(users)
@@ -281,9 +281,9 @@ export async function getHotLeads(limit: number = 50) {
 }
 
 /**
- * Get warm leads (score >= 40 and < 70)
+ * Get warm leads (score >= 40 and < 70) - internal helper, not currently used
  */
-export async function getWarmLeads(limit: number = 50) {
+async function getWarmLeads(limit: number = 50) {
   const warmLeads = await db
     .select()
     .from(users)
