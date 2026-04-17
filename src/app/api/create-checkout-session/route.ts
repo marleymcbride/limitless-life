@@ -213,11 +213,19 @@ export async function POST(request: NextRequest) {
 
     checkoutSessionOptions.metadata = metadata;
 
-    // Add coupon if provided - remove allow_promotion_codes when using discounts
-    if (couponID) {
+    // For beta tier, apply the £3,000 discount coupon automatically
+    if (tier === 'beta') {
+      delete (checkoutSessionOptions as any).allow_promotion_codes;
+      checkoutSessionOptions.discounts = [{ coupon: process.env.BETA_COUPON_ID || 'vK0QBnoc' }];
+      console.log('[CreateCheckoutSession] Applying beta discount coupon');
+    }
+    // For other tiers, disable promotion codes unless specific coupon provided
+    else if (couponID) {
       delete (checkoutSessionOptions as any).allow_promotion_codes;
       checkoutSessionOptions.discounts = [{ coupon: couponID }];
       console.log('[CreateCheckoutSession] Applying coupon:', couponID);
+    } else {
+      checkoutSessionOptions.allow_promotion_codes = false;
     }
 
     const session = await stripe.checkout.sessions.create(checkoutSessionOptions);

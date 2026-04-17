@@ -3,37 +3,27 @@
 import { useSearchParams } from 'next/navigation';
 import { GammaCTA } from '@/components/gamma-article';
 
-// Beta coupon - use the promotional code (customer-facing), not the API ID
-// This is the code customers would enter at checkout
-const BETA_COUPON_CODE = process.env.NEXT_PUBLIC_BETA_COUPON_CODE || 'TLA-BETA-TESTER';
-
 export default function BetaOpenCTA() {
   const searchParams = useSearchParams();
 
   const handleEnrollment = async (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
 
-    // Get email, name, and optional coupon from URL params
+    // Get email and name from URL params
     const email = searchParams.get('email') || '';
     const name = searchParams.get('name') || '';
-    const couponParam = searchParams.get('coupon') || '';
-
-    // Use URL param coupon if provided, otherwise use default beta coupon
-    const couponCode = couponParam || BETA_COUPON_CODE;
 
     try {
       console.log('[Beta Open] Creating Stripe checkout session for enrollment');
-      console.log('[Beta Open] Using coupon code:', couponCode);
 
       const response = await fetch('/api/create-checkout-session', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          tier: 'beta', // Beta tier
+          tier: 'beta', // Beta tier - promotion codes enabled at checkout
           paymentPlan: 'full',
           customerEmail: email,
           customerName: name,
-          couponID: couponCode, // Apply beta discount coupon (takes £3,997 → £997)
         }),
       });
 
