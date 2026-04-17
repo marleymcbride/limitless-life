@@ -11,7 +11,7 @@ import { usePageType } from "@/contexts/PageContext";
 
 export default function FinalFAQsV2() {
   const { pageType } = usePageType();
-  const ctaText = pageType === 'waitlist' ? 'Join the waitlist' : 'Apply Now';
+  const ctaText = pageType === 'waitlist' ? 'Join the waitlist' : 'Join Now';
   const [scrollY, setScrollY] = useState(0);
   const accordionRef = useRef<HTMLDivElement>(null);
 

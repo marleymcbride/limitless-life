@@ -9,7 +9,7 @@ interface BigIdeaSectionProps {
 
 export default function BigIdeaSection({ onApplyNowClick }: BigIdeaSectionProps) {
   const { pageType } = usePageType();
-  const ctaText = pageType === 'waitlist' ? 'Join the waitlist' : 'Apply Now';
+  const ctaText = pageType === 'waitlist' ? 'Join the waitlist' : 'Join Now';
   return (
     <section className="w-full text-white relative pt-10 pb-20 overflow-hidden">
       {/* Big Idea gradients - gradual red fade from 50% */}

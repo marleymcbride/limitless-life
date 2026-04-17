@@ -2,7 +2,7 @@ interface BetaValueStackProps {
   ctaText?: string;
 }
 
-export default function BetaValueStack({ ctaText = "Apply Now" }: BetaValueStackProps) {
+export default function BetaValueStack({ ctaText = "Join Now" }: BetaValueStackProps) {
   const items = [
     {
       icon: (

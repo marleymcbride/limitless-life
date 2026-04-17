@@ -9,7 +9,7 @@ interface WhatHappensIfYouDontFixThisProps {
 
 export default function WhatHappensIfYouDontFixThis({ onApplyNowClick }: WhatHappensIfYouDontFixThisProps) {
   const { pageType } = usePageType();
-  const ctaText = pageType === 'waitlist' ? 'Join the waitlist' : 'Apply Now';
+  const ctaText = pageType === 'waitlist' ? 'Join the waitlist' : 'Join Now';
   return (
     <section className={`w-full ${bgClasses.white} pt-16 pb-12 text-black relative`}>
       {/* Simple, premium white background */}

@@ -8,7 +8,7 @@ interface BonusStackProps {
 
 export default function BonusStack({ onApplyNowClick }: BonusStackProps) {
   const { pageType } = usePageType();
-  const ctaText = pageType === 'waitlist' ? 'Join the waitlist' : 'Apply Now';
+  const ctaText = pageType === 'waitlist' ? 'Join the waitlist' : 'Join Now';
   const bonuses = [
     {
       title: "BONUS 1: Wake Up With More Energy Than You Had At 25 (Value: £1,200+)",

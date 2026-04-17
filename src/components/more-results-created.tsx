@@ -9,7 +9,7 @@ interface ClientTransformationGalleryProps {
 
 export default function ClientTransformationGallery({ onApplyNowClick }: ClientTransformationGalleryProps) {
   const { pageType } = usePageType();
-  const ctaText = pageType === 'waitlist' ? 'Join the waitlist' : 'Apply Now';
+  const ctaText = pageType === 'waitlist' ? 'Join the waitlist' : 'Join Now';
   return (
     <section className="w-full bg-white pt-14 pb-14 px-10">
 

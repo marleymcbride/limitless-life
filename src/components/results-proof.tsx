@@ -9,7 +9,7 @@ interface ResultsProofProps {
 
 export default function ResultsProof({ onApplyNowClick }: ResultsProofProps) {
   const { pageType } = usePageType();
-  const ctaText = pageType === 'waitlist' ? 'Join the waitlist' : 'Apply Now';
+  const ctaText = pageType === 'waitlist' ? 'Join the waitlist' : 'Join Now';
   return (
     <section id="results-proof" className="results-proof-gradient py-20 px-0">
       <div className="container mx-auto max-w-7xl">

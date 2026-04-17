@@ -9,7 +9,7 @@ interface The4RootCausesProps {
 
 export default function The4RootCauses({ onApplyNowClick }: The4RootCausesProps) {
   const { pageType } = usePageType();
-  const ctaText = pageType === 'waitlist' ? 'Join the waitlist' : 'Apply Now';
+  const ctaText = pageType === 'waitlist' ? 'Join the waitlist' : 'Join Now';
   return (
     <section className={`w-full ${bgClasses.white} pt-12 pb-12 text-black relative`}>
       {/* Simple, premium white background */}

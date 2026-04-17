@@ -9,7 +9,7 @@ interface MoreVideoTestimonialsProps {
 
 export default function MoreVideoTestimonials({ onApplyNowClick }: MoreVideoTestimonialsProps) {
   const { pageType } = usePageType();
-  const ctaText = pageType === 'waitlist' ? 'Join the waitlist' : 'Apply Now';
+  const ctaText = pageType === 'waitlist' ? 'Join the waitlist' : 'Join Now';
   return (
     <section className="bg-white py-16 px-4 w-full">
       <div className="container mx-auto max-w-6xl">

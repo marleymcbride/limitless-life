@@ -8,7 +8,7 @@ interface HowLimitlessProtocolWorksProps {
 
 export default function HowLimitlessProtocolWorks({ onApplyNowClick }: HowLimitlessProtocolWorksProps) {
   const { pageType } = usePageType();
-  const ctaText = pageType === 'waitlist' ? 'Join the waitlist' : 'Apply Now';
+  const ctaText = pageType === 'waitlist' ? 'Join the waitlist' : 'Join Now';
   const systems = [
     {
       number: 1,

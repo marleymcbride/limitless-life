@@ -5,7 +5,7 @@ import { usePageType } from "@/contexts/PageContext";
 
 export default function FAQSection() {
   const { pageType } = usePageType();
-  const ctaText = pageType === 'waitlist' ? 'Join the waitlist' : 'Apply Now';
+  const ctaText = pageType === 'waitlist' ? 'Join the waitlist' : 'Join Now';
   return (
     <section className="bg-black py-20 px-4 w-full">
       <div className="container mx-auto max-w-5xl">

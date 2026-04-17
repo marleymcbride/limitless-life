@@ -4,7 +4,7 @@ import { usePageType } from "@/contexts/PageContext";
 
 export default function EverythingIncluded() {
   const { pageType } = usePageType();
-  const ctaText = pageType === 'waitlist' ? 'Join the waitlist' : 'Apply Now';
+  const ctaText = pageType === 'waitlist' ? 'Join the waitlist' : 'Join Now';
   const items = [
     {
       icon: (

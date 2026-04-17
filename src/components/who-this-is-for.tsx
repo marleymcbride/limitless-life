@@ -8,7 +8,7 @@ interface WeCanHelpIfProps {
 
 export default function WeCanHelpIf({ onApplyNowClick }: WeCanHelpIfProps) {
   const { pageType } = usePageType();
-  const ctaText = pageType === 'waitlist' ? 'Join the waitlist' : 'Apply Now';
+  const ctaText = pageType === 'waitlist' ? 'Join the waitlist' : 'Join Now';
   return (
     <>
       <div className="dark-section-with-grain">

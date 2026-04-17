@@ -8,7 +8,7 @@ interface WhatItsCostingYouProps {
 
 export default function WhatItsCostingYou({ onApplyNowClick }: WhatItsCostingYouProps) {
   const { pageType } = usePageType();
-  const ctaText = pageType === 'waitlist' ? 'Join the waitlist' : 'Apply Now';
+  const ctaText = pageType === 'waitlist' ? 'Join the waitlist' : 'Join Now';
   return (
     <section className="w-full results-proof-gradient pt-16 pb-12 relative">
       <div className="container mx-auto px-4 relative z-10">

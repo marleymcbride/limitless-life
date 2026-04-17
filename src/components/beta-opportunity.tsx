@@ -2,7 +2,7 @@ interface BetaOpportunityProps {
   ctaText?: string;
 }
 
-export default function BetaOpportunity({ ctaText = "Apply Now" }: BetaOpportunityProps) {
+export default function BetaOpportunity({ ctaText = "Join Now" }: BetaOpportunityProps) {
   return (
     <>
       <div className="dark-section-with-grain">

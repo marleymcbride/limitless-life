@@ -15,7 +15,7 @@ interface FinalFAQsV2Props {
 
 export default function FinalFAQsV2({ onApplyNowClick }: FinalFAQsV2Props) {
   const { pageType } = usePageType();
-  const ctaText = pageType === 'waitlist' ? 'Join the waitlist' : 'Apply Now';
+  const ctaText = pageType === 'waitlist' ? 'Join the waitlist' : 'Join Now';
   const [scrollY, setScrollY] = useState(0);
   const accordionRef = useRef<HTMLDivElement>(null);
 
@@ -37,7 +37,7 @@ export default function FinalFAQsV2({ onApplyNowClick }: FinalFAQsV2Props) {
     },
     {
       question: "How much does it cost?",
-      answer: "Your investment varies based on your situation. We have multiple tiers of access, so you can choose what works best for you. \n\n When you click the 'Apply Now' button you will get a quick breakdown of each tier so you can choose the best level for your situation."
+      answer: "Your investment varies based on your situation. We have multiple tiers of access, so you can choose what works best for you. \n\n When you click the 'Join Now' button you will get a quick breakdown of each tier so you can choose the best level for your situation."
     },
     {
       question: "Do I really have to quit alcohol?",

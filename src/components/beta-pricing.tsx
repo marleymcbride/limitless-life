@@ -2,7 +2,7 @@ interface BetaPricingProps {
   ctaText?: string;
 }
 
-export default function BetaPricing({ ctaText = "Apply Now" }: BetaPricingProps) {
+export default function BetaPricing({ ctaText = "Join Now" }: BetaPricingProps) {
   return (
     <>
       <div className="dark-section-with-grain" style={{

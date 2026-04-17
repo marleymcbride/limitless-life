@@ -9,7 +9,7 @@ interface VideoTestimonialCTAProps {
 
 export default function VideoTestimonialCTA({ onApplyNowClick }: VideoTestimonialCTAProps) {
   const { pageType } = usePageType();
-  const ctaText = pageType === 'waitlist' ? 'Join the waitlist' : 'Apply Now';
+  const ctaText = pageType === 'waitlist' ? 'Join the waitlist' : 'Join Now';
   return (
     <section className="bg-black relative py-16 px-4 w-full">
       <div className="absolute bottom-0 left-0 w-full h-[33vh] bg-gradient-to-t from-[rgba(148,9,9,0.30)] via-[rgba(148,9,9,0.16)] to-transparent"></div>

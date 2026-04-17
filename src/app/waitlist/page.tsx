@@ -11,6 +11,7 @@ import BetaValueStack from "@/components/beta-value-stack";
 import BetaFAQs from "@/components/FAQs-Beta-access";
 import { PageProvider } from '@/contexts/PageContext';
 import { COHORT_CONFIG } from '@/config/waitlist';
+import { getDoorState } from '@/lib/door-state';
 import {
   LazyDoesThisSoundLikeYou,
   LazyPersonalStorySection,
@@ -71,6 +72,10 @@ export default function Home() {
     userId: session?.userId,
     enabled: !!session?.sessionId,
   });
+
+  // Door state
+  const doorState = getDoorState();
+  const isDoorsOpen = doorState.isCurrentlyOpen;
 
   // Beta Email popup state
   const [showBetaPopup, setShowBetaPopup] = useState(false);
@@ -139,7 +144,7 @@ export default function Home() {
   }, []);
 
   return (
-    <PageProvider pageType="waitlist">
+    <PageProvider pageType={isDoorsOpen ? 'doors-open' : 'waitlist'}>
       <main className="flex flex-col min-h-screen" style={{ backgroundColor: '#050A0F' }}>
         {/* Limited Spots Banner */}
         <WaitlistBanner />
@@ -467,7 +472,7 @@ export default function Home() {
                 href="/application"
                 onApplyNowClick={handleApplyNowClick}
               >
-                Join the waitlist
+                {isDoorsOpen ? 'Join Now' : 'Join the waitlist'}
               </LazyDelayedCTA>
             ) : (
               <LazyDelayedCTA
@@ -479,7 +484,7 @@ export default function Home() {
                 href="#apply-for-elite-spots"
                 onApplyNowClick={handleApplyNowClick}
               >
-                TELL ME MORE
+                {isDoorsOpen ? 'Join Now' : 'Tell me more'}
               </LazyDelayedCTA>
             )}
           </div>
@@ -800,7 +805,7 @@ export default function Home() {
             onClick={handleApplyNowClick}
             className="font-bold !text-white transition-none duration-0 focus:outline-none bg-[#940909] hover:bg-[#7b0707] py-4 px-12 text-lg rounded-md inline-block relative z-30"
           >
-            Join Now
+            {isDoorsOpen ? 'Join Now' : 'Join the waitlist'}
           </button>
         </div>
       </section>

@@ -26,7 +26,7 @@ const CTAButton = React.forwardRef<HTMLButtonElement, CTAButtonProps>(
     ref
   ) => {
     const { pageType } = usePageType();
-    const defaultText = pageType === 'waitlist' ? 'Join the waitlist' : 'Apply Now';
+    const defaultText = pageType === 'waitlist' ? 'Join the waitlist' : 'Join Now';
     const buttonText = overrideText || (children as string) || defaultText;
 
     const baseClasses =

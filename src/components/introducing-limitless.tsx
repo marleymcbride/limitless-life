@@ -9,7 +9,7 @@ interface IntroducingLimitlessProps {
 
 export default function IntroducingLimitless({ onApplyNowClick }: IntroducingLimitlessProps) {
   const { pageType } = usePageType();
-  const ctaText = pageType === 'waitlist' ? 'Join the waitlist' : 'Apply Now';
+  const ctaText = pageType === 'waitlist' ? 'Join the waitlist' : 'Join Now';
   return (
     <section className="introducing-limitless-bg py-20 px-4 w-full relative overflow-hidden">
       <div className="container mx-auto max-w-4xl relative z-30">

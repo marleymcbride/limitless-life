@@ -217,6 +217,31 @@ export default function IntakeDocContent() {
       <GammaDivider />
 
       <GammaSectionHeading>
+        INVESTMENT
+      </GammaSectionHeading>
+
+      <GammaParagraph>
+       This is a premium coaching experience which will be sold at £3,997 in future cohorts.
+      </GammaParagraph>
+
+      <GammaParagraph>
+      But enrollment for the beta cohort <strong>is just £997.</strong>
+      </GammaParagraph>
+
+      <GammaParagraph>
+      That&apos;s a £3,000 discount if you join today.
+      </GammaParagraph>
+      
+      <GammaParagraph>
+      I want to make this the best experience on the market, so i'm ok letting in a few selected people for an asolute steal to make the product better.
+      </GammaParagraph>
+
+      <GammaParagraph>
+      So if you want to get in at the ground level with a heavily discounted rate, this is your chance.
+      </GammaParagraph>
+
+
+      <GammaSectionHeading>
         NEXT STEPS
       </GammaSectionHeading>
 

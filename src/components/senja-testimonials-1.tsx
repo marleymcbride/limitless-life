@@ -9,7 +9,7 @@ interface SenjaTestimonials1Props {
 
 export default function SenjaTestimonials1({ onApplyNowClick }: SenjaTestimonials1Props) {
   const { pageType } = usePageType();
-  const ctaText = pageType === 'waitlist' ? 'Join the waitlist' : 'Apply Now';
+  const ctaText = pageType === 'waitlist' ? 'Join the waitlist' : 'Join Now';
   return (
     <section id="senja-testimonials-1" className="results-proof-gradient py-20 px-0">
       <div className="container scale-[105%] my-0 md:my-8 lg:my-8 mx-auto max-w-full">
