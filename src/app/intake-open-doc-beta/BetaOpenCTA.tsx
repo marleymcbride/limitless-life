@@ -3,15 +3,22 @@
 import { useSearchParams } from 'next/navigation';
 import { GammaCTA } from '@/components/gamma-article';
 
+// Default beta coupon ID - can be overridden via couponID URL param
+const DEFAULT_BETA_COUPON = 'promo_1TNCRLDglwfGELM8hItfPc0O';
+
 export default function BetaOpenCTA() {
   const searchParams = useSearchParams();
 
   const handleEnrollment = async (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
 
-    // Get email and name from URL params
+    // Get email, name, and optional coupon from URL params
     const email = searchParams.get('email') || '';
     const name = searchParams.get('name') || '';
+    const couponParam = searchParams.get('couponID') || '';
+
+    // Use param coupon if provided, otherwise use default beta coupon
+    const couponID = couponParam || DEFAULT_BETA_COUPON;
 
     try {
       console.log('[Beta Open] Creating Stripe checkout session for enrollment');
@@ -24,6 +31,7 @@ export default function BetaOpenCTA() {
           paymentPlan: 'full',
           customerEmail: email,
           customerName: name,
+          couponID, // Apply beta discount coupon
         }),
       });
 

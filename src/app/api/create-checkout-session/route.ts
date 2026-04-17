@@ -36,6 +36,7 @@ const tierPrices = {
   life: parseInt(process.env.PRICE_LIMITLESSLIFE || "259700"),
   'life-whatsapp': parseInt(process.env.PRICE_LIMITLESSLIFEWHATSAPP || "439700"),
   concierge: parseInt(process.env.PRICE_LIMITLESSHEALTHCONCIERGE || "689700"),
+  beta: parseInt(process.env.PRICE_LIMITLESSBETA || "99700"), // Beta cohort PIF price
   'beta-waitlist': 0, // Price is handled via Stripe Price ID
 };
 
@@ -44,6 +45,7 @@ const tierNames = {
   life: "Limitless Life",
   'life-whatsapp': "Limitless Life + WhatsApp",
   concierge: "Limitless Health Concierge",
+  beta: "Beta Cohort (Full Payment)",
   'beta-waitlist': "Beta Waitlist Deposit",
 };
 
@@ -76,6 +78,9 @@ const stripePriceIds = {
     '3pay': process.env.STRIPE_PRICE_CONCIERGE_3PAY,
     full: process.env.STRIPE_PRICE_CONCIERGE_FULL,
   },
+  beta: {
+    full: process.env.STRIPE_PRICE_BETA_FULL || 'price_1TDQAkDglwfGELM8vcjtlrXt', // Beta cohort PIF
+  },
   'beta-waitlist': {
     full: process.env.STRIPE_PRICE_BETA_WAITLIST_DEPOSIT,
   },
@@ -95,7 +100,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const { tier, paymentPlan, customerEmail, customerName } = await request.json();
+    const { tier, paymentPlan, customerEmail, customerName, couponID } = await request.json();
 
     console.log('[CreateCheckoutSession] Creating session:', { tier, customerEmail, customerName });
     console.log('[CreateCheckoutSession] Available tiers:', Object.keys(tierPrices));
@@ -207,6 +212,12 @@ export async function POST(request: NextRequest) {
     }
 
     checkoutSessionOptions.metadata = metadata;
+
+    // Add coupon if provided
+    if (couponID) {
+      checkoutSessionOptions.discounts = [{ coupon: couponID }];
+      console.log('[CreateCheckoutSession] Applying coupon:', couponID);
+    }
 
     const session = await stripe.checkout.sessions.create(checkoutSessionOptions);
 
