@@ -79,7 +79,7 @@ const stripePriceIds = {
     full: process.env.STRIPE_PRICE_CONCIERGE_FULL,
   },
   beta: {
-    full: process.env.STRIPE_PRICE_BETA_FULL || 'price_1TDQAkDglwfGELM8vcjtlrXt', // Beta cohort PIF
+    full: process.env.STRIPE_PRICE_BETA_FULL || 'price_1Sr6IVDglwfGELM8lRA2jXqO', // Beta cohort PIF (£3,997, coupon takes it to £997)
   },
   'beta-waitlist': {
     full: process.env.STRIPE_PRICE_BETA_WAITLIST_DEPOSIT,
