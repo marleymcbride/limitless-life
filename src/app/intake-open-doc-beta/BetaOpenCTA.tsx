@@ -3,8 +3,9 @@
 import { useSearchParams } from 'next/navigation';
 import { GammaCTA } from '@/components/gamma-article';
 
-// Default beta coupon ID - can be overridden via couponID URL param
-const DEFAULT_BETA_COUPON = 'promo_1TNCRLDglwfGELM8hItfPc0O';
+// Beta coupon - use the promotional code (customer-facing), not the API ID
+// This is the code customers would enter at checkout
+const BETA_COUPON_CODE = process.env.NEXT_PUBLIC_BETA_COUPON_CODE || 'TLA-BETA-TESTER';
 
 export default function BetaOpenCTA() {
   const searchParams = useSearchParams();
@@ -15,13 +16,14 @@ export default function BetaOpenCTA() {
     // Get email, name, and optional coupon from URL params
     const email = searchParams.get('email') || '';
     const name = searchParams.get('name') || '';
-    const couponParam = searchParams.get('couponID') || '';
+    const couponParam = searchParams.get('coupon') || '';
 
-    // Use param coupon if provided, otherwise use default beta coupon
-    const couponID = couponParam || DEFAULT_BETA_COUPON;
+    // Use URL param coupon if provided, otherwise use default beta coupon
+    const couponCode = couponParam || BETA_COUPON_CODE;
 
     try {
       console.log('[Beta Open] Creating Stripe checkout session for enrollment');
+      console.log('[Beta Open] Using coupon code:', couponCode);
 
       const response = await fetch('/api/create-checkout-session', {
         method: 'POST',
@@ -31,7 +33,7 @@ export default function BetaOpenCTA() {
           paymentPlan: 'full',
           customerEmail: email,
           customerName: name,
-          couponID, // Apply beta discount coupon
+          couponID: couponCode, // Apply beta discount coupon (takes £3,997 → £997)
         }),
       });
 
