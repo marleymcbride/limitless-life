@@ -213,8 +213,9 @@ export async function POST(request: NextRequest) {
 
     checkoutSessionOptions.metadata = metadata;
 
-    // Add coupon if provided
+    // Add coupon if provided - remove allow_promotion_codes when using discounts
     if (couponID) {
+      delete (checkoutSessionOptions as any).allow_promotion_codes;
       checkoutSessionOptions.discounts = [{ coupon: couponID }];
       console.log('[CreateCheckoutSession] Applying coupon:', couponID);
     }
