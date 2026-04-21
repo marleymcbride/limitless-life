@@ -106,10 +106,10 @@ function SuccessContent() {
             <p className="text-gray-600">
               Need help? Contact us at{" "}
               <a
-                href="mailto:contact@limitlessprotocol.com"
+                href="mailto:support@limitless-life.co"
                 className="text-[#940909] font-semibold"
               >
-                contact@limitlessprotocol.com
+                support@limitless-life.co
               </a>
             </p>
           </div>
@@ -205,7 +205,7 @@ function SuccessContent() {
         <div className="space-y-4">
           <CTAButton
             onClick={() =>
-              (window.location.href = "mailto:contact@limitlessprotocol.com")
+              (window.location.href = "mailto:support@limitless-life.co")
             }
             className="w-full md:w-auto"
           >
@@ -214,10 +214,10 @@ function SuccessContent() {
           <p className="text-gray-600">
             For any questions or support, email us at{" "}
             <a
-              href="mailto:contact@limitlessprotocol.com"
+              href="mailto:support@limitless-life.co"
               className="text-[#940909] font-semibold"
             >
-              contact@limitlessprotocol.com
+              support@limitless-life.co
             </a>
           </p>
         </div>

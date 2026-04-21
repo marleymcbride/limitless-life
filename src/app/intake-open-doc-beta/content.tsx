@@ -28,15 +28,19 @@ export default function IntakeDocContent() {
       </GammaParagraph>
 
       <GammaParagraph>
-        You&apos;re likely waking up each morning and &apos;cracking on&apos; with another day… but secretly you&apos;d do absolutely <strong>goddamn ANYTHING</strong> to not have to get out of bed. Not because you don&apos;t want to, you physically, mentally (and even spiritually) don&apos;t have the energy to push through.
+        You&apos;re likely waking up each morning and &apos;cracking on&apos; with another day… but secretly you&apos;d do absolutely <strong>goddamn ANYTHING</strong> to not have to get out of bed. Not because you don&apos;t want to- you physically, mentally (and even spiritually) don&apos;t have the energy.
       </GammaParagraph>
 
       <GammaParagraph>
-        But despite watching what you eat, trying these different diets, and maybe even getting caught up in the &quot;scam land&quot; of supplements & stimulants.. you feel shit.
+        Despite watching what you eat, trying a load of different diets, and maybe even getting caught up in the &quot;scam land&quot; of supplements & stimulants.. you still feel shit.
       </GammaParagraph>
 
       <GammaParagraph>
-        I resonate hard with this because I&apos;ve been caught in the &quot;vicious cycle&quot;. Back in 2021 I was so drained I was literally falling asleep on my desk at 10am. This impacted my work, my health and even my relationships.
+       Back in 2021 I was so drained I was literally falling asleep on my desk at 10am. This almost cost me my Masters degree, my relationship, and even my health.
+      </GammaParagraph>
+
+      <GammaParagraph>
+      So I get it. I&apos;ve been in the vicious cycle of having no energy to move your life forward.
       </GammaParagraph>
 
       <GammaParagraph>
@@ -68,11 +72,11 @@ export default function IntakeDocContent() {
         </li>
         <li className="-mb-1 pb-3 -mr-2">
           <strong>You&apos;ve Tried Using &apos;Willpower&apos;:</strong>
-          <div className="mt-2">You&apos;ve been told hard discipline and willpower is the way to success, but this is a straight to path disaster long-term.</div>
+          <div className="mt-2">You&apos;ve been told &apos;hard discipline&apos; and willpower is the way to success.. but this is pure disaster in the long-term.</div>
         </li>
         <li className="-mb-1 pb-2">
           <strong>You Can&apos;t Outwork A Broken Metabolism:</strong>
-          <div className="mt-2">The biggest problems start within (e.g. gut issues and imbalanced hormones). Until you fix these, your energy will stay throttled.</div>
+          <div className="mt-2">The biggest problems start within (e.g. gut issues and imbalanced hormones). Until you fix your metabolism, your energy will stay throttled.</div>
         </li>
       </GammaOrderedList>
 
@@ -83,8 +87,20 @@ export default function IntakeDocContent() {
       </GammaSectionHeading>
 
       <GammaParagraph>
-        You probably don&apos;t actually care about &quot;smashing the gym every night&quot; or boasting about your latest bench press. You care about looking and <strong>FEELING your best every day</strong>, with the least time spent possible.. so you have energy for the things and people that matter most.
+        If you&apos;re like me, you probably don&apos;t care about &quot;smashing the gym every night&quot; or boasting about your latest bench press. You care about:
       </GammaParagraph>
+
+      <ul className="list-disc list-inside mb-6 text-xl md:text-xl space-y-4 text-gray-100" style={{ fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif' }}>
+        <li className="-mb-1 pb-3">
+          Looking and <strong>FEELING your best</strong>.
+        </li>
+        <li className="-mb-1 pb-3">
+          in the least time and effort possible.
+        </li>
+        <li className="-mb-1 pb-3 -mr-2">
+          so you have energy for the things and people that matter most.
+        </li>
+      </ul>
 
       <GammaParagraph>
       <strong>Beyond the body, you have one core desire:</strong> to feel like &apos;that guy&apos;. The guy who walks into a room with infectious energy. A presence. An aura. For me there is no better feeling as a man.
@@ -93,7 +109,7 @@ export default function IntakeDocContent() {
       <GammaDivider />
 
       <GammaSectionHeading className="-mt-0 pt-0">
-        WHY ME
+        WHY LIMITLESS
       </GammaSectionHeading>
 
       <GammaParagraph>
@@ -106,19 +122,19 @@ export default function IntakeDocContent() {
 
       <GammaOrderedList className="mt-6">
         <li>We spend 5 days RESTING, and 2 days working.</li>
-        <li>We create an Unlimited Energy Flywheel, not metabolism-killing starvation approaches.</li>
+        <li>We create an Limitless Energy Flywheel, not metabolism-killing starvation approaches.</li>
         <li>Instead of building a &apos;fitness regime&apos;, we design a LIFESTYLE.</li>
       </GammaOrderedList>
 
       <GammaParagraph>
-        I&apos;ve used this same method in men (such as banking, entrepreneurship, finance, petroleum, every high level career you can think of) to become a <strong>Lifestyle Athlete</strong>.
+        I&apos;ve used this same method in men (such as banking, entrepreneurship, finance, petroleum, every high level career you can think of) to become what I call a <strong>Lifestyle Athlete</strong>.
       </GammaParagraph>
 
       <GammaParagraph className="-mb-0 pb-0 md:-mb-2 md:pb-0 lg:pb-0 lg:-mb-2">
-        <strong>Obsession:</strong> I&apos;ve spent over a decade researching why certain guys radiate an infectious energy and operate at a higher frequency than most.
+        <strong>My obsession:</strong> I&apos;ve spent over a decade researching why certain guys radiate an infectious energy and operate at a higher frequency than most.
       </GammaParagraph>
 
-      <GammaParagraph className="-mb-0 pb-0 md:-mb-4 md:pb-0 md:pb-10 lg:pb-10 lg:-mb-6">
+      <GammaParagraph className="-mb-0 pb-0 md:-mb-4 md:pb-0 md:pb-10 lg:pb-10 lg:-mb-7">
         <strong>Humanity:</strong> I am so passionate about this niche area because:
       </GammaParagraph>
 
@@ -129,7 +145,7 @@ export default function IntakeDocContent() {
       </GammaOrderedList>
 
       <GammaParagraph className="pt-0 md:pt-2 lg:pt-2 pb-0 md:pb-2 lg:pb-2">
-        I built this system from scratch because nothing out there was designed for men who actually have a life, and don&apos;t want to spend their days eating broccoli and frying themselves in the gym every night.
+        I built this system because nothing out there was designed for men who ACTUALLY have a life, and not be another dork who makes gym their entire personality.
       </GammaParagraph>
 
       <GammaParagraph className="mb-0 mr-4 pb-0 md:-pb-0 lg:-pb-0 md:-mb-0 lg:-mb-0 lg:pb-0 md:pt-3 lg:pt-3">
@@ -140,7 +156,7 @@ export default function IntakeDocContent() {
         Lewis often works 80 hours as an engineer. He went from 85kg to 68kg over 4 months and hasn&apos;t touched alcohol in 2 years now.
       </GammaParagraph>
 
-      <GammaParagraph className="-mt-2 pb-0 md:-mt-4 md:-mb-4 md:pb-- lg:-mt-4 lg:-mb-4 lg:pb-0">
+      <GammaParagraph className="-mt-2 pb-0 md:-mt-4 md:-mb-4 md:pb-- lg:-mt-2 lg:-mb-2 lg:pb-0">
         Aaron was a stressed-out business exec, he said a month in: <em>&quot;I&apos;ve never had this much natural energy in my life.&quot;</em>
       </GammaParagraph>
 
@@ -171,7 +187,7 @@ export default function IntakeDocContent() {
       </GammaParagraph>
 
       <GammaParagraph className="-mt-12 md:mt-4 lg:-mt-4">
-        Now we shift focus to your lifestyle. We bring in <strong>The Limitless Morning</strong> and <strong>Metabolic Priming Protocol</strong>, to heal your body and build your Unlimited Energy Flywheel. Your energy is rising every day, visible muscle is developing, and less stress means you stop feeling the tie for booze.
+        Now we shift focus to your lifestyle. We bring in <strong>The Limitless Morning</strong> and <strong>Metabolic Priming Protocol</strong>, to heal your body and build your Limitless Energy Flywheel. Your energy is rising every day, visible muscle is developing, and less stress means you stop feeling the tie to booze.
       </GammaParagraph>
 
       <GammaParagraph className="pt-2 -mb-5 pb-8 -mr-4 md:-mb-0 md:pb-0 md:-mr-0 lg:-mb-0 lg:pb-0 lg:-mr-0">
@@ -193,25 +209,25 @@ export default function IntakeDocContent() {
       </GammaParagraph>
 
       <GammaParagraph>
-        <strong>YES:</strong> You want to become the man with the energy that reflects the success of your life. Rather than a typical &apos;fitness plan&apos;, you want a LIFESTYLE.
+        <strong>YES:</strong> You KNOW what you are capable of, and ready to unlock the energy that reflects the success of your life. Rather than a typical &apos;fitness plan&apos;, you want a LIFESTYLE.
       </GammaParagraph>
 
       <GammaParagraph>
-        <strong>NO:</strong> This is not for the casual guy. I only work with men who are dedicated to change, and take their performance seriously.
+        <strong>NO:</strong> This is not for the casual guy who is ok with an average life. I only work with men who are devoted to the mission and feel DISGUSTED at the thought of being a "normal guy".
       </GammaParagraph>
 
       <GammaDivider />
 
       <GammaSectionHeading>
-        DOORS ARE OPEN - BETA COHORT
+        THE BETA COHORT
       </GammaSectionHeading>
 
       <GammaParagraph>
-        Doors are currently <strong>OPEN</strong> for the beta cohort starting {COHORT_CONFIG.DATE}. There are just <strong>10 spots available</strong>.
+        Doors are currently <strong>OPEN</strong> for The Lifestyle Athelete beta cohort. We'll be kicking off {COHORT_CONFIG.DATE}. There are just <strong>10 spots available</strong>.
       </GammaParagraph>
 
       <GammaParagraph>
-        Once these spots are filled, doors will close until the next cohort.
+        Once spots are filled, doors will be closed til the next cohort.
       </GammaParagraph>
 
       <GammaDivider />
@@ -221,11 +237,11 @@ export default function IntakeDocContent() {
       </GammaSectionHeading>
 
       <GammaParagraph>
-       This is a premium coaching experience which will be sold at £3,997 in future cohorts.
+       This is a premium experience which will be sold at £3,997.
       </GammaParagraph>
 
       <GammaParagraph>
-      But enrollment for the beta cohort <strong>is just £997.</strong>
+      But enrollment for this first round of beta testers <strong>is just £997.</strong>
       </GammaParagraph>
 
       <GammaParagraph>
@@ -233,11 +249,7 @@ export default function IntakeDocContent() {
       </GammaParagraph>
       
       <GammaParagraph>
-      I want to make this the best experience on the market, so i'm ok letting in a few selected people for an asolute steal to make the product better.
-      </GammaParagraph>
-
-      <GammaParagraph>
-      So if you want to get in at the ground level with a heavily discounted rate, this is your chance.
+      I want to make this the best experience on the market, so i'm ok letting in a few selected people for an asolute steal to make this an even better product in the future.
       </GammaParagraph>
 
 
@@ -246,7 +258,12 @@ export default function IntakeDocContent() {
       </GammaSectionHeading>
 
       <GammaParagraph>
-        I respect both of our time, so let&apos;s skip the &apos;sales call&apos; and complicated BS.
+        
+        There&apos;s no sales calls or pressure tactics. You&apos;re a grown man and can make your own decisions.
+      </GammaParagraph>
+
+      <GammaParagraph>
+      If you want to get in this round with a heavily discounted rate here&apos;s how:
       </GammaParagraph>
 
       <GammaOrderedList>
@@ -255,17 +272,14 @@ export default function IntakeDocContent() {
           <BetaOpenCTA/>
           </li>
         </p>
-        <li>You&apos;ll be redirected to complete your enrollment.</li>
-        <li>You&apos;ll be welcomed to The Lifestyle Athlete squad.</li>
+        <li>Your place will be confirmed.</li>
+        <li>We&apos;ll get you welcomed inside The Lifestyle Athlete squad.</li>
       </GammaOrderedList>
 
-      <GammaParagraph>
-        You in?
+      <GammaParagraph  className="pt-2">
+      — Marley
       </GammaParagraph>
 
-      <GammaParagraph className="-mt-4">
-      Marley
-      </GammaParagraph>
     </>
   );
 }
