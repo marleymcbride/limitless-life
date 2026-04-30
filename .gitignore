@@ -48,6 +48,9 @@ components-library/
 
 # plan docs
 docs/plans/
+
+# Claude AI config
+/.claude
 .env.local
 docs/
 
