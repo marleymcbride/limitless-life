@@ -17,9 +17,8 @@
  * - Set DOORS_OPEN_OVERRIDE to change the doors open date for specific cohorts
  */
 
-// BETA COHORT: Override doors open date to April 15th (instead of default April 20th)
-// Set to null to use default (20th of month)
-const DOORS_OPEN_OVERRIDE = 'April 15th'; // null for default, or 'April 15th' for beta
+// Temporary overrides should be null unless running a one-off launch window.
+const DOORS_OPEN_OVERRIDE = null;
 
 // Helper function to get ordinal suffix (1st, 2nd, 3rd, 4th, etc.)
 function getOrdinalSuffix(day: number): string {
@@ -48,6 +47,18 @@ function calculateOffsetDate(baseDate: string, baseYear: string, offset: number,
 
   const month = date.toLocaleDateString('en-US', { month: 'long' });
   const day = date.getDate();
+  return `${month} ${day}${getOrdinalSuffix(day)}`;
+}
+
+function calculateDoorsOpenDate(baseDate: string, baseYear: string): string {
+  const cleanDate = baseDate.replace(/(\d+)(st|nd|rd|th)/, '$1');
+  const cohortDate = new Date(`${cleanDate} ${baseYear}`);
+
+  // Doors open on the 20th of the previous month.
+  const openDate = new Date(cohortDate.getFullYear(), cohortDate.getMonth() - 1, 20);
+  const month = openDate.toLocaleDateString('en-US', { month: 'long' });
+  const day = openDate.getDate();
+
   return `${month} ${day}${getOrdinalSuffix(day)}`;
 }
 
@@ -103,8 +114,8 @@ export const COHORT_CONFIG = {
   DATE_FULL: `${COHORT_DATE}, ${COHORT_YEAR}`,
 
   // Door cycle dates (auto-calculated)
-  // Doors open: Uses override if set, otherwise 20th of THIS month (11 days before cohort starts on 1st of next month)
-  DOORS_OPEN: DOORS_OPEN_OVERRIDE || calculateOffsetDate(COHORT_DATE, COHORT_YEAR, -11, 'days'),
+  // Doors open: Uses override if set, otherwise 20th of the previous month.
+  DOORS_OPEN: DOORS_OPEN_OVERRIDE || calculateDoorsOpenDate(COHORT_DATE, COHORT_YEAR),
   // Doors close: Cohort start date (1st of next month)
   DOORS_CLOSE: COHORT_DATE,
 
