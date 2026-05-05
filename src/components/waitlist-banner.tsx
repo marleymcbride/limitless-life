@@ -4,7 +4,7 @@ import { COHORT_CONFIG } from '@/config/waitlist';
 import { getDoorState } from '@/lib/door-state';
 
 export default function WaitlistBanner() {
-  const MANUAL_BANNER_OVERRIDE = true;
+  const MANUAL_BANNER_OVERRIDE = false;
 
   if (MANUAL_BANNER_OVERRIDE) {
     return (

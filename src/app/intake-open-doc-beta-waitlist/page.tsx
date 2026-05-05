@@ -39,20 +39,20 @@ export default function IntakeOpenDoc() {
         <GammaHeader
           authorName="Marley McBride"
           authorAvatar="/images/Offer doc/F2C9OR3X0AIuRPS copy 2.jpeg"
-          lastUpdated="March 2026"
+          lastUpdated="April 2026"
           className="pt-4 md:pt-2 lg:pt-2"
         />
 
         <GammaBlockquote>
           <div className="space-y-4">
             <div>
-              The first public cohort officially kicks off this April.
+              The first public cohort officially kicks off this June.
             </div>
             <div>
               There will be <strong>only 10 spots available</strong> as i want to give my full attention to each member.
             </div>
             <div>
-            If you think you&apos;re a fit you can <strong> apply now to get in early for April</strong>.
+            If you think you&apos;re a fit you can <strong> apply now to get in early for June</strong>.
             </div>
             <div>
             — Marley
