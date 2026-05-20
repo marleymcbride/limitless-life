@@ -18,15 +18,15 @@ export default function MoreVideoTestimonials({ onApplyNowClick }: MoreVideoTest
             className="text-4xl md:text-5xl font-bold text-black mb-8"
             style={{ fontFamily: "Neuemontreal, Arial, sans-serif" }}
           >
-            What people are saying about the program
+            Heres what our clients had to say
           </h2>
 
           <div className="space-y-12 mb-12">
             <div className="grid md:grid-cols-2 gap-8 items-center">
-              <div>
+              <div className="w-[90%] md:w-full mx-auto md:mx-0">
                 <SimpleVideoPlayer
-                  libraryId="505300"
-                  videoId="ae86338e-0493-4ff0-bca9-87f9ad98dd89"
+                  libraryId="646962"
+                  videoId="be78cf73-e7ff-4419-81f7-630399269ff8"
                   className="w-full"
                   autoplay={false}
                   muted={false}
@@ -34,23 +34,25 @@ export default function MoreVideoTestimonials({ onApplyNowClick }: MoreVideoTest
                   controls={true}
                 />
               </div>
-              <div className="text-left">
-                <p className="text-lg text-black italic mb-4">
-                  &quot;I haven&apos;t felt this good in years.&quot;
+              <div className="w-[90%] md:w-full mx-auto md:mx-0 text-left">
+               <p className="text-lg text-black mb-2 font-normal">
+                  &quot;Everything in my blood work was red, now it&apos;s all green&quot;
                 </p>
-                <p className="text-black-300">
-                  Client was a 47-year-old CEO who was drinking 3 bottles of
-                  wine per night just to cope with the stress. Now completely
-                  sober and more productive than ever.
+                <p className="text-lg font-bold text-black mb-4">
+                  — Geoff, 53
+                </p>
+
+                <p className="text-black-300 font-sans font-normal text-base md:text-lg hidden md:block">
+                  Geoff&apos;s an oil & gas executive working 70-84 hour weeks who was told by his doctor he'd have a heart attack if he didn&apos;t fix his health. He came inside Limitless and went from 103kg to 78kg in 5 months.
                 </p>
               </div>
             </div>
 
             <div className="grid md:grid-cols-2 gap-8 items-center">
-              <div className="order-2 md:order-1 w-[90%] md:w-full mx-auto md:mx-0">
+              <div className="order-1 w-[90%] md:w-full mx-auto md:mx-0">
                 <SimpleVideoPlayer
-                  libraryId="505300"
-                  videoId="ae86338e-0493-4ff0-bca9-87f9ad98dd89"
+                  libraryId="646962"
+                  videoId="3a66e03a-1da4-4891-849e-f034aee49807"
                   className="w-full"
                   autoplay={false}
                   muted={false}
@@ -58,14 +60,16 @@ export default function MoreVideoTestimonials({ onApplyNowClick }: MoreVideoTest
                   controls={true}
                 />
               </div>
-              <div className="order-1 md:order-2 text-left">
-                <p className="text-lg text-white italic mb-4">
-                  &quot;This system changed my life.&quot;
+              <div className="order-2 w-[90%] md:w-full mx-auto md:mx-0 text-left">
+                <p className="text-lg text-black mb-2 font-normal">
+                  &quot;I achieved in 8 weeks what took a year on my own&quot;
                 </p>
-                <p className="text-black-300">
-                  Client was a 38-year-old lawyer running on coffee and
-                  Adderall. Now completely stimulant-free and performing at his
-                  peak in the courtroom.
+                <p className="text-lg font-bold text-black mb-4">
+                  — Laurence, 52
+                </p>
+
+                <p className="text-black-300 text-base md:text-lg font-normal hidden md:block">
+                  Laurence is a company client manager with a young daughter who spent months training hard and getting nowhere, burned out and struggling to sleep. After the first 8 weeks inside he was able to drop his bodyfat by 25% and felt like a different man.
                 </p>
               </div>
             </div>
