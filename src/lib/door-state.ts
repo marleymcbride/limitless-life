@@ -35,6 +35,42 @@ export interface DoorStateInfo {
   isCurrentlyOpen: boolean;
 }
 
+// Temporary launch override window.
+// Set enabled to false after launch week.
+const LAUNCH_REOPEN_WINDOW = {
+  enabled: true,
+  startsAt: new Date(2026, 4, 23), // May 23, 2026
+  endsAt: new Date(2026, 4, 30),   // May 30, 2026
+} as const;
+
+function getLaunchOverrideState(now: Date): DoorStateInfo | null {
+  if (!LAUNCH_REOPEN_WINDOW.enabled) return null;
+
+  const start = new Date(LAUNCH_REOPEN_WINDOW.startsAt);
+  const end = new Date(LAUNCH_REOPEN_WINDOW.endsAt);
+
+  start.setHours(0, 0, 0, 0);
+  end.setHours(23, 59, 59, 999);
+
+  if (now < start || now > end) return null;
+
+  const launchDate = new Date(2026, 5, 1); // June 1, 2026
+
+  return {
+    state: 'OPEN',
+    cohortType: 'main',
+    cohortMonth: launchDate.toLocaleDateString('en-US', { month: 'long' }),
+    cohortYear: launchDate.getFullYear().toString(),
+    cohortStartDate: `${launchDate.toLocaleDateString('en-US', { month: 'long' })} 1st`,
+    cohortStartFull: `${launchDate.toLocaleDateString('en-US', { month: 'long' })} 1st, ${launchDate.getFullYear()}`,
+    doorsOpenDate: formatDate(start),
+    doorsCloseDate: formatDate(LAUNCH_REOPEN_WINDOW.endsAt),
+    daysUntilOpen: calculateDaysUntil(start),
+    daysUntilClose: calculateDaysUntil(LAUNCH_REOPEN_WINDOW.endsAt),
+    isCurrentlyOpen: true,
+  };
+}
+
 /**
  * Get cohort info for a given date
  * @param date - The date to calculate cohort for
@@ -138,6 +174,11 @@ export function getCohortType(): CohortType {
  */
 export function getDoorState(): DoorStateInfo {
   const now = new Date();
+  const launchOverrideState = getLaunchOverrideState(now);
+  if (launchOverrideState) {
+    return launchOverrideState;
+  }
+
   const dayOfMonth = now.getDate();
 
   // Beta cohort special door state: doors open April 15th (not 20th)
