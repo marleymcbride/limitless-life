@@ -43,8 +43,8 @@ const LAUNCH_REOPEN_WINDOW = {
   endsAt: new Date(2026, 4, 30),   // May 30, 2026
 } as const;
 
-function getLaunchOverrideState(now: Date): DoorStateInfo | null {
-  if (!LAUNCH_REOPEN_WINDOW.enabled) return null;
+function isLaunchReopenWindowActive(now = new Date()): boolean {
+  if (!LAUNCH_REOPEN_WINDOW.enabled) return false;
 
   const start = new Date(LAUNCH_REOPEN_WINDOW.startsAt);
   const end = new Date(LAUNCH_REOPEN_WINDOW.endsAt);
@@ -52,13 +52,19 @@ function getLaunchOverrideState(now: Date): DoorStateInfo | null {
   start.setHours(0, 0, 0, 0);
   end.setHours(23, 59, 59, 999);
 
-  if (now < start || now > end) return null;
+  return now >= start && now <= end;
+}
+
+function getLaunchOverrideState(now: Date): DoorStateInfo | null {
+  if (!isLaunchReopenWindowActive(now)) return null;
+
+  const start = new Date(LAUNCH_REOPEN_WINDOW.startsAt);
 
   const launchDate = new Date(2026, 5, 1); // June 1, 2026
 
   return {
     state: 'OPEN',
-    cohortType: 'main',
+    cohortType: 'beta',
     cohortMonth: launchDate.toLocaleDateString('en-US', { month: 'long' }),
     cohortYear: launchDate.getFullYear().toString(),
     cohortStartDate: `${launchDate.toLocaleDateString('en-US', { month: 'long' })} 1st`,
@@ -165,6 +171,9 @@ export function isBetaCohort(): boolean {
  * @returns CohortType
  */
 export function getCohortType(): CohortType {
+  if (isLaunchReopenWindowActive()) {
+    return 'beta';
+  }
   return isBetaCohort() ? 'beta' : 'main';
 }
 
