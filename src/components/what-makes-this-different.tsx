@@ -17,7 +17,7 @@ export default function EverythingIncluded({ onApplyNowClick }: EverythingInclud
         </svg>
       ),
       title: "Train LESS, Recover MORE",
-      description: "You've been told you need to train 4-6 days per week to get results. But that approach doesn't focus on where the actual gains are made: during recovery.\n\nWe train 2-3 days per week using rest-focused training, and we use the Power Presence Method™ to build the muscles that create your masculine aura and presence."
+      description: "You've been told you need to train 4-6 days per week to get results. But that approach doesn't focus on where the actual gains are made: during recovery.\n\nWe train 2-3 days per week using the 2-Day Build System, and we use the Power Presence Method™ to build the muscles that create your masculine aura and presence."
     },
     {
       icon: (
@@ -26,7 +26,7 @@ export default function EverythingIncluded({ onApplyNowClick }: EverythingInclud
         </svg>
       ),
       title: "Fix Root Causes, Not Symptoms",
-      description: "Everything you've tried up to this point treats symptoms. Diets. Supplements. Willpower. That's why you always end up right back where you started.\n\nWe use The Bottleneck Test™ to identify exactly what's broken inside your body, then we use Metabolic Priming™ and the Hormone Reset™ to fix what's actually causing the problems."
+      description: "Everything you've tried up to this point treats symptoms. Diets. Supplements. Willpower. That's why you always end up right back where you started.\n\nWe use The Lifestyle X-Ray™ to identify exactly what's broken inside your body, then we use Metabolic Priming™ and the Hormone Reset™ to fix what's actually causing the problems."
     },
     {
       icon: (

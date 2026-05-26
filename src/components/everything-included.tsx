@@ -22,7 +22,7 @@ export default function EverythingIncluded() {
         </svg>
       ),
       title: "The Complete Limitless Systems",
-      description: "All four systems laid out step-by-step. Morning Fuel System protocols. Exact training programs. Limitless Flow practices. Health optimization strategies. No guessing. Just follow the system."
+      description: "All four systems laid out step-by-step. Morning Fuel System protocols. Exact training programs. Cortisol Re-calibration practices. Health optimization strategies. No guessing. Just follow the system."
     },
     {
       icon: (

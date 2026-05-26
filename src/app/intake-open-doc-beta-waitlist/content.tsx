@@ -105,7 +105,7 @@ export default function IntakeDocContent() {
 
       <GammaOrderedList className="mt-6">
         <li>We spend 5 days RESTING, and 2 days working.</li>
-        <li>We create an Unlimited Energy Flywheel, not metabolism-killing starvation approaches.</li>
+        <li>We build your energy flywheel, not kill it with starvation approaches.</li>
         <li>Instead of building a &apos;fitness regime&apos;, we design a LIFESTYLE.</li>
       </GammaOrderedList>
 
@@ -162,7 +162,7 @@ export default function IntakeDocContent() {
       </GammaParagraph>
 
       <GammaParagraph className="-mt-12 md:mt-4 lg:-mt-4">
-        Every man&apos;s situation is different, so we run <strong>The Bottleneck Test</strong> to identify your single biggest constraint. From here, you get your custom <strong>Rest-Focused Training</strong> and <strong>Metabolic Priming</strong> gameplan, so you can eat more while burning fat, see your gut flattening, and sleep improving.
+        Every man's situation is different, so we run <strong>The Lifestyle X-Ray</strong> to identify your single biggest constraint. From here, you get your custom <strong>2-Day Build System</strong> and <strong>Metabolic Priming</strong> gameplan, so you can eat more while burning fat, see your gut flattening, and sleep improving.
       </GammaParagraph>
 
       <GammaParagraph className="pt-2 -mb-5 pb-8 -mr-4 md:-mb-0 md:pb-0 md:-mr-0 lg:-mb-0 lg:pb-0 lg:-mr-0">
@@ -170,7 +170,7 @@ export default function IntakeDocContent() {
       </GammaParagraph>
 
       <GammaParagraph className="-mt-12 md:mt-4 lg:-mt-4">
-        Now we shift focus to your lifestyle. We bring in <strong>The Limitless Morning</strong> and <strong>Metabolic Priming Protocol</strong>, to heal your body and build your Unlimited Energy Flywheel. Your energy is rising every day, visible muscle is developing, and less stress means you stop feeling the tie for booze.
+        Now we shift focus to your lifestyle. We bring in <strong>Circadian Re-alignment</strong> and <strong>Metabolic Priming Protocol</strong>, to heal your body and rebuild your natural energy. Your energy is rising every day, visible muscle is developing, and less stress means you stop feeling the tie for booze.
       </GammaParagraph>
 
       <GammaParagraph className="pt-2 -mb-5 pb-8 -mr-4 md:-mb-0 md:pb-0 md:-mr-0 lg:-mb-0 lg:pb-0 lg:-mr-0">
@@ -178,7 +178,7 @@ export default function IntakeDocContent() {
       </GammaParagraph>
 
       <GammaParagraph className="-mt-12 md:mt-4 lg:-mt-4">
-        Finally, with the natural flow system and our signature <strong>Anti-Stack</strong> method, you reach REAL energy without caffeine / supplements. What to expect: morning wood back, drive you haven&apos;t seen in years, and most importantly a peaceful state of mind. Oh yeah… and a SHREDDED physique.
+        Finally, with Cortisol Re-calibration fully embedded, you reach REAL energy without caffeine, alcohol or supplements. Drive. Aura. The spark you&apos;ve been watching other men have and wondering why you don&apos;t.
       </GammaParagraph>
 
       <GammaDivider />

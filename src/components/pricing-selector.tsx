@@ -57,8 +57,8 @@ const tierContent = {
     paymentOptions: ['weekly', '3pay', '2pay', 'full'],
   },
   concierge: {
-    title: "Limitless Health Concierge (6-Month Program)",
-    displayName: "Limitless Health Concierge",
+    title: "Metabolic Priming Concierge (6-Month Program)",
+    displayName: "Metabolic Priming Concierge",
     tagline: "Premium support + experience",
     basePrice: "$6,897",
     features: [

@@ -44,7 +44,7 @@ const tierNames = {
   protocol: "The Limitless Protocol",
   life: "Limitless Life",
   'life-whatsapp': "Limitless Life + WhatsApp",
-  concierge: "Limitless Health Concierge",
+  concierge: "Metabolic Priming Concierge",
   beta: "Beta Cohort (Full Payment)",
   'beta-waitlist': "Beta Waitlist Deposit",
 };

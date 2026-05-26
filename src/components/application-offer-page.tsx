@@ -33,11 +33,11 @@ export default function WhatYouGetSection() {
     },
     {
       title: "The Complete Limitless Systems",
-      description: "All four systems laid out step-by-step. Morning Fuel System protocols. Exact training programs. Limitless Flow practices. Health optimization strategies. No guessing. Just follow the system."
+      description: "All four systems laid out step-by-step. Morning Fuel System protocols. Exact training programs. Cortisol Re-calibration practices. Health optimization strategies. No guessing. Just follow the system."
     },
     {
       title: "Your Custom Limitless Gameplan",
-      description: "Built specifically for your body after The Bottleneck Test™ identifies exactly where we should put our efforts. No cookie-cutter plans. Your gameplan is unique to you."
+      description: "Built specifically for your body after The Lifestyle X-Ray™ identifies exactly where we should put our efforts. No cookie-cutter plans. Your gameplan is unique to you."
     },
     {
       title: "Complete Training Program",

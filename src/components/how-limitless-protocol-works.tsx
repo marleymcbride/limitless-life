@@ -12,22 +12,22 @@ export default function HowLimitlessProtocolWorks({ onApplyNowClick }: HowLimitl
   const systems = [
     {
       number: 1,
-      title: "Limitless Morning",
+      title: "Circadian Re-alignment",
       description: "A morning fuel system designed to maximises your energy in the first 3 hours of your day. You will have lazer focus and smooth energy without caffeine or supplements, and eat MORE food in the morning unlike most methods. You&apos;ll feel fired up before you even leave the house."
     },
     {
       number: 2,
-      title: "Limitless Training",
+      title: "The 2-Day Build System",
       description: "Our lifestyle training style, minimalist Training. Get results training 2-3 times per week. That&apos;s it. When your body is already fried, more training just burns you out faster. We target muscles that matter. We protect your CNS. Build masculine presence and aura."
     },
     {
       number: 3,
-      title: "Limitless Flow",
+      title: "Cortisol Re-calibration",
       description: "A natural high state free from caffeine, alcohol, or substances. You will systematically eliminate dependency on alcohol without withdrawal hell. This is the same protocol that has helped countless guys get off booze for good. No AA meetings. No counting days. No willpower. Radiate REAL energy without endless coffees."
     },
     {
       number: 4,
-      title: "Limitless Health",
+      title: "Metabolic Priming",
       description: "Get your body working like it should - not patching it up with supplements. This is designed to supercharge your metabolism, unfuck your gut, and fix your low testosterone production. Expected increase of 200-300 ng/dL. This means: higher sex drive, more muscle mass, and losing that stubborn belly fat that won't budge. So your body works like it should again."
     }
   ];

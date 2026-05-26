@@ -20,7 +20,7 @@ const offerItems: OfferItem[] = [
     content: `Complete access to our proven 4-step system designed specifically for high-performers. This isn't another generic fitness program - it's a complete lifestyle transformation system.
 
 **Everything Included:**
-• Your Custom Limitless Gameplan - Built after The Bottleneck Test™ identifies exactly where we focus
+• Your Custom Limitless Gameplan - Built after The Lifestyle X-Ray™ identifies exactly where we focus
 • Complete Training Program - 2-3 day system with full exercise library via our app
 • Personalized Nutrition Protocol - Burn fat and build muscle while still enjoying foods you love
 • 24/7 Direct WhatsApp Access - Daily support whenever you need it
@@ -36,17 +36,17 @@ This is the complete system. No upsells. No hidden costs.`,
     title: "How The System Works",
     content: `The Limitless Protocol™ uses 4 proven systems to transform your energy, body, and health:
 
-**1. The Limitless Morning**
-We use The Anti-Stack™ system to rewire your natural energy production. You'll wake up fired up without caffeine crashes or supplement dependence. Your body starts producing its own energy again.
+**1. Circadian Re-alignment**
+We use Cortisol Re-calibration™ to rewire your natural energy production. You'll wake up fired up without caffeine crashes or supplement dependence. Your body starts producing its own energy again.
 
-**2. Rest-Focused Training**
+**2. 2-Day Build System**
 Train 2-3 days per week using the Power Presence Method™. We build the muscles that create masculine presence and aura. Your body grows when it recovers, not when you grind yourself into the ground.
 
-**3. Limitless Flow™**
+**3. Cortisol Re-calibration**
 We design your entire lifestyle, not just a fitness regime. You reduce stress to a minimum, become present and confident without needing alcohol, and radiate real energy without endless coffees.
 
 **4. The Health Reset™**
-The Bottleneck Test™ identifies your biggest constraints. We use Metabolic Priming™ and the Hormone Reset™ to fix what's actually broken. Your metabolism resets, your gut heals, your testosterone comes back.
+The Lifestyle X-Ray™ identifies your biggest constraints. We use Metabolic Priming™ and the Hormone Reset™ to fix what's actually broken. Your metabolism resets, your gut heals, your testosterone comes back.
 
 This is the complete system. No hacks. No shortcuts. Just what actually works.`,
   },

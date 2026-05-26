@@ -36,7 +36,7 @@ export default function ProgramComponentsSection() {
                 <Sunrise className="w-5 h-5 text-white" />
               </div>
               <h3 className="text-xl font-bold text-gray-900">
-                Limitless Morning
+                Circadian Re-alignment
               </h3>
             </div>
             <p className="mb-4 text-gray-700">
@@ -78,7 +78,7 @@ export default function ProgramComponentsSection() {
                 <Dumbbell className="w-5 h-5 text-white" />
               </div>
               <h3 className="text-xl font-bold text-gray-900">
-                The Limitless Training
+                The 2-Day Build System
               </h3>
             </div>
             <p className="mb-4 text-gray-700">
@@ -120,7 +120,7 @@ export default function ProgramComponentsSection() {
                 <Coffee className="w-5 h-5 text-white" />
               </div>
               <h3 className="text-xl font-bold text-gray-900">
-                Limitless Flow
+                Cortisol Re-calibration
               </h3>
             </div>
             <p className="mb-4 text-gray-700">
@@ -158,8 +158,8 @@ export default function ProgramComponentsSection() {
         </div>
 
         <div className="max-w-5xl mx-auto mt-12 bg-gray-100 p-4 rounded-lg shadow-sm">
-          <MicroTestimonial
-            quote="The Limitless Morning protocol alone was worth the entire investment. I haven't touched coffee in 4 months and have more energy than ever."
+            <MicroTestimonial
+            quote="The Circadian Re-alignment protocol alone was worth the entire investment. I haven't touched coffee in 4 months and have more energy than ever."
             name="Eric W."
             title="Sales Director"
             metric="120 Days Caffeine-Free"

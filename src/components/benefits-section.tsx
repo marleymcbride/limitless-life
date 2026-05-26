@@ -99,7 +99,7 @@ export default function BenefitsSection() {
               <div className="p-3 rounded-full bg-[#940909] flex items-center justify-center mr-4">
                 <Coffee className="w-5 h-5 text-white" />
               </div>
-              <h3 className="text-xl font-bold">Limitless Flow</h3>
+              <h3 className="text-xl font-bold">Cortisol Re-calibration</h3>
             </div>
             <p className="mb-4 text-gray-300">
               Natural high state - free from caffeine, alcohol or substances.

@@ -290,9 +290,9 @@ export default function BlackFridayOffer() {
           <div className="space-y-8">
             <div className="mb-6">
               <h3 className="font-bold text-xl mb-4 text-center text-black">Phase 1: The Foundations (Week 1-6)</h3>
-              <p className="text-gray-800 mb-4">First thing we&apos;ll do is get crystal clear on your gameplan. Every situation, life, and journey to becoming Limitless is different. That&apos;s why we run you through The Bottleneck Test, then craft your Limitless Gameplan of:</p>
+              <p className="text-gray-800 mb-4">First thing we&apos;ll do is get crystal clear on your gameplan. Every situation, life, and journey to becoming Limitless is different. That&apos;s why we run you through The Lifestyle X-Ray, then craft your Limitless Gameplan of:</p>
               <div className="space-y-2 text-gray-800">
-                <p>• Your <strong>Rest-Focused Training™ Plan</strong>: We craft your elite body in just 2-3 days of training using <strong>Power Presence Method™</strong> to build muscle that creates masculine presence and aura</p>
+                <p>• Your <strong>2-Day Build System™ Plan</strong>: We craft your elite body in just 2-3 days of training using <strong>Power Presence Method™</strong> to build muscle that creates masculine presence and aura</p>
                 <p>• Your <strong>Metabolic Priming™ System</strong>: We use strategic nutrition to kickstart your metabolism so you can start eating more whilst burning fat simultaneously</p>
                 <p>• Your <strong>First Visible Shifts</strong>: You&apos;ll notice your gut flattening, face leaning out, sleep improving, and your body finally responding to training because it&apos;s finally getting the recovery it needs.</p>
               </div>
@@ -300,12 +300,12 @@ export default function BlackFridayOffer() {
 
             <div className="mb-6">
               <h3 className="font-bold text-xl mb-4 text-center text-black">Phase 2: Oscillating (Week 7-11)</h3>
-              <p className="text-gray-800 mb-4">With foundations in place, we put our focus towards your lifestyle. We set a foundation for all the inner patterns keeping you stuck in a low frequency. We bring in <strong>The Limitless Morning</strong>, and your natural flow system - helping you feel more relaxed. By now you&apos;ll notice your natural energy rising consistently, visible muscle across your body taking place and booze starting to lose its grip.</p>
+              <p className="text-gray-800 mb-4">With foundations in place, we put our focus towards your lifestyle. We set a foundation for all the inner patterns keeping you stuck in a low frequency. We bring in <strong>Circadian Re-alignment</strong>, and your natural flow system - helping you feel more relaxed. By now you&apos;ll notice your natural energy rising consistently, visible muscle across your body taking place and booze starting to lose its grip.</p>
             </div>
 
             <div className="mb-6">
               <h3 className="font-bold text-xl mb-4 text-center text-black">Phase 3: Limitless (Week 12-17)</h3>
-              <p className="text-gray-800 mb-4">Now it&apos;s time to <strong>Become Limitless</strong>. We go deep in to your health, running high level blood tests with <strong>The Hormone Reset</strong>, studying the data, and bringing in <strong>The Anti Stack</strong> to delete your caffeine and supplement needs. You&apos;ll start waking up every day with that infectious energy, Notice you&apos;re now hitting 20+ lbs of fat lost, and your testosterone increasing. Morning wood back, brain fog disappeared, your gut healed, all that good Stuff.</p>
+              <p className="text-gray-800 mb-4">Now it&apos;s time to <strong>Become Limitless</strong>. We go deep in to your health, running high level blood tests with <strong>The Hormone Reset</strong>, studying the data, and bringing in <strong>Cortisol Re-calibration</strong> to delete your caffeine and supplement needs. You&apos;ll start waking up every day with that infectious energy, Notice you&apos;re now hitting 20+ lbs of fat lost, and your testosterone increasing. Morning wood back, brain fog disappeared, your gut healed, all that good Stuff.</p>
               <p className="text-gray-800 mb-4">And by Month 4 you reach <strong>The Natty Sweet Spot™</strong> - Where your body, hormones, health, peace, energy and presence all align. Limitless.</p>
             </div>
           </div>
@@ -329,7 +329,7 @@ export default function BlackFridayOffer() {
 
               <div className="mb-4">
                 <p className="text-gray-100 mb-4">
-                  ✔ <strong>Your Custom Limitless Gameplan</strong> - Built specifically for your body after <strong>The Bottleneck Test™</strong> identifies exactly where we should put our efforts.
+                  ✔ <strong>Your Custom Limitless Gameplan</strong> - Built specifically for your body after <strong>The Lifestyle X-Ray™</strong> identifies exactly where we should put our efforts.
                 </p>
               </div>
 

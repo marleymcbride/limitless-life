@@ -53,7 +53,7 @@ export default function FinalFAQsV2({ onApplyNowClick }: FinalFAQsV2Props) {
     },
     {
       question: "Can I train more than 2-3 days per week?",
-      answer: "You can.. but your results will be worse. Our Rest-Focused Training system is designed to maximise minimal time spent in the gym, and focusses on the 'rest and recovery' outside the gym so you feel great every day."
+      answer: "You can.. but your results will be worse. Our 2-Day Build System is designed to maximise minimal time spent in the gym, and focusses on the 'rest and recovery' outside the gym so you feel great every day."
     },
   
     {

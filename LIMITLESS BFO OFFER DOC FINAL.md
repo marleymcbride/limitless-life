@@ -330,15 +330,15 @@ How to Get Your Energy, Aura, & Masculine Presence Back
 [SPACING: LARGE]
 
 [STYLE: H3_LEFT_BOLD]
-Step 1: The Limitless Morning
+Step 1: Circadian Re-alignment
 [SPACING: LARGE]
 
 You’ve been starting your days wrong for years.. leaving you feeling tired, stressed and anxious before you even leave the house.
-We use **The Anti-Stack™** system to kickstart your mornings and rewire your natural energy.
+We use **Cortisol Re-calibration™** to kickstart your mornings and rewire your natural energy.
 
 [SPACING: LARGE]
 [STYLE: H3_LEFT_BOLD]
-Step 2: Rest-Focused Training
+Step 2: 2-Day Build System
 [SPACING: LARGE]
 
 They’ve told you you need to train 4+ days a week to get in shape. But doing that does not focus on where the gains are made: at rest.
@@ -346,7 +346,7 @@ We instead train just 2-3 days per week, and use the **Power Presence Method™*
 
 [SPACING: LARGE]
 [STYLE: H3_LEFT_BOLD]
-Step 3: Limitless Flow™
+Step 3: Cortisol Re-calibration
 [SPACING: LARGE]
 
 This is where you see everything come together. Instead of designing a fitness regime, we design a **LIFESTYLE**.
@@ -358,7 +358,7 @@ We set up your day so everything works smoothly - you reduce your stress to a mi
 Step 4: The Health Reset™
 [SPACING: LARGE]
 
-Years of throwing money at random diets and supplements is out. The **Bottleneck Test™** finds the biggest constraints of what’s happening inside.
+Years of throwing money at random diets and supplements is out. **The Lifestyle X-Ray™** finds the biggest constraints of what’s happening inside.
 We then use **Metabolic Priming™** and the **Hormone Reset™** to help your body start working like it should again.
 
 [SPACING: LARGE]
@@ -373,8 +373,8 @@ Phase 1: The Foundations (Week 1-6)
 [SPACING: LARGE]
 
 First thing we’ll do is get crystal clear on your gameplan. Every situation, life, and journey to becoming Limitless is different.
-That’s why we run you through The Bottleneck Test, then craft your Limitless Gameplan of:
-*   Your **Rest-Focused Training™ Plan**: We craft your elite body in just 2-3 days of training using the **Power Presence Method™** to build muscle that creates masculine presence and aura
+That’s why we run you through The Lifestyle X-Ray, then craft your Limitless Gameplan of:
+*   Your **2-Day Build System™ Plan**: We craft your elite body in just 2-3 days of training using the **Power Presence Method™** to build muscle that creates masculine presence and aura
 *   Your **Metabolic Priming™ System**: we use strategic nutrition to kickstart your metabolism so you can start eating more whilst burning fat simultaneously
 *   Your **First Visible Shifts**: you’ll notice your gut flattening, face leaning out, sleep improving, and your body finally responding to training because it’s finally getting the recovery it needs.
 
@@ -384,14 +384,14 @@ Phase 2: Oscillating (Week 7-11)
 [SPACING: LARGE]
 
 With the foundations in place, we put our focus towards your lifestyle, We set a foundation for all the inner patterns keeping you stuck in a low frequency.
-We bring in **The Limitless Morning**, and your natural flow system - helping you feel more relaxed. By now you’ll notice your natural energy rising consistently, visible muscle across your body taking place and booze starting to lose it’s grip.
+We bring in **Circadian Re-alignment**, and your natural flow system - helping you feel more relaxed. By now you’ll notice your natural energy rising consistently, visible muscle across your body taking place and booze starting to lose it’s grip.
 
 [SPACING: LARGE]
 [STYLE: H3_LEFT_BOLD]
 Phase 3: Limitless (Week 12-17)
 [SPACING: LARGE]
 
-Now it’s time to **Become Limitless**. We go deep in to your health, running high level blood tests with **The Hormone Reset**, studying the data, and bringing in **The Anti Stack** to delete your caffeine and supplement needs.
+Now it’s time to **Become Limitless**. We go deep in to your health, running high level blood tests with **The Hormone Reset**, studying the data, and bringing in **Cortisol Re-calibration** to delete your caffeine and supplement needs.
 
 You’ll start waking up every day with that infectious energy, Notice you’re now hitting 20+ lbs of fat lost, and your testosterone increasing. Morning wood back, brain fog disappeared, your gut healed, all that good stuff.
 
@@ -451,7 +451,7 @@ Here’s what you get:
 [SPACING: LARGE]
 
 *   ✔ **17 Weeks of Coaching Calls** - 2 calls per week in the cohort covering all topics of Limitless.
-*   ✔ **Your Custom Limitless Gameplan** - Built specifically for your body after **The Bottleneck Test™** identifies exactly where we should put our efforts.
+*   ✔ **Your Custom Limitless Gameplan** - Built specifically for your body after **The Lifestyle X-Ray™** identifies exactly where we should put our efforts.
 *   ✔ **Your Complete Training Program** - 2-3 days per week, full exercise library, using our training and nutrition app.
 *   ✔ **Your Personalized Nutrition Protocol** - Exactly how to eat to burn fat and build muscle( whilst still enjoying foods like burgers and pizzas)
 *   ✔ **24/7 Direct WhatsApp Access** - Any questions, sticking points, and daily support.

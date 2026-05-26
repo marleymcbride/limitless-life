@@ -19,7 +19,7 @@ export default function BetaValueStack({ ctaText = "Join Now" }: BetaValueStackP
           <path strokeLinecap="round" strokeLinejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
         </svg>
       ),
-      title: "Rest-Focused Training Protocol",
+      title: "2-Day Build System Protocol",
       description: "A training method that lets you get better results in only 2-3 days per week. We prioritize resting and recovering, so you can make more progress, and actually spend time with the people that matter."
     },
     {
@@ -29,7 +29,7 @@ export default function BetaValueStack({ ctaText = "Join Now" }: BetaValueStackP
           <path strokeLinecap="round" strokeLinejoin="round" d="M3 12c1.5-4 2.5-4 4 0s2.5 4 4 0 2.5-4 4 0 2.5 4 4 0" />
         </svg>
       ),
-      title: "Limitless Flow System",
+      title: "Cortisol Re-calibration",
       description: "Become your ultimate peaceful stress-free self who doesn't need vices like alcohol and caffeine. Without willpower, withdrawal or white-knuckling anything. This is the same protocol I've used to reach over 3.5 years alcohol-free and caffeine free for 18 months."
     },
     {

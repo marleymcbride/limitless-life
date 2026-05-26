@@ -117,7 +117,7 @@ export default function LimitlessEmailSignup() {
               </svg>
             </span>
             <span>
-              <strong>The Anti-Stack™</strong> - Natural energy without
+              <strong>Cortisol Re-calibration™</strong> - Natural energy without
               caffeine, supplements, or crashes
             </span>
           </li>
@@ -151,7 +151,7 @@ export default function LimitlessEmailSignup() {
               </svg>
             </span>
             <span>
-              <strong>The Limitless Flow System™</strong> - Break free from
+              <strong>Cortisol Re-calibration</strong> - Break free from
               alcohol, caffeine, and modern vices
             </span>
           </li>

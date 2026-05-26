@@ -52,8 +52,8 @@ export default function FinalCta() {
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-green-400 mr-2 flex-shrink-0 mt-0.5" />
-                  <span className="text-white/90">
-                    Anti-Stack Implementation
+                    <span className="text-white/90">
+                    Cortisol Re-calibration Implementation
                   </span>
                 </li>
                 <li className="flex items-start">
@@ -368,8 +368,8 @@ export default function FinalCta() {
               <h4 className="text-lg font-bold text-white mb-3">
                 &ldquo;Can I really quit caffeine without withdrawal?&rdquo;
               </h4>
-              <p className="text-white/90">
-                Yes. The Anti-Stack System eliminates withdrawal symptoms by
+                <p className="text-white/90">
+                Yes. Cortisol Re-calibration eliminates withdrawal symptoms by
                 replacing artificial stimulation with natural energy production.
                 You&apos;ll have more energy without caffeine than you currently
                 have with it.
