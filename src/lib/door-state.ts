@@ -35,12 +35,18 @@ export interface DoorStateInfo {
   isCurrentlyOpen: boolean;
 }
 
+// Helper: Calculate last day of month as (1st of next month - 1 day)
+function getLastDayOfMonth(year: number, month: number): Date {
+  const nextMonth = new Date(year, month, 1); // 1st of next month (month is 0-indexed)
+  return new Date(nextMonth.getTime() - (24 * 60 * 60 * 1000)); // Subtract 1 day
+}
+
 // Temporary launch override window.
 // Set enabled to false after launch week.
 const LAUNCH_REOPEN_WINDOW = {
   enabled: true,
   startsAt: new Date(2026, 4, 23), // May 23, 2026
-  endsAt: new Date(2026, 4, 30),   // May 30, 2026
+  endsAt: getLastDayOfMonth(2026, 5), // May 31, 2026 (1st of June - 1 day)
 } as const;
 
 function isLaunchReopenWindowActive(now = new Date()): boolean {
