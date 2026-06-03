@@ -44,7 +44,7 @@ function getLastDayOfMonth(year: number, month: number): Date {
 // Temporary launch override window.
 // Set enabled to false after launch week.
 const LAUNCH_REOPEN_WINDOW = {
-  enabled: true,
+  enabled: false,
   startsAt: new Date(2026, 4, 23), // May 23, 2026
   endsAt: getLastDayOfMonth(2026, 5), // May 31, 2026 (1st of June - 1 day)
 } as const;
@@ -98,18 +98,14 @@ function getCohortForDate(date: Date): {
   let cohortMonth: number;
   let cohortYear: number;
 
-  if (dayOfMonth >= 20) {
-    // Days 20-31: Selling for NEXT month
-    cohortMonth = date.getMonth() + 2; // +2 because 0-indexed + 1 month ahead
-    cohortYear = date.getFullYear();
-    if (cohortMonth > 12) {
-      cohortMonth = 1;
-      cohortYear++;
-    }
-  } else {
-    // Days 1-19: Still selling for current month (which opened last month on the 20th)
-    cohortMonth = date.getMonth() + 1; // +1 because 0-indexed
-    cohortYear = date.getFullYear();
+  // Both selling and closed periods target the same cohort (next month)
+  // Day 1-19: CLOSED (collecting waitlist for next month)
+  // Day 20-31: OPEN (selling for next month)
+  cohortMonth = date.getMonth() + 2; // +2 because 0-indexed + 1 month ahead
+  cohortYear = date.getFullYear();
+  if (cohortMonth > 12) {
+    cohortMonth = 1;
+    cohortYear++;
   }
 
   return {
@@ -209,12 +205,17 @@ export function getDoorState(): DoorStateInfo {
   // Get cohort info
   const cohort = getCohortForDate(now);
 
-  // Calculate doors open date (15th for April beta, 20th otherwise)
+  // Calculate doors open date for the current selling cohort
+  // If currently OPEN: show when doors opened (beginning of selling window)
+  // If currently CLOSED: show when doors will open (20th of previous month)
   const doorsOpen = new Date(cohort.startDate);
   if (isBetaCohort() && cohort.month === 'April') {
     doorsOpen.setDate(15); // Beta cohort: April 15th
   } else {
-    doorsOpen.setDate(doorsOpen.getDate() - 11); // Go back to 20th of previous month
+    // For normal cycle: doors open on 20th of the month before cohort start
+    // cohort.startDate is 1st of month, so we go back to previous month's 20th
+    doorsOpen.setMonth(doorsOpen.getMonth() - 1); // Go to previous month
+    doorsOpen.setDate(20);
   }
 
   return {
