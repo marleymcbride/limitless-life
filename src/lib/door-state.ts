@@ -41,12 +41,12 @@ function getLastDayOfMonth(year: number, month: number): Date {
   return new Date(nextMonth.getTime() - (24 * 60 * 60 * 1000)); // Subtract 1 day
 }
 
-// Temporary launch override window.
-// Set enabled to false after launch week.
+// Temporary launch open window.
+// Set enabled to false once the open period ends.
 const LAUNCH_REOPEN_WINDOW = {
-  enabled: false,
-  startsAt: new Date(2026, 4, 23), // May 23, 2026
-  endsAt: getLastDayOfMonth(2026, 5), // May 31, 2026 (1st of June - 1 day)
+  enabled: true,
+  startsAt: new Date(2026, 5, 26), // June 26, 2026
+  endsAt: new Date(2026, 6, 1), // July 1, 2026
 } as const;
 
 function isLaunchReopenWindowActive(now = new Date()): boolean {
@@ -66,11 +66,11 @@ function getLaunchOverrideState(now: Date): DoorStateInfo | null {
 
   const start = new Date(LAUNCH_REOPEN_WINDOW.startsAt);
 
-  const launchDate = new Date(2026, 5, 1); // June 1, 2026
+  const launchDate = new Date(2026, 6, 1); // July 1, 2026
 
   return {
     state: 'OPEN',
-    cohortType: 'beta',
+    cohortType: 'main',
     cohortMonth: launchDate.toLocaleDateString('en-US', { month: 'long' }),
     cohortYear: launchDate.getFullYear().toString(),
     cohortStartDate: `${launchDate.toLocaleDateString('en-US', { month: 'long' })} 1st`,
