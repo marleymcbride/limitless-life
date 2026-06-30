@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useRef, ReactNode } from 'react';
+import { useSession } from '@/hooks/useSession';
+import { trackEvent } from '@/lib/analytics';
 
 interface ScrollRevealProps {
   children: ReactNode;
@@ -8,6 +10,25 @@ interface ScrollRevealProps {
 
 export default function IntakeDocClient({ children }: ScrollRevealProps) {
   const containerRef = useRef<HTMLDivElement>(null);
+  const { session } = useSession();
+
+  // Track offer doc page view
+  useEffect(() => {
+    if (!session?.sessionId) return;
+
+    const params = new URLSearchParams(window.location.search);
+    trackEvent({
+      sessionId: session.sessionId,
+      userId: session.userId ?? undefined,
+      eventType: 'page_view',
+      eventData: {
+        page: 'offer-doc-doors-open',
+        email: params.get('email') || undefined,
+        name: params.get('name') || undefined,
+        variant: params.get('variant') || undefined,
+      },
+    });
+  }, [session?.sessionId]);
 
   useEffect(() => {
     const container = containerRef.current;

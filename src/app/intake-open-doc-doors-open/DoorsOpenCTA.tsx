@@ -2,9 +2,12 @@
 
 import { useSearchParams } from 'next/navigation';
 import { GammaCTA } from '@/components/gamma-article';
+import { useSession } from '@/hooks/useSession';
+import { trackEvent } from '@/lib/analytics';
 
 export default function DoorsOpenCTA() {
   const searchParams = useSearchParams();
+  const { session } = useSession();
 
   const handleEnrollment = async (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
@@ -12,6 +15,21 @@ export default function DoorsOpenCTA() {
     // Get email and name from URL params
     const email = searchParams.get('email') || '';
     const name = searchParams.get('name') || '';
+
+    // Fire-and-forget tracking — don't block the Stripe redirect
+    if (session?.sessionId) {
+      trackEvent({
+        sessionId: session.sessionId,
+        userId: session.userId ?? undefined,
+        eventType: 'stripe_checkout_initiated',
+        eventData: {
+          page: 'offer-doc-doors-open',
+          email: email || undefined,
+          name: name || undefined,
+          tier: 'life-whatsapp',
+        },
+      }).catch(() => {});
+    }
 
     try {
       console.log('[Doors Open] Creating Stripe checkout session for enrollment');
