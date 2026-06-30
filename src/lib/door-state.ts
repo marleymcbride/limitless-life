@@ -21,6 +21,25 @@ export type InterestChoice = 'yes' | 'maybe' | 'no';
 export type Variant = 'A' | 'B' | 'C';
 export type CohortType = 'beta' | 'main';
 
+/**
+ * Master programme mode switch — change this one value in chat to switch modes.
+ *
+ * 'cohort-open'   → Cohort: doors OPEN  (/open = main sales page)
+ *                   / → /waitlist → /open
+ *                   Banner: "Doors close [date]. Apply now."
+ *
+ * 'cohort-closed' → Cohort: doors CLOSED (/waitlist = main sales page)
+ *                   / → /waitlist (stays)
+ *                   /open → /waitlist
+ *                   Banner: "Doors open [date]. Join the waitlist."
+ *
+ * 'evergreen'     → Evergreen programme (/ = main sales page)
+ *                   /waitlist → /
+ *                   /open → /
+ */
+export type ProgrammeMode = 'cohort-open' | 'cohort-closed' | 'evergreen';
+export const PROGRAMME_MODE: ProgrammeMode = 'cohort-open';
+
 export interface DoorStateInfo {
   state: DoorState;
   cohortType: CohortType;
@@ -41,10 +60,9 @@ function getLastDayOfMonth(year: number, month: number): Date {
   return new Date(nextMonth.getTime() - (24 * 60 * 60 * 1000)); // Subtract 1 day
 }
 
-// Temporary launch open window.
-// Set enabled to false once the open period ends.
+// Superseded by PROGRAMME_MODE — kept for reference only.
 const LAUNCH_REOPEN_WINDOW = {
-  enabled: true,
+  enabled: false,
   startsAt: new Date(2026, 5, 26), // June 26, 2026
   endsAt: new Date(2026, 6, 1), // July 1, 2026
 } as const;
@@ -180,47 +198,23 @@ export function getCohortType(): CohortType {
 }
 
 /**
- * Get current door state and cohort information
- * @returns DoorStateInfo with all relevant dates and state
+ * Get current door state and cohort information.
+ * PROGRAMME_MODE is the master switch — it overrides all date-based logic.
  */
 export function getDoorState(): DoorStateInfo {
   const now = new Date();
-  const launchOverrideState = getLaunchOverrideState(now);
-  if (launchOverrideState) {
-    return launchOverrideState;
-  }
-
-  const dayOfMonth = now.getDate();
-
-  // Beta cohort special door state: doors open April 15th (not 20th)
-  let state: DoorState;
-  if (isBetaCohort() && now.getMonth() === 3 && now.getFullYear() === 2026) {
-    // April 2026: doors open on the 15th
-    state = dayOfMonth >= 15 ? 'OPEN' : 'CLOSED';
-  } else {
-    // Normal cycle: doors open on the 20th
-    state = dayOfMonth >= 20 ? 'OPEN' : 'CLOSED';
-  }
-
-  // Get cohort info
   const cohort = getCohortForDate(now);
 
-  // Calculate doors open date for the current selling cohort
-  // If currently OPEN: show when doors opened (beginning of selling window)
-  // If currently CLOSED: show when doors will open (20th of previous month)
   const doorsOpen = new Date(cohort.startDate);
   if (isBetaCohort() && cohort.month === 'April') {
-    doorsOpen.setDate(15); // Beta cohort: April 15th
+    doorsOpen.setDate(15);
   } else {
-    // For normal cycle: doors open on 20th of the month before cohort start
-    // cohort.startDate is 1st of month, so we go back to previous month's 20th
-    doorsOpen.setMonth(doorsOpen.getMonth() - 1); // Go to previous month
+    doorsOpen.setMonth(doorsOpen.getMonth() - 1);
     doorsOpen.setDate(20);
   }
 
-  return {
-    state,
-    cohortType: getCohortType(),
+  const baseInfo = {
+    cohortType: 'main' as CohortType,
     cohortMonth: cohort.month,
     cohortYear: cohort.year,
     cohortStartDate: `${cohort.month} 1st`,
@@ -229,8 +223,29 @@ export function getDoorState(): DoorStateInfo {
     doorsCloseDate: `${cohort.month} 1st`,
     daysUntilOpen: calculateDaysUntil(doorsOpen),
     daysUntilClose: calculateDaysUntil(cohort.startDate),
-    isCurrentlyOpen: state === 'OPEN',
   };
+
+  if (PROGRAMME_MODE === 'cohort-open') {
+    return { ...baseInfo, state: 'OPEN', isCurrentlyOpen: true };
+  }
+
+  if (PROGRAMME_MODE === 'cohort-closed') {
+    return { ...baseInfo, state: 'CLOSED', isCurrentlyOpen: false };
+  }
+
+  // evergreen: fall back to automatic date-based calculation
+  const launchOverrideState = getLaunchOverrideState(now);
+  if (launchOverrideState) return launchOverrideState;
+
+  const dayOfMonth = now.getDate();
+  let state: DoorState;
+  if (isBetaCohort() && now.getMonth() === 3 && now.getFullYear() === 2026) {
+    state = dayOfMonth >= 15 ? 'OPEN' : 'CLOSED';
+  } else {
+    state = dayOfMonth >= 20 ? 'OPEN' : 'CLOSED';
+  }
+
+  return { ...baseInfo, cohortType: getCohortType(), state, isCurrentlyOpen: state === 'OPEN' };
 }
 
 /**
