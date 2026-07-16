@@ -2,15 +2,7 @@
 
 import { ImagePreloader, CRITICAL_TESTIMONIAL_IMAGES } from "@/components/image-preloader";
 import VSLPlayer from "@/components/vsl-player";
-import UnifiedPopup from "@/components/unified-popup";
-import WaitlistModal from "@/components/waitlist-modal";
-import WaitlistBanner from "@/components/waitlist-banner";
-import BetaOpportunity from "@/components/beta-opportunity";
-import BetaPricing from "@/components/beta-pricing";
-import BetaValueStack from "@/components/beta-value-stack";
-import BetaFAQs from "@/components/FAQs-Beta-access";
 import { PageProvider } from '@/contexts/PageContext';
-import { COHORT_CONFIG } from '@/config/waitlist';
 import {
   LazyDoesThisSoundLikeYou,
   LazyPersonalStorySection,
@@ -72,12 +64,6 @@ export default function Home() {
     enabled: !!session?.sessionId,
   });
 
-  // Beta Email popup state
-  const [showBetaPopup, setShowBetaPopup] = useState(false);
-
-  // Waitlist modal state
-  const [showWaitlistModal, setShowWaitlistModal] = useState(false);
-
   const [hasStartedVideo, setHasStartedVideo] = useState(false);
   const [videoProgress, setVideoProgress] = useState(0);
   const [videoCurrentTime, setVideoCurrentTime] = useState(0); // Track actual time in seconds
@@ -87,12 +73,10 @@ export default function Home() {
   const [showClickToUnmute, setShowClickToUnmute] = useState(true); // Track if "Click to unmute" popup is showing
   const [isDesktop, setIsDesktop] = useState(false); // Track if desktop for VSL sizing
 
-  // Handle Apply Now button click
+  // Handle Apply Now button click — evergreen mode routes to /get-started full page
   const handleApplyNowClick = (e: React.MouseEvent) => {
-    console.log('[BetaApplyNow] Clicked!');
     e.preventDefault();
-    setShowBetaPopup(true);
-    console.log('[BetaApplyNow] showBetaPopup set to true');
+    router.push('/get-started');
   };
 
   // Smooth scroll function with "soft close" easing
@@ -139,11 +123,8 @@ export default function Home() {
   }, []);
 
   return (
-    <PageProvider pageType="doors-open-main">
+    <PageProvider pageType="evergreen-main">
       <main className="flex flex-col min-h-screen" style={{ backgroundColor: '#050A0F' }}>
-        {/* Limited Spots Banner */}
-        <WaitlistBanner />
-
       {/* Preload critical testimonial images */}
       <ImagePreloader images={CRITICAL_TESTIMONIAL_IMAGES} />
       {/* 1. Hero Section (UNTOUCHED - PRESERVED EXACTLY) */}
@@ -190,23 +171,15 @@ export default function Home() {
 
             {/* Desktop Eyebrow (hidden on mobile) */}
             <div className="hidden sm:flex flex-col items-center justify-center mb-6 mt-1 max-w-2xl mx-auto">
-              <div className="font-sans uppercase font-bold text-2xl md:text-3xl lg:text-3xl text-center text-white py-2 my-2">
-              <span className="no-underline"></span><span className="font-sans">The Lifestyle Athlete</span><span className="font-sans no-underline"> 90-Day Reset</span>
-              </div>
-              <p className="font-sans font-semibold text-lg md:text-xl lg:text-2xl text-center text-gray-200 mb-2">
-              Starting {COHORT_CONFIG.DATE}, 2026
+              <p className="px-0 text-xl text-center text-gray-300 md:text-lg lg:text-xl max-w-2xl">
+                For the man who has EVERYTHING in life, except the energy to enjoy it... here&apos;s how to:
               </p>
             </div>
 
             {/* Mobile Eyebrow (visible only on mobile) */}
-            <div className="flex rounded-lg sm:hidden flex-col items-center justify-center mb-2 mt-3 w-full px-6 relative overflow-hidden" style={{ background: 'linear-gradient(to bottom, rgba(71, 14, 14, 0.15) 0%, rgba(71, 14, 14, 0.12) 33%, rgba(71, 14, 14, 0.08) 66%, transparent 100%)' }}>
-              <div className="font-sans font-bold text-2xl md:text-2xl text-center -ml-4 -mr-3  text-gray-100 mb-3">
-                The Lifestyle Athlete <br /> 90-Day Reset
-              </div>
-              <div className="font-sans mb-4 pb-2 text-1.5xl md:text-lg text-center text-gray-200">
-                Beginning {COHORT_CONFIG.DATE}, 2026
-              </div>
-            </div>
+            <p className="block sm:hidden px-0 mx-auto text-center text-gray-300 mobile-eyebrow w-full" style={{ marginTop: "3.6px", marginBottom: "14.4px" }}>
+              For the man who has EVERYTHING in life, except the energy to enjoy it... here&apos;s how to:
+            </p>
 
             {/* Mobile Headlines (visible only on mobile) */}
             <h1
@@ -227,7 +200,7 @@ export default function Home() {
             <p
               className="mobile-subheadline block mx-auto mb-4 font-light text-center text-gray-300 sm:hidden px-0 text-[1.33rem] leading-[1.28] w-[95%]"
             >
-             A 90-day reset to fix your health, body and mind using The Lifestyle Athlete™ protocol, so you can become the <strong>high energy man</strong> your family deserves.
+             The concierge health experience to fix the root issues of your health, body and mind using The Lifestyle Athlete™ protocol, so you can become the <strong>high energy man</strong> your family deserves.
             </p>
 
             {/* Mobile Subheadline old - RIGHT AFTER HEADLINE (visible only on mobile)
@@ -269,7 +242,7 @@ export default function Home() {
             <p
               className="hidden mb-4 py-4 text-xl text-center text-gray-300 sm:block sm:text-xl md:text-lg lg:text-2xl max-w-full"
               >
-              A 90-day reset to fix your health, body and mind using The Lifestyle Athlete™ protocol, so you can become the <strong>high energy man</strong> your family deserves.
+              The concierge health experience to fix your health, body and mind using The Lifestyle Athlete™ protocol, so you can become the <strong>high energy man</strong> your family deserves.
             </p>
             </div>
           </div>
@@ -467,7 +440,7 @@ export default function Home() {
                 href="/application"
                 onApplyNowClick={handleApplyNowClick}
               >
-                Join the waitlist
+                JOIN NOW
               </LazyDelayedCTA>
             ) : (
               <LazyDelayedCTA
@@ -629,29 +602,6 @@ export default function Home() {
       {/* What NOT Fixing This Is Costing You (White background) */}
       <LazyWhatItsCostingYou onApplyNowClick={handleApplyNowClick} />
 
-      {/* Beta FAQs */}
-      <div className="bg-white">
-        <BetaFAQs />
-      </div>
-
-
-      {/* Beta sections */}
-
-        {/* Beta Opportunity Section */}
-            <div className="bg-white">
-              <BetaOpportunity ctaText="Join Now" />
-            </div>
-
-        {/* Beta Pricing Section 
-            <div className="dark-section-with-grain">
-              <BetaPricing ctaText="Join Now" />
-            </div> */}
-
-        {/* Beta Value Stack Section 
-            <div className="bg-white">
-              <BetaValueStack ctaText="Join Now" />
-            </div> */}
-
       {/* Testimonial 4 (White background) */}
       <LazyTestimonialsFinal onApplyNowClick={handleApplyNowClick} number={4} />
 
@@ -804,18 +754,6 @@ export default function Home() {
           </button>
         </div>
       </section>
-
-      {/* Unified Popup - Works for both doors open and closed states */}
-      <UnifiedPopup
-        isOpen={showBetaPopup}
-        onClose={() => setShowBetaPopup(false)}
-      />
-
-      {/* Waitlist Modal */}
-      <WaitlistModal
-        isOpen={showWaitlistModal}
-        onClose={() => setShowWaitlistModal(false)}
-      />
 
       </main>
     </PageProvider>

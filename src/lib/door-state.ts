@@ -38,7 +38,7 @@ export type CohortType = 'beta' | 'main';
  *                   /open → /
  */
 export type ProgrammeMode = 'cohort-open' | 'cohort-closed' | 'evergreen';
-export const PROGRAMME_MODE: ProgrammeMode = 'cohort-open';
+export const PROGRAMME_MODE: ProgrammeMode = 'evergreen';
 
 export interface DoorStateInfo {
   state: DoorState;

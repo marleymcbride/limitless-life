@@ -2,7 +2,7 @@
 
 import { createContext, useContext } from 'react';
 
-type PageType = 'main' | 'waitlist' | 'doors-open';
+type PageType = 'main' | 'waitlist' | 'doors-open' | 'evergreen-main' | 'open';
 
 interface PageContextType {
   pageType: PageType;

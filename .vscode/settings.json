@@ -6,5 +6,6 @@
     "strings": true
   },
   "claude-code.terminal.enabled": false,
-  "claude-code.enableTerminalIntegration": false
+  "claude-code.enableTerminalIntegration": false,
+  "claudeCodeChat.permissions.yoloMode": false
 }

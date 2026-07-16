@@ -16,6 +16,6 @@ export default async function HomePage(_props: HomePageProps) {
   }
 
   // evergreen
-  const DoorsOpenMain = (await import('./doors-open-main/page')).default;
-  return <DoorsOpenMain />;
+  const EvergreenMain = (await import('./evergreen-main/page')).default;
+  return <EvergreenMain />;
 }

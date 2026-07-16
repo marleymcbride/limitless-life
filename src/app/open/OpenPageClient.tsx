@@ -139,7 +139,7 @@ export default function Home() {
   }, []);
 
   return (
-    <PageProvider pageType="doors-open-main">
+    <PageProvider pageType="open">
       <main className="flex flex-col min-h-screen" style={{ backgroundColor: '#050A0F' }}>
         {/* Limited Spots Banner */}
         <WaitlistBanner />
