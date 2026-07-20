@@ -88,11 +88,11 @@ export default function IntakeDocContent() {
       </GammaSectionHeading>
 
       <GammaParagraph>
-        Do you actually care about &quot;hitting the gym every night&quot; or boasting about your bench press?
+        Do you actually care about &quot;hitting the gym every night&quot; and boasting about your bench press?
         </GammaParagraph>
 
         <GammaParagraph>
-        Or do you simply want to <strong>look and FEEL your best</strong> every day, with the LEAST time spent possible.. so you have energy for the things and people that matter most?
+        OR do you simply want to <strong>look and FEEL your best</strong> every day, with the LEAST time spent possible.. so you have energy for the things and people that matter most?
       </GammaParagraph>
 
       <GammaParagraph>
@@ -100,7 +100,7 @@ export default function IntakeDocContent() {
       </GammaParagraph>
 
       <GammaParagraph>
-      What you REALLY wanted was to feel like to feel like THAT GUY. The guy who walks into a room with infectious energy. A presence. An aura.. for me there is NO better feeling as a man.
+      What you ACTUALLY want is to feel like to feel like THAT GUY. The guy who walks into a room with infectious energy. A presence. An aura.. for me there is NO better feeling as a man.
       </GammaParagraph>
 
       <GammaDivider />
@@ -118,7 +118,7 @@ export default function IntakeDocContent() {
       </GammaMiniHeading>
 
       <GammaOrderedList className="mt-6">
-        <li>We spend 5 days RESTING, and 2 days building.</li>
+        <li>We spend 5 days RESTING, and only 2 days in the gym.</li>
         <li>You create an Energy Flywheel, not destroy your energy with starvation approaches.</li>
         <li>There is no &apos;cookie-cutter fitness regime&apos;, we create a LIFESTYLE.</li>
       </GammaOrderedList>
@@ -212,19 +212,19 @@ export default function IntakeDocContent() {
       </GammaSectionHeading>
 
       <GammaParagraph>
-        <strong>NO:</strong> This is not built for the man who's fine dying as another average guy.
+        <strong>NO:</strong> This isn't for the man who's ok just floating by and dying as another average guy.
       </GammaParagraph>
 
       <GammaParagraph className='-mt-4'>
-        if you're happy with an average body, average standards and never reaching your full potential.. this is not for you.
+        If you're happy with an average body, average standards and never reaching your full potential.. this is NOT for you.
       </GammaParagraph>
 
       <GammaParagraph>
-      <strong>YES:</strong> This is for you if you want greatness in EVERY aspect of life.
+      <strong>YES:</strong> This IS for you if you want greatness in EVERY aspect of life.
       </GammaParagraph>
 
       <GammaParagraph className='-mt-4'>
-      You've been given gifts, all this talent.. but you KNOW you should be so much more. You're a non-normal person stuck with normal habits and lifestyle.
+      You've been given gifts, all this talent.. but you KNOW you should be so much more. You're a non-normal person but stuck with an average physique, life & energy.
       </GammaParagraph>
 
 
@@ -239,11 +239,11 @@ export default function IntakeDocContent() {
       </GammaParagraph>
 
       <GammaParagraph>
-        Monthly investment is £700 per month for complete 1-to-1 access. But <strong>the first 5 to be accepted </strong> will get in at 50% of this, and lock it in for as long as they stay a client.
+        Monthly investment is £700 per month for complete 1-to-1 access. But the <strong>first 5 to be accepted </strong> will get in at 50% of this, and lock it in for as long as they stay a client.
       </GammaParagraph>
 
       <GammaParagraph>
-        There is also an option to commit to 4 or 6 months upfront instead of monthly and you&apos;ll be rewarded by getting a better rate (see this on the enrollment page).
+        There is also an option to commit to 4 or 6 months up-front instead of monthly-  where you&apos;ll be rewarded by getting a better rate (see this on the enrollment page).
       </GammaParagraph> 
 
       <GammaParagraph>
