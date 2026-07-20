@@ -4,7 +4,7 @@ import { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 
 const WA_YES =
-  'https://wa.me/13024800805?text=Hey+Marley%2C+just+checked+out+Limitless.+I%27m+in.+What%27s+the+process+to+join%2C+and+what+does+it+look+like%3F';
+  'https://wa.me/13024800805?text=Hey+Marley%2C+just+checked+out+Limitless.+Looks%27m+good.+What%27s+the+process+to+join%2C+and+what+does+it+look+like%3F';
 const WA_MAYBE =
   'https://wa.me/13024800805?text=Hey+Marley%2C+I%27m+interested+in+Limitless+but+have+a+few+questions.+Can+you+send+me+some+more+details%3F';
 
@@ -128,22 +128,11 @@ function ChoosePage() {
       {modalChoice && (
         <div
           className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/70 backdrop-blur-sm px-4"
-          onClick={() => setModalChoice(null)}
         >
           <div
             className="w-full rounded-xl shadow-2xl pb-12 mb-4 pt-16 pl-12 pr-12 relative scale-[1.2]"
             style={{ backgroundColor: '#06090E', minHeight:'300px' , maxWidth: '532px' }}
-            onClick={(e) => e.stopPropagation()}
           >
-            <button
-              onClick={() => setModalChoice(null)}
-              className="absolute top-3 right-3 text-gray-500 hover:text-gray-300 transition-colors"
-              aria-label="Close"
-            >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
 
             {/* Logo */}
             <div className="text-center mb-6 -mt-6">

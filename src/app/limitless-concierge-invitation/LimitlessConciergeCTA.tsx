@@ -3,24 +3,22 @@
 import { useSearchParams } from 'next/navigation';
 import { GammaCTA } from '@/components/gamma-article';
 
-export default function WaitlistDepositCTA() {
+export default function LimitlessConciergeCTA() {
   const searchParams = useSearchParams();
+  const email = searchParams.get('email') || '';
+  const name = searchParams.get('name') || '';
 
   const handleDeposit = async (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
 
-    // Get email and name from URL params
-    const email = searchParams.get('email') || '';
-    const name = searchParams.get('name') || '';
-
     try {
-      console.log('[Waitlist Deposit] Creating Stripe checkout session');
+      console.log('[Limitless Concierge] Creating Stripe checkout session');
 
       const response = await fetch('/api/create-checkout-session', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          tier: 'beta-waitlist',
+          tier: 'limitless-concierge',
           paymentPlan: 'full',
           customerEmail: email,
           customerName: name,
@@ -33,17 +31,16 @@ export default function WaitlistDepositCTA() {
         throw new Error(data.error || 'Failed to create checkout session');
       }
 
-      console.log('[Waitlist Deposit] Checkout session created:', data.sessionId);
+      console.log('[Limitless Concierge] Checkout session created:', data.sessionId);
 
-      // Immediately redirect to Stripe Checkout
       if (data.url) {
-        console.log('[Waitlist Deposit] Redirecting to Stripe...');
+        console.log('[Limitless Concierge] Redirecting to Stripe...');
         window.location.href = data.url;
       } else {
         throw new Error('No checkout URL returned');
       }
     } catch (err) {
-      console.error('[Waitlist Deposit] Error:', err);
+      console.error('[Limitless Concierge] Error:', err);
       alert('Failed to process deposit. Please try again or contact support.');
     }
   };
@@ -57,13 +54,13 @@ export default function WaitlistDepositCTA() {
           onClick={handleDeposit}
           className="text-blue-400 font-bold underline hover:text-blue-300 cursor-pointer"
         >
-          Click here to complete your<br /> application
+          Click here to secure your<br /> place
         </a>
       </span>
 
       {/* Desktop version */}
       <GammaCTA href="javascript:void(0)" onClick={handleDeposit} className="hidden md:inline-block lg:inline-block">
-        Click here to complete your application
+        Click here to secure your place
       </GammaCTA>
     </>
   );

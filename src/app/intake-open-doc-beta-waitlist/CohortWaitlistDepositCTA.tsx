@@ -3,7 +3,7 @@
 import { useSearchParams } from 'next/navigation';
 import { GammaCTA } from '@/components/gamma-article';
 
-export default function WaitlistDepositCTA() {
+export default function CohortWaitlistDepositCTA() {
   const searchParams = useSearchParams();
 
   const handleDeposit = async (e: React.MouseEvent<HTMLAnchorElement>) => {

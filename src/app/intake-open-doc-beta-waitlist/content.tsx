@@ -6,7 +6,7 @@ import {
   GammaSectionHeading,
   GammaDivider,
 } from '@/components/gamma-article';
-import WaitlistDepositCTA from './WaitlistDepositCTA';
+import CohortWaitlistDepositCTA from './CohortWaitlistDepositCTA';
 
 export default function IntakeDocContent() {
   return (
@@ -242,7 +242,7 @@ export default function IntakeDocContent() {
       <GammaOrderedList>
         <p >
         <li className="">
-          <WaitlistDepositCTA/>
+          <CohortWaitlistDepositCTA/>
           </li>
         </p>
         <li>Once doors open, if it looks like a match we&apos;ll get you enrolled.</li>
