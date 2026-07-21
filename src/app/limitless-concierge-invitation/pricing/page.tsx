@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { useSearchParams, useRouter } from "next/navigation";
+import { useState, useEffect, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 
 const PLANS = [
   {
@@ -50,7 +50,15 @@ const PLANS = [
   },
 ];
 
-export default function PricingPage() {
+export default function PricingPageWrapper() {
+  return (
+    <Suspense fallback={<div className="min-h-screen" style={{ backgroundColor: '#050A0F' }} />}>
+      <PricingContent />
+    </Suspense>
+  );
+}
+
+function PricingContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const email = searchParams.get("email") || "";
