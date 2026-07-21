@@ -4,24 +4,24 @@ import { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 
 const WA_YES =
-  'https://wa.me/13024800805?text=Hey+Marley%2C+just+checked+out+Limitless.+Looks%27m+good.+What%27s+the+process+to+join%2C+and+what+does+it+look+like%3F';
+  'https://wa.me/13024800805?text=Hey+Marley%2C+just+checked+out+Limitless+Concierge.+Looks+good.+What%27s+the+process+to+join%2C+and+what+does+it+look+like%3F';
 const WA_MAYBE =
-  'https://wa.me/13024800805?text=Hey+Marley%2C+I%27m+interested+in+Limitless+but+have+a+few+questions.+Can+you+send+me+some+more+details%3F';
+  'https://wa.me/13024800805?text=Hey+Marley%2C+checked+out+Limitless+Concierge+but+got+a+few+questions%21+Could+you+send+me+some+more+details%3F';
 
 type Choice = 'yes' | 'maybe' | 'no';
 
 const MODAL_COPY: Record<'yes' | 'maybe', { heading: string; body: string; link: string; cta: string }> = {
   yes: {
     heading: "Let's get you started",
-    body: "Click the button below and i'll shoot over your invitation and the full details:",
+    body: "Click the button below and i'll shoot you over your invitation and full details:",
     link: WA_YES,
     cta: 'Send my invitation',
   },
   maybe: {
-    heading: 'Got questions?',
-    body: "Click the button below to drop me a message and i'll send over the full details:",
+    heading: 'Get the full details',
+    body: "Click the button below to drop me a message and i'll send over the full details with everything you need:",
     link: WA_MAYBE,
-    cta: 'Shoot me the details',
+    cta: 'Send me the details',
   },
 };
 
@@ -71,7 +71,7 @@ function ChoosePage() {
                 <img
                   src="/images/LIMITLESS LIFE LOGO 2026.png"
                   alt="Limitless Life"
-                  className="h-10 mx-auto"
+                  className="h-8 mx-auto"
                 />
               </div>
 
@@ -130,7 +130,7 @@ function ChoosePage() {
           className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/70 backdrop-blur-sm px-4"
         >
           <div
-            className="w-full rounded-xl shadow-2xl pb-12 mb-4 pt-16 pl-12 pr-12 relative scale-[1.2]"
+            className="w-full rounded-xl shadow-2xl pb-12 mb-4 pt-16 pl-12 pr-12 relative scale-[1.3]"
             style={{ backgroundColor: '#06090E', minHeight:'300px' , maxWidth: '532px' }}
           >
 
@@ -139,18 +139,18 @@ function ChoosePage() {
               <img
                 src="/images/LIMITLESS LIFE LOGO 2026.png"
                 alt="Limitless Life"
-                className="h-8 mx-auto"
+                className="h-10 mx-auto"
               />
             </div>
 
             <h3
-              className="text-xl font-bold text-white text-center mb-3 tracking-tight"
+              className="text-2xl font-bold text-white text-center mb-3 tracking-tight"
               style={{ fontFamily: 'Neuemontreal, sans-serif' }}
             >
               {MODAL_COPY[modalChoice].heading}
             </h3>
 
-            <p className="text-gray-300 text-center text-sm mb-6 leading-relaxed">
+            <p className="text-gray-300 text-center text-sm mb-6 leading-relaxed mx-8">
               {MODAL_COPY[modalChoice].body}
             </p>
 
@@ -158,11 +158,11 @@ function ChoosePage() {
               href={MODAL_COPY[modalChoice].link}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center scale-[1] justify-center gap-2 w-full bg-[#25D366] hover:bg-[#1EBE57] text-white font-bold py-4 px-6 rounded-lg transition-all duration-200 shadow-lg"
+              className="flex items-center scale-[0.9] justify-center gap-2 mx-auto w-3/4 bg-[#940909] hover:bg-[#7b0707] text-white font-bold py-4 px-6 rounded-lg transition-all duration-200 shadow-lg"
             >
-              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
-                <path d="M12.001 2C6.478 2 2 6.477 2 12c0 1.78.466 3.45 1.282 4.897L2 22l5.222-1.27A9.94 9.94 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18.06c-1.609 0-3.121-.43-4.426-1.182l-.318-.188-3.094.752.78-3.013-.207-.327A8.025 8.025 0 014 12c0-4.41 3.59-8 8-8s8 3.59 8 8-3.59 8.001-8 8.001z"/>
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15.362 5.214A8.252 8.252 0 0112 21 8.25 8.25 0 016.038 7.048 8.287 8.287 0 009 9.6a8.983 8.983 0 013.361-6.867 8.21 8.21 0 003 2.48z" />
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 18a3.75 3.75 0 00.495-7.467 5.99 5.99 0 01-1.925 3.546 5.974 5.974 0 01-2.133 1A3.75 3.75 0 0012 18z" />
               </svg>
               {MODAL_COPY[modalChoice].cta}
             </a>
