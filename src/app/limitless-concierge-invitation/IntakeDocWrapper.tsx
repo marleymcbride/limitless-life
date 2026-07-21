@@ -3,18 +3,17 @@
 import { Suspense } from 'react';
 import dynamic from 'next/dynamic';
 
-// Dynamically import the content component with SSR disabled
 const IntakeDocContent = dynamic(() => import('./content'), {
   ssr: false,
   loading: () => null
 });
 
-export default function IntakeDocWrapper({ children = null }: { children?: React.ReactNode }) {
+export default function IntakeDocWrapper({ children = null, name = '', email = '' }: { children?: React.ReactNode; name?: string; email?: string }) {
   return (
     <>
       {children}
       <Suspense fallback={null}>
-        <IntakeDocContent />
+        <IntakeDocContent name={name} email={email} />
       </Suspense>
     </>
   );

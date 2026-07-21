@@ -11,3 +11,6 @@
 
 # writing-style
 - Write content in a natural, flowing, human tone. Never use short, fragmented/staccato phrasing. Confidence: 0.90
+
+# design-style
+See [design-style/taste.md](design-style/taste.md)

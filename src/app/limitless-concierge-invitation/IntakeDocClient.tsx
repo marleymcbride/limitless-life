@@ -4,9 +4,11 @@ import { useEffect, useRef, ReactNode } from 'react';
 
 interface ScrollRevealProps {
   children: ReactNode;
+  name?: string;
+  email?: string;
 }
 
-export default function IntakeDocClient({ children }: ScrollRevealProps) {
+export default function IntakeDocClient({ children, name, email }: ScrollRevealProps) {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

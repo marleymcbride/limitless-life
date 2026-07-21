@@ -16,16 +16,24 @@ export const metadata: Metadata = {
   description: 'Your personal invitation to the Limitless Concierge experience.',
 };
 
-export default function LimitlessConciergeInvitation() {
+type Props = {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+};
+
+export default async function LimitlessConciergeInvitation({ searchParams }: Props) {
+  const params = await searchParams;
+  const name = typeof params.name === 'string' ? params.name : '';
+  const email = typeof params.email === 'string' ? params.email : '';
+
   return (
-    <IntakeDocClient>
+    <IntakeDocClient name={name} email={email}>
       <GammaArticle>
         {/* Page Title Heading */}
         <div className="mb-4 pb-4 text-center">
           <div
             className="font-bold text-white mb-2 text-[1.9rem] -mr-4 -ml-2 md:text-[2.25rem] lg:text-[2.25rem]"
           >
-            Your invitation to Limitless Concierge:
+            {name ? `${name}, your invitation to Limitless Concierge` : 'Your invitation to Limitless Concierge'}
           </div>
           <div className="w-1/6 mx-auto border-b border-gray-300"></div>
         </div>
@@ -40,7 +48,7 @@ export default function LimitlessConciergeInvitation() {
         <GammaBlockquote>
           <div className="space-y-4">
           <div>
-              Hey quick FYI
+              Hey{name ? ` ${name}` : ''}, quick FYI
             </div>           
             <div>
               Have a read through your invitation for Limitless Concierge below, drop me a message on Whatsapp if you have any other questions.
@@ -51,7 +59,7 @@ export default function LimitlessConciergeInvitation() {
           </div>
         </GammaBlockquote>
 
-        <IntakeDocWrapper>
+        <IntakeDocWrapper name={name} email={email}>
           {/* Body content loads dynamically */}
         </IntakeDocWrapper>
       </GammaArticle>

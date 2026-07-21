@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import {
   GammaParagraph,
   GammaMiniHeading,
@@ -6,9 +7,8 @@ import {
   GammaSectionHeading,
   GammaDivider,
 } from '@/components/gamma-article';
-import LimitlessConciergeCTA from './LimitlessConciergeCTA';
 
-export default function IntakeDocContent() {
+export default function IntakeDocContent({ name = '', email = '' }: { name?: string; email?: string }) {
   return (
     <>
 
@@ -268,7 +268,9 @@ export default function IntakeDocContent() {
       <GammaOrderedList>
         <p >
         <li className="">
-          <LimitlessConciergeCTA/>
+                    <Link href={`/limitless-concierge-invitation/pricing${name || email ? `?name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}` : ''}`} className="text-blue-400 font-bold underline hover:text-blue-300 cursor-pointer">
+            Click here to secure your place
+          </Link>
           </li>
         </p>
         <li>If it&apos;s a fit we&apos;ll get you enrolled.</li>
