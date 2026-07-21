@@ -59,7 +59,6 @@ export default function PricingPageWrapper() {
 }
 
 function PricingContent() {
-  const router = useRouter();
   const searchParams = useSearchParams();
   const email = searchParams.get("email") || "";
   const name = searchParams.get("name") || "";
