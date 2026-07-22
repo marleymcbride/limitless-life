@@ -33,6 +33,14 @@ function ChoosePage() {
 
   const [visible, setVisible] = useState(false);
   const [modalChoice, setModalChoice] = useState<'yes' | 'maybe' | null>(null);
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const checkDesktop = () => setIsDesktop(window.innerWidth >= 769);
+    checkDesktop();
+    window.addEventListener('resize', checkDesktop);
+    return () => window.removeEventListener('resize', checkDesktop);
+  }, []);
 
   useEffect(() => {
     // Trigger fade-in after mount
@@ -55,14 +63,14 @@ function ChoosePage() {
   return (
     <div className="min-h-screen" style={{ backgroundColor: '#050A0F' }}>
       <div
-        className="min-h-screen flex flex-col justify-center items-center py-12 px-4"
+        className="min-h-screen flex flex-col justify-center items-center md:py-12 lg:py-12 py-10 px-4"
         style={{
           opacity: visible ? 1 : 0,
           transition: 'opacity 0.5s ease-in',
         }}
       >
           <div
-            className="w-full md:w-[420px] lg:w-[420px] shadow-2xl rounded-lg"
+            className="w-full max-w-md"
             style={{ backgroundColor: '#06090E' }}
           >
             <div className="py-12 px-4 md:px-10 lg:px-10">
@@ -71,16 +79,16 @@ function ChoosePage() {
                 <img
                   src="/images/LIMITLESS LIFE LOGO 2026.png"
                   alt="Limitless Life"
-                  className="h-8 mx-auto"
+                  className="h-10 mx-auto"
                 />
               </div>
 
-              <h2
-                className="text-2xl font-medium text-white text-center mb-6 tracking-tight leading-snug"
+              <div
+                className="text-2.5xl md:text-lg lg:text-lg font-normal text-white text-center md:mb-10 mb-8 md:leading-snug lg:leading-snug leading-snug"
                 style={{ fontFamily: 'Neuemontreal, sans-serif' }}
               >
                 {firstName ? `Hey ${firstName} are you ready to secure your spot?` : 'Are you ready to begin?'}
-              </h2>
+              </div>
 
 
               <div className="space-y-3">
@@ -126,12 +134,10 @@ function ChoosePage() {
 
       {/* WhatsApp modal */}
       {modalChoice && (
-        <div
-          className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/70 backdrop-blur-sm px-4"
-        >
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center" style={{ backgroundColor: '#06090E' }}>
           <div
-            className="w-full rounded-xl shadow-2xl pb-12 mb-4 pt-16 pl-12 pr-12 relative scale-[1.3]"
-            style={{ backgroundColor: '#06090E', minHeight:'300px' , maxWidth: '532px' }}
+            className={`rounded-xl shadow-2xl pb-12 mb-4 pt-16 pl-12 pr-12 relative ${isDesktop ? 'w-full max-w-[532px]' : 'w-full scale-[1.3]'}`}
+            style={{ backgroundColor: '#06090E', minHeight:'300px' }}
           >
 
             {/* Logo */}
@@ -139,26 +145,26 @@ function ChoosePage() {
               <img
                 src="/images/LIMITLESS LIFE LOGO 2026.png"
                 alt="Limitless Life"
-                className="h-10 mx-auto"
+                className="h-8 mx-auto"
               />
             </div>
 
-            <h3
-              className="text-2xl font-bold text-white text-center mb-3 tracking-tight"
+            <div
+              className="text-2xl md:text-2xl lg:text-2xl font-bold text-white text-center md:mb-3 mb-2 tracking-tight"
               style={{ fontFamily: 'Neuemontreal, sans-serif' }}
             >
               {MODAL_COPY[modalChoice].heading}
-            </h3>
+            </div>
 
-            <p className="text-gray-300 text-center text-sm mb-6 leading-relaxed mx-8">
+            <div className="text-gray-300 text-center text-base md:text-lg lg:text-lg md:mb-6 mb-8 mt-4 md:leading-relaxed lg:leading-relaxed leading-normal mx-8">
               {MODAL_COPY[modalChoice].body}
-            </p>
+            </div>
 
             <a
               href={MODAL_COPY[modalChoice].link}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center scale-[0.9] justify-center gap-2 mx-auto w-3/4 bg-[#940909] hover:bg-[#7b0707] text-white font-bold py-4 px-6 rounded-lg transition-all duration-200 shadow-lg"
+              className="flex items-center scale-[1] justify-center gap-2 mx-auto md:w-3/4 lg:w-3/4 w-3/4 bg-[#940909] hover:bg-[#7b0707] text-white font-bold md:py-4 md:px-6 lg:py-4 lg:px-6 py-6 px-4 md:text-base lg:text-base text-sm rounded-lg transition-all duration-200 shadow-lg"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M15.362 5.214A8.252 8.252 0 0112 21 8.25 8.25 0 016.038 7.048 8.287 8.287 0 009 9.6a8.983 8.983 0 013.361-6.867 8.21 8.21 0 003 2.48z" />

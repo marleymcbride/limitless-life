@@ -26,6 +26,18 @@ export default async function LimitlessConciergeInvitation({ searchParams }: Pro
   const email = typeof params.email === 'string' ? params.email : '';
 
   return (
+    <>
+      <style>{`
+        @media (max-width: 767px) {
+          #concierge-body article {
+            max-width: 100% !important;
+          }
+          #concierge-body > div > div {
+            background-color: #0B151B !important;
+          }
+        }
+      `}</style>
+    <div id="concierge-body">
     <IntakeDocClient name={name} email={email}>
       <GammaArticle>
         {/* Page Title Heading */}
@@ -33,7 +45,7 @@ export default async function LimitlessConciergeInvitation({ searchParams }: Pro
           <div
             className="font-bold text-white mb-2 text-[1.9rem] -mr-4 -ml-2 md:text-[2.25rem] lg:text-[2.25rem]"
           >
-            {name ? `${name}, your invitation to Limitless Concierge` : 'Your invitation to Limitless Concierge'}
+            {name ? `${name}, your invitation to Limitless Concierge` : 'Your Invitation to Limitless Concierge'}
           </div>
           <div className="w-1/6 mx-auto border-b border-gray-300"></div>
         </div>
@@ -63,9 +75,11 @@ export default async function LimitlessConciergeInvitation({ searchParams }: Pro
           {/* Body content loads dynamically */}
         </IntakeDocWrapper>
       </GammaArticle>
+    </IntakeDocClient>
+    </div>
 
-      {/* Footer - outside article on dark background */}
-      <div className="text-center py-8" style={{ backgroundColor: '#0B151B' }}>
+      {/* Footer */}
+      <div className="text-center py-8" style={{ backgroundColor: '#060A0E' }}>
         <div className="text-sm font-medium text-gray-600" style={{ fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif' }}>
           © EVLV Fitness LLC {new Date().getFullYear()}
         </div>
@@ -73,6 +87,6 @@ export default async function LimitlessConciergeInvitation({ searchParams }: Pro
 
       {/* Spacer to ensure page is always scrollable on mobile */}
       <div style={{ height: '1px' }}></div>
-    </IntakeDocClient>
+    </>
   );
 }

@@ -17,6 +17,7 @@ const PLANS = [
       "Custom protocol design tailored to you",
       "No commitment (minimum 2 month term)",
     ],
+    stripeLink: "https://buy.stripe.com/PLACEHOLDER_MONTHLY",
   },
   {
     id: "4-month" as const,
@@ -32,6 +33,7 @@ const PLANS = [
       "Foundations phase prioritised and structured",
       "Save compared to month-to-month pricing",
     ],
+    stripeLink: "https://buy.stripe.com/PLACEHOLDER_4MONTH",
   },
   {
     id: "6-month" as const,
@@ -47,6 +49,7 @@ const PLANS = [
       "Complete the full transformation journey",
       "Best overall value for your investment",
     ],
+    stripeLink: "https://buy.stripe.com/PLACEHOLDER_6MONTH",
   },
 ];
 
@@ -71,22 +74,30 @@ function PricingContent() {
     return () => clearTimeout(t);
   }, []);
 
+  const handleCheckout = () => {
+    if (!selectedPlan) return;
+    const plan = PLANS.find(p => p.id === selectedPlan);
+    if (!plan?.stripeLink) return;
+    setIsLoading(true);
+    window.location.href = plan.stripeLink;
+  };
+
+  /*
+  [OLD] API-based checkout — kept for reference when full payment flow is ready
   const handleCheckout = async () => {
     if (!selectedPlan) return;
     setIsLoading(true);
-
     try {
       const response = await fetch("/api/create-checkout-session", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          tier: "limitless-concierge",
+          tier: "concierge",
           paymentPlan: selectedPlan,
           customerEmail: email,
           customerName: name,
         }),
       });
-
       const data = await response.json();
       if (!response.ok) throw new Error(data.error || "Failed to create checkout session");
       if (data.url) window.location.href = data.url;
@@ -97,6 +108,7 @@ function PricingContent() {
       setIsLoading(false);
     }
   };
+  */
 
   const currentPlan = PLANS.find(p => p.id === selectedPlan);
   const firstName = name.split(' ')[0];

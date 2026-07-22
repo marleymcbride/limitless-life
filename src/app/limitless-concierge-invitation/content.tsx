@@ -4,23 +4,22 @@ import {
   GammaParagraph,
   GammaMiniHeading,
   GammaOrderedList,
-  GammaSectionHeading,
   GammaDivider,
 } from '@/components/gamma-article';
 
 export default function IntakeDocContent({ name = '', email = '' }: { name?: string; email?: string }) {
   return (
-    <>
+    <div className="md:ml-0 md:mr-0 lg:ml-0 lg:mr-0">
 
-<GammaParagraph className="-mr-2">
-  <GammaMiniHeading className="-mb-4 pt-2">The mission is simple:</GammaMiniHeading> <br /> <div className="font-normal text-lg md:text-xl mt-4 mb-4">You wasn't born to be average, you&apos;re here to be <strong>EXCEPTIONAL</strong>.</div> <div className="mb-0 pt-0 md:mb-8 md:pt-2 lg:mb-8 lg:pt-2"> Over the next few months you&apos;ll gain an <strong>extra 3 hours of unrelenting energy</strong> every day, training only <strong>2 days</strong> per week.. (and no longer need alcohol or stimulants to get by).</div>
+<GammaParagraph className="">
+  <div className="-mb-4 md:-mb-6 lg:-mb-6 pt-2 font-bold text-2xl md:text-2.5xl lg:text-2.5xl">The mission is simple:</div> <br /> <div className="font-normal text-xl md:text-xl mt-4 mb-4">You wasn't born to be average, you&apos;re here to be <strong>EXCEPTIONAL</strong>.</div> <div className="mb-0 pt-0 md:mb-8 md:pt-2 lg:mb-8 lg:pt-2"> Over the next few months you&apos;ll gain an <strong>extra 3 hours of unrelenting energy</strong> every day, training only <strong>2 days</strong> per week.. (and no longer need alcohol or stimulants to get by).</div>
 </GammaParagraph>
 
       <GammaDivider />
 
-      <GammaSectionHeading>
+      <div className="text-3xl mx-0 -ml-4 -mr-4 md:text-3xl lg:text-3xl font-bold mt-10 md:mt-10 lg:mt-10 mb-6 text-gray-100 text-center leading-normal md:leading-snug lg:leading-snug" style={{ fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif' }}>
         WHERE YOU PROBABLY ARE RIGHT NOW
-      </GammaSectionHeading>
+      </div>
 
       <GammaParagraph>
         I know exactly what it feels like to be where you are.
@@ -45,9 +44,9 @@ export default function IntakeDocContent({ name = '', email = '' }: { name?: str
 
       <GammaDivider />
 
-      <GammaSectionHeading>
+      <div className="text-3xl mx-0 -ml-4 -mr-4 md:text-3xl lg:text-3xl font-bold mt-10 mb-6 text-gray-100 text-center leading-normal md:leading-snug lg:leading-snug" style={{ fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif' }}>
         HERE&apos;S WHY NOTHING&apos;S WORKED...
-      </GammaSectionHeading>
+      </div>
 
       <GammaParagraph>
         You&apos;ve probably spent YEARS trying all these outdated surface-level fad diets and tactics the online "gurus" sold you.. but the truth is you need to <strong>HEAL your body</strong> from within.
@@ -83,9 +82,9 @@ export default function IntakeDocContent({ name = '', email = '' }: { name?: str
 
       <GammaDivider />
 
-      <GammaSectionHeading>
+      <div className="text-3xl mx-0 -ml-4 -mr-4 md:text-3xl lg:text-3xl font-bold mt-10 mb-6 text-gray-100 text-center leading-normal md:leading-snug lg:leading-snug" style={{ fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif' }}>
         WHAT YOU ACTUALLY WANT
-      </GammaSectionHeading>
+      </div>
 
       <GammaParagraph>
         Do you actually care about &quot;hitting the gym every night&quot; and boasting about your bench press?
@@ -105,9 +104,9 @@ export default function IntakeDocContent({ name = '', email = '' }: { name?: str
 
       <GammaDivider />
 
-      <GammaSectionHeading className="-mt-0 pt-0">
+      <div className="text-3xl mx-0 -ml-4 -mr-4 md:text-3xl lg:text-3xl font-bold mt-10 mb-6 text-gray-100 text-center leading-normal md:leading-snug lg:leading-snug" style={{ fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif' }}>
       HERE'S HOW WE DO IT
-      </GammaSectionHeading>
+      </div>
 
       <GammaParagraph className="mt-0 mb-4">
         This system is my life's work i&apos;ve crafted over the past 12 years.. and completely contradicts EVERY other online guru.
@@ -156,7 +155,7 @@ export default function IntakeDocContent({ name = '', email = '' }: { name?: str
       </GammaParagraph>
 
       <GammaParagraph className="mb-0 mr-4 pb-0 md:-pb-0 lg:-pb-0 md:-mb-0 lg:-mb-0 lg:pb-0 md:pt-0 lg:pt-3">
-        <GammaMiniHeading className="text-3xl">Some real-world results of this system:</GammaMiniHeading>
+        <GammaMiniHeading className="text-2xl md:text-2.5xl lg:text-2.5xl">Some real-world results of this system:</GammaMiniHeading>
       </GammaParagraph>
 
       <GammaParagraph className="pb-2">
@@ -173,9 +172,9 @@ export default function IntakeDocContent({ name = '', email = '' }: { name?: str
 
       <GammaDivider />
 
-      <GammaSectionHeading>
+      <div className="text-3xl mx-0 -ml-4 -mr-4 md:text-3xl lg:text-3xl font-bold mt-10 mb-6 text-gray-100 text-center leading-normal md:leading-snug lg:leading-snug" style={{ fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif' }}>
         THE PLAN
-      </GammaSectionHeading>
+      </div>
 
       <GammaParagraph className="-mb-1 pb-0">
         We&apos;ll implement the <strong>Limitless Protocol</strong> in three phases:
@@ -207,9 +206,9 @@ export default function IntakeDocContent({ name = '', email = '' }: { name?: str
 
       <GammaDivider />
 
-      <GammaSectionHeading>
+      <div className="text-3xl mx-0 -ml-4 -mr-4 md:text-3xl lg:text-3xl font-bold mt-10 mb-6 text-gray-100 text-center leading-normal md:leading-snug lg:leading-snug" style={{ fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif' }}>
         IS THIS FOR YOU?
-      </GammaSectionHeading>
+      </div>
 
       <GammaParagraph>
         <strong>NO:</strong> This isn't for the man who's ok just floating by and dying as another average guy.
@@ -230,9 +229,9 @@ export default function IntakeDocContent({ name = '', email = '' }: { name?: str
 
       <GammaDivider />
 
-      <GammaSectionHeading>
+      <div className="text-3xl mx-0 -ml-4 -mr-4 md:text-3xl lg:text-3xl font-bold mt-10 mb-6 text-gray-100 text-center leading-normal md:leading-snug lg:leading-snug" style={{ fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif' }}>
         HOW TO GET IN
-      </GammaSectionHeading>
+      </div>
 
       <GammaParagraph>
         I&apos;m opening a small number of spots for a few select guys.
@@ -257,9 +256,9 @@ export default function IntakeDocContent({ name = '', email = '' }: { name?: str
 
       <GammaDivider />
 
-      <GammaSectionHeading>
+      <div className="text-4xl mx-0 -ml-4 -mr-4 md:text-3xl lg:text-3xl font-bold mt-10 mb-6 text-gray-100 text-center leading-normal md:leading-snug lg:leading-snug" style={{ fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif' }}>
         NEXT STEPS
-      </GammaSectionHeading>
+      </div>
 
       <GammaParagraph>
         I respect both of our time, so let&apos;s skip the &apos;sales call&apos; and complicated BS.
@@ -268,7 +267,7 @@ export default function IntakeDocContent({ name = '', email = '' }: { name?: str
       <GammaOrderedList>
         <p >
         <li className="">
-                    <Link href={`/limitless-concierge-invitation/pricing${name || email ? `?name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}` : ''}`} className="text-blue-400 font-bold underline hover:text-blue-300 cursor-pointer">
+                    <Link href={`/limitless-concierge-invitation/pricing${name || email ? `?name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}` : ''}`} className="text-xl md:text-1.5xl lg:text-1.5xl text-blue-400 font-bold underline hover:text-blue-300 cursor-pointer">
             Click here to secure your place
           </Link>
           </li>
@@ -284,6 +283,6 @@ export default function IntakeDocContent({ name = '', email = '' }: { name?: str
       <GammaParagraph className="-mt-4">
       Marley
       </GammaParagraph>
-    </>
+    </div>
   );
 }
