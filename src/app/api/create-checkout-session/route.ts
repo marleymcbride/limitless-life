@@ -38,6 +38,7 @@ const tierPrices = {
   concierge: parseInt(process.env.PRICE_LIMITLESSHEALTHCONCIERGE || "689700"),
   beta: parseInt(process.env.PRICE_LIMITLESSBETA || "99700"), // Beta cohort PIF price
   'beta-waitlist': 0, // Price is handled via Stripe Price ID
+  'concierge-deposit': 0, // Price is handled via Stripe Price ID
 };
 
 const tierNames = {
@@ -47,6 +48,7 @@ const tierNames = {
   concierge: "Metabolic Priming Concierge",
   beta: "Beta Cohort (Full Payment)",
   'beta-waitlist': "Beta Waitlist Deposit",
+  'concierge-deposit': "Limitless Concierge Deposit",
 };
 
 // Email validation helper
@@ -83,6 +85,11 @@ const stripePriceIds = {
   },
   'beta-waitlist': {
     full: process.env.STRIPE_PRICE_BETA_WAITLIST_DEPOSIT,
+  },
+  'concierge-deposit': {
+    monthly: process.env.STRIPE_PRICE_CONCIERGE_DEPOSIT_MONTHLY,
+    '4-month': process.env.STRIPE_PRICE_CONCIERGE_DEPOSIT_4MONTH,
+    '6-month': process.env.STRIPE_PRICE_CONCIERGE_DEPOSIT_6MONTH,
   },
 };
 

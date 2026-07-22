@@ -1,5 +1,5 @@
 # design-style
-- When hiding content in a layout (e.g., deposit/pricing text before a selection), preserve the structural container, border lines, and spacing so the layout doesn't collapse — hide only the specific text/value elements themselves, not the entire row. Confidence: 0.65
+- When hiding content in a layout (e.g., deposit/pricing text before a selection), preserve the structural container, border lines, and spacing so the layout doesn't collapse — hide only the specific text/value elements themselves, not the entire row. Confidence: 0.82
 - When making background or layout width changes on mobile, preserve existing text sizing and positioning — do not modify font sizes, margins, padding, or text positioning. Confidence: 0.70
 - When reducing mobile font sizes in responsive typography, reduce the Tailwind size class by exactly 1 step (e.g., `text-lg` → `text-base`, `text-base` → `text-sm`). Confidence: 0.65
 - When creating new UI components, match the existing project's design system and color palette exactly, rather than using generic/styled-by-AI defaults. Confidence: 0.80

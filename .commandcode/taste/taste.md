@@ -18,6 +18,6 @@ See [design-style/taste.md](design-style/taste.md)
 - When displaying a discount in pricing breakdowns, show the original (strikethrough) and discounted price on the same line rather than creating a separate "discount" line item — separate discount lines look fabricated and forced. Confidence: 0.70
 
 # stripe
-- Distinguish between payment commitment durations (how long a program lasts) and payment split options (installment plans for the same program) — these are different concepts. Confidence: 0.65
+- Distinguish between payment commitment durations (how long a program lasts) and payment split options (installment plans for the same program) — these are different concepts. Confidence: 0.75
 - Use direct Stripe payment links (static URLs) for simple one-time deposits per product option, rather than the dynamic API checkout session system. Confidence: 0.60
 - When replacing a checkout flow pattern, keep the old code annotated with '[OLD]' rather than deleting it. Confidence: 0.70
