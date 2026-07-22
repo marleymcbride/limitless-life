@@ -109,7 +109,7 @@ export async function POST(request: NextRequest) {
 
     const { tier, paymentPlan, customerEmail, customerName, couponID } = await request.json();
 
-    console.log('[CreateCheckoutSession] Creating session:', { tier, customerEmail, customerName });
+    console.log('[CreateCheckoutSession] Creating session:', { tier, paymentPlan, customerEmail, customerName });
     console.log('[CreateCheckoutSession] Available tiers:', Object.keys(tierPrices));
     console.log('[CreateCheckoutSession] Tier exists in tierPrices?', tier, tierPrices[tier as keyof typeof tierPrices]);
 
