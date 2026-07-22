@@ -171,7 +171,7 @@ export async function POST(request: NextRequest) {
     const stripe = getStripe();
 
     // Determine checkout mode: subscription for recurring payments, payment for one-time
-    const checkoutMode = paymentPlan === 'full' ? "payment" : "subscription";
+    const checkoutMode = tier === 'concierge-deposit' || paymentPlan === 'full' ? "payment" : "subscription";
 
     // Build checkout session options
     const checkoutSessionOptions: Stripe.Checkout.SessionCreateParams = {
