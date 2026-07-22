@@ -12,7 +12,10 @@ See [code-style/taste.md](code-style/taste.md)
 See [design-style/taste.md](design-style/taste.md)
 
 # code-style
-- When applying responsive className changes to heading elements (h1, h2, h3, etc.), convert the tag to a `<div>` instead — headings in this project don't properly apply className styling changes. Confidence: 0.85
+- When applying responsive className changes to heading elements (h1, h2, h3, etc.), convert the tag to a `<div>` instead — headings in this project don't properly apply className styling changes. Confidence: 0.90
+
+# pricing-display
+- When displaying a discount in pricing breakdowns, show the original (strikethrough) and discounted price on the same line rather than creating a separate "discount" line item — separate discount lines look fabricated and forced. Confidence: 0.70
 
 # stripe
 - Distinguish between payment commitment durations (how long a program lasts) and payment split options (installment plans for the same program) — these are different concepts. Confidence: 0.65
