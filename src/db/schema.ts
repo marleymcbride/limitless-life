@@ -90,7 +90,8 @@ export const payments = pgTable('payments', {
   stripePaymentIntentId: text('stripe_payment_intent_id').unique(),
   amount: integer('amount'),
   currency: text('currency'),
-  tier: text('tier').$type<'Course' | 'LL' | 'LL+WA' | 'LHC'>(), // Which tier they purchased
+  tier: text('tier').$type<'Course' | 'LL' | 'LL+WA' | 'LHC' | 'Concierge-deposit'>(), // Which tier they purchased
+  paymentPlan: text('payment_plan'), // 'monthly' | '4-month' | '6-month'
   status: text('status'),
   createdAt: timestamp('created_at').defaultNow(),
 }, (table) => ({

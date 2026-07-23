@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 import { headers } from 'next/headers';
 import { db } from '@/lib/db';
-import { users, payments } from '@/db/schema';
+import { users, payments, events } from '@/db/schema';
 import { eq } from 'drizzle-orm';
 import { trackEvent } from '@/lib/analytics.server';
 import { n8nEvents, syncPaymentToAirtable } from '@/lib/n8nWebhooks';
@@ -81,6 +81,93 @@ export async function POST(request: NextRequest) {
         console.log('[STRIPE WEBHOOK] Session ID:', session.id);
         console.log('[STRIPE WEBHOOK] Payment status:', session.payment_status);
         console.log('[STRIPE WEBHOOK] Metadata:', session.metadata);
+
+        const metadata = session.metadata || {};
+
+        // INTERCEPT: Concierge-deposit — separate from Access/Plus/Premium/Elite tier logic
+        if (metadata.tier === 'Concierge-deposit') {
+          console.log('[STRIPE WEBHOOK] Processing Concierge deposit...');
+
+          const email = metadata.email || session.customer_details?.email || '';
+          const customerName = metadata.customerName || session.customer_details?.name || '';
+          const paymentPlan = metadata.paymentPlan; // 'monthly' | '4-month' | '6-month'
+          const firstName = customerName.split(' ')[0] || '';
+          const lastName = customerName.split(' ').slice(1).join(' ') || '';
+
+          if (!email) {
+            console.error('[STRIPE WEBHOOK] No email for Concierge deposit');
+            break;
+          }
+
+          // STEP 1: Upsert user
+          let userId: string;
+          const existing = await db
+            .select()
+            .from(users)
+            .where(eq(users.email, email))
+            .limit(1);
+
+          if (existing.length > 0) {
+            userId = existing[0].id;
+            await db.update(users)
+              .set({ status: 'customer', updatedAt: new Date() })
+              .where(eq(users.id, userId));
+            console.log('[STRIPE WEBHOOK] Updated existing user:', userId);
+          } else {
+            const [newUser] = await db.insert(users)
+              .values({ email, firstName, lastName, status: 'customer' })
+              .returning();
+            userId = newUser.id;
+            console.log('[STRIPE WEBHOOK] Created new user:', userId);
+          }
+
+          // STEP 2: Insert payment record
+          await db.insert(payments).values({
+            userId,
+            stripePaymentIntentId: session.payment_intent as string,
+            amount: session.amount_total || 19700,
+            currency: (session.currency || 'gbp').toUpperCase(),
+            tier: 'Concierge-deposit',
+            paymentPlan,
+            status: 'succeeded',
+          });
+          console.log('[STRIPE WEBHOOK] Payment recorded:', { userId, paymentPlan });
+
+          // STEP 3: Insert analytics event
+          await db.insert(events).values({
+            id: crypto.randomUUID(),
+            sessionId: metadata.sessionId || crypto.randomUUID(),
+            userId,
+            eventType: 'concierge_deposit_paid',
+            eventData: {
+              paymentPlan,
+              amount: session.amount_total,
+              stripeSessionId: session.id,
+            },
+          });
+
+          // STEP 4: Fire n8n webhook (fire-and-forget)
+          fetch('https://n8n.marleymcbride.co/webhook/limitless-concierge-deposit', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              email,
+              firstName,
+              lastName,
+              paymentPlan,
+              amount: (session.amount_total || 19700) / 100,
+              currency: session.currency || 'gbp',
+              stripeSessionId: session.id,
+              stripeCustomerId: session.customer,
+              depositDate: new Date().toISOString().split('T')[0],
+            }),
+          }).catch(error => {
+            console.error('[n8n] Concierge deposit webhook failed:', error);
+          });
+
+          // Return early — do not fall through to existing tier logic
+          return NextResponse.json({ received: true });
+        }
 
         if (session.payment_status === 'paid') {
           console.log('[STRIPE WEBHOOK] Payment is paid, processing...');
