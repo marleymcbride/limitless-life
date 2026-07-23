@@ -79,3 +79,6 @@ scripts/clean-test-data*.sql
 public/Animations/*.screenflow/
 public/Animations/*.mp4
 public/Animations/*_old.gif
+
+# specialist docs
+public/Concierge\ Deposit\ Flow\ Integration\ doc.md

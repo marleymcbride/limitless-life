@@ -46,6 +46,8 @@ export async function GET(request: NextRequest) {
         stripePaymentIntentId: payments.stripePaymentIntentId,
         amount: payments.amount,
         currency: payments.currency,
+        tier: payments.tier,
+        paymentPlan: payments.paymentPlan,
         status: payments.status,
         paymentDate: payments.createdAt,
         userEmail: users.email,
@@ -60,8 +62,7 @@ export async function GET(request: NextRequest) {
       .limit(limit)
       .offset(offset);
 
-    // Get tier information from events (payment_complete events contain tier data)
-    // Only fetch for the actual user IDs from our payments to avoid unnecessary data
+    // Get total count for pagination
     const userIds = [...new Set(paymentsData.map((p) => p.userId))];
 
     const tierData = userIds.length > 0 ? await db
@@ -103,11 +104,11 @@ export async function GET(request: NextRequest) {
     const enrichedPayments = paymentsData.map((payment) => {
       return {
         ...payment,
-        tier: tierMap.get(payment.id) || null,
+        tier: payment.tier || tierMap.get(payment.id) || null,
       };
     });
 
-    // Get total revenue, payment count, and unique customer count using SQL aggregation
+    // Calculate revenue by tier from our enriched payments
     const summaryResult = await db
       .select({
         totalRevenue: sql<number>`COALESCE(sum(${payments.amount}), 0)`,

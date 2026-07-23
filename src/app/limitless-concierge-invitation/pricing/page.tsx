@@ -130,9 +130,9 @@ function PricingContent() {
       className="min-h-screen flex flex-col font-sans"
       style={{ backgroundColor: '#050A0F', opacity: visible ? 1 : 0, transition: 'opacity 0.5s ease-in' }}
     >
-      <div className="w-full py-5 px-4 text-center bg-[#940909]">
-        <div className="text-white text-xl md:text-xl lg:text-xl font-bold">
-          🚨 There are 5 spots left to join as a Founding Member
+      <div className="w-full py-3 px-4 text-center bg-[#940909]">
+        <div className="text-white text-lg md:text-lg lg:text-lg font-semibold">
+          🚨 There are 4 spots left to join as a Founding Member
         </div>
       </div>
 
@@ -250,6 +250,12 @@ function PricingContent() {
               </div>
             </div>
           </div>
+        </div>
+      </div>
+      {/* Footer */}
+      <div className="text-center py-8" style={{ backgroundColor: '#060A0E' }}>
+        <div className="text-sm font-medium text-gray-600" style={{ fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif' }}>
+          © EVLV Fitness LLC {new Date().getFullYear()}
         </div>
       </div>
     </div>

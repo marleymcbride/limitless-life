@@ -15,6 +15,7 @@ interface Payment {
   userLastName: string | null;
   userLeadScore: number | null;
   tier: string | null;
+  paymentPlan: string | null;
 }
 
 interface RevenueByTier {
@@ -103,6 +104,7 @@ export default function PaymentsAnalytics() {
     'Plus': 'bg-blue-700',
     'Premium': 'bg-purple-700',
     'Elite': 'bg-[#940909]',
+    'Concierge-deposit': 'bg-yellow-700',
     'Unknown': 'bg-gray-600',
   };
 
@@ -189,6 +191,7 @@ export default function PaymentsAnalytics() {
                 <tr className="border-b border-gray-700">
                   <th className="text-left py-3 px-4 text-gray-400 font-medium">Customer</th>
                   <th className="text-left py-3 px-4 text-gray-400 font-medium">Tier</th>
+                  <th className="text-left py-3 px-4 text-gray-400 font-medium">Plan</th>
                   <th className="text-right py-3 px-4 text-gray-400 font-medium">Amount</th>
                   <th className="text-center py-3 px-4 text-gray-400 font-medium">Status</th>
                   <th className="text-left py-3 px-4 text-gray-400 font-medium">Date</th>
@@ -215,6 +218,13 @@ export default function PaymentsAnalytics() {
                           </span>
                         ) : (
                           <span className="text-gray-500">Unknown</span>
+                        )}
+                      </td>
+                      <td className="py-3 px-4">
+                        {payment.paymentPlan ? (
+                          <span className="text-xs text-gray-300 capitalize">{payment.paymentPlan}</span>
+                        ) : (
+                          <span className="text-gray-600">—</span>
                         )}
                       </td>
                       <td className="py-3 px-4 text-right font-medium">
