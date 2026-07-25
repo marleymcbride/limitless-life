@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 import { headers } from 'next/headers';
 import { db } from '@/lib/db';
-import { users, payments, events } from '@/db/schema';
+import { users, payments, events, sessions } from '@/db/schema';
 import { eq } from 'drizzle-orm';
 import { trackEvent } from '@/lib/analytics.server';
 import { n8nEvents, syncPaymentToAirtable } from '@/lib/n8nWebhooks';
@@ -146,7 +146,17 @@ export async function POST(request: NextRequest) {
             },
           });
 
-          // STEP 4: Fire n8n webhook (fire-and-forget)
+          // STEP 4: Backfill userId on pre-purchase events and link session
+          if (metadata.sessionId) {
+            await db.update(events)
+              .set({ userId })
+              .where(eq(events.sessionId, metadata.sessionId));
+            await db.update(sessions)
+              .set({ userId })
+              .where(eq(sessions.id, metadata.sessionId));
+          }
+
+          // STEP 5: Fire n8n webhook (fire-and-forget)
           fetch('https://n8n.marleymcbride.co/webhook/limitless-concierge-deposit', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -279,6 +289,17 @@ export async function POST(request: NextRequest) {
             },
           });
           console.log('[STRIPE WEBHOOK] Event tracked successfully');
+
+          // Backfill userId on pre-purchase events and link session
+          const paymentSessionId = session.metadata?.sessionId;
+          if (paymentSessionId) {
+            await db.update(events)
+              .set({ userId })
+              .where(eq(events.sessionId, paymentSessionId));
+            await db.update(sessions)
+              .set({ userId })
+              .where(eq(sessions.id, paymentSessionId));
+          }
 
           // Calculate user's current lead score for n8n sync
           const scoreData = await calculateLeadScore(userId);

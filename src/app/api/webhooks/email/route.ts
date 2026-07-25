@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import { db } from '@/lib/db';
-import { users } from '@/db/schema';
+import { users, sessions, events } from '@/db/schema';
 import { eq } from 'drizzle-orm';
 import { cookies } from 'next/headers';
 import { trackEvent } from '@/lib/analytics.server';
@@ -11,6 +11,7 @@ const emailSubmitSchema = z.object({
   email: z.string().email(),
   firstName: z.string().optional(),
   lastName: z.string().optional(),
+  source: z.string().optional(), // e.g. 'limitless-concierge', 'beta-cohort', 'evergreen'
 });
 
 /**
@@ -33,11 +34,11 @@ export async function POST(req: NextRequest) {
     console.log('=== [EMAIL WEBHOOK] Request received ===');
     const body = await req.json();
     console.log('[EMAIL WEBHOOK] Request body:', body);
-    const { email, firstName, lastName } = emailSubmitSchema.parse(body);
+    const { email, firstName, lastName, source } = emailSubmitSchema.parse(body);
     const cookieStore = await cookies();
     const sessionCookie = cookieStore.get('ll_session');
     const sessionId = sessionCookie?.value || 'unknown';
-    console.log('[EMAIL WEBHOOK] Parsed data:', { email, firstName, lastName, sessionId });
+    console.log('[EMAIL WEBHOOK] Parsed data:', { email, firstName, lastName, source, sessionId });
 
     // Find or create user
     let user = await db
@@ -47,8 +48,9 @@ export async function POST(req: NextRequest) {
       .limit(1);
 
     let userId: string;
+    const isNewUser = user.length === 0;
 
-    if (user.length === 0) {
+    if (isNewUser) {
       console.log('[EMAIL WEBHOOK] Creating new user in Railway database...');
       // Create new user
       const [newUser] = await db
@@ -60,6 +62,8 @@ export async function POST(req: NextRequest) {
           status: 'prospect',
           leadScore: 10, // Email submit = 10 points
           leadTemperature: 'cold',
+          tierInterest: source === 'limitless-concierge' ? 'lhc' : undefined,
+          sourceSite: source === 'limitless-concierge' ? 'limitless-life.co' : undefined,
         })
         .returning();
       userId = newUser.id;
@@ -69,15 +73,29 @@ export async function POST(req: NextRequest) {
       console.log('[EMAIL WEBHOOK] Existing user found in Railway:', { userId, email });
     }
 
-    // Track event in analytics
-    console.log('[EMAIL WEBHOOK] Tracking event to analytics...');
-    await trackEvent({
-      sessionId,
-      userId,
-      eventType: 'email_submit',
-      eventData: { email, firstName, lastName },
-    });
-    console.log('[EMAIL WEBHOOK] Event tracked successfully');
+    // Track event in analytics — skip if no valid session
+    if (sessionId && sessionId !== 'unknown') {
+      console.log('[EMAIL WEBHOOK] Tracking event to analytics...');
+      await trackEvent({
+        sessionId,
+        userId,
+        eventType: 'email_submit',
+        eventData: { email, firstName, lastName, source },
+      });
+      console.log('[EMAIL WEBHOOK] Event tracked successfully');
+
+      // Link session to user identity
+      await db.update(sessions)
+        .set({ userId })
+        .where(eq(sessions.id, sessionId));
+
+      // Backfill userId on prior anonymous events for this session
+      await db.update(events)
+        .set({ userId })
+        .where(eq(events.sessionId, sessionId));
+    } else {
+      console.log('[EMAIL WEBHOOK] Skipping event tracking — no valid session');
+    }
 
     // Trigger n8n webhook for Systeme.io sync
     console.log('[EMAIL WEBHOOK] Sending to n8n webhook...');

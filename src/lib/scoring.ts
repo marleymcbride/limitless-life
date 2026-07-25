@@ -77,10 +77,12 @@ export async function calculateLeadScore(userId: string): Promise<LeadScore> {
       // Check if this event triggers a milestone
       if (['tier_select_protocol', 'tier_select_life', 'tier_select_whatsapp', 'tier_select_concierge'].includes(eventType)) {
         totalScore = MILESTONE_SCORES.TIER_SELECTED;
-      } else if (eventType === 'payment_plan_select') {
+      } else if (eventType === 'payment_plan_select' || eventType === 'pricing_plan_selected') {
         totalScore = MILESTONE_SCORES.PAYMENT_PLAN_SELECTED;
-      } else if (eventType === 'stripe_checkout_initiated') {
+      } else if (eventType === 'stripe_checkout_initiated' || eventType === 'checkout_initiated') {
         totalScore = MILESTONE_SCORES.CHECKOUT_INITIATED;
+      } else if (eventType === 'concierge_deposit_paid') {
+        totalScore = 75; // Between TIER_SELECTED and PAYMENT_PLAN_SELECTED — deposit shows real intent
       } else if (eventType === 'payment_complete') {
         totalScore = MILESTONE_SCORES.PAYMENT_COMPLETE;
       }

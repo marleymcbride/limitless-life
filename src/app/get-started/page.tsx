@@ -7,10 +7,27 @@ export default function GetStartedPage() {
   const router = useRouter();
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleFormSubmit = (e: React.FormEvent) => {
+  const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email.trim() || !name.trim()) return;
+    setIsSubmitting(true);
+
+    const firstName = name.trim().split(' ')[0];
+    const lastName = name.trim().split(' ').slice(1).join(' ');
+
+    try {
+      await fetch('/api/webhooks/email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        keepalive: true,
+        body: JSON.stringify({ email: email.trim(), firstName, lastName, source: 'limitless-concierge' }),
+      });
+    } catch (err) {
+      console.error('[GetStarted] Save failed:', err);
+    }
+
     const params = new URLSearchParams({ name: name.trim(), email: email.trim() });
     router.push(`/get-started/choose?${params.toString()}`);
   };

@@ -93,6 +93,8 @@ export const payments = pgTable('payments', {
   tier: text('tier').$type<'Course' | 'LL' | 'LL+WA' | 'LHC' | 'Concierge-deposit'>(), // Which tier they purchased
   paymentPlan: text('payment_plan'), // 'monthly' | '4-month' | '6-month'
   status: text('status'),
+  paymentDate: timestamp('payment_date'),
+  metadata: jsonb('metadata').$type<any>(),
   createdAt: timestamp('created_at').defaultNow(),
 }, (table) => ({
   userIdIdx: index('idx_payments_user_id').on(table.userId),

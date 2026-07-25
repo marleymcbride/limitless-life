@@ -50,7 +50,10 @@ export const LEAD_SCORING_RULES: Record<EventType, number> = {
   tier_select_life_whatsapp: 20,       // WhatsApp tier selection (corrected from tier_select_whatsapp)
   tier_select_concierge: 25,      // Concierge tier selection
   payment_plan_select: 10,         // Payment plan selection
-  stripe_checkout_initiated: 20,   // Stripe checkout button click
+  stripe_checkout_initiated: 20,   // Stripe checkout button click (legacy — kept for existing data)
+  checkout_initiated: 20,          // Checkout initiation
+  pricing_plan_selected: 25,       // Plan selected on pricing page
+  concierge_deposit_paid: 50,      // Concierge deposit paid
 
   // Waitlist events
   waitlist_thank_you_viewed: 5,

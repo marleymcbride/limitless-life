@@ -14,6 +14,8 @@ interface Lead {
   tierInterest?: string;
   status: 'prospect' | 'lead' | 'customer';
   lastSeen: string;
+  funnelStage: string | null;
+  funnelLabel: string;
   vslWatched: boolean;
   vslCompletionPercent: number;
   applicationStarted: boolean;
@@ -224,13 +226,10 @@ export function LeadsTable() {
                   Last Seen Site
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Stage
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   VSL
-                </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  App
-                </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Pricing
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   Last Seen
@@ -286,10 +285,17 @@ export function LeadsTable() {
                     {lead.vslWatched ? `${lead.vslCompletionPercent}%` : 'No'}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                    {lead.applicationStarted ? 'Yes' : 'No'}
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                    {lead.pricingViewed ? 'Yes' : 'No'}
+                    <span className={`px-2 py-1 rounded text-xs font-medium ${
+                      lead.funnelStage === 'payment_complete' || lead.funnelStage === 'concierge_deposit_paid'
+                        ? 'bg-green-100 text-green-800'
+                        : lead.funnelStage === 'checkout_initiated' || lead.funnelStage === 'pricing_plan_selected'
+                        ? 'bg-yellow-100 text-yellow-800'
+                        : lead.funnelStage
+                        ? 'bg-blue-100 text-blue-800'
+                        : 'text-gray-500'
+                    }`}>
+                      {lead.funnelLabel || 'New'}
+                    </span>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                     {new Date(lead.lastSeen).toLocaleDateString()}

@@ -150,7 +150,7 @@ export async function POST(request: NextRequest) {
 
     // Get session data to include UTM parameters
     const cookieStore = await cookies();
-    const sessionCookie = cookieStore.get('session');
+    const sessionCookie = cookieStore.get('ll_session');
 
     // Parse session cookie for UTM params (if available)
     let utmSource: string | undefined;
@@ -237,76 +237,29 @@ export async function POST(request: NextRequest) {
 
     const session = await stripe.checkout.sessions.create(checkoutSessionOptions);
 
-    // Track pricing plan selection and checkout initiation events
-    if (customerEmail) {
-      try {
-        console.log('[Checkout] Looking for user with email:', customerEmail);
+    // Track checkout initiation — works with or without email
+    try {
+      if (sessionId) {
+        const eventData: any = {
+          tier,
+          paymentPlan,
+          stripeSessionId: session.id,
+        };
+        if (customerEmail) eventData.email = customerEmail;
+        if (customerName) eventData.customerName = customerName;
 
-        // Find user by email
-        const userRecords = await db
-          .select()
-          .from(users)
-          .where(eq(users.email, customerEmail))
-          .limit(1);
-
-        console.log('[Checkout] User records found:', userRecords.length);
-
-        if (userRecords.length > 0) {
-          const user = userRecords[0];
-          console.log('[Checkout] Found user:', user.id, user.email);
-
-          // Get session ID from cookie for event tracking
-          const sessionCookie = cookieStore.get('ll_session');
-          const sessionId = sessionCookie?.value;
-
-          // Track pricing plan selection
-          const pricingEvent = {
-            id: crypto.randomUUID(),
-            sessionId: sessionId || crypto.randomUUID(),
-            userId: user.id,
-            eventType: 'pricing_plan_selected',
-            eventData: {
-              tier: tier,
-              plan: paymentPlan,
-              email: customerEmail,
-              timestamp: new Date().toISOString(),
-            },
-            createdAt: new Date(),
-          };
-
-          console.log('[Checkout] Inserting pricing event:', pricingEvent);
-          await db.insert(events).values(pricingEvent);
-
-          // Track checkout initiation
-          const checkoutEvent = {
-            id: crypto.randomUUID(),
-            sessionId: sessionId || crypto.randomUUID(),
-            userId: user.id,
-            eventType: 'checkout_initiated',
-            eventData: {
-              tier: tier,
-              paymentPlan: paymentPlan,
-              email: customerEmail,
-              stripeSessionId: session.id,
-              timestamp: new Date().toISOString(),
-            },
-            createdAt: new Date(),
-          };
-
-          console.log('[Checkout] Inserting checkout event:', checkoutEvent);
-          await db.insert(events).values(checkoutEvent);
-
-          console.log('[Checkout] ✓ Events tracked successfully:', { userId: user.id, tier, paymentPlan });
-        } else {
-          console.warn('[Checkout] ✗ User NOT found for email:', customerEmail);
-          console.warn('[Checkout] Available users count:', await db.select({ count: sql`COUNT(*)` }).from(users));
-        }
-      } catch (error) {
-        console.error('[Checkout] ✗ Failed to track events:', error);
-        // Don't fail the checkout if tracking fails
+        await db.insert(events).values({
+          id: crypto.randomUUID(),
+          sessionId: sessionId,
+          eventType: 'checkout_initiated',
+          eventData,
+          createdAt: new Date(),
+        });
+        console.log('[Checkout] Checkout event tracked for session:', sessionId);
       }
-    } else {
-      console.warn('[Checkout] No customerEmail provided');
+    } catch (error) {
+      console.error('[Checkout] Failed to track checkout event:', error);
+      // Don't fail the checkout
     }
 
     // Return both sessionId and url for modern Stripe.js integration

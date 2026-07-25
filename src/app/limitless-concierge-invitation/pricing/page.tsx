@@ -2,6 +2,8 @@
 
 import { useState, useEffect, useRef, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
+import { useSession } from "@/hooks/useSession";
+import { trackEvent } from "@/lib/analytics";
 
 const PLANS = [
   {
@@ -66,6 +68,8 @@ function PricingContent() {
   const [isLoading, setIsLoading] = useState(false);
   const [visible, setVisible] = useState(false);
   const rightPanelRef = useRef<HTMLDivElement>(null);
+  const { session } = useSession();
+  const [sessionReady, setSessionReady] = useState(false);
 
   const handlePlanSelect = (id: string) => {
     setSelectedPlan(id);
@@ -94,6 +98,29 @@ function PricingContent() {
     const t = setTimeout(() => setVisible(true), 30);
     return () => clearTimeout(t);
   }, []);
+
+  // Track pricing page view once session is ready
+  useEffect(() => {
+    if (session?.sessionId && !sessionReady) {
+      setSessionReady(true);
+      trackEvent({
+        sessionId: session.sessionId,
+        eventType: 'pricing_view',
+        eventData: { source: 'limitless-concierge' },
+      }).catch(() => {});
+    }
+  }, [session, sessionReady]);
+
+  // Track plan selection
+  useEffect(() => {
+    if (selectedPlan && session?.sessionId) {
+      trackEvent({
+        sessionId: session.sessionId,
+        eventType: 'pricing_plan_selected',
+        eventData: { plan: selectedPlan, source: 'limitless-concierge' },
+      }).catch(() => {});
+    }
+  }, [selectedPlan, session]);
 
   const handleCheckout = async () => {
     if (!selectedPlan) return;
