@@ -6,7 +6,7 @@ import { users, payments, events, sessions } from '@/db/schema';
 import { eq } from 'drizzle-orm';
 import { trackEvent } from '@/lib/analytics.server';
 import { n8nEvents, syncPaymentToAirtable } from '@/lib/n8nWebhooks';
-import { calculateLeadScore } from '@/lib/scoring';
+import { updateUserLeadScore } from '@/lib/scoring';
 
 /**
  * POST /api/webhooks/stripe
@@ -155,6 +155,11 @@ export async function POST(request: NextRequest) {
               .set({ userId })
               .where(eq(sessions.id, metadata.sessionId));
           }
+
+          // Recalculate lead score now that payment event exists
+          updateUserLeadScore(userId).catch(err =>
+            console.error('[STRIPE WEBHOOK] Score update failed:', err)
+          );
 
           // STEP 5: Fire n8n webhook (fire-and-forget)
           fetch('https://n8n.marleymcbride.co/webhook/limitless-concierge-deposit', {

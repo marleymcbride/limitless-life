@@ -6,6 +6,7 @@ import { eq } from 'drizzle-orm';
 import { cookies } from 'next/headers';
 import { trackEvent } from '@/lib/analytics.server';
 import { n8nEvents } from '@/lib/n8nWebhooks';
+import { updateUserLeadScore } from '@/lib/scoring';
 
 const emailSubmitSchema = z.object({
   email: z.string().email(),
@@ -96,6 +97,11 @@ export async function POST(req: NextRequest) {
     } else {
       console.log('[EMAIL WEBHOOK] Skipping event tracking — no valid session');
     }
+
+    // Recalculate lead score now that email_submit event exists
+    updateUserLeadScore(userId).catch(err =>
+      console.error('[EMAIL WEBHOOK] Score update failed:', err)
+    );
 
     // Trigger n8n webhook for Systeme.io sync
     console.log('[EMAIL WEBHOOK] Sending to n8n webhook...');

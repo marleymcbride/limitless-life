@@ -17,6 +17,9 @@ See [design-style/taste.md](design-style/taste.md)
 # pricing-display
 - When displaying a discount in pricing breakdowns, show the original (strikethrough) and discounted price on the same line rather than creating a separate "discount" line item — separate discount lines look fabricated and forced. Confidence: 0.70
 
+# lead-scoring
+- Use a stage-based model where score = highest stage reached (not accumulated points), with granular stages for the sales funnel: sales page engagement, VSL engagement/completion, scrolling, CTA clicks, modal detail entry, 'ready to join', offer doc reading, checkout initiation, and concierge deposit paid. Confidence: 0.70
+
 # stripe
 - Distinguish between payment commitment durations (how long a program lasts) and payment split options (installment plans for the same program) — these are different concepts. Confidence: 0.75
 - Use direct Stripe payment links (static URLs) for simple one-time deposits per product option, rather than the dynamic API checkout session system. Confidence: 0.60
