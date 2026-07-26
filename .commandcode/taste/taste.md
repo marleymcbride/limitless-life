@@ -26,4 +26,4 @@ See [design-style/taste.md](design-style/taste.md)
 - When replacing a checkout flow pattern, keep the old code annotated with '[OLD]' rather than deleting it. Confidence: 0.70
 
 # environment-variables
-- Before writing code that depends on a new environment variable, ask the user to add/set that variable first. Confidence: 0.75
+- Before writing code that depends on a new environment variable, ask the user to add/set that variable first. Confidence: 0.80

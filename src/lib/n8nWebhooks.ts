@@ -166,6 +166,21 @@ export const n8nEvents = {
     email: string;
     firstName?: string;
     lastName?: string;
+    utmSource?: string;
+    utmCampaign?: string;
+    utmMedium?: string;
+    utmContent?: string;
+    utmTerm?: string;
+    referrer?: string;
+    deviceType?: string;
+    browser?: string;
+    ipAddress?: string;
+    country?: string;
+    leadScore?: number;
+    leadTemperature?: string;
+    tierInterest?: string;
+    sourceSite?: string;
+    source?: string;
   }) => sendToN8N("email-submit", data),
 
   applicationStart: (data: {

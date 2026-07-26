@@ -103,6 +103,16 @@ export async function POST(req: NextRequest) {
       console.error('[EMAIL WEBHOOK] Score update failed:', err)
     );
 
+    // Fetch session + user data for n8n enrichment
+    let sessionData: any = {};
+    let userData: any = {};
+    if (sessionId && sessionId !== 'unknown') {
+      const [s] = await db.select().from(sessions).where(eq(sessions.id, sessionId)).limit(1);
+      if (s) sessionData = s;
+    }
+    const [u] = await db.select().from(users).where(eq(users.id, userId)).limit(1);
+    if (u) userData = u;
+
     // Trigger n8n webhook for Systeme.io sync
     console.log('[EMAIL WEBHOOK] Sending to n8n webhook...');
     await n8nEvents.emailSubmit({
@@ -110,6 +120,21 @@ export async function POST(req: NextRequest) {
       email,
       firstName,
       lastName,
+      utmSource: sessionData.utmSource,
+      utmCampaign: sessionData.utmCampaign,
+      utmMedium: sessionData.utmMedium,
+      utmContent: sessionData.utmContent,
+      utmTerm: sessionData.utmTerm,
+      referrer: sessionData.referrer,
+      deviceType: sessionData.deviceType,
+      browser: sessionData.browser,
+      ipAddress: sessionData.ipAddress,
+      country: sessionData.countryCode,
+      leadScore: userData.leadScore,
+      leadTemperature: userData.leadTemperature,
+      tierInterest: userData.tierInterest,
+      sourceSite: userData.sourceSite,
+      source: source,
     });
     console.log('[EMAIL WEBHOOK] n8n webhook sent');
 
