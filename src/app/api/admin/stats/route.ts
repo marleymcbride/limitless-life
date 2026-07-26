@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/lib/db';
 import { users, payments, events, sessions } from '@/db/schema';
 import { isAdminAuthenticated } from '@/lib/admin-auth';
-import { gte, sql, and, desc, eq, lte } from 'drizzle-orm';
+import { gte, sql, and, desc, eq, lte, inArray } from 'drizzle-orm';
 
 /**
  * GET /api/admin/stats
@@ -76,7 +76,7 @@ export async function GET(request: NextRequest) {
         })
         .from(events)
         .where(and(
-          sql`${events.userId} = ANY(${hotLeadIds})`,
+          inArray(events.userId, hotLeadIds),
           eq(events.eventType, 'concierge_deposit_paid'),
           gte(events.createdAt, sevenDaysAgo),
         ))
