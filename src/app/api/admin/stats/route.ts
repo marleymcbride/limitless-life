@@ -151,6 +151,7 @@ export async function GET(request: NextRequest) {
         newLeads: leadUsers.slice(0, 10).map(enrich),
         readyToJoin: readyToJoinUsers.slice(0, 10).map(enrich),
         newClients: clientUsers.slice(0, 10).map(enrich),
+        newCustomers: leadUsers.slice(0, 10).map(enrich),
         hotLeads: hotLeadUsers.map(enrich),
       },
     });

@@ -64,7 +64,7 @@ const navItems: { key: Tab; label: string }[] = [
 export default function AdminDashboard() {
   const [activeTab, setActiveTab] = useState<Tab>('dashboard');
   const [stats, setStats] = useState({ monthRevenue: 0, todayRevenue: 0, newLeads: 0, newCustomers: 0, readyToJoin: 0, newClients: 0, hotLeadsCount: 0, visitorsToday: 0, visitorsWeek: 0 });
-  const [groups, setGroups] = useState({ newLeads: [], readyToJoin: [], newClients: [], hotLeads: [] });
+  const [groups, setGroups] = useState({ newLeads: [], readyToJoin: [], newClients: [], newCustomers: [], hotLeads: [] });
 
   useEffect(() => { fetchStats(); }, []);
 
@@ -84,7 +84,7 @@ export default function AdminDashboard() {
         visitorsToday: d.visitors?.today || 0,
         visitorsWeek: d.visitors?.last7Days || 0,
       });
-      setGroups(d.groups || { newLeads: [], readyToJoin: [], newClients: [], hotLeads: [] });
+      setGroups(d.groups || { newLeads: [], readyToJoin: [], newClients: [], newCustomers: [], hotLeads: [] });
     } catch (_) {}
   }
 
@@ -182,10 +182,10 @@ export default function AdminDashboard() {
             {/* 2x2 grid of people sections */}
             <div className="grid grid-cols-2 gap-5">
               {[
-                { title: 'Ready leads', desc: 'Deposit paid — ready to onboard', count: stats.readyToJoin, data: groups.readyToJoin, color: '#1a5c2a' },
+                { title: 'Applicants (deposit paid)', desc: 'Deposit paid — ready to onboard', count: stats.readyToJoin, data: groups.readyToJoin, color: '#1a5c2a' },
                 { title: 'New clients', desc: 'Signed up and paid in full', count: stats.newClients, data: groups.newClients, color: '#1a5c2a' },
                 { title: 'Hottest leads', desc: 'Almost there — just need a push', count: stats.hotLeadsCount, data: groups.hotLeads, color: '#940909' },
-                { title: 'New customers', desc: 'Just entered the funnel', count: stats.newLeads, data: groups.newLeads, color: '#6366f1' },
+                { title: 'New customers', desc: 'Just entered the funnel', count: stats.newCustomers, data: groups.newCustomers, color: '#6366f1' },
               ].map((section) => (
                 <div key={section.title} className="rounded-xl border border-gray-800 overflow-hidden" style={{ backgroundColor: '#0A0D14' }}>
                   <div className="flex items-center justify-between px-5 py-4 border-b border-gray-800">
