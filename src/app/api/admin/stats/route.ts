@@ -26,9 +26,11 @@ export async function GET(request: NextRequest) {
     const startOfToday = new Date(now.getFullYear(), now.getMonth(), now.getDate());
 
     // Revenue
-    const [revenueMonth, revenueToday] = await Promise.all([
+    const [revenueMonth, revenueToday, visitorsTodayCount, visitorsWeekCount] = await Promise.all([
       db.select({ value: sql<number>`COALESCE(SUM(${payments.amount}), 0)` }).from(payments).where(and(eq(payments.status, 'succeeded'), gte(payments.createdAt, startOfMonth))),
       db.select({ value: sql<number>`COALESCE(SUM(${payments.amount}), 0)` }).from(payments).where(and(eq(payments.status, 'succeeded'), gte(payments.createdAt, startOfToday))),
+      db.select({ count: sql<number>`count(distinct ${sessions.id})` }).from(sessions).where(gte(sessions.firstSeen, startOfToday)),
+      db.select({ count: sql<number>`count(distinct ${sessions.id})` }).from(sessions).where(gte(sessions.firstSeen, now.getTime() - 7 * 24 * 60 * 60 * 1000)),
     ]);
 
     // Get user IDs by event type
@@ -130,6 +132,10 @@ export async function GET(request: NextRequest) {
       revenue: {
         month: Math.round((revenueMonth[0]?.value || 0)),
         today: Math.round((revenueToday[0]?.value || 0)),
+      },
+      visitors: {
+        today: visitorsTodayCount[0]?.count || 0,
+        last7Days: visitorsWeekCount[0]?.count || 0,
       },
       counts: {
         newLeads: leadUsers.length,

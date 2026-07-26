@@ -63,7 +63,7 @@ const navItems: { key: Tab; label: string }[] = [
 
 export default function AdminDashboard() {
   const [activeTab, setActiveTab] = useState<Tab>('dashboard');
-  const [stats, setStats] = useState({ monthRevenue: 0, todayRevenue: 0, newLeads: 0, newCustomers: 0, readyToJoin: 0, newClients: 0, hotLeadsCount: 0 });
+  const [stats, setStats] = useState({ monthRevenue: 0, todayRevenue: 0, newLeads: 0, newCustomers: 0, readyToJoin: 0, newClients: 0, hotLeadsCount: 0, visitorsToday: 0, visitorsWeek: 0 });
   const [groups, setGroups] = useState({ newLeads: [], readyToJoin: [], newClients: [], hotLeads: [] });
 
   useEffect(() => { fetchStats(); }, []);
@@ -81,6 +81,8 @@ export default function AdminDashboard() {
         readyToJoin: d.counts?.readyToJoin || 0,
         newClients: d.counts?.newClients || 0,
         hotLeadsCount: d.counts?.hotLeads || 0,
+        visitorsToday: d.visitors?.today || 0,
+        visitorsWeek: d.visitors?.last7Days || 0,
       });
       setGroups(d.groups || { newLeads: [], readyToJoin: [], newClients: [], hotLeads: [] });
     } catch (_) {}
@@ -167,8 +169,12 @@ export default function AdminDashboard() {
                   <span className="text-2xl font-bold text-white">{stats.newLeads}</span>
                 </div>
                 <div className="text-right">
-                  <p className="text-gray-500 text-xs uppercase tracking-widest mb-1">New customers</p>
-                  <span className="text-2xl font-bold text-white">{stats.readyToJoin + stats.newClients}</span>
+                  <p className="text-gray-500 text-xs uppercase tracking-widest mb-1">Today</p>
+                  <span className="text-2xl font-bold text-white">{stats.visitorsToday}</span>
+                </div>
+                <div className="text-right">
+                  <p className="text-gray-500 text-xs uppercase tracking-widest mb-1">Week</p>
+                  <span className="text-2xl font-bold text-white">{stats.visitorsWeek}</span>
                 </div>
               </div>
             </div>
@@ -176,10 +182,10 @@ export default function AdminDashboard() {
             {/* 2x2 grid of people sections */}
             <div className="grid grid-cols-2 gap-5">
               {[
-                { title: 'Deposit paid', desc: 'Ready to review and onboard', count: stats.readyToJoin, data: groups.readyToJoin, color: '#1a5c2a' },
-                { title: 'Full clients', desc: 'Signed up and paid in full', count: stats.newClients, data: groups.newClients, color: '#1a5c2a' },
-                { title: 'Ready to close', desc: 'Almost there — just need a push', count: stats.hotLeadsCount, data: groups.hotLeads, color: '#940909' },
-                { title: 'New leads', desc: 'Just entered the funnel', count: stats.newLeads, data: groups.newLeads, color: '#6366f1' },
+                { title: 'Ready leads', desc: 'Deposit paid — ready to onboard', count: stats.readyToJoin, data: groups.readyToJoin, color: '#1a5c2a' },
+                { title: 'New clients', desc: 'Signed up and paid in full', count: stats.newClients, data: groups.newClients, color: '#1a5c2a' },
+                { title: 'Hottest leads', desc: 'Almost there — just need a push', count: stats.hotLeadsCount, data: groups.hotLeads, color: '#940909' },
+                { title: 'New customers', desc: 'Just entered the funnel', count: stats.newLeads, data: groups.newLeads, color: '#6366f1' },
               ].map((section) => (
                 <div key={section.title} className="rounded-xl border border-gray-800 overflow-hidden" style={{ backgroundColor: '#0A0D14' }}>
                   <div className="flex items-center justify-between px-5 py-4 border-b border-gray-800">
