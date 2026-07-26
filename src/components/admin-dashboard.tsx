@@ -64,7 +64,7 @@ const navItems: { key: Tab; label: string }[] = [
 export default function AdminDashboard() {
   const [activeTab, setActiveTab] = useState<Tab>('dashboard');
   const [stats, setStats] = useState({ monthRevenue: 0, todayRevenue: 0, newCustomers: 0, readyToJoin: 0, newClients: 0, hotLeadsCount: 0 });
-  const [hotLeads, setHotLeads] = useState<any[]>([]);
+  const [groups, setGroups] = useState({ newCustomers: [], readyToJoin: [], newClients: [], hotLeads: [] });
 
   useEffect(() => { fetchStats(); }, []);
 
@@ -81,7 +81,7 @@ export default function AdminDashboard() {
         newClients: d.counts?.newClients || 0,
         hotLeadsCount: d.counts?.hotLeads || 0,
       });
-      setHotLeads(d.hotLeads || []);
+      setGroups(d.groups || { newCustomers: [], readyToJoin: [], newClients: [], hotLeads: [] });
     } catch (_) {}
   }
 
@@ -150,7 +150,7 @@ export default function AdminDashboard() {
           <div className="max-w-6xl mx-auto">
 
             {/* Revenue hero */}
-            <div className="mb-8">
+            <div className="mb-10">
               <p className="text-gray-500 text-xs font-medium uppercase tracking-widest mb-2">Revenue this month</p>
               <div className="flex items-end gap-4">
                 <span className="text-5xl font-bold text-white tracking-tight">{formatMoney(stats.monthRevenue)}</span>
@@ -160,87 +160,31 @@ export default function AdminDashboard() {
               </div>
             </div>
 
-            {/* Pipeline cards — compact row */}
-            <div className="grid grid-cols-4 gap-4 mb-8">
-              {[
-                { label: 'New customers', count: stats.newCustomers, desc: 'In funnel' },
-                { label: 'Ready to join', count: stats.readyToJoin, desc: 'Deposit paid' },
-                { label: 'New clients', count: stats.newClients, desc: 'Full purchase' },
-                { label: 'Hot leads', count: stats.hotLeadsCount, desc: 'Score 70+' },
-              ].map((item) => (
-                <div key={item.label} className="p-5 rounded-xl border border-gray-800" style={{ backgroundColor: '#0A0D14' }}>
-                  <p className="text-gray-500 text-xs font-medium uppercase tracking-widest mb-2">{item.label}</p>
-                  <span className="text-3xl font-bold text-white">{item.count}</span>
-                  <p className="text-gray-600 text-xs mt-1">{item.desc}</p>
-                </div>
-              ))}
-            </div>
-
             {/* 2x2 grid of people sections */}
             <div className="grid grid-cols-2 gap-5">
-
-              {/* Top-left: Hot leads (scored, not paid) */}
-              <div className="rounded-xl border border-gray-800 overflow-hidden" style={{ backgroundColor: '#0A0D14' }}>
-                <div className="flex items-center justify-between px-5 py-4 border-b border-gray-800">
-                  <div>
-                    <h3 className="text-white text-sm font-semibold">Hot leads</h3>
-                    <p className="text-gray-600 text-xs mt-0.5">High intent, not paid — ready to close</p>
+              {[
+                { title: 'Hot leads', desc: 'High intent, not paid — ready to close', count: stats.hotLeadsCount, data: groups.hotLeads, color: '#940909' },
+                { title: 'Ready to join', desc: 'Deposit paid — review and onboard', count: stats.readyToJoin, data: groups.readyToJoin, color: '#1a5c2a' },
+                { title: 'New clients', desc: 'Full coaching purchase', count: stats.newClients, data: groups.newClients, color: '#1a5c2a' },
+                { title: 'New customers', desc: 'Entered funnel, no payment yet', count: stats.newCustomers, data: groups.newCustomers, color: '#6366f1' },
+              ].map((section) => (
+                <div key={section.title} className="rounded-xl border border-gray-800 overflow-hidden" style={{ backgroundColor: '#0A0D14' }}>
+                  <div className="flex items-center justify-between px-5 py-4 border-b border-gray-800">
+                    <div>
+                      <h3 className="text-white text-sm font-semibold">{section.title}</h3>
+                      <p className="text-gray-600 text-xs mt-0.5">{section.desc}</p>
+                    </div>
+                    <span className="text-xs font-bold px-2 py-1 rounded text-white" style={{ backgroundColor: section.color }}>{section.count}</span>
                   </div>
-                  <span className="text-xs font-bold px-2 py-1 rounded text-white" style={{ backgroundColor: '#940909' }}>{stats.hotLeadsCount}</span>
-                </div>
-                <div className="divide-y divide-gray-800">
-                  {hotLeads.length === 0 ? <EmptyState text="No hot leads yet" /> : hotLeads.slice(0, 6).map(renderLeadRow)}
-                </div>
-              </div>
-
-              {/* Top-right: Ready to join (deposit paid) */}
-              <div className="rounded-xl border border-gray-800 overflow-hidden" style={{ backgroundColor: '#0A0D14' }}>
-                <div className="flex items-center justify-between px-5 py-4 border-b border-gray-800">
-                  <div>
-                    <h3 className="text-white text-sm font-semibold">Ready to join</h3>
-                    <p className="text-gray-600 text-xs mt-0.5">Deposit paid — review and onboard</p>
+                  <div className="divide-y divide-gray-800">
+                    {section.data.length === 0 ? (
+                      <div className="flex items-center justify-center h-40 text-gray-600 text-xs">No data yet</div>
+                    ) : (
+                      section.data.map(renderLeadRow)
+                    )}
                   </div>
-                  <span className="text-xs font-bold px-2 py-1 rounded" style={{ backgroundColor: '#1a5c2a', color: 'white' }}>{stats.readyToJoin}</span>
                 </div>
-                <div className="divide-y divide-gray-800">
-                  {stats.readyToJoin === 0 ? <EmptyState text="No deposits yet" /> : (
-                    <div className="flex items-center justify-center h-40 text-gray-600 text-xs">Data incoming — requires deposit payments</div>
-                  )}
-                </div>
-              </div>
-
-              {/* Bottom-left: New clients */}
-              <div className="rounded-xl border border-gray-800 overflow-hidden" style={{ backgroundColor: '#0A0D14' }}>
-                <div className="flex items-center justify-between px-5 py-4 border-b border-gray-800">
-                  <div>
-                    <h3 className="text-white text-sm font-semibold">New clients</h3>
-                    <p className="text-gray-600 text-xs mt-0.5">Full coaching purchase</p>
-                  </div>
-                  <span className="text-xs font-bold px-2 py-1 rounded" style={{ backgroundColor: '#1a5c2a', color: 'white' }}>{stats.newClients}</span>
-                </div>
-                <div className="divide-y divide-gray-800">
-                  {stats.newClients === 0 ? <EmptyState text="No full purchases yet" /> : (
-                    <div className="flex items-center justify-center h-40 text-gray-600 text-xs">Data incoming — requires full payment</div>
-                  )}
-                </div>
-              </div>
-
-              {/* Bottom-right: New customers */}
-              <div className="rounded-xl border border-gray-800 overflow-hidden" style={{ backgroundColor: '#0A0D14' }}>
-                <div className="flex items-center justify-between px-5 py-4 border-b border-gray-800">
-                  <div>
-                    <h3 className="text-white text-sm font-semibold">New customers</h3>
-                    <p className="text-gray-600 text-xs mt-0.5">Entered funnel, no payment yet</p>
-                  </div>
-                  <span className="text-xs font-bold px-2 py-1 rounded text-white" style={{ backgroundColor: '#6366f1' }}>{stats.newCustomers}</span>
-                </div>
-                <div className="divide-y divide-gray-800">
-                  {stats.newCustomers === 0 ? <EmptyState text="No new customers yet" /> : (
-                    <div className="flex items-center justify-center h-40 text-gray-600 text-xs">Data incoming — requires user records with events</div>
-                  )}
-                </div>
-              </div>
-
+              ))}
             </div>
           </div>
         ) : (

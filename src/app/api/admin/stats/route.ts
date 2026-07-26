@@ -2,16 +2,19 @@ import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/lib/db';
 import { users, payments, events, sessions } from '@/db/schema';
 import { isAdminAuthenticated } from '@/lib/admin-auth';
-import { gte, sql, and, desc, eq, lte, inArray, notInArray, isNull } from 'drizzle-orm';
+import { gte, sql, and, desc, eq, inArray, notInArray } from 'drizzle-orm';
 
-/**
- * GET /api/admin/stats
- * Fetch dashboard metrics segmented by funnel stage:
- * - New customers: people who entered the funnel (email submit or user created)
- * - Ready to join: paid deposit (concierge_deposit_paid)
- * - New clients: paid in full (payment_complete)
- * - Hot leads: score >= 70, haven't paid yet
- */
+interface LeadRow {
+  id: string;
+  email: string;
+  firstName: string | null;
+  lastName: string | null;
+  leadScore: number;
+  leadTemperature: string | null;
+  tierInterest: string | null;
+  lastSeen: Date | null;
+}
+
 export async function GET(request: NextRequest) {
   if (!(await isAdminAuthenticated())) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -21,12 +24,14 @@ export async function GET(request: NextRequest) {
     const now = new Date();
     const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
     const startOfToday = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-    const startOfWeek = new Date(now);
-    startOfWeek.setDate(now.getDate() - now.getDay());
-    startOfWeek.setHours(0, 0, 0, 0);
-    const sevenDaysAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
 
-    // Helper: get user IDs that have a specific event type
+    // Revenue
+    const [revenueMonth, revenueToday] = await Promise.all([
+      db.select({ value: sql<number>`COALESCE(SUM(${payments.amount}), 0)` }).from(payments).where(and(eq(payments.status, 'succeeded'), gte(payments.createdAt, startOfMonth))),
+      db.select({ value: sql<number>`COALESCE(SUM(${payments.amount}), 0)` }).from(payments).where(and(eq(payments.status, 'succeeded'), gte(payments.createdAt, startOfToday))),
+    ]);
+
+    // Get user IDs by event type
     const usersWithEvent = async (eventType: string) => {
       const rows = await db
         .select({ userId: events.userId })
@@ -36,36 +41,15 @@ export async function GET(request: NextRequest) {
       return new Set(rows.map(r => r.userId));
     };
 
-    const [depositUserIds, paymentUserIds, allUserIdsSet] = await Promise.all([
+    const [depositUserIds, paymentUserIds] = await Promise.all([
       usersWithEvent('concierge_deposit_paid'),
       usersWithEvent('payment_complete'),
-      usersWithEvent('email_submit'),
     ]);
 
-    // Also get all users who were created (even without events)
-    const allDbUsers = await db
-      .select({ id: users.id, email: users.email })
-      .from(users)
-      .where(sql`${users.email} IS NOT NULL`);
-
-    // === 1. NEW CUSTOMERS (entered funnel, not deposit, not full payment) ===
-    const newCustomerUsers = allDbUsers.filter(u =>
-      !depositUserIds.has(u.id) && !paymentUserIds.has(u.id)
-    );
-
-    // === 2. READY TO JOIN (paid deposit, not full payment) ===
-    const readyToJoinUsers = allDbUsers.filter(u =>
-      depositUserIds.has(u.id) && !paymentUserIds.has(u.id)
-    );
-
-    // === 3. NEW CLIENTS (paid in full) ===
-    const newClientUsers = allDbUsers.filter(u =>
-      paymentUserIds.has(u.id)
-    );
-
-    // === 4. HOT LEADS (score >= 70, not paid anything) ===
     const paidIds = new Set([...depositUserIds, ...paymentUserIds]);
-    const hotLeadRows = await db
+
+    // Get all users with email
+    const allUsers = await db
       .select({
         id: users.id,
         email: users.email,
@@ -77,55 +61,70 @@ export async function GET(request: NextRequest) {
         lastSeen: users.lastSeen,
       })
       .from(users)
-      .where(and(
-        sql`${users.leadScore} >= 70`,
-        sql`${users.email} IS NOT NULL`,
-        notInArray(users.id, [...paidIds])
-      ))
-      .orderBy(desc(users.leadScore))
-      .limit(10);
+      .where(sql`${users.email} IS NOT NULL`)
+      .orderBy(desc(users.createdAt));
 
-    // Get latest events for hot leads
-    const hotLeadIds = hotLeadRows.map(l => l.id);
-    let hotLeadEvents: { userId: string; eventType: string; createdAt: Date }[] = [];
-    if (hotLeadIds.length > 0) {
-      const relevantTypes = ['pricing_plan_selected', 'checkout_initiated', 'stripe_checkout_initiated', 'pricing_view'];
-      hotLeadEvents = await db
+    // Partition users into 4 groups
+    const newCustomerUsers = allUsers.filter(u => !paidIds.has(u.id));
+    const readyToJoinUsers = allUsers.filter(u => depositUserIds.has(u.id) && !paymentUserIds.has(u.id));
+    const newClientUsers = allUsers.filter(u => paymentUserIds.has(u.id));
+    const hotLeadUsers = allUsers.filter(u => u.leadScore >= 70 && !paidIds.has(u.id)).slice(0, 10);
+
+    // Batch-fetch latest event for all users in all groups
+    const allGroupIds = [...new Set([
+      ...newCustomerUsers.map(u => u.id),
+      ...readyToJoinUsers.map(u => u.id),
+      ...newClientUsers.map(u => u.id),
+      ...hotLeadUsers.map(u => u.id),
+    ])];
+
+    const latestEvents: { userId: string; eventType: string; createdAt: Date }[] = [];
+    if (allGroupIds.length > 0) {
+      // Subquery: get max created_at per user
+      const subquery = db
+        .select({
+          userId: events.userId,
+          maxCreated: sql<Date>`MAX(${events.createdAt})`.as('max_created'),
+        })
+        .from(events)
+        .where(inArray(events.userId, allGroupIds))
+        .groupBy(events.userId)
+        .as('sub');
+
+      const rows = await db
         .select({
           userId: events.userId,
           eventType: events.eventType,
           createdAt: events.createdAt,
         })
         .from(events)
-        .where(and(
-          inArray(events.userId, hotLeadIds),
-          inArray(events.eventType, relevantTypes as any),
+        .innerJoin(subquery, and(
+          eq(events.userId, subquery.userId),
+          eq(events.createdAt, subquery.maxCreated),
         ))
-        .orderBy(desc(events.createdAt));
+        .where(inArray(events.userId, allGroupIds));
+
+      latestEvents.push(...rows);
     }
 
-    // Get latest event per hot lead
-    const latestEventPerLead = new Map<string, { eventType: string; createdAt: Date }>();
-    for (const e of hotLeadEvents) {
-      if (!latestEventPerLead.has(e.userId)) {
-        latestEventPerLead.set(e.userId, { eventType: e.eventType, createdAt: e.createdAt });
+    const latestEventMap = new Map<string, { eventType: string; createdAt: Date }>();
+    for (const e of latestEvents) {
+      if (!latestEventMap.has(e.userId)) {
+        latestEventMap.set(e.userId, { eventType: e.eventType, createdAt: e.createdAt });
       }
     }
 
-    const enrichedHotLeads = hotLeadRows.map(lead => {
-      const latest = latestEventPerLead.get(lead.id);
-      return {
-        ...lead,
-        latestEvent: latest?.eventType || null,
-        latestEventAt: latest?.createdAt?.toISOString() || null,
-      };
+    const enrich = (u: LeadRow) => ({
+      id: u.id,
+      email: u.email,
+      firstName: u.firstName,
+      lastName: u.lastName,
+      leadScore: u.leadScore,
+      leadTemperature: u.leadTemperature,
+      tierInterest: u.tierInterest,
+      latestEvent: latestEventMap.get(u.id)?.eventType || null,
+      latestEventAt: latestEventMap.get(u.id)?.createdAt?.toISOString() || null,
     });
-
-    // Revenue
-    const [revenueMonth, revenueToday] = await Promise.all([
-      db.select({ value: sql<number>`COALESCE(SUM(${payments.amount}), 0)` }).from(payments).where(and(eq(payments.status, 'succeeded'), gte(payments.createdAt, startOfMonth))),
-      db.select({ value: sql<number>`COALESCE(SUM(${payments.amount}), 0)` }).from(payments).where(and(eq(payments.status, 'succeeded'), gte(payments.createdAt, startOfToday))),
-    ]);
 
     return NextResponse.json({
       revenue: {
@@ -136,9 +135,14 @@ export async function GET(request: NextRequest) {
         newCustomers: newCustomerUsers.length,
         readyToJoin: readyToJoinUsers.length,
         newClients: newClientUsers.length,
-        hotLeads: enrichedHotLeads.length,
+        hotLeads: hotLeadUsers.length,
       },
-      hotLeads: enrichedHotLeads,
+      groups: {
+        newCustomers: newCustomerUsers.slice(0, 10).map(enrich),
+        readyToJoin: readyToJoinUsers.slice(0, 10).map(enrich),
+        newClients: newClientUsers.slice(0, 10).map(enrich),
+        hotLeads: hotLeadUsers.map(enrich),
+      },
     });
   } catch (error) {
     console.error('Error fetching admin stats:', error);
