@@ -63,7 +63,7 @@ const navItems: { key: Tab; label: string }[] = [
 
 export default function AdminDashboard() {
   const [activeTab, setActiveTab] = useState<Tab>('dashboard');
-  const [stats, setStats] = useState({ monthRevenue: 0, todayRevenue: 0, newLeads: 0, readyToJoin: 0, newClients: 0, hotLeadsCount: 0 });
+  const [stats, setStats] = useState({ monthRevenue: 0, todayRevenue: 0, newLeads: 0, newCustomers: 0, readyToJoin: 0, newClients: 0, hotLeadsCount: 0 });
   const [groups, setGroups] = useState({ newLeads: [], readyToJoin: [], newClients: [], hotLeads: [] });
 
   useEffect(() => { fetchStats(); }, []);
@@ -77,6 +77,7 @@ export default function AdminDashboard() {
         monthRevenue: d.revenue?.month || 0,
         todayRevenue: d.revenue?.today || 0,
         newLeads: d.counts?.newLeads || 0,
+        newCustomers: d.counts?.newCustomers || 0,
         readyToJoin: d.counts?.readyToJoin || 0,
         newClients: d.counts?.newClients || 0,
         hotLeadsCount: d.counts?.hotLeads || 0,
@@ -149,23 +150,35 @@ export default function AdminDashboard() {
         {activeTab === 'dashboard' ? (
           <div className="max-w-6xl mx-auto">
 
-            {/* Revenue hero */}
-            <div className="mb-10">
-              <p className="text-gray-500 text-xs font-medium uppercase tracking-widest mb-2">Revenue this month</p>
-              <div className="flex items-end gap-4">
-                <span className="text-5xl font-bold text-white tracking-tight">{formatMoney(stats.monthRevenue)}</span>
-                {stats.todayRevenue > 0 && (
-                  <span className="text-green-500 text-base font-medium mb-1">+{formatMoney(stats.todayRevenue)} today</span>
-                )}
+            {/* Revenue hero row */}
+            <div className="flex items-center justify-between mb-10">
+              <div>
+                <p className="text-gray-500 text-xs font-medium uppercase tracking-widest mb-2">Revenue this month</p>
+                <div className="flex items-end gap-4">
+                  <span className="text-5xl font-bold text-white tracking-tight">{formatMoney(stats.monthRevenue)}</span>
+                  {stats.todayRevenue > 0 && (
+                    <span className="text-green-500 text-base font-medium mb-1">+{formatMoney(stats.todayRevenue)} today</span>
+                  )}
+                </div>
+              </div>
+              <div className="flex gap-8">
+                <div className="text-right">
+                  <p className="text-gray-500 text-xs uppercase tracking-widest mb-1">New leads</p>
+                  <span className="text-2xl font-bold text-white">{stats.newLeads}</span>
+                </div>
+                <div className="text-right">
+                  <p className="text-gray-500 text-xs uppercase tracking-widest mb-1">New customers</p>
+                  <span className="text-2xl font-bold text-white">{stats.readyToJoin + stats.newClients}</span>
+                </div>
               </div>
             </div>
 
             {/* 2x2 grid of people sections */}
             <div className="grid grid-cols-2 gap-5">
               {[
-                { title: 'Ready to close', desc: 'Almost there — just need a push', count: stats.hotLeadsCount, data: groups.hotLeads, color: '#940909' },
                 { title: 'Deposit paid', desc: 'Ready to review and onboard', count: stats.readyToJoin, data: groups.readyToJoin, color: '#1a5c2a' },
                 { title: 'Full clients', desc: 'Signed up and paid in full', count: stats.newClients, data: groups.newClients, color: '#1a5c2a' },
+                { title: 'Ready to close', desc: 'Almost there — just need a push', count: stats.hotLeadsCount, data: groups.hotLeads, color: '#940909' },
                 { title: 'New leads', desc: 'Just entered the funnel', count: stats.newLeads, data: groups.newLeads, color: '#6366f1' },
               ].map((section) => (
                 <div key={section.title} className="rounded-xl border border-gray-800 overflow-hidden" style={{ backgroundColor: '#0A0D14' }}>

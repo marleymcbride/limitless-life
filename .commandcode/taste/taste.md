@@ -11,6 +11,7 @@ See [code-style/taste.md](code-style/taste.md)
 # design-style
 - For mobile responsive CSS: every element must have BOTH `md:` AND `lg:` prefixes to lock desktop values, with base class serving as the mobile value. If `md:`/`lg:` already exists, only change the base class and leave md/lg values untouched. When moving content up on mobile, prefer removing existing spacing classes (pt, mt, py, mb) rather than adding new mobile positioning classes like justify-start. Every CSS property with an `md:`/`lg:` variant must also have a non-prefixed base class — never set `md:text-lg lg:text-lg` without a base `text-*` class. Confidence: 0.95
 - Build admin dashboards as expansive, full-page, notion-style layouts with large 2x2 grid sections that fill the page, not compact metric boxes. Confidence: 0.80
+- In admin dashboard layouts, include a top stats/metrics row (with key counts like revenue and lead numbers) positioned above the main dashboard content sections. Confidence: 0.55
 See [design-style/taste.md](design-style/taste.md)
 
 # code-style

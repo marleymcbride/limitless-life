@@ -133,6 +133,7 @@ export async function GET(request: NextRequest) {
       },
       counts: {
         newLeads: leadUsers.length,
+        newCustomers: readyToJoinUsers.length + clientUsers.length,
         readyToJoin: readyToJoinUsers.length,
         newClients: clientUsers.length,
         hotLeads: hotLeadUsers.length,
