@@ -37,14 +37,42 @@ type Tab =
   | 'emailLeads'
   | 'waitlist';
 
+interface HotLead {
+  id: string;
+  email: string;
+  firstName: string | null;
+  lastName: string | null;
+  leadScore: number;
+  leadTemperature: string;
+  tierInterest: string | null;
+  lastSeen: string | null;
+  latestEvent: string | null;
+  latestEventAt: string | null;
+}
+
+interface DashboardStats {
+  revenue: { month: number; today: number };
+  visitors: { total: number; today: number; last7Days: number };
+  leads: { total: number; hot: number; warm: number };
+  events: { last7Days: number; today: number };
+  hotLeads: HotLead[];
+}
+
+const STAGE_LABELS: Record<string, string> = {
+  concierge_deposit_paid: 'Paid deposit',
+  checkout_initiated: 'Started checkout',
+  pricing_plan_selected: 'Selected a plan',
+  pricing_view: 'Viewed pricing',
+  email_submit: 'Submitted email',
+  vsl_complete: 'Watched entire VSL',
+  payment_complete: 'Paid in full',
+};
+
+const WHATSAPP_BASE = 'https://wa.me/13024800805?text=';
+
 export default function AdminDashboard() {
   const [activeTab, setActiveTab] = useState<Tab>('dashboard');
-  const [stats, setStats] = useState({
-    visitors: 0,
-    hotLeads: 0,
-    payments: 0,
-    conversionRate: 0,
-  });
+  const [stats, setStats] = useState<DashboardStats | null>(null);
 
   useEffect(() => {
     fetchStats();
@@ -53,18 +81,9 @@ export default function AdminDashboard() {
   async function fetchStats() {
     try {
       const res = await fetch('/api/admin/stats');
-      if (!res.ok) {
-        console.error('Stats API returned error:', res.status);
-        return;
-      }
+      if (!res.ok) return;
       const data = await res.json();
-      // Map API response to state property names
-      setStats({
-        visitors: data.totalVisitors || 0,
-        hotLeads: data.hotLeads || 0,
-        payments: data.paymentsThisMonth || 0,
-        conversionRate: data.conversionRate || 0,
-      });
+      setStats(data);
     } catch (error) {
       console.error('Failed to fetch stats:', error);
     }
@@ -72,124 +91,211 @@ export default function AdminDashboard() {
 
   const tabGroups = [
     {
-      label: '💰 Revenue & Sales',
+      label: 'Revenue',
       tabs: [
         { key: 'revtrack' as Tab, label: 'Revtrack' },
         { key: 'revenue' as Tab, label: 'Revenue Intelligence' },
-        { key: 'clv' as Tab, label: 'Customer Lifetime Value' },
+        { key: 'clv' as Tab, label: 'Customer LTV' },
         { key: 'payments' as Tab, label: 'Payments & Customers' },
       ]
     },
     {
-      label: '🎯 Leads & Prospects',
+      label: 'Prospects',
       tabs: [
-        { key: 'applications' as Tab, label: 'Applications' },
-        { key: 'formSubmissions' as Tab, label: 'Form Submissions' },
-        { key: 'waitlist' as Tab, label: 'Waitlist' },
         { key: 'leads' as Tab, label: 'Leads' },
+        { key: 'applications' as Tab, label: 'Applications' },
+        { key: 'waitlist' as Tab, label: 'Waitlist' },
+        { key: 'funnel' as Tab, label: 'Funnel' },
+        { key: 'vsl' as Tab, label: 'VSL' },
         { key: 'traffic' as Tab, label: 'Traffic Sources' },
-        { key: 'abandoned' as Tab, label: 'Abandoned Funnel' },
-        { key: 'workWithMe' as Tab, label: '3weeks' },
-        { key: 'emailLeads' as Tab, label: 'Email Course' },
       ]
     },
     {
-      label: '📊 Analytics & Funnel',
+      label: 'Other',
       tabs: [
-        { key: 'funnel' as Tab, label: 'Funnel Analytics' },
-        { key: 'vsl' as Tab, label: 'VSL Drop-off' },
-        { key: 'scroll' as Tab, label: 'Scroll Analytics' },
-        { key: 'journey' as Tab, label: 'Customer Journey' },
+        { key: 'formSubmissions' as Tab, label: 'Form Submissions' },
+        { key: 'workWithMe' as Tab, label: '3weeks' },
+        { key: 'emailLeads' as Tab, label: 'Email Course' },
+        { key: 'scroll' as Tab, label: 'Scroll' },
+        { key: 'journey' as Tab, label: 'Journey' },
+        { key: 'abandoned' as Tab, label: 'Abandoned' },
       ]
     }
   ];
 
+  const formatMoney = (cents: number) => {
+    const pounds = cents / 100;
+    return `£${pounds.toLocaleString()}`;
+  };
+
+  const timeAgo = (dateStr: string | null) => {
+    if (!dateStr) return '';
+    const diff = Date.now() - new Date(dateStr).getTime();
+    const mins = Math.floor(diff / 60000);
+    if (mins < 60) return `${mins}m ago`;
+    const hours = Math.floor(mins / 60);
+    if (hours < 24) return `${hours}h ago`;
+    return `${Math.floor(hours / 24)}d ago`;
+  };
+
   return (
-    <div className="min-h-screen bg-black text-white p-8">
-      <h1 className="text-4xl font-bold mb-8">Admin Dashboard</h1>
+    <div className="min-h-screen" style={{ backgroundColor: '#050A0F' }}>
+      <div className="p-6 md:p-8 lg:p-10 max-w-7xl mx-auto">
+        {/* Header */}
+        <div className="flex items-center justify-between mb-10">
+          <h1 className="text-2xl font-bold text-white tracking-tight" style={{ fontFamily: 'Neuemontreal, sans-serif' }}>Dashboard</h1>
+          <button
+            onClick={fetchStats}
+            className="text-sm text-gray-500 hover:text-gray-300 transition-colors"
+          >
+            ↻ Refresh
+          </button>
+        </div>
 
-      {/* Tab Groups */}
-      <div className="flex flex-wrap gap-8 mb-8">
-        {tabGroups.map((group) => (
-          <div key={group.label} className="flex-1 min-w-[280px]">
-            <div className="text-xs text-gray-400 mb-3 px-2 font-semibold uppercase tracking-wider">
-              {group.label}
+        {!stats ? (
+          <div className="text-gray-500 text-sm">Loading...</div>
+        ) : (
+          <>
+            {/* Top row — big numbers */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
+              <div className="rounded-lg p-5" style={{ backgroundColor: '#0A0D14' }}>
+                <div className="text-gray-500 text-xs uppercase tracking-wider mb-1">Revenue this month</div>
+                <div className="text-white text-2xl font-bold">{formatMoney(stats.revenue.month)}</div>
+                {stats.revenue.today > 0 && (
+                  <div className="text-gray-500 text-xs mt-1">+{formatMoney(stats.revenue.today)} today</div>
+                )}
+              </div>
+              <div className="rounded-lg p-5" style={{ backgroundColor: '#0A0D14' }}>
+                <div className="text-gray-500 text-xs uppercase tracking-wider mb-1">Hot leads</div>
+                <div className="text-white text-2xl font-bold">{stats.leads.hot}</div>
+                <div className="text-gray-500 text-xs mt-1">{stats.leads.warm} warm</div>
+              </div>
+              <div className="rounded-lg p-5" style={{ backgroundColor: '#0A0D14' }}>
+                <div className="text-gray-500 text-xs uppercase tracking-wider mb-1">Visitors (7 days)</div>
+                <div className="text-white text-2xl font-bold">{stats.visitors.last7Days}</div>
+                <div className="text-gray-500 text-xs mt-1">{stats.visitors.today} today</div>
+              </div>
+              <div className="rounded-lg p-5" style={{ backgroundColor: '#0A0D14' }}>
+                <div className="text-gray-500 text-xs uppercase tracking-wider mb-1">Events (7 days)</div>
+                <div className="text-white text-2xl font-bold">{stats.events.last7Days}</div>
+              </div>
             </div>
-            <div className="flex flex-wrap gap-2">
-              {group.tabs.map((tab) => (
-                <button
-                  key={tab.key}
-                  onClick={() => setActiveTab(tab.key)}
-                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
-                    activeTab === tab.key
-                      ? 'bg-[#940909] text-white shadow-lg shadow-red-900/20'
-                      : 'bg-gray-800/50 text-gray-300 hover:bg-gray-700 border border-gray-700/50'
-                  }`}
-                >
-                  {tab.label}
-                </button>
-              ))}
+
+            {/* Hot leads section */}
+            <div className="mb-8">
+              <h2 className="text-sm font-bold text-white mb-4 uppercase tracking-wider" style={{ fontFamily: 'Neuemontreal, sans-serif' }}>
+                Hot leads
+              </h2>
+              {stats.hotLeads.length === 0 ? (
+                <div className="rounded-lg p-6 text-center" style={{ backgroundColor: '#0A0D14' }}>
+                  <p className="text-gray-500 text-sm">No hot leads yet</p>
+                </div>
+              ) : (
+                <div className="space-y-2">
+                  {stats.hotLeads.map((lead) => {
+                    const name = [lead.firstName, lead.lastName].filter(Boolean).join(' ') || lead.email;
+                    const stage = lead.latestEvent ? STAGE_LABELS[lead.latestEvent] || lead.latestEvent : 'No activity';
+                    const waMsg = encodeURIComponent(`Hey ${lead.firstName || 'there'}, saw you were checking out Limitless Concierge. Want to jump on a quick call?`);
+                    return (
+                      <div
+                        key={lead.id}
+                        className="rounded-lg px-5 py-4 flex items-center justify-between"
+                        style={{ backgroundColor: '#0A0D14' }}
+                      >
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-center gap-3">
+                            <span className="text-white text-sm font-medium truncate">{name}</span>
+                            <span className="text-xs px-2 py-0.5 rounded-full" style={{ backgroundColor: '#940909', color: 'white' }}>
+                              {lead.leadScore}
+                            </span>
+                            {lead.tierInterest === 'lhc' && (
+                              <span className="text-[10px] text-gray-500 uppercase tracking-wider">Concierge</span>
+                            )}
+                          </div>
+                          <div className="text-gray-500 text-xs mt-1">
+                            {stage}
+                            {lead.latestEventAt && <span className="ml-2">· {timeAgo(lead.latestEventAt)}</span>}
+                          </div>
+                        </div>
+                        <a
+                          href={`${WHATSAPP_BASE}${waMsg}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="shrink-0 ml-4 text-xs text-gray-400 hover:text-white transition-colors"
+                        >
+                          Message →
+                        </a>
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
             </div>
-          </div>
-        ))}
+
+            {/* Navigation tabs */}
+            <div className="border-t border-gray-800 pt-8">
+              <div className="flex flex-wrap gap-2">
+                {tabGroups.map((group) => (
+                  <div key={group.label} className="mr-6">
+                    <div className="text-[10px] text-gray-600 mb-2 uppercase tracking-wider font-medium">
+                      {group.label}
+                    </div>
+                    <div className="flex flex-wrap gap-2">
+                      {group.tabs.map((tab) => (
+                        <button
+                          key={tab.key}
+                          onClick={() => setActiveTab(tab.key)}
+                          className={`px-3 py-1.5 rounded text-xs font-medium transition-all ${
+                            activeTab === tab.key
+                              ? 'bg-[#940909] text-white'
+                              : 'text-gray-400 hover:text-gray-200'
+                          }`}
+                        >
+                          {tab.label}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Tab Content */}
+            <div className="mt-8">
+              {activeTab === 'dashboard' && null}
+              {activeTab === 'revtrack' && <RevtrackDashboard />}
+              {activeTab === 'revenue' && <RevenueIntelligence />}
+              {activeTab === 'clv' && <CustomerLifetimeValue />}
+              {activeTab === 'funnel' && <FunnelAnalytics />}
+              {activeTab === 'vsl' && <VSLDropoffAnalytics />}
+              {activeTab === 'scroll' && <ScrollDropoffAnalytics />}
+              {activeTab === 'journey' && <CustomerJourneyAnalytics />}
+              {activeTab === 'abandoned' && <AbandonedFunnelAnalytics />}
+              {activeTab === 'payments' && <PaymentsAnalytics />}
+              {activeTab === 'applications' && <ApplicationsTable />}
+              {activeTab === 'formSubmissions' && <FormSubmissionsTable />}
+              {activeTab === 'leads' && <LeadsTable />}
+              {activeTab === 'traffic' && <TrafficSourcesTable />}
+              {activeTab === 'workWithMe' && <WorkWithMeLeads />}
+              {activeTab === 'waitlist' && <WaitlistDashboard />}
+              {activeTab === 'emailLeads' && (
+                <div className="space-y-6">
+                  <div className="bg-gray-50 border border-gray-200 rounded-lg p-8 text-center">
+                    <h2 className="text-2xl font-bold mb-4">Email Course Leads</h2>
+                    <p className="text-gray-600 mb-6">View email engagement data from the 30-day course</p>
+                    <Link
+                      href="/admin/leads/email"
+                      className="inline-block bg-[#940909] text-white px-6 py-3 rounded-lg font-medium hover:bg-red-800 transition-colors"
+                    >
+                      Open Email Course Leads
+                    </Link>
+                  </div>
+                </div>
+              )}
+            </div>
+          </>
+        )}
       </div>
-
-      {/* Content */}
-      {activeTab === 'dashboard' && (
-        <div>
-          {/* Stats */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
-            <div className="bg-gray-900 p-6 rounded border border-gray-800">
-              <h3 className="text-gray-400 mb-2">Today's Visitors</h3>
-              <p className="text-3xl font-bold">{stats.visitors}</p>
-            </div>
-            <div className="bg-gray-900 p-6 rounded border border-gray-800">
-              <h3 className="text-gray-400 mb-2">Hot Leads</h3>
-              <p className="text-3xl font-bold text-[#940909]">{stats.hotLeads}</p>
-            </div>
-            <div className="bg-gray-900 p-6 rounded border border-gray-800">
-              <h3 className="text-gray-400 mb-2">Payments (Month)</h3>
-              <p className="text-3xl font-bold">${stats.payments}</p>
-            </div>
-            <div className="bg-gray-900 p-6 rounded border border-gray-800">
-              <h3 className="text-gray-400 mb-2">Conversion Rate</h3>
-              <p className="text-3xl font-bold">{stats.conversionRate}%</p>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {activeTab === 'revtrack' && <RevtrackDashboard />}
-      {activeTab === 'revenue' && <RevenueIntelligence />}
-      {activeTab === 'clv' && <CustomerLifetimeValue />}
-      {activeTab === 'funnel' && <FunnelAnalytics />}
-      {activeTab === 'vsl' && <VSLDropoffAnalytics />}
-      {activeTab === 'scroll' && <ScrollDropoffAnalytics />}
-      {activeTab === 'journey' && <CustomerJourneyAnalytics />}
-      {activeTab === 'abandoned' && <AbandonedFunnelAnalytics />}
-      {activeTab === 'payments' && <PaymentsAnalytics />}
-      {activeTab === 'applications' && <ApplicationsTable />}
-      {activeTab === 'formSubmissions' && <FormSubmissionsTable />}
-      {activeTab === 'leads' && <LeadsTable />}
-      {activeTab === 'traffic' && <TrafficSourcesTable />}
-      {activeTab === 'workWithMe' && <WorkWithMeLeads />}
-      {activeTab === 'waitlist' && <WaitlistDashboard />}
-      {activeTab === 'emailLeads' && (
-        <div className="space-y-6">
-          <div className="bg-gray-50 border border-gray-200 rounded-lg p-8 text-center">
-            <h2 className="text-2xl font-bold mb-4">Email Course Leads</h2>
-            <p className="text-gray-600 mb-6">
-              View email engagement data from the 30-day course
-            </p>
-            <Link
-              href="/admin/leads/email"
-              className="inline-block bg-[#940909] text-white px-6 py-3 rounded-lg font-medium hover:bg-red-800 transition-colors"
-            >
-              Open Email Course Leads
-            </Link>
-          </div>
-        </div>
-      )}
     </div>
   );
 }

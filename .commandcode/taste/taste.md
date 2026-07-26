@@ -6,6 +6,7 @@
 See [code-style/taste.md](code-style/taste.md)
 # writing-style
 - Write content in a natural, flowing, human tone. Never use short, fragmented/staccato phrasing. Confidence: 0.90
+- Avoid AI-sounding "slop" — no introspective "here's why it's messy" meta-commentary, no fluff buildup, no corporate/chatbot tone, no pithy metaphors or sayings ("I focused on making the pipes work, I never built the tap"), and no clinical/business jargon ("funnel health"). Get straight to the point with direct, honest, human delivery. Confidence: 0.96
 
 # design-style
 - For mobile responsive CSS: every element must have BOTH `md:` AND `lg:` prefixes to lock desktop values, with base class serving as the mobile value. If `md:`/`lg:` already exists, only change the base class and leave md/lg values untouched. When moving content up on mobile, prefer removing existing spacing classes (pt, mt, py, mb) rather than adding new mobile positioning classes like justify-start. Every CSS property with an `md:`/`lg:` variant must also have a non-prefixed base class — never set `md:text-lg lg:text-lg` without a base `text-*` class. Confidence: 0.95

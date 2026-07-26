@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/lib/db';
-import { users, payments } from '@/db/schema';
+import { users, payments, events, sessions } from '@/db/schema';
 import { isAdminAuthenticated } from '@/lib/admin-auth';
-import { gte, sql, and, desc, eq } from 'drizzle-orm';
+import { gte, sql, and, desc, eq, lte } from 'drizzle-orm';
 
 /**
  * GET /api/admin/stats
@@ -14,49 +14,104 @@ export async function GET(request: NextRequest) {
   }
 
   try {
-    const today = new Date();
-    const startOfToday = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+    const now = new Date();
+    const startOfToday = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
+    const startOfWeek = new Date(now);
+    startOfWeek.setDate(now.getDate() - now.getDay());
+    startOfWeek.setHours(0, 0, 0, 0);
+    const sevenDaysAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
 
-    // Get total visitors (unique users)
-    const totalVisitors = await db
-      .select({ count: sql<number>`count(*)` })
-      .from(users);
+    // Run queries in parallel
+    const [
+      totalUsers,
+      hotLeadsCount,
+      warmLeadsCount,
+      paymentsThisMonth,
+      paymentsToday,
+      visitors7d,
+      visitorsToday,
+      events7d,
+      eventsToday,
+      totalSessions,
+    ] = await Promise.all([
+      db.select({ count: sql<number>`count(*)` }).from(users),
+      db.select({ count: sql<number>`count(*)` }).from(users).where(sql`${users.leadScore} >= 70`),
+      db.select({ count: sql<number>`count(*)` }).from(users).where(and(sql`${users.leadScore} >= 40`, sql`${users.leadScore} < 70`)),
+      db.select({ value: sql<number>`COALESCE(SUM(${payments.amount}), 0)` }).from(payments).where(and(eq(payments.status, 'succeeded'), gte(payments.createdAt, startOfMonth))),
+      db.select({ value: sql<number>`COALESCE(SUM(${payments.amount}), 0)` }).from(payments).where(and(eq(payments.status, 'succeeded'), gte(payments.createdAt, startOfToday))),
+      db.select({ count: sql<number>`count(distinct ${sessions.id})` }).from(sessions).where(gte(sessions.createdAt, sevenDaysAgo)),
+      db.select({ count: sql<number>`count(distinct ${sessions.id})` }).from(sessions).where(gte(sessions.createdAt, startOfToday)),
+      db.select({ count: sql<number>`count(*)` }).from(events).where(gte(events.createdAt, sevenDaysAgo)),
+      db.select({ count: sql<number>`count(*)` }).from(events).where(gte(events.createdAt, startOfToday)),
+      db.select({ count: sql<number>`count(*)` }).from(sessions),
+    ]);
 
-    // Get hot leads (leadScore >= 70)
+    // Recent hot leads (last 10, with their latest event)
     const hotLeads = await db
-      .select({ count: sql<number>`count(*)` })
+      .select({
+        id: users.id,
+        email: users.email,
+        firstName: users.firstName,
+        lastName: users.lastName,
+        leadScore: users.leadScore,
+        leadTemperature: users.leadTemperature,
+        tierInterest: users.tierInterest,
+        lastSeen: users.lastSeen,
+      })
       .from(users)
-      .where(sql`${users.leadScore} >= 70`);
+      .where(and(sql`${users.leadScore} >= 70`, sql`${users.email} IS NOT NULL`))
+      .orderBy(desc(users.leadScore))
+      .limit(10);
 
-    // Get total payments this month
-    const startOfMonth = new Date(today.getFullYear(), today.getMonth(), 1);
+    // Get latest event for each hot lead (find most recent event by userId)
+    const hotLeadIds = hotLeads.map(l => l.id);
+    let hotLeadEvents: { userId: string; eventType: string; createdAt: Date }[] = [];
+    if (hotLeadIds.length > 0) {
+      hotLeadEvents = await db
+        .select({
+          userId: events.userId,
+          eventType: events.eventType,
+          createdAt: events.createdAt,
+        })
+        .from(events)
+        .where(and(
+          sql`${events.userId} = ANY(${hotLeadIds})`,
+          eq(events.eventType, 'concierge_deposit_paid'),
+          gte(events.createdAt, sevenDaysAgo),
+        ))
+        .orderBy(desc(events.createdAt));
+    }
 
-    const totalPaymentsThisMonth = await db
-      .select({ amount: sql<number>`COALESCE(SUM(${payments.amount}), 0)` })
-      .from(payments)
-      .where(
-        and(
-          eq(payments.status, 'succeeded'),
-          gte(payments.createdAt, startOfMonth)
-        )
-      );
-
-    const paymentsThisMonth = totalPaymentsThisMonth[0]?.amount || 0;
-
-    // Get actual counts from query results
-    const totalVisitorsCount = totalVisitors[0]?.count || 0;
-    const hotLeadsCount = hotLeads[0]?.count || 0;
-
-    // Calculate conversion rate (hot leads / total visitors * 100)
-    const conversionRate = totalVisitorsCount > 0
-      ? Math.round((hotLeadsCount / totalVisitorsCount) * 100)
-      : 0;
+    const enrichedHotLeads = hotLeads.map(lead => {
+      const latest = hotLeadEvents.find(e => e.userId === lead.id);
+      return {
+        ...lead,
+        latestEvent: latest?.eventType || null,
+        latestEventAt: latest?.createdAt?.toISOString() || null,
+      };
+    });
 
     return NextResponse.json({
-      totalVisitors: totalVisitorsCount,
-      hotLeads: hotLeadsCount,
-      paymentsThisMonth: Math.round(paymentsThisMonth),
-      conversionRate,
+      revenue: {
+        month: Math.round((paymentsThisMonth[0]?.value || 0)),
+        today: Math.round((paymentsToday[0]?.value || 0)),
+      },
+      visitors: {
+        total: totalSessions[0]?.count || 0,
+        today: visitorsToday[0]?.count || 0,
+        last7Days: visitors7d[0]?.count || 0,
+      },
+      leads: {
+        total: totalUsers[0]?.count || 0,
+        hot: hotLeadsCount[0]?.count || 0,
+        warm: warmLeadsCount[0]?.count || 0,
+      },
+      events: {
+        last7Days: events7d[0]?.count || 0,
+        today: eventsToday[0]?.count || 0,
+      },
+      hotLeads: enrichedHotLeads,
     });
   } catch (error) {
     console.error('Error fetching admin stats:', error);
