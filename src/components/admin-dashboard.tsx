@@ -46,19 +46,21 @@ const stageLabel = (event: string | null) => {
 
 const navItems: { key: Tab; label: string }[] = [
   { key: 'dashboard', label: 'Overview' },
+  { key: 'revtrack', label: 'Revtrack' },
   { key: 'payments', label: 'Payments' },
   { key: 'leads', label: 'Leads' },
   { key: 'funnel', label: 'Funnel' },
-  { key: 'revtrack', label: 'Revtrack' },
   { key: 'traffic', label: 'Traffic' },
-  { key: 'vsl', label: 'VSL' },
-  { key: 'waitlist', label: 'Waitlist' },
-  { key: 'applications', label: 'Applications' },
   { key: 'revenue', label: 'Revenue' },
   { key: 'clv', label: 'LTV' },
+  { key: 'vsl', label: 'VSL' },
   { key: 'scroll', label: 'Scroll' },
   { key: 'journey', label: 'Journey' },
   { key: 'abandoned', label: 'Abandoned' },
+  { key: 'waitlist', label: 'Waitlist' },
+  { key: 'applications', label: 'Applications' },
+  { key: 'workWithMe', label: '3weeks' },
+  { key: 'emailLeads', label: 'Email' },
 ];
 
 export default function AdminDashboard() {
