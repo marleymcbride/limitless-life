@@ -124,9 +124,10 @@ export async function GET(request: NextRequest) {
       .groupBy(sessions.utmSource);
 
     // Repeat purchase rate (customers who bought 2+ times)
-    const [repeatCustomers] = await db
+    const repeatCustomersResult = await db
       .select({
-        customerCount: sql`COUNT(DISTINCT payments.user_id)`,
+        userId: payments.userId,
+        purchaseCount: sql<number>`COUNT(*)::int`,
       })
       .from(payments)
       .where(
@@ -139,7 +140,7 @@ export async function GET(request: NextRequest) {
       .groupBy(payments.userId)
       .having(sql`COUNT(*) >= 2`);
 
-    const totalRepeatCustomers = repeatCustomers?.reduce((sum, row) => sum + row.customerCount, 0) || 0;
+    const totalRepeatCustomers = repeatCustomersResult.length;
     const repeatPurchaseRate = totalCustomers > 0 ? (totalRepeatCustomers / totalCustomers) * 100 : 0;
 
     // Get total payment count

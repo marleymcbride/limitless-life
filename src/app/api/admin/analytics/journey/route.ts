@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { isAdminAuthenticated } from '@/lib/admin-auth';
 import { db } from '@/lib/db';
 import { events, sessions, users } from '@/db/schema';
-import { eq, and, gte, lte, desc, sql } from 'drizzle-orm';
+import { eq, and, gte, lte, desc, sql, inArray } from 'drizzle-orm';
 
 interface JourneyEvent {
   type: string;
@@ -205,7 +205,7 @@ async function getAggregateJourneys(
       const eventCounts = await db
         .select({ count: sql<number>`count(*)` })
         .from(events)
-        .where(sql`${events.sessionId} = ANY(${batch})`);
+        .where(inArray(events.sessionId, batch));
 
       totalEventCount += eventCounts[0]?.count || 0;
 
@@ -216,7 +216,7 @@ async function getAggregateJourneys(
         .where(
           and(
             eq(events.eventType, 'payment_complete'),
-            sql`${events.sessionId} = ANY(${batch})`
+            inArray(events.sessionId, batch)
           )
         );
 
@@ -226,7 +226,7 @@ async function getAggregateJourneys(
       const commonPathResult = await db
         .select({ type: events.eventType, count: sql<number>`count(*)` })
         .from(events)
-        .where(sql`${events.sessionId} = ANY(${batch})`)
+        .where(inArray(events.sessionId, batch))
         .groupBy(events.eventType);
 
       for (const row of commonPathResult) {

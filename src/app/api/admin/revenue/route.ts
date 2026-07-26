@@ -68,12 +68,13 @@ export async function GET(request: NextRequest) {
       );
 
     const [totalResult] = await query;
+    const totalRevenue = Number(totalResult?.totalRevenue || 0);
 
     // Extend query based on groupBy
     let revenueBreakdown: any[] = [];
     let metrics = {
       totalPayments: 0,
-      totalRevenue: totalResult[0]?.totalRevenue || 0,
+      totalRevenue,
       uniqueCustomers: 0,
       averageOrderValue: 0,
     };
@@ -84,7 +85,7 @@ export async function GET(request: NextRequest) {
         .select({
           totalRevenue: sql<number>`SUM(${payments.amount})`,
           source: sessions.utmSource,
-          paymentCount: sql<number>`COUNT(*)`,
+          paymentCount: sql<number>`COUNT(*)::int`,
         })
         .from(payments)
         .innerJoin(sessions, eq(payments.userId, sessions.userId))
@@ -101,12 +102,12 @@ export async function GET(request: NextRequest) {
 
       revenueBreakdown = sourceResults.map((result) => ({
         source: result.source || '(none)',
-        revenue: result.totalRevenue || 0,
-        count: result.paymentCount || 0,
+        revenue: Number(result.totalRevenue) || 0,
+        count: Number(result.paymentCount) || 0,
       }));
 
       // Calculate metrics
-      metrics.totalPayments = sourceResults.reduce((sum, r) => sum + r.paymentCount, 0);
+      metrics.totalPayments = sourceResults.reduce((sum, r) => sum + Number(r.paymentCount), 0);
       metrics.uniqueCustomers = sourceResults.length;
       metrics.averageOrderValue = metrics.totalRevenue > 0 ? metrics.totalRevenue / metrics.uniqueCustomers : 0;
     }
@@ -117,7 +118,7 @@ export async function GET(request: NextRequest) {
         .select({
           totalRevenue: sql<number>`SUM(${payments.amount})`,
           campaign: sessions.utmCampaign,
-          paymentCount: sql<number>`COUNT(*)`,
+          paymentCount: sql<number>`COUNT(*)::int`,
         })
         .from(payments)
         .innerJoin(sessions, eq(payments.userId, sessions.userId))
@@ -134,12 +135,12 @@ export async function GET(request: NextRequest) {
 
       revenueBreakdown = campaignResults.map((result) => ({
         campaign: result.campaign || '(none)',
-        revenue: result.totalRevenue || 0,
-        count: result.paymentCount || 0,
+        revenue: Number(result.totalRevenue) || 0,
+        count: Number(result.paymentCount) || 0,
       }));
 
       // Update metrics
-      metrics.totalPayments = campaignResults.reduce((sum, r) => sum + r.paymentCount, 0);
+      metrics.totalPayments = campaignResults.reduce((sum, r) => sum + Number(r.paymentCount), 0);
       metrics.uniqueCustomers = campaignResults.length;
       metrics.averageOrderValue = metrics.totalRevenue > 0 ? metrics.totalRevenue / metrics.uniqueCustomers : 0;
     }
@@ -150,7 +151,7 @@ export async function GET(request: NextRequest) {
         .select({
           totalRevenue: sql<number>`SUM(${payments.amount})`,
           tier: payments.tier,
-          paymentCount: sql<number>`COUNT(*)`,
+          paymentCount: sql<number>`COUNT(*)::int`,
         })
         .from(payments)
         .where(
@@ -166,12 +167,12 @@ export async function GET(request: NextRequest) {
 
       revenueBreakdown = tierResults.map((result) => ({
         tier: result.tier || 'Unknown',
-        revenue: result.totalRevenue || 0,
-        count: result.paymentCount || 0,
+        revenue: Number(result.totalRevenue) || 0,
+        count: Number(result.paymentCount) || 0,
       }));
 
       // Update metrics
-      metrics.totalPayments = tierResults.reduce((sum, r) => sum + r.paymentCount, 0);
+      metrics.totalPayments = tierResults.reduce((sum, r) => sum + Number(r.paymentCount), 0);
       metrics.uniqueCustomers = tierResults.length;
       metrics.averageOrderValue = metrics.totalRevenue > 0 ? metrics.totalRevenue / metrics.uniqueCustomers : 0;
     }
