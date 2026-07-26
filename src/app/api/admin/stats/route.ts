@@ -65,16 +65,16 @@ export async function GET(request: NextRequest) {
       .orderBy(desc(users.createdAt));
 
     // Partition users into 4 groups
-    const newCustomerUsers = allUsers.filter(u => !paidIds.has(u.id));
+    const leadUsers = allUsers.filter(u => !paidIds.has(u.id));
     const readyToJoinUsers = allUsers.filter(u => depositUserIds.has(u.id) && !paymentUserIds.has(u.id));
-    const newClientUsers = allUsers.filter(u => paymentUserIds.has(u.id));
+    const clientUsers = allUsers.filter(u => paymentUserIds.has(u.id));
     const hotLeadUsers = allUsers.filter(u => u.leadScore >= 70 && !paidIds.has(u.id)).slice(0, 10);
 
     // Batch-fetch latest event for all users in all groups
     const allGroupIds = [...new Set([
-      ...newCustomerUsers.map(u => u.id),
+      ...leadUsers.map(u => u.id),
       ...readyToJoinUsers.map(u => u.id),
-      ...newClientUsers.map(u => u.id),
+      ...clientUsers.map(u => u.id),
       ...hotLeadUsers.map(u => u.id),
     ])];
 
@@ -132,15 +132,15 @@ export async function GET(request: NextRequest) {
         today: Math.round((revenueToday[0]?.value || 0)),
       },
       counts: {
-        newCustomers: newCustomerUsers.length,
+        newLeads: leadUsers.length,
         readyToJoin: readyToJoinUsers.length,
-        newClients: newClientUsers.length,
+        newClients: clientUsers.length,
         hotLeads: hotLeadUsers.length,
       },
       groups: {
-        newCustomers: newCustomerUsers.slice(0, 10).map(enrich),
+        newLeads: leadUsers.slice(0, 10).map(enrich),
         readyToJoin: readyToJoinUsers.slice(0, 10).map(enrich),
-        newClients: newClientUsers.slice(0, 10).map(enrich),
+        newClients: clientUsers.slice(0, 10).map(enrich),
         hotLeads: hotLeadUsers.map(enrich),
       },
     });

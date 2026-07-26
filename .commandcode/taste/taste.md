@@ -22,6 +22,10 @@ See [design-style/taste.md](design-style/taste.md)
 # lead-scoring
 - Use a stage-based model where score = highest stage reached (not accumulated points), with granular stages for the sales funnel: sales page engagement, VSL engagement/completion, scrolling, CTA clicks, modal detail entry, 'ready to join', offer doc reading, checkout initiation, and concierge deposit paid. Confidence: 0.70
 
+# terminology
+- In admin dashboard sections, don't label non-paying users as "customers" or "clients" — reserve those terms only for people who have actually paid money. Non-paying users should be labeled as "leads". Confidence: 0.65
+- Use plain, human-readable language for lead stage labels (e.g., "Leads", "Hot Leads", "Ready to Join", "New Clients") rather than internal/backend jargon terms in the admin dashboard. Confidence: 0.65
+
 # stripe
 - Distinguish between payment commitment durations (how long a program lasts) and payment split options (installment plans for the same program) — these are different concepts. Confidence: 0.75
 - Use direct Stripe payment links (static URLs) for simple one-time deposits per product option, rather than the dynamic API checkout session system. Confidence: 0.60
