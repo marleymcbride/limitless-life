@@ -80,7 +80,7 @@ export async function GET(request: NextRequest) {
 
     // Partition users into 4 groups
     const leadUsers = allUsers.filter(u => !paidIds.has(u.id));
-    const readyToJoinUsers = allUsers.filter(u => depositUserIds.has(u.id) && !paymentUserIds.has(u.id));
+    const readyToJoinUsers = allUsers.filter(u => depositUserIds.has(u.id) && !coachingUserIds.has(u.id) && !lowerTierUserIds.has(u.id));
     const clientUsers = allUsers.filter(u => coachingUserIds.has(u.id));
     const customerUsers = allUsers.filter(u => lowerTierUserIds.has(u.id));
     const hotLeadUsers = allUsers.filter(u => u.leadScore >= 70 && !paidIds.has(u.id)).slice(0, 10);
