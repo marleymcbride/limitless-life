@@ -24,3 +24,6 @@ See [design-style/taste.md](design-style/taste.md)
 - Distinguish between payment commitment durations (how long a program lasts) and payment split options (installment plans for the same program) — these are different concepts. Confidence: 0.75
 - Use direct Stripe payment links (static URLs) for simple one-time deposits per product option, rather than the dynamic API checkout session system. Confidence: 0.60
 - When replacing a checkout flow pattern, keep the old code annotated with '[OLD]' rather than deleting it. Confidence: 0.70
+
+# environment-variables
+- Before writing code that depends on a new environment variable, ask the user to add/set that variable first. Confidence: 0.75
