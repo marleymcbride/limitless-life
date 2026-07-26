@@ -32,6 +32,35 @@ const timeAgo = (dateStr: string | null) => {
   return `${Math.floor(hours / 24)}d`;
 };
 
+const stageLabel = (event: string | null) => {
+  if (!event) return '';
+  if (event === 'pricing_plan_selected') return 'Selected a plan';
+  if (event === 'checkout_initiated' || event === 'stripe_checkout_initiated') return 'Reached checkout';
+  if (event === 'pricing_view') return 'Viewed pricing';
+  if (event === 'email_submit') return 'Submitted email';
+  if (event === 'vsl_start') return 'Started VSL';
+  if (event === 'concierge_deposit_paid') return 'Paid deposit';
+  if (event === 'payment_complete') return 'Paid in full';
+  return event;
+};
+
+const navItems: { key: Tab; label: string }[] = [
+  { key: 'dashboard', label: 'Overview' },
+  { key: 'payments', label: 'Payments' },
+  { key: 'leads', label: 'Leads' },
+  { key: 'funnel', label: 'Funnel' },
+  { key: 'revtrack', label: 'Revtrack' },
+  { key: 'traffic', label: 'Traffic' },
+  { key: 'vsl', label: 'VSL' },
+  { key: 'waitlist', label: 'Waitlist' },
+  { key: 'applications', label: 'Applications' },
+  { key: 'revenue', label: 'Revenue' },
+  { key: 'clv', label: 'LTV' },
+  { key: 'scroll', label: 'Scroll' },
+  { key: 'journey', label: 'Journey' },
+  { key: 'abandoned', label: 'Abandoned' },
+];
+
 export default function AdminDashboard() {
   const [activeTab, setActiveTab] = useState<Tab>('dashboard');
   const [stats, setStats] = useState({ monthRevenue: 0, todayRevenue: 0, newCustomers: 0, readyToJoin: 0, newClients: 0, hotLeadsCount: 0 });
@@ -56,30 +85,47 @@ export default function AdminDashboard() {
     } catch (_) {}
   }
 
-  const navItems: { key: Tab; label: string }[] = [
-    { key: 'dashboard', label: 'Overview' },
-    { key: 'payments', label: 'Payments' },
-    { key: 'leads', label: 'Leads' },
-    { key: 'funnel', label: 'Funnel' },
-    { key: 'revtrack', label: 'Revtrack' },
-    { key: 'traffic', label: 'Traffic' },
-    { key: 'vsl', label: 'VSL' },
-    { key: 'waitlist', label: 'Waitlist' },
-    { key: 'applications', label: 'Applications' },
-    { key: 'revenue', label: 'Revenue' },
-    { key: 'clv', label: 'LTV' },
-    { key: 'scroll', label: 'Scroll' },
-    { key: 'journey', label: 'Journey' },
-    { key: 'abandoned', label: 'Abandoned' },
-  ];
+  const renderLeadRow = (lead: any) => {
+    const name = [lead.firstName, lead.lastName].filter(Boolean).join(' ') || lead.email;
+    const initial = (lead.firstName || lead.email || '?').charAt(0).toUpperCase();
+    return (
+      <div key={lead.id} className="flex items-center justify-between px-4 py-3 border-b border-gray-800 last:border-0 hover:bg-gray-800/30" style={{ backgroundColor: '#0A0D14' }}>
+        <div className="flex items-center gap-3 min-w-0 flex-1">
+          <div className="w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold shrink-0 text-white" style={{ backgroundColor: '#940909' }}>
+            {initial}
+          </div>
+          <div className="min-w-0">
+            <div className="flex items-center gap-2">
+              <span className="text-white text-sm font-medium truncate">{name}</span>
+              <span className="text-[11px] font-bold px-1.5 py-0.5 rounded text-white" style={{ backgroundColor: '#940909' }}>{lead.leadScore}</span>
+            </div>
+            <div className="text-xs text-gray-500 truncate">{lead.email}</div>
+          </div>
+        </div>
+        {lead.latestEvent && (
+          <div className="text-xs text-gray-400 shrink-0 mr-4">{stageLabel(lead.latestEvent)}</div>
+        )}
+        {lead.latestEventAt && (
+          <div className="text-xs text-gray-600 shrink-0 w-12 text-right">{timeAgo(lead.latestEventAt)}</div>
+        )}
+        <a href={WHATSAPP_BASE} target="_blank" rel="noopener noreferrer" className="text-xs text-blue-400 hover:text-blue-300 shrink-0 ml-3 font-medium">
+          Message →
+        </a>
+      </div>
+    );
+  };
+
+  const EmptyState = ({ text }: { text: string }) => (
+    <div className="flex items-center justify-center h-40 text-gray-600 text-xs">{text}</div>
+  );
 
   return (
     <div className="min-h-screen flex flex-col" style={{ backgroundColor: '#050A0F' }}>
       {/* Top bar */}
-      <div className="flex items-center justify-between px-8 py-5 border-b border-gray-800">
+      <div className="flex items-center justify-between px-8 py-4 border-b border-gray-800">
         <div className="flex items-center gap-2">
-          <span className="text-white font-bold text-lg" style={{ fontFamily: 'Neuemontreal, sans-serif' }}>Limitless</span>
-          <span className="text-gray-600 text-sm font-medium ml-2">/ admin</span>
+          <span className="text-white font-bold text-base" style={{ fontFamily: 'Neuemontreal, sans-serif' }}>Limitless</span>
+          <span className="text-gray-600 text-xs font-medium ml-2">/ admin</span>
         </div>
         <div className="flex items-center gap-1">
           {navItems.map((item) => (
@@ -99,94 +145,103 @@ export default function AdminDashboard() {
       </div>
 
       {/* Main area */}
-      <div className="flex-1 overflow-y-auto px-8 py-8">
+      <div className="flex-1 overflow-y-auto p-8">
         {activeTab === 'dashboard' ? (
-          <div className="max-w-6xl mx-auto space-y-12">
+          <div className="max-w-6xl mx-auto">
 
             {/* Revenue hero */}
-            <div>
-              <p className="text-gray-500 text-xs font-medium uppercase tracking-widest mb-3">Revenue this month</p>
-              <div className="flex items-end gap-5">
-                <span className="text-6xl font-bold text-white tracking-tight">{formatMoney(stats.monthRevenue)}</span>
+            <div className="mb-8">
+              <p className="text-gray-500 text-xs font-medium uppercase tracking-widest mb-2">Revenue this month</p>
+              <div className="flex items-end gap-4">
+                <span className="text-5xl font-bold text-white tracking-tight">{formatMoney(stats.monthRevenue)}</span>
                 {stats.todayRevenue > 0 && (
-                  <span className="text-green-500 text-lg font-medium mb-2">+{formatMoney(stats.todayRevenue)} today</span>
+                  <span className="text-green-500 text-base font-medium mb-1">+{formatMoney(stats.todayRevenue)} today</span>
                 )}
               </div>
             </div>
 
-            {/* Pipeline cards */}
-            <div className="grid grid-cols-4 gap-5">
-              <div className="p-6 rounded-xl border border-gray-800" style={{ backgroundColor: '#0A0D14' }}>
-                <p className="text-gray-500 text-xs font-medium uppercase tracking-widest mb-2">New customers</p>
-                <span className="text-4xl font-bold text-white">{stats.newCustomers}</span>
-                <p className="text-gray-600 text-xs mt-2">Entered funnel, not paid yet</p>
-              </div>
-              <div className="p-6 rounded-xl border border-gray-800" style={{ backgroundColor: '#0A0D14' }}>
-                <p className="text-gray-500 text-xs font-medium uppercase tracking-widest mb-2">Ready to join</p>
-                <span className="text-4xl font-bold text-white">{stats.readyToJoin}</span>
-                <p className="text-gray-600 text-xs mt-2">Paid deposit</p>
-              </div>
-              <div className="p-6 rounded-xl border border-gray-800" style={{ backgroundColor: '#0A0D14' }}>
-                <p className="text-gray-500 text-xs font-medium uppercase tracking-widest mb-2">New clients</p>
-                <span className="text-4xl font-bold text-white">{stats.newClients}</span>
-                <p className="text-gray-600 text-xs mt-2">Full coaching purchase</p>
-              </div>
-              <div className="p-6 rounded-xl border border-gray-800" style={{ backgroundColor: '#0A0D14' }}>
-                <p className="text-gray-500 text-xs font-medium uppercase tracking-widest mb-2">Hot leads</p>
-                <span className="text-4xl font-bold text-white">{stats.hotLeadsCount}</span>
-                <p className="text-gray-600 text-xs mt-2">High score, not paid</p>
-              </div>
+            {/* Pipeline cards — compact row */}
+            <div className="grid grid-cols-4 gap-4 mb-8">
+              {[
+                { label: 'New customers', count: stats.newCustomers, desc: 'In funnel' },
+                { label: 'Ready to join', count: stats.readyToJoin, desc: 'Deposit paid' },
+                { label: 'New clients', count: stats.newClients, desc: 'Full purchase' },
+                { label: 'Hot leads', count: stats.hotLeadsCount, desc: 'Score 70+' },
+              ].map((item) => (
+                <div key={item.label} className="p-5 rounded-xl border border-gray-800" style={{ backgroundColor: '#0A0D14' }}>
+                  <p className="text-gray-500 text-xs font-medium uppercase tracking-widest mb-2">{item.label}</p>
+                  <span className="text-3xl font-bold text-white">{item.count}</span>
+                  <p className="text-gray-600 text-xs mt-1">{item.desc}</p>
+                </div>
+              ))}
             </div>
 
-            {/* Hot leads section */}
-            <div>
-              <div className="flex items-center justify-between mb-5">
-                <h2 className="text-white text-sm font-bold uppercase tracking-widest">Hot leads — ready to close</h2>
-                {stats.hotLeadsCount > 0 && (
-                  <span className="text-xs font-bold px-2 py-1 rounded" style={{ backgroundColor: '#940909', color: 'white' }}>
-                    {stats.hotLeadsCount} leads
-                  </span>
-                )}
+            {/* 2x2 grid of people sections */}
+            <div className="grid grid-cols-2 gap-5">
+
+              {/* Top-left: Hot leads (scored, not paid) */}
+              <div className="rounded-xl border border-gray-800 overflow-hidden" style={{ backgroundColor: '#0A0D14' }}>
+                <div className="flex items-center justify-between px-5 py-4 border-b border-gray-800">
+                  <div>
+                    <h3 className="text-white text-sm font-semibold">Hot leads</h3>
+                    <p className="text-gray-600 text-xs mt-0.5">High intent, not paid — ready to close</p>
+                  </div>
+                  <span className="text-xs font-bold px-2 py-1 rounded text-white" style={{ backgroundColor: '#940909' }}>{stats.hotLeadsCount}</span>
+                </div>
+                <div className="divide-y divide-gray-800">
+                  {hotLeads.length === 0 ? <EmptyState text="No hot leads yet" /> : hotLeads.slice(0, 6).map(renderLeadRow)}
+                </div>
               </div>
 
-              {hotLeads.length === 0 ? (
-                <div className="p-10 rounded-xl border border-gray-800 text-center" style={{ backgroundColor: '#0A0D14' }}>
-                  <p className="text-gray-500">No hot leads yet</p>
+              {/* Top-right: Ready to join (deposit paid) */}
+              <div className="rounded-xl border border-gray-800 overflow-hidden" style={{ backgroundColor: '#0A0D14' }}>
+                <div className="flex items-center justify-between px-5 py-4 border-b border-gray-800">
+                  <div>
+                    <h3 className="text-white text-sm font-semibold">Ready to join</h3>
+                    <p className="text-gray-600 text-xs mt-0.5">Deposit paid — review and onboard</p>
+                  </div>
+                  <span className="text-xs font-bold px-2 py-1 rounded" style={{ backgroundColor: '#1a5c2a', color: 'white' }}>{stats.readyToJoin}</span>
                 </div>
-              ) : (
-                <div className="space-y-2">
-                  {hotLeads.map((lead: any) => {
-                    const name = [lead.firstName, lead.lastName].filter(Boolean).join(' ') || lead.email;
-                    const initial = (lead.firstName || lead.email || '?').charAt(0).toUpperCase();
-                    return (
-                      <div key={lead.id} className="flex items-center justify-between p-5 rounded-xl border border-gray-800" style={{ backgroundColor: '#0A0D14' }}>
-                        <div className="flex items-center gap-4">
-                          <div className="w-12 h-12 rounded-full flex items-center justify-center text-lg font-bold shrink-0 text-white" style={{ backgroundColor: '#940909' }}>
-                            {initial}
-                          </div>
-                          <div>
-                            <div className="flex items-center gap-3">
-                              <span className="text-white text-base font-medium">{name}</span>
-                              <span className="text-xs font-bold px-2 py-0.5 rounded text-white" style={{ backgroundColor: '#940909' }}>{lead.leadScore}</span>
-                              <span className="text-gray-600 text-sm">{lead.email}</span>
-                            </div>
-                            {lead.latestEvent && (
-                              <div className="flex items-center gap-2 text-sm text-gray-500 mt-0.5">
-                                <span>Latest: {lead.latestEvent === 'pricing_plan_selected' ? 'Selected a plan' : lead.latestEvent === 'checkout_initiated' || lead.latestEvent === 'stripe_checkout_initiated' ? 'Reached checkout' : lead.latestEvent === 'pricing_view' ? 'Viewed pricing' : lead.latestEvent}</span>
-                              </div>
-                            )}
-                          </div>
-                        </div>
-                        <a href={WHATSAPP_BASE} target="_blank" rel="noopener noreferrer" className="text-sm text-blue-400 hover:text-blue-300 font-medium">
-                          Message →
-                        </a>
-                      </div>
-                    );
-                  })}
+                <div className="divide-y divide-gray-800">
+                  {stats.readyToJoin === 0 ? <EmptyState text="No deposits yet" /> : (
+                    <div className="flex items-center justify-center h-40 text-gray-600 text-xs">Data incoming — requires deposit payments</div>
+                  )}
                 </div>
-              )}
-            </div>
+              </div>
 
+              {/* Bottom-left: New clients */}
+              <div className="rounded-xl border border-gray-800 overflow-hidden" style={{ backgroundColor: '#0A0D14' }}>
+                <div className="flex items-center justify-between px-5 py-4 border-b border-gray-800">
+                  <div>
+                    <h3 className="text-white text-sm font-semibold">New clients</h3>
+                    <p className="text-gray-600 text-xs mt-0.5">Full coaching purchase</p>
+                  </div>
+                  <span className="text-xs font-bold px-2 py-1 rounded" style={{ backgroundColor: '#1a5c2a', color: 'white' }}>{stats.newClients}</span>
+                </div>
+                <div className="divide-y divide-gray-800">
+                  {stats.newClients === 0 ? <EmptyState text="No full purchases yet" /> : (
+                    <div className="flex items-center justify-center h-40 text-gray-600 text-xs">Data incoming — requires full payment</div>
+                  )}
+                </div>
+              </div>
+
+              {/* Bottom-right: New customers */}
+              <div className="rounded-xl border border-gray-800 overflow-hidden" style={{ backgroundColor: '#0A0D14' }}>
+                <div className="flex items-center justify-between px-5 py-4 border-b border-gray-800">
+                  <div>
+                    <h3 className="text-white text-sm font-semibold">New customers</h3>
+                    <p className="text-gray-600 text-xs mt-0.5">Entered funnel, no payment yet</p>
+                  </div>
+                  <span className="text-xs font-bold px-2 py-1 rounded text-white" style={{ backgroundColor: '#6366f1' }}>{stats.newCustomers}</span>
+                </div>
+                <div className="divide-y divide-gray-800">
+                  {stats.newCustomers === 0 ? <EmptyState text="No new customers yet" /> : (
+                    <div className="flex items-center justify-center h-40 text-gray-600 text-xs">Data incoming — requires user records with events</div>
+                  )}
+                </div>
+              </div>
+
+            </div>
           </div>
         ) : (
           <div className="max-w-6xl mx-auto">
