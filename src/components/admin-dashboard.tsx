@@ -73,19 +73,29 @@ const WHATSAPP_BASE = 'https://wa.me/13024800805?text=';
 export default function AdminDashboard() {
   const [activeTab, setActiveTab] = useState<Tab>('dashboard');
   const [stats, setStats] = useState<DashboardStats | null>(null);
+  const [statsError, setStatsError] = useState<string | null>(null);
+  const [statsLoading, setStatsLoading] = useState(true);
 
   useEffect(() => {
     fetchStats();
   }, []);
 
   async function fetchStats() {
+    setStatsLoading(true);
+    setStatsError(null);
     try {
       const res = await fetch('/api/admin/stats');
-      if (!res.ok) return;
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({ error: 'Failed to load' }));
+        throw new Error(err.error || `Error ${res.status}`);
+      }
       const data = await res.json();
       setStats(data);
     } catch (error) {
       console.error('Failed to fetch stats:', error);
+      setStatsError(error instanceof Error ? error.message : 'Unknown error');
+    } finally {
+      setStatsLoading(false);
     }
   }
 
