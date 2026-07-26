@@ -26,6 +26,7 @@ See [design-style/taste.md](design-style/taste.md)
 # terminology
 - In admin dashboard sections, don't label non-paying users as "customers" or "clients" — reserve those terms only for people who have actually paid money. Non-paying users should be labeled as "leads". Confidence: 0.70
 - Use plain, human-readable language for lead stage labels (e.g., "Leads", "Hot Leads", "Ready to Join", "New Clients") rather than internal/backend jargon terms in the admin dashboard. Confidence: 0.80
+- Distinguish three paid tiers in the business model: "Applicants" (deposit paid for a programme), "New Clients" (paid in full for a coaching programme), and "New Customers" (paid for something below coaching — e.g., a standalone course or event ticket, not a programme or deposit). Don't conflate these three groups. Confidence: 0.85
 
 # stripe
 - Distinguish between payment commitment durations (how long a program lasts) and payment split options (installment plans for the same program) — these are different concepts. Confidence: 0.75

@@ -35,7 +35,7 @@ export async function GET(request: NextRequest) {
       db.select({ count: sql<number>`count(distinct ${sessions.id})` }).from(sessions).where(gte(sessions.firstSeen, sevenDaysAgo)),
     ]);
 
-    // Get user IDs by event type
+    // Get user IDs by event type + payment tier
     const usersWithEvent = async (eventType: string) => {
       const rows = await db
         .select({ userId: events.userId })
@@ -45,12 +45,22 @@ export async function GET(request: NextRequest) {
       return new Set(rows.map(r => r.userId));
     };
 
-    const [depositUserIds, paymentUserIds] = await Promise.all([
+    const usersWithPaymentTier = async (tier: string) => {
+      const rows = await db
+        .select({ userId: payments.userId })
+        .from(payments)
+        .where(and(eq(payments.tier, tier as any), eq(payments.status, 'succeeded')))
+        .groupBy(payments.userId);
+      return new Set(rows.map(r => r.userId));
+    };
+
+    const [depositUserIds, coachingUserIds, lowerTierUserIds] = await Promise.all([
       usersWithEvent('concierge_deposit_paid'),
-      usersWithEvent('payment_complete'),
+      usersWithPaymentTier('coaching'),        // full coaching programme (future)
+      usersWithPaymentTier('course'),          // standalone course / event ticket (future)
     ]);
 
-    const paidIds = new Set([...depositUserIds, ...paymentUserIds]);
+    const paidIds = new Set([...depositUserIds, ...coachingUserIds, ...lowerTierUserIds]);
 
     // Get all users with email
     const allUsers = await db
@@ -71,7 +81,8 @@ export async function GET(request: NextRequest) {
     // Partition users into 4 groups
     const leadUsers = allUsers.filter(u => !paidIds.has(u.id));
     const readyToJoinUsers = allUsers.filter(u => depositUserIds.has(u.id) && !paymentUserIds.has(u.id));
-    const clientUsers = allUsers.filter(u => paymentUserIds.has(u.id));
+    const clientUsers = allUsers.filter(u => coachingUserIds.has(u.id));
+    const customerUsers = allUsers.filter(u => lowerTierUserIds.has(u.id));
     const hotLeadUsers = allUsers.filter(u => u.leadScore >= 70 && !paidIds.has(u.id)).slice(0, 10);
 
     // Batch-fetch latest event for all users in all groups
@@ -79,6 +90,7 @@ export async function GET(request: NextRequest) {
       ...leadUsers.map(u => u.id),
       ...readyToJoinUsers.map(u => u.id),
       ...clientUsers.map(u => u.id),
+      ...customerUsers.map(u => u.id),
       ...hotLeadUsers.map(u => u.id),
     ])];
 
@@ -142,7 +154,7 @@ export async function GET(request: NextRequest) {
       },
       counts: {
         newLeads: leadUsers.length,
-        newCustomers: readyToJoinUsers.length + clientUsers.length,
+        newCustomers: readyToJoinUsers.length + clientUsers.length + customerUsers.length,
         readyToJoin: readyToJoinUsers.length,
         newClients: clientUsers.length,
         hotLeads: hotLeadUsers.length,
@@ -151,7 +163,7 @@ export async function GET(request: NextRequest) {
         newLeads: leadUsers.slice(0, 10).map(enrich),
         readyToJoin: readyToJoinUsers.slice(0, 10).map(enrich),
         newClients: clientUsers.slice(0, 10).map(enrich),
-        newCustomers: leadUsers.slice(0, 10).map(enrich),
+        newCustomers: customerUsers.slice(0, 10).map(enrich),
         hotLeads: hotLeadUsers.map(enrich),
       },
     });
