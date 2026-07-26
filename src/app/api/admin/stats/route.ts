@@ -56,8 +56,8 @@ export async function GET(request: NextRequest) {
 
     const [depositUserIds, coachingUserIds, lowerTierUserIds] = await Promise.all([
       usersWithEvent('concierge_deposit_paid'),
-      usersWithPaymentTier('coaching'),        // full coaching programme (future)
-      usersWithPaymentTier('course'),          // standalone course / event ticket (future)
+      usersWithPaymentTier('concierge'),        // full coaching programme
+      usersWithPaymentTier('course'),           // standalone course / event ticket (future)
     ]);
 
     const paidIds = new Set([...depositUserIds, ...coachingUserIds, ...lowerTierUserIds]);
@@ -154,7 +154,7 @@ export async function GET(request: NextRequest) {
       },
       counts: {
         newLeads: leadUsers.length,
-        newCustomers: readyToJoinUsers.length + clientUsers.length + customerUsers.length,
+        newCustomers: customerUsers.length,
         readyToJoin: readyToJoinUsers.length,
         newClients: clientUsers.length,
         hotLeads: hotLeadUsers.length,

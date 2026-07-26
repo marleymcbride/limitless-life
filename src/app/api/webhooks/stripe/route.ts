@@ -309,13 +309,20 @@ export async function POST(request: NextRequest) {
           // Calculate user's current lead score for n8n sync
           const scoreData = await calculateLeadScore(userId);
 
-          // Determine tier from metadata or calculate from amount
+          // Determine tier from metadata first, then fall back to amount-based
           const amountInCents = session.amount_total || 0;
-          let tier: 'Access' | 'Plus' | 'Premium' | 'Elite' = 'Access';
-          if (amountInCents >= 1499700) tier = 'Elite';
-          else if (amountInCents >= 899700) tier = 'Premium';
-          else if (amountInCents >= 499700) tier = 'Plus';
-          else tier = 'Access';
+          let tier = session.metadata?.tier || null;
+          
+          if (!tier) {
+            let mappedTier: 'Access' | 'Plus' | 'Premium' | 'Elite' = 'Access';
+            if (amountInCents >= 1499700) mappedTier = 'Elite';
+            else if (amountInCents >= 899700) mappedTier = 'Premium';
+            else if (amountInCents >= 499700) mappedTier = 'Plus';
+            else mappedTier = 'Access';
+            tier = mappedTier;
+          }
+
+          console.log('[STRIPE WEBHOOK] Using tier:', { tier, fromMetadata: !!session.metadata?.tier });
 
           // Sync to Airtable via n8n (fire-and-forget, non-blocking)
           syncPaymentToAirtable({
