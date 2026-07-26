@@ -25,12 +25,14 @@ export async function GET(request: NextRequest) {
     const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
     const startOfToday = new Date(now.getFullYear(), now.getMonth(), now.getDate());
 
-    // Revenue
+    const sevenDaysAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
+
+    // Revenue + visitors
     const [revenueMonth, revenueToday, visitorsTodayCount, visitorsWeekCount] = await Promise.all([
       db.select({ value: sql<number>`COALESCE(SUM(${payments.amount}), 0)` }).from(payments).where(and(eq(payments.status, 'succeeded'), gte(payments.createdAt, startOfMonth))),
       db.select({ value: sql<number>`COALESCE(SUM(${payments.amount}), 0)` }).from(payments).where(and(eq(payments.status, 'succeeded'), gte(payments.createdAt, startOfToday))),
       db.select({ count: sql<number>`count(distinct ${sessions.id})` }).from(sessions).where(gte(sessions.firstSeen, startOfToday)),
-      db.select({ count: sql<number>`count(distinct ${sessions.id})` }).from(sessions).where(gte(sessions.firstSeen, now.getTime() - 7 * 24 * 60 * 60 * 1000)),
+      db.select({ count: sql<number>`count(distinct ${sessions.id})` }).from(sessions).where(gte(sessions.firstSeen, sevenDaysAgo)),
     ]);
 
     // Get user IDs by event type
@@ -82,31 +84,28 @@ export async function GET(request: NextRequest) {
 
     const latestEvents: { userId: string; eventType: string; createdAt: Date }[] = [];
     if (allGroupIds.length > 0) {
-      // Subquery: get max created_at per user
-      const subquery = db
-        .select({
-          userId: events.userId,
-          maxCreated: sql<Date>`MAX(${events.createdAt})`.as('max_created'),
-        })
-        .from(events)
-        .where(inArray(events.userId, allGroupIds))
-        .groupBy(events.userId)
-        .as('sub');
-
-      const rows = await db
+      const raw = await db
         .select({
           userId: events.userId,
           eventType: events.eventType,
           createdAt: events.createdAt,
         })
         .from(events)
-        .innerJoin(subquery, and(
-          eq(events.userId, subquery.userId),
-          eq(events.createdAt, subquery.maxCreated),
-        ))
-        .where(inArray(events.userId, allGroupIds));
+        .where(inArray(events.userId, allGroupIds))
+        .orderBy(desc(events.createdAt));
 
-      latestEvents.push(...rows);
+      // Take only the first event per user (most recent)
+      const seen = new Set<string>();
+      for (const row of raw) {
+        if (row.userId && !seen.has(row.userId)) {
+          seen.add(row.userId);
+          latestEvents.push({
+            userId: row.userId,
+            eventType: row.eventType,
+            createdAt: row.createdAt instanceof Date ? row.createdAt : new Date(row.createdAt),
+          });
+        }
+      }
     }
 
     const latestEventMap = new Map<string, { eventType: string; createdAt: Date }>();
@@ -116,17 +115,21 @@ export async function GET(request: NextRequest) {
       }
     }
 
-    const enrich = (u: LeadRow) => ({
-      id: u.id,
-      email: u.email,
-      firstName: u.firstName,
-      lastName: u.lastName,
-      leadScore: u.leadScore,
-      leadTemperature: u.leadTemperature,
-      tierInterest: u.tierInterest,
-      latestEvent: latestEventMap.get(u.id)?.eventType || null,
-      latestEventAt: latestEventMap.get(u.id)?.createdAt?.toISOString() || null,
-    });
+    const enrich = (u: LeadRow) => {
+      const latest = latestEventMap.get(u.id);
+      const eventDate = latest?.createdAt;
+      return {
+        id: u.id,
+        email: u.email,
+        firstName: u.firstName,
+        lastName: u.lastName,
+        leadScore: u.leadScore,
+        leadTemperature: u.leadTemperature,
+        tierInterest: u.tierInterest,
+        latestEvent: latest?.eventType || null,
+        latestEventAt: eventDate ? new Date(eventDate).toISOString() : null,
+      };
+    };
 
     return NextResponse.json({
       revenue: {
