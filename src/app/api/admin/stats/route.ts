@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/lib/db';
 import { users, payments, events, sessions, campaignMetrics, campaigns } from '@/db/schema';
 import { isAdminAuthenticated } from '@/lib/admin-auth';
-import { gte, sql, and, desc, eq, inArray, notInArray, ne, max, min } from 'drizzle-orm';
+import { gte, sql, and, desc, eq, inArray, notInArray, neq, max, min } from 'drizzle-orm';
 
 interface LeadRow {
   id: string;
@@ -50,7 +50,7 @@ export async function GET(request: NextRequest) {
         .innerJoin(campaigns, eq(campaignMetrics.campaignId, campaigns.id))
         .where(and(
           gte(campaignMetrics.metricDate, startOfMonth),
-          ne(campaigns.utmCampaign, 'test-campaign-123'),
+          neq(campaigns.utmCampaign, 'test-campaign-123'),
           eq(campaigns.category, 'video'),
         ))
         .groupBy(campaignMetrics.campaignId);
