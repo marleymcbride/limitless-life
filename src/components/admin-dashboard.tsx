@@ -65,7 +65,7 @@ const navItems: { key: Tab; label: string }[] = [
 
 export default function AdminDashboard() {
   const [activeTab, setActiveTab] = useState<Tab>('dashboard');
-  const [stats, setStats] = useState({ monthRevenue: 0, todayRevenue: 0, newLeads: 0, newCustomers: 0, readyToJoin: 0, newClients: 0, hotLeadsCount: 0, visitorsToday: 0, visitorsWeek: 0 });
+  const [stats, setStats] = useState({ monthRevenue: 0, todayRevenue: 0, newLeads: 0, newCustomers: 0, readyToJoin: 0, newClients: 0, hotLeadsCount: 0, visitorsToday: 0, visitorsWeek: 0, ytViews: 0, ytClicks: 0, ytCvr: 0 });
   const [groups, setGroups] = useState({ newLeads: [], readyToJoin: [], newClients: [], newCustomers: [], hotLeads: [] });
 
   useEffect(() => { fetchStats(); }, []);
@@ -85,6 +85,9 @@ export default function AdminDashboard() {
         hotLeadsCount: d.counts?.hotLeads || 0,
         visitorsToday: d.visitors?.today || 0,
         visitorsWeek: d.visitors?.last7Days || 0,
+        ytViews: d.marketing?.views || 0,
+        ytClicks: d.marketing?.clicks || 0,
+        ytCvr: d.marketing?.cvr || 0,
       });
       setGroups(d.groups || { newLeads: [], readyToJoin: [], newClients: [], newCustomers: [], hotLeads: [] });
     } catch (_) {}
@@ -167,16 +170,20 @@ export default function AdminDashboard() {
               </div>
               <div className="flex gap-8">
                 <div className="text-right">
+                  <p className="text-gray-500 text-xs uppercase tracking-widest mb-1">YouTube views</p>
+                  <span className="text-2xl font-bold text-white">{stats.ytViews.toLocaleString()}</span>
+                </div>
+                <div className="text-right">
+                  <p className="text-gray-500 text-xs uppercase tracking-widest mb-1">Clicks</p>
+                  <span className="text-2xl font-bold text-white">{stats.ytClicks.toLocaleString()}</span>
+                </div>
+                <div className="text-right">
+                  <p className="text-gray-500 text-xs uppercase tracking-widest mb-1">CVR</p>
+                  <span className="text-2xl font-bold text-white">{stats.ytCvr}%</span>
+                </div>
+                <div className="text-right">
                   <p className="text-gray-500 text-xs uppercase tracking-widest mb-1">New leads</p>
                   <span className="text-2xl font-bold text-white">{stats.newLeads}</span>
-                </div>
-                <div className="text-right">
-                  <p className="text-gray-500 text-xs uppercase tracking-widest mb-1">Today</p>
-                  <span className="text-2xl font-bold text-white">{stats.visitorsToday}</span>
-                </div>
-                <div className="text-right">
-                  <p className="text-gray-500 text-xs uppercase tracking-widest mb-1">Week</p>
-                  <span className="text-2xl font-bold text-white">{stats.visitorsWeek}</span>
                 </div>
               </div>
             </div>
