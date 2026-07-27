@@ -1,8 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/lib/db';
-import { users, payments, events, sessions, campaignMetrics } from '@/db/schema';
+import { users, payments, events, sessions } from '@/db/schema';
 import { isAdminAuthenticated } from '@/lib/admin-auth';
 import { gte, sql, and, desc, eq, inArray, notInArray } from 'drizzle-orm';
+import { fetchCampaigns } from '@/lib/airtable';
 
 interface LeadRow {
   id: string;
@@ -28,16 +29,24 @@ export async function GET(request: NextRequest) {
     const sevenDaysAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
 
     // Revenue + visitors
-    const [revenueMonth, revenueToday, visitorsTodayCount, visitorsWeekCount, ytMetrics] = await Promise.all([
+    const [revenueMonth, revenueToday, visitorsTodayCount, visitorsWeekCount] = await Promise.all([
       db.select({ value: sql<number>`COALESCE(SUM(${payments.amount}), 0)` }).from(payments).where(and(eq(payments.status, 'succeeded'), gte(payments.createdAt, startOfMonth))),
       db.select({ value: sql<number>`COALESCE(SUM(${payments.amount}), 0)` }).from(payments).where(and(eq(payments.status, 'succeeded'), gte(payments.createdAt, startOfToday))),
       db.select({ count: sql<number>`count(distinct ${sessions.id})` }).from(sessions).where(gte(sessions.firstSeen, startOfToday)),
       db.select({ count: sql<number>`count(distinct ${sessions.id})` }).from(sessions).where(gte(sessions.firstSeen, sevenDaysAgo)),
-      db.select({
-        views: sql<number>`COALESCE(SUM(${campaignMetrics.views}), 0)`,
-        clicks: sql<number>`COALESCE(SUM(${campaignMetrics.clicks}), 0)`,
-      }).from(campaignMetrics).where(gte(campaignMetrics.metricDate, startOfMonth)),
     ]);
+
+    // Fetch marketing data from Airtable (YouTube campaigns)
+    let ytViews = 0;
+    let ytClicks = 0;
+    try {
+      const campaigns = await fetchCampaigns();
+      const videoCampaigns = campaigns.filter((c: any) => c.category === 'video');
+      ytViews = videoCampaigns.reduce((sum: number, c: any) => sum + (c.views || 0), 0);
+      ytClicks = videoCampaigns.reduce((sum: number, c: any) => sum + (c.clicks || 0), 0);
+    } catch (err) {
+      console.error('[stats] Failed to fetch campaign data:', err);
+    }
 
     // Get user IDs by event type + payment tier
     const usersWithEvent = async (eventType: string) => {
@@ -157,9 +166,9 @@ export async function GET(request: NextRequest) {
         last7Days: visitorsWeekCount[0]?.count || 0,
       },
       marketing: {
-        views: ytMetrics[0]?.views || 0,
-        clicks: ytMetrics[0]?.clicks || 0,
-        cvr: ytMetrics[0]?.views > 0 ? Math.round((ytMetrics[0]?.clicks / ytMetrics[0]?.views) * 100) : 0,
+        ytViews,
+        ytClicks,
+        cvr: ytViews > 0 ? Math.round((ytClicks / ytViews) * 100) : 0,
       },
       counts: {
         newLeads: leadUsers.length,

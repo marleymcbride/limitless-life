@@ -85,8 +85,8 @@ export default function AdminDashboard() {
         hotLeadsCount: d.counts?.hotLeads || 0,
         visitorsToday: d.visitors?.today || 0,
         visitorsWeek: d.visitors?.last7Days || 0,
-        ytViews: d.marketing?.views || 0,
-        ytClicks: d.marketing?.clicks || 0,
+        ytViews: d.marketing?.ytViews || 0,
+        ytClicks: d.marketing?.ytClicks || 0,
         ytCvr: d.marketing?.cvr || 0,
       });
       setGroups(d.groups || { newLeads: [], readyToJoin: [], newClients: [], newCustomers: [], hotLeads: [] });
