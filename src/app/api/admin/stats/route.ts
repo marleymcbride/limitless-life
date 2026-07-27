@@ -1,9 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/lib/db';
-import { users, payments, events, sessions } from '@/db/schema';
+import { users, payments, events, sessions, campaignMetrics, campaigns } from '@/db/schema';
 import { isAdminAuthenticated } from '@/lib/admin-auth';
-import { gte, sql, and, desc, eq, inArray, notInArray } from 'drizzle-orm';
-import { fetchCampaigns } from '@/lib/airtable';
+import { gte, sql, and, desc, eq, inArray, notInArray, ne, max, min } from 'drizzle-orm';
 
 interface LeadRow {
   id: string;
@@ -36,16 +35,32 @@ export async function GET(request: NextRequest) {
       db.select({ count: sql<number>`count(distinct ${sessions.id})` }).from(sessions).where(gte(sessions.firstSeen, sevenDaysAgo)),
     ]);
 
-    // Fetch marketing data from Airtable (YouTube campaigns)
+    // Fetch YouTube campaign metrics — monthly delta from campaign_metrics
     let ytViews = 0;
     let ytClicks = 0;
     try {
-      const campaigns = await fetchCampaigns();
-      const videoCampaigns = campaigns.filter((c: any) => c.category === 'video');
-      ytViews = videoCampaigns.reduce((sum: number, c: any) => sum + (c.views || 0), 0);
-      ytClicks = videoCampaigns.reduce((sum: number, c: any) => sum + (c.clicks || 0), 0);
+      const rows = await db
+        .select({
+          minViews: min(campaignMetrics.views),
+          maxViews: max(campaignMetrics.views),
+          minClicks: min(campaignMetrics.clicks),
+          maxClicks: max(campaignMetrics.clicks),
+        })
+        .from(campaignMetrics)
+        .innerJoin(campaigns, eq(campaignMetrics.campaignId, campaigns.id))
+        .where(and(
+          gte(campaignMetrics.metricDate, new Date(now.getFullYear(), now.getMonth(), 1)),
+          ne(campaigns.utmCampaign, 'test-campaign-123'),
+          eq(campaigns.category, 'video'),
+        ))
+        .groupBy(campaignMetrics.campaignId);
+
+      for (const row of rows) {
+        ytViews += (row.maxViews || 0) - (row.minViews || 0);
+        ytClicks += (row.maxClicks || 0) - (row.minClicks || 0);
+      }
     } catch (err) {
-      console.error('[stats] Failed to fetch campaign data:', err);
+      console.error('[stats] Failed to fetch campaign metrics:', err);
     }
 
     // Get user IDs by event type + payment tier
