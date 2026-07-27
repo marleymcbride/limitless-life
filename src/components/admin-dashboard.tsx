@@ -65,7 +65,7 @@ const navItems: { key: Tab; label: string }[] = [
 
 export default function AdminDashboard() {
   const [activeTab, setActiveTab] = useState<Tab>('dashboard');
-  const [stats, setStats] = useState({ monthRevenue: 0, todayRevenue: 0, newLeads: 0, newCustomers: 0, readyToJoin: 0, newClients: 0, hotLeadsCount: 0, visitorsToday: 0, visitorsWeek: 0, ytViews: 0, ytClicks: 0, ytCvr: 0 });
+  const [stats, setStats] = useState({ monthRevenue: 0, todayRevenue: 0, newLeads: 0, newCustomers: 0, readyToJoin: 0, newClients: 0, hotLeadsCount: 0, visitorsToday: 0, visitorsWeek: 0, ytViews: 0, ytClicks: 0, ytCvr: 0, salesUnique: 0, salesOfferDoc: 0, salesEmails: 0 });
   const [groups, setGroups] = useState({ newLeads: [], readyToJoin: [], newClients: [], newCustomers: [], hotLeads: [] });
 
   useEffect(() => { fetchStats(); }, []);
@@ -88,6 +88,9 @@ export default function AdminDashboard() {
         ytViews: d.marketing?.ytViews || 0,
         ytClicks: d.marketing?.ytClicks || 0,
         ytCvr: d.marketing?.cvr || 0,
+        salesUnique: d.salesPage?.uniqueVisitors || 0,
+        salesOfferDoc: d.salesPage?.offerDocViews || 0,
+        salesEmails: d.salesPage?.emailsCaptured || 0,
       });
       setGroups(d.groups || { newLeads: [], readyToJoin: [], newClients: [], newCustomers: [], hotLeads: [] });
     } catch (_) {}
@@ -157,8 +160,9 @@ export default function AdminDashboard() {
         {activeTab === 'dashboard' ? (
           <div className="max-w-6xl mx-auto">
 
-            {/* Revenue hero row */}
-            <div className="flex items-center justify-between mb-10">
+            {/* Top metrics row — revenue left, marketing middle, sales page right */}
+            <div className="flex items-start justify-between mb-10">
+              {/* Revenue */}
               <div>
                 <p className="text-gray-500 text-xs font-medium uppercase tracking-widest mb-2">Revenue this month</p>
                 <div className="flex items-end gap-4">
@@ -168,22 +172,42 @@ export default function AdminDashboard() {
                   )}
                 </div>
               </div>
-              <div className="flex gap-8">
-                <div className="text-right">
-                  <p className="text-gray-500 text-xs uppercase tracking-widest mb-1">YouTube views</p>
-                  <span className="text-2xl font-bold text-white">{stats.ytViews.toLocaleString()}</span>
+
+              {/* Marketing */}
+              <div>
+                <p className="text-gray-500 text-xs font-medium uppercase tracking-widest mb-3 text-center">Marketing this month</p>
+                <div className="flex gap-6">
+                  <div className="text-center">
+                    <p className="text-gray-500 text-[10px] uppercase tracking-wider mb-1">YT views</p>
+                    <span className="text-xl font-bold text-white">{stats.ytViews.toLocaleString()}</span>
+                  </div>
+                  <div className="text-center">
+                    <p className="text-gray-500 text-[10px] uppercase tracking-wider mb-1">YT clicks</p>
+                    <span className="text-xl font-bold text-white">{stats.ytClicks.toLocaleString()}</span>
+                  </div>
+                  <div className="text-center">
+                    <p className="text-gray-500 text-[10px] uppercase tracking-wider mb-1">CVR</p>
+                    <span className="text-xl font-bold text-white">{stats.ytCvr}%</span>
+                  </div>
                 </div>
-                <div className="text-right">
-                  <p className="text-gray-500 text-xs uppercase tracking-widest mb-1">Clicks</p>
-                  <span className="text-2xl font-bold text-white">{stats.ytClicks.toLocaleString()}</span>
-                </div>
-                <div className="text-right">
-                  <p className="text-gray-500 text-xs uppercase tracking-widest mb-1">CVR</p>
-                  <span className="text-2xl font-bold text-white">{stats.ytCvr}%</span>
-                </div>
-                <div className="text-right">
-                  <p className="text-gray-500 text-xs uppercase tracking-widest mb-1">New leads</p>
-                  <span className="text-2xl font-bold text-white">{stats.newLeads}</span>
+              </div>
+
+              {/* Sales page */}
+              <div>
+                <p className="text-gray-500 text-xs font-medium uppercase tracking-widest mb-3 text-center">Sales page this month</p>
+                <div className="flex gap-6">
+                  <div className="text-center">
+                    <p className="text-gray-500 text-[10px] uppercase tracking-wider mb-1">Unique visitors</p>
+                    <span className="text-xl font-bold text-white">{stats.salesUnique.toLocaleString()}</span>
+                  </div>
+                  <div className="text-center">
+                    <p className="text-gray-500 text-[10px] uppercase tracking-wider mb-1">Offer doc views</p>
+                    <span className="text-xl font-bold text-white">{stats.salesOfferDoc.toLocaleString()}</span>
+                  </div>
+                  <div className="text-center">
+                    <p className="text-gray-500 text-[10px] uppercase tracking-wider mb-1">Emails captured</p>
+                    <span className="text-xl font-bold text-white">{stats.salesEmails.toLocaleString()}</span>
+                  </div>
                 </div>
               </div>
             </div>

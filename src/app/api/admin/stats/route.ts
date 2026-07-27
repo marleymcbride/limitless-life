@@ -49,7 +49,7 @@ export async function GET(request: NextRequest) {
         .from(campaignMetrics)
         .innerJoin(campaigns, eq(campaignMetrics.campaignId, campaigns.id))
         .where(and(
-          gte(campaignMetrics.metricDate, new Date(now.getFullYear(), now.getMonth(), 1)),
+          gte(campaignMetrics.metricDate, startOfMonth),
           ne(campaigns.utmCampaign, 'test-campaign-123'),
           eq(campaigns.category, 'video'),
         ))
@@ -62,6 +62,24 @@ export async function GET(request: NextRequest) {
     } catch (err) {
       console.error('[stats] Failed to fetch campaign metrics:', err);
     }
+
+    // Sales page events this month
+    const countEventType = async (eventType: string) => {
+      const [row] = await db
+        .select({ count: sql<number>`count(distinct ${events.sessionId})` })
+        .from(events)
+        .where(and(
+          eq(events.eventType, eventType as any),
+          gte(events.createdAt, startOfMonth),
+        ));
+      return row?.count || 0;
+    };
+
+    const [uniqueVisitors, offerDocViews, emailsCaptured] = await Promise.all([
+      countEventType('page_view'),
+      countEventType('pricing_view'),
+      countEventType('email_submit'),
+    ]);
 
     // Get user IDs by event type + payment tier
     const usersWithEvent = async (eventType: string) => {
@@ -184,6 +202,11 @@ export async function GET(request: NextRequest) {
         ytViews,
         ytClicks,
         cvr: ytViews > 0 ? Math.round((ytClicks / ytViews) * 100) : 0,
+      },
+      salesPage: {
+        uniqueVisitors,
+        offerDocViews,
+        emailsCaptured,
       },
       counts: {
         newLeads: leadUsers.length,
