@@ -85,7 +85,7 @@ export default function WhatYoullAchieve({ onApplyNowClick }: WhatYoullAchievePr
         </div>
 
         {/* Grid layout - 3 columns on desktop, 1 on mobile */}
-        <div className="flex flex-col items-stretch mx-3 md:mx-20 lg:mx-20 gap-10 mb-12 md:grid md:grid-cols-2 lg:grid-cols-3">
+        <div className="flex flex-col items-stretch mx-3 md:mx-10 lg:mx-10 gap-4 md:gap-10 lg:gap-10 mb-12 md:grid md:grid-cols-2 lg:grid-cols-3">
 
           {items.map((item, index) => (
             <div

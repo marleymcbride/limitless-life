@@ -59,10 +59,10 @@ export default function SimplifiedThreeStepsSection() {
         </div>
 
         {/* Steps Grid */}
-        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+        <div className="mx-3 md:mx-10 lg:mx-10">
+          <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 lg:gap-10 mb-16">
           {steps.map((step, index) => (
-            <div
-              key={index}
+            <div key={index}>
               className={`${colorStrategy.whiteAccent} rounded-lg p-8 border-2 border-gray-300 relative`}
             >
               {/* Step Number */}

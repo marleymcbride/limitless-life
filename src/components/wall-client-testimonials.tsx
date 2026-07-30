@@ -19,7 +19,8 @@ export default function WallClientTestimonials() {
             in the same cycle you're in right now.
           </p>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+          <div className="mx-3 md:mx-10 lg:mx-10">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10 lg:gap-10 mb-12">
             <div className="bg-gray-800 rounded-lg p-6 text-left">
               <div className="flex items-center mb-4">
                 <div className="w-10 h-10 bg-gray-600 rounded-full mr-3 flex items-center justify-center">
@@ -168,6 +169,7 @@ export default function WallClientTestimonials() {
                 without breaking a sweat. This system is worth every penny."
               </p>
             </div>
+          </div>
           </div>
 
           <div className="bg-gray-800 rounded-lg p-8 mb-12">

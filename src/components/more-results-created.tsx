@@ -24,7 +24,7 @@ export default function ClientTransformationGallery({ onApplyNowClick }: ClientT
 
 
         {/* Desktop: 3 in a row */}
-        <div className="hidden md:grid md:grid-cols-3 lg:grid lg:grid-cols-3 gap-8 max-w-7xl py-6 mx-auto">
+        <div className="hidden md:grid md:grid-cols-3 lg:grid lg:grid-cols-3 gap-8 md:gap-10 lg:gap-10 max-w-7xl py-6 mx-auto">
           {/* Rob transformation */}
           <div className="relative">
             <SmoothImage

@@ -190,7 +190,7 @@ export default function Home() {
             </h1>
             <div className="md:hidden lg:hidden block text-white text-center mb-0 mt-0 sm:mt-0 max-w-full mx-auto px-0 pb-8">
             <div
-              className="md:hidden lg:hidden font-sans font-bold block text-2xl md:text-4xl  lg:text-4.5xl text-white text-center mb-0 mt-0 capitalize tracking-normal leading-[1]"
+              className="md:hidden lg:hidden font-sans font-bold block text-2xl md:text-4xl  lg:text-4.5xl text-white text-center mb-0 mt-0 capitalize tracking-normal leading-[1] evergreen-landscape-hide"
             >
             (training only 2 days a week)
             </div>
@@ -262,6 +262,7 @@ export default function Home() {
               <VSLPlayer
                 videoId="a6751ee5-c1d3-4006-9776-7d1a9ced040c"
                 libraryId="505300"
+                isEvergreen={true}
                 autoplay={true}
                 muted={true}
                 preload={true}

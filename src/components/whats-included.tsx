@@ -102,7 +102,7 @@ export default function WhatsIncluded() {
           </p>
         </div>
 
-        <div className="mx-auto max-w-5xl grid gap-4 md:grid-cols-2 lg:grid-cols-3 mb-12">
+        <div className="mx-auto max-w-5xl grid gap-4 md:gap-10 lg:gap-10 md:grid-cols-2 lg:grid-cols-3 mb-12">
           {features.map((feature, index) => (
             <div
               key={index}

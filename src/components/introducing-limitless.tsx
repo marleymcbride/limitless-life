@@ -132,8 +132,8 @@ export default function IntroducingLimitless({ onApplyNowClick }: IntroducingLim
           Here&apos;s why it works:
           </p>
 
-          <div className="mx-3 md:mx-20 lg:mx-20">
-            <div className="flex flex-col items-stretch gap-4 mb-4 text-left md:grid md:grid-cols-3 md:mb-12">
+          <div className="mx-3 md:mx-10 lg:mx-10">
+            <div className="flex flex-col items-stretch gap-4 md:gap-10 lg:gap-10 mb-4 text-left md:grid md:grid-cols-3 md:mb-12">
                   <div className="w-full mx-3 md:mx-0 lg:mx-0 px-12 md:px-12 lg:px-12 bg-white/10 rounded-lg p-6 py-28 border border-white/20 mobile-box-width-transparent introducing-limitless-transparent-card">
                   <h3
                     className="text-2xl font-bold text-white mb-4"
@@ -181,8 +181,8 @@ export default function IntroducingLimitless({ onApplyNowClick }: IntroducingLim
               </div>
               </div>
 
-              <div className="mx-3 md:mx-20 lg:mx-20">
-            <div className="flex flex-col items-stretch gap-4 mb-4 text-left md:grid md:grid-cols-3 md:mb-12">
+              <div className="mx-3 md:mx-10 lg:mx-10">
+            <div className="flex flex-col items-stretch gap-4 md:gap-10 lg:gap-10 mb-4 text-left md:grid md:grid-cols-3 md:mb-12">
                   <div className="w-full mx-3 md:mx-0 lg:mx-0 px-12 md:px-12 lg:px-12 bg-white/10 rounded-lg p-6 py-28 border border-white/20 mobile-box-width-transparent introducing-limitless-transparent-card">
                   <h3
                     className="text-2xl font-bold text-white mb-4"

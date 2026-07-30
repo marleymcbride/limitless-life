@@ -24,7 +24,7 @@ export default function RunningEmptySection() {
 
         {/* THE ENEMIES - PREMIUM DESIGN */}
         <div className="max-w-7xl mx-auto mb-20">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 lg:gap-10 mb-16">
             {/* Enemy 1: Big Supplement */}
             <div className="bg-gradient-to-br from-red-900/40 to-red-800/30 backdrop-blur-sm rounded-xl p-8 border border-red-500/40 hover:border-red-400/60 transition-none duration-0">
               <div className="text-center mb-6">
@@ -163,7 +163,7 @@ export default function RunningEmptySection() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-14 lg:gap-14">
             {/* What Everyone Else Does */}
             <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/40 backdrop-blur-sm rounded-xl p-8 border border-gray-600/30">
               <h3 className="text-2xl font-bold text-gray-300 mb-6 text-center">
@@ -272,7 +272,7 @@ export default function RunningEmptySection() {
             Still Think This Is "Too Good To Be True"? Here's More Proof:
           </h3>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 lg:gap-10">
             {/* Case Study 1: Rob's Complete Transformation */}
             <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm rounded-xl p-8 border border-white/20">
               <div className="text-center mb-6">
@@ -387,7 +387,7 @@ export default function RunningEmptySection() {
             <h3 className="text-3xl font-bold text-white mb-6">
               The Bottom Line: You Have Two Choices
             </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 lg:gap-10 text-left">
               <div className="bg-red-900/30 rounded-xl p-6">
                 <h4 className="text-xl font-bold text-red-300 mb-4">
                   ❌ Stay Where You Are:

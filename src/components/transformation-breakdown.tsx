@@ -73,7 +73,8 @@ export default function TransformationBreakdownSection() {
         </div>
 
         {/* Transformations Grid */}
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+        <div className="mx-3 md:mx-10 lg:mx-10">
+          <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 lg:gap-10 mb-16">
           {transformations.map((item, index) => (
             <div
               key={index}
@@ -157,6 +158,7 @@ export default function TransformationBreakdownSection() {
               </div>
             </div>
           ))}
+        </div>
         </div>
 
         {/* Bottom Summary - All Buyer Types */}

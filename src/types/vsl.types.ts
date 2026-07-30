@@ -23,6 +23,7 @@ export interface VSLPlayerProps {
   showQualitySelector?: boolean;
   availableQualities?: VideoQuality[];
   pauseOverlayContainer?: string;
+  isEvergreen?: boolean;
 }
 
 export interface VSLProgress {

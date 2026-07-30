@@ -99,7 +99,8 @@ export default function PainPoints() {
               in. Sound familiar?
             </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+            <div className="mx-3 md:mx-10 lg:mx-10">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-10 lg:gap-10 mb-6">
               <div className="bg-[#940909]/20 p-4 rounded border-l-4 border-[#940909]">
                 <p className="text-white font-bold">5:30 AM</p>
                 <p className="text-gray-300">
@@ -147,6 +148,7 @@ export default function PainPoints() {
               </p>
             </div>
           </div>
+        </div>
         </div>
 
         <div className="text-center mb-12">

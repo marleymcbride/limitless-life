@@ -408,7 +408,8 @@ export default function FinalCta() {
             It&apos;s Decision Time, Scott
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+          <div className="mx-3 md:mx-10 lg:mx-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 lg:gap-10 mb-12">
             <div className="bg-red-900/30 backdrop-blur-sm rounded-lg p-8 border border-red-500/30">
               <h3 className="text-xl font-bold text-red-300 mb-4">
                 Path 1: Stay Where You Are
