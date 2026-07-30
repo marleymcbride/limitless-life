@@ -175,7 +175,7 @@ export default function AdminDashboard() {
         {activeTab === 'dashboard' ? (
           <div className="max-w-6xl mx-auto">
 
-            {/* Top metrics row — revenue left, marketing middle, sales page right */}
+            {/* Top metrics row — revenue left, marketing, leads, sales page right */}
             <div className="flex items-start justify-between mb-10">
               {/* Revenue */}
               <div>
@@ -191,7 +191,7 @@ export default function AdminDashboard() {
               {/* Marketing */}
               <div>
                 <p className="text-gray-500 text-xs font-medium uppercase tracking-widest mb-3 text-center">Marketing this month</p>
-                <div className="flex gap-6">
+                <div className="flex gap-3">
                   <div className="text-center">
                     <p className="text-gray-500 text-[10px] uppercase tracking-wider mb-1">YT views</p>
                     <span className="text-2xl font-bold text-white">{stats.ytViews.toLocaleString()}</span>
@@ -207,10 +207,34 @@ export default function AdminDashboard() {
                 </div>
               </div>
 
+              {/* Leads */}
+              <div>
+                <p className="text-gray-500 text-xs font-medium uppercase tracking-widest mb-3 text-center">Leads this month</p>
+                <div className="flex gap-3 items-center">
+                  <div className="text-center">
+                    <p className="text-gray-500 text-[10px] uppercase tracking-wider mb-1">New</p>
+                    <span className="text-2xl font-bold text-white">{stats.newLeadsThisMonth.toLocaleString()}</span>
+                  </div>
+                  <div className="text-center relative">
+                    <p className="text-gray-500 text-[10px] uppercase tracking-wider mb-1">Unread</p>
+                    <div className="flex items-center gap-1 justify-center">
+                      <span className="text-2xl font-bold text-white">{unreadCount}</span>
+                      {unreadCount > 0 && (
+                        <button onClick={markLeadsAsRead} className="text-[10px] bg-gray-800 hover:bg-gray-700 text-gray-300 px-1.5 py-0.5 rounded transition-colors">✓</button>
+                      )}
+                    </div>
+                  </div>
+                  <div className="text-center">
+                    <p className="text-gray-500 text-[10px] uppercase tracking-wider mb-1">Live</p>
+                    <span className="text-2xl font-bold text-white">{stats.newLeads.toLocaleString()}</span>
+                  </div>
+                </div>
+              </div>
+
               {/* Sales page */}
               <div>
                 <p className="text-gray-500 text-xs font-medium uppercase tracking-widest mb-3 text-center">Sales page this month</p>
-                <div className="flex gap-6">
+                <div className="flex gap-3">
                   <div className="text-center">
                     <p className="text-gray-500 text-[10px] uppercase tracking-wider mb-1">Unique visitors</p>
                     <span className="text-2xl font-bold text-white">{stats.salesUnique.toLocaleString()}</span>
@@ -227,9 +251,9 @@ export default function AdminDashboard() {
               </div>
             </div>
 
-            {/* Lead stats row */}
-            <div className="flex items-center justify-center mb-10">
-              <div className="flex gap-10 items-center">
+            {/* Remove old lead stats row */}
+            <div className="flex items-center mb-10">
+              <div className="flex gap-4 items-center">
                 <div className="text-center">
                   <p className="text-gray-500 text-[10px] uppercase tracking-wider mb-1">New leads this month</p>
                   <span className="text-2xl font-bold text-white">{stats.newLeadsThisMonth.toLocaleString()}</span>
