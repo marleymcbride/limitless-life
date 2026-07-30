@@ -79,8 +79,8 @@ export async function GET(request: NextRequest) {
       countEventType('page_view'),
       countEventType('pricing_view'),
       countEventType('email_submit'),
-      // Count users with email created this month
-      db.select({ count: sql<number>`count(*)` }).from(users).where(and(sql`${users.email} IS NOT NULL`, gte(users.createdAt, startOfMonth))),
+      // Count users created this month, excluding dismissed
+      db.execute(sql`SELECT count(*) FROM users WHERE email IS NOT NULL AND created_at >= ${startOfMonth} AND id NOT IN (SELECT user_id FROM dismissed_leads)`).then(r => Number(r.rows?.[0]?.count || 0)),
     ]);
 
     // Get user IDs by event type + payment tier
@@ -238,7 +238,7 @@ export async function GET(request: NextRequest) {
       },
       counts: {
         newLeads: leadUsers.length,
-        newLeadsThisMonth: newLeadsThisMonth[0]?.count || 0,
+        newLeadsThisMonth,
         newCustomers: customerUsers.length,
         readyToJoin: readyToJoinUsers.length,
         newClients: clientUsers.length,
@@ -251,6 +251,7 @@ export async function GET(request: NextRequest) {
         newCustomers: customerUsers.slice(0, 10).map(enrich),
         hotLeads: hotLeadUsers.map(enrich),
       },
+      dismissedIds: Array.from(dismissedIds),
     });
   } catch (error) {
     console.error('Error fetching admin stats:', error);

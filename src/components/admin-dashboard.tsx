@@ -102,6 +102,9 @@ export default function AdminDashboard() {
       });
       setGroups(d.groups || { newLeads: [], readyToJoin: [], newClients: [], newCustomers: [], hotLeads: [] });
       setUnreadCount(d.counts?.newLeadsThisMonth || 0);
+      // Track which leads have been dismissed for UI hiding
+      const dismissed = new Set(d.dismissedIds || []);
+      setDismissedClients(dismissed);
     } catch (_) {}
   }
 
@@ -137,11 +140,9 @@ export default function AdminDashboard() {
           Message →
         </a>
         )}
-        {lead.tier && (
-          <button onClick={() => dismissClient(lead.id)} className="text-xs text-gray-600 hover:text-gray-400 shrink-0 ml-3 font-medium">
-            Dismiss
-          </button>
-        )}
+        <button onClick={() => dismissClient(lead.id)} className="text-xs text-gray-600 hover:text-gray-400 shrink-0 ml-2 font-medium">
+          ✕
+        </button>
       </div>
     );
   };
@@ -256,10 +257,10 @@ export default function AdminDashboard() {
             {/* 2x2 grid of people sections */}
             <div className="grid grid-cols-2 gap-5">
               {[
-                { title: 'Applicants (deposit paid)', desc: 'Deposit paid — ready to onboard', count: stats.readyToJoin, data: groups.readyToJoin, color: '#1a5c2a' },
+                { title: 'Applicants (deposit paid)', desc: 'Deposit paid — ready to onboard', count: groups.readyToJoin.filter((l: any) => !dismissedClients.has(l.id)).length, data: groups.readyToJoin.filter((l: any) => !dismissedClients.has(l.id)), color: '#1a5c2a' },
                 { title: 'New clients', desc: 'Paid for full coaching programme', count: groups.newClients.filter((l: any) => !dismissedClients.has(l.id)).length, data: groups.newClients.filter((l: any) => !dismissedClients.has(l.id)), color: '#1a5c2a' },
-                { title: 'Hottest leads', desc: 'Almost there — just need a push', count: stats.hotLeadsCount, data: groups.hotLeads, color: '#940909' },
-                { title: 'New customers', desc: 'Purchased a course or event ticket', count: stats.newCustomers, data: groups.newCustomers, color: '#6366f1' },
+                { title: 'Hottest leads', desc: 'Almost there — just need a push', count: groups.hotLeads.filter((l: any) => !dismissedClients.has(l.id)).length, data: groups.hotLeads.filter((l: any) => !dismissedClients.has(l.id)), color: '#940909' },
+                { title: 'New customers', desc: 'Purchased a course or event ticket', count: groups.newCustomers.filter((l: any) => !dismissedClients.has(l.id)).length, data: groups.newCustomers.filter((l: any) => !dismissedClients.has(l.id)), color: '#6366f1' },
               ].map((section) => (
                 <div key={section.title} className="rounded-xl border border-gray-800 overflow-hidden" style={{ backgroundColor: '#0A0D14' }}>
                   <div className="flex items-center justify-between px-5 py-4 border-b border-gray-800">
