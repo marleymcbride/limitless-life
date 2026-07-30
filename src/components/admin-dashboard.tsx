@@ -224,9 +224,6 @@ export default function AdminDashboard() {
                     <p className="text-gray-500 text-[10px] uppercase tracking-wider mb-1">New</p>
                     <div className="flex items-center gap-1 justify-center">
                       <span className="text-2xl font-bold text-white">{unreadCount}</span>
-                      {unreadCount > 0 && (
-                        <button onClick={markLeadsAsRead} className="text-[10px] bg-gray-800 hover:bg-gray-700 text-gray-300 px-1.5 py-0.5 rounded transition-colors">✓</button>
-                      )}
                     </div>
                   </div>
                   <div className="text-center">
