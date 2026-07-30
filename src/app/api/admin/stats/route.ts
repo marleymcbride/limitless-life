@@ -148,7 +148,7 @@ export async function GET(request: NextRequest) {
     const dismissedIds = await db.select({ userId: dismissedLeads.userId }).from(dismissedLeads).then(rows => new Set(rows.map(r => r.userId)));
 
     // Partition users into 4 groups (excluding dismissed)
-    const leadUsers = allUsers.filter(u => !paidIds.has(u.id) && !dismissedIds.has(u.id));
+    const leadUsers = allUsers.filter(u => !paidIds.has(u.id));
     const readyToJoinUsers = allUsers.filter(u => depositUserIds.has(u.id) && !coachingUserIds.has(u.id) && !lowerTierUserIds.has(u.id) && !dismissedIds.has(u.id));
     const clientUsers = allUsers.filter(u => (coachingUserIds.has(u.id) || legacyClientIds.has(u.id)) && !dismissedIds.has(u.id));
     const clientIds = new Set(clientUsers.map(u => u.id));

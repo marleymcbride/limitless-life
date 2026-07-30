@@ -49,7 +49,7 @@ export async function GET(request: NextRequest) {
         tier: payments.tier,
         paymentPlan: payments.paymentPlan,
         status: payments.status,
-        paymentDate: payments.createdAt,
+        paymentDate: payments.paymentDate,
         userEmail: users.email,
         userFirstName: users.firstName,
         userLastName: users.lastName,
@@ -158,7 +158,7 @@ export async function GET(request: NextRequest) {
         totalPayments,
         uniqueCustomers,
         revenueByTier,
-        currency: 'USD',
+        currency: 'GBP',
       },
       pagination: {
         total: totalCount,

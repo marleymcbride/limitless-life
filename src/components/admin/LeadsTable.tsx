@@ -234,6 +234,9 @@ export function LeadsTable() {
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   Last Seen
                 </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Actions
+                </th>
               </tr>
             </thead>
             <tbody>
@@ -299,6 +302,17 @@ export function LeadsTable() {
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                     {new Date(lead.lastSeen).toLocaleDateString()}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm">
+                    <button
+                      onClick={async () => {
+                        await fetch('/api/admin/dismiss-lead', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ userId: lead.id }) });
+                        window.location.reload();
+                      }}
+                      className="text-xs text-gray-400 hover:text-red-500 transition-colors"
+                    >
+                      Dismiss
+                    </button>
                   </td>
                 </tr>
               ))}
