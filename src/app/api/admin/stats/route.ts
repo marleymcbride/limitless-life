@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/lib/db';
-import { users, payments, events, sessions, campaignMetrics, campaigns } from '@/db/schema';
+import { users, payments, events, sessions, campaignMetrics, campaigns, dismissedLeads } from '@/db/schema';
 import { isAdminAuthenticated } from '@/lib/admin-auth';
 import { gte, sql, and, desc, eq, inArray, notInArray, max, min } from 'drizzle-orm';
 
@@ -134,13 +134,16 @@ export async function GET(request: NextRequest) {
       .where(sql`${users.email} IS NOT NULL`)
       .orderBy(desc(users.createdAt));
 
-    // Partition users into 4 groups
-    const leadUsers = allUsers.filter(u => !paidIds.has(u.id));
-    const readyToJoinUsers = allUsers.filter(u => depositUserIds.has(u.id) && !coachingUserIds.has(u.id) && !lowerTierUserIds.has(u.id));
-    const clientUsers = allUsers.filter(u => coachingUserIds.has(u.id) || legacyClientIds.has(u.id));
+    // Get dismissed lead IDs and filter them out client/lead groups
+    const dismissedIds = await db.select({ userId: dismissedLeads.userId }).from(dismissedLeads).then(rows => new Set(rows.map(r => r.userId)));
+
+    // Partition users into 4 groups (excluding dismissed)
+    const leadUsers = allUsers.filter(u => !paidIds.has(u.id) && !dismissedIds.has(u.id));
+    const readyToJoinUsers = allUsers.filter(u => depositUserIds.has(u.id) && !coachingUserIds.has(u.id) && !lowerTierUserIds.has(u.id) && !dismissedIds.has(u.id));
+    const clientUsers = allUsers.filter(u => (coachingUserIds.has(u.id) || legacyClientIds.has(u.id)) && !dismissedIds.has(u.id));
     const clientIds = new Set(clientUsers.map(u => u.id));
-    const customerUsers = allUsers.filter(u => lowerTierUserIds.has(u.id) && !clientIds.has(u.id));
-    const hotLeadUsers = allUsers.filter(u => u.leadScore >= 70 && !paidIds.has(u.id)).slice(0, 10);
+    const customerUsers = allUsers.filter(u => lowerTierUserIds.has(u.id) && !clientIds.has(u.id) && !dismissedIds.has(u.id));
+    const hotLeadUsers = allUsers.filter(u => u.leadScore >= 70 && !paidIds.has(u.id) && !dismissedIds.has(u.id)).slice(0, 10);
 
     // Batch-fetch latest event and payment tier for all users
     const allGroupIds = [...new Set([

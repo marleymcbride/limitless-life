@@ -118,6 +118,14 @@ export const webhookQueue = pgTable('webhook_queue', {
   nextAttemptIdx: index('idx_webhook_queue_next_attempt').on(table.status, table.nextAttemptAt),
 }));
 
+export const dismissedLeads = pgTable('dismissed_leads', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  userId: uuid('user_id').references(() => users.id).notNull().unique(),
+  dismissedAt: timestamp('dismissed_at').defaultNow(),
+}, (table) => ({
+  userIdIdx: index('idx_dismissed_leads_user_id').on(table.userId),
+}));
+
 export const leadAlerts = pgTable('lead_alerts', {
   id: uuid('id').primaryKey().defaultRandom(),
   userId: uuid('user_id').references(() => users.id).notNull(),

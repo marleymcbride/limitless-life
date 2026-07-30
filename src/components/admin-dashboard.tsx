@@ -67,6 +67,11 @@ export default function AdminDashboard() {
   const [activeTab, setActiveTab] = useState<Tab>('dashboard');
   const [stats, setStats] = useState({ monthRevenue: 0, todayRevenue: 0, newLeads: 0, newLeadsThisMonth: 0, newCustomers: 0, readyToJoin: 0, newClients: 0, hotLeadsCount: 0, visitorsToday: 0, visitorsWeek: 0, ytViews: 0, ytClicks: 0, ytCvr: 0, salesUnique: 0, salesOfferDoc: 0, salesEmails: 0, latestLeadCreatedAt: null as string | null });
   const [groups, setGroups] = useState({ newLeads: [], readyToJoin: [], newClients: [], newCustomers: [], hotLeads: [] });
+  const [dismissedClients, setDismissedClients] = useState<Set<string>>(new Set());
+  const dismissClient = async (id: string) => {
+    await fetch('/api/admin/dismiss-lead', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ userId: id }) });
+    setDismissedClients(prev => new Set(prev).add(id));
+  };
 
   // "Unread" leads — computed from latest lead timestamp vs last viewed
   const [unreadCount, setUnreadCount] = useState(0);
@@ -138,9 +143,16 @@ export default function AdminDashboard() {
         {lead.latestEventAt && (
           <div className="text-xs text-gray-600 shrink-0 w-12 text-right">{timeAgo(lead.latestEventAt)}</div>
         )}
+        {!lead.tier && (
         <a href={WHATSAPP_BASE} target="_blank" rel="noopener noreferrer" className="text-xs text-blue-400 hover:text-blue-300 shrink-0 ml-3 font-medium">
           Message →
         </a>
+        )}
+        {lead.tier && (
+          <button onClick={() => dismissClient(lead.id)} className="text-xs text-gray-600 hover:text-gray-400 shrink-0 ml-3 font-medium">
+            Dismiss
+          </button>
+        )}
       </div>
     );
   };
@@ -259,7 +271,7 @@ export default function AdminDashboard() {
             <div className="grid grid-cols-2 gap-5">
               {[
                 { title: 'Applicants (deposit paid)', desc: 'Deposit paid — ready to onboard', count: stats.readyToJoin, data: groups.readyToJoin, color: '#1a5c2a' },
-                { title: 'New clients', desc: 'Paid for full coaching programme', count: stats.newClients, data: groups.newClients, color: '#1a5c2a' },
+                { title: 'New clients', desc: 'Paid for full coaching programme', count: groups.newClients.filter((l: any) => !dismissedClients.has(l.id)).length, data: groups.newClients.filter((l: any) => !dismissedClients.has(l.id)), color: '#1a5c2a' },
                 { title: 'Hottest leads', desc: 'Almost there — just need a push', count: stats.hotLeadsCount, data: groups.hotLeads, color: '#940909' },
                 { title: 'New customers', desc: 'Purchased a course or event ticket', count: stats.newCustomers, data: groups.newCustomers, color: '#6366f1' },
               ].map((section) => (
