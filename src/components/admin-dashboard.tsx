@@ -65,7 +65,7 @@ const navItems: { key: Tab; label: string }[] = [
 
 export default function AdminDashboard() {
   const [activeTab, setActiveTab] = useState<Tab>('dashboard');
-  const [stats, setStats] = useState({ monthRevenue: 0, todayRevenue: 0, newLeads: 0, newLeadsThisMonth: 0, newCustomers: 0, readyToJoin: 0, newClients: 0, hotLeadsCount: 0, visitorsToday: 0, visitorsWeek: 0, ytViews: 0, ytClicks: 0, ytCvr: 0, salesUnique: 0, salesOfferDoc: 0, salesEmails: 0, latestLeadCreatedAt: null as string | null });
+  const [stats, setStats] = useState({ monthRevenue: 0, todayRevenue: 0, newLeads: 0, newLeadsThisMonth: 0, newCustomers: 0, readyToJoin: 0, newClients: 0, hotLeadsCount: 0, visitorsToday: 0, visitorsWeek: 0, ytViews: 0, ytClicks: 0, ytCvr: 0, salesUnique: 0, salesOfferDoc: 0, salesEmails: 0 });
   const [groups, setGroups] = useState({ newLeads: [], readyToJoin: [], newClients: [], newCustomers: [], hotLeads: [] });
   const [dismissedClients, setDismissedClients] = useState<Set<string>>(new Set());
   const dismissClient = async (id: string) => {
@@ -73,9 +73,7 @@ export default function AdminDashboard() {
     setDismissedClients(prev => new Set(prev).add(id));
   };
 
-  // "Unread" leads — computed from latest lead timestamp vs last viewed
   const [unreadCount, setUnreadCount] = useState(0);
-  const [lastViewedLead, setLastViewedLead] = useState<string | null>(null);
 
   useEffect(() => { fetchStats(); }, []);
 
@@ -101,18 +99,9 @@ export default function AdminDashboard() {
         salesUnique: d.salesPage?.uniqueVisitors || 0,
         salesOfferDoc: d.salesPage?.offerDocViews || 0,
         salesEmails: d.salesPage?.emailsCaptured || 0,
-        latestLeadCreatedAt: d.counts?.latestLeadCreatedAt || null,
       });
       setGroups(d.groups || { newLeads: [], readyToJoin: [], newClients: [], newCustomers: [], hotLeads: [] });
-
-      // Unread lead notification — increment whenever a new lead appeared since last check
-      const latest = d.counts?.latestLeadCreatedAt;
-      if (latest && lastViewedLead !== null && latest > lastViewedLead) {
-        setUnreadCount(prev => prev + 1);
-      } else if (latest && lastViewedLead === null) {
-        // First load — just set the baseline, don't show as unread
-        setLastViewedLead(latest);
-      }
+      setUnreadCount(d.counts?.newLeadsThisMonth || 0);
     } catch (_) {}
   }
 

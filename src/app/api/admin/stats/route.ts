@@ -243,7 +243,6 @@ export async function GET(request: NextRequest) {
         readyToJoin: readyToJoinUsers.length,
         newClients: clientUsers.length,
         hotLeads: hotLeadUsers.length,
-        latestLeadCreatedAt: allUsers.length > 0 ? allUsers[0].lastSeen?.toISOString() : null,
       },
       groups: {
         newLeads: leadUsers.slice(0, 10).map(enrich),
