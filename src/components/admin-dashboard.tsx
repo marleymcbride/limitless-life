@@ -123,7 +123,11 @@ export default function AdminDashboard() {
           <div className="min-w-0">
             <div className="flex items-center gap-2">
               <span className="text-white text-sm font-medium truncate">{name}</span>
-              <span className="text-[11px] font-bold px-1.5 py-0.5 rounded text-white" style={{ backgroundColor: '#940909' }}>{lead.leadScore}</span>
+              {lead.tier ? (
+                <span className="text-[10px] font-medium px-1.5 py-0.5 rounded text-white" style={{ backgroundColor: '#2563eb' }}>{lead.tier}</span>
+              ) : (
+                <span className="text-[11px] font-bold px-1.5 py-0.5 rounded text-white" style={{ backgroundColor: '#940909' }}>{lead.leadScore}</span>
+              )}
             </div>
             <div className="text-xs text-gray-500 truncate">{lead.email}</div>
           </div>
@@ -209,14 +213,14 @@ export default function AdminDashboard() {
 
               {/* Leads */}
               <div>
-                <p className="text-gray-500 text-xs font-medium uppercase tracking-widest mb-3 text-center">Leads this month</p>
-                <div className="flex gap-3 items-center">
+                <p className="text-gray-500 text-xs font-medium uppercase tracking-widest mb-3 text-center">Leads</p>
+                <div className="flex gap-6 items-center">
                   <div className="text-center">
-                    <p className="text-gray-500 text-[10px] uppercase tracking-wider mb-1">New</p>
+                    <p className="text-gray-500 text-[10px] uppercase tracking-wider mb-1">This month</p>
                     <span className="text-2xl font-bold text-white">{stats.newLeadsThisMonth.toLocaleString()}</span>
                   </div>
                   <div className="text-center relative">
-                    <p className="text-gray-500 text-[10px] uppercase tracking-wider mb-1">Unread</p>
+                    <p className="text-gray-500 text-[10px] uppercase tracking-wider mb-1">New</p>
                     <div className="flex items-center gap-1 justify-center">
                       <span className="text-2xl font-bold text-white">{unreadCount}</span>
                       {unreadCount > 0 && (
@@ -225,7 +229,7 @@ export default function AdminDashboard() {
                     </div>
                   </div>
                   <div className="text-center">
-                    <p className="text-gray-500 text-[10px] uppercase tracking-wider mb-1">Live</p>
+                    <p className="text-gray-500 text-[10px] uppercase tracking-wider mb-1">Total leads</p>
                     <span className="text-2xl font-bold text-white">{stats.newLeads.toLocaleString()}</span>
                   </div>
                 </div>
@@ -247,34 +251,6 @@ export default function AdminDashboard() {
                     <p className="text-gray-500 text-[10px] uppercase tracking-wider mb-1">Emails captured</p>
                     <span className="text-2xl font-bold text-white">{stats.salesEmails.toLocaleString()}</span>
                   </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Remove old lead stats row */}
-            <div className="flex items-center mb-10">
-              <div className="flex gap-4 items-center">
-                <div className="text-center">
-                  <p className="text-gray-500 text-[10px] uppercase tracking-wider mb-1">New leads this month</p>
-                  <span className="text-2xl font-bold text-white">{stats.newLeadsThisMonth.toLocaleString()}</span>
-                </div>
-                <div className="text-center relative">
-                  <p className="text-gray-500 text-[10px] uppercase tracking-wider mb-1">New leads (unread)</p>
-                  <div className="flex items-center gap-2 justify-center">
-                    <span className="text-2xl font-bold text-white">{unreadCount}</span>
-                    {unreadCount > 0 && (
-                      <button
-                        onClick={markLeadsAsRead}
-                        className="text-[10px] bg-gray-800 hover:bg-gray-700 text-gray-300 px-2 py-1 rounded transition-colors"
-                      >
-                        Mark read
-                      </button>
-                    )}
-                  </div>
-                </div>
-                <div className="text-center">
-                  <p className="text-gray-500 text-[10px] uppercase tracking-wider mb-1">Live leads</p>
-                  <span className="text-2xl font-bold text-white">{stats.newLeads.toLocaleString()}</span>
                 </div>
               </div>
             </div>

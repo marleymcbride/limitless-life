@@ -142,7 +142,7 @@ export async function GET(request: NextRequest) {
     const customerUsers = allUsers.filter(u => lowerTierUserIds.has(u.id) && !clientIds.has(u.id));
     const hotLeadUsers = allUsers.filter(u => u.leadScore >= 70 && !paidIds.has(u.id)).slice(0, 10);
 
-    // Batch-fetch latest event for all users in all groups
+    // Batch-fetch latest event and payment tier for all users
     const allGroupIds = [...new Set([
       ...leadUsers.map(u => u.id),
       ...readyToJoinUsers.map(u => u.id),
@@ -152,6 +152,7 @@ export async function GET(request: NextRequest) {
     ])];
 
     const latestEvents: { userId: string; eventType: string; createdAt: Date }[] = [];
+    const paymentTiers: Map<string, string> = new Map();
     if (allGroupIds.length > 0) {
       const raw = await db
         .select({
@@ -173,6 +174,18 @@ export async function GET(request: NextRequest) {
             eventType: row.eventType,
             createdAt: row.createdAt instanceof Date ? row.createdAt : new Date(row.createdAt),
           });
+        }
+      }
+
+      // Get payment tier per user (most recent payment)
+      const paymentRows = await db
+        .select({ userId: payments.userId, tier: payments.tier })
+        .from(payments)
+        .where(and(inArray(payments.userId, allGroupIds), eq(payments.status, 'succeeded')))
+        .orderBy(desc(payments.paymentDate));
+      for (const p of paymentRows) {
+        if (p.userId && p.tier && !paymentTiers.has(p.userId)) {
+          paymentTiers.set(p.userId, p.tier);
         }
       }
     }
@@ -197,6 +210,7 @@ export async function GET(request: NextRequest) {
         tierInterest: u.tierInterest,
         latestEvent: latest?.eventType || null,
         latestEventAt: eventDate ? new Date(eventDate).toISOString() : null,
+        tier: paymentTiers.get(u.id) || null,
       };
     };
 
