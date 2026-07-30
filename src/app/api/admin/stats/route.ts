@@ -29,8 +29,8 @@ export async function GET(request: NextRequest) {
 
     // Revenue + visitors
     const [revenueMonth, revenueToday, visitorsTodayCount, visitorsWeekCount] = await Promise.all([
-      db.select({ value: sql<number>`COALESCE(SUM(${payments.amount}), 0)` }).from(payments).where(and(eq(payments.status, 'succeeded'), gte(payments.createdAt, startOfMonth))),
-      db.select({ value: sql<number>`COALESCE(SUM(${payments.amount}), 0)` }).from(payments).where(and(eq(payments.status, 'succeeded'), gte(payments.createdAt, startOfToday))),
+      db.select({ value: sql<number>`COALESCE(SUM(${payments.amount}), 0)` }).from(payments).where(and(eq(payments.status, 'succeeded'), gte(payments.paymentDate, startOfMonth))),
+      db.select({ value: sql<number>`COALESCE(SUM(${payments.amount}), 0)` }).from(payments).where(and(eq(payments.status, 'succeeded'), gte(payments.paymentDate, startOfToday))),
       db.select({ count: sql<number>`count(distinct ${sessions.id})` }).from(sessions).where(gte(sessions.firstSeen, startOfToday)),
       db.select({ count: sql<number>`count(distinct ${sessions.id})` }).from(sessions).where(gte(sessions.firstSeen, sevenDaysAgo)),
     ]);
@@ -102,13 +102,21 @@ export async function GET(request: NextRequest) {
       return new Set(rows.map(r => r.userId));
     };
 
-    const [depositUserIds, coachingUserIds, lowerTierUserIds] = await Promise.all([
+    const [depositUserIds, coachingUserIds, lowerTierUserIds, allPaidUserIds] = await Promise.all([
       usersWithEvent('concierge_deposit_paid'),
       usersWithPaymentTier('concierge'),        // full coaching programme
       usersWithPaymentTier('course'),           // standalone course / event ticket (future)
+      // Any user with a successful payment (catches manual entries like "Built Different Legacy")
+      db.select({ userId: payments.userId }).from(payments).where(eq(payments.status, 'succeeded')).groupBy(payments.userId).then(rows => new Set(rows.map(r => r.userId))),
     ]);
 
-    const paidIds = new Set([...depositUserIds, ...coachingUserIds, ...lowerTierUserIds]);
+    // Paid check: anyone with any successful payment
+    const paidIds = allPaidUserIds;
+
+    // Legacy manual-entry tiers — treat as clients if they match a known legacy name
+    const legacyClientIds = new Set(
+      Array.from(allPaidUserIds).filter(id => !depositUserIds.has(id) && !coachingUserIds.has(id) && !lowerTierUserIds.has(id))
+    );
 
     // Get all users with email
     const allUsers = await db
@@ -129,8 +137,9 @@ export async function GET(request: NextRequest) {
     // Partition users into 4 groups
     const leadUsers = allUsers.filter(u => !paidIds.has(u.id));
     const readyToJoinUsers = allUsers.filter(u => depositUserIds.has(u.id) && !coachingUserIds.has(u.id) && !lowerTierUserIds.has(u.id));
-    const clientUsers = allUsers.filter(u => coachingUserIds.has(u.id));
-    const customerUsers = allUsers.filter(u => lowerTierUserIds.has(u.id));
+    const clientUsers = allUsers.filter(u => coachingUserIds.has(u.id) || legacyClientIds.has(u.id));
+    const clientIds = new Set(clientUsers.map(u => u.id));
+    const customerUsers = allUsers.filter(u => lowerTierUserIds.has(u.id) && !clientIds.has(u.id));
     const hotLeadUsers = allUsers.filter(u => u.leadScore >= 70 && !paidIds.has(u.id)).slice(0, 10);
 
     // Batch-fetch latest event for all users in all groups
