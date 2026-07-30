@@ -75,12 +75,22 @@ export async function GET(request: NextRequest) {
       return row?.count || 0;
     };
 
-    const [uniqueVisitors, offerDocViews, emailsCaptured, newLeadsThisMonth] = await Promise.all([
+    // Count new leads this month (excluding dismissed)
+    const startStr = startOfMonth.toISOString();
+    const [countsRow] = await db
+      .select({ count: sql<number>`count(*)::int` })
+      .from(users)
+      .where(and(
+        sql`${users.email} IS NOT NULL`,
+        sql`${users.createdAt} >= ${startStr}::timestamptz`,
+        sql`${users.id} NOT IN (SELECT user_id FROM dismissed_leads)`,
+      ));
+    const newLeadsThisMonth = countsRow?.count || 0;
+
+    const [uniqueVisitors, offerDocViews, emailsCaptured] = await Promise.all([
       countEventType('page_view'),
       countEventType('pricing_view'),
       countEventType('email_submit'),
-      // Count users created this month, excluding dismissed
-      db.execute(sql`SELECT count(*) FROM users WHERE email IS NOT NULL AND created_at >= ${startOfMonth} AND id NOT IN (SELECT user_id FROM dismissed_leads)`).then(r => Number(r.rows?.[0]?.count || 0)),
     ]);
 
     // Get user IDs by event type + payment tier
