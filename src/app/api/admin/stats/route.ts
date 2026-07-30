@@ -75,10 +75,12 @@ export async function GET(request: NextRequest) {
       return row?.count || 0;
     };
 
-    const [uniqueVisitors, offerDocViews, emailsCaptured] = await Promise.all([
+    const [uniqueVisitors, offerDocViews, emailsCaptured, newLeadsThisMonth] = await Promise.all([
       countEventType('page_view'),
       countEventType('pricing_view'),
       countEventType('email_submit'),
+      // Count users with email created this month
+      db.select({ count: sql<number>`count(*)` }).from(users).where(and(sql`${users.email} IS NOT NULL`, gte(users.createdAt, startOfMonth))),
     ]);
 
     // Get user IDs by event type + payment tier
@@ -210,10 +212,12 @@ export async function GET(request: NextRequest) {
       },
       counts: {
         newLeads: leadUsers.length,
+        newLeadsThisMonth: newLeadsThisMonth[0]?.count || 0,
         newCustomers: customerUsers.length,
         readyToJoin: readyToJoinUsers.length,
         newClients: clientUsers.length,
         hotLeads: hotLeadUsers.length,
+        latestLeadCreatedAt: allUsers.length > 0 ? allUsers[0].lastSeen?.toISOString() : null,
       },
       groups: {
         newLeads: leadUsers.slice(0, 10).map(enrich),

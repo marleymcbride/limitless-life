@@ -65,8 +65,12 @@ const navItems: { key: Tab; label: string }[] = [
 
 export default function AdminDashboard() {
   const [activeTab, setActiveTab] = useState<Tab>('dashboard');
-  const [stats, setStats] = useState({ monthRevenue: 0, todayRevenue: 0, newLeads: 0, newCustomers: 0, readyToJoin: 0, newClients: 0, hotLeadsCount: 0, visitorsToday: 0, visitorsWeek: 0, ytViews: 0, ytClicks: 0, ytCvr: 0, salesUnique: 0, salesOfferDoc: 0, salesEmails: 0 });
+  const [stats, setStats] = useState({ monthRevenue: 0, todayRevenue: 0, newLeads: 0, newLeadsThisMonth: 0, newCustomers: 0, readyToJoin: 0, newClients: 0, hotLeadsCount: 0, visitorsToday: 0, visitorsWeek: 0, ytViews: 0, ytClicks: 0, ytCvr: 0, salesUnique: 0, salesOfferDoc: 0, salesEmails: 0, latestLeadCreatedAt: null as string | null });
   const [groups, setGroups] = useState({ newLeads: [], readyToJoin: [], newClients: [], newCustomers: [], hotLeads: [] });
+
+  // "Unread" leads — computed from latest lead timestamp vs last viewed
+  const [unreadCount, setUnreadCount] = useState(0);
+  const [lastViewedLead, setLastViewedLead] = useState<string | null>(null);
 
   useEffect(() => { fetchStats(); }, []);
 
@@ -79,6 +83,7 @@ export default function AdminDashboard() {
         monthRevenue: d.revenue?.month || 0,
         todayRevenue: d.revenue?.today || 0,
         newLeads: d.counts?.newLeads || 0,
+        newLeadsThisMonth: d.counts?.newLeadsThisMonth || 0,
         newCustomers: d.counts?.newCustomers || 0,
         readyToJoin: d.counts?.readyToJoin || 0,
         newClients: d.counts?.newClients || 0,
@@ -91,8 +96,18 @@ export default function AdminDashboard() {
         salesUnique: d.salesPage?.uniqueVisitors || 0,
         salesOfferDoc: d.salesPage?.offerDocViews || 0,
         salesEmails: d.salesPage?.emailsCaptured || 0,
+        latestLeadCreatedAt: d.counts?.latestLeadCreatedAt || null,
       });
       setGroups(d.groups || { newLeads: [], readyToJoin: [], newClients: [], newCustomers: [], hotLeads: [] });
+
+      // Unread lead notification — increment whenever a new lead appeared since last check
+      const latest = d.counts?.latestLeadCreatedAt;
+      if (latest && lastViewedLead !== null && latest > lastViewedLead) {
+        setUnreadCount(prev => prev + 1);
+      } else if (latest && lastViewedLead === null) {
+        // First load — just set the baseline, don't show as unread
+        setLastViewedLead(latest);
+      }
     } catch (_) {}
   }
 
@@ -208,6 +223,34 @@ export default function AdminDashboard() {
                     <p className="text-gray-500 text-[10px] uppercase tracking-wider mb-1">Emails captured</p>
                     <span className="text-2xl font-bold text-white">{stats.salesEmails.toLocaleString()}</span>
                   </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Lead stats row */}
+            <div className="flex items-center justify-center mb-10">
+              <div className="flex gap-10 items-center">
+                <div className="text-center">
+                  <p className="text-gray-500 text-[10px] uppercase tracking-wider mb-1">New leads this month</p>
+                  <span className="text-2xl font-bold text-white">{stats.newLeadsThisMonth.toLocaleString()}</span>
+                </div>
+                <div className="text-center relative">
+                  <p className="text-gray-500 text-[10px] uppercase tracking-wider mb-1">New leads (unread)</p>
+                  <div className="flex items-center gap-2 justify-center">
+                    <span className="text-2xl font-bold text-white">{unreadCount}</span>
+                    {unreadCount > 0 && (
+                      <button
+                        onClick={markLeadsAsRead}
+                        className="text-[10px] bg-gray-800 hover:bg-gray-700 text-gray-300 px-2 py-1 rounded transition-colors"
+                      >
+                        Mark read
+                      </button>
+                    )}
+                  </div>
+                </div>
+                <div className="text-center">
+                  <p className="text-gray-500 text-[10px] uppercase tracking-wider mb-1">Live leads</p>
+                  <span className="text-2xl font-bold text-white">{stats.newLeads.toLocaleString()}</span>
                 </div>
               </div>
             </div>

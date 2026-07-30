@@ -32,7 +32,7 @@ const STAGES: { eventType: string; score: number }[] = [
   { eventType: 'vsl_milestone_50', score: 15 },
   { eventType: 'vsl_milestone_75', score: 15 },
   { eventType: 'vsl_complete', score: 20 },
-  { eventType: 'email_submit', score: 25 },
+  { eventType: 'email_submit', score: 40 },
   { eventType: 'pricing_view', score: 35 },
   { eventType: 'pricing_plan_selected', score: 50 },
   { eventType: 'checkout_initiated', score: 70 },
