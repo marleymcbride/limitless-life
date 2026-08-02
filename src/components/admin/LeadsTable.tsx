@@ -307,7 +307,7 @@ export function LeadsTable() {
                     <button
                       onClick={async () => {
                         await fetch('/api/admin/dismiss-lead', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ userId: lead.id }) });
-                        window.location.reload();
+                        setLeads(prev => prev.filter(l => l.id !== lead.id));
                       }}
                       className="text-xs text-gray-400 hover:text-red-500 transition-colors"
                     >

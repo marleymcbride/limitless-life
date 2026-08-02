@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Shell(npx jest src/components --silent 2 >& 1)"
+    ],
+    "deny": [],
+    "defaultMode": "default"
+  }
+}

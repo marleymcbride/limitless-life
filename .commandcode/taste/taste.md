@@ -15,7 +15,7 @@ See [code-style/taste.md](code-style/taste.md)
 See [design-style/taste.md](design-style/taste.md)
 
 # code-style
-- When applying responsive className changes to heading elements (h1, h2, h3, etc.), convert the tag to a `<div>` instead — headings in this project don't properly apply className styling changes. Confidence: 0.90
+- When applying responsive className changes to heading elements (h1, h2, h3, etc.), convert the tag to a `<div>` instead — headings in this project don't properly apply className styling changes. Confidence: 0.95
 
 # pricing-display
 - When displaying a discount in pricing breakdowns, show the original (strikethrough) and discounted price on the same line rather than creating a separate "discount" line item — separate discount lines look fabricated and forced. Confidence: 0.70
@@ -35,3 +35,14 @@ See [design-style/taste.md](design-style/taste.md)
 
 # environment-variables
 - Before writing code that depends on a new environment variable, ask the user to add/set that variable first. Confidence: 0.80
+
+# analytics-and-tracking
+- Capture leads into the database at the earliest funnel step (e.g., email submission on the signup form) by calling a webhook that immediately creates the user record and event — don't rely on URL query params alone for data you need. Confidence: 0.7
+- Log funnel events (page views, plan selection, checkout initiation, payment) against a session ID even when the visitor is anonymous, so top-of-funnel data is never lost. Confidence: 0.7
+
+# automation-and-integrations
+- Keep business automation (follow-up sequences, notifications, Airtable/CRM sync) in n8n — the app's job is to emit events/webhooks and queue payloads, not implement the automation itself. Confidence: 0.7
+- When delegating integration work to an external specialist (e.g., an n8n developer), provide a complete handoff document with exact endpoints, auth headers, payload shapes, and SQL. Confidence: 0.7
+
+# workflow
+See [workflow/taste.md](workflow/taste.md)

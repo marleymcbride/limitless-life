@@ -3,7 +3,7 @@
 - When making background or layout width changes on mobile, preserve existing text sizing and positioning — do not modify font sizes, margins, padding, or text positioning. Confidence: 0.70
 - When reducing mobile font sizes in responsive typography, reduce the Tailwind size class by exactly 1 step (e.g., `text-lg` → `text-base`, `text-base` → `text-sm`). Confidence: 0.65
 - When creating new UI components, match the existing project's design system and color palette exactly, rather than using generic/styled-by-AI defaults. Confidence: 0.80
-- For selectable plan/pricing options, use clickable cards with selection highlighting instead of dropdown/select elements. Confidence: 0.65
+- For selectable plan/pricing options, use clickable cards with selection highlighting instead of dropdown/select elements. Confidence: 0.8
 - For deposit/pricing selection UI: start with no option pre-selected on each page load, and grey out/disable the action button until the user actively selects an option. Confidence: 0.70
 - Use minimal text-only treatment for badges and banners (no pill/button styling), keeping only the primary CTA button bold and prominent. Confidence: 0.70
 - Keep font styles (size, weight, family, color) as consistent as possible across all elements on a page — minimize differences in typography. If a user points out a style mismatch, match the precise existing font/size/color exactly. Confidence: 0.80
@@ -11,3 +11,8 @@
 - When standardizing page typography, prefer larger font sizes and more white text color. Confidence: 0.75
 - When standardizing typography on a page, maintain clear visual hierarchy between headings and body text — don't make everything the same size; keep distinguishable heading/subheading/body levels. Confidence: 0.75
 - Never use inline `style={{}}` with Tailwind responsive prefixes (`md:`, `lg:`), because inline styles have higher CSS specificity than Tailwind classes and will override the responsive variants on all screen sizes. Always use Tailwind utility classes instead (e.g., `bg-[#...] md:bg-[#...]` not `style={{ backgroundColor: ... }}` with responsive classes). Confidence: 0.70
+- When the user provides a reference image/example for a UI section, match its structure, proportions, and spacing exactly rather than approximating — rework the section until the comparison matches. Confidence: 0.85
+- Plan/pricing selection screens should be real pages at their own URL in a page-to-page funnel flow (like `/get-started` → `/get-started/choose`), not popup overlays/modals. Confidence: 0.75
+- The funnel design uses a consistent dark palette: `#050A0F`/`#06090E` page and card backgrounds, `#940909` red reserved for the primary CTA and banners, subtle white borders (`border-[#FFFFFF]/10`-style), and the `Neuemontreal` font. Confidence: 0.8
+- Page variants (e.g., the evergreen vs beta versions of the same sales page) should have dedicated, isolated CSS classes so adjustments to one don't leak into the other. Confidence: 0.65
+- Admin dashboard data tables (e.g., Leads) should render at full page width on desktop — not capped inside a max-width container that forces horizontal scrolling. Apply the same container/margin treatment already fixed on one tab (e.g., Revtrack) to other table tabs so they all match. Confidence: 0.75

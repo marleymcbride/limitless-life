@@ -283,6 +283,8 @@ export default function AdminDashboard() {
           </div>
         ) : activeTab === 'revtrack' ? (
           <RevtrackDashboard />
+        ) : activeTab === 'leads' ? (
+          <LeadsTable />
         ) : (
           <div className="max-w-6xl mx-auto">
             {activeTab === 'revenue' && <RevenueIntelligence />}
@@ -295,7 +297,6 @@ export default function AdminDashboard() {
             {activeTab === 'payments' && <PaymentsAnalytics />}
             {activeTab === 'applications' && <ApplicationsTable />}
             {activeTab === 'formSubmissions' && <FormSubmissionsTable />}
-            {activeTab === 'leads' && <LeadsTable />}
             {activeTab === 'traffic' && <TrafficSourcesTable />}
             {activeTab === 'workWithMe' && <WorkWithMeLeads />}
             {activeTab === 'waitlist' && <WaitlistDashboard />}
