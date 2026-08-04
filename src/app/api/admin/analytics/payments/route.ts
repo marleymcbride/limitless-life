@@ -158,7 +158,7 @@ export async function GET(request: NextRequest) {
         totalPayments,
         uniqueCustomers,
         revenueByTier,
-        currency: 'GBP',
+        currency: 'USD',
       },
       pagination: {
         total: totalCount,

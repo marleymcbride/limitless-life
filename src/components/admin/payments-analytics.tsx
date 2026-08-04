@@ -115,7 +115,7 @@ export default function PaymentsAnalytics() {
         <div className="bg-gray-900 p-6 rounded border border-gray-800">
           <h3 className="text-gray-400 mb-2 text-sm uppercase tracking-wide">Total Revenue</h3>
           <p className="text-3xl font-bold text-green-400">
-            £{(summary.totalRevenue / 100).toLocaleString()}
+            ${(summary.totalRevenue / 100).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
           </p>
           <p className="text-xs text-gray-500 mt-2">{summary.currency}</p>
         </div>
@@ -131,7 +131,7 @@ export default function PaymentsAnalytics() {
         <div className="bg-gray-900 p-6 rounded border border-gray-800">
           <h3 className="text-gray-400 mb-2 text-sm uppercase tracking-wide">Avg Order Value</h3>
           <p className="text-3xl font-bold text-blue-400">
-            £{(averageOrderValue / 100).toLocaleString()}
+            ${(averageOrderValue / 100).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
           </p>
           <p className="text-xs text-gray-500 mt-2">Per customer</p>
         </div>
@@ -163,7 +163,7 @@ export default function PaymentsAnalytics() {
                   <div className="flex justify-between items-center mb-1">
                     <span className="text-sm font-medium">{tierName}</span>
                     <span className="text-sm text-gray-400">
-                      {data.count} payments • £{(data.revenue / 100).toLocaleString()}
+                      {data.count} payments • ${(data.revenue / 100).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                     </span>
                   </div>
                   <div className="w-full bg-gray-800 rounded-full h-2">

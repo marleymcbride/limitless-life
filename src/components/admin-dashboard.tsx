@@ -21,7 +21,7 @@ import WaitlistDashboard from './admin/waitlist/WaitlistDashboard';
 type Tab = 'dashboard' | 'revtrack' | 'revenue' | 'clv' | 'applications' | 'formSubmissions' | 'leads' | 'traffic' | 'funnel' | 'vsl' | 'scroll' | 'journey' | 'abandoned' | 'payments' | 'workWithMe' | 'emailLeads' | 'waitlist';
 
 const WHATSAPP_BASE = 'https://web.whatsapp.com';
-const formatMoney = (cents: number) => `£${(cents / 100).toLocaleString()}`;
+const formatMoney = (cents: number) => `$${(cents / 100).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
 const timeAgo = (dateStr: string | null) => {
   if (!dateStr) return '';
   const diff = Date.now() - new Date(dateStr).getTime();

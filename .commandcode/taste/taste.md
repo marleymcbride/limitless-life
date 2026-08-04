@@ -32,6 +32,8 @@ See [design-style/taste.md](design-style/taste.md)
 - Distinguish between payment commitment durations (how long a program lasts) and payment split options (installment plans for the same program) — these are different concepts. Confidence: 0.75
 - Use direct Stripe payment links (static URLs) for simple one-time deposits per product option, rather than the dynamic API checkout session system. Confidence: 0.60
 - When replacing a checkout flow pattern, keep the old code annotated with '[OLD]' rather than deleting it. Confidence: 0.70
+- Sells in £GBP but tracks/reports all payment and revenue data in USD — every payment row, total, and every money figure on the sales pages AND admin dashboard should display as USD only, never a mix of symbols/currencies; any £ amount, whether newly arriving via Stripe or already sitting in Postgres, must show as USD "in EVERY aspect". Confidence: 0.95
+- Currency should be normalized via a live GBP→USD conversion: when a GBP payment comes in via Stripe/Postgres it should already be stored and shown as USD (so downstream displays never have to guess), and the admin dashboard should show a converting USD amount rather than the raw stored value. Confidence: 0.75
 
 # environment-variables
 - Before writing code that depends on a new environment variable, ask the user to add/set that variable first. Confidence: 0.80

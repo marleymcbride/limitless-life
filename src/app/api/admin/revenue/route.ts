@@ -68,7 +68,8 @@ export async function GET(request: NextRequest) {
       );
 
     const [totalResult] = await query;
-    const totalRevenue = Number(totalResult?.totalRevenue || 0);
+    const totalRevenueCents = Number(totalResult?.totalRevenue || 0);
+    const totalRevenue = totalRevenueCents / 100; // cents → dollars (USD)
 
     // Extend query based on groupBy
     let revenueBreakdown: any[] = [];
@@ -102,7 +103,7 @@ export async function GET(request: NextRequest) {
 
       revenueBreakdown = sourceResults.map((result) => ({
         source: result.source || '(none)',
-        revenue: Number(result.totalRevenue) || 0,
+        revenue: (Number(result.totalRevenue) || 0) / 100, // cents → dollars (USD)
         count: Number(result.paymentCount) || 0,
       }));
 
@@ -135,7 +136,7 @@ export async function GET(request: NextRequest) {
 
       revenueBreakdown = campaignResults.map((result) => ({
         campaign: result.campaign || '(none)',
-        revenue: Number(result.totalRevenue) || 0,
+        revenue: (Number(result.totalRevenue) || 0) / 100, // cents → dollars (USD)
         count: Number(result.paymentCount) || 0,
       }));
 
@@ -167,7 +168,7 @@ export async function GET(request: NextRequest) {
 
       revenueBreakdown = tierResults.map((result) => ({
         tier: result.tier || 'Unknown',
-        revenue: Number(result.totalRevenue) || 0,
+        revenue: (Number(result.totalRevenue) || 0) / 100, // cents → dollars (USD)
         count: Number(result.paymentCount) || 0,
       }));
 

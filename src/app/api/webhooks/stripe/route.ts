@@ -7,6 +7,7 @@ import { eq } from 'drizzle-orm';
 import { trackEvent } from '@/lib/analytics.server';
 import { n8nEvents, syncPaymentToAirtable } from '@/lib/n8nWebhooks';
 import { updateUserLeadScore } from '@/lib/scoring';
+import { gbpMinorToUsdCents } from '@/lib/fx';
 
 /**
  * POST /api/webhooks/stripe
@@ -122,11 +123,16 @@ export async function POST(request: NextRequest) {
           }
 
           // STEP 2: Insert payment record
+          // amount_total is in GBP minor units (pence) — store USD cents in
+          // `amount` (live-converted) and keep original GBP pence in `amount_gbp`.
+          const gbpPence = session.amount_total || 19700;
+          const usdCents = await gbpMinorToUsdCents(gbpPence);
           await db.insert(payments).values({
             userId,
             stripePaymentIntentId: session.payment_intent as string,
-            amount: session.amount_total || 19700,
-            currency: (session.currency || 'gbp').toUpperCase(),
+            amount: usdCents,
+            amountGbp: gbpPence,
+            currency: 'USD',
             tier: 'Concierge-deposit',
             paymentPlan,
             status: 'succeeded',
@@ -235,9 +241,11 @@ export async function POST(request: NextRequest) {
             break;
           }
 
-          // Calculate amount (from cents to dollars)
-          const amount = (session.amount_total || 0) / 100;
-          const currency = (session.currency || 'usd').toUpperCase();
+          // Calculate amount — amount_total is GBP minor units (pence).
+          // Store USD cents (live-converted) in `amount`, original pence in `amount_gbp`.
+          const gbpPence = session.amount_total || 0;
+          const usdCents = await gbpMinorToUsdCents(gbpPence);
+          const currency = 'USD';
           const paymentIntentId = session.payment_intent as string;
 
           // Check if payment already exists (idempotency)
@@ -257,7 +265,8 @@ export async function POST(request: NextRequest) {
           await db.insert(payments).values({
             userId,
             stripePaymentIntentId: paymentIntentId,
-            amount,
+            amount: usdCents,
+            amountGbp: gbpPence,
             currency,
             tier, // Which tier they purchased
             status: 'succeeded',
@@ -405,14 +414,17 @@ export async function POST(request: NextRequest) {
             .limit(1);
 
           if (user.length > 0) {
-            const amount = paymentIntent.amount / 100;
-            const currency = paymentIntent.currency.toUpperCase();
+            const gbpPence = paymentIntent.amount; // minor units (pence)
+            const usdCents = await gbpMinorToUsdCents(gbpPence);
+            const amount = usdCents;
+            const currency = 'USD';
 
             // Store payment record
             await db.insert(payments).values({
               userId,
               stripePaymentIntentId: paymentIntent.id,
               amount,
+              amountGbp: gbpPence,
               currency,
               status: 'succeeded',
               paymentDate: new Date(),
@@ -457,11 +469,14 @@ export async function POST(request: NextRequest) {
 
         if (userId && email) {
           // Store failed payment record
+          const gbpPence = paymentIntent.amount; // minor units (pence)
+          const usdCents = await gbpMinorToUsdCents(gbpPence);
           await db.insert(payments).values({
             userId,
             stripePaymentIntentId: paymentIntent.id,
-            amount: paymentIntent.amount / 100,
-            currency: paymentIntent.currency.toUpperCase(),
+            amount: usdCents,
+            amountGbp: gbpPence,
+            currency: 'USD',
             status: 'failed',
             paymentDate: new Date(),
             metadata: {

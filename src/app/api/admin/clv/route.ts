@@ -67,7 +67,7 @@ export async function GET(request: NextRequest) {
         )
       );
 
-    const totalRevenue = revenueResult[0]?.totalRevenue || 0;
+    const totalRevenue = (revenueResult[0]?.totalRevenue || 0) / 100; // cents → dollars (USD)
 
     // Get unique customers who made purchases
     const [customerResult] = await db
@@ -170,11 +170,11 @@ export async function GET(request: NextRequest) {
       averageCLV,
       clvByTier: clvByTier.map((item) => ({
         tier: item.tier || 'Unknown',
-        clv: item.totalRevenue / (item.customerCount || 1),
+        clv: (item.totalRevenue / (item.customerCount || 1)) / 100, // cents → dollars (USD)
       })),
       clvBySource: clvBySource.map((item) => ({
         source: item.source || '(none)',
-        clv: item.totalRevenue / (item.customerCount || 1),
+        clv: (item.totalRevenue / (item.customerCount || 1)) / 100, // cents → dollars (USD)
       })),
       repeatPurchaseRate,
       purchaseFrequency,

@@ -89,6 +89,7 @@ export const payments = pgTable('payments', {
   userId: uuid('user_id').references(() => users.id).notNull(),
   stripePaymentIntentId: text('stripe_payment_intent_id').unique(),
   amount: integer('amount'),
+  amountGbp: integer('amount_gbp'), // Original GBP minor units (pence) before USD conversion
   currency: text('currency'),
   tier: text('tier').$type<'Course' | 'LL' | 'LL+WA' | 'LHC' | 'Concierge-deposit'>(), // Which tier they purchased
   paymentPlan: text('payment_plan'), // 'monthly' | '4-month' | '6-month'
