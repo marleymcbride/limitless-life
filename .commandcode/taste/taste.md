@@ -33,7 +33,7 @@ See [design-style/taste.md](design-style/taste.md)
 - Use direct Stripe payment links (static URLs) for simple one-time deposits per product option, rather than the dynamic API checkout session system. Confidence: 0.60
 - When replacing a checkout flow pattern, keep the old code annotated with '[OLD]' rather than deleting it. Confidence: 0.70
 - Sells in £GBP but tracks/reports all payment and revenue data in USD — every payment row, total, and every money figure on the sales pages AND admin dashboard should display as USD only, never a mix of symbols/currencies; any £ amount, whether newly arriving via Stripe or already sitting in Postgres, must show as USD "in EVERY aspect". Confidence: 0.95
-- Currency should be normalized via a live GBP→USD conversion: when a GBP payment comes in via Stripe/Postgres it should already be stored and shown as USD (so downstream displays never have to guess), and the admin dashboard should show a converting USD amount rather than the raw stored value. Confidence: 0.75
+- Currency should be normalized via a live GBP→USD conversion: when a GBP payment comes in via Stripe/Postgres it should already be stored and shown as USD (so downstream displays never have to guess), and the admin dashboard should show a converting USD amount rather than the raw stored value. Genuine rate multiplication matters — storing GBP pence and relabeling them as "USD cents" would silently under-report revenue by the FX gap, so the stored USD figure must always be the rate-converted value. Confidence: 0.8
 
 # environment-variables
 - Before writing code that depends on a new environment variable, ask the user to add/set that variable first. Confidence: 0.80
@@ -44,8 +44,9 @@ See [design-style/taste.md](design-style/taste.md)
 
 # automation-and-integrations
 - Keep business automation (follow-up sequences, notifications, Airtable/CRM sync) in n8n — the app's job is to emit events/webhooks and queue payloads, not implement the automation itself. Confidence: 0.7
-- When delegating integration work to an external specialist (e.g., an n8n developer), provide a complete handoff document with exact endpoints, auth headers, payload shapes, and SQL. Confidence: 0.7
+- When delegating integration work to an external specialist (e.g., an n8n developer), provide a complete, copy-paste-ready handoff document written "exactly step-by-step" — exact endpoints, real payload shapes, per-endpoint actions, constraints, and a "what to report back" checklist — so the user can send it to the specialist as-is without further explanation. Confidence: 0.8
 - A lead-capture path must land in the canonical internal store (Postgres → Leads → Admin Dash); a path that only reaches external tools (n8n/Airtable) or stubbed code is a gap, not a working capture — audit the real data flow before assuming capture works. Confidence: 0.7
+- Expects data parity between the canonical DB and external tools: records that exist in Postgres (e.g., manually-added legacy payments) should also appear in Airtable (e.g., the Payments tab) — an external dashboard/tab that's empty while the DB has the data is flagged as a gap to fix, not accepted. Confidence: 0.6
 
 # workflow
 See [workflow/taste.md](workflow/taste.md)

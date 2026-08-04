@@ -47,6 +47,11 @@ export default function PaymentsAnalytics() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [page, setPage] = useState(0);
+  const [manualEmail, setManualEmail] = useState('');
+  const [manualAmountGbp, setManualAmountGbp] = useState('');
+  const [manualTier, setManualTier] = useState('');
+  const [manualSaving, setManualSaving] = useState(false);
+  const [manualResult, setManualResult] = useState<{ success: boolean; message: string } | null>(null);
   const limit = 50;
 
   useEffect(() => {
@@ -110,6 +115,90 @@ export default function PaymentsAnalytics() {
 
   return (
     <div className="space-y-6">
+      {/* Record Manual Payment */}
+      <div className="bg-gray-900 p-6 rounded border border-gray-800">
+        <h2 className="text-xl font-bold mb-1">Record Manual Payment</h2>
+        <p className="text-sm text-gray-500 mb-4">
+          For payments not processed through Stripe (e.g. Built Different Legacy monthly subs). Entered in £GBP, stored + synced to Airtable as USD.
+        </p>
+        <form
+          onSubmit={async (e) => {
+            e.preventDefault();
+            setManualSaving(true);
+            setManualResult(null);
+            try {
+              const res = await fetch('/api/admin/record-payment', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                  email: manualEmail.trim(),
+                  amountGbpPence: Math.round(parseFloat(manualAmountGbp) * 100),
+                  tier: manualTier || 'Built Different Legacy',
+                }),
+              });
+              const data = await res.json();
+              if (!res.ok) throw new Error(data.error || 'Failed to record payment');
+              setManualResult({ success: true, message: `Recorded ${manualEmail} — $${(data.payment.usdCents / 100).toFixed(2)} (was £${(data.payment.amountGbpPence / 100).toFixed(2)})` });
+              setManualEmail('');
+              setManualAmountGbp('');
+              fetchPayments(); // refresh list
+            } catch (err) {
+              setManualResult({ success: false, message: err instanceof Error ? err.message : 'Failed to record payment' });
+            } finally {
+              setManualSaving(false);
+            }
+          }}
+          className="grid grid-cols-1 md:grid-cols-4 gap-4 items-end"
+        >
+          <div>
+            <label className="block text-xs text-gray-400 mb-1">Email</label>
+            <input
+              type="email"
+              required
+              value={manualEmail}
+              onChange={(e) => setManualEmail(e.target.value)}
+              placeholder="client@email.com"
+              className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded text-sm text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#940909]"
+            />
+          </div>
+          <div>
+            <label className="block text-xs text-gray-400 mb-1">Amount (£GBP)</label>
+            <input
+              type="number"
+              required
+              min="0.01"
+              step="0.01"
+              value={manualAmountGbp}
+              onChange={(e) => setManualAmountGbp(e.target.value)}
+              placeholder="100.00"
+              className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded text-sm text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#940909]"
+            />
+          </div>
+          <div>
+            <label className="block text-xs text-gray-400 mb-1">Tier</label>
+            <input
+              type="text"
+              value={manualTier}
+              onChange={(e) => setManualTier(e.target.value)}
+              placeholder="Built Different Legacy"
+              className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded text-sm text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#940909]"
+            />
+          </div>
+          <button
+            type="submit"
+            disabled={manualSaving}
+            className="px-4 py-2 bg-[#940909] hover:bg-[#7b0707] text-white rounded text-sm font-bold disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            {manualSaving ? 'Recording...' : 'Record Payment'}
+          </button>
+          {manualResult && (
+            <div className={`md:col-span-4 text-sm px-3 py-2 rounded ${manualResult.success ? 'bg-green-900/30 text-green-300' : 'bg-red-900/30 text-red-300'}`}>
+              {manualResult.message}
+            </div>
+          )}
+        </form>
+      </div>
+
       {/* Summary Cards */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         <div className="bg-gray-900 p-6 rounded border border-gray-800">

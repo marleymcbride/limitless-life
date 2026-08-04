@@ -3,6 +3,10 @@ import { db } from '@/lib/db';
 import { sql } from 'drizzle-orm';
 import { isAdminAuthenticated } from '@/lib/admin-auth';
 
+// Read/write the flag live — never cache, so the toggle reflects the DB
+// immediately on refresh.
+export const dynamic = 'force-dynamic';
+
 const SETTING_KEYS = ['programme_live', 'programme_live_concierge'] as const;
 type SettingKey = (typeof SETTING_KEYS)[number];
 
