@@ -13,13 +13,16 @@ import {
 import IntakeDocClient from './IntakeDocClient';
 import IntakeDocWrapper from './IntakeDocWrapper';
 import { COHORT_CONFIG } from '@/config/waitlist';
+import { isProgrammeLive } from '@/lib/programme-state';
 
 export const metadata: Metadata = {
   title: 'Limitless 2026 Beta Launch',
   description: 'Join the Limitless Life beta program and create lasting change in 30 days.',
 };
 
-export default function IntakeOpenDoc() {
+export default async function IntakeOpenDoc() {
+  const live = await isProgrammeLive();
+
   return (
     <IntakeDocClient>
       <GammaArticle>
@@ -31,7 +34,7 @@ export default function IntakeOpenDoc() {
             THE LIFESTYLE ATHLETE 90-DAY RESET
           </div>
           <p className="text-1.5lg italic text-gray-300 mb-4" style={{ fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif' }}>
-            Starting {COHORT_CONFIG.DATE_FULL}
+            {live ? `Starting ${COHORT_CONFIG.DATE_FULL}` : 'This programme is now closed.'}
           </p>
           <div className="w-1/6 mx-auto border-b border-gray-300"></div>
         </div>
@@ -66,13 +69,13 @@ export default function IntakeOpenDoc() {
           </div>
         </div>
 
-        <IntakeDocWrapper>
+        <IntakeDocWrapper live={live}>
           {/* Body content loads dynamically */}
         </IntakeDocWrapper>
       </GammaArticle>
 
       {/* Footer - outside article on dark background */}
-      <div className="text-center py-8" style={{ backgroundColor: '#0B151B' }}>
+      <div className="text-center py-8" style={{ backgroundColor: '#060A0E' }}>
         <div className="text-sm font-medium text-gray-600" style={{ fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif' }}>
           © EVLV Fitness LLC {new Date().getFullYear()}
         </div>

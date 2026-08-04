@@ -7,8 +7,9 @@ import {
   GammaDivider,
 } from '@/components/gamma-article';
 import WaitlistDepositCTA from './WaitlistDepositCTA';
+import WaitlistInlineForm from '@/components/waitlist-inline-form';
 
-export default function IntakeDocContent() {
+export default function IntakeDocContent({ live = true }: { live?: boolean }) {
   return (
     <>
 
@@ -205,21 +206,29 @@ export default function IntakeDocContent() {
         HOW TO GET IN
       </GammaSectionHeading>
 
-      <GammaParagraph>
-        Doors are currently closed, but we&apos;re building the waitlist for the next cohort. There are <strong>limited spots</strong> available each cohort.
-      </GammaParagraph>
+      {live ? (
+        <>
+          <GammaParagraph>
+            Doors are currently closed, but we&apos;re building the waitlist for the next cohort. There are <strong>limited spots</strong> available each cohort.
+          </GammaParagraph>
 
-      <GammaParagraph>
-        Join the waitlist now with a <strong>deposit</strong> to secure your spot and get early access when doors open.
-      </GammaParagraph>
+          <GammaParagraph>
+            Join the waitlist now with a <strong>deposit</strong> to secure your spot and get early access when doors open.
+          </GammaParagraph>
 
-      <GammaParagraph>
-        To get started, all that&apos;s needed is a <strong>deposit today</strong>. If you&apos;re accepted, you&apos;ll be welcomed into The Lifestyle Athlete cohort. If not, we&apos;ll refund your deposit and no harm done.
-      </GammaParagraph>
+          <GammaParagraph>
+            To get started, all that&apos;s needed is a <strong>deposit today</strong>. If you&apos;re accepted, you&apos;ll be welcomed into The Lifestyle Athlete cohort. If not, we&apos;ll refund your deposit and no harm done.
+          </GammaParagraph>
 
-      <GammaParagraph>
-        So there&apos;s no risk to getting started, right?
-      </GammaParagraph>
+          <GammaParagraph>
+            So there&apos;s no risk to getting started, right?
+          </GammaParagraph>
+        </>
+      ) : (
+        <GammaParagraph>
+          This programme is currently closed for new applicants. When doors reopen, there will be <strong>limited spots</strong> — join the waitlist to get first access and early-bird pricing.
+        </GammaParagraph>
+      )}
 
       <GammaDivider />
 
@@ -231,15 +240,25 @@ export default function IntakeDocContent() {
         I respect both of our time, so let&apos;s skip the &apos;sales call&apos; and complicated BS.
       </GammaParagraph>
 
-      <GammaOrderedList>
-        <p >
-        <li className="">
-          <WaitlistDepositCTA/>
-          </li>
-        </p>
-        <li>Once doors open, if it looks like a match we&apos;ll get you enrolled.</li>
-        <li>You&apos;ll be welcomed to The Lifestyle Athlete squad.</li>
-      </GammaOrderedList>
+      {live ? (
+        <GammaOrderedList>
+          <p >
+          <li className="">
+            <WaitlistDepositCTA/>
+            </li>
+          </p>
+          <li>Once doors open, if it looks like a match we&apos;ll get you enrolled.</li>
+          <li>You&apos;ll be welcomed to The Lifestyle Athlete squad.</li>
+        </GammaOrderedList>
+      ) : (
+        <div className="space-y-4">
+          <p className="text-gray-300">
+            This programme is currently closed for new applicants. Join the waitlist below
+            and you&apos;ll be first in line when doors reopen.
+          </p>
+          <WaitlistInlineForm source="main-waitlist-offer-doc" />
+        </div>
+      )}
 
       <GammaParagraph>
         You in?

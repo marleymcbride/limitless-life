@@ -137,6 +137,13 @@ export const leadAlerts = pgTable('lead_alerts', {
   userIdIdx: index('idx_lead_alerts_user_id').on(table.userId),
 }));
 
+// Key/value app settings (e.g. programme_live toggle)
+export const appSettings = pgTable('app_settings', {
+  key: text('key').primaryKey(),
+  value: text('value'),
+  updatedAt: timestamp('updated_at').defaultNow(),
+});
+
 // Revtrack Campaign Tables
 export const campaigns = pgTable('campaigns', {
   id: uuid('id').primaryKey().defaultRandom(),

@@ -6,7 +6,7 @@
 - For selectable plan/pricing options, use clickable cards with selection highlighting instead of dropdown/select elements. Confidence: 0.8
 - For deposit/pricing selection UI: start with no option pre-selected on each page load, and grey out/disable the action button until the user actively selects an option. Confidence: 0.70
 - Use minimal text-only treatment for badges and banners (no pill/button styling), keeping only the primary CTA button bold and prominent. Confidence: 0.70
-- Keep font styles (size, weight, family, color) as consistent as possible across all elements on a page — minimize differences in typography. If a user points out a style mismatch, match the precise existing font/size/color exactly. Confidence: 0.80
+- Keep font styles (size, weight, family, color) as consistent as possible across all elements on a page — minimize differences in typography. If a user points out a style mismatch, match the precise existing font/size/color exactly. Confidence: 0.90
 - Keep styling "basic, normal, simple" — avoid anything that looks AI-generated (fancy containers, pill badges, overly designed elements). If a user says something looks "AI-like", simplify it to plain text with minimal or no container styling. Confidence: 0.85
 - When standardizing page typography, prefer larger font sizes and more white text color. Confidence: 0.75
 - When standardizing typography on a page, maintain clear visual hierarchy between headings and body text — don't make everything the same size; keep distinguishable heading/subheading/body levels. Confidence: 0.75
@@ -16,3 +16,7 @@
 - The funnel design uses a consistent dark palette: `#050A0F`/`#06090E` page and card backgrounds, `#940909` red reserved for the primary CTA and banners, subtle white borders (`border-[#FFFFFF]/10`-style), and the `Neuemontreal` font. Confidence: 0.8
 - Page variants (e.g., the evergreen vs beta versions of the same sales page) should have dedicated, isolated CSS classes so adjustments to one don't leak into the other. Confidence: 0.65
 - Admin dashboard data tables (e.g., Leads) should render at full page width on desktop — not capped inside a max-width container that forces horizontal scrolling. Apply the same container/margin treatment already fixed on one tab (e.g., Revtrack) to other table tabs so they all match. Confidence: 0.75
+- Prefers click-to-reveal progressive disclosure for conversion CTAs: the CTA stays a button and clicking it expands an inline form in place (rather than an always-visible form or a popup modal), keeping the page clean and the intent obvious. Confidence: 0.7
+- For simple lead capture (e.g., a waitlist join collecting name + email), prefers a standard inline form over embedding a third-party form (Fillout) — and the form should read explicitly as a waitlist signup so visitors know what they're joining. Confidence: 0.65
+- Prefers primary CTA/waitlist buttons on offer docs to be centered on the page (not left-aligned). Confidence: 0.5
+- On offer docs, the footer (which sits outside the article card) should use a background that blends with the outer page background (e.g., `#060A0E` against the outer `#050A0F`), not the inner card background (`#0B151B`) — the `/limitless-concierge-invitation` doc is the reference for this footer treatment. Confidence: 0.7

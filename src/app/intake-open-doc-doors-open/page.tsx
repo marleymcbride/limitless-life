@@ -13,13 +13,16 @@ import {
 import IntakeDocClient from './IntakeDocClient';
 import IntakeDocWrapper from './IntakeDocWrapper';
 import { COHORT_CONFIG } from '@/config/waitlist';
+import { isProgrammeLive } from '@/lib/programme-state';
 
 export const metadata: Metadata = {
   title: 'Join The Lifestyle Athlete 90-Day Reset',
   description: 'Secure your spot in The Limitless Life program and create lasting change.',
 };
 
-export default function IntakeOpenDoc() {
+export default async function IntakeOpenDoc() {
+  const live = await isProgrammeLive();
+
   return (
     <IntakeDocClient>
       <GammaArticle>
@@ -31,7 +34,7 @@ export default function IntakeOpenDoc() {
             THE LIFESTYLE ATHLETE 90-DAY RESET
           </div>
           <p className="text-1.5lg italic text-gray-300 mb-4" style={{ fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif' }}>
-            Starting {COHORT_CONFIG.DATE_FULL}
+            {live ? `Starting ${COHORT_CONFIG.DATE_FULL}` : 'This programme is now closed.'}
           </p>
           <div className="w-1/6 mx-auto border-b border-gray-300"></div>
         </div>
@@ -44,20 +47,34 @@ export default function IntakeOpenDoc() {
         />
 
         <GammaBlockquote>
-          <div className="space-y-4">
-            <div>
-              Doors are <strong>OPEN NOW</strong> for the upcoming cohort.
+          {live ? (
+            <div className="space-y-4">
+              <div>
+                Doors are <strong>OPEN NOW</strong> for the upcoming cohort.
+              </div>
+              <div>
+                Secure your spot today and join the next cohort starting {COHORT_CONFIG.DATE}.
+              </div>
+              <div>
+                <strong>Apply now to lock in your position</strong> before doors close.
+              </div>
+              <div>
+                — Marley
+              </div>
             </div>
-            <div>
-              Secure your spot today and join the next cohort starting {COHORT_CONFIG.DATE}.
+          ) : (
+            <div className="space-y-4">
+              <div>
+                This programme is currently <strong>closed</strong> for new applicants.
+              </div>
+              <div>
+                Join the waitlist below and you&apos;ll be first in line when doors reopen.
+              </div>
+              <div>
+                — Marley
+              </div>
             </div>
-            <div>
-              <strong>Apply now to lock in your position</strong> before doors close.
-            </div>
-            <div>
-              — Marley
-            </div>
-          </div>
+          )}
         </GammaBlockquote>
 
         <div className=" -mr-4 -ml-1 md:-ml-8 md:-mr-2 lg:-ml-2 lg:-mr-8" style={{ backgroundColor: '#204166' }}>
@@ -66,13 +83,13 @@ export default function IntakeOpenDoc() {
           </div>
         </div>
 
-        <IntakeDocWrapper>
+        <IntakeDocWrapper live={live}>
           {/* Body content loads dynamically */}
         </IntakeDocWrapper>
       </GammaArticle>
 
       {/* Footer - outside article on dark background */}
-      <div className="text-center py-8" style={{ backgroundColor: '#0B151B' }}>
+      <div className="text-center py-8" style={{ backgroundColor: '#060A0E' }}>
         <div className="text-sm font-medium text-gray-600" style={{ fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif' }}>
           © EVLV Fitness LLC {new Date().getFullYear()}
         </div>

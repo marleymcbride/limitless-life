@@ -74,8 +74,40 @@ export default function AdminDashboard() {
   };
 
   const [unreadCount, setUnreadCount] = useState(0);
+  const [programmeLive, setProgrammeLive] = useState<boolean | null>(null);
+  const [programmeSaving, setProgrammeSaving] = useState(false);
 
   useEffect(() => { fetchStats(); }, []);
+
+  // Load programme live state
+  useEffect(() => {
+    fetch('/api/admin/programme-state')
+      .then(res => res.json())
+      .then(data => {
+        if (typeof data.live === 'boolean') setProgrammeLive(data.live);
+      })
+      .catch(() => {});
+  }, []);
+
+  const toggleProgrammeLive = async () => {
+    if (programmeLive === null || programmeSaving) return;
+    const next = !programmeLive;
+    setProgrammeSaving(true);
+    try {
+      const res = await fetch('/api/admin/programme-state', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ live: next }),
+      });
+      if (!res.ok) throw new Error('Failed to save');
+      setProgrammeLive(next);
+    } catch (err) {
+      console.error('[programme-state] Toggle failed:', err);
+      alert('Failed to update programme state. Please try again.');
+    } finally {
+      setProgrammeSaving(false);
+    }
+  };
 
   async function fetchStats() {
     try {
@@ -180,6 +212,39 @@ export default function AdminDashboard() {
       <div className="flex-1 overflow-y-auto p-8">
         {activeTab === 'dashboard' ? (
           <div className="max-w-6xl mx-auto">
+
+            {/* Programme status toggle */}
+            <div className="rounded-xl border border-gray-800 overflow-hidden mb-8" style={{ backgroundColor: '#0A0D14' }}>
+              <div className="flex items-center justify-between px-5 py-4">
+                <div>
+                  <p className="text-white text-sm font-semibold">Programme status</p>
+                  <p className="text-gray-600 text-xs mt-0.5">
+                    {programmeLive === null
+                      ? 'Loading...'
+                      : programmeLive
+                      ? 'Offer docs are live — applications and deposits are open.'
+                      : 'Offer docs are off — visitors see "closed" and join the waitlist.'}
+                  </p>
+                </div>
+                <button
+                  onClick={toggleProgrammeLive}
+                  disabled={programmeLive === null || programmeSaving}
+                  className={`px-4 py-2 rounded-lg text-sm font-bold transition-all disabled:opacity-50 disabled:cursor-not-allowed ${
+                    programmeLive
+                      ? 'bg-green-600 hover:bg-green-700 text-white'
+                      : 'bg-[#940909] hover:bg-[#7b0707] text-white'
+                  }`}
+                >
+                  {programmeSaving
+                    ? 'Saving...'
+                    : programmeLive === null
+                    ? '...'
+                    : programmeLive
+                    ? 'LIVE — click to turn off'
+                    : 'OFF — click to go live'}
+                </button>
+              </div>
+            </div>
 
             {/* Top metrics row — revenue left, marketing, leads, sales page right */}
             <div className="flex items-start justify-between mb-10">

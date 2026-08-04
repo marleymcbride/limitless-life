@@ -30,7 +30,8 @@ export type EventType =
   | 'waitlist_variant_B_viewed'
   | 'waitlist_variant_C_viewed'
   | 'waitlist_application_started'
-  | 'waitlist_application_completed';
+  | 'waitlist_application_completed'
+  | 'waitlist_join';
 
 export interface Event {
   id: string;

@@ -43,6 +43,7 @@ See [design-style/taste.md](design-style/taste.md)
 # automation-and-integrations
 - Keep business automation (follow-up sequences, notifications, Airtable/CRM sync) in n8n — the app's job is to emit events/webhooks and queue payloads, not implement the automation itself. Confidence: 0.7
 - When delegating integration work to an external specialist (e.g., an n8n developer), provide a complete handoff document with exact endpoints, auth headers, payload shapes, and SQL. Confidence: 0.7
+- A lead-capture path must land in the canonical internal store (Postgres → Leads → Admin Dash); a path that only reaches external tools (n8n/Airtable) or stubbed code is a gap, not a working capture — audit the real data flow before assuming capture works. Confidence: 0.7
 
 # workflow
 See [workflow/taste.md](workflow/taste.md)

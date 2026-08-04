@@ -7,8 +7,9 @@ import {
   GammaDivider,
 } from '@/components/gamma-article';
 import DoorsOpenCTA from './DoorsOpenCTA';
+import WaitlistInlineForm from '@/components/waitlist-inline-form';
 
-export default function IntakeDocContent() {
+export default function IntakeDocContent({ live = true }: { live?: boolean }) {
   return (
     <>
 
@@ -205,13 +206,21 @@ export default function IntakeDocContent() {
         DOORS ARE OPEN
       </GammaSectionHeading>
 
-      <GammaParagraph>
-        Doors are currently <strong>OPEN</strong> for the upcoming cohort starting {new Date().toLocaleDateString('en-US', { month: 'long' })}. Spots are limited and will be filled on a first-come, first-served basis.
-      </GammaParagraph>
+      {live ? (
+        <>
+          <GammaParagraph>
+            Doors are currently <strong>OPEN</strong> for the upcoming cohort starting {new Date().toLocaleDateString('en-US', { month: 'long' })}. Spots are limited and will be filled on a first-come, first-served basis.
+          </GammaParagraph>
 
-      <GammaParagraph>
-        Once doors close, new applicants will be added to the waitlist for the following month.
-      </GammaParagraph>
+          <GammaParagraph>
+            Once doors close, new applicants will be added to the waitlist for the following month.
+          </GammaParagraph>
+        </>
+      ) : (
+        <GammaParagraph>
+          Doors are currently <strong>closed</strong> for new applicants. When the programme reopens, spots will be limited — join the waitlist to get first access.
+        </GammaParagraph>
+      )}
 
       <GammaDivider />
 
@@ -223,15 +232,25 @@ export default function IntakeDocContent() {
         I respect both of our time, so let&apos;s skip the &apos;sales call&apos; and complicated BS.
       </GammaParagraph>
 
-      <GammaOrderedList>
-        <p >
-        <li className="">
-          <DoorsOpenCTA/>
-          </li>
-        </p>
-        <li>You&apos;ll be redirected to complete your enrollment.</li>
-        <li>You&apos;ll be welcomed to The Lifestyle Athlete squad.</li>
-      </GammaOrderedList>
+      {live ? (
+        <GammaOrderedList>
+          <p >
+          <li className="">
+            <DoorsOpenCTA/>
+            </li>
+          </p>
+          <li>You&apos;ll be redirected to complete your enrollment.</li>
+          <li>You&apos;ll be welcomed to The Lifestyle Athlete squad.</li>
+        </GammaOrderedList>
+      ) : (
+        <div className="space-y-4">
+          <p className="text-gray-300">
+            This programme is currently closed for new applicants. Join the waitlist below
+            and you&apos;ll be first in line when doors reopen.
+          </p>
+          <WaitlistInlineForm source="doors-open-offer-doc" />
+        </div>
+      )}
 
       <GammaParagraph>
         You in?

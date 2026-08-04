@@ -9,12 +9,12 @@ const IntakeDocContent = dynamic(() => import('./content'), {
   loading: () => null
 });
 
-export default function IntakeDocWrapper({ children = null }: { children?: React.ReactNode }) {
+export default function IntakeDocWrapper({ children = null, live = true }: { children?: React.ReactNode; live?: boolean }) {
   return (
     <>
       {children}
       <Suspense fallback={null}>
-        <IntakeDocContent />
+        <IntakeDocContent live={live} />
       </Suspense>
     </>
   );

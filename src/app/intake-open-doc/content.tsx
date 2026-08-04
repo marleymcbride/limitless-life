@@ -6,8 +6,9 @@ import {
   GammaCTA,
 } from '@/components/gamma-article';
 import { COHORT_CONFIG } from '@/config/waitlist';
+import WaitlistInlineForm from '@/components/waitlist-inline-form';
 
-export default function IntakeDocContent() {
+export default function IntakeDocContent({ live = true }: { live?: boolean }) {
   return (
     <>
       <GammaParagraph>
@@ -295,21 +296,33 @@ export default function IntakeDocContent() {
         We kick off on {COHORT_CONFIG.DATE}, so if this sounds like you, and you&apos;d like to work with me:
       </GammaParagraph>
 
-      <GammaParagraph>
-        <strong>Step 1:</strong>{" "}
-        <GammaCTA href="/beta-application">
-          Secure your spot with a deposit
-        </GammaCTA>{" "}
-        for one of the places in our March Growth Squad.
-      </GammaParagraph>
+      {live ? (
+        <>
+          <GammaParagraph>
+            <strong>Step 1:</strong>{" "}
+            <GammaCTA href="/beta-application">
+              Secure your spot with a deposit
+            </GammaCTA>{" "}
+            for one of the places in our March Growth Squad.
+          </GammaParagraph>
 
-      <GammaParagraph>
-        <strong>🎉 Waitlist Bonus:</strong> As a waitlist applicant, you&apos;ll receive a <strong>hefty discount</strong> on the deposit when you secure your spot through this page!
-      </GammaParagraph>
+          <GammaParagraph>
+            <strong>🎉 Waitlist Bonus:</strong> As a waitlist applicant, you&apos;ll receive a <strong>hefty discount</strong> on the deposit when you secure your spot through this page!
+          </GammaParagraph>
 
-      <GammaParagraph>
-        <strong>Step 2:</strong> We&apos;ll review your application, and let you know within 72 hours.
-      </GammaParagraph>
+          <GammaParagraph>
+            <strong>Step 2:</strong> We&apos;ll review your application, and let you know within 72 hours.
+          </GammaParagraph>
+        </>
+      ) : (
+        <div className="space-y-4">
+          <p className="text-gray-700">
+            This programme is currently closed for new applicants. Join the waitlist below
+            and you&apos;ll be first in line when doors reopen.
+          </p>
+          <WaitlistInlineForm source="offer-doc" />
+        </div>
+      )}
 
       <GammaParagraph>
         If your application is not accepted, we&apos;ll refund your deposit immediately, let you know what to work on, and point you in the right direction.

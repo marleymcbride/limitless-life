@@ -7,8 +7,9 @@ import {
   GammaDivider,
 } from '@/components/gamma-article';
 import CohortWaitlistDepositCTA from './CohortWaitlistDepositCTA';
+import WaitlistInlineForm from '@/components/waitlist-inline-form';
 
-export default function IntakeDocContent() {
+export default function IntakeDocContent({ live = true }: { live?: boolean }) {
   return (
     <>
 
@@ -205,57 +206,80 @@ export default function IntakeDocContent() {
         HOW TO GET IN
       </GammaSectionHeading>
 
-      <GammaParagraph>
-        We are kicking off the public beta cohort the first week of May. There are just <strong>10 spots total</strong>.
-      </GammaParagraph>
+      {live ? (
+        <>
+          <GammaParagraph>
+            We are kicking off the public beta cohort the first week of May. There are just <strong>10 spots total</strong>.
+          </GammaParagraph>
 
-      <GammaParagraph>
-        The official launch in Q3 will be opening at £3,997 investment. The 10 men selected will join this round for <strong>£997</strong>, just 25% of the launch price.
-      </GammaParagraph>
+          <GammaParagraph>
+            The official launch in Q3 will be opening at £3,997 investment. The 10 men selected will join this round for <strong>£997</strong>, just 25% of the launch price.
+          </GammaParagraph>
 
-      <GammaParagraph>
-        If you&apos;re loving the results come the end of Phase 1 and ready to progress to Phase 2 & 3, your founding member investment will be honored.
-      </GammaParagraph>
+          <GammaParagraph>
+            If you&apos;re loving the results come the end of Phase 1 and ready to progress to Phase 2 & 3, your founding member investment will be honored.
+          </GammaParagraph>
 
-      <GammaParagraph>
-        But if you&apos;ve got everything you need and happy enjoying your new relentless daily energy, then my job is done.
-      </GammaParagraph>
+          <GammaParagraph>
+            But if you&apos;ve got everything you need and happy enjoying your new relentless daily energy, then my job is done.
+          </GammaParagraph>
 
-      <GammaParagraph>
-        To get started, all that&apos;s needed is <strong>£197 deposit today</strong> until doors open in April. If you&apos;re accepted, you&apos;ll be welcomed into The Lifestyle Athlete cohort. If not, I&apos;ll refund your deposit and no harm done.
-      </GammaParagraph>
+          <GammaParagraph>
+            To get started, all that&apos;s needed is <strong>£197 deposit today</strong> until doors open in April. If you&apos;re accepted, you&apos;ll be welcomed into The Lifestyle Athlete cohort. If not, I&apos;ll refund your deposit and no harm done.
+          </GammaParagraph>
 
-      <GammaParagraph>
-        So there&apos;s no risk to getting started, right?
-      </GammaParagraph>
-
+          <GammaParagraph>
+            So there&apos;s no risk to getting started, right?
+          </GammaParagraph>
+        </>
+      ) : (
+        <GammaParagraph>
+          This programme is currently closed for new applicants. When doors reopen, there will be <strong>limited spots</strong> — join the waitlist to get first access and early-bird pricing.
+        </GammaParagraph>
+      )}
       <GammaDivider />
 
       <GammaSectionHeading>
         NEXT STEPS
       </GammaSectionHeading>
 
-      <GammaParagraph>
-        I respect both of our time, so let&apos;s skip the &apos;sales call&apos; and complicated BS.
-      </GammaParagraph>
+      {live && (
+        <GammaParagraph>
+          I respect both of our time, so let&apos;s skip the &apos;sales call&apos; and complicated BS.
+        </GammaParagraph>
+      )}
 
-      <GammaOrderedList>
-        <p >
-        <li className="">
-          <CohortWaitlistDepositCTA/>
-          </li>
-        </p>
-        <li>Once doors open, if it looks like a match we&apos;ll get you enrolled.</li>
-        <li>You&apos;ll be welcomed to The Lifestyle Athlete squad.</li>
-      </GammaOrderedList>
+      {live ? (
+        <GammaOrderedList>
+          <p >
+          <li className="">
+            <CohortWaitlistDepositCTA/>
+            </li>
+          </p>
+          <li>Once doors open, if it looks like a match we&apos;ll get you enrolled.</li>
+          <li>You&apos;ll be welcomed to The Lifestyle Athlete squad.</li>
+        </GammaOrderedList>
+      ) : (
+        <div className="space-y-4">
+          <GammaParagraph className="mb-0 pb-0">
+            This programme is currently closed for new applicants. Join the waitlist below
+            and you&apos;ll be first in line when doors reopen.
+          </GammaParagraph>
+          <WaitlistInlineForm source="beta-waitlist-offer-doc" />
+        </div>
+      )}
 
-      <GammaParagraph>
-        You in?
-      </GammaParagraph>
+      {live && (
+        <>
+          <GammaParagraph>
+            You in?
+          </GammaParagraph>
 
-      <GammaParagraph className="-mt-4">
-      Marley
-      </GammaParagraph>
+          <GammaParagraph className="-mt-4">
+          Marley
+          </GammaParagraph>
+        </>
+      )}
     </>
   );
 }

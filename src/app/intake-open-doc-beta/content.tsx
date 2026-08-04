@@ -8,8 +8,9 @@ import {
 } from '@/components/gamma-article';
 import { COHORT_CONFIG } from '@/config/waitlist';
 import BetaOpenCTA from './BetaOpenCTA';
+import WaitlistInlineForm from '@/components/waitlist-inline-form';
 
-export default function IntakeDocContent() {
+export default function IntakeDocContent({ live = true }: { live?: boolean }) {
   return (
     <>
 
@@ -266,15 +267,25 @@ export default function IntakeDocContent() {
       If you want to get in this round with a heavily discounted rate here&apos;s how:
       </GammaParagraph>
 
-      <GammaOrderedList>
-        <p >
-        <li className="">
-          <BetaOpenCTA/>
-          </li>
-        </p>
-        <li>Your place will be confirmed.</li>
-        <li>We&apos;ll get you welcomed inside The Lifestyle Athlete squad.</li>
-      </GammaOrderedList>
+      {live ? (
+        <GammaOrderedList>
+          <p >
+          <li className="">
+            <BetaOpenCTA/>
+            </li>
+          </p>
+          <li>Your place will be confirmed.</li>
+          <li>We&apos;ll get you welcomed inside The Lifestyle Athlete squad.</li>
+        </GammaOrderedList>
+      ) : (
+        <div className="space-y-4">
+          <p className="text-gray-300">
+            This programme is currently closed for new applicants. Join the waitlist below
+            and you&apos;ll be first in line when doors reopen.
+          </p>
+          <WaitlistInlineForm source="beta-offer-doc" />
+        </div>
+      )}
 
       <GammaParagraph  className="pt-2">
       — Marley
