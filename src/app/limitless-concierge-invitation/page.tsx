@@ -12,6 +12,10 @@ import IntakeDocClient from './IntakeDocClient';
 import IntakeDocWrapper from './IntakeDocWrapper';
 import { isConciergeLive } from '@/lib/programme-state';
 
+// Read the live flag from the DB on every request so the admin toggle
+// takes effect immediately without a redeploy.
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   title: 'Limitless Concierge Invitation',
   description: 'Your personal invitation to the Limitless Concierge experience.',

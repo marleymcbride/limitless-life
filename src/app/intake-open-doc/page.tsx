@@ -15,6 +15,10 @@ import IntakeDocWrapper from './IntakeDocWrapper';
 import { COHORT_CONFIG } from '@/config/waitlist';
 import { isProgrammeLive } from '@/lib/programme-state';
 
+// Read the live flag from the DB on every request so the admin toggle
+// takes effect immediately without a redeploy.
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   title: 'Limitless 2026 Beta Launch',
   description: 'Join the Limitless Life beta program and create lasting change in 30 days.',

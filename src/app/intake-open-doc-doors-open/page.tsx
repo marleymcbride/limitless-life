@@ -15,6 +15,10 @@ import IntakeDocWrapper from './IntakeDocWrapper';
 import { COHORT_CONFIG } from '@/config/waitlist';
 import { isProgrammeLive } from '@/lib/programme-state';
 
+// Read the live flag from the DB on every request so the admin toggle
+// takes effect immediately without a redeploy.
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   title: 'Join The Lifestyle Athlete 90-Day Reset',
   description: 'Secure your spot in The Limitless Life program and create lasting change.',
