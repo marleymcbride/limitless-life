@@ -4,23 +4,33 @@ import { appSettings } from '@/db/schema';
 import { eq } from 'drizzle-orm';
 
 /**
- * Programme live state — server-side, cached per request.
+ * Read a boolean programme flag from app_settings.
  *
- * Reads the `programme_live` flag from app_settings. Defaults to LIVE (true)
- * so a DB hiccup never kills the sales page, and so nothing changes until
- * the flag is explicitly flipped to 'false' in the admin dashboard.
+ * Defaults to LIVE (true) so a DB hiccup never kills the sales page, and so
+ * nothing changes until the flag is explicitly flipped to 'false' in the
+ * admin dashboard.
  */
-export const isProgrammeLive = cache(async (): Promise<boolean> => {
+async function readProgrammeFlag(key: string): Promise<boolean> {
   try {
     const [row] = await db
       .select({ value: appSettings.value })
       .from(appSettings)
-      .where(eq(appSettings.key, 'programme_live'))
+      .where(eq(appSettings.key, key))
       .limit(1);
 
     return row?.value !== 'false';
   } catch (error) {
-    console.error('[programme-state] Failed to read programme_live, defaulting to live:', error);
+    console.error(`[programme-state] Failed to read ${key}, defaulting to live:`, error);
     return true;
   }
-});
+}
+
+/** Lifestyle Athlete Cohort (offer docs) — is the programme live? */
+export const isProgrammeLive = cache(async (): Promise<boolean> =>
+  readProgrammeFlag('programme_live')
+);
+
+/** Limitless Concierge — is the programme live? */
+export const isConciergeLive = cache(async (): Promise<boolean> =>
+  readProgrammeFlag('programme_live_concierge')
+);

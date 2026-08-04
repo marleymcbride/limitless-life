@@ -77,15 +77,23 @@ export default function AdminDashboard() {
   const [programmeLive, setProgrammeLive] = useState<boolean | null>(null);
   const [programmeSaving, setProgrammeSaving] = useState(false);
   const [programmeExpanded, setProgrammeExpanded] = useState(false);
+  const [conciergeLive, setConciergeLive] = useState<boolean | null>(null);
+  const [conciergeSaving, setConciergeSaving] = useState(false);
 
   useEffect(() => { fetchStats(); }, []);
 
   // Load programme live state
   useEffect(() => {
-    fetch('/api/admin/programme-state')
+    fetch('/api/admin/programme-state?key=programme_live')
       .then(res => res.json())
       .then(data => {
         if (typeof data.live === 'boolean') setProgrammeLive(data.live);
+      })
+      .catch(() => {});
+    fetch('/api/admin/programme-state?key=programme_live_concierge')
+      .then(res => res.json())
+      .then(data => {
+        if (typeof data.live === 'boolean') setConciergeLive(data.live);
       })
       .catch(() => {});
   }, []);
@@ -98,7 +106,7 @@ export default function AdminDashboard() {
       const res = await fetch('/api/admin/programme-state', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ live: next }),
+        body: JSON.stringify({ live: next, key: 'programme_live' }),
       });
       if (!res.ok) throw new Error('Failed to save');
       setProgrammeLive(next);
@@ -107,6 +115,26 @@ export default function AdminDashboard() {
       alert('Failed to update programme state. Please try again.');
     } finally {
       setProgrammeSaving(false);
+    }
+  };
+
+  const toggleConciergeLive = async () => {
+    if (conciergeLive === null || conciergeSaving) return;
+    const next = !conciergeLive;
+    setConciergeSaving(true);
+    try {
+      const res = await fetch('/api/admin/programme-state', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ live: next, key: 'programme_live_concierge' }),
+      });
+      if (!res.ok) throw new Error('Failed to save');
+      setConciergeLive(next);
+    } catch (err) {
+      console.error('[programme-state] Concierge toggle failed:', err);
+      alert('Failed to update concierge state. Please try again.');
+    } finally {
+      setConciergeSaving(false);
     }
   };
 
@@ -214,25 +242,32 @@ export default function AdminDashboard() {
         {activeTab === 'dashboard' ? (
           <div className="max-w-6xl mx-auto">
 
-            {/* Programme status toggle — collapsed header, expand to toggle */}
+            {/* Programme status — collapsed header, expand to reveal both toggles */}
             <div className="rounded-xl border border-gray-800 overflow-hidden mb-8" style={{ backgroundColor: '#0A0D14' }}>
               <button
                 onClick={() => setProgrammeExpanded(v => !v)}
                 className="w-full flex items-center justify-between px-5 py-3 hover:bg-gray-800/30 transition-colors cursor-pointer"
               >
                 <div className="flex items-center gap-3">
-                  <span
-                    className={`w-2.5 h-2.5 rounded-full shrink-0 ${
-                      programmeLive === null
-                        ? 'bg-gray-500'
-                        : programmeLive
-                        ? 'bg-green-500'
-                        : 'bg-red-500'
-                    }`}
-                  />
                   <span className="text-white text-sm font-semibold">Programme status</span>
+                  <span className="flex items-center gap-1.5">
+                    <span
+                      className={`w-2.5 h-2.5 rounded-full ${
+                        programmeLive === null ? 'bg-gray-500' : programmeLive ? 'bg-green-500' : 'bg-red-500'
+                      }`}
+                      title="Lifestyle Athlete Cohort"
+                    />
+                    <span
+                      className={`w-2.5 h-2.5 rounded-full ${
+                        conciergeLive === null ? 'bg-gray-500' : conciergeLive ? 'bg-green-500' : 'bg-red-500'
+                      }`}
+                      title="Limitless Concierge"
+                    />
+                  </span>
                   <span className="text-gray-600 text-xs">
                     {programmeLive === null ? '…' : programmeLive ? 'LIVE' : 'OFF'}
+                    {' · '}
+                    {conciergeLive === null ? '…' : conciergeLive ? 'LIVE' : 'OFF'}
                   </span>
                 </div>
                 <svg
@@ -244,34 +279,68 @@ export default function AdminDashboard() {
               </button>
 
               {programmeExpanded && (
-                <div className="flex items-center justify-between px-5 py-4 border-t border-gray-800">
-                  <div>
-                    <p className="text-white text-sm font-semibold">Toggle programme</p>
-                    <p className="text-gray-600 text-xs mt-0.5">
-                      {programmeLive === null
-                        ? 'Loading...'
+                <div className="border-t border-gray-800 divide-y divide-gray-800">
+                  {/* Lifestyle Athlete Cohort */}
+                  <div className="flex items-center justify-between px-5 py-4">
+                    <div>
+                      <p className="text-white text-sm font-semibold">Lifestyle Athlete Cohort</p>
+                      <p className="text-gray-600 text-xs mt-0.5">
+                        {programmeLive === null
+                          ? 'Loading...'
+                          : programmeLive
+                          ? 'Cohort is live — offer docs show the start date and deposit CTA.'
+                          : 'Cohort is off — offer docs show "closed" and a waitlist form.'}
+                      </p>
+                    </div>
+                    <button
+                      onClick={toggleProgrammeLive}
+                      disabled={programmeLive === null || programmeSaving}
+                      className={`px-4 py-2 rounded-lg text-sm font-bold transition-all disabled:opacity-50 disabled:cursor-not-allowed ${
+                        programmeLive
+                          ? 'bg-green-600 hover:bg-green-700 text-white'
+                          : 'bg-[#940909] hover:bg-[#7b0707] text-white'
+                      }`}
+                    >
+                      {programmeSaving
+                        ? 'Saving...'
+                        : programmeLive === null
+                        ? '...'
                         : programmeLive
-                        ? 'Offer docs are live — applications and deposits are open.'
-                        : 'Offer docs are off — visitors see "closed" and join the waitlist.'}
-                    </p>
+                        ? 'LIVE — click to turn off'
+                        : 'OFF — click to go live'}
+                    </button>
                   </div>
-                  <button
-                    onClick={toggleProgrammeLive}
-                    disabled={programmeLive === null || programmeSaving}
-                    className={`px-4 py-2 rounded-lg text-sm font-bold transition-all disabled:opacity-50 disabled:cursor-not-allowed ${
-                      programmeLive
-                        ? 'bg-green-600 hover:bg-green-700 text-white'
-                        : 'bg-[#940909] hover:bg-[#7b0707] text-white'
-                    }`}
-                  >
-                    {programmeSaving
-                      ? 'Saving...'
-                      : programmeLive === null
-                      ? '...'
-                      : programmeLive
-                      ? 'LIVE — click to turn off'
-                      : 'OFF — click to go live'}
-                  </button>
+
+                  {/* Limitless Concierge */}
+                  <div className="flex items-center justify-between px-5 py-4">
+                    <div>
+                      <p className="text-white text-sm font-semibold">Limitless Concierge</p>
+                      <p className="text-gray-600 text-xs mt-0.5">
+                        {conciergeLive === null
+                          ? 'Loading...'
+                          : conciergeLive
+                          ? 'Concierge is live — the invitation shows the deposit CTA.'
+                          : 'Concierge is off — the invitation shows a closed notice.'}
+                      </p>
+                    </div>
+                    <button
+                      onClick={toggleConciergeLive}
+                      disabled={conciergeLive === null || conciergeSaving}
+                      className={`px-4 py-2 rounded-lg text-sm font-bold transition-all disabled:opacity-50 disabled:cursor-not-allowed ${
+                        conciergeLive
+                          ? 'bg-green-600 hover:bg-green-700 text-white'
+                          : 'bg-[#940909] hover:bg-[#7b0707] text-white'
+                      }`}
+                    >
+                      {conciergeSaving
+                        ? 'Saving...'
+                        : conciergeLive === null
+                        ? '...'
+                        : conciergeLive
+                        ? 'LIVE — click to turn off'
+                        : 'OFF — click to go live'}
+                    </button>
+                  </div>
                 </div>
               )}
             </div>

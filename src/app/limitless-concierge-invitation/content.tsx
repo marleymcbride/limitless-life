@@ -6,8 +6,9 @@ import {
   GammaOrderedList,
   GammaDivider,
 } from '@/components/gamma-article';
+import WaitlistInlineForm from '@/components/waitlist-inline-form';
 
-export default function IntakeDocContent({ name = '', email = '' }: { name?: string; email?: string }) {
+export default function IntakeDocContent({ name = '', email = '', live = true }: { name?: string; email?: string; live?: boolean }) {
   return (
     <div className="md:ml-0 md:mr-0 lg:ml-0 lg:mr-0">
 
@@ -233,25 +234,33 @@ export default function IntakeDocContent({ name = '', email = '' }: { name?: str
         HOW TO GET IN
       </div>
 
-      <GammaParagraph>
-        I&apos;m opening a small number of spots for a few select guys.
-      </GammaParagraph>
+      {live ? (
+        <>
+          <GammaParagraph>
+            I&apos;m opening a small number of spots for a few select guys.
+          </GammaParagraph>
 
-      <GammaParagraph>
-        Monthly investment is £700 per month for complete 1-to-1 access. But the <strong>first 5 to be accepted </strong> will get in at 50% of this, and lock it in for as long as they stay a client.
-      </GammaParagraph>
+          <GammaParagraph>
+            Monthly investment is £700 per month for complete 1-to-1 access. But the <strong>first 5 to be accepted </strong> will get in at 50% of this, and lock it in for as long as they stay a client.
+          </GammaParagraph>
 
-      <GammaParagraph>
-        There is also an option to commit to 4 or 6 months up-front instead of monthly-  where you&apos;ll be rewarded by getting a better rate (see this on the enrollment page).
-      </GammaParagraph> 
+          <GammaParagraph>
+            There is also an option to commit to 4 or 6 months up-front instead of monthly-  where you&apos;ll be rewarded by getting a better rate (see this on the enrollment page).
+          </GammaParagraph> 
 
-      <GammaParagraph>
-        To get started all that&apos;s needed is <strong>£197 deposit today</strong>.
-      </GammaParagraph>
+          <GammaParagraph>
+            To get started all that&apos;s needed is <strong>£197 deposit today</strong>.
+          </GammaParagraph>
 
-      <GammaParagraph>
-        If accepted we&apos;ll get you started. If not I&apos;ll refund your complete deposit. So there&apos;s zero risk to applying.
-      </GammaParagraph>
+          <GammaParagraph>
+            If accepted we&apos;ll get you started. If not I&apos;ll refund your complete deposit. So there&apos;s zero risk to applying.
+          </GammaParagraph>
+        </>
+      ) : (
+        <GammaParagraph>
+          This programme is currently closed for new applicants. When it reopens, spots will be limited — join the waitlist to get first access.
+        </GammaParagraph>
+      )}
       
 
       <GammaDivider />
@@ -260,29 +269,45 @@ export default function IntakeDocContent({ name = '', email = '' }: { name?: str
         NEXT STEPS
       </div>
 
-      <GammaParagraph>
-        I respect both of our time, so let&apos;s skip the &apos;sales call&apos; and complicated BS.
-      </GammaParagraph>
+      {live && (
+        <GammaParagraph>
+          I respect both of our time, so let&apos;s skip the &apos;sales call&apos; and complicated BS.
+        </GammaParagraph>
+      )}
 
-      <GammaOrderedList>
-        <p >
-        <li className="">
+      {live ? (
+        <GammaOrderedList>
+          <p >
+          <li className="">
                     <Link href={`/limitless-concierge-invitation/pricing${name || email ? `?name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}` : ''}`} className="text-xl md:text-1.5xl lg:text-1.5xl text-blue-400 font-bold underline hover:text-blue-300 cursor-pointer">
             Click here to secure your place
           </Link>
           </li>
-        </p>
-        <li>If it&apos;s a fit we&apos;ll get you enrolled.</li>
-        <li>You&apos;ll be welcomed into the Limitless family.</li>
-      </GammaOrderedList>
+          </p>
+          <li>If it&apos;s a fit we&apos;ll get you enrolled.</li>
+          <li>You&apos;ll be welcomed into the Limitless family.</li>
+        </GammaOrderedList>
+      ) : (
+        <div className="space-y-4">
+          <GammaParagraph className="mb-0 pb-0">
+            This programme is currently closed for new applicants. Join the waitlist below
+            and you&apos;ll be first in line when doors reopen.
+          </GammaParagraph>
+          <WaitlistInlineForm source="concierge-offer-doc" />
+        </div>
+      )}
 
-      <GammaParagraph>
-        You in?
-      </GammaParagraph>
+      {live && (
+        <>
+          <GammaParagraph>
+            You in?
+          </GammaParagraph>
 
-      <GammaParagraph className="-mt-4">
-      Marley
-      </GammaParagraph>
+          <GammaParagraph className="-mt-4">
+          Marley
+          </GammaParagraph>
+        </>
+      )}
     </div>
   );
 }

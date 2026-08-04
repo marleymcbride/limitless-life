@@ -10,6 +10,7 @@ import {
 } from '@/components/gamma-article';
 import IntakeDocClient from './IntakeDocClient';
 import IntakeDocWrapper from './IntakeDocWrapper';
+import { isConciergeLive } from '@/lib/programme-state';
 
 export const metadata: Metadata = {
   title: 'Limitless Concierge Invitation',
@@ -24,6 +25,7 @@ export default async function LimitlessConciergeInvitation({ searchParams }: Pro
   const params = await searchParams;
   const name = typeof params.name === 'string' ? params.name : '';
   const email = typeof params.email === 'string' ? params.email : '';
+  const live = await isConciergeLive();
 
   return (
     <>
@@ -42,10 +44,22 @@ export default async function LimitlessConciergeInvitation({ searchParams }: Pro
       <GammaArticle>
         {/* Page Title Heading */}
         <div className="mb-4 pb-4 text-center">
+          {!live && (
+            <div
+              className="text-base mb-2"
+              style={{ fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif', color: '#E1E5E8' }}
+            >
+              [NOW CLOSED]
+            </div>
+          )}
           <div
             className="font-bold text-white mb-2 text-[1.9rem] -mr-4 -ml-2 md:text-[2.25rem] lg:text-[2.25rem]"
           >
-            {name ? `${name}, your invitation to Limitless Concierge` : 'Your Invitation to Limitless Concierge'}
+            {live
+              ? name
+                ? `${name}, your invitation to Limitless Concierge`
+                : 'Your Invitation to Limitless Concierge'
+              : 'Limitless Concierge Experience'}
           </div>
           <div className="w-1/6 mx-auto border-b border-gray-300"></div>
         </div>
@@ -59,19 +73,35 @@ export default async function LimitlessConciergeInvitation({ searchParams }: Pro
 
         <GammaBlockquote>
           <div className="space-y-4">
-          <div>
-              Hey{name ? ` ${name}` : ''}, quick FYI
-            </div>           
-            <div>
-              Have a read through your invitation for Limitless Concierge below, drop me a message on Whatsapp if you have any other questions.
-            </div>
-            <div>
-            Marley
-            </div>
+          {live ? (
+            <>
+              <div>
+                Hey{name ? ` ${name}` : ''}, quick FYI
+              </div>
+              <div>
+                Have a read through your invitation for Limitless Concierge below, drop me a message on Whatsapp if you have any other questions.
+              </div>
+              <div>
+                Marley
+              </div>
+            </>
+          ) : (
+            <>
+              <div>
+                Hey{name ? ` ${name}` : ''},
+              </div>
+              <div>
+                This programme is currently closed to new clients. To be the first to hear when we re-open, go through the doc below to find out how to get on the waitlist.
+              </div>
+              <div>
+                Marley
+              </div>
+            </>
+          )}
           </div>
         </GammaBlockquote>
 
-        <IntakeDocWrapper name={name} email={email}>
+        <IntakeDocWrapper name={name} email={email} live={live}>
           {/* Body content loads dynamically */}
         </IntakeDocWrapper>
       </GammaArticle>
