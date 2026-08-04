@@ -76,6 +76,7 @@ export default function AdminDashboard() {
   const [unreadCount, setUnreadCount] = useState(0);
   const [programmeLive, setProgrammeLive] = useState<boolean | null>(null);
   const [programmeSaving, setProgrammeSaving] = useState(false);
+  const [programmeExpanded, setProgrammeExpanded] = useState(false);
 
   useEffect(() => { fetchStats(); }, []);
 
@@ -213,37 +214,66 @@ export default function AdminDashboard() {
         {activeTab === 'dashboard' ? (
           <div className="max-w-6xl mx-auto">
 
-            {/* Programme status toggle */}
+            {/* Programme status toggle — collapsed header, expand to toggle */}
             <div className="rounded-xl border border-gray-800 overflow-hidden mb-8" style={{ backgroundColor: '#0A0D14' }}>
-              <div className="flex items-center justify-between px-5 py-4">
-                <div>
-                  <p className="text-white text-sm font-semibold">Programme status</p>
-                  <p className="text-gray-600 text-xs mt-0.5">
-                    {programmeLive === null
-                      ? 'Loading...'
-                      : programmeLive
-                      ? 'Offer docs are live — applications and deposits are open.'
-                      : 'Offer docs are off — visitors see "closed" and join the waitlist.'}
-                  </p>
+              <button
+                onClick={() => setProgrammeExpanded(v => !v)}
+                className="w-full flex items-center justify-between px-5 py-3 hover:bg-gray-800/30 transition-colors cursor-pointer"
+              >
+                <div className="flex items-center gap-3">
+                  <span
+                    className={`w-2.5 h-2.5 rounded-full shrink-0 ${
+                      programmeLive === null
+                        ? 'bg-gray-500'
+                        : programmeLive
+                        ? 'bg-green-500'
+                        : 'bg-red-500'
+                    }`}
+                  />
+                  <span className="text-white text-sm font-semibold">Programme status</span>
+                  <span className="text-gray-600 text-xs">
+                    {programmeLive === null ? '…' : programmeLive ? 'LIVE' : 'OFF'}
+                  </span>
                 </div>
-                <button
-                  onClick={toggleProgrammeLive}
-                  disabled={programmeLive === null || programmeSaving}
-                  className={`px-4 py-2 rounded-lg text-sm font-bold transition-all disabled:opacity-50 disabled:cursor-not-allowed ${
-                    programmeLive
-                      ? 'bg-green-600 hover:bg-green-700 text-white'
-                      : 'bg-[#940909] hover:bg-[#7b0707] text-white'
-                  }`}
+                <svg
+                  className={`w-4 h-4 text-gray-500 transition-transform ${programmeExpanded ? 'rotate-180' : ''}`}
+                  fill="none" stroke="currentColor" viewBox="0 0 24 24"
                 >
-                  {programmeSaving
-                    ? 'Saving...'
-                    : programmeLive === null
-                    ? '...'
-                    : programmeLive
-                    ? 'LIVE — click to turn off'
-                    : 'OFF — click to go live'}
-                </button>
-              </div>
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+
+              {programmeExpanded && (
+                <div className="flex items-center justify-between px-5 py-4 border-t border-gray-800">
+                  <div>
+                    <p className="text-white text-sm font-semibold">Toggle programme</p>
+                    <p className="text-gray-600 text-xs mt-0.5">
+                      {programmeLive === null
+                        ? 'Loading...'
+                        : programmeLive
+                        ? 'Offer docs are live — applications and deposits are open.'
+                        : 'Offer docs are off — visitors see "closed" and join the waitlist.'}
+                    </p>
+                  </div>
+                  <button
+                    onClick={toggleProgrammeLive}
+                    disabled={programmeLive === null || programmeSaving}
+                    className={`px-4 py-2 rounded-lg text-sm font-bold transition-all disabled:opacity-50 disabled:cursor-not-allowed ${
+                      programmeLive
+                        ? 'bg-green-600 hover:bg-green-700 text-white'
+                        : 'bg-[#940909] hover:bg-[#7b0707] text-white'
+                    }`}
+                  >
+                    {programmeSaving
+                      ? 'Saving...'
+                      : programmeLive === null
+                      ? '...'
+                      : programmeLive
+                      ? 'LIVE — click to turn off'
+                      : 'OFF — click to go live'}
+                  </button>
+                </div>
+              )}
             </div>
 
             {/* Top metrics row — revenue left, marketing, leads, sales page right */}
