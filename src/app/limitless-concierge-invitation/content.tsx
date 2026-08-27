@@ -10,11 +10,18 @@ import WaitlistInlineForm from '@/components/waitlist-inline-form';
 
 export default function IntakeDocContent({ name = '', email = '', live = true }: { name?: string; email?: string; live?: boolean }) {
   return (
-    <div className="md:ml-0 md:mr-0 lg:ml-0 lg:mr-0">
 
-<GammaParagraph className="">
-  <div className="-mb-4 md:-mb-6 lg:-mb-6 pt-2 font-bold text-2xl md:text-2.5xl lg:text-2.5xl">The mission is simple:</div> <br /> <div className="font-normal text-xl md:text-xl mt-4 mb-4">You wasn't born to be average, you&apos;re here to be <strong>EXCEPTIONAL</strong>.</div> <div className="mb-0 pt-0 md:mb-8 md:pt-2 lg:mb-8 lg:pt-2"> Over the next few months you&apos;ll gain an <strong>extra 3 hours of unrelenting energy</strong> every day, training only <strong>2 days</strong> per week.. (and no longer need alcohol or stimulants to get by).</div>
-</GammaParagraph>
+
+<div className="">
+  <div className="-mb-4 md:-mb-4 lg:-mb-4 pt-2 font-bold text-2xl md:text-2.5xl lg:text-2.5xl">So let&apos;s get something clear...</div> <br /> 
+  <div className="font-normal text-xl md:text-xl mt-4 mb-4">You wasn't born to be average. You&apos;re here to be <strong>EXCEPTIONAL</strong>.</div>
+  <GammaParagraph>
+        In EVERY guy&apos;s life there&apos;s a point where they decided a path to take:
+  </GammaParagraph>
+  <div className="font-normal text-xl md:text-xl mt-4 mb-4"><strong>Path A</strong>: You took life by the balls,  and became EVERYTHING you wanted to be.</div>
+  <div className="font-normal text-xl md:text-xl mt-4 mb-4">or <strong>Path B</strong>: You did &apos;alright for yourself&apos;, had a decent life.. but deep down you know you could&apos;ve been WAY MORE.</div>
+  <GammaParagraph>Be honest.. which path sounds more like YOUR life at this moment? </GammaParagraph>
+  {/* <div className="mb-0 pt-0 md:mb-8 md:pt-2 lg:mb-8 lg:pt-2"> Over the next few months you&apos;ll gain an <strong>extra 3 hours of unrelenting energy</strong> every day, training only <strong>2 days</strong> per week.. (and no longer need alcohol or stimulants to get by).</div> */}
 
       <GammaDivider />
 
@@ -31,7 +38,7 @@ export default function IntakeDocContent({ name = '', email = '', live = true }:
       </GammaParagraph>
 
       <GammaParagraph>
-        But secretly? You feel pretty dreadful. You&apos;re tired. Stressed. Like you&apos;re just stuck in this low frequency state.
+        But secretly? You feel pretty shit. You&apos;re tired. Stressed. Like you&apos;re just stuck in a low frequency state.
       </GammaParagraph>
 
       <GammaParagraph>
@@ -50,7 +57,7 @@ export default function IntakeDocContent({ name = '', email = '', live = true }:
       </div>
 
       <GammaParagraph>
-        You&apos;ve probably spent YEARS trying all these outdated surface-level fad diets and tactics the online "gurus" sold you.. but the truth is you need to <strong>HEAL your body</strong> from within.
+        You&apos;ve probably spent YEARS trying all these outdated "diets" and tactics the online "gurus" sold you.. but the truth is you need to <strong>HEAL your body</strong> from within.
       </GammaParagraph>
 
       <GammaParagraph>
@@ -73,11 +80,11 @@ export default function IntakeDocContent({ name = '', email = '', live = true }:
         </li>
         <li className="-mb-1 pb-3 -mr-2">
           <strong>You&apos;ve Tried Using &apos;Willpower&apos;:</strong>
-          <div className="mt-2">You&apos;ve been told hard discipline and willpower is the way to success, but this is a straight to path disaster long-term.</div>
+          <div className="mt-2">You&apos;ve been told hard discipline and willpower is the way to success, but this is a straight path to long-term disaster.</div>
         </li>
         <li className="-mb-1 pb-2">
-          <strong>You Can&apos;t Outwork A Broken Metabolism:</strong>
-          <div className="mt-2">The biggest problems start within (e.g. gut issues and imbalanced hormones). Until you fix these, your energy will stay throttled.</div>
+          <strong>You Can&apos;t Outwork A Broken System:</strong>
+          <div className="mt-2">The real problems are within - such as gut damage and imbalanced hormones. Until you fix your systemm, your energy will stay throttled.</div>
         </li>
       </GammaOrderedList>
 
@@ -96,7 +103,7 @@ export default function IntakeDocContent({ name = '', email = '', live = true }:
       </GammaParagraph>
 
       <GammaParagraph>
-        When i realised this it became DICK-PUNCHINGLY obvious the typical approaches of straving the body and training 4+ days were <b>NEVER</b> going to work.
+        When you realise this it becomes DICK-PUNCHINGLY obvious the dinosaur approaches of starving the body and training 4+ days will <b>NEVER</b> work.
       </GammaParagraph>
 
       <GammaParagraph>
@@ -194,7 +201,7 @@ export default function IntakeDocContent({ name = '', email = '', live = true }:
       </GammaParagraph>
 
       <GammaParagraph className="-mt-12 md:mt-4 lg:-mt-4">
-        Now we shift focus to your lifestyle. We bring in Metabolic Priming to heal your body and rebuild your natural energy. You'll sleep deeper, sex drive and motivation returns, and your jawline starts coming through.
+        Now we shift focus to your lifestyle. We use Metabolic Priming to heal your body and rebuild your natural energy. You'll sleep deeper, sex drive and motivation returns, and your jawline starts coming through.
       </GammaParagraph>
 
       <GammaParagraph className="pt-2 -mb-5 pb-8 -mr-4 md:-mb-0 md:pb-0 md:-mr-0 lg:-mb-0 lg:pb-0 lg:-mr-0">
@@ -212,19 +219,25 @@ export default function IntakeDocContent({ name = '', email = '', live = true }:
       </div>
 
       <GammaParagraph>
-        <strong>NO:</strong> This isn't for the man who's ok just floating by and dying as another average guy.
+        <strong>NO:</strong> This is NOT for you if you&apos;re happy drifting through life and dying as another average guy.
       </GammaParagraph>
 
       <GammaParagraph className='-mt-4'>
-        If you're happy with an average body, average standards and never reaching your full potential.. this is NOT for you.
+        If you're happy with an average body, average standards and never reaching your full potential.. this system is NOT for you.
       </GammaParagraph>
 
       <GammaParagraph>
       <strong>YES:</strong> This IS for you if you want greatness in EVERY aspect of life.
       </GammaParagraph>
 
+
       <GammaParagraph className='-mt-4'>
-      You've been given gifts, all this talent.. but you KNOW you should be so much more. You're a non-normal person but stuck with an average physique, life & energy.
+      You're a non-normal person but stuck with an average physique, life & energy. You've been given gifts, all this talent.. but you KNOW you should be so much more..
+      </GammaParagraph>
+
+
+      <GammaParagraph className='-mt-4'>
+      ...you just need the right system to unlock it.
       </GammaParagraph>
 
 
@@ -237,23 +250,23 @@ export default function IntakeDocContent({ name = '', email = '', live = true }:
       {live ? (
         <>
           <GammaParagraph>
-            I&apos;m opening a small number of spots for a few select guys.
+            I&apos;m opening a small number of spots for a few select guys. There are 2 ways to get in:
           </GammaParagraph>
 
           <GammaParagraph>
-            Monthly investment is £700 per month for complete 1-to-1 access. But the <strong>first 5 to be accepted </strong> will get in at 50% of this, and lock it in for as long as they stay a client.
+            A) Monthly investment is £700 per month for complete 1-to-1 access. But the <strong>first 5 to be accepted </strong> will get in at 50% of this, and lock it in for as long as they stay a client.
           </GammaParagraph>
 
           <GammaParagraph>
-            There is also an option to commit to 4 or 6 months up-front instead of monthly-  where you&apos;ll be rewarded by getting a better rate (see this on the enrollment page).
+            B) There is also an option to commit to 4 or 6 months up-front instead of monthly-  where you&apos;ll be rewarded with &apos;Committed Fucker&apos; special rate (see this on the enrollment page).
           </GammaParagraph> 
 
-          <GammaParagraph>
+          <GammaParagraph className="text-center pt-2 underline">
             To get started all that&apos;s needed is <strong>£197 deposit today</strong>.
           </GammaParagraph>
 
           <GammaParagraph>
-            If accepted we&apos;ll get you started. If not I&apos;ll refund your complete deposit. So there&apos;s zero risk to applying.
+            If accepted you&apos;ll get started right away. If not I&apos;ll refund your complete deposit. So there&apos;s zero risk to applying.
           </GammaParagraph>
         </>
       ) : (

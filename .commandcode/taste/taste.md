@@ -4,6 +4,9 @@
 
 # code-style
 See [code-style/taste.md](code-style/taste.md)
+
+# communication
+- When the user sends a brief check-in to confirm the session is still connected/active ("just checking, this chat still is open? please confirm only"), reply with a minimal confirmation only — no extra status recap, no actions, no further offers. Similarly, plain "test" messages get a one-word acknowledgment. Confidence: 0.75
 # writing-style
 - Write content in a natural, flowing, human tone. Never use short, fragmented/staccato phrasing. Confidence: 0.90
 - Avoid AI-sounding "slop" — no introspective "here's why it's messy" meta-commentary, no fluff buildup, no corporate/chatbot tone, no pithy metaphors or sayings ("I focused on making the pipes work, I never built the tap"), and no clinical/business jargon ("funnel health"). Get straight to the point with direct, honest, human delivery. Confidence: 0.96
@@ -44,7 +47,7 @@ See [design-style/taste.md](design-style/taste.md)
 
 # automation-and-integrations
 - Keep business automation (follow-up sequences, notifications, Airtable/CRM sync) in n8n — the app's job is to emit events/webhooks and queue payloads, not implement the automation itself. Confidence: 0.7
-- When delegating integration work to an external specialist (e.g., an n8n developer), provide a complete, copy-paste-ready handoff document written "exactly step-by-step" — exact endpoints, real payload shapes, per-endpoint actions, constraints, and a "what to report back" checklist — so the user can send it to the specialist as-is without further explanation. Confidence: 0.8
+- When delegating integration work to an external specialist (e.g., an n8n developer), provide a complete, copy-paste-ready handoff document written "exactly step-by-step" — exact endpoints, real payload shapes, per-endpoint actions, constraints, and a "what to report back" checklist — so the user can send it to the specialist as-is without further explanation. This also applies when an external integration is found broken/stale: the user asks the agent to "write this out" to the specialist, expecting a full forward-ready message (subject line, the evidence found, numbered items to check, and what to report back) that can be pasted verbatim. Confidence: 0.85
 - A lead-capture path must land in the canonical internal store (Postgres → Leads → Admin Dash); a path that only reaches external tools (n8n/Airtable) or stubbed code is a gap, not a working capture — audit the real data flow before assuming capture works. Confidence: 0.7
 - Expects data parity between the canonical DB and external tools: records that exist in Postgres (e.g., manually-added legacy payments) should also appear in Airtable (e.g., the Payments tab) — an external dashboard/tab that's empty while the DB has the data is flagged as a gap to fix, not accepted. Confidence: 0.6
 
