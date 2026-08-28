@@ -10,6 +10,7 @@ import {
 } from '@/components/gamma-article';
 import IntakeDocClient from './IntakeDocClient';
 import IntakeDocWrapper from './IntakeDocWrapper';
+import WhatsAppButton from '@/components/whatsapp-button';
 import { isConciergeLive } from '@/lib/programme-state';
 
 // Read the live flag from the DB on every request so the admin toggle
@@ -71,7 +72,7 @@ export default async function LimitlessConciergeInvitation({ searchParams }: Pro
         <GammaHeader
           authorName="Marley McBride"
           authorAvatar="/images/Offer doc/F2C9OR3X0AIuRPS copy 2.jpeg"
-          lastUpdated="July 2026"
+          lastUpdated="August 2026"
           className="pt-4 md:pt-2 lg:pt-2"
         />
 
@@ -118,6 +119,9 @@ export default async function LimitlessConciergeInvitation({ searchParams }: Pro
           © EVLV Fitness LLC {new Date().getFullYear()}
         </div>
       </div>
+
+      {/* Floating WhatsApp button */}
+      <WhatsAppButton />
 
       {/* Spacer to ensure page is always scrollable on mobile */}
       <div style={{ height: '1px' }}></div>

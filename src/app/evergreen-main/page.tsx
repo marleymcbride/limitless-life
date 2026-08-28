@@ -41,6 +41,7 @@ import { useSession } from "@/hooks/useSession";
 import { useScrollTracking } from "@/hooks/useScrollTracking";
 import { useRouter } from "next/navigation";
 import Script from "next/script";
+import WhatsAppButton from "@/components/whatsapp-button";
 
 // import SystemBenefitsProof from "../components/system-benefits-proof";
 // import WhyThisSystemWorks from "../components/[old] why-this-system-works";
@@ -125,6 +126,12 @@ export default function Home() {
   return (
     <PageProvider pageType="evergreen-main">
       <main className="flex flex-col min-h-screen" style={{ backgroundColor: '#050A0F' }}>
+      {/* Top banner — above the hero/ATF */}
+      <div className="w-full bg-[#940909] py-3 px-4 text-center border-b border-black/20">
+        <p className="text-white font-bold text-sm md:text-base lg:text-base tracking-wide" style={{ fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif' }}>
+          🚨 4 FOUNDING MEMBER PLACES LEFT BEFORE PRICE DOUBLES 🚨
+        </p>
+      </div>
       {/* Preload critical testimonial images */}
       <ImagePreloader images={CRITICAL_TESTIMONIAL_IMAGES} />
       {/* 1. Hero Section (UNTOUCHED - PRESERVED EXACTLY) */}
@@ -756,6 +763,8 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Floating WhatsApp button */}
+      <WhatsAppButton />
       </main>
     </PageProvider>
   );

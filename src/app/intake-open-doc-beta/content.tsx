@@ -11,10 +11,25 @@ import BetaOpenCTA from './BetaOpenCTA';
 import WaitlistInlineForm from '@/components/waitlist-inline-form';
 
 export default function IntakeDocContent({ live = true }: { live?: boolean }) {
+  const scrollToWaitlist = () => {
+    document.getElementById('waitlist-form')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  };
+
   return (
     <>
 
-<GammaParagraph className="-mr-2">
+      {!live && (
+        <div className="text-center mb-8">
+          <button
+            onClick={scrollToWaitlist}
+            className="bg-[#940909] hover:bg-[#7b0707] text-white font-bold px-8 py-4 rounded-md text-lg transition-all cursor-pointer"
+          >
+            Join the waitlist
+          </button>
+        </div>
+      )}
+
+      <GammaParagraph className="-mr-2">
   <GammaMiniHeading className="-mb-4 pt-2">The mission is simple:</GammaMiniHeading> <br /> <div className="mb-0 pt-0 md:mb-8 md:pt-2 lg:mb-8 lg:pt-2"> Gain an <strong>extra 3 hours of unrelenting energy</strong> every day , training only 2 days per week (without relying on alcohol or stimulants to get by).</div>
 </GammaParagraph>
 
@@ -25,31 +40,16 @@ export default function IntakeDocContent({ live = true }: { live?: boolean }) {
       </GammaSectionHeading>
 
       <GammaParagraph>
-        I know exactly what it feels like to be where you are.
+        On the surface everyone thinks you&apos;re doing well. Good career, decent life, successful by &quot;society&apos;s standards&quot;.
       </GammaParagraph>
 
       <GammaParagraph>
-        You&apos;re likely waking up each morning and &apos;cracking on&apos; with another day… but secretly you&apos;d do absolutely <strong>goddamn ANYTHING</strong> to not have to get out of bed. Not because you don&apos;t want to- you physically, mentally (and even spiritually) don&apos;t have the energy.
+        But secretly? You feel pretty shit. You&apos;re tired. Stressed. Like you&apos;re just stuck in a low frequency state.
       </GammaParagraph>
 
-      <GammaParagraph>
-        Despite watching what you eat, trying a load of different diets, and maybe even getting caught up in the &quot;scam land&quot; of supplements & stimulants.. you still feel shit.
-      </GammaParagraph>
-
-      <GammaParagraph>
-       Back in 2021 I was so drained I was literally falling asleep on my desk at 10am. This almost cost me my Masters degree, my relationship, and even my health.
-      </GammaParagraph>
-
-      <GammaParagraph>
-      So I get it. I&apos;ve been in the vicious cycle of having no energy to move your life forward.
-      </GammaParagraph>
-
-      <GammaParagraph>
-        You feel stressed out from underperforming at work, start neglecting your health, notice you&apos;re getting flabby, become even more stressed out and reach for the booze.
-      </GammaParagraph>
-
-      <GammaParagraph>
-        Wake up tomorrow and repeat.
+      <GammaParagraph className="-mr-8">
+        You have high expectations for EVERYTHING you do, but your body is a miserable representation of who you see yourself as...
+        and deep down you KNOW you&apos;re <strong>wasting your potential</strong>.
       </GammaParagraph>
 
       <GammaDivider />
@@ -59,9 +59,11 @@ export default function IntakeDocContent({ live = true }: { live?: boolean }) {
       </GammaSectionHeading>
 
       <GammaParagraph>
-        I went through every diet and tactic the online gurus sold, before understanding there are just <strong>4 real problems</strong>:
+        Before you can become Limitless you must fix the <b>root issues</b> caused by modern life.
       </GammaParagraph>
-
+      <GammaParagraph className="">
+        There are <strong>4 key areas</strong> you must solve:
+      </GammaParagraph>
       <GammaOrderedList>
         <li className="-mb-1 pb-3">
           <strong>You&apos;ve Been Eating Wrong:</strong>
@@ -73,11 +75,11 @@ export default function IntakeDocContent({ live = true }: { live?: boolean }) {
         </li>
         <li className="-mb-1 pb-3 -mr-2">
           <strong>You&apos;ve Tried Using &apos;Willpower&apos;:</strong>
-          <div className="mt-2">You&apos;ve been told &apos;hard discipline&apos; and willpower is the way to success.. but this is pure disaster in the long-term.</div>
+          <div className="mt-2">You&apos;ve been told hard discipline and willpower is the way to success, but this is a straight path to long-term disaster.</div>
         </li>
         <li className="-mb-1 pb-2">
-          <strong>You Can&apos;t Outwork A Broken Metabolism:</strong>
-          <div className="mt-2">The biggest problems start within (e.g. gut issues and imbalanced hormones). Until you fix your metabolism, your energy will stay throttled.</div>
+          <strong>You Can&apos;t Outwork A Broken System:</strong>
+          <div className="mt-2">The real problems are within - such as gut damage and imbalanced hormones. Until you fix your system, your energy will stay throttled.</div>
         </li>
       </GammaOrderedList>
 
@@ -88,33 +90,26 @@ export default function IntakeDocContent({ live = true }: { live?: boolean }) {
       </GammaSectionHeading>
 
       <GammaParagraph>
-        If you&apos;re like me, you probably don&apos;t care about &quot;smashing the gym every night&quot; or boasting about your latest bench press. You care about:
+        Do you actually care about &quot;hitting the gym every night&quot; and boasting about your bench press?
       </GammaParagraph>
-
-      <ul className="list-disc list-inside mb-6 text-xl md:text-xl space-y-4 text-gray-100" style={{ fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif' }}>
-        <li className="-mb-1 pb-3">
-          Looking and <strong>FEELING your best</strong>.
-        </li>
-        <li className="-mb-1 pb-3">
-          in the least time and effort possible.
-        </li>
-        <li className="-mb-1 pb-3 -mr-2">
-          so you have energy for the things and people that matter most.
-        </li>
-      </ul>
-
       <GammaParagraph>
-      <strong>Beyond the body, you have one core desire:</strong> to feel like &apos;that guy&apos;. The guy who walks into a room with infectious energy. A presence. An aura. For me there is no better feeling as a man.
+        OR do you simply want to <strong>look and FEEL your best</strong> every day, with the LEAST time spent possible.. so you have energy for the things and people that matter most?
+      </GammaParagraph>
+      <GammaParagraph>
+        When you realise this it becomes DICK-PUNCHINGLY obvious the dinosaur approaches of starving the body and training 4+ days will <b>NEVER</b> work.
+      </GammaParagraph>
+      <GammaParagraph>
+        What you ACTUALLY want is to feel like THAT GUY. The guy who walks into a room with infectious energy. A presence. An aura.. for me there is NO better feeling as a man.
       </GammaParagraph>
 
       <GammaDivider />
 
-      <GammaSectionHeading className="-mt-0 pt-0">
-        WHY LIMITLESS
-      </GammaSectionHeading>
+      <div className="text-3xl mx-0 -ml-4 -mr-4 md:text-3xl lg:text-3xl font-bold mt-10 mb-6 text-gray-100 text-center leading-normal md:leading-snug lg:leading-snug" style={{ fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif' }}>
+      HERE'S HOW WE DO IT
+      </div>
 
-      <GammaParagraph>
-        This is the system I&apos;ve crafted over 12 years and goes against every other online &apos;guru&apos;.
+      <GammaParagraph className="mt-0 mb-4">
+        This system is my life's work i&apos;ve crafted over the past 12 years.. and completely contradicts EVERY other online guru.
       </GammaParagraph>
 
       <GammaMiniHeading className="">
@@ -122,35 +117,17 @@ export default function IntakeDocContent({ live = true }: { live?: boolean }) {
       </GammaMiniHeading>
 
       <GammaOrderedList className="mt-6">
-        <li>We spend 5 days RESTING, and 2 days working.</li>
-        <li>We build your energy flywheel, not kill it with starvation approaches.</li>
-        <li>Instead of building a &apos;fitness regime&apos;, we design a LIFESTYLE.</li>
+        <li>We spend 5 days RESTING, and only 2 days in the gym.</li>
+        <li>You create an Energy Flywheel, not destroy your energy with starvation approaches.</li>
+        <li>There is no &apos;cookie-cutter fitness regime&apos;, we create a LIFESTYLE.</li>
       </GammaOrderedList>
 
-      <GammaParagraph>
-        I&apos;ve used this same method in men (such as banking, entrepreneurship, finance, petroleum, every high level career you can think of) to become what I call a <strong>Lifestyle Athlete</strong>.
-      </GammaParagraph>
-
-      <GammaParagraph className="-mb-0 pb-0 md:-mb-2 md:pb-0 lg:pb-0 lg:-mb-2">
-        <strong>My obsession:</strong> I&apos;ve spent over a decade researching why certain guys radiate an infectious energy and operate at a higher frequency than most.
-      </GammaParagraph>
-
-      <GammaParagraph className="-mb-0 pb-0 md:-mb-4 md:pb-0 md:pb-10 lg:pb-10 lg:-mb-7">
-        <strong>Humanity:</strong> I am so passionate about this niche area because:
-      </GammaParagraph>
-
-      <GammaOrderedList className="-mt-4 md:-mt-0 lg:-mt-0">
-        <li>Millions (if not billions) of men are secretly suffering.</li>
-        <li>The doctors and &quot;professionals&quot; have no clue about male life in 2026.</li>
-        <li>All the typical methods completely took over your life.</li>
-      </GammaOrderedList>
-
-      <GammaParagraph className="pt-0 md:pt-2 lg:pt-2 pb-0 md:pb-2 lg:pb-2">
-        I built this system because nothing out there was designed for men who ACTUALLY have a life, and not be another dork who makes gym their entire personality.
+      <GammaParagraph className="-mb-12">
+        This same system has worked for guys in banking, entrepreneurship, finance, petroleum, pretty much every high level career you can think of..
       </GammaParagraph>
 
       <GammaParagraph className="mb-0 mr-4 pb-0 md:-pb-0 lg:-pb-0 md:-mb-0 lg:-mb-0 lg:pb-0 md:pt-3 lg:pt-3">
-        <GammaMiniHeading className="text-3xl">Real-world examples this system has achieved:</GammaMiniHeading>
+        <GammaMiniHeading className="text-3xl">Real-world results this system has achieved:</GammaMiniHeading>
       </GammaParagraph>
 
       <GammaParagraph>
@@ -206,15 +183,19 @@ export default function IntakeDocContent({ live = true }: { live?: boolean }) {
       </GammaSectionHeading>
 
       <GammaParagraph>
-        This is a highly selective offer. It&apos;s for you if:
+        <strong>NO:</strong> This is NOT for you if you&apos;re happy drifting through life and dying as another average guy.
       </GammaParagraph>
-
-      <GammaParagraph>
-        <strong>YES:</strong> You KNOW what you are capable of, and ready to unlock the energy that reflects the success of your life. Rather than a typical &apos;fitness plan&apos;, you want a LIFESTYLE.
+      <GammaParagraph className="-mt-4">
+        If you're happy with an average body, average standards and never reaching your full potential.. this system is NOT for you.
       </GammaParagraph>
-
       <GammaParagraph>
-        <strong>NO:</strong> This is not for the casual guy who is ok with an average life. I only work with men who are devoted to the mission and feel DISGUSTED at the thought of being a "normal guy".
+        <strong>YES:</strong> This IS for you if you want greatness in EVERY aspect of life.
+      </GammaParagraph>
+      <GammaParagraph className="-mt-4">
+        You're a non-normal person but stuck with an average physique, life & energy. You've been given gifts, all this talent.. but you KNOW you should be so much more.
+      </GammaParagraph>
+      <GammaParagraph className="-mt-4">
+        ...you just need the right system to unlock it.
       </GammaParagraph>
 
       <GammaDivider />
@@ -258,15 +239,6 @@ export default function IntakeDocContent({ live = true }: { live?: boolean }) {
         NEXT STEPS
       </GammaSectionHeading>
 
-      <GammaParagraph>
-        
-        There&apos;s no sales calls or pressure tactics. You&apos;re a grown man and can make your own decisions.
-      </GammaParagraph>
-
-      <GammaParagraph>
-      If you want to get in this round with a heavily discounted rate here&apos;s how:
-      </GammaParagraph>
-
       {live ? (
         <GammaOrderedList>
           <p >
@@ -278,18 +250,14 @@ export default function IntakeDocContent({ live = true }: { live?: boolean }) {
           <li>We&apos;ll get you welcomed inside The Lifestyle Athlete squad.</li>
         </GammaOrderedList>
       ) : (
-        <div className="space-y-4">
-          <p className="text-gray-300">
-            This programme is currently closed for new applicants. Join the waitlist below
-            and you&apos;ll be first in line when doors reopen.
-          </p>
+        <div id="waitlist-form" className="space-y-4">
+          <div className="text-gray-300 lg:text-xl pb-4 text-center underline">
+            **The programme is currently closed for new applicants. Join the waitlist below
+            and you&apos;ll be first in line when doors re-open.**
+          </div>
           <WaitlistInlineForm source="beta-offer-doc" />
         </div>
       )}
-
-      <GammaParagraph  className="pt-2">
-      — Marley
-      </GammaParagraph>
 
     </>
   );

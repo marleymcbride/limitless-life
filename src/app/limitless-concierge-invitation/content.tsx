@@ -163,7 +163,7 @@ export default function IntakeDocContent({ name = '', email = '', live = true }:
       </GammaParagraph>
 
       <GammaParagraph className="mb-0 mr-4 pb-0 md:-pb-0 lg:-pb-0 md:-mb-0 lg:-mb-0 lg:pb-0 md:pt-0 lg:pt-3">
-        <GammaMiniHeading className="text-2xl md:text-2.5xl lg:text-2.5xl">Some real-world results of this system:</GammaMiniHeading>
+        <GammaMiniHeading className="text-2xl md:text-2.5xl lg:text-2.5xl">Real-world results this system has achieved:</GammaMiniHeading>
       </GammaParagraph>
 
       <GammaParagraph className="pb-2">
@@ -302,10 +302,11 @@ export default function IntakeDocContent({ name = '', email = '', live = true }:
         </GammaOrderedList>
       ) : (
         <div className="space-y-4">
-          <GammaParagraph className="mb-0 pb-0">
+
+          <div className="mb-0 lg:text-xl pb-0">
             This programme is currently closed for new applicants. Join the waitlist below
-            and you&apos;ll be first in line when doors reopen.
-          </GammaParagraph>
+            to be first in line when doors re-open.
+          </div>
           <WaitlistInlineForm source="concierge-offer-doc" />
         </div>
       )}
